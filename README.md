@@ -7,7 +7,7 @@
 ## Bem vindo
 
 Obrigado por participar do desafio do Globoplay! Estamos muito contentes pelo seu primeiro passo para fazer parte de um time excepcional. Você deverá criar um aplicativo sobre filmes, usando a [API](https://developers.themoviedb.org/3/getting-started/introduction) do [TheMovieDB](https://www.themoviedb.org/?language=en).
-Para dar uma padronizar e termos um layout minimamente definido anexamos alguns assets que vão te ajudar a desenvolver esse app:
+Para termos um layout minimamente definido, anexamos alguns assets que vão te ajudar a desenvolver esse app:
 
 - [Ícones do app](assets/icons)
 - [ScreenShots](assets/screenshots)
@@ -23,7 +23,7 @@ Pense no desafio como uma oportunidade de mostrar todo o seu conhecimento. E fa�
 
 Não existe nenhum pré-requisito, portanto sinta-se a vontande para utilizar qualquer linguagem e usar ou não usar bibliotecas.
 
-Sabemos que testes não é um tópico que todos dominam ou tenham conhecimento, por isso aceitamos desafios de todos os perfis e diferentes níveis de conhecimento técnico. Mas somos preocupados com a qualidades, saúde e evoluação do produto, por isso acreditamos bastante em testes automatizados.
+Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por isso aceitamos desafios de todos os perfis e diferentes níveis de conhecimento técnico. Mas nos preocupamos com a qualidade, saúde e evoluação do produto e por isso acreditamos bastante em testes automatizados.
 
 
 # Features ..
@@ -63,7 +63,7 @@ Sabemos que testes não é um tópico que todos dominam ou tenham conhecimento, 
 
 ---
 
-Nossos design's elaboraram algumas sugestões de telas e fluxos para guiar você durante o desenvolvimento, portanto fique à vontade para modificar como você quiser.
+Nossos designers elaboraram algumas sugestões de telas e fluxos para guiar você durante o desenvolvimento, portanto fique à vontade para modificar como você quiser.
 Para facilitar o processo, existem assets, app icons, ícones e paleta de cores no repositório. Mas se o seu lado designer falar mais alto, pode nos surpreender!
 
 ### Fluxo de grid de filmes
@@ -88,4 +88,4 @@ Após finalizar a implementação do desafio, abra um pull request para este rep
 
 ### **ATENÇÃO**
 
-Não faça faze push diretamente para o repositório!
+Não faça push diretamente para este repositório!
