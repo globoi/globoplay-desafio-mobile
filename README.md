@@ -6,27 +6,24 @@
 
 ## Bem vindo
 
-Obrigado por participar do desafio do Globoplay! Estamos muito contentes pelo seu primeiro passo para fazer parte de um time excepcional. Você deverá criar uma app sobre filmes, usando a [API](https://developers.themoviedb.org/3/getting-started/introduction) do [TheMovieDB](https://www.themoviedb.org/?language=en).
+Obrigado por participar do desafio do Globoplay! Estamos muito contentes pelo seu primeiro passo para fazer parte de um time excepcional. Você deverá criar um aplicativo sobre filmes, usando a [API](https://developers.themoviedb.org/3/getting-started/introduction) do [TheMovieDB](https://www.themoviedb.org/?language=en).
 Para dar uma padronizar e termos um layout minimamente definido anexamos alguns assets que vão te ajudar a desenvolver esse app:
 
-- [Ícones do app](assets/appIcons)
+- [Ícones do app](assets/icons)
 - [ScreenShots](assets/screenshots)
 - [Ícones](assets/icons)
 
 Pense no desafio como uma oportunidade de mostrar todo o seu conhecimento. E faça com calma, você tem uma semana para entregar! Sua avaliação será baseada nos seguintes tópicos:
 
-- Estrutura de código
+- Arquitetura
 - Consumo de APIs
 - GIT
-- Animações
-- Testes
-- Persistência de dados
-- Estruturação de layout 
+- Layout's
 - Fluxo de navegação.
 
 Não existe nenhum pré-requisito, portanto sinta-se a vontande para utilizar qualquer linguagem e usar ou não usar bibliotecas.
 
-Sabemos que testes não é um tópico que todos dominam ou tenham conhecimento, por isso aceitamos desafios com todos os perfis e diferentes momentos de experiência e conhecimento técnico. Mas somos preocupados com a qualidades, saúde e evoluação do produto, por isso acreditamos bastante em testes automatizados.
+Sabemos que testes não é um tópico que todos dominam ou tenham conhecimento, por isso aceitamos desafios de todos os perfis e diferentes níveis de conhecimento técnico. Mas somos preocupados com a qualidades, saúde e evoluação do produto, por isso acreditamos bastante em testes automatizados.
 
 
 # Features ..
@@ -35,27 +32,31 @@ Sabemos que testes não é um tópico que todos dominam ou tenham conhecimento, 
 
 ### Essencial:
 
-- Tela de Splash;
+- Tela de splash;
 - Listagem dos filmes
-- Área de favoritos
+- Minha lista
 - Detalhes do filme
-- Favoritar/Desaforitar filmes
-- Filtros
-- Busca
+- Favoritar/Desfavoritar filmes
+- Layout estruturado
+- Tratamento de erro
+
 
 
 ### Ganha mais pontos se tiver:
 
+- Filtros
+- Busca
 - Paginação
-- Layout estruturado
 - Animações
-- Tratamento de erro
 - Testes unitários
-- Teste instrumentados
+- Testes instrumentados
 - Testes funcionais.
 - Pipeline Automatizado
-- Busca local
 
+
+### Iremos ficar encantados:
+
+- Play do vídeo
 
 
 # Exemplos e sugestões
