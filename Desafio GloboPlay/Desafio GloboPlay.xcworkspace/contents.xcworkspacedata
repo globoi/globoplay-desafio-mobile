@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CardViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:Desafio GloboPlay.xcodeproj">
    </FileRef>
    <FileRef

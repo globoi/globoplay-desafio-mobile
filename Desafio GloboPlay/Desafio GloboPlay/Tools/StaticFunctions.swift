@@ -66,8 +66,39 @@ class StaticFunctions {
     
     class func getItemHeight() -> CGFloat {
         // Define a largura dos cards
-        var itemWidth = StaticFunctions.getItemWidth()
+        let itemWidth = StaticFunctions.getItemWidth()
         return itemWidth*1.5
     }
+    
+    class func getBluredImage(image: UIImage) -> UIImage {
+        let context = CIContext(options: nil)
+
+        let currentFilter = CIFilter(name: "CIGaussianBlur")
+        let beginImage = CIImage(image: image)
+        currentFilter!.setValue(beginImage, forKey: kCIInputImageKey)
+        currentFilter!.setValue(10, forKey: kCIInputRadiusKey)
+
+        let cropFilter = CIFilter(name: "CICrop")
+        cropFilter!.setValue(currentFilter!.outputImage, forKey: kCIInputImageKey)
+        cropFilter!.setValue(CIVector(cgRect: beginImage!.extent), forKey: "inputRectangle")
+
+        let output = cropFilter!.outputImage
+        let cgimg = context.createCGImage(output!, from: output!.extent)
+        let processedImage = UIImage(cgImage: cgimg!)
+
+        return processedImage
+    }
+    
+    class func heightForView(text: String, font: UIFont, width: CGFloat) -> CGFloat {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: screenWidth))
+        label.font = font
+        label.text = text
+        label.numberOfLines = 0
+        
+        label.sizeToFit()
+        return label.frame.height + 44
+    }
 }
+
+
 

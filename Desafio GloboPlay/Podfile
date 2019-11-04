@@ -8,5 +8,6 @@ target 'Desafio GloboPlay' do
   # Pods for Desafio GloboPlay
   pod 'Alamofire', '~> 5.0.0-rc.2'
   pod 'ImageLoader'
+  pod 'SwipeMenuViewController'
 
 end

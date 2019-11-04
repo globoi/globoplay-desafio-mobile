@@ -68,10 +68,6 @@ class HomeViewController: UIViewController {
         
     }
     
-    
-    
-    
-    
 }
 
 // MARK: Table view data source and delegate methods
@@ -98,7 +94,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             cards = self.cardsPopular
         }
-        cell.configCell(cards: cards, section: indexPath.section)
+        cell.configCell(cards: cards, section: indexPath.section, controller: self)
         return cell
     }
     

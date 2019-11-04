@@ -10,6 +10,7 @@ import UIKit
 
 class CardSessionTableViewCell: UITableViewCell {
     
+    private weak var controller : UIViewController!
     @IBOutlet weak var collectionView: UICollectionView!
     private var cards: [Card] = [Card]()
     
@@ -19,6 +20,7 @@ class CardSessionTableViewCell: UITableViewCell {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.configCollection()
+        self.selectionStyle = .none
     }
     
     func configCollection() {
@@ -42,7 +44,8 @@ class CardSessionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configCell(cards: [Card], section: Int) {
+    func configCell(cards: [Card], section: Int, controller: UIViewController) {
+        self.controller = controller
         self.cards = cards
         self.collectionView.reloadData()
     }
@@ -65,5 +68,11 @@ extension CardSessionTableViewCell : UICollectionViewDelegate, UICollectionViewD
         let card = self.cards[indexPath.item]
         cell.configCell(card: card)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let card = self.cards[indexPath.item]
+        let controller = CardViewController.init(card: card)
+        self.controller.navigationController?.pushViewController(controller, animated: true)
     }
 }

@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.0.0-rc.2)
   - ImageLoader (0.15.0)
+  - SwipeMenuViewController (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.2)
   - ImageLoader
+  - SwipeMenuViewController
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - ImageLoader
+    - SwipeMenuViewController
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
   ImageLoader: e0635d52020d64dc7687e3a3b14dc53212ac0442
+  SwipeMenuViewController: c2c1f9b62022ce6b904b2553f0fa340c9008becd
 
-PODFILE CHECKSUM: 3bf521c1dbdcb6cf98b62bf645f82f391ccef2f7
+PODFILE CHECKSUM: 3f4c236c436e2eb374969e078689e7a7986e46a7
 
 COCOAPODS: 1.8.4
