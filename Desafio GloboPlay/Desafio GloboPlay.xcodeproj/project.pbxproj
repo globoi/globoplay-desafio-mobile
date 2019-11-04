@@ -17,6 +17,13 @@
 		804711FF236E36F200D50E03 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804711FE236E36F200D50E03 /* HomeViewController.swift */; };
 		80471202236E413700D50E03 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80471201236E413700D50E03 /* Card.swift */; };
 		80471207236E449B00D50E03 /* MyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80471206236E449B00D50E03 /* MyListViewController.swift */; };
+		8047120B236F968500D50E03 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047120A236F968500D50E03 /* Genre.swift */; };
+		80471212236F990000D50E03 /* ApplicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80471211236F990000D50E03 /* ApplicationService.swift */; };
+		80471214236F9A9200D50E03 /* StaticValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80471213236F9A9200D50E03 /* StaticValues.swift */; };
+		80471217236FA61900D50E03 /* StaticFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80471216236FA61900D50E03 /* StaticFunctions.swift */; };
+		8047121E236FA7D300D50E03 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047121D236FA7D300D50E03 /* CardCollectionViewCell.swift */; };
+		80471221236FB33800D50E03 /* CardSessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047121F236FB33800D50E03 /* CardSessionTableViewCell.swift */; };
+		80471222236FB33800D50E03 /* CardSessionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80471220236FB33800D50E03 /* CardSessionTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +41,13 @@
 		804711FE236E36F200D50E03 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		80471201236E413700D50E03 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		80471206236E449B00D50E03 /* MyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewController.swift; sourceTree = "<group>"; };
+		8047120A236F968500D50E03 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		80471211236F990000D50E03 /* ApplicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationService.swift; sourceTree = "<group>"; };
+		80471213236F9A9200D50E03 /* StaticValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticValues.swift; sourceTree = "<group>"; };
+		80471216236FA61900D50E03 /* StaticFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticFunctions.swift; sourceTree = "<group>"; };
+		8047121D236FA7D300D50E03 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		8047121F236FB33800D50E03 /* CardSessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSessionTableViewCell.swift; sourceTree = "<group>"; };
+		80471220236FB33800D50E03 /* CardSessionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSessionTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +93,10 @@
 			children = (
 				804711E7236E34EF00D50E03 /* AppDelegate.swift */,
 				804711E9236E34EF00D50E03 /* SceneDelegate.swift */,
+				80471215236F9AA100D50E03 /* Tools */,
+				8047120E236F985400D50E03 /* Services */,
 				80471203236E413B00D50E03 /* Model */,
+				8047121C236FA71900D50E03 /* View */,
 				80471200236E36FD00D50E03 /* Controller */,
 				804711ED236E34EF00D50E03 /* Main.storyboard */,
 				804711F3236E34F400D50E03 /* Assets.xcassets */,
@@ -103,8 +120,36 @@
 			isa = PBXGroup;
 			children = (
 				80471201236E413700D50E03 /* Card.swift */,
+				8047120A236F968500D50E03 /* Genre.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8047120E236F985400D50E03 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				80471211236F990000D50E03 /* ApplicationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		80471215236F9AA100D50E03 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				80471213236F9A9200D50E03 /* StaticValues.swift */,
+				80471216236FA61900D50E03 /* StaticFunctions.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		8047121C236FA71900D50E03 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8047121D236FA7D300D50E03 /* CardCollectionViewCell.swift */,
+				8047121F236FB33800D50E03 /* CardSessionTableViewCell.swift */,
+				80471220236FB33800D50E03 /* CardSessionTableViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		95AE9A7AEF71E0D2D6087C6D /* Pods */ = {
@@ -178,6 +223,7 @@
 			files = (
 				804711F7236E34F400D50E03 /* LaunchScreen.storyboard in Resources */,
 				804711F4236E34F400D50E03 /* Assets.xcassets in Resources */,
+				80471222236FB33800D50E03 /* CardSessionTableViewCell.xib in Resources */,
 				804711EF236E34EF00D50E03 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,9 +280,15 @@
 				80471207236E449B00D50E03 /* MyListViewController.swift in Sources */,
 				804711F2236E34EF00D50E03 /* Desafio_GloboPlay.xcdatamodeld in Sources */,
 				804711E8236E34EF00D50E03 /* AppDelegate.swift in Sources */,
+				8047121E236FA7D300D50E03 /* CardCollectionViewCell.swift in Sources */,
 				80471202236E413700D50E03 /* Card.swift in Sources */,
 				804711EA236E34EF00D50E03 /* SceneDelegate.swift in Sources */,
 				804711FF236E36F200D50E03 /* HomeViewController.swift in Sources */,
+				80471214236F9A9200D50E03 /* StaticValues.swift in Sources */,
+				80471217236FA61900D50E03 /* StaticFunctions.swift in Sources */,
+				80471212236F990000D50E03 /* ApplicationService.swift in Sources */,
+				80471221236FB33800D50E03 /* CardSessionTableViewCell.swift in Sources */,
+				8047120B236F968500D50E03 /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

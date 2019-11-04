@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,39 +15,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xft-bF-iAW">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SWr-pO-yz3">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P1Z-yc-89W">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gsF-Vk-kh5">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7WV-x2-v6D">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.15544734589041095" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1097869947552681" green="0.10981365293264389" blue="0.10978532582521439" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xft-bF-iAW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9sJ-Ls-Ihu"/>
-                            <constraint firstItem="xft-bF-iAW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Xbk-zw-vOd"/>
-                            <constraint firstItem="xft-bF-iAW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Zit-z4-rKe"/>
-                            <constraint firstItem="xft-bF-iAW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tsu-T6-Z2m"/>
+                            <constraint firstItem="SWr-pO-yz3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RoC-i4-P3v"/>
+                            <constraint firstItem="SWr-pO-yz3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fWb-j9-Gbc"/>
+                            <constraint firstItem="SWr-pO-yz3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oPd-Qj-GCv"/>
+                            <constraint firstItem="SWr-pO-yz3" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="uZy-sq-Df5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="globoplay" id="2xi-qt-6Nk"/>
                     <connections>
-                        <outlet property="collectionView" destination="xft-bF-iAW" id="hZO-yH-M2g"/>
+                        <outlet property="tableView" destination="SWr-pO-yz3" id="xN0-f1-b89"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -83,7 +67,7 @@
                     <view key="view" contentMode="scaleToFill" id="8V6-KV-qbN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.15544734590000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1097869947552681" green="0.10981365293264389" blue="0.10978532582521439" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Z8K-OO-e3Z"/>
                     </view>
                     <navigationItem key="navigationItem" title="Minha lista" largeTitleDisplayMode="always" id="lYx-YY-Vxr"/>
