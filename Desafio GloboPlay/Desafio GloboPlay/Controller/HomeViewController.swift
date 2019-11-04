@@ -10,9 +10,11 @@ import UIKit
 import ImageLoader
 
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     public var cardsPopular = [Card]()
     public var cardsTopRated = [Card]()
@@ -25,11 +27,31 @@ class HomeViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.register(UINib.init(nibName: "CardSessionTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.showsVerticalScrollIndicator = false
-        //        self.collectionView.delegate = self
-        //        self.collectionView.dataSource = self
-        //        self.configCollection()
         self.loadData()
+//        self.configVisual()
     }
+    
+//    func configVisual() {
+//        // Search Bar
+//        self.searchController.view.backgroundColor = UIColor.clear
+//        self.searchController.searchBar.backgroundColor = UIColor.clear
+//        self.searchController.obscuresBackgroundDuringPresentation = false
+//        self.searchController.hidesNavigationBarDuringPresentation = false
+//        self.searchController.searchBar.placeholder = "Buscar filmes"
+//        self.searchController.searchBar.delegate = self
+//        self.tableView.tableHeaderView.
+//        self.tableView.tableHeaderView = self.searchController.searchBar
+//        self.tableView.tableHeaderView?.backgroundColor = UIColor.clear
+//        self.tableView.backgroundView?.backgroundColor = UIColor.clear
+//
+//        self.tableView.separatorStyle = .none
+//
+//        for view in tableView.subviews {
+//            for subview in view.subviews {
+//                subview.backgroundColor = UIColor.clear
+//            }
+//        }
+//    }
     
     
     
