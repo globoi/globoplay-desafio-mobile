@@ -43,9 +43,10 @@ public class ApplicationService : NSObject {
             PlistManager.sharedInstance.addNewItemWithKey(key: "favorites", value: favorites as AnyObject)
         }
         var favorites = PlistManager.sharedInstance.getValueForKey(key: "favorites") as! [[String: Any]]
-        favorites.append(dict)
-        
-        PlistManager.sharedInstance.saveValue(value: favorites, forKey: "favorites")
+        if !ApplicationService.sharedInstance.checkAlreadyAdded(card: card) {
+            favorites.append(dict)
+            PlistManager.sharedInstance.saveValue(value: favorites, forKey: "favorites")
+        }
     }
     
     func removeFavorite(card: Card) {
@@ -53,16 +54,15 @@ public class ApplicationService : NSObject {
         if !PlistManager.sharedInstance.keyAlreadyExists(key: "favorites") {
             return
         }
-        var favorites = PlistManager.sharedInstance.getValueForKey(key: "favorites") as! [[String: Any]]
-        var index = 0
+        let favorites = PlistManager.sharedInstance.getValueForKey(key: "favorites") as! [[String: Any]]
+        var newFavorites = [[String: Any]]()
         for favorite in favorites {
-            if favorite["id"] as! Int64 == card.id {
-                favorites.remove(at: index)
+            if favorite["id"] as! Int64 != card.id {
+                newFavorites.append(favorite)
             }
-            index += 1;
         }
         
-        PlistManager.sharedInstance.saveValue(value: favorites, forKey: "favorites")
+        PlistManager.sharedInstance.saveValue(value: newFavorites, forKey: "favorites")
     }
     
     func getFavorites() -> [Card] {
