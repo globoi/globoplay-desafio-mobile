@@ -190,9 +190,14 @@ public class ApplicationService : NSObject {
     }
     
     /** Método responsável por recuperar os programas de tv populares da API */
-    public func getTVPopular(genres: [Int64], page: Int,  callback: @escaping((_ genres: [Card],_ error: String?)->())) {
+    public func getTVPopular(genres: [Int64], page: Int, search: String?, callback: @escaping((_ genres: [Card],_ error: String?)->())) {
         // Instancia url
-        var url = "\(API_URL)/tv/popular"
+        var url = "\(API_URL)"
+        if (search != nil) {
+            url += "/search/tv"
+        } else {
+            url += "/tv/popular"
+        }
         url += "?api_key=" + self.apiKey
         url += "&language=" + self.language
         // Verifica os filtros
@@ -209,6 +214,10 @@ public class ApplicationService : NSObject {
         }
         // Pagina
         url += "&page=\(page+1)"
+        // Busca
+        if let search = search {
+            url += "&query=\(search)"
+        }
         let escapedAddress = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         // Instancia resultado
@@ -252,9 +261,14 @@ public class ApplicationService : NSObject {
     }
     
     /** Método responsável por recuperar os programas de tv mais bem votados da API */
-    public func getTVTopRated(genres: [Int64], page: Int, callback: @escaping((_ genres: [Card],_ error: String?)->())) {
+    public func getTVTopRated(genres: [Int64], page: Int, search: String?, callback: @escaping((_ genres: [Card],_ error: String?)->())) {
         // Instancia url
-        var url = "\(API_URL)/tv/top_rated"
+        var url = "\(API_URL)"
+        if (search != nil) {
+            url += "/search/tv"
+        } else {
+            url += "/tv/top_rated"
+        }
         url += "?api_key=" + self.apiKey
         url += "&language=" + self.language
         // Verifica os filtros
@@ -271,6 +285,10 @@ public class ApplicationService : NSObject {
         }
         // Pagina
         url += "&page=\(page+1)"
+        // Busca
+        if let search = search {
+            url += "&query=\(search)"
+        }
         let escapedAddress = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         // Instancia resultado
@@ -314,9 +332,14 @@ public class ApplicationService : NSObject {
     }
     
     /** Método responsável por recuperar os filmes da API */
-    public func getMovies(genres: [Int64], page: Int, callback: @escaping((_ cards: [Card],_ error: String?)->())) {
+    public func getMovies(genres: [Int64], page: Int, search: String?, callback: @escaping((_ cards: [Card],_ error: String?)->())) {
         // Instancia url
-        var url = "\(API_URL)/movie/popular"
+        var url = "\(API_URL)"
+        if (search != nil) {
+            url += "/search/movie"
+        } else {
+            url += "/movie/popular"
+        }
         url += "?api_key=" + self.apiKey
         url += "&language=" + self.language
         // Verifica os filtros
@@ -333,6 +356,10 @@ public class ApplicationService : NSObject {
         }
         // Pagina
         url += "&page=\(page+1)"
+        // Busca
+        if let search = search {
+            url += "&query=\(search)"
+        }
         let escapedAddress = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         // Instancia resultado

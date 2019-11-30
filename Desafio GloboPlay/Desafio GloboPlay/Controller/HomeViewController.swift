@@ -27,6 +27,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     
     // Filters
     public var genders : [Int64] = [Int64]()
+    public var searchText : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         self.tableView.showsVerticalScrollIndicator = false
         self.loadData()
         self.addFilter()
+        self.configVisual()
     }
     
     func addFilter() {
@@ -53,27 +55,23 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-//    func configVisual() {
-//        // Search Bar
-//        self.searchController.view.backgroundColor = UIColor.clear
-//        self.searchController.searchBar.backgroundColor = UIColor.clear
-//        self.searchController.obscuresBackgroundDuringPresentation = false
-//        self.searchController.hidesNavigationBarDuringPresentation = false
-//        self.searchController.searchBar.placeholder = "Buscar filmes"
-//        self.searchController.searchBar.delegate = self
-//        self.tableView.tableHeaderView.
-//        self.tableView.tableHeaderView = self.searchController.searchBar
-//        self.tableView.tableHeaderView?.backgroundColor = UIColor.clear
-//        self.tableView.backgroundView?.backgroundColor = UIColor.clear
-//
-//        self.tableView.separatorStyle = .none
-//
-//        for view in tableView.subviews {
-//            for subview in view.subviews {
-//                subview.backgroundColor = UIColor.clear
-//            }
-//        }
-//    }
+    func configVisual() {
+        // Search Bar
+        self.searchController.view.backgroundColor = UIColor.clear
+        self.searchController.searchBar.backgroundColor = UIColor.black
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchResultsUpdater = self
+
+        self.searchController.searchBar.placeholder = "Buscar filmes"
+        self.searchController.searchBar.delegate = self
+//        self.searchController.searchBar.barStyle = .black
+        
+        self.tableView.tableHeaderView = self.searchController.searchBar
+
+        self.tableView.separatorStyle = .none
+        self.tableView.backgroundView = UIView();
+    }
     
     
     
@@ -90,11 +88,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     }
     
     func loadPopular(page: Int, append: Bool) {
-        // Insere o loading na celular
-//        if let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) {
-//            StaticFunctions.showActivityIndicatorView(onView: cell)
-//        }
-        ApplicationService.sharedInstance.getTVPopular(genres: self.genders, page: page, callback: { (cards: [Card], error: String?) in
+
+        ApplicationService.sharedInstance.getTVPopular(genres: self.genders, page: page, search: self.searchText, callback: { (cards: [Card], error: String?) in
             StaticFunctions.removeActivityIndicatorView()
             if let error = error {
                 StaticFunctions.showSimpleAlert(controller: self, title: "Ops!", message: error)
@@ -110,11 +105,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     }
     
     func loadTop(page: Int, append: Bool) {
-        // Insere o loading na celular
-//        if let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) {
-//            StaticFunctions.showActivityIndicatorView(onView: cell)
-//        }
-        ApplicationService.sharedInstance.getTVTopRated(genres: self.genders, page: page, callback: { (cards: [Card], error: String?) in
+
+        ApplicationService.sharedInstance.getTVTopRated(genres: self.genders, page: page, search: self.searchText, callback: { (cards: [Card], error: String?) in
             StaticFunctions.removeActivityIndicatorView()
             
             if let error = error {
@@ -131,11 +123,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     }
     
     func loadMovies(page: Int, append: Bool) {
-        // Insere o loading na celular
-//        if let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) {
-//            StaticFunctions.showActivityIndicatorView(onView: cell)
-//        }
-        ApplicationService.sharedInstance.getMovies(genres: self.genders, page: page, callback: { (cards: [Card], error: String?) in
+
+        ApplicationService.sharedInstance.getMovies(genres: self.genders, page: page, search: self.searchText, callback: { (cards: [Card], error: String?) in
             StaticFunctions.removeActivityIndicatorView()
             
             if let error = error {
@@ -182,6 +171,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = indexPath.section
+        if section == 0 && self.cardsPopular.count == 0 {
+            return 0
+        } else if section == 1 && self.cardsTopRated.count == 0 {
+            return 0
+        } else if section == 2 && self.cardsMovie.count == 0 {
+            return 0
+        }
         let itemHeight = StaticFunctions.getItemHeight()
         return itemHeight
     }
@@ -214,5 +211,22 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+}
+
+extension HomeViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+//    print(searchController.searchBar.text)
+  }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let text = searchBar.text
+        self.searchText = text
+        self.loadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchText = nil
+        self.loadData()
     }
 }
