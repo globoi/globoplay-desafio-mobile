@@ -8,6 +8,11 @@
 
 import Foundation
 
+public enum CardType : String {
+    case MOVIE = "movie"
+    case SERIE = "serie"
+}
+
 public class Card : NSObject {
     public var id : Int64 = 0
     public var originalName: String = ""
@@ -23,6 +28,13 @@ public class Card : NSObject {
     public var directors : String = ""
     public var homePage : String = ""
     public var movie: Bool = false
+    public var type : String = ""
+    
+    public class func fromDict(dict: [String: Any], type: CardType) -> Card {
+        let card = self.fromDict(dict: dict)
+        card.type = type.rawValue
+        return card
+    }
     
     public class func fromDict(dict: [String: Any]) -> Card {
         let card = Card()
@@ -37,6 +49,8 @@ public class Card : NSObject {
         }
         if let name = dict["name"] as? String {
             card.name = name
+        } else if let name = dict["original_title"] as? String {
+            card.name = name
         }
         if let overview = dict["overview"] as? String {
             card.overview = overview
@@ -44,12 +58,22 @@ public class Card : NSObject {
         if let original = dict["original_name"] as? String {
             card.originalName = original
         }
+        if let type = dict["type"] as? String {
+            card.type = type
+        }
+        
         if let genresJson = dict["genres"] as? [[String:Any]] {
             for genreJson in genresJson {
                 if let id = genreJson["id"] as? Int64 {
                     if let genre = ApplicationService.sharedInstance.mapGenres[id] {
                         card.genres.append(genre)
                     }
+                }
+            }
+        } else if let genresJson = dict["genre_ids"] as? [Int64] {
+            for genreId in genresJson {
+                if let genre = ApplicationService.sharedInstance.mapGenres[genreId] {
+                    card.genres.append(genre)
                 }
             }
         }
@@ -114,7 +138,8 @@ public class Card : NSObject {
         dict["backdrop_path"] = self.posterPath
         dict["name"] = self.name
         dict["overview"] = self.overview
-        
+        dict["type"] = self.type
+
         return dict
     }
 }

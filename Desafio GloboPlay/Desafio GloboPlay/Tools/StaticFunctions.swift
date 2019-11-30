@@ -24,6 +24,19 @@ class StaticFunctions {
         }))
         controller.present(alert, animated: true)
     }
+    
+    /*** Apresenta um alerta **/
+    class func showChoiceCallbackAlert(controller: UIViewController, title: String!, message: String!, callback: @escaping (()->())) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Sim", style: .default, handler: { (action) in
+            callback()
+        }))
+        alert.addAction(UIAlertAction(title: "Não", style: .cancel, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        controller.present(alert, animated: true)
+    }
+    
     /*** Apresenta um alerta com callback **/
     class func showSimpleAlert(controller: UIViewController, title: String!, message: String!) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

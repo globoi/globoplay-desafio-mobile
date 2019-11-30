@@ -45,6 +45,23 @@ public class ApplicationService : NSObject {
         PlistManager.sharedInstance.saveValue(value: favorites, forKey: "favorites")
     }
     
+    func removeFavorite(card: Card) {
+        // Verifica se o array de favoritos ja existe
+        if !PlistManager.sharedInstance.keyAlreadyExists(key: "favorites") {
+            return
+        }
+        var favorites = PlistManager.sharedInstance.getValueForKey(key: "favorites") as! [[String: Any]]
+        var index = 0
+        for favorite in favorites {
+            if favorite["id"] as! Int64 == card.id {
+                favorites.remove(at: index)
+            }
+            index += 1;
+        }
+        
+        PlistManager.sharedInstance.saveValue(value: favorites, forKey: "favorites")
+    }
+    
     func getFavorites() -> [Card] {
         var results = [Card]()
         if var favorites = PlistManager.sharedInstance.getValueForKey(key: "favorites") as? [[String: Any]] {
@@ -252,7 +269,7 @@ public class ApplicationService : NSObject {
                     }
                     if let cardsJson = json["results"] as? [[String: Any]] {
                         for cardJson in cardsJson {
-                            let card = Card.fromDict(dict: cardJson)
+                            let card = Card.fromDict(dict: cardJson, type: CardType.MOVIE)
                             card.movie = true
                             result.append(card)
                         }
@@ -348,6 +365,49 @@ public class ApplicationService : NSObject {
                         return
                     }
                     result = Card.fromDict(dict: json)
+                    callback(result, nil)
+                    
+                } catch {
+                    callback(result, ERROR_SERVER_MESSAGE)
+                }
+        }
+    }
+    
+    /** Método responsável por recuperar os detalhes de um filme especifico da API */
+    public func getMovieDetail(id: Int, callback: @escaping((_ card: Card,_ error: String?)->())) {
+        // Instancia url
+        var url = "\(API_URL)/movie/\(id)"
+        url += "?api_key=" + self.apiKey
+        url += "&language=" + self.language
+        let escapedAddress = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        // Instancia resultado
+        var result = Card()
+        
+        AF.request(
+            escapedAddress!,
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: nil, interceptor: nil).response { (response: AFDataResponse<Data?>) in
+                // Trata o erro
+                guard let data = response.data else {
+                    let error = response.error
+                    if let errorString = error?.localizedDescription {
+                        if errorString.contains("Internet connection appears to be offline") {
+                            callback(result, ERROR_NO_CONNECTION)
+                        }
+                    }
+                    callback(result, ERROR_SERVER_MESSAGE)
+                    return
+                }
+                // Trata a resposta
+                do {
+                    guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : Any] else {
+                        callback(result, ERROR_SERVER_MESSAGE)
+                        return
+                    }
+                    result = Card.fromDict(dict: json, type: CardType.MOVIE)
                     callback(result, nil)
                     
                 } catch {

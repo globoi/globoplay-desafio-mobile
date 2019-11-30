@@ -19,7 +19,7 @@ class MyListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.clear
+        self.view.backgroundColor = UIColor.black
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.configCollection()

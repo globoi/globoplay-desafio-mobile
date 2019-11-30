@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.black
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib.init(nibName: "CardSessionTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
@@ -126,7 +127,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth-20, height: 50))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth-20, height: 50))
+        
+        let label = UILabel(frame: CGRect(x: 10, y: 0, width: screenWidth-40, height: 50))
         var text = "Carregando..."
         switch section {
         case 0:
@@ -140,10 +143,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         label.text = text
         label.textColor = UIColor.white
-        label.font = UIFont.boldSystemFont(ofSize: 22)
-        label.padding = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0)
-        label.backgroundColor = gray
-        return label
+        label.font = UIFont.systemFont(ofSize: 22)
+        label.backgroundColor = UIColor.clear
+        
+        view.backgroundColor = UIColor.black
+        view.addSubview(label)
+    
+        return view
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

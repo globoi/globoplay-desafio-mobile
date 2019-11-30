@@ -55,11 +55,22 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func loadDataDetails() {
-         ApplicationService.sharedInstance.getTVDetail(id: Int(self.card!.id)) { (card: Card, error: String?) in
-             self.card = card
-            self.genreLabel.text = self.card.getGenresString()
-            
-         }
+        if self.card.type == CardType.MOVIE.rawValue {
+            ApplicationService.sharedInstance.getMovieDetail(id: Int(self.card!.id)) { (card: Card, error: String?) in
+               if card.id != 0 {
+                   self.card = card
+               }
+               self.genreLabel.text = self.card.getGenresString()
+            }
+        } else {
+            ApplicationService.sharedInstance.getTVDetail(id: Int(self.card!.id)) { (card: Card, error: String?) in
+               if card.id != 0 {
+                   self.card = card
+               }
+               self.genreLabel.text = self.card.getGenresString()
+            }
+        }
+
      }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -178,13 +189,18 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     func checkAlreadyFavorited() {
         // Se ja foi adicionado
         if (ApplicationService.sharedInstance.checkAlreadyAdded(card: self.card)) {
-            self.buttonFavorite.isEnabled = false
             self.buttonFavorite.backgroundColor = UIColor.black
-            self.buttonFavorite.setTitleColor(UIColor.white, for: .disabled)
-            self.buttonFavorite.setTitle("Adicionado", for: .disabled)
+            self.buttonFavorite.setTitleColor(UIColor.white, for: .normal)
+            self.buttonFavorite.setTitle("Adicionado", for: .normal)
             let origImage = UIImage(named: "check")
             let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-            self.buttonFavorite.setImage(tintedImage, for: .disabled)
+            self.buttonFavorite.setImage(tintedImage, for: .normal)
+            self.buttonFavorite.tintColor = UIColor.white
+        } else {
+            self.buttonFavorite.backgroundColor = UIColor.white
+            self.buttonFavorite.setTitleColor(UIColor.black, for: .normal)
+            self.buttonFavorite.setTitle("Minha lista", for: .normal)
+            self.buttonFavorite.setImage(UIImage.init(named: "star"), for: .normal)
             self.buttonFavorite.tintColor = UIColor.white
         }
     }
@@ -221,8 +237,16 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func addFavorite() {
-        ApplicationService.sharedInstance.addFavorite(card: self.card)
-        self.checkAlreadyFavorited()
+        if (ApplicationService.sharedInstance.checkAlreadyAdded(card: self.card)) {
+            let message = "Tem certeza que deseja remover este conteúdo dos seus favoritos?"
+            StaticFunctions.showChoiceCallbackAlert(controller: self, title: "Tem certeza?", message: message) {
+                ApplicationService.sharedInstance.removeFavorite(card: self.card)
+                self.checkAlreadyFavorited()
+            }
+        } else {
+            ApplicationService.sharedInstance.addFavorite(card: self.card)
+            self.checkAlreadyFavorited()
+        }
     }
     
     @objc func openSite() {
