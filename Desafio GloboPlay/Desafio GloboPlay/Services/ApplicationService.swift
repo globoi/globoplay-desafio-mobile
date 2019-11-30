@@ -26,8 +26,11 @@ public class ApplicationService : NSObject {
     
     override init() {
         super.init()
-        self.getGenres { (genres: [Genre], error: String?) in
+        self.getTvGenres { (genres: [Genre], error: String?) in
             print("generos carregados")
+        }
+        self.getMovieGenres { (genres: [Genre], error: String?) in
+            print("generos de filmes carregados")
         }
     }
     
@@ -89,7 +92,7 @@ public class ApplicationService : NSObject {
     // MARK: Métodos de Requisição
     
     /** Método responsável por recuperar os generos da API */
-    public func getGenres(callback: @escaping((_ genres: [Genre],_ error: String?)->())) {
+    public func getTvGenres(callback: @escaping((_ genres: [Genre],_ error: String?)->())) {
         // Instancia url
         var url = "\(API_URL)/genre/tv/list"
         url += "?api_key=" + self.apiKey
@@ -137,12 +140,73 @@ public class ApplicationService : NSObject {
         }
     }
     
+    /** Método responsável por recuperar os generos da API */
+    public func getMovieGenres(callback: @escaping((_ genres: [Genre],_ error: String?)->())) {
+        // Instancia url
+        var url = "\(API_URL)/genre/movie/list"
+        url += "?api_key=" + self.apiKey
+        url += "&language=" + self.language
+        let escapedAddress = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        // Instancia resultado
+        var result = [Genre]()
+        
+        AF.request(
+            escapedAddress!,
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: nil, interceptor: nil).response { (response: AFDataResponse<Data?>) in
+                // Trata o erro
+                guard let data = response.data else {
+                    let error = response.error
+                    if let errorString = error?.localizedDescription {
+                        if errorString.contains("Internet connection appears to be offline") {
+                            callback(result, ERROR_NO_CONNECTION)
+                        }
+                    }
+                    callback(result, ERROR_SERVER_MESSAGE)
+                    return
+                }
+                // Trata a resposta
+                do {
+                    guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : Any] else {
+                        callback(result, ERROR_SERVER_MESSAGE)
+                        return
+                    }
+                    if let genresJson = json["genres"] as? [[String: Any]] {
+                        for genreJson in genresJson {
+                            let genre = Genre.fromDict(dict: genreJson)
+                            self.mapGenres[genre.id] = genre
+                            result.append(genre)
+                        }
+                    }
+                    callback(result, nil)
+                    
+                } catch {
+                    callback(result, ERROR_SERVER_MESSAGE)
+                }
+        }
+    }
+    
     /** Método responsável por recuperar os programas de tv populares da API */
-    public func getTVPopular(callback: @escaping((_ genres: [Card],_ error: String?)->())) {
+    public func getTVPopular(genres: [Int64], page: Int,  callback: @escaping((_ genres: [Card],_ error: String?)->())) {
         // Instancia url
         var url = "\(API_URL)/tv/popular"
         url += "?api_key=" + self.apiKey
         url += "&language=" + self.language
+        // Verifica os filtros
+        if genres.count > 0 {
+            url += "&with_genres="
+            var index = 0
+            for genre in genres {
+                if index != 0 {
+                    url += ","
+                }
+                url += "\(genre)"
+                index = index + 1
+            }
+        }
         let escapedAddress = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         // Instancia resultado
@@ -186,11 +250,23 @@ public class ApplicationService : NSObject {
     }
     
     /** Método responsável por recuperar os programas de tv mais bem votados da API */
-    public func getTVTopRated(callback: @escaping((_ genres: [Card],_ error: String?)->())) {
+    public func getTVTopRated(genres: [Int64], page: Int, callback: @escaping((_ genres: [Card],_ error: String?)->())) {
         // Instancia url
         var url = "\(API_URL)/tv/top_rated"
         url += "?api_key=" + self.apiKey
         url += "&language=" + self.language
+        // Verifica os filtros
+        if genres.count > 0 {
+            url += "&with_genres="
+            var index = 0
+            for genre in genres {
+                if index != 0 {
+                    url += ","
+                }
+                url += "\(genre)"
+                index = index + 1
+            }
+        }
         let escapedAddress = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         // Instancia resultado
@@ -234,11 +310,23 @@ public class ApplicationService : NSObject {
     }
     
     /** Método responsável por recuperar os filmes da API */
-    public func getMovies(callback: @escaping((_ cards: [Card],_ error: String?)->())) {
+    public func getMovies(genres: [Int64], page: Int, callback: @escaping((_ cards: [Card],_ error: String?)->())) {
         // Instancia url
         var url = "\(API_URL)/movie/popular"
         url += "?api_key=" + self.apiKey
         url += "&language=" + self.language
+        // Verifica os filtros
+        if genres.count > 0 {
+            url += "&with_genres="
+            var index = 0
+            for genre in genres {
+                if index != 0 {
+                    url += ","
+                }
+                url += "\(genre)"
+                index = index + 1
+            }
+        }
         let escapedAddress = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         // Instancia resultado

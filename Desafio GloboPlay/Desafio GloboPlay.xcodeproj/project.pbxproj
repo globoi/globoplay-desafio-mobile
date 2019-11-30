@@ -32,6 +32,7 @@
 		8047123C2370866900D50E03 /* PListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047123B2370866900D50E03 /* PListManager.swift */; };
 		8047123E2370868900D50E03 /* extraInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8047123D2370868900D50E03 /* extraInfo.plist */; };
 		80471244237093DA00D50E03 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80471243237093DA00D50E03 /* WebViewViewController.swift */; };
+		80E5F6EC23920DB8004E1F34 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5F6EB23920DB8004E1F34 /* FilterTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		8047123B2370866900D50E03 /* PListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListManager.swift; sourceTree = "<group>"; };
 		8047123D2370868900D50E03 /* extraInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = extraInfo.plist; sourceTree = "<group>"; };
 		80471243237093DA00D50E03 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		80E5F6EB23920DB8004E1F34 /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				80471227236FDCC900D50E03 /* CardViewController.swift */,
 				804712392370812000D50E03 /* RecommendationsViewController.swift */,
 				80471243237093DA00D50E03 /* WebViewViewController.swift */,
+				80E5F6EB23920DB8004E1F34 /* FilterTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				80471214236F9A9200D50E03 /* StaticValues.swift in Sources */,
 				80471217236FA61900D50E03 /* StaticFunctions.swift in Sources */,
 				8047123C2370866900D50E03 /* PListManager.swift in Sources */,
+				80E5F6EC23920DB8004E1F34 /* FilterTableViewController.swift in Sources */,
 				80471212236F990000D50E03 /* ApplicationService.swift in Sources */,
 				8047122E23705A8B00D50E03 /* CardContentViewController.swift in Sources */,
 				80471228236FDCC900D50E03 /* CardViewController.swift in Sources */,

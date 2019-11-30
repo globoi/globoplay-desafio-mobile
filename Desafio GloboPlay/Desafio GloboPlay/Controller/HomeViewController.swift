@@ -20,6 +20,9 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     public var cardsTopRated = [Card]()
     public var cardsMovie = [Card]()
     
+    // Filters
+    public var genders : [Int64] = [Int64]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +32,20 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         self.tableView.register(UINib.init(nibName: "CardSessionTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.showsVerticalScrollIndicator = false
         self.loadData()
-//        self.configVisual()
+        self.addFilter()
+    }
+    
+    func addFilter() {
+        let filterItem = UIBarButtonItem.init(barButtonSystemItem: .bookmarks, target: self, action: #selector(self.openFilterController))
+        filterItem.tintColor = UIColor.white
+        self.navigationItem.rightBarButtonItem = filterItem
+    }
+    
+    @objc func openFilterController() {
+        let controller = FilterTableViewController(controller: self, filters: self.genders)
+        self.present(controller, animated: true) {
+            
+        }
     }
     
 //    func configVisual() {
@@ -59,36 +75,61 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     func loadData() {
         StaticFunctions.showActivityIndicatorView(onView: self.view)
         // Carrega os mais populares
-        ApplicationService.sharedInstance.getTVPopular { (cards: [Card], error: String?) in
+        self.loadPopular(page: 0, append: false)
+        // Carrega os mais votados
+        self.loadTop(page: 0, append: false )
+        // Carrega os filmes
+        self.loadMovies(page: 0, append: false)
+    }
+    
+    func loadPopular(page: Int, append: Bool) {
+        ApplicationService.sharedInstance.getTVPopular(genres: self.genders, page: page, callback: { (cards: [Card], error: String?) in
             StaticFunctions.removeActivityIndicatorView()
             if let error = error {
                 StaticFunctions.showSimpleAlert(controller: self, title: "Ops!", message: error)
                 return
             }
-            self.cardsPopular = cards
+            if append {
+                self.cardsPopular += cards
+            } else {
+                self.cardsPopular = cards
+            }
             self.tableView.reloadData()
-        }
-        ApplicationService.sharedInstance.getTVTopRated { (cards: [Card], error: String?) in
+        })
+    }
+    
+    func loadTop(page: Int, append: Bool) {
+        ApplicationService.sharedInstance.getTVTopRated(genres: self.genders, page: page, callback: { (cards: [Card], error: String?) in
             StaticFunctions.removeActivityIndicatorView()
             
             if let error = error {
                 StaticFunctions.showSimpleAlert(controller: self, title: "Ops!", message: error)
                 return
             }
-            self.cardsTopRated = cards
+            if append {
+                self.cardsTopRated += cards
+            } else {
+                self.cardsTopRated = cards
+            }
             self.tableView.reloadData()
-        }
-        ApplicationService.sharedInstance.getMovies { (cards: [Card], error: String?) in
+        })
+    }
+    
+    func loadMovies(page: Int, append: Bool) {
+        ApplicationService.sharedInstance.getMovies(genres: self.genders, page: page, callback: { (cards: [Card], error: String?) in
             StaticFunctions.removeActivityIndicatorView()
             
             if let error = error {
                 StaticFunctions.showSimpleAlert(controller: self, title: "Ops!", message: error)
                 return
             }
-            self.cardsMovie = cards
+            if append {
+                self.cardsMovie += cards
+            } else {
+                self.cardsMovie = cards
+            }
             self.tableView.reloadData()
-        }
-        
+        })
     }
     
 }
