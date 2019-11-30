@@ -20,6 +20,11 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     public var cardsTopRated = [Card]()
     public var cardsMovie = [Card]()
     
+    // Indexes
+    public var popularIndex = 0
+    public var topIndex = 0
+    public var moviesIndex = 0
+    
     // Filters
     public var genders : [Int64] = [Int64]()
     
@@ -73,16 +78,22 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     
     
     func loadData() {
-        StaticFunctions.showActivityIndicatorView(onView: self.view)
+        self.popularIndex = 0
+        self.topIndex = 0
+        self.moviesIndex = 0
         // Carrega os mais populares
-        self.loadPopular(page: 0, append: false)
+        self.loadPopular(page: self.popularIndex, append: false)
         // Carrega os mais votados
-        self.loadTop(page: 0, append: false )
+        self.loadTop(page: self.topIndex, append: false )
         // Carrega os filmes
-        self.loadMovies(page: 0, append: false)
+        self.loadMovies(page: self.moviesIndex, append: false)
     }
     
     func loadPopular(page: Int, append: Bool) {
+        // Insere o loading na celular
+//        if let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) {
+//            StaticFunctions.showActivityIndicatorView(onView: cell)
+//        }
         ApplicationService.sharedInstance.getTVPopular(genres: self.genders, page: page, callback: { (cards: [Card], error: String?) in
             StaticFunctions.removeActivityIndicatorView()
             if let error = error {
@@ -99,6 +110,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     }
     
     func loadTop(page: Int, append: Bool) {
+        // Insere o loading na celular
+//        if let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) {
+//            StaticFunctions.showActivityIndicatorView(onView: cell)
+//        }
         ApplicationService.sharedInstance.getTVTopRated(genres: self.genders, page: page, callback: { (cards: [Card], error: String?) in
             StaticFunctions.removeActivityIndicatorView()
             
@@ -116,6 +131,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     }
     
     func loadMovies(page: Int, append: Bool) {
+        // Insere o loading na celular
+//        if let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) {
+//            StaticFunctions.showActivityIndicatorView(onView: cell)
+//        }
         ApplicationService.sharedInstance.getMovies(genres: self.genders, page: page, callback: { (cards: [Card], error: String?) in
             StaticFunctions.removeActivityIndicatorView()
             

@@ -13,7 +13,7 @@ class FilterTableViewController: UITableViewController {
     public var genres = [Genre]()
     public var selected = [Int64]()
     
-    private var controller : HomeViewController!
+    private weak var controller : HomeViewController!
     
     init(controller: HomeViewController, filters: [Int64]) {
         super.init(nibName: nil, bundle: nil)

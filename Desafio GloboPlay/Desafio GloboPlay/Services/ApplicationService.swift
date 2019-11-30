@@ -207,6 +207,8 @@ public class ApplicationService : NSObject {
                 index = index + 1
             }
         }
+        // Pagina
+        url += "&page=\(page+1)"
         let escapedAddress = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         // Instancia resultado
@@ -267,6 +269,8 @@ public class ApplicationService : NSObject {
                 index = index + 1
             }
         }
+        // Pagina
+        url += "&page=\(page+1)"
         let escapedAddress = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         // Instancia resultado
@@ -327,6 +331,8 @@ public class ApplicationService : NSObject {
                 index = index + 1
             }
         }
+        // Pagina
+        url += "&page=\(page+1)"
         let escapedAddress = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         // Instancia resultado

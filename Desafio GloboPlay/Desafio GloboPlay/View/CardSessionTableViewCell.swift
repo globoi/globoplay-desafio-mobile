@@ -10,9 +10,11 @@ import UIKit
 
 class CardSessionTableViewCell: UITableViewCell {
     
-    private weak var controller : UIViewController!
+    private weak var controller : HomeViewController!
     @IBOutlet weak var collectionView: UICollectionView!
     private var cards: [Card] = [Card]()
+    // Guarda a informacao de qual sessao é essa celula
+    private var section : Int!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,10 +46,11 @@ class CardSessionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configCell(cards: [Card], section: Int, controller: UIViewController) {
+    func configCell(cards: [Card], section: Int, controller: HomeViewController) {
         self.controller = controller
         self.cards = cards
         self.collectionView.reloadData()
+        self.section = section
     }
     
 }
@@ -74,5 +77,21 @@ extension CardSessionTableViewCell : UICollectionViewDelegate, UICollectionViewD
         let card = self.cards[indexPath.item]
         let controller = CardViewController.init(card: card)
         self.controller.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let index = indexPath.item
+        if index == self.cards.count-1 {
+            if section == 0 {
+                self.controller.popularIndex += 1
+                self.controller.loadPopular(page: self.controller.popularIndex, append: true)
+            } else if section == 1 {
+                self.controller.topIndex += 1
+                self.controller.loadTop(page: self.controller.topIndex, append: true)
+            } else if section == 2 {
+                self.controller.moviesIndex += 1
+                self.controller.loadMovies(page: self.controller.moviesIndex, append: true)
+            }
+        }
     }
 }
