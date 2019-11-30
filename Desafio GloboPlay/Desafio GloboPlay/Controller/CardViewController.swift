@@ -204,7 +204,7 @@ class CardViewController: UIViewController, UIScrollViewDelegate {
     func addBlur() {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
+        blurEffectView.frame = backImageView.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         blurEffectView.alpha = 0.7
         self.backImageView.addSubview(blurEffectView)
