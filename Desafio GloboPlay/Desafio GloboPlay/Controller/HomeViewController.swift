@@ -76,6 +76,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     
     
     func loadData() {
+        StaticFunctions.showActivityIndicatorView(onView: self.view)
         self.popularIndex = 0
         self.topIndex = 0
         self.moviesIndex = 0

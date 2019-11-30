@@ -34,10 +34,18 @@
 		80471244237093DA00D50E03 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80471243237093DA00D50E03 /* WebViewViewController.swift */; };
 		80E5F6EC23920DB8004E1F34 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5F6EB23920DB8004E1F34 /* FilterTableViewController.swift */; };
 		80E5F6F4239222B5004E1F34 /* Desafio_GloboPlayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5F6F3239222B5004E1F34 /* Desafio_GloboPlayTests.swift */; };
+		80E5F7022392BDB3004E1F34 /* Desafio_GloboPlayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5F7012392BDB3004E1F34 /* Desafio_GloboPlayUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		80E5F6F6239222B5004E1F34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 804711DC236E34EF00D50E03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 804711E3236E34EF00D50E03;
+			remoteInfo = "Desafio GloboPlay";
+		};
+		80E5F7042392BDB3004E1F34 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 804711DC236E34EF00D50E03 /* Project object */;
 			proxyType = 1;
@@ -80,6 +88,9 @@
 		80E5F6F1239222B5004E1F34 /* Desafio GloboPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio GloboPlayTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E5F6F3239222B5004E1F34 /* Desafio_GloboPlayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_GloboPlayTests.swift; sourceTree = "<group>"; };
 		80E5F6F5239222B5004E1F34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80E5F6FF2392BDB3004E1F34 /* Desafio GloboPlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio GloboPlayUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80E5F7012392BDB3004E1F34 /* Desafio_GloboPlayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_GloboPlayUITests.swift; sourceTree = "<group>"; };
+		80E5F7032392BDB3004E1F34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +103,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		80E5F6EE239222B5004E1F34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80E5F6FC2392BDB3004E1F34 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -114,6 +132,7 @@
 			children = (
 				804711E6236E34EF00D50E03 /* Desafio GloboPlay */,
 				80E5F6F2239222B5004E1F34 /* Desafio GloboPlayTests */,
+				80E5F7002392BDB3004E1F34 /* Desafio GloboPlayUITests */,
 				804711E5236E34EF00D50E03 /* Products */,
 				95AE9A7AEF71E0D2D6087C6D /* Pods */,
 				38753BA46762F347267A87C1 /* Frameworks */,
@@ -125,6 +144,7 @@
 			children = (
 				804711E4236E34EF00D50E03 /* Desafio GloboPlay.app */,
 				80E5F6F1239222B5004E1F34 /* Desafio GloboPlayTests.xctest */,
+				80E5F6FF2392BDB3004E1F34 /* Desafio GloboPlayUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -211,6 +231,15 @@
 			path = "Desafio GloboPlayTests";
 			sourceTree = "<group>";
 		};
+		80E5F7002392BDB3004E1F34 /* Desafio GloboPlayUITests */ = {
+			isa = PBXGroup;
+			children = (
+				80E5F7012392BDB3004E1F34 /* Desafio_GloboPlayUITests.swift */,
+				80E5F7032392BDB3004E1F34 /* Info.plist */,
+			);
+			path = "Desafio GloboPlayUITests";
+			sourceTree = "<group>";
+		};
 		95AE9A7AEF71E0D2D6087C6D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +289,24 @@
 			productReference = 80E5F6F1239222B5004E1F34 /* Desafio GloboPlayTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		80E5F6FE2392BDB3004E1F34 /* Desafio GloboPlayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80E5F7062392BDB3004E1F34 /* Build configuration list for PBXNativeTarget "Desafio GloboPlayUITests" */;
+			buildPhases = (
+				80E5F6FB2392BDB3004E1F34 /* Sources */,
+				80E5F6FC2392BDB3004E1F34 /* Frameworks */,
+				80E5F6FD2392BDB3004E1F34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80E5F7052392BDB3004E1F34 /* PBXTargetDependency */,
+			);
+			name = "Desafio GloboPlayUITests";
+			productName = "Desafio GloboPlayUITests";
+			productReference = 80E5F6FF2392BDB3004E1F34 /* Desafio GloboPlayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -274,6 +321,10 @@
 						CreatedOnToolsVersion = 11.2;
 					};
 					80E5F6F0239222B5004E1F34 = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 804711E3236E34EF00D50E03;
+					};
+					80E5F6FE2392BDB3004E1F34 = {
 						CreatedOnToolsVersion = 11.2.1;
 						TestTargetID = 804711E3236E34EF00D50E03;
 					};
@@ -294,6 +345,7 @@
 			targets = (
 				804711E3236E34EF00D50E03 /* Desafio GloboPlay */,
 				80E5F6F0239222B5004E1F34 /* Desafio GloboPlayTests */,
+				80E5F6FE2392BDB3004E1F34 /* Desafio GloboPlayUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -313,6 +365,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		80E5F6EF239222B5004E1F34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80E5F6FD2392BDB3004E1F34 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -398,6 +457,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		80E5F6FB2392BDB3004E1F34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80E5F7022392BDB3004E1F34 /* Desafio_GloboPlayUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -405,6 +472,11 @@
 			isa = PBXTargetDependency;
 			target = 804711E3236E34EF00D50E03 /* Desafio GloboPlay */;
 			targetProxy = 80E5F6F6239222B5004E1F34 /* PBXContainerItemProxy */;
+		};
+		80E5F7052392BDB3004E1F34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 804711E3236E34EF00D50E03 /* Desafio GloboPlay */;
+			targetProxy = 80E5F7042392BDB3004E1F34 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -622,6 +694,44 @@
 			};
 			name = Release;
 		};
+		80E5F7072392BDB3004E1F34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M7KY4TXQRJ;
+				INFOPLIST_FILE = "Desafio GloboPlayUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "filiponegrao.Desafio-GloboPlayUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Desafio GloboPlay";
+			};
+			name = Debug;
+		};
+		80E5F7082392BDB3004E1F34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M7KY4TXQRJ;
+				INFOPLIST_FILE = "Desafio GloboPlayUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "filiponegrao.Desafio-GloboPlayUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Desafio GloboPlay";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -648,6 +758,15 @@
 			buildConfigurations = (
 				80E5F6F9239222B5004E1F34 /* Debug */,
 				80E5F6FA239222B5004E1F34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80E5F7062392BDB3004E1F34 /* Build configuration list for PBXNativeTarget "Desafio GloboPlayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80E5F7072392BDB3004E1F34 /* Debug */,
+				80E5F7082392BDB3004E1F34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

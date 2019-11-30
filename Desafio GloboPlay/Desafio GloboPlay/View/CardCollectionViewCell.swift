@@ -19,6 +19,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         self.imageView = UIImageView(frame: rect)
         self.imageView.clipsToBounds = true
         self.imageView.contentMode = .scaleAspectFill
+        self.imageView.backgroundColor = gray
         
 //        self.imageView.backgroundColor = UIColor.red
         self.addSubview(self.imageView)
