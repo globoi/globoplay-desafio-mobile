@@ -100,6 +100,12 @@ class FilterTableViewController: UITableViewController {
             if !self.isSelected(id: genre.id) {
                 self.selected.append(genre.id)
                 self.tableView.reloadData()
+            } else {
+                // Se ja estiver, remove dos selecionados
+                if let index = self.selected.firstIndex(of: genre.id) {
+                    self.selected.remove(at: index)
+                    self.tableView.reloadData()
+                }
             }
         }
     }
