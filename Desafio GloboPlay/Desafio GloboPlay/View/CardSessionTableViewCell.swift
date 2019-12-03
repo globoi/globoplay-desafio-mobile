@@ -83,14 +83,22 @@ extension CardSessionTableViewCell : UICollectionViewDelegate, UICollectionViewD
         let index = indexPath.item
         if index == self.cards.count-1 {
             if section == 0 {
-                self.controller.popularIndex += 1
-                self.controller.loadPopular(page: self.controller.popularIndex, append: true)
+                if !self.controller.popularLimit {
+                    self.controller.popularIndex += 1
+                    self.controller.loadPopular(page: self.controller.popularIndex, append: true)
+                }
             } else if section == 1 {
-                self.controller.topIndex += 1
-                self.controller.loadTop(page: self.controller.topIndex, append: true)
+                if !self.controller.topLimit {
+                    self.controller.topIndex += 1
+                    self.controller.loadTop(page: self.controller.topIndex, append: true)
+                }
+                
             } else if section == 2 {
-                self.controller.moviesIndex += 1
-                self.controller.loadMovies(page: self.controller.moviesIndex, append: true)
+                if !self.controller.moviesLimit {
+                    self.controller.moviesIndex += 1
+                    self.controller.loadMovies(page: self.controller.moviesIndex, append: true)
+                }
+                
             }
         }
     }

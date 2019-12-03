@@ -25,6 +25,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     public var topIndex = 0
     public var moviesIndex = 0
     
+    public var popularLimit = false
+    public var topLimit = false
+    public var moviesLimit = false
+    
     // Filters
     public var genders : [Int64] = [Int64]()
     public var searchText : String?
@@ -80,6 +84,9 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         self.popularIndex = 0
         self.topIndex = 0
         self.moviesIndex = 0
+        self.popularLimit = false
+        self.topLimit = false
+        self.moviesLimit = false
         // Carrega os mais populares
         self.loadPopular(page: self.popularIndex, append: false)
         // Carrega os mais votados
@@ -90,7 +97,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     
     func loadPopular(page: Int, append: Bool) {
 
-        ApplicationService.sharedInstance.getTVPopular(genres: self.genders, page: page, search: self.searchText, callback: { (cards: [Card], error: String?) in
+        ApplicationService.sharedInstance.getTVPopular(genres: self.genders, page: page, search: self.searchText, callback: { (cards: [Card], pages: Int64,  error: String?) in
             StaticFunctions.removeActivityIndicatorView()
             if let error = error {
                 StaticFunctions.showSimpleAlert(controller: self, title: "Ops!", message: error)
@@ -101,13 +108,16 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
             } else {
                 self.cardsPopular = cards
             }
+            if pages <= 1 {
+                self.popularLimit = true
+            }
             self.tableView.reloadData()
         })
     }
     
     func loadTop(page: Int, append: Bool) {
 
-        ApplicationService.sharedInstance.getTVTopRated(genres: self.genders, page: page, search: self.searchText, callback: { (cards: [Card], error: String?) in
+        ApplicationService.sharedInstance.getTVTopRated(genres: self.genders, page: page, search: self.searchText, callback: { (cards: [Card], pages: Int64, error: String?) in
             StaticFunctions.removeActivityIndicatorView()
             
             if let error = error {
@@ -119,13 +129,16 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
             } else {
                 self.cardsTopRated = cards
             }
+            if pages <= 1 {
+                self.topLimit = true
+            }
             self.tableView.reloadData()
         })
     }
     
     func loadMovies(page: Int, append: Bool) {
 
-        ApplicationService.sharedInstance.getMovies(genres: self.genders, page: page, search: self.searchText, callback: { (cards: [Card], error: String?) in
+        ApplicationService.sharedInstance.getMovies(genres: self.genders, page: page, search: self.searchText, callback: { (cards: [Card], pages: Int64, error: String?) in
             StaticFunctions.removeActivityIndicatorView()
             
             if let error = error {
@@ -136,6 +149,9 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
                 self.cardsMovie += cards
             } else {
                 self.cardsMovie = cards
+            }
+            if pages <= 1 {
+                self.moviesLimit = true
             }
             self.tableView.reloadData()
         })

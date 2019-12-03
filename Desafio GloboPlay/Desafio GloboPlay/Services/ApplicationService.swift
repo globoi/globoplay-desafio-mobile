@@ -190,7 +190,7 @@ public class ApplicationService : NSObject {
     }
     
     /** Método responsável por recuperar os programas de tv populares da API */
-    public func getTVPopular(genres: [Int64], page: Int, search: String?, callback: @escaping((_ genres: [Card],_ error: String?)->())) {
+    public func getTVPopular(genres: [Int64], page: Int, search: String?, callback: @escaping((_ genres: [Card], _ pages: Int64, _ error: String?)->())) {
         // Instancia url
         var url = "\(API_URL)"
         if (search != nil) {
@@ -234,16 +234,16 @@ public class ApplicationService : NSObject {
                     let error = response.error
                     if let errorString = error?.localizedDescription {
                         if errorString.contains("Internet connection appears to be offline") {
-                            callback(result, ERROR_NO_CONNECTION)
+                            callback(result, 0, ERROR_NO_CONNECTION)
                         }
                     }
-                    callback(result, ERROR_SERVER_MESSAGE)
+                    callback(result, 0, ERROR_SERVER_MESSAGE)
                     return
                 }
                 // Trata a resposta
                 do {
                     guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : Any] else {
-                        callback(result, ERROR_SERVER_MESSAGE)
+                        callback(result, 0, ERROR_SERVER_MESSAGE)
                         return
                     }
                     if let cardsJson = json["results"] as? [[String: Any]] {
@@ -252,16 +252,20 @@ public class ApplicationService : NSObject {
                             result.append(card)
                         }
                     }
-                    callback(result, nil)
+                    var pages : Int64 = 0
+                    if let totalPages = json["total_pages"] as? Int64 {
+                        pages = totalPages
+                    }
+                    callback(result, pages,  nil)
                     
                 } catch {
-                    callback(result, ERROR_SERVER_MESSAGE)
+                    callback(result, 0, ERROR_SERVER_MESSAGE)
                 }
         }
     }
     
     /** Método responsável por recuperar os programas de tv mais bem votados da API */
-    public func getTVTopRated(genres: [Int64], page: Int, search: String?, callback: @escaping((_ genres: [Card],_ error: String?)->())) {
+    public func getTVTopRated(genres: [Int64], page: Int, search: String?, callback: @escaping((_ genres: [Card], _ pages: Int64, _ error: String?)->())) {
         // Instancia url
         var url = "\(API_URL)"
         if (search != nil) {
@@ -305,16 +309,16 @@ public class ApplicationService : NSObject {
                     let error = response.error
                     if let errorString = error?.localizedDescription {
                         if errorString.contains("Internet connection appears to be offline") {
-                            callback(result, ERROR_NO_CONNECTION)
+                            callback(result, 0, ERROR_NO_CONNECTION)
                         }
                     }
-                    callback(result, ERROR_SERVER_MESSAGE)
+                    callback(result,0,  ERROR_SERVER_MESSAGE)
                     return
                 }
                 // Trata a resposta
                 do {
                     guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : Any] else {
-                        callback(result, ERROR_SERVER_MESSAGE)
+                        callback(result, 0, ERROR_SERVER_MESSAGE)
                         return
                     }
                     if let cardsJson = json["results"] as? [[String: Any]] {
@@ -323,16 +327,20 @@ public class ApplicationService : NSObject {
                             result.append(card)
                         }
                     }
-                    callback(result, nil)
+                    var pages : Int64 = 0
+                    if let totalPages = json["total_pages"] as? Int64 {
+                        pages = totalPages
+                    }
+                    callback(result, pages, nil)
                     
                 } catch {
-                    callback(result, ERROR_SERVER_MESSAGE)
+                    callback(result, 0, ERROR_SERVER_MESSAGE)
                 }
         }
     }
     
     /** Método responsável por recuperar os filmes da API */
-    public func getMovies(genres: [Int64], page: Int, search: String?, callback: @escaping((_ cards: [Card],_ error: String?)->())) {
+    public func getMovies(genres: [Int64], page: Int, search: String?, callback: @escaping((_ cards: [Card], _ totalPages: Int64,_ error: String?)->())) {
         // Instancia url
         var url = "\(API_URL)"
         if (search != nil) {
@@ -376,16 +384,16 @@ public class ApplicationService : NSObject {
                     let error = response.error
                     if let errorString = error?.localizedDescription {
                         if errorString.contains("Internet connection appears to be offline") {
-                            callback(result, ERROR_NO_CONNECTION)
+                            callback(result, 0, ERROR_NO_CONNECTION)
                         }
                     }
-                    callback(result, ERROR_SERVER_MESSAGE)
+                    callback(result, 0, ERROR_SERVER_MESSAGE)
                     return
                 }
                 // Trata a resposta
                 do {
                     guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : Any] else {
-                        callback(result, ERROR_SERVER_MESSAGE)
+                        callback(result, 0, ERROR_SERVER_MESSAGE)
                         return
                     }
                     if let cardsJson = json["results"] as? [[String: Any]] {
@@ -395,10 +403,14 @@ public class ApplicationService : NSObject {
                             result.append(card)
                         }
                     }
-                    callback(result, nil)
+                    var pages : Int64 = 0
+                    if let totalPages = json["total_pages"] as? Int64 {
+                        pages = totalPages
+                    }
+                    callback(result, pages, nil)
                     
                 } catch {
-                    callback(result, ERROR_SERVER_MESSAGE)
+                    callback(result, 0, ERROR_SERVER_MESSAGE)
                 }
         }
     }
