@@ -1,0 +1,16 @@
+PODS:
+  - OpenSans (1.0.3)
+
+DEPENDENCIES:
+  - OpenSans
+
+SPEC REPOS:
+  trunk:
+    - OpenSans
+
+SPEC CHECKSUMS:
+  OpenSans: 33078846463eae780aa5f82986b51cce085f970d
+
+PODFILE CHECKSUM: 8df66ad2dff736760dac5862244eb7a1f020a525
+
+COCOAPODS: 1.8.4

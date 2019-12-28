@@ -1,0 +1,6 @@
+framework module Pods_Movs {
+  umbrella header "Pods-Movs-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Fonts</key>
+	<dict>
+		<key>TextViewFont</key>
+		<dict>
+			<key>fontSize</key>
+			<integer>12</integer>
+			<key>fontName</key>
+			<string>OpenSans-ExtraBold</string>
+		</dict>
+		<key>SectionHeaderFont</key>
+		<dict>
+			<key>fontSize</key>
+			<integer>16</integer>
+			<key>fontName</key>
+			<string>OpenSans-ExtraBold</string>
+		</dict>
+		<key>NavBarFont</key>
+		<dict>
+			<key>fontSize</key>
+			<integer>20</integer>
+			<key>fontName</key>
+			<string>OpenSans-ExtraBold</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

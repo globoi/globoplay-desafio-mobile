@@ -1,0 +1,766 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		009781CA6E7BC32D7FB3FC140AB80775 /* UIFont+OpenSans.h in Headers */ = {isa = PBXBuildFile; fileRef = CF818BC4BFFDEB89E59FE222865928CC /* UIFont+OpenSans.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		113AC76D766B53D9C0DBD31296A311E7 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C9A0B672B6CDCA33D84AB895D938167 /* CoreText.framework */; };
+		1717EFFA78392F9BACBD1CC588ADCFC2 /* Pods-Movs-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8882E2849E21C8D3A27D8467896DC07E /* Pods-Movs-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29BF1D78200B973510E6E6A2493FB18E /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 270D7A284386B780F2E18F98CFC51101 /* OpenSans-Regular.ttf */; };
+		2A095CC044F5DCDA3C5192DA7433837D /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DCF90BCE9CEABDE62BDEBA664215F467 /* OpenSans-ExtraBold.ttf */; };
+		3041E5369BD43328371E34912439A97B /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 042FC41878E14A5AD27B8FBB2DA90EA5 /* OpenSans-SemiboldItalic.ttf */; };
+		61308B75B33681192C6B8B9C42B29E87 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 332353D86C5072EA185E8FFF9B556F99 /* OpenSans-ExtraBoldItalic.ttf */; };
+		75135D169EC04AD6107902A59DA2FFFF /* OpenSans-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6312F6C6C231C22E5519FF647468B267 /* OpenSans-dummy.m */; };
+		7D47D38EDEC86C4E2306B1A10000D84A /* OpenSans-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C4FC9A0CCC5801E8B29EA1D391D769B6 /* OpenSans-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8D3B04B8F9A3F071BFDDBEC74FF4BC8A /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62D80D5A46C185425F25EBD368C58F87 /* OpenSans-Semibold.ttf */; };
+		8FEE60780CD23A74AC5A6B47CD29C267 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F57CB2DEB8C04DDE474AC5724887F27 /* OpenSans-LightItalic.ttf */; };
+		9410B0038A4EB7DEC95C9D3508A3DB0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23621862A99429490F9C983069F078BB /* Foundation.framework */; };
+		94D3D05A48E249B36C692AD9971FA9EC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2808DBCD00D1876FC432A80952DC2006 /* OpenSans-Bold.ttf */; };
+		96D5C58AF62D9D828D782584E027AEBC /* Pods-Movs-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A2937FA01C758A7CB7EB6459E07DE543 /* Pods-Movs-dummy.m */; };
+		9F3DD1AE3A09506146A0328B5E9140AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 032F67321D34EE01369F5810E71B7660 /* UIKit.framework */; };
+		9FF953ED438FADE748954D8ACD8F6A77 /* UIFont+OpenSans.m in Sources */ = {isa = PBXBuildFile; fileRef = 9756D817E2C08715040EAF1473747544 /* UIFont+OpenSans.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BB474672C5BD1299846AE782ED74BDD4 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2417A80ED290754F849D8FE06B8C7CD /* OpenSans-Light.ttf */; };
+		CCF62930907CD027DA165020A84DE820 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A960383DCD60F0B93542AB856B167B50 /* OpenSans-BoldItalic.ttf */; };
+		DC61BC9E848138C56E8C46FD3825D51C /* OpenSans.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 95244E634CD25D6FAFBE86E6504426B3 /* OpenSans.bundle */; };
+		E9C6A60418B160420472FBBAC508275A /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06F91E531F1A39F7485C9923DA17E4A9 /* OpenSans-Italic.ttf */; };
+		EF7CB81827162B2D467DF9211E188B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23621862A99429490F9C983069F078BB /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A61885D0B3B5F1711A23812C804FFD7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D2C062A8FB1A5905A7A79E46FB5EC44;
+			remoteInfo = OpenSans;
+		};
+		C55B8EE6A14176D7E208264A5C090744 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 866AA0434270D3C9C6572C4650E1A7A8;
+			remoteInfo = "OpenSans-OpenSans";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		032F67321D34EE01369F5810E71B7660 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		042FC41878E14A5AD27B8FBB2DA90EA5 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "OpenSans-SemiboldItalic.ttf"; path = "Fonts/OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		06F91E531F1A39F7485C9923DA17E4A9 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "OpenSans-Italic.ttf"; path = "Fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		0C9A0B672B6CDCA33D84AB895D938167 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
+		0DFC68ACB88C1DBBCF0E52F5313B43B1 /* Pods-Movs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Movs.debug.xcconfig"; sourceTree = "<group>"; };
+		150D15DADFFB2DDD2AAA62A205133DFC /* OpenSans.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = OpenSans.framework; path = OpenSans.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B0A5476ADF97711FE356A306D86D855 /* OpenSans.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = OpenSans.modulemap; sourceTree = "<group>"; };
+		23621862A99429490F9C983069F078BB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		270D7A284386B780F2E18F98CFC51101 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "OpenSans-Regular.ttf"; path = "Fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		2808DBCD00D1876FC432A80952DC2006 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "OpenSans-Bold.ttf"; path = "Fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		332353D86C5072EA185E8FFF9B556F99 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "OpenSans-ExtraBoldItalic.ttf"; path = "Fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		3F57CB2DEB8C04DDE474AC5724887F27 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "OpenSans-LightItalic.ttf"; path = "Fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		5175946493F2E026C2DF43D7236EFB0A /* OpenSans-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OpenSans-prefix.pch"; sourceTree = "<group>"; };
+		62D80D5A46C185425F25EBD368C58F87 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "OpenSans-Semibold.ttf"; path = "Fonts/OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		6312F6C6C231C22E5519FF647468B267 /* OpenSans-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OpenSans-dummy.m"; sourceTree = "<group>"; };
+		6500056EDF8D3CF64106B5F6B0B6AA52 /* OpenSans.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OpenSans.xcconfig; sourceTree = "<group>"; };
+		7001FD99AB35F7C9079C09146CA33885 /* OpenSans-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "OpenSans-Info.plist"; sourceTree = "<group>"; };
+		7A69F80DB082C30F8A44D51503AC7196 /* ResourceBundle-OpenSans-OpenSans-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-OpenSans-OpenSans-Info.plist"; sourceTree = "<group>"; };
+		8882E2849E21C8D3A27D8467896DC07E /* Pods-Movs-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Movs-umbrella.h"; sourceTree = "<group>"; };
+		8A9B5F1B4DE2E53943F840640F22E185 /* Pods_Movs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Movs.framework; path = "Pods-Movs.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AAE6E4B9E7D23FAF625F2E541225BFE /* Pods-Movs.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Movs.modulemap"; sourceTree = "<group>"; };
+		95244E634CD25D6FAFBE86E6504426B3 /* OpenSans.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = OpenSans.bundle; path = "OpenSans-OpenSans.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9756D817E2C08715040EAF1473747544 /* UIFont+OpenSans.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIFont+OpenSans.m"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A2937FA01C758A7CB7EB6459E07DE543 /* Pods-Movs-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Movs-dummy.m"; sourceTree = "<group>"; };
+		A960383DCD60F0B93542AB856B167B50 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "OpenSans-BoldItalic.ttf"; path = "Fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		B0CB0959C018C5D76F446F728C395CFA /* Pods-Movs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Movs.release.xcconfig"; sourceTree = "<group>"; };
+		C4FC9A0CCC5801E8B29EA1D391D769B6 /* OpenSans-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OpenSans-umbrella.h"; sourceTree = "<group>"; };
+		CF818BC4BFFDEB89E59FE222865928CC /* UIFont+OpenSans.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIFont+OpenSans.h"; sourceTree = "<group>"; };
+		CFF9C407BE5EE1D21151CCE07CEFC5CF /* Pods-Movs-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Movs-acknowledgements.plist"; sourceTree = "<group>"; };
+		DCF90BCE9CEABDE62BDEBA664215F467 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "OpenSans-ExtraBold.ttf"; path = "Fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		E1130E4191BD301E57C1FA4C08D07E7C /* Pods-Movs-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Movs-Info.plist"; sourceTree = "<group>"; };
+		E2417A80ED290754F849D8FE06B8C7CD /* OpenSans-Light.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "OpenSans-Light.ttf"; path = "Fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		E708B75582D73D3EC9DCF9DC05069CF1 /* Pods-Movs-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Movs-frameworks.sh"; sourceTree = "<group>"; };
+		FCB49E6E3FBFEB1AE8F5960E15EFD52A /* Pods-Movs-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Movs-acknowledgements.markdown"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		097FF280A4C7C39D3D73757530A226DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21FD9E7BBB66A866B6A6D285F4829D53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				113AC76D766B53D9C0DBD31296A311E7 /* CoreText.framework in Frameworks */,
+				EF7CB81827162B2D467DF9211E188B64 /* Foundation.framework in Frameworks */,
+				9F3DD1AE3A09506146A0328B5E9140AE /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45E9344502585AD16F1AA60EFB0952AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9410B0038A4EB7DEC95C9D3508A3DB0E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03C5C200A0787E300053CFA8F53CA094 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				092FD875F565846165BF2D8B053941F7 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		092FD875F565846165BF2D8B053941F7 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				0C9A0B672B6CDCA33D84AB895D938167 /* CoreText.framework */,
+				23621862A99429490F9C983069F078BB /* Foundation.framework */,
+				032F67321D34EE01369F5810E71B7660 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		09518D2DA8B32A3661A4E75694C74A00 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B0A5476ADF97711FE356A306D86D855 /* OpenSans.modulemap */,
+				6500056EDF8D3CF64106B5F6B0B6AA52 /* OpenSans.xcconfig */,
+				6312F6C6C231C22E5519FF647468B267 /* OpenSans-dummy.m */,
+				7001FD99AB35F7C9079C09146CA33885 /* OpenSans-Info.plist */,
+				5175946493F2E026C2DF43D7236EFB0A /* OpenSans-prefix.pch */,
+				C4FC9A0CCC5801E8B29EA1D391D769B6 /* OpenSans-umbrella.h */,
+				7A69F80DB082C30F8A44D51503AC7196 /* ResourceBundle-OpenSans-OpenSans-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/OpenSans";
+			sourceTree = "<group>";
+		};
+		2014589D48B3FC98894680A3164FF312 /* Pods-Movs */ = {
+			isa = PBXGroup;
+			children = (
+				8AAE6E4B9E7D23FAF625F2E541225BFE /* Pods-Movs.modulemap */,
+				FCB49E6E3FBFEB1AE8F5960E15EFD52A /* Pods-Movs-acknowledgements.markdown */,
+				CFF9C407BE5EE1D21151CCE07CEFC5CF /* Pods-Movs-acknowledgements.plist */,
+				A2937FA01C758A7CB7EB6459E07DE543 /* Pods-Movs-dummy.m */,
+				E708B75582D73D3EC9DCF9DC05069CF1 /* Pods-Movs-frameworks.sh */,
+				E1130E4191BD301E57C1FA4C08D07E7C /* Pods-Movs-Info.plist */,
+				8882E2849E21C8D3A27D8467896DC07E /* Pods-Movs-umbrella.h */,
+				0DFC68ACB88C1DBBCF0E52F5313B43B1 /* Pods-Movs.debug.xcconfig */,
+				B0CB0959C018C5D76F446F728C395CFA /* Pods-Movs.release.xcconfig */,
+			);
+			name = "Pods-Movs";
+			path = "Target Support Files/Pods-Movs";
+			sourceTree = "<group>";
+		};
+		372E53190C04CFAC94D1B9C72780B2E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95244E634CD25D6FAFBE86E6504426B3 /* OpenSans.bundle */,
+				150D15DADFFB2DDD2AAA62A205133DFC /* OpenSans.framework */,
+				8A9B5F1B4DE2E53943F840640F22E185 /* Pods_Movs.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52E7E22B81B8F286C9E2336CA078EFA6 /* OpenSans */ = {
+			isa = PBXGroup;
+			children = (
+				CF818BC4BFFDEB89E59FE222865928CC /* UIFont+OpenSans.h */,
+				9756D817E2C08715040EAF1473747544 /* UIFont+OpenSans.m */,
+				C246364F07B72BF6CA383C9986A2047C /* Resources */,
+				09518D2DA8B32A3661A4E75694C74A00 /* Support Files */,
+			);
+			name = OpenSans;
+			path = OpenSans;
+			sourceTree = "<group>";
+		};
+		9831955053C5C93D90D2FC1FCD48BE47 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2014589D48B3FC98894680A3164FF312 /* Pods-Movs */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C246364F07B72BF6CA383C9986A2047C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2808DBCD00D1876FC432A80952DC2006 /* OpenSans-Bold.ttf */,
+				A960383DCD60F0B93542AB856B167B50 /* OpenSans-BoldItalic.ttf */,
+				DCF90BCE9CEABDE62BDEBA664215F467 /* OpenSans-ExtraBold.ttf */,
+				332353D86C5072EA185E8FFF9B556F99 /* OpenSans-ExtraBoldItalic.ttf */,
+				06F91E531F1A39F7485C9923DA17E4A9 /* OpenSans-Italic.ttf */,
+				E2417A80ED290754F849D8FE06B8C7CD /* OpenSans-Light.ttf */,
+				3F57CB2DEB8C04DDE474AC5724887F27 /* OpenSans-LightItalic.ttf */,
+				270D7A284386B780F2E18F98CFC51101 /* OpenSans-Regular.ttf */,
+				62D80D5A46C185425F25EBD368C58F87 /* OpenSans-Semibold.ttf */,
+				042FC41878E14A5AD27B8FBB2DA90EA5 /* OpenSans-SemiboldItalic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				03C5C200A0787E300053CFA8F53CA094 /* Frameworks */,
+				DBD242521C9561012BCC70BDFE6BFA1C /* Pods */,
+				372E53190C04CFAC94D1B9C72780B2E3 /* Products */,
+				9831955053C5C93D90D2FC1FCD48BE47 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		DBD242521C9561012BCC70BDFE6BFA1C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				52E7E22B81B8F286C9E2336CA078EFA6 /* OpenSans */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		78B4B4710630739A906EE41FF15389BD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1717EFFA78392F9BACBD1CC588ADCFC2 /* Pods-Movs-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81C1E98F3012D155CB1035416E54C420 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D47D38EDEC86C4E2306B1A10000D84A /* OpenSans-umbrella.h in Headers */,
+				009781CA6E7BC32D7FB3FC140AB80775 /* UIFont+OpenSans.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		26C769C9DE94188219EA3D006AA9F93B /* Pods-Movs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 782B8CB5A389F071BEC634023D6A126C /* Build configuration list for PBXNativeTarget "Pods-Movs" */;
+			buildPhases = (
+				78B4B4710630739A906EE41FF15389BD /* Headers */,
+				C46434F967978224EEF186B115EEB019 /* Sources */,
+				45E9344502585AD16F1AA60EFB0952AB /* Frameworks */,
+				C7F42277FB6A0EDDF2C714EC665AF62B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C21A19FBD2175400502E823F308FC97D /* PBXTargetDependency */,
+			);
+			name = "Pods-Movs";
+			productName = "Pods-Movs";
+			productReference = 8A9B5F1B4DE2E53943F840640F22E185 /* Pods_Movs.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5D2C062A8FB1A5905A7A79E46FB5EC44 /* OpenSans */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49FDA7DD3E4D1CF9570C9D948D27C9DF /* Build configuration list for PBXNativeTarget "OpenSans" */;
+			buildPhases = (
+				81C1E98F3012D155CB1035416E54C420 /* Headers */,
+				6BBA39955E4E496FBBF7F94003E39EFD /* Sources */,
+				21FD9E7BBB66A866B6A6D285F4829D53 /* Frameworks */,
+				D7B2FF0880294E919E0EF1B29274DE84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46818E2E666648700151786012DB1EF4 /* PBXTargetDependency */,
+			);
+			name = OpenSans;
+			productName = OpenSans;
+			productReference = 150D15DADFFB2DDD2AAA62A205133DFC /* OpenSans.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		866AA0434270D3C9C6572C4650E1A7A8 /* OpenSans-OpenSans */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8538ABFF7F2B1E1F3113AD3E3FCBFD83 /* Build configuration list for PBXNativeTarget "OpenSans-OpenSans" */;
+			buildPhases = (
+				2F18AF4B57C250B56CD84EA91D8E7D4D /* Sources */,
+				097FF280A4C7C39D3D73757530A226DA /* Frameworks */,
+				79EEC4A76F124935EDFBE97856489CBE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OpenSans-OpenSans";
+			productName = "OpenSans-OpenSans";
+			productReference = 95244E634CD25D6FAFBE86E6504426B3 /* OpenSans.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 372E53190C04CFAC94D1B9C72780B2E3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5D2C062A8FB1A5905A7A79E46FB5EC44 /* OpenSans */,
+				866AA0434270D3C9C6572C4650E1A7A8 /* OpenSans-OpenSans */,
+				26C769C9DE94188219EA3D006AA9F93B /* Pods-Movs */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		79EEC4A76F124935EDFBE97856489CBE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94D3D05A48E249B36C692AD9971FA9EC /* OpenSans-Bold.ttf in Resources */,
+				CCF62930907CD027DA165020A84DE820 /* OpenSans-BoldItalic.ttf in Resources */,
+				2A095CC044F5DCDA3C5192DA7433837D /* OpenSans-ExtraBold.ttf in Resources */,
+				61308B75B33681192C6B8B9C42B29E87 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				E9C6A60418B160420472FBBAC508275A /* OpenSans-Italic.ttf in Resources */,
+				BB474672C5BD1299846AE782ED74BDD4 /* OpenSans-Light.ttf in Resources */,
+				8FEE60780CD23A74AC5A6B47CD29C267 /* OpenSans-LightItalic.ttf in Resources */,
+				29BF1D78200B973510E6E6A2493FB18E /* OpenSans-Regular.ttf in Resources */,
+				8D3B04B8F9A3F071BFDDBEC74FF4BC8A /* OpenSans-Semibold.ttf in Resources */,
+				3041E5369BD43328371E34912439A97B /* OpenSans-SemiboldItalic.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7F42277FB6A0EDDF2C714EC665AF62B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7B2FF0880294E919E0EF1B29274DE84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC61BC9E848138C56E8C46FD3825D51C /* OpenSans.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2F18AF4B57C250B56CD84EA91D8E7D4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BBA39955E4E496FBBF7F94003E39EFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75135D169EC04AD6107902A59DA2FFFF /* OpenSans-dummy.m in Sources */,
+				9FF953ED438FADE748954D8ACD8F6A77 /* UIFont+OpenSans.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C46434F967978224EEF186B115EEB019 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96D5C58AF62D9D828D782584E027AEBC /* Pods-Movs-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		46818E2E666648700151786012DB1EF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "OpenSans-OpenSans";
+			target = 866AA0434270D3C9C6572C4650E1A7A8 /* OpenSans-OpenSans */;
+			targetProxy = C55B8EE6A14176D7E208264A5C090744 /* PBXContainerItemProxy */;
+		};
+		C21A19FBD2175400502E823F308FC97D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OpenSans;
+			target = 5D2C062A8FB1A5905A7A79E46FB5EC44 /* OpenSans */;
+			targetProxy = A61885D0B3B5F1711A23812C804FFD7A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2B6D12F774C0E7ED06063CC73D06EC42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6500056EDF8D3CF64106B5F6B0B6AA52 /* OpenSans.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/OpenSans/OpenSans-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/OpenSans/OpenSans-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/OpenSans/OpenSans.modulemap";
+				PRODUCT_MODULE_NAME = OpenSans;
+				PRODUCT_NAME = OpenSans;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		35F8C4ED4F06E7ACD113901B7E79DF09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0CB0959C018C5D76F446F728C395CFA /* Pods-Movs.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Movs/Pods-Movs-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Movs/Pods-Movs.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		510B057D2E9F059C50D52DA5D90F3ACF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		651E39BBF65E8B189F499E2B981230EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6500056EDF8D3CF64106B5F6B0B6AA52 /* OpenSans.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/OpenSans";
+				IBSC_MODULE = OpenSans;
+				INFOPLIST_FILE = "Target Support Files/OpenSans/ResourceBundle-OpenSans-OpenSans-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = OpenSans;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		804E13245C9FBBE6A340C555CA8B2B4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		8FDCEB4AAE2899584610E6B5CB85586F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6500056EDF8D3CF64106B5F6B0B6AA52 /* OpenSans.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/OpenSans";
+				IBSC_MODULE = OpenSans;
+				INFOPLIST_FILE = "Target Support Files/OpenSans/ResourceBundle-OpenSans-OpenSans-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = OpenSans;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		F4FF57CF0F2646458FE16306F2E08CFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6500056EDF8D3CF64106B5F6B0B6AA52 /* OpenSans.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/OpenSans/OpenSans-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/OpenSans/OpenSans-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/OpenSans/OpenSans.modulemap";
+				PRODUCT_MODULE_NAME = OpenSans;
+				PRODUCT_NAME = OpenSans;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F500CDF7C5677DBD023F9D4B07491C75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DFC68ACB88C1DBBCF0E52F5313B43B1 /* Pods-Movs.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Movs/Pods-Movs-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Movs/Pods-Movs.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				804E13245C9FBBE6A340C555CA8B2B4C /* Debug */,
+				510B057D2E9F059C50D52DA5D90F3ACF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49FDA7DD3E4D1CF9570C9D948D27C9DF /* Build configuration list for PBXNativeTarget "OpenSans" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B6D12F774C0E7ED06063CC73D06EC42 /* Debug */,
+				F4FF57CF0F2646458FE16306F2E08CFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		782B8CB5A389F071BEC634023D6A126C /* Build configuration list for PBXNativeTarget "Pods-Movs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F500CDF7C5677DBD023F9D4B07491C75 /* Debug */,
+				35F8C4ED4F06E7ACD113901B7E79DF09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8538ABFF7F2B1E1F3113AD3E3FCBFD83 /* Build configuration list for PBXNativeTarget "OpenSans-OpenSans" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FDCEB4AAE2899584610E6B5CB85586F /* Debug */,
+				651E39BBF65E8B189F499E2B981230EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
