@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globoplay" translatesAutoresizingMaskIntoConstraints="NO" id="l8G-Ql-jO4">
+                                <rect key="frame" x="0.0" y="246" width="375" height="190"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="bg_gray"/>
+                        <constraints>
+                            <constraint firstItem="l8G-Ql-jO4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1PL-oc-2kg"/>
+                            <constraint firstItem="l8G-Ql-jO4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8jZ-bf-UcF"/>
+                            <constraint firstItem="l8G-Ql-jO4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="246" id="JLh-H4-JEa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="l8G-Ql-jO4" secondAttribute="bottom" constant="231" id="Mvo-Xd-dpS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="globoplay" width="1170" height="540"/>
+        <namedColor name="bg_gray">
+            <color red="0.098023496569999993" green="0.098048247399999996" blue="0.098021931950000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
