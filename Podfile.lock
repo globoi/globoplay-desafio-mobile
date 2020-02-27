@@ -1,30 +1,24 @@
 PODS:
-  - Alamofire (4.9.1)
-  - AlamofireObjectMapper (5.2.1):
-    - Alamofire (~> 4.7)
-    - ObjectMapper (~> 3.4)
-  - Kingfisher (4.10.1)
-  - ObjectMapper (3.5.1)
+  - Alamofire (5.0.2)
+  - ImageLoader (0.15.0)
+  - SwipeMenuViewController (4.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.0)
-  - AlamofireObjectMapper
-  - Kingfisher (~> 4.0)
-  - ObjectMapper (~> 3.4)
+  - Alamofire (~> 5.0.0-rc.2)
+  - ImageLoader
+  - SwipeMenuViewController
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - AlamofireObjectMapper
-    - Kingfisher
-    - ObjectMapper
+    - ImageLoader
+    - SwipeMenuViewController
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
-  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
+  ImageLoader: e0635d52020d64dc7687e3a3b14dc53212ac0442
+  SwipeMenuViewController: c2c1f9b62022ce6b904b2553f0fa340c9008becd
 
-PODFILE CHECKSUM: 0f3b5493ae2033ee6f86e048d3f226cb3caefb7c
+PODFILE CHECKSUM: 6e0280294b99809632ebc9041e64f9cb36fbb1cf
 
 COCOAPODS: 1.8.4

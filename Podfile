@@ -7,10 +7,10 @@ target 'TheMovieDB' do
 
   # Pods for TheMovieDB
 
-  pod 'Kingfisher', '~> 4.0'
-  pod 'Alamofire', '~> 4.0'
-  pod 'ObjectMapper', '~> 3.4'
-  pod 'AlamofireObjectMapper'
+  pod 'Alamofire', '~> 5.0.0-rc.2'
+  pod 'ImageLoader'
+  pod 'SwipeMenuViewController'
+
 
   target 'TheMovieDBTests' do
     inherit! :search_paths

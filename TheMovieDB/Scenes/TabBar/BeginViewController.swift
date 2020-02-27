@@ -67,6 +67,7 @@ class BeginViewController: UITabBarController, UITabBarControllerDelegate {
                let image = UIImage(named: "globoplay-logo")
                imageView.image = image
                self.navigationItem.titleView = imageView
+            
                
            } else {
                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
