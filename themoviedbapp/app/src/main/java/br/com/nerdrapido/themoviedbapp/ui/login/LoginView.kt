@@ -6,4 +6,6 @@ import br.com.nerdrapido.themoviedbapp.ui.abstracts.View
  * Created By FELIPE GUSBERTI @ 08/03/2020
  */
 interface LoginView : View {
+
+    fun showMdbDialog(requestToken: String)
 }

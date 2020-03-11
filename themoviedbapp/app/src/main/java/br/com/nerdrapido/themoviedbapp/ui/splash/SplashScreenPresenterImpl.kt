@@ -10,6 +10,10 @@ class SplashScreenPresenterImpl(getLogInStateUseCase: GetLogInStateUseCase) : Ab
     getLogInStateUseCase
 ), SplashScreenPresenter {
 
+    override fun needsToBeLoggedIn(): Boolean {
+        return false
+    }
+
     override fun endOfSplashScreen() {
         if (isLoggedIn()) {
             view.goHome()

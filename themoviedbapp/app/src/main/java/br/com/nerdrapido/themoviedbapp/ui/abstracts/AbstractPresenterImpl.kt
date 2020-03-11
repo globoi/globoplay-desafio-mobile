@@ -1,6 +1,7 @@
 package br.com.nerdrapido.themoviedbapp.ui.abstracts
 
 import br.com.nerdrapido.themoviedbapp.domain.usecase.GetLogInStateUseCase
+import timber.log.Timber
 
 /**
  * Created By FELIPE GUSBERTI @ 08/03/2020
@@ -27,7 +28,7 @@ abstract class AbstractPresenterImpl<V : View>(
      * Returns a [Boolean] value: if true the user needs to be logged in order to access this app
      * section, if false teh user needs not.
      */
-    private fun needsToBeLoggedIn(): Boolean {
+    protected open fun needsToBeLoggedIn(): Boolean {
         return true
     }
 
@@ -42,15 +43,17 @@ abstract class AbstractPresenterImpl<V : View>(
     }
 
     override fun viewIsInvoked() {
+        Timber.d("%s view Is Invoked", view.javaClass.simpleName)
         needToGoBackToLoginCheck()
     }
 
     override fun viewIsAboutToBeShown() {
+        Timber.d("%s Is About To BeShown", view.javaClass.simpleName)
         needToGoBackToLoginCheck()
     }
 
     override fun viewIsClosed() {
-        TODO("Not yet implemented")
+        Timber.d("%s is closed", view.javaClass.simpleName)
     }
 
 

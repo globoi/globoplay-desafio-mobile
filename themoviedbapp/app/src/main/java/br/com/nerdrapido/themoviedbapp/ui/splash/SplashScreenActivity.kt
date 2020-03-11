@@ -3,32 +3,32 @@ package br.com.nerdrapido.themoviedbapp.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.PersistableBundle
 import br.com.nerdrapido.themoviedbapp.R
+import br.com.nerdrapido.themoviedbapp.di.KoinManager
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginActivity
 import org.koin.android.ext.android.inject
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 
 /**
  * Created By FELIPE GUSBERTI @ 08/03/2020
  */
-class SplashScreenActivity: AbstractActivity<SplashScreenPresenter>(), SplashScreenView {
+class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPresenter>(), SplashScreenView {
 
     override  val presenter: SplashScreenPresenter by inject()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
-
-    }
+    override  val layoutId = R.layout.activity_splash_screen
 
     override fun onResume() {
         super.onResume()
         //Use of delayed call of end of the splash screen for splashscreen demo purposes
         val handler = Handler()
         handler.postDelayed(Runnable {
-            // Actions to do after 10 seconds
-        }, 10000)
+            presenter.endOfSplashScreen()
+        }, 2000)
     }
 
     override fun goHome() {

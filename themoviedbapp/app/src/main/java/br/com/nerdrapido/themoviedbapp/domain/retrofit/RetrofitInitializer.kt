@@ -1,6 +1,9 @@
 package br.com.nerdrapido.themoviedbapp.domain.retrofit
 
+import android.app.Application
+import br.com.nerdrapido.themoviedbapp.BuildConfig
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -14,15 +17,18 @@ object RetrofitClientInstance {
     private const val BASE_URL = "https://api.themoviedb.org/4/"
 
     init {
-        val client = OkHttpClient.Builder()
+        val clientBuilder = OkHttpClient.Builder()
             .addInterceptor(ServiceInterceptor())
             //.readTimeout(45,TimeUnit.SECONDS)
             //.writeTimeout(45,TimeUnit.SECONDS)
-            .build()
-
+        if (BuildConfig.DEBUG) {
+            val logging = HttpLoggingInterceptor()
+            logging.level = HttpLoggingInterceptor.Level.BODY
+            clientBuilder.addInterceptor(logging)
+        }
         retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(client)
+            .client(clientBuilder.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

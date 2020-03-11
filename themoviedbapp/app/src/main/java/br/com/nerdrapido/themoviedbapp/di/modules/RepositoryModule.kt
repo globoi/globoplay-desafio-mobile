@@ -2,6 +2,8 @@ package br.com.nerdrapido.themoviedbapp.di.modules
 
 import br.com.nerdrapido.themoviedbapp.data.repository.login.LoginRepository
 import br.com.nerdrapido.themoviedbapp.data.repository.login.LoginRepositoryImpl
+import br.com.nerdrapido.themoviedbapp.data.repository.session.SessionRepository
+import br.com.nerdrapido.themoviedbapp.data.repository.session.SessionRepositoryImpl
 import org.koin.dsl.module
 
 /**
@@ -14,6 +16,7 @@ class RepositoryModule {
         fun getRepositoryModule() = module {
 
             single<LoginRepository> { LoginRepositoryImpl(get()) }
+            single<SessionRepository> { SessionRepositoryImpl(get()) }
 
         }
     }
