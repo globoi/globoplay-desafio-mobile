@@ -7,6 +7,7 @@ import android.os.PersistableBundle
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.di.KoinManager
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
+import br.com.nerdrapido.themoviedbapp.ui.home.HomeActivity
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginActivity
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
@@ -18,6 +19,8 @@ import org.koin.core.context.startKoin
  */
 class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPresenter>(), SplashScreenView {
 
+    override val activityTitle = "Carregando..."
+
     override  val presenter: SplashScreenPresenter by inject()
 
     override  val layoutId = R.layout.activity_splash_screen
@@ -28,11 +31,15 @@ class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPrese
         val handler = Handler()
         handler.postDelayed(Runnable {
             presenter.endOfSplashScreen()
-        }, 2000)
+        }, 1000)
     }
 
     override fun goHome() {
-        TODO("Not yet implemented")
+        val newIntent = Intent(this, HomeActivity::class.java)
+        newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(newIntent)
+        this.finish()
     }
 
     override fun goLogin() {
@@ -40,5 +47,6 @@ class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPrese
         newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(newIntent)
+        this.finish()
     }
 }

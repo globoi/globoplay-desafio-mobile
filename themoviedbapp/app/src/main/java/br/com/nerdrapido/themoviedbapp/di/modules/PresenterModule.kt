@@ -1,5 +1,7 @@
 package br.com.nerdrapido.themoviedbapp.di.modules
 
+import br.com.nerdrapido.themoviedbapp.ui.home.HomePresenter
+import br.com.nerdrapido.themoviedbapp.ui.home.HomePresenterImpl
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginPresenter
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginPresenterImpl
 import br.com.nerdrapido.themoviedbapp.ui.splash.SplashScreenPresenter
@@ -13,7 +15,8 @@ class PresenterModule {
     companion object {
         fun getPresenterModule() = module {
             factory<SplashScreenPresenter> { SplashScreenPresenterImpl(get()) }
-            factory<LoginPresenter> { LoginPresenterImpl(get(), get()) }
+            factory<LoginPresenter> { LoginPresenterImpl(get(), get(), get(), get()) }
+            factory<HomePresenter> { HomePresenterImpl(get()) }
         }
     }
 }

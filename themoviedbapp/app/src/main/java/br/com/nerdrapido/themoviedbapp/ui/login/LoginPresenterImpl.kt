@@ -1,12 +1,12 @@
 package br.com.nerdrapido.themoviedbapp.ui.login
 
-import android.content.DialogInterface
-import android.webkit.WebView
-import android.webkit.WebViewClient
-import androidx.appcompat.app.AlertDialog
+import br.com.nerdrapido.themoviedbapp.data.model.login.AccessTokenRequest
+import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenRequest
 import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenResponse
+import br.com.nerdrapido.themoviedbapp.domain.usecase.AccessTokenUseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.GetLogInStateUseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.RequestLoginUseCase
+import br.com.nerdrapido.themoviedbapp.domain.usecase.SetAccessTokenUseCase
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractPresenterImpl
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -17,10 +17,16 @@ import kotlinx.coroutines.runBlocking
  */
 class LoginPresenterImpl(
     private val requestLoginUseCase: RequestLoginUseCase,
+    private val accessLoginUseCase: AccessTokenUseCase,
+    private val setAccessTokenUseCase: SetAccessTokenUseCase,
     getLogInStateUseCase: GetLogInStateUseCase
 ) : AbstractPresenterImpl<LoginView>(
     getLogInStateUseCase
 ), LoginPresenter {
+
+    companion object {
+        const val LOGIN_SUCCESS = "LOGINSUCCESS.com"
+    }
 
     /**
      * See overridden fun
@@ -33,10 +39,10 @@ class LoginPresenterImpl(
         view.showLoading()
         runBlocking {
             launch(coroutineContext) {
-                val requestLoginResponse = requestLoginUseCase.execute()
+                val requestLoginResponse = requestLoginUseCase
+                    .execute(RequestTokenRequest("url://$LOGIN_SUCCESS"))
                 view.dismissLoading()
-                view.showMdbDialog(requestLoginResponse.requestToken)
-
+                view.showMdbDialog(requestLoginResponse)
             }
         }
     }
@@ -45,11 +51,17 @@ class LoginPresenterImpl(
         TODO("Not yet implemented")
     }
 
-    override fun loginSuccess() {
-        TODO("Not yet implemented")
-    }
-
-    override fun endOfSplashScreen() {
-        TODO("Not yet implemented")
+    override fun loginSuccess(requestTokenResponse: RequestTokenResponse) {
+        view.showLoading()
+        runBlocking {
+            launch(coroutineContext) {
+                val accessTokenResponse = accessLoginUseCase.execute(AccessTokenRequest(
+                    requestTokenResponse.requestToken
+                ))
+                setAccessTokenUseCase.execute(accessTokenResponse)
+                view.dismissLoading()
+                view.goHome()
+            }
+        }
     }
 }

@@ -37,7 +37,7 @@ abstract class AbstractPresenterImpl<V : View>(
      * the user can continue.
      */
     private fun needToGoBackToLoginCheck() {
-        if (!needsToBeLoggedIn() && isLoggedIn()) {
+        if (needsToBeLoggedIn() && !isLoggedIn()) {
             view.goBackToLogin()
         }
     }

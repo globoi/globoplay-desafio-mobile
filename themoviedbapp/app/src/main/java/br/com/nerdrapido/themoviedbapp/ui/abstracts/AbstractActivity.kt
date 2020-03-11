@@ -15,6 +15,8 @@ abstract class AbstractActivity<V: View, P: Presenter<V>>: AppCompatActivity(), 
 
     abstract val presenter: P
 
+    abstract val activityTitle: String
+
     var loadingDialog: AlertDialog? = null
 
     /**
@@ -50,6 +52,7 @@ abstract class AbstractActivity<V: View, P: Presenter<V>>: AppCompatActivity(), 
         presenter.viewIsInvoked()
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
+        title = activityTitle
     }
 
     override fun onResume() {

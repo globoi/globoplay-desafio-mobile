@@ -9,8 +9,7 @@ import br.com.nerdrapido.themoviedbapp.data.repository.login.LoginRepository
  */
 class RequestLoginUseCase(private val loginRepository: LoginRepository) {
 
-    suspend fun execute(): RequestTokenResponse {
-        val requestTokenRequest = RequestTokenRequest(null)
+    suspend fun execute(requestTokenRequest: RequestTokenRequest): RequestTokenResponse {
         return loginRepository.createRequestToken(requestTokenRequest)
     }
 }

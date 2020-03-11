@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.ui.login
 
+import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenResponse
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.Presenter
 
 /**
@@ -17,10 +18,5 @@ interface LoginPresenter : Presenter<LoginView> {
      */
     fun loginAttemptHasResponse(response: Any)
 
-    fun loginSuccess()
-
-    /**
-     * Is Called when the splash screen should be dismissed and the app move on.
-     */
-    fun endOfSplashScreen()
+    fun loginSuccess(requestTokenResponse: RequestTokenResponse)
 }

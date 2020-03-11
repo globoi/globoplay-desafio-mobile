@@ -10,5 +10,6 @@ import retrofit2.http.Field
  */
 data class RequestTokenRequest(
     @Field("redirect_to")
+    @SerializedName("redirect_to")
     val redirectTo: String?
 )

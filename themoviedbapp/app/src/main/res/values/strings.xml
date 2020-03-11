@@ -2,4 +2,5 @@
     <string name="app_name">The Movie DB APP</string>
     <!-- Strings related to login -->
     <string name="web_view_login_title">Faça Login</string>
+    <string name="login_action_sign_in">Fazer Login no Movie DB</string>
 </resources>

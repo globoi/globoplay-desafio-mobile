@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.ui.login
 
+import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenResponse
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.View
 
 /**
@@ -7,5 +8,7 @@ import br.com.nerdrapido.themoviedbapp.ui.abstracts.View
  */
 interface LoginView : View {
 
-    fun showMdbDialog(requestToken: String)
+    fun showMdbDialog(requestTokenResponse: RequestTokenResponse)
+
+    fun goHome()
 }

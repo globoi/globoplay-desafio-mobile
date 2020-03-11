@@ -8,5 +8,6 @@ import retrofit2.http.Field
  */
 data class AccessTokenRequest(
     @Field("request_token")
+    @SerializedName("request_token")
     val requestToken: String
 )

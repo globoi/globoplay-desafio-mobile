@@ -9,4 +9,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="FullScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+    </style>
+
 </resources>

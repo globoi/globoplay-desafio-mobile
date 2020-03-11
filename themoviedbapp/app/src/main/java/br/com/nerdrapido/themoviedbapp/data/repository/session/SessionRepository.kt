@@ -12,4 +12,8 @@ interface SessionRepository {
     fun getAccessToken(): String?
 
     fun setAccessToken(token: String?)
+
+    fun getUserId(): String?
+
+    fun setUserId(userId: String?)
 }
