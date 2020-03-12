@@ -16,7 +16,7 @@ class PresenterModule {
         fun getPresenterModule() = module {
             factory<SplashScreenPresenter> { SplashScreenPresenterImpl(get()) }
             factory<LoginPresenter> { LoginPresenterImpl(get(), get(), get(), get()) }
-            factory<HomePresenter> { HomePresenterImpl(get()) }
+            factory<HomePresenter> { HomePresenterImpl(get(), get(), get()) }
         }
     }
 }

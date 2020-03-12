@@ -11,6 +11,6 @@ class GetLogInStateUseCase(private val sessionRepository: SessionRepository) {
      * Returns true if the user is logged based on the AccessToken value stored
      */
     fun isLoggedIn(): Boolean {
-        return sessionRepository.getAccessToken() !== null
+        return sessionRepository.getSessionId() !== null
     }
 }

@@ -4,14 +4,14 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_home_white_24dp"
-        android:title="Albums"/>
+        android:title="@string/home_button"/>
     <item
         android:id="@+id/list"
         android:icon="@drawable/ic_star_white_24dp"
-        android:title="Artists"/>
+        android:title="@string/my_list_button"/>
     <item
         android:id="@+id/logout"
         android:icon="@drawable/ic_exit_to_app_white_24dp"
-        android:title="grsegsd"/>
+        android:title="@string/logout_button"/>
 
 </menu>

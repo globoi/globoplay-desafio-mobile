@@ -9,11 +9,7 @@ interface SessionRepository {
 
     fun setRequestToken(token: String?)
 
-    fun getAccessToken(): String?
+    fun getSessionId(): String?
 
-    fun setAccessToken(token: String?)
-
-    fun getUserId(): String?
-
-    fun setUserId(userId: String?)
+    fun setSessionID(sessionID: String?)
 }

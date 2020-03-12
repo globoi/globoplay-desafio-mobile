@@ -1,12 +1,17 @@
 package br.com.nerdrapido.themoviedbapp.ui.abstracts
 
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
 
 /**
  * Created By FELIPE GUSBERTI @ 08/03/2020
@@ -15,14 +20,14 @@ abstract class AbstractActivity<V: View, P: Presenter<V>>: AppCompatActivity(), 
 
     abstract val presenter: P
 
-    abstract val activityTitle: String
-
     var loadingDialog: AlertDialog? = null
 
     /**
      * The layout id to be used in this Activity.
      */
     abstract val layoutId: Int
+
+    abstract fun getActivityTitle(): String
 
     override fun goBackToLogin() {
         val newIntent = Intent(this, LoginActivity::class.java)
@@ -51,8 +56,14 @@ abstract class AbstractActivity<V: View, P: Presenter<V>>: AppCompatActivity(), 
         presenter.initializeView(this as V)
         presenter.viewIsInvoked()
         super.onCreate(savedInstanceState)
+        // Here the device nav gets its color
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.navigationBarColor = resources.getColor(R.color.colorPrimaryDark)
+        }
         setContentView(layoutId)
-        title = activityTitle
+        title = getActivityTitle()
     }
 
     override fun onResume() {

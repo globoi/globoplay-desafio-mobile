@@ -1,5 +1,6 @@
-package br.com.nerdrapido.themoviedbapp.data.model
+package br.com.nerdrapido.themoviedbapp.data.model.discover
 
+import br.com.nerdrapido.themoviedbapp.data.model.MovieListResultObject
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -7,7 +8,7 @@ import com.google.gson.annotations.SerializedName
  *
  * Ref https://developers.themoviedb.org/3/discover/movie-discover
  */
-data class DiscoverMovieObject(
+data class DiscoverResponse(
     @SerializedName("page")
     val page : Int?,
     @SerializedName("results")

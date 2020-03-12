@@ -6,8 +6,8 @@ import retrofit2.http.Field
 /**
  * Created By FELIPE GUSBERTI @ 04/03/2020
  */
-data class DeleteAccessTokenRequest(
-    @Field("session_id")
-    @SerializedName("session_id")
-    val sessionId: String
+data class CreateSessionRequest(
+    @Field("request_token")
+    @SerializedName("request_token")
+    val requestToken: String
 )

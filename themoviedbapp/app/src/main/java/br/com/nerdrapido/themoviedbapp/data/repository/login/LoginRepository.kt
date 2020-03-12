@@ -9,7 +9,7 @@ interface LoginRepository {
 
     suspend fun createRequestToken(requestTokenRequest: RequestTokenRequest): RequestTokenResponse
 
-    suspend fun createAccessToken(accessTokenRequest: AccessTokenRequest): AccessTokenResponse
+    suspend fun createSession(createSessionRequest: CreateSessionRequest): CreateSessionResponse
 
-    suspend fun deleteAccessToken(deleteAccessTokenRequest: DeleteAccessTokenRequest): DeleteAccesTokenResponse
+    suspend fun deleteAccessToken(deleteAccessTokenRequest: DeleteAccessTokenRequest): DeleteAccessTokenResponse
 }

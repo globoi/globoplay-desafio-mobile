@@ -13,9 +13,7 @@ class SessionRepositoryImpl(private val application: Application): SessionReposi
 
         private const val REQUEST_TOKEN = "REQUEST_TOKEN"
 
-        private const val ACCESS_TOKEN = "ACCESS_TOKEN"
-
-        private const val USER_ID = "ACCESS_TOKEN"
+        private const val SESSION_ID = "SESSION_ID"
 
     }
 
@@ -29,19 +27,13 @@ class SessionRepositoryImpl(private val application: Application): SessionReposi
         sharedPreferences.edit().putString(REQUEST_TOKEN, token).apply()
     }
 
-    override fun getAccessToken(): String? {
-        return sharedPreferences.getString(ACCESS_TOKEN, null)
+    override fun getSessionId(): String? {
+        return sharedPreferences.getString(SESSION_ID, null)
     }
 
-    override fun setAccessToken(token: String?) {
-        sharedPreferences.edit().putString(ACCESS_TOKEN, token).apply()
+    override fun setSessionID(sessionID: String?) {
+        sharedPreferences.edit().putString(SESSION_ID, sessionID).apply()
     }
 
-    override fun getUserId(): String? {
-        return sharedPreferences.getString(USER_ID, null)
-    }
 
-    override fun setUserId(userId: String?) {
-        sharedPreferences.edit().putString(USER_ID, userId).apply()
-    }
 }

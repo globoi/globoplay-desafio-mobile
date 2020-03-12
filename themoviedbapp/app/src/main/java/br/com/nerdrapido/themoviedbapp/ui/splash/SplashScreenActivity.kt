@@ -19,11 +19,13 @@ import org.koin.core.context.startKoin
  */
 class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPresenter>(), SplashScreenView {
 
-    override val activityTitle = "Carregando..."
-
     override  val presenter: SplashScreenPresenter by inject()
 
     override  val layoutId = R.layout.activity_splash_screen
+
+    override fun getActivityTitle(): String {
+        return getString(R.string.splash_title)
+    }
 
     override fun onResume() {
         super.onResume()
@@ -49,4 +51,6 @@ class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPrese
         startActivity(newIntent)
         this.finish()
     }
+
+
 }

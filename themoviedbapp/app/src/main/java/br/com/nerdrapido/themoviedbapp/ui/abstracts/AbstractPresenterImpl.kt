@@ -36,7 +36,7 @@ abstract class AbstractPresenterImpl<V : View>(
      * Returns a [Boolean] value: if true the user needs to be routed to the login routine, if false
      * the user can continue.
      */
-    private fun needToGoBackToLoginCheck() {
+    protected fun needToGoBackToLoginCheck() {
         if (needsToBeLoggedIn() && !isLoggedIn()) {
             view.goBackToLogin()
         }

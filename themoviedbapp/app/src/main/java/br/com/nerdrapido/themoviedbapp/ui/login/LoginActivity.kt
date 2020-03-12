@@ -3,6 +3,9 @@ package br.com.nerdrapido.themoviedbapp.ui.login
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatDialog
@@ -15,19 +18,32 @@ import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-class LoginActivity : AbstractActivity<LoginView, LoginPresenter>(), LoginView {
 
-    override val activityTitle = "Login"
+class LoginActivity : AbstractActivity<LoginView, LoginPresenter>(), LoginView {
 
     override val presenter: LoginPresenter by inject()
 
     override val layoutId = R.layout.activity_login
 
+    override fun getActivityTitle(): String {
+        return getString(R.string.login_title)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        login.setOnClickListener {
+        loginBt.setOnClickListener {
             presenter.loginWasCalled()
         }
+    }
+
+    override fun showLoading() {
+        loading.visibility = VISIBLE
+        loginBt.visibility = GONE
+    }
+
+    override fun dismissLoading() {
+        loading.visibility = GONE
+        loginBt.visibility = VISIBLE
     }
 
     override fun showMdbDialog(requestTokenResponse: RequestTokenResponse) {
@@ -37,27 +53,35 @@ class LoginActivity : AbstractActivity<LoginView, LoginPresenter>(), LoginView {
         @SuppressLint("InflateParams")
         val webView: WebView = layoutInflater.inflate(R.layout.view_webview_login, null) as WebView
         webView.loadUrl(
-            "https://www.themoviedb.org/auth/access?request_token=${requestTokenResponse.requestToken}"
+            "https://www.themoviedb.org/authenticate/${requestTokenResponse.requestToken}?redirect_to=http://$LOGIN_SUCCESS"
         )
+        webView.settings.domStorageEnabled = true
+        webView.settings.allowContentAccess = true
+        webView.settings.allowFileAccess = true
+        webView.settings.allowFileAccessFromFileURLs = true
+        webView.settings.allowUniversalAccessFromFileURLs = true
+        webView.settings.javaScriptEnabled = true
+        webView.settings.setSupportZoom(true)
+        webView.settings.domStorageEnabled = true
+        webView.settings.databaseEnabled = true
+        webView.settings.minimumFontSize = 1
+        webView.settings.minimumLogicalFontSize = 1
+        webView.isClickable = true
+        webView.webChromeClient = WebChromeClient()
 
         webView.webViewClient = object : WebViewClient() {
-
-            override fun shouldOverrideUrlLoading(
-                view: WebView,
-                url: String?
-            ): Boolean {
-                //if the login is successful it wll contain the [LOGIN_SUCCESS] value
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
                 Timber.d(url)
-                if (url != null && url.contains(LOGIN_SUCCESS)) {
+                if (url != null && url.contains("approved=true")) {
                     alert.dismiss()
                     presenter.loginSuccess(requestTokenResponse)
-                } else {
-                    view.loadUrl(url)
+                } else if (url != null && url.contains("denied=true")) {
+                    alert.dismiss()
+                    presenter.loginDenied()
                 }
-                return true
             }
         }
-
         alert.setContentView(webView)
         alert.setCancelable(true)
         alert.show()

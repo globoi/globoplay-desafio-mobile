@@ -19,4 +19,6 @@ interface LoginPresenter : Presenter<LoginView> {
     fun loginAttemptHasResponse(response: Any)
 
     fun loginSuccess(requestTokenResponse: RequestTokenResponse)
+
+    fun loginDenied()
 }

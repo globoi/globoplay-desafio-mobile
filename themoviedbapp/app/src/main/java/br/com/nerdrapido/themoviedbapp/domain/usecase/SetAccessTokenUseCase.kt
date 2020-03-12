@@ -1,6 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.domain.usecase
 
-import br.com.nerdrapido.themoviedbapp.data.model.login.AccessTokenResponse
+import br.com.nerdrapido.themoviedbapp.data.model.login.CreateSessionResponse
 import br.com.nerdrapido.themoviedbapp.data.repository.session.SessionRepository
 
 /**
@@ -8,9 +8,8 @@ import br.com.nerdrapido.themoviedbapp.data.repository.session.SessionRepository
  */
 class SetAccessTokenUseCase(private val sessionRepository: SessionRepository) {
 
-    fun execute(accessTokenResponse: AccessTokenResponse) {
-        sessionRepository.setAccessToken(accessTokenResponse.accessToken)
-        sessionRepository.setUserId(accessTokenResponse.accountId)
+    fun execute(createSessionResponse: CreateSessionResponse) {
+        sessionRepository.setSessionID(createSessionResponse.sessionId)
     }
 
 }

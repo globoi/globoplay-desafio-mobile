@@ -3,4 +3,10 @@
     <!-- Strings related to login -->
     <string name="web_view_login_title">Faça Login</string>
     <string name="login_action_sign_in">Fazer Login no Movie DB</string>
+    <string name="home_button">Início</string>
+    <string name="my_list_button">Minha Lista</string>
+    <string name="logout_button">Sair</string>
+    <string name="home_title">Home</string>
+    <string name="login_title">Login</string>
+    <string name="splash_title">Carregando...</string>
 </resources>

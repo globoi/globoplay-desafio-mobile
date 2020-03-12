@@ -1,9 +1,10 @@
 package br.com.nerdrapido.themoviedbapp.ui.login
 
-import br.com.nerdrapido.themoviedbapp.data.model.login.AccessTokenRequest
+import br.com.nerdrapido.themoviedbapp.data.model.login.CreateSessionRequest
+import br.com.nerdrapido.themoviedbapp.data.model.login.CreateSessionResponse
 import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenRequest
 import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenResponse
-import br.com.nerdrapido.themoviedbapp.domain.usecase.AccessTokenUseCase
+import br.com.nerdrapido.themoviedbapp.domain.usecase.CreateSessionuseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.GetLogInStateUseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.RequestLoginUseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.SetAccessTokenUseCase
@@ -17,7 +18,7 @@ import kotlinx.coroutines.runBlocking
  */
 class LoginPresenterImpl(
     private val requestLoginUseCase: RequestLoginUseCase,
-    private val accessLoginUseCase: AccessTokenUseCase,
+    private val createSessionuseCase: CreateSessionuseCase,
     private val setAccessTokenUseCase: SetAccessTokenUseCase,
     getLogInStateUseCase: GetLogInStateUseCase
 ) : AbstractPresenterImpl<LoginView>(
@@ -40,9 +41,10 @@ class LoginPresenterImpl(
         runBlocking {
             launch(coroutineContext) {
                 val requestLoginResponse = requestLoginUseCase
-                    .execute(RequestTokenRequest("url://$LOGIN_SUCCESS"))
+                    .execute(RequestTokenRequest())
                 view.dismissLoading()
                 view.showMdbDialog(requestLoginResponse)
+                //"url://$LOGIN_SUCCESS"
             }
         }
     }
@@ -55,7 +57,7 @@ class LoginPresenterImpl(
         view.showLoading()
         runBlocking {
             launch(coroutineContext) {
-                val accessTokenResponse = accessLoginUseCase.execute(AccessTokenRequest(
+                val accessTokenResponse = createSessionuseCase.execute(CreateSessionRequest(
                     requestTokenResponse.requestToken
                 ))
                 setAccessTokenUseCase.execute(accessTokenResponse)
@@ -63,5 +65,9 @@ class LoginPresenterImpl(
                 view.goHome()
             }
         }
+    }
+
+    override fun loginDenied() {
+        setAccessTokenUseCase.execute(CreateSessionResponse(null, null))
     }
 }

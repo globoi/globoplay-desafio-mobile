@@ -6,8 +6,8 @@ import retrofit2.http.Field
 /**
  * Created By FELIPE GUSBERTI @ 04/03/2020
  */
-data class AccessTokenRequest(
-    @Field("request_token")
-    @SerializedName("request_token")
-    val requestToken: String
+class DeleteAccessTokenResponse(
+    @Field("success")
+    @SerializedName("success")
+    val success: Boolean
 )
