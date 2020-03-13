@@ -2,14 +2,15 @@ package br.com.nerdrapido.themoviedbapp.ui.home
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.data.model.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
-import br.com.nerdrapido.themoviedbapp.ui.home.adapter.DiscoverAdapter
+import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
+import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList.OnLoadNextPage
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 
 
@@ -19,30 +20,6 @@ import org.koin.android.ext.android.inject
 class HomeActivity : AbstractActivity<HomeView, HomePresenter>(), HomeView,
     BottomNavigationView.OnNavigationItemSelectedListener {
 
-
-
-    private val discoverItemList = mutableListOf<MovieListResultObject>(
-        MovieListResultObject(
-        "",
-        false,
-        "",
-        "",
-        emptyList(),
-        1,
-        "",
-        "",
-        "Carregando",
-        "",
-        null,
-            null,
-            null,
-            null
-    )
-    )
-
-    private val discoverAdapter = DiscoverAdapter(discoverItemList, this)
-
-    private lateinit var discoverRecyclerView: RecyclerView
 
     override val presenter: HomePresenter by inject()
 
@@ -57,11 +34,24 @@ class HomeActivity : AbstractActivity<HomeView, HomePresenter>(), HomeView,
 
         (navigationView as BottomNavigationView).setOnNavigationItemSelectedListener(this)
 
-        val layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        discoverRecyclerView = discoverRv
-        discoverRecyclerView.layoutManager = layoutManager
-        discoverRecyclerView.adapter = discoverAdapter
+        //Does the lists setup
+        setupList(
+            getString(R.string.em_alta),
+            homeListA
+        ) { page -> presenter.loadDiscoverPage(page) }
+        setupList(
+            getString(R.string.filmes_de, getString(R.string.acao)),
+            homeListB
+        ) { page -> presenter.loadActionPage(page) }
+        setupList(
+            getString(R.string.filmes_de, getString(R.string.comedia)),
+            homeListC
+        ) { page -> presenter.loadComedyPage(page) }
+        setupList(
+            getString(R.string.filmes_de, getString(R.string.ficcao_cientifica)),
+            homeListD
+        ) { page -> presenter.loadScienceFictionPage(page) }
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -71,9 +61,20 @@ class HomeActivity : AbstractActivity<HomeView, HomePresenter>(), HomeView,
         return true
     }
 
-    override fun discoverPageLoaded(movieList: List<MovieListResultObject>) {
-        discoverItemList.clear()
-        discoverItemList.addAll(movieList)
-        discoverAdapter.notifyDataSetChanged()
+    private fun setupList(
+        title: String? = null,
+        view: HorizontalMovieList,
+        loadPage: suspend (page: Int) -> List<MovieListResultObject>
+    ) {
+        view.titleText = title
+        view.setOnPageChangeListener(object : OnLoadNextPage {
+            override fun onLoadNextPage(page: Int) {
+                runBlocking {
+                    async(coroutineContext) {
+                        view.addItemList(loadPage(page))
+                    }
+                }
+            }
+        })
     }
 }

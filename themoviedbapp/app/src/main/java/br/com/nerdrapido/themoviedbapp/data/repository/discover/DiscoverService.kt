@@ -13,6 +13,7 @@ interface DiscoverService {
     suspend fun discoverMovies(
         @Query("sort_by") sortBy: String?,
         @Query("page") page: String?,
+        @Query("with_genres") withGenres: String?,
         @Query("language") language: String?,
         @Query("region") region: String?
     ): DiscoverResponse

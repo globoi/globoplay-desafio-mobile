@@ -16,6 +16,7 @@ class DiscoverRepositoryImpl(retrofit: Retrofit) : AbstractMovieDbApiRepos(retro
        return authService.discoverMovies(
            discoverRequest.sortBy,
            discoverRequest.page.toString(),
+           discoverRequest.withGenres,
            discoverRequest.language,
            discoverRequest.region
        )

@@ -9,4 +9,5 @@ import br.com.nerdrapido.themoviedbapp.data.model.discover.DiscoverResponse
 interface DiscoverRepository {
 
     suspend fun loadDiscover(discoverRequest: DiscoverRequest): DiscoverResponse
+
 }

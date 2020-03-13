@@ -7,6 +7,7 @@ import android.os.PersistableBundle
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.di.KoinManager
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
+import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
 import br.com.nerdrapido.themoviedbapp.ui.home.HomeActivity
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginActivity
 import org.koin.android.ext.android.inject
@@ -33,7 +34,9 @@ class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPrese
         val handler = Handler()
         handler.postDelayed(Runnable {
             presenter.endOfSplashScreen()
-        }, 1000)
+        }, 1)
+
+        val view = HorizontalMovieList(context = this)
     }
 
     override fun goHome() {

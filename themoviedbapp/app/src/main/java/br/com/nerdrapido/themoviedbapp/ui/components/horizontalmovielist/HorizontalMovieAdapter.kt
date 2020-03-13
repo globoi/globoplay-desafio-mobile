@@ -1,4 +1,4 @@
-package br.com.nerdrapido.themoviedbapp.ui.home.adapter
+package br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.data.model.MovieListResultObject
-import br.com.nerdrapido.themoviedbapp.domain.glide.GlideApp.with
-import br.com.nerdrapido.themoviedbapp.domain.glide.MyGlide
 import com.bumptech.glide.Glide
 
 import com.bumptech.glide.request.RequestOptions
@@ -17,13 +15,13 @@ import com.bumptech.glide.request.RequestOptions
 /**
  * Created By FELIPE GUSBERTI @ 12/03/2020
  */
-class DiscoverAdapter(
+class HorizontalMovieAdapter(
     private val data: MutableList<MovieListResultObject>,
     private val context: Context
-) : RecyclerView.Adapter<DiscoverViewHolder>() {
+) : RecyclerView.Adapter<HorizontalMovieViewHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiscoverViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorizontalMovieViewHolder {
         context
         val itemView: View = LayoutInflater
             .from(context)
@@ -32,18 +30,18 @@ class DiscoverAdapter(
                 parent,
                 false
             )
-        return DiscoverViewHolder(itemView)
+        return HorizontalMovieViewHolder(
+            itemView
+        )
     }
 
     override fun getItemCount(): Int {
         return data.count()
     }
 
-    override fun onBindViewHolder(holder: DiscoverViewHolder, position: Int) {
-        holder.textView.text = data[position].title
-
+    override fun onBindViewHolder(holder: HorizontalMovieViewHolder, position: Int) {
         var requestOptions = RequestOptions()
-        requestOptions = requestOptions.placeholder(R.drawable.ic_home_black_24dp)
+        requestOptions = requestOptions.placeholder(R.drawable.poster_progress)
 
         Glide.with(context).load("https://image.tmdb.org/t/p/w500" + data[position].posterPath)
             .apply(requestOptions).into(holder.poster)

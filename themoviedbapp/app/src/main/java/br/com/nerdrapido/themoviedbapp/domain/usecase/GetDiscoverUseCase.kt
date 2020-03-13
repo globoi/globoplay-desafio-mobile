@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.domain.usecase
 
+import br.com.nerdrapido.themoviedbapp.data.model.Genres
 import br.com.nerdrapido.themoviedbapp.data.model.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.data.model.discover.DiscoverRequest
 import br.com.nerdrapido.themoviedbapp.data.repository.discover.DiscoverRepository
@@ -9,8 +10,13 @@ import br.com.nerdrapido.themoviedbapp.data.repository.discover.DiscoverReposito
  */
 class GetDiscoverUseCase(private val discoverRepository: DiscoverRepository) {
 
-    suspend fun execute(discoverRequest: DiscoverRequest): List<MovieListResultObject> {
-        discoverRequest.sortBy = "popularity.desc"
+    suspend fun getDiscover(page: Int, genre: Genres? = null): List<MovieListResultObject> {
+        val discoverRequest = DiscoverRequest(
+            "popularity.desc",
+            page,
+            genre?.id?.toString() ?: ""
+
+        )
         return discoverRepository.loadDiscover(discoverRequest).results!!
 
     }

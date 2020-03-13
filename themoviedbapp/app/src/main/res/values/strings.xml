@@ -9,4 +9,9 @@
     <string name="home_title">Home</string>
     <string name="login_title">Login</string>
     <string name="splash_title">Carregando...</string>
+    <string name="em_alta">Em alta</string>
+    <string name="acao">Ação</string>
+    <string name="comedia">Comédia</string>
+    <string name="ficcao_cientifica">Ficção cientifica</string>
+    <string name="filmes_de">Filmes de %s</string>
 </resources>

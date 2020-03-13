@@ -1,4 +1,4 @@
-package br.com.nerdrapido.themoviedbapp.ui.home.adapter
+package br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist
 
 import android.view.View
 import android.widget.ImageView
@@ -10,11 +10,7 @@ import br.com.nerdrapido.themoviedbapp.R
 /**
  * Created By FELIPE GUSBERTI @ 12/03/2020
  */
-class DiscoverViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    val textView = itemView.findViewById<View>(R.id.movieTitle) as TextView
+class HorizontalMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     val poster = itemView.findViewById<View>(R.id.posterIv) as ImageView
-
-
 }

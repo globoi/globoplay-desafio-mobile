@@ -1,11 +1,12 @@
 package br.com.nerdrapido.themoviedbapp.ui.home
 
-import br.com.nerdrapido.themoviedbapp.data.model.discover.DiscoverRequest
+import br.com.nerdrapido.themoviedbapp.data.model.Genres
+import br.com.nerdrapido.themoviedbapp.data.model.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.domain.usecase.GetDiscoverUseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.GetLogInStateUseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.LogoutUseCase
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractPresenterImpl
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
 /**
@@ -23,7 +24,7 @@ class HomePresenterImpl(
     override fun logoutWasCalled() {
         view.showLoading()
         runBlocking {
-            launch(coroutineContext) {
+            async(coroutineContext) {
                 logoutUseCase.execute()
                 view.dismissLoading()
                 needToGoBackToLoginCheck()
@@ -31,18 +32,20 @@ class HomePresenterImpl(
         }
     }
 
-    override fun viewIsAboutToBeShown() {
-        super.viewIsAboutToBeShown()
-        runBlocking {
-            launch(coroutineContext) {
-                val movieList = getDiscoverUseCase.execute(DiscoverRequest(
-                    null, 1
-                ))
-                view.discoverPageLoaded(movieList)
-            }
-        }
-
+    override suspend fun loadDiscoverPage(page: Int): List<MovieListResultObject> {
+        return getDiscoverUseCase.getDiscover(page)
     }
 
+    override suspend fun loadActionPage(page: Int): List<MovieListResultObject> {
+        return getDiscoverUseCase.getDiscover(page, Genres.ACTION)
+    }
+
+    override suspend fun loadComedyPage(page: Int): List<MovieListResultObject> {
+        return getDiscoverUseCase.getDiscover(page, Genres.COMEDY)
+    }
+
+    override suspend fun loadScienceFictionPage(page: Int): List<MovieListResultObject> {
+        return getDiscoverUseCase.getDiscover(page, Genres.SCIENCE_FICTION)
+    }
 }
 

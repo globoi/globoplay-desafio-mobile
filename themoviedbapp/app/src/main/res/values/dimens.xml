@@ -2,4 +2,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--    is dp on purpose so the title is no scaled with user font config-->
+    <dimen name="horizontal_movie_list_title_text_size">20dp</dimen>
+
 </resources>
