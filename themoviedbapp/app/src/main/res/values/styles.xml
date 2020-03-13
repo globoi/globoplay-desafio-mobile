@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="background">@color/colorPrimary</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -12,8 +12,8 @@
     </style>
 
     <style name="FullScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:background">@color/colorBackground</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/colorWhite</item>
@@ -21,7 +21,7 @@
     </style>
 
     <style name="MyActionBar" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="background">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
