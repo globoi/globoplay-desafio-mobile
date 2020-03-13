@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="20dp">
+            android:paddingBottom="100dp">
 
             <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
                 android:id="@+id/homeListA"
