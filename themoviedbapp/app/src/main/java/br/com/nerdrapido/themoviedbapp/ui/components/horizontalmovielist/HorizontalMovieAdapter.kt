@@ -1,15 +1,19 @@
 package br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import br.com.nerdrapido.themoviedbapp.R
-import br.com.nerdrapido.themoviedbapp.data.model.MovieListResultObject
+import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
+import br.com.nerdrapido.themoviedbapp.ui.moviedetail.MovieDetailActivity
 import com.bumptech.glide.Glide
 
 import com.bumptech.glide.request.RequestOptions
+import com.google.gson.Gson
 
 
 /**
@@ -45,5 +49,14 @@ class HorizontalMovieAdapter(
 
         Glide.with(context).load("https://image.tmdb.org/t/p/w500" + data[position].posterPath)
             .apply(requestOptions).into(holder.poster)
+
+        holder.itemView.setOnClickListener {
+            val newIntent = Intent(context, MovieDetailActivity::class.java)
+            newIntent.putExtra(
+                MovieDetailActivity.MOVIE_OBJECT_RESULT,
+                Gson().toJson(data[position])
+            )
+            startActivity(context, newIntent, null)
+        }
     }
 }

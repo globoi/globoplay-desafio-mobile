@@ -10,13 +10,13 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.nerdrapido.themoviedbapp.R
-import br.com.nerdrapido.themoviedbapp.data.model.MovieListResultObject
+import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 
 
 /**
  * Created By FELIPE GUSBERTI @ 12/03/2020
  */
-class HorizontalMovieList @JvmOverloads constructor(
+class HorizontalMovieListView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -62,17 +62,17 @@ class HorizontalMovieList @JvmOverloads constructor(
 
         val a = context.obtainStyledAttributes(
             attrs,
-            R.styleable.HorizontalMovieList, 0, 0
+            R.styleable.HorizontalMovieListView, 0, 0
         )
-        titleText = a.getString(R.styleable.HorizontalMovieList_titleText)
-        lastPage = a.getInt(R.styleable.HorizontalMovieList_lastPage, 5)
-        pageSize = a.getInt(R.styleable.HorizontalMovieList_pageSize, -1)
+        titleText = a.getString(R.styleable.HorizontalMovieListView_titleText)
+        lastPage = a.getInt(R.styleable.HorizontalMovieListView_lastPage, 5)
+        pageSize = a.getInt(R.styleable.HorizontalMovieListView_pageSize, -1)
         // If pageSize is not defined the view wont load properly unless lastPage is set to 1
         if (pageSize == -1) {
             lastPage = 1
         }
 
-        val view = inflate(context, R.layout.component_horizontal_movie_list, this)
+        inflate(context, R.layout.component_horizontal_movie_list, this)
         val set = ConstraintSet()
         set.clone(this)
 

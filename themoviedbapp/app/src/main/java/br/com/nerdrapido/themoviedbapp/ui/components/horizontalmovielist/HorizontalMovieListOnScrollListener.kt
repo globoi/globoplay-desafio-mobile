@@ -2,7 +2,6 @@ package br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.com.nerdrapido.themoviedbapp.data.model.MovieListResultObject
 
 /**
  * Created By FELIPE GUSBERTI @ 12/03/2020

@@ -15,6 +15,7 @@ class UseCaseModule {
             single { SetAccessTokenUseCase(get()) }
             single { LogoutUseCase(get(), get()) }
             single { GetDiscoverUseCase(get()) }
+            single { GetMovieUseCase(get()) }
         }
     }
 }

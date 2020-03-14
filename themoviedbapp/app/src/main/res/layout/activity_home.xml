@@ -20,41 +20,41 @@
             android:orientation="vertical"
             android:paddingBottom="100dp">
 
-            <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
+            <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
                 android:id="@+id/homeListA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:titleText="Test"
                 app:lastPage="@integer/home_list_last_page"
                 app:pageSize="@integer/home_list_page_count">
-            </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList>
+            </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView>
 
-            <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
+            <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
                 android:id="@+id/homeListB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:titleText="Test"
                 app:lastPage="@integer/home_list_last_page"
                 app:pageSize="@integer/home_list_page_count">
-            </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList>
+            </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView>
 
-            <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
+            <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
                 android:id="@+id/homeListC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:titleText="Test"
                 app:lastPage="@integer/home_list_last_page"
                 app:pageSize="@integer/home_list_page_count">
-            </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList>
+            </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView>
 
-            <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
+            <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
                 android:id="@+id/homeListD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:titleText="Test"
                 app:lastPage="@integer/home_list_last_page"
                 app:pageSize="@integer/home_list_page_count">
-            </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList>
+            </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView>
 
         </LinearLayout>
 

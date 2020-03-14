@@ -1,6 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.ui.home
 
-import br.com.nerdrapido.themoviedbapp.data.model.MovieListResultObject
+import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.Presenter
 
 /**

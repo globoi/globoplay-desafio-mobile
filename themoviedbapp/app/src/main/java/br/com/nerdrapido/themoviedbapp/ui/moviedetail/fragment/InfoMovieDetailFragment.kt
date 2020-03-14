@@ -1,0 +1,55 @@
+package br.com.nerdrapido.themoviedbapp.ui.moviedetail.fragment
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import br.com.nerdrapido.themoviedbapp.R
+import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieResponse
+import br.com.nerdrapido.themoviedbapp.ui.components.infoitem.ItemInfoView
+import kotlinx.android.synthetic.main.fragment_movie_detail.*
+
+/**
+ * Created By FELIPE GUSBERTI @ 13/03/2020
+ */
+class InfoMovieDetailFragment : MovieDetailFragment() {
+
+    var movieResponse: MovieResponse? = null
+        set(value) {
+            setInfo(value)
+            field = value
+        }
+
+    override fun getTitle(): String {
+        return context?.getString(R.string.movie_detail_detail_fragment_title) ?: "aaaa"
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val newVIew = inflater.inflate(R.layout.fragment_movie_detail, null)
+        return newVIew
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setInfo(movieResponse)
+    }
+
+    private fun setInfo(movieResponse: MovieResponse?) {
+        addInfoView("T'itulo original", movieResponse?.originalTitle)
+        addInfoView("Data de lan", movieResponse?.releaseDate)
+        addInfoView("Sinopse", movieResponse?.overview)
+    }
+
+    private fun addInfoView(title: String?, info: String?) {
+        context?.let {
+            val infoView = ItemInfoView(it)
+            infoView.title = title
+            infoView.info = info
+            detailInfoContainer.addView(infoView)
+        }
+    }
+}

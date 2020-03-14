@@ -13,4 +13,5 @@ import br.com.nerdrapido.themoviedbapp.R
 class HorizontalMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     val poster = itemView.findViewById<View>(R.id.posterIv) as ImageView
+
 }

@@ -1,7 +1,7 @@
 package br.com.nerdrapido.themoviedbapp.domain.usecase
 
 import br.com.nerdrapido.themoviedbapp.data.model.Genres
-import br.com.nerdrapido.themoviedbapp.data.model.MovieListResultObject
+import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.data.model.discover.DiscoverRequest
 import br.com.nerdrapido.themoviedbapp.data.repository.discover.DiscoverRepository
 

@@ -1,4 +1,4 @@
-package br.com.nerdrapido.themoviedbapp.data.model
+package br.com.nerdrapido.themoviedbapp.data.model.common
 
 import com.google.gson.annotations.SerializedName
 

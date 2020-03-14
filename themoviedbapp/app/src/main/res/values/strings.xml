@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">The Movie DB APP</string>
-    <!-- Strings related to login -->
     <string name="web_view_login_title">Faça Login</string>
     <string name="login_action_sign_in">Fazer Login no Movie DB</string>
     <string name="home_button">Início</string>
@@ -8,10 +7,13 @@
     <string name="logout_button">Sair</string>
     <string name="home_title">Home</string>
     <string name="login_title">Login</string>
-    <string name="splash_title">Carregando...</string>
+    <string name="splash_title">Carregando…</string>
     <string name="em_alta">Em alta</string>
     <string name="acao">Ação</string>
     <string name="comedia">Comédia</string>
     <string name="ficcao_cientifica">Ficção cientifica</string>
     <string name="filmes_de">Filmes de %s</string>
+    <string name="movie_detail_related_fragment_title">Assista também</string>
+    <string name="movie_detail_detail_fragment_title">Detalhes</string>
+    <string name="nao_informado">Não informado</string>
 </resources>

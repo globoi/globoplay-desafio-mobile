@@ -3,10 +3,10 @@ package br.com.nerdrapido.themoviedbapp.ui.home
 import android.os.Bundle
 import android.view.MenuItem
 import br.com.nerdrapido.themoviedbapp.R
-import br.com.nerdrapido.themoviedbapp.data.model.MovieListResultObject
+import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
-import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
-import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList.OnLoadNextPage
+import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
+import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView.OnLoadNextPage
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.async
@@ -63,7 +63,7 @@ class HomeActivity : AbstractActivity<HomeView, HomePresenter>(), HomeView,
 
     private fun setupList(
         title: String? = null,
-        view: HorizontalMovieList,
+        view: HorizontalMovieListView,
         loadPage: suspend (page: Int) -> List<MovieListResultObject>
     ) {
         view.titleText = title

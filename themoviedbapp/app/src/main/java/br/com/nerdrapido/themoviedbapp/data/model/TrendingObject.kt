@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.data.model
 
+import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import com.google.gson.annotations.SerializedName
 
 /**

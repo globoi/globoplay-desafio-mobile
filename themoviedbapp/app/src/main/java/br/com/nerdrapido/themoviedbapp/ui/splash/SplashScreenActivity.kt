@@ -1,18 +1,13 @@
 package br.com.nerdrapido.themoviedbapp.ui.splash
 
 import android.content.Intent
-import android.os.Bundle
 import android.os.Handler
-import android.os.PersistableBundle
 import br.com.nerdrapido.themoviedbapp.R
-import br.com.nerdrapido.themoviedbapp.di.KoinManager
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
-import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
+import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
 import br.com.nerdrapido.themoviedbapp.ui.home.HomeActivity
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginActivity
 import org.koin.android.ext.android.inject
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
 
 
 /**
@@ -36,7 +31,10 @@ class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPrese
             presenter.endOfSplashScreen()
         }, 1)
 
-        val view = HorizontalMovieList(context = this)
+        val view =
+            HorizontalMovieListView(
+                context = this
+            )
     }
 
     override fun goHome() {
