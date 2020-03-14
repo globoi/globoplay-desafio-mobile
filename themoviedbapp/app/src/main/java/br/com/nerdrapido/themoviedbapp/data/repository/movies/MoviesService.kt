@@ -1,6 +1,7 @@
 package br.com.nerdrapido.themoviedbapp.data.repository.movies
 
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieResponse
+import br.com.nerdrapido.themoviedbapp.data.model.recommendation.RecommendationResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -16,7 +17,17 @@ interface MoviesService {
     @GET("movie/{movie_id}")
     suspend fun moviesDetail(
         @Path("movie_id") movieId: String?,
-        @Query("language") language: String
+        @Query("language") language: String?
     ): MovieResponse
+
+    /**
+     * https://developers.themoviedb.org/3/movies/get-movie-recommendations
+     */
+    @GET("movie/{movie_id}/recommendations")
+    suspend fun moviesRecommendation(
+        @Path("movie_id") movieId: String?,
+        @Query("language") language: String?,
+        @Query("page") page: Int?
+    ): RecommendationResponse
 
 }

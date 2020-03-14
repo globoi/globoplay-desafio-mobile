@@ -30,19 +30,6 @@ class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPrese
         handler.postDelayed(Runnable {
             presenter.endOfSplashScreen()
         }, 1)
-
-        val view =
-            HorizontalMovieListView(
-                context = this
-            )
-    }
-
-    override fun goHome() {
-        val newIntent = Intent(this, HomeActivity::class.java)
-        newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(newIntent)
-        this.finish()
     }
 
     override fun goLogin() {

@@ -7,6 +7,6 @@ import androidx.fragment.app.Fragment
  */
 abstract class MovieDetailFragment : Fragment() {
 
-    abstract fun getTitle(): String
+    abstract var title: String
 
 }

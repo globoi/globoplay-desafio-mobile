@@ -33,19 +33,31 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabPager"
+            style="@style/MovieDetailPageTab"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:tabTextColor="@color/colorWhite"
+            app:tabIndicatorColor="@android:color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/detailVp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@color/colorPrimaryDark"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabPager"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <androidx.viewpager.widget.PagerTabStrip
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+<!--            <androidx.viewpager.widget.PagerTabStrip-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                style="@style/MovieDetailPageStrip" />-->
 
         </androidx.viewpager.widget.ViewPager>
 

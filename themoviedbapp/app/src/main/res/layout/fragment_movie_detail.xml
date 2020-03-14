@@ -2,18 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorAccent"
+    android:background="@color/colorPrimary"
+    android:padding="@dimen/activity_horizontal_margin"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/detailInfoTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ficha técnica"
+        android:text="@string/ficha_tecnica"
+        android:textSize="@dimen/horizontal_movie_list_title_text_size"
+        android:paddingVertical="@dimen/padding_main_title"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <LinearLayout
         android:id="@+id/detailInfoContainer"

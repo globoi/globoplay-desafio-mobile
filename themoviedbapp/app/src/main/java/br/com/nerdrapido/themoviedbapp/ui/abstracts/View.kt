@@ -10,6 +10,8 @@ interface View {
      */
     fun goBackToLogin()
 
+    fun goHome()
+
     fun showLoading()
 
     fun dismissLoading()

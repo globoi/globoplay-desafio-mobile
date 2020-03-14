@@ -1,17 +1,12 @@
 package br.com.nerdrapido.themoviedbapp.ui.home
 
 import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
-import br.com.nerdrapido.themoviedbapp.ui.abstracts.Presenter
+import br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation.NavigationPresenter
 
 /**
  * Created By FELIPE GUSBERTI @ 10/03/2020
  */
-interface HomePresenter : Presenter<HomeView> {
-
-    /**
-     * This function is called when the user decides to logout.
-     */
-    fun logoutWasCalled()
+interface HomePresenter : NavigationPresenter<HomeView> {
 
     suspend fun loadDiscoverPage(page: Int): List<MovieListResultObject>
 

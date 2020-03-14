@@ -25,4 +25,11 @@
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
+    <style name="MovieDetailPageTab" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/horizontal_movie_list_title_text_size</item>
+    </style>
+
+
 </resources>

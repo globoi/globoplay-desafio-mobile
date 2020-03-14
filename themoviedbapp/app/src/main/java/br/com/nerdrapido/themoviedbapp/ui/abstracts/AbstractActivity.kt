@@ -9,6 +9,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import br.com.nerdrapido.themoviedbapp.R
+import br.com.nerdrapido.themoviedbapp.ui.home.HomeActivity
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -34,6 +35,13 @@ abstract class AbstractActivity<V: View, P: Presenter<V>>: AppCompatActivity(), 
         newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(newIntent)
+    }
+
+    override fun goHome() {
+        val newIntent = Intent(this, HomeActivity::class.java)
+        newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(newIntent)
+        this.finish()
     }
 
     override fun showLoading() {

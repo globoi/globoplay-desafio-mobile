@@ -1,13 +1,15 @@
 package br.com.nerdrapido.themoviedbapp.ui.moviedetail
 
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieResponse
-import br.com.nerdrapido.themoviedbapp.ui.abstracts.View
+import br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation.NavigationView
 
 /**
  * Created By FELIPE GUSBERTI @ 13/03/2020
  */
-interface MovieDetailView: View {
+interface MovieDetailView : NavigationView {
 
-    fun movieLoaded(movieResponse: MovieResponse)
+    fun movieInfoLoaded(movieResponse: MovieResponse)
+
+//    fun recommendedMovieLoaded(recommendationResponse: RecommendationResponse): List<MovieListResultObject>
 
 }

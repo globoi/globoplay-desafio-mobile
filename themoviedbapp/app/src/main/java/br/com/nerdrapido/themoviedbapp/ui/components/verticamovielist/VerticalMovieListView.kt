@@ -1,11 +1,11 @@
-package br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist
+package br.com.nerdrapido.themoviedbapp.ui.components.verticamovielist
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListView
 
@@ -13,21 +13,21 @@ import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListView
 /**
  * Created By FELIPE GUSBERTI @ 12/03/2020
  */
-class HorizontalMovieListView @JvmOverloads constructor(
+class VerticalMovieListView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : MovieListView<HorizontalMovieViewHolder>(context, attrs, defStyleAttr) {
+) : MovieListView<VerticalMovieViewHolder>(context, attrs, defStyleAttr) {
 
-    override val orientation = HORIZONTAL
+    override val orientation = VERTICAL
 
-    override val adapter = HorizontalMovieAdapter(
+    override val adapter = VerticalMovieAdapter(
         itemList,
         context
     )
 
     override fun inflateLayout() {
-        inflate(context, R.layout.view_movie_list_horizontal, this)
+        inflate(context, R.layout.view_movie_list_vertical, this)
         val set = ConstraintSet()
         set.clone(this)
     }
@@ -49,7 +49,7 @@ class HorizontalMovieListView @JvmOverloads constructor(
         inflateLayout()
 
         layoutManager =
-            GridLayoutManager(context, 1, HORIZONTAL, false)
+            GridLayoutManager(context, 3, VERTICAL, false)
 
         //defino o titulo
         movieListTitleTextView = findViewById(R.id.movieListTitleTv)
@@ -60,5 +60,4 @@ class HorizontalMovieListView @JvmOverloads constructor(
         movieListRecyclerView.layoutManager = layoutManager
         movieListRecyclerView.adapter = adapter
     }
-
 }

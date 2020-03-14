@@ -22,6 +22,6 @@ class MovieDetailPageAdapter(
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return fragments[position].getTitle()
+        return fragments[position].title
     }
 }

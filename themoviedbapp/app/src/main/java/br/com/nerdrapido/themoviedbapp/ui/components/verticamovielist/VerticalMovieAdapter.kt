@@ -1,4 +1,4 @@
-package br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist
+package br.com.nerdrapido.themoviedbapp.ui.components.verticamovielist
 
 import android.content.Context
 import android.view.View
@@ -10,13 +10,14 @@ import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListAdapter
 /**
  * Created By FELIPE GUSBERTI @ 12/03/2020
  */
-class HorizontalMovieAdapter(
+class VerticalMovieAdapter(
     private val data: MutableList<MovieListResultObject>,
     private val context: Context
-) : MovieListAdapter<HorizontalMovieViewHolder>(data, context) {
+) : MovieListAdapter<VerticalMovieViewHolder>(data, context) {
 
-    override fun getViewHolder(itemView: View): HorizontalMovieViewHolder =
-        HorizontalMovieViewHolder(itemView)
 
-    override fun getViewHolderLayoutId() = R.layout.view_movie_card_horizontal
+    override fun getViewHolder(itemView: View): VerticalMovieViewHolder =
+        VerticalMovieViewHolder(itemView)
+
+    override fun getViewHolderLayoutId() = R.layout.view_movie_card_vertical
 }

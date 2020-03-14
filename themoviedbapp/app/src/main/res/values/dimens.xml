@@ -5,5 +5,6 @@
     <!--    is dp on purpose so the title is no scaled with user font config-->
     <dimen name="horizontal_movie_list_title_text_size">20dp</dimen>
     <dimen name="padding_main_left_right">8dp</dimen>
+    <dimen name="padding_main_title">8dp</dimen>
 
 </resources>

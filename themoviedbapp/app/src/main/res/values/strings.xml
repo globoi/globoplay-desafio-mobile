@@ -16,4 +16,5 @@
     <string name="movie_detail_related_fragment_title">Assista também</string>
     <string name="movie_detail_detail_fragment_title">Detalhes</string>
     <string name="nao_informado">Não informado</string>
+    <string name="ficha_tecnica">Ficha técnica</string>
 </resources>
