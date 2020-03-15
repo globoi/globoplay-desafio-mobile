@@ -7,8 +7,6 @@ import androidx.viewpager.widget.ViewPager
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieResponse
-import br.com.nerdrapido.themoviedbapp.data.model.recommendation.RecommendationResponse
-import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation.NavigationActivity
 import br.com.nerdrapido.themoviedbapp.ui.moviedetail.fragment.InfoMovieDetailFragment
 import br.com.nerdrapido.themoviedbapp.ui.moviedetail.fragment.MovieDetailFragment
@@ -72,7 +70,7 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
         super.onCreate(savedInstanceState)
 
         //Load main image
-        loadImageIntoView(movieBackgroundIv)
+        loadImageIntoView(header)
 
         // get the fragments
         val fragments = getFragments()
@@ -87,6 +85,22 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
         // initialize listeners
         detailVp.addOnPageChangeListener(onPageChangeListener())
         tabPager.addOnTabSelectedListener(onTabSelectedListener(detailVp))
+
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
+        toolbar.setNavigationOnClickListener {
+            goHome()
+        }
+
+        collapsingToolbar.title = movieListResultObject.title ?: ""
+        collapsingToolbar.setExpandedTitleTextAppearance(R.style.MovieDetailPageTabTextStyle)
+        movieOverview.text = getString(
+            R.string.detail_movie_overview,
+            movieListResultObject.title ?: "",
+            movieListResultObject.overview ?: ""
+        )
+        movieTitlePlaceHolder.addOnLayoutChangeListener { _, _, _, _, bottom, _, _, _, _ ->
+            collapsingToolbar.expandedTitleMarginBottom = collapsingToolbar.bottom - bottom
+        }
 
     }
 
@@ -125,7 +139,8 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
             ) {
                 tabPager.setScrollPosition(position, positionOffset, false)
             }
-            override fun onPageSelected(position: Int){}
+
+            override fun onPageSelected(position: Int) {}
         }
     }
 

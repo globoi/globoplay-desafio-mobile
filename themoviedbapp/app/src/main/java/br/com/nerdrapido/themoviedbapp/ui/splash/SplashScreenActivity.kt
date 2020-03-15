@@ -35,7 +35,6 @@ class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPrese
     override fun goLogin() {
         val newIntent = Intent(this, LoginActivity::class.java)
         newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(newIntent)
         this.finish()
     }

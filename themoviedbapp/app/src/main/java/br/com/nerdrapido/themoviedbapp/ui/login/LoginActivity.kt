@@ -86,12 +86,4 @@ class LoginActivity : AbstractActivity<LoginView, LoginPresenter>(), LoginView {
         alert.setCancelable(true)
         alert.show()
     }
-
-    override fun goHome() {
-        val newIntent = Intent(this, HomeActivity::class.java)
-        newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(newIntent)
-        this.finish()
-    }
 }

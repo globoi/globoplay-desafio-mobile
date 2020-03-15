@@ -17,4 +17,7 @@
     <string name="movie_detail_detail_fragment_title">Detalhes</string>
     <string name="nao_informado">Não informado</string>
     <string name="ficha_tecnica">Ficha técnica</string>
+    <string name="trailer">Trailer</string>
+    <string name="minha_lista">Minha Lista</string>
+    <string name="detail_movie_overview">%s: %s</string>
 </resources>
