@@ -1,6 +1,7 @@
 package br.com.nerdrapido.themoviedbapp.data.repository.movies
 
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieResponse
+import br.com.nerdrapido.themoviedbapp.data.model.movieaccountstates.MovieAccountStateResponse
 import br.com.nerdrapido.themoviedbapp.data.model.recommendation.RecommendationResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -29,5 +30,14 @@ interface MoviesService {
         @Query("language") language: String?,
         @Query("page") page: Int?
     ): RecommendationResponse
+
+    /**
+     * https://developers.themoviedb.org/3/movies/get-movie-account-states
+     */
+    @GET("movie/{movie_id}/account_states")
+    suspend fun movieAccountState(
+        @Path("movie_id") movieId: String?,
+        @Query("session_id") language: String?
+    ): MovieAccountStateResponse
 
 }

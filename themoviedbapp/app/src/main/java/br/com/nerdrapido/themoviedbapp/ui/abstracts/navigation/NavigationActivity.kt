@@ -37,11 +37,12 @@ abstract class NavigationActivity<V : NavigationView, P : NavigationPresenter<V>
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.logout -> presenter.logoutWasCalled()
             R.id.home -> goHome()
             R.id.list -> goMyList()
+//            R.id.favorite -> goMyList()
+            R.id.logout -> presenter.logoutWasCalled()
             else -> {
-                Timber.w("Nav Menu Wass called but nooption found")
+                Timber.w("Nav Menu Wass called but no option found")
             }
         }
         return true

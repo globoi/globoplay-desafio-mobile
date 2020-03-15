@@ -7,8 +7,14 @@
         android:title="@string/home_button"/>
     <item
         android:id="@+id/list"
-        android:icon="@drawable/ic_star_white_24dp"
+        android:icon="@drawable/ic_playlist_add_check_white_24dp"
         android:title="@string/my_list_button"/>
+
+    <item
+        android:id="@+id/favorite"
+        android:icon="@drawable/ic_star_stared_24dp"
+        android:title="@string/favoritos"/>
+
     <item
         android:id="@+id/logout"
         android:icon="@drawable/ic_exit_to_app_white_24dp"

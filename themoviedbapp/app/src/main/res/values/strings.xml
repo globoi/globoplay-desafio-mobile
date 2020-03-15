@@ -6,7 +6,8 @@
     <string name="my_list_button">Minha Lista</string>
     <string name="logout_button">Sair</string>
     <string name="home_title">@string/app_name</string>
-    <string name="my_list_title">Meus Filmes Favoritos</string>
+    <string name="my_list_title">Minha Lista</string>
+    <string name="my_favorite_title">Meus Filmes Favoritos</string>
     <string name="login_title">Login</string>
     <string name="splash_title">Carregando…</string>
     <string name="em_alta">Em alta</string>
@@ -21,4 +22,5 @@
     <string name="trailer">Trailer</string>
     <string name="minha_lista">Minha Lista</string>
     <string name="detail_movie_overview">%s: %s</string>
+    <string name="favoritos">Favoritos</string>
 </resources>
