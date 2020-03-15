@@ -1,7 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.ui.abstracts
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.Window
@@ -9,6 +8,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import br.com.nerdrapido.themoviedbapp.R
+import br.com.nerdrapido.themoviedbapp.ui.home.HomeActivity
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 

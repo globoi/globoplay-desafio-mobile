@@ -39,7 +39,7 @@ abstract class MovieListView<T: MovieListViewHolder> @JvmOverloads constructor(
 
     private var onLoadNextPage: OnLoadNextPage? = null
 
-    protected lateinit var layoutManager: LinearLayoutManager
+    protected var layoutManager: LinearLayoutManager
 
     protected var pageSize: Int
 
