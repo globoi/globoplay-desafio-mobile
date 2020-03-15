@@ -1,5 +1,7 @@
 package br.com.nerdrapido.themoviedbapp.di.modules
 
+import br.com.nerdrapido.themoviedbapp.data.repository.account.AccountRepository
+import br.com.nerdrapido.themoviedbapp.data.repository.account.AccountRepositoryImpl
 import br.com.nerdrapido.themoviedbapp.data.repository.discover.DiscoverRepository
 import br.com.nerdrapido.themoviedbapp.data.repository.discover.DiscoverRepositoryImpl
 import br.com.nerdrapido.themoviedbapp.data.repository.login.LoginRepository
@@ -23,6 +25,7 @@ class RepositoryModule {
             single<SessionRepository> { SessionRepositoryImpl(get()) }
             single<DiscoverRepository> { DiscoverRepositoryImpl(get()) }
             single<MoviesRepository> { MoviesRepositoryImpl(get()) }
+            single<AccountRepository> { AccountRepositoryImpl(get()) }
 
         }
     }

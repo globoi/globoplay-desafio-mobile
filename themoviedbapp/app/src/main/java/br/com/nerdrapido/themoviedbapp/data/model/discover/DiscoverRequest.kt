@@ -9,6 +9,6 @@ data class DiscoverRequest(
     val sortBy: String?,
     val page: Int?,
     val withGenres: String = "",
-    val language: String? = "pt-BR",
-    val region: String? = "BR"
+    val language: String?,
+    val region: String?
 )

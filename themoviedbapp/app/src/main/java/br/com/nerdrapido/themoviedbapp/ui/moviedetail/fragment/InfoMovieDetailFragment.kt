@@ -45,7 +45,9 @@ class InfoMovieDetailFragment : MovieDetailFragment() {
         // TODO: wrap calendar in function
         val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val calendar = Calendar.getInstance()
-        calendar.time = format.parse(movieResponse?.releaseDate)
+        movieResponse?.releaseDate?.let {
+            calendar.time = format.parse(it)
+        }
         addInfoView("Data de lançamento", calendar.get(YEAR).toString())
         addInfoView("Sinopse", movieResponse?.overview)
     }

@@ -5,6 +5,7 @@ import br.com.nerdrapido.themoviedbapp.domain.usecase.GetLogInStateUseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.GetMovieUseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.LogoutUseCase
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation.NavigationPresenterImpl
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -26,7 +27,6 @@ class MovieDetailPresenterImpl(
     override fun setMovie(movieListResultObject: MovieListResultObject) {
         this.movieListResultObject = movieListResultObject
         initMovieInfo(movieListResultObject)
-//        initRelatedMovies(movieListResultObject)
     }
 
     override suspend fun loadRelatedMoviePage(page: Int): List<MovieListResultObject> {
@@ -37,26 +37,11 @@ class MovieDetailPresenterImpl(
     }
 
     private fun initMovieInfo(movieListResultObject: MovieListResultObject) {
-        runBlocking {
-            launch(coroutineContext) {
-                movieListResultObject.id?.let {
-                    val movieResponse = getMovieUseCase.getMovieById(it)
-                    view.movieInfoLoaded(movieResponse)
-                }
+        GlobalScope.launch {
+            movieListResultObject.id?.let {
+                val movieResponse = getMovieUseCase.getMovieById(it)
+                view.movieInfoLoaded(movieResponse)
             }
         }
     }
-
-//    private fun initRelatedMovies(movieListResultObject: MovieListResultObject) {
-//        runBlocking {
-//            launch(coroutineContext) {
-//                movieListResultObject.id?.let {
-//                    val movieResponse =
-//                        getMovieUseCase.getMovieRecommendationByMovieId(movieListResultObject.id, 1)
-//                    view.recommendedMovieLoaded(movieResponse)
-//                }
-//            }
-//        }
-//    }
-
 }

@@ -6,6 +6,8 @@ import br.com.nerdrapido.themoviedbapp.ui.login.LoginPresenter
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginPresenterImpl
 import br.com.nerdrapido.themoviedbapp.ui.moviedetail.MovieDetailPresenter
 import br.com.nerdrapido.themoviedbapp.ui.moviedetail.MovieDetailPresenterImpl
+import br.com.nerdrapido.themoviedbapp.ui.mylist.MyListPresenter
+import br.com.nerdrapido.themoviedbapp.ui.mylist.MyListPresenterImpl
 import br.com.nerdrapido.themoviedbapp.ui.splash.SplashScreenPresenter
 import br.com.nerdrapido.themoviedbapp.ui.splash.SplashScreenPresenterImpl
 import org.koin.dsl.module
@@ -20,6 +22,7 @@ class PresenterModule {
             factory<LoginPresenter> { LoginPresenterImpl(get(), get(), get(), get()) }
             factory<HomePresenter> { HomePresenterImpl(get(), get(), get()) }
             factory<MovieDetailPresenter> { MovieDetailPresenterImpl(get(), get(), get()) }
+            factory<MyListPresenter> { MyListPresenterImpl(get(), get(), get()) }
         }
     }
 }

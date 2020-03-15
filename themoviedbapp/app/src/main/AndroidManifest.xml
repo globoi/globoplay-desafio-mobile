@@ -33,6 +33,9 @@
             android:name=".ui.moviedetail.MovieDetailActivity"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/FullScreenTheme"/>
+        <activity
+            android:name=".ui.mylist.MyListActivity"
+            android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>

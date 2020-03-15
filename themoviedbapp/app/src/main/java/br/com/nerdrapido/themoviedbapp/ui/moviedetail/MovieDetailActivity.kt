@@ -49,7 +49,7 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
     }
 
     override fun movieInfoLoaded(movieResponse: MovieResponse) {
-        infoMovieDetailFragment.movieResponse = movieResponse
+        runOnUiThread { infoMovieDetailFragment.movieResponse = movieResponse }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

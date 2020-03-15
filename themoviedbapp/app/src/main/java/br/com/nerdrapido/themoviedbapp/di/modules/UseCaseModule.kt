@@ -9,13 +9,15 @@ import org.koin.dsl.module
 class UseCaseModule {
     companion object {
         fun getUseCaseModule() = module {
+            single { SetSessionUseCase(get(), get()) }
+            single { CreateSessionuseCase(get()) }
+            single { GetLanguageUseCase() }
             single { RequestLoginUseCase(get()) }
             single { GetLogInStateUseCase(get()) }
-            single { CreateSessionuseCase(get()) }
-            single { SetAccessTokenUseCase(get()) }
             single { LogoutUseCase(get(), get()) }
-            single { GetDiscoverUseCase(get()) }
-            single { GetMovieUseCase(get()) }
+            single { GetDiscoverUseCase(get(), get(), get()) }
+            single { GetMovieUseCase(get(), get()) }
+            single { GetFavoriteMoviesUseCase(get(), get(), get()) }
         }
     }
 }

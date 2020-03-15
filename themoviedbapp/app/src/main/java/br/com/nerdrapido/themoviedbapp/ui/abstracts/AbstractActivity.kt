@@ -44,18 +44,20 @@ abstract class AbstractActivity<V: View, P: Presenter<V>>: AppCompatActivity(), 
     }
 
     override fun showLoading() {
-        if (loadingDialog == null) {
-            loadingDialog = MaterialAlertDialogBuilder(this)
-                .setTitle("Title")
-                .setMessage("Message")
-                .setPositiveButton("Ok", null)
-                .create()
+        runOnUiThread {
+            if (loadingDialog == null) {
+                loadingDialog = MaterialAlertDialogBuilder(this)
+                    .setTitle("Title")
+                    .setMessage("Message")
+                    .setPositiveButton("Ok", null)
+                    .create()
+            }
+            loadingDialog?.show()
         }
-        loadingDialog?.show()
     }
 
     override fun dismissLoading() {
-        loadingDialog?.dismiss()
+        runOnUiThread { loadingDialog?.dismiss() }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

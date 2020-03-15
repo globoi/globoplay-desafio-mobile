@@ -37,53 +37,60 @@ class LoginActivity : AbstractActivity<LoginView, LoginPresenter>(), LoginView {
     }
 
     override fun showLoading() {
-        loading.visibility = VISIBLE
-        loginBt.visibility = GONE
+        runOnUiThread {
+            loading.visibility = VISIBLE
+            loginBt.visibility = GONE
+        }
     }
 
     override fun dismissLoading() {
-        loading.visibility = GONE
-        loginBt.visibility = VISIBLE
+        runOnUiThread {
+            loading.visibility = GONE
+            loginBt.visibility = VISIBLE
+        }
     }
 
     override fun showMdbDialog(requestTokenResponse: RequestTokenResponse) {
-        val alert = AppCompatDialog(this)
-        alert.setTitle(resources.getString(R.string.web_view_login_title))
+        runOnUiThread {
+            val alert = AppCompatDialog(this)
+            alert.setTitle(resources.getString(R.string.web_view_login_title))
 
-        @SuppressLint("InflateParams")
-        val webView: WebView = layoutInflater.inflate(R.layout.view_webview_login, null) as WebView
-        webView.loadUrl(
-            "https://www.themoviedb.org/authenticate/${requestTokenResponse.requestToken}?redirect_to=http://$LOGIN_SUCCESS"
-        )
-        webView.settings.domStorageEnabled = true
-        webView.settings.allowContentAccess = true
-        webView.settings.allowFileAccess = true
-        webView.settings.allowFileAccessFromFileURLs = true
-        webView.settings.allowUniversalAccessFromFileURLs = true
-        webView.settings.javaScriptEnabled = true
-        webView.settings.setSupportZoom(true)
-        webView.settings.domStorageEnabled = true
-        webView.settings.databaseEnabled = true
-        webView.settings.minimumFontSize = 1
-        webView.settings.minimumLogicalFontSize = 1
-        webView.isClickable = true
-        webView.webChromeClient = WebChromeClient()
+            @SuppressLint("InflateParams")
+            val webView: WebView = layoutInflater.inflate(R.layout.view_webview_login, null) as WebView
+            webView.loadUrl(
+                "https://www.themoviedb.org/authenticate/${requestTokenResponse.requestToken}?redirect_to=http://$LOGIN_SUCCESS"
+            )
+            webView.settings.domStorageEnabled = true
+            webView.settings.allowContentAccess = true
+            webView.settings.allowFileAccess = true
+            webView.settings.allowFileAccessFromFileURLs = true
+            webView.settings.allowUniversalAccessFromFileURLs = true
+            webView.settings.javaScriptEnabled = true
+            webView.settings.setSupportZoom(true)
+            webView.settings.domStorageEnabled = true
+            webView.settings.databaseEnabled = true
+            webView.settings.minimumFontSize = 1
+            webView.settings.minimumLogicalFontSize = 1
+            webView.isClickable = true
+            webView.webChromeClient = WebChromeClient()
 
-        webView.webViewClient = object : WebViewClient() {
-            override fun onPageFinished(view: WebView?, url: String?) {
-                super.onPageFinished(view, url)
-                Timber.d(url)
-                if (url != null && url.contains("approved=true")) {
-                    alert.dismiss()
-                    presenter.loginSuccess(requestTokenResponse)
-                } else if (url != null && url.contains("denied=true")) {
-                    alert.dismiss()
-                    presenter.loginDenied()
+            webView.webViewClient = object : WebViewClient() {
+                override fun onPageFinished(view: WebView?, url: String?) {
+                    super.onPageFinished(view, url)
+                    Timber.d(url)
+                    if (url != null && url.contains("approved=true")) {
+                        alert.dismiss()
+                        presenter.loginSuccess(requestTokenResponse)
+                    } else if (url != null && url.contains("denied=true")) {
+                        alert.dismiss()
+                        presenter.loginDenied()
+                    }
                 }
             }
+            alert.setContentView(webView)
+            alert.setCancelable(true)
+            alert.show()
         }
-        alert.setContentView(webView)
-        alert.setCancelable(true)
-        alert.show()
+
     }
 }

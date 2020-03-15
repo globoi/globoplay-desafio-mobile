@@ -10,7 +10,9 @@ import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListView
 import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -66,10 +68,9 @@ class HomeActivity : NavigationActivity<HomeView, HomePresenter>(), HomeView,
         view.titleText = title
         view.setOnPageChangeListener(object : MovieListView.OnLoadNextPage {
             override fun onLoadNextPage(page: Int) {
-                runBlocking {
-                    async(coroutineContext) {
-                        view.addItemList(loadPage(page))
-                    }
+                GlobalScope.launch {
+                    val list = loadPage(page)
+                    runOnUiThread { view.addItemList(list) }
                 }
             }
         })

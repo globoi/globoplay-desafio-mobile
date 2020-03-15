@@ -5,7 +5,8 @@
     <string name="home_button">Início</string>
     <string name="my_list_button">Minha Lista</string>
     <string name="logout_button">Sair</string>
-    <string name="home_title">Home</string>
+    <string name="home_title">@string/app_name</string>
+    <string name="my_list_title">Meus Filmes Favoritos</string>
     <string name="login_title">Login</string>
     <string name="splash_title">Carregando…</string>
     <string name="em_alta">Em alta</string>
