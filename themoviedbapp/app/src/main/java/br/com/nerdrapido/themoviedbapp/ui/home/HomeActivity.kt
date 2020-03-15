@@ -3,38 +3,42 @@ package br.com.nerdrapido.themoviedbapp.ui.home
 import android.os.Bundle
 import android.view.MenuItem
 import br.com.nerdrapido.themoviedbapp.R
-import br.com.nerdrapido.themoviedbapp.data.model.MovieListResultObject
+import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
-import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
-import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList.OnLoadNextPage
+import br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation.NavigationActivity
+import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListView
+import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 
 /**
  * Created By FELIPE GUSBERTI @ 10/03/2020
  */
-class HomeActivity : AbstractActivity<HomeView, HomePresenter>(), HomeView,
+class HomeActivity : NavigationActivity<HomeView, HomePresenter>(), HomeView,
     BottomNavigationView.OnNavigationItemSelectedListener {
 
 
     override val presenter: HomePresenter by inject()
 
-    override val layoutId = R.layout.activity_home
+    override val nestedActivityLayoutId = R.layout.activity_home
 
     override fun getActivityTitle(): String {
         return getString(R.string.home_title)
     }
 
+    override fun goHome() {
+        Timber.i("Already in home")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        (navigationView as BottomNavigationView).setOnNavigationItemSelectedListener(this)
-
-        //Does the lists setup
+        //Do the list setup
         setupList(
             getString(R.string.em_alta),
             homeListA
@@ -54,20 +58,13 @@ class HomeActivity : AbstractActivity<HomeView, HomePresenter>(), HomeView,
 
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.logout) {
-            presenter.logoutWasCalled()
-        }
-        return true
-    }
-
     private fun setupList(
         title: String? = null,
-        view: HorizontalMovieList,
+        view: HorizontalMovieListView,
         loadPage: suspend (page: Int) -> List<MovieListResultObject>
     ) {
         view.titleText = title
-        view.setOnPageChangeListener(object : OnLoadNextPage {
+        view.setOnPageChangeListener(object : MovieListView.OnLoadNextPage {
             override fun onLoadNextPage(page: Int) {
                 runBlocking {
                     async(coroutineContext) {

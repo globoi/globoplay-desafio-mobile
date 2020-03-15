@@ -9,20 +9,35 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="actionBarTheme">@style/MyActionBar</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="colorControlNormal">@color/colorWhite</item>
+        <item name="android:textColorSecondary">@color/colorWhite</item>
     </style>
 
-    <style name="FullScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:background">@color/colorPrimaryDark</item>
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColor">@color/colorWhite</item>
-
+    <style name="FullScreenTheme" parent="AppTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="MyActionBar" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
-        <item name="background">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:tint">@color/colorWhite</item>
     </style>
+
+    <style name="MovieDetailPageTab" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/horizontal_movie_list_title_text_size</item>
+    </style>
+
+    <style name="MovieDetailPageTabTextStyle" parent="AppTheme">
+        <item name="android:maxLines">2</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
 </resources>

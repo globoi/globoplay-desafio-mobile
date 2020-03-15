@@ -1,77 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:layout_constraintBottom_toTopOf="@id/navigationView"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/navigationView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-
-        <LinearLayout
-            android:id="@+id/listContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="100dp">
-
-            <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
-                android:id="@+id/homeListA"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:titleText="Test"
-                app:lastPage="@integer/home_list_last_page"
-                app:pageSize="@integer/home_list_page_count">
-            </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList>
-
-            <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
-                android:id="@+id/homeListB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:titleText="Test"
-                app:lastPage="@integer/home_list_last_page"
-                app:pageSize="@integer/home_list_page_count">
-            </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList>
-
-            <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
-                android:id="@+id/homeListC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:titleText="Test"
-                app:lastPage="@integer/home_list_last_page"
-                app:pageSize="@integer/home_list_page_count">
-            </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList>
-
-            <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList
-                android:id="@+id/homeListD"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:titleText="Test"
-                app:lastPage="@integer/home_list_last_page"
-                app:pageSize="@integer/home_list_page_count">
-            </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieList>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigationView"
+    <LinearLayout
+        android:id="@+id/listContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp"
-        android:background="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:itemIconTint="@color/colorWhite"
-        app:itemTextColor="@color/colorWhite"
-        app:menu="@menu/home_bottom_menu"/>
+        android:orientation="vertical"
+        android:paddingBottom="100dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
+            android:id="@+id/homeListA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:lastPage="@integer/home_list_last_page"
+            app:pageSize="@integer/home_list_page_count"
+            app:titleText="Test">
+
+        </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView>
+
+        <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
+            android:id="@+id/homeListB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:lastPage="@integer/home_list_last_page"
+            app:pageSize="@integer/home_list_page_count"
+            app:titleText="Test">
+
+        </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView>
+
+        <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
+            android:id="@+id/homeListC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:lastPage="@integer/home_list_last_page"
+            app:pageSize="@integer/home_list_page_count"
+            app:titleText="Test">
+
+        </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView>
+
+        <br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
+            android:id="@+id/homeListD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:lastPage="@integer/home_list_last_page"
+            app:pageSize="@integer/home_list_page_count"
+            app:titleText="Test">
+
+        </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView>
+
+    </LinearLayout>
+
+</ScrollView>

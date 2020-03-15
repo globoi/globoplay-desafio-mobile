@@ -4,6 +4,8 @@ import br.com.nerdrapido.themoviedbapp.data.repository.discover.DiscoverReposito
 import br.com.nerdrapido.themoviedbapp.data.repository.discover.DiscoverRepositoryImpl
 import br.com.nerdrapido.themoviedbapp.data.repository.login.LoginRepository
 import br.com.nerdrapido.themoviedbapp.data.repository.login.LoginRepositoryImpl
+import br.com.nerdrapido.themoviedbapp.data.repository.movies.MoviesRepository
+import br.com.nerdrapido.themoviedbapp.data.repository.movies.MoviesRepositoryImpl
 import br.com.nerdrapido.themoviedbapp.data.repository.session.SessionRepository
 import br.com.nerdrapido.themoviedbapp.data.repository.session.SessionRepositoryImpl
 import org.koin.dsl.module
@@ -20,6 +22,7 @@ class RepositoryModule {
             single<LoginRepository> { LoginRepositoryImpl(get()) }
             single<SessionRepository> { SessionRepositoryImpl(get()) }
             single<DiscoverRepository> { DiscoverRepositoryImpl(get()) }
+            single<MoviesRepository> { MoviesRepositoryImpl(get()) }
 
         }
     }

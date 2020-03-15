@@ -36,6 +36,13 @@ abstract class AbstractActivity<V: View, P: Presenter<V>>: AppCompatActivity(), 
         startActivity(newIntent)
     }
 
+    override fun goHome() {
+        val newIntent = Intent(this, HomeActivity::class.java)
+        newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(newIntent)
+        this.finish()
+    }
+
     override fun showLoading() {
         if (loadingDialog == null) {
             loadingDialog = MaterialAlertDialogBuilder(this)

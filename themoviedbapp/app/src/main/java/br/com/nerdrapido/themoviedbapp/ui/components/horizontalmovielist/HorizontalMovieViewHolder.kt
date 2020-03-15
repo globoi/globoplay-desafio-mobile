@@ -5,12 +5,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.nerdrapido.themoviedbapp.R
+import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListViewHolder
 
 
 /**
  * Created By FELIPE GUSBERTI @ 12/03/2020
  */
-class HorizontalMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class HorizontalMovieViewHolder(itemView: View) :  MovieListViewHolder(itemView) {
 
-    val poster = itemView.findViewById<View>(R.id.posterIv) as ImageView
+    override val poster = itemView.findViewById<View>(R.id.posterIv) as ImageView
+
 }

@@ -7,7 +7,5 @@ import br.com.nerdrapido.themoviedbapp.ui.abstracts.View
  */
 interface SplashScreenView: View {
 
-    fun goHome()
-
     fun goLogin()
 }
