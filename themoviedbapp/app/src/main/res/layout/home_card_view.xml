@@ -18,7 +18,7 @@
     <!--Text View over Card View-->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/posterIv"
-        android:layout_width="140dp"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:adjustViewBounds="true"

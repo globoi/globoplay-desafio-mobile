@@ -8,8 +8,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/posterIv"
-        android:layout_width="100dp"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
         android:fitsSystemWindows="true"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
