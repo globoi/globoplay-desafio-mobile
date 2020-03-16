@@ -33,14 +33,13 @@ class WatchlistMoviesUseCase(
      *
      * TODO: make null treatment better
      */
-    suspend fun addMovieToWatchlist(movieListResultObject: MovieListResultObject): Boolean {
+    suspend fun addMovieToWatchlist(movieListResultObject: MovieListResultObject, addMovie: Boolean): Boolean {
         val response = movieListResultObject.id?.let {
             accountRepository.addMovieToWatchlist(
                 PostWatchlistRequest(
-                    sessionRepository.getAccountId().toString(),
                     MediaTypes.MOVIE.description,
                     it,
-                    true
+                    addMovie
                 )
             )
         }

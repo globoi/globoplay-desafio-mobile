@@ -10,6 +10,8 @@ interface MovieDetailView : NavigationView {
 
     fun movieInfoLoaded(movieResponse: MovieResponse)
 
-//    fun recommendedMovieLoaded(recommendationResponse: RecommendationResponse): List<MovieListResultObject>
+    fun setMovieListState(isMovieInMyList: Boolean?)
+
+    fun movieVideoLoaded(videoId: String)
 
 }

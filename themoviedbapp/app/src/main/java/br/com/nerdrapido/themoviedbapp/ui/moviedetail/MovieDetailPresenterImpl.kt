@@ -2,8 +2,9 @@ package br.com.nerdrapido.themoviedbapp.ui.moviedetail
 
 import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.domain.usecase.GetLogInStateUseCase
-import br.com.nerdrapido.themoviedbapp.domain.usecase.MovieUseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.LogoutUseCase
+import br.com.nerdrapido.themoviedbapp.domain.usecase.MovieUseCase
+import br.com.nerdrapido.themoviedbapp.domain.usecase.WatchlistMoviesUseCase
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation.NavigationPresenterImpl
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -13,6 +14,7 @@ import kotlinx.coroutines.launch
  */
 class MovieDetailPresenterImpl(
     logoutUseCase: LogoutUseCase,
+    private val accountUseCase: WatchlistMoviesUseCase,
     private val movieUseCase: MovieUseCase,
     getLogInStateUseCase: GetLogInStateUseCase
 ) :
@@ -20,6 +22,8 @@ class MovieDetailPresenterImpl(
         logoutUseCase,
         getLogInStateUseCase
     ), MovieDetailPresenter {
+
+    private var isMovieInWatchlist: Boolean? = null
 
     private var movieListResultObject: MovieListResultObject? = null
 
@@ -35,11 +39,38 @@ class MovieDetailPresenterImpl(
         } ?: emptyList()
     }
 
+    override fun myListButtonClicked() {
+        // Invert the isMovieInWatchlist state
+        var isMovieInWatchlistLocal: Boolean? = isMovieInWatchlist ?: return
+        isMovieInWatchlistLocal ?: return
+        isMovieInWatchlistLocal = !isMovieInWatchlistLocal
+        isMovieInWatchlist = isMovieInWatchlistLocal
+        GlobalScope.launch {
+            movieListResultObject?.let {
+                accountUseCase.addMovieToWatchlist(it, isMovieInWatchlistLocal)
+                view.setMovieListState(isMovieInWatchlistLocal)
+            }
+        }
+    }
+
     private fun initMovieInfo(movieListResultObject: MovieListResultObject) {
+        GlobalScope.launch {
+            movieListResultObject.id?.let {
+                val movieStateResponse = movieUseCase.getMovieAccountState(it)
+                isMovieInWatchlist = movieStateResponse.watchlist
+                view.setMovieListState(isMovieInWatchlist)
+            }
+        }
         GlobalScope.launch {
             movieListResultObject.id?.let {
                 val movieResponse = movieUseCase.getMovieById(it)
                 view.movieInfoLoaded(movieResponse)
+            }
+        }
+        GlobalScope.launch {
+            movieListResultObject.id?.let {
+                val movieUrl = movieUseCase.getMovieVideoUrl(it)
+                movieUrl?.let { movieUrlLocal -> view.movieVideoLoaded(movieUrlLocal) }
             }
         }
     }

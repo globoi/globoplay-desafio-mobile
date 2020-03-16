@@ -11,9 +11,7 @@ data class MovieAccountStateResponse(
     @SerializedName("id")
     val id: Int?,
     @SerializedName("favorite")
-    val favorite: String?,
-    @SerializedName("rated")
-    val rated: String?,
+    val favorite: Boolean?,
     @SerializedName("watchlist")
-    val watchlist: String?
+    val watchlist: Boolean?
 )

@@ -1,18 +1,27 @@
 package br.com.nerdrapido.themoviedbapp.data.repository.movies
 
-import br.com.nerdrapido.themoviedbapp.data.model.account.AccountResponse
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieRequest
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieResponse
+import br.com.nerdrapido.themoviedbapp.data.model.movieaccountstates.MovieAccountStateResponse
 import br.com.nerdrapido.themoviedbapp.data.model.movieaccountstates.MovieAccountStatesRequest
+import br.com.nerdrapido.themoviedbapp.data.model.movievideo.MovieVideoRequest
+import br.com.nerdrapido.themoviedbapp.data.model.movievideo.MovieVideoResponse
 import br.com.nerdrapido.themoviedbapp.data.model.recommendation.RecommendationRequest
 import br.com.nerdrapido.themoviedbapp.data.model.recommendation.RecommendationResponse
 import br.com.nerdrapido.themoviedbapp.data.repository.abstracts.AbstractMovieDbApiRepos
+import br.com.nerdrapido.themoviedbapp.data.repository.session.SessionRepository
+import br.com.nerdrapido.themoviedbapp.domain.usecase.GetLanguageUseCase
 import retrofit2.Retrofit
 
 /**
  * Created By FELIPE GUSBERTI @ 13/03/2020
  */
-class MoviesRepositoryImpl(val retrofit: Retrofit) : AbstractMovieDbApiRepos(retrofit),
+class MoviesRepositoryImpl(
+    private val getLanguageUseCase: GetLanguageUseCase,
+    private val sessionRepository: SessionRepository,
+    retrofit: Retrofit
+) :
+    AbstractMovieDbApiRepos(retrofit),
     MoviesRepository {
 
     private val service = retrofit.create(MoviesService::class.java)
@@ -25,12 +34,21 @@ class MoviesRepositoryImpl(val retrofit: Retrofit) : AbstractMovieDbApiRepos(ret
     override suspend fun getMovieRecommendations(recommendationRequest: RecommendationRequest): RecommendationResponse {
         return service.moviesRecommendation(
             recommendationRequest.movieId.toString(),
-            recommendationRequest.language,
+            getLanguageUseCase.getLanguage(),
             recommendationRequest.page
         )
     }
 
-    override suspend fun getMovieAccountState(accountStatesRequest: MovieAccountStatesRequest): AccountResponse {
-        return service.movieAccountState(accountStatesRequest.movieId, )
+    override suspend fun getMovieAccountState(accountStatesRequest: MovieAccountStatesRequest): MovieAccountStateResponse {
+        return service.movieAccountState(
+            accountStatesRequest.movieId.toString(), sessionRepository.getSessionId()
+        )
+    }
+
+    override suspend fun getMovieVideos(movieVideoRequest: MovieVideoRequest): MovieVideoResponse {
+        return service.movieVideos(
+            movieVideoRequest.movieId.toString(),
+            getLanguageUseCase.getLanguage()
+        )
     }
 }

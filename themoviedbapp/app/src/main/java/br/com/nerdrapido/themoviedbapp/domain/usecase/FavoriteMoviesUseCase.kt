@@ -37,7 +37,6 @@ class FavoriteMoviesUseCase(
         val response = movieListResultObject.id?.let {
             accountRepository.markMovieToFavorite(
                 PostFavoriteRequest(
-                    sessionRepository.getAccountId().toString(),
                     MediaTypes.MOVIE.description,
                     it,
                     true

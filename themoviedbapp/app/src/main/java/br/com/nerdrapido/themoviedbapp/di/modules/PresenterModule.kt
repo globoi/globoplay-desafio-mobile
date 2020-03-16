@@ -21,7 +21,7 @@ class PresenterModule {
             factory<SplashScreenPresenter> { SplashScreenPresenterImpl(get()) }
             factory<LoginPresenter> { LoginPresenterImpl(get(), get(), get(), get()) }
             factory<HomePresenter> { HomePresenterImpl(get(), get(), get()) }
-            factory<MovieDetailPresenter> { MovieDetailPresenterImpl(get(), get(), get()) }
+            factory<MovieDetailPresenter> { MovieDetailPresenterImpl(get(), get(), get(), get()) }
             factory<MyListPresenter> { MyListPresenterImpl(get(), get(), get()) }
         }
     }

@@ -36,6 +36,10 @@
         <activity
             android:name=".ui.mylist.MyListActivity"
             android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ui.youtubevideo.YoutubePlayerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/FullScreenTheme"/>
     </application>
 
 </manifest>

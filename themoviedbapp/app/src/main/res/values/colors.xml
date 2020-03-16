@@ -3,6 +3,7 @@
     <color name="colorBackground">#303030</color>
     <color name="colorPrimary">#202020</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#FF0000</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
 </resources>

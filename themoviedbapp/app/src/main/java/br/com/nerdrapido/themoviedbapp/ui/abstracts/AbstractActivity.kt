@@ -3,6 +3,7 @@ package br.com.nerdrapido.themoviedbapp.ui.abstracts
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
@@ -65,6 +66,21 @@ abstract class AbstractActivity<V: View, P: Presenter<V>>: AppCompatActivity(), 
         presenter.initializeView(this as V)
         presenter.viewIsInvoked()
         super.onCreate(savedInstanceState)
+        // Here the device nav gets its color
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.navigationBarColor = resources.getColor(R.color.colorPrimaryDark)
+        }
+        setContentView(layoutId)
+        title = getActivityTitle()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        @Suppress("UNCHECKED_CAST")
+        presenter.initializeView(this as V)
+        presenter.viewIsInvoked()
+        super.onCreate(savedInstanceState, persistentState)
         // Here the device nav gets its color
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window: Window = window

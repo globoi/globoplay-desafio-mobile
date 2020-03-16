@@ -11,12 +11,14 @@ import br.com.nerdrapido.themoviedbapp.data.model.favoritemovies.FavoriteMoviesR
 import br.com.nerdrapido.themoviedbapp.data.model.watchlistmovies.WatchlistMoviesRequest
 import br.com.nerdrapido.themoviedbapp.data.model.watchlistmovies.WatchlistMoviesResponse
 import br.com.nerdrapido.themoviedbapp.data.repository.abstracts.AbstractMovieDbApiRepos
+import br.com.nerdrapido.themoviedbapp.data.repository.session.SessionRepository
 import retrofit2.Retrofit
 
 /**
  * Created By FELIPE GUSBERTI @ 15/03/2020
  */
-class AccountRepositoryImpl(retrofit: Retrofit) : AbstractMovieDbApiRepos(retrofit),
+class AccountRepositoryImpl(val sessionRepository: SessionRepository, retrofit: Retrofit) :
+    AbstractMovieDbApiRepos(retrofit),
     AccountRepository {
 
     private val authService: AccountService = retrofit.create(AccountService::class.java)
@@ -47,19 +49,26 @@ class AccountRepositoryImpl(retrofit: Retrofit) : AbstractMovieDbApiRepos(retrof
 
     override suspend fun markMovieToFavorite(postFavoriteRequest: PostFavoriteRequest): PostFavoriteResponse {
         return authService.markMovieToFavorite(
-            postFavoriteRequest.sessionId,
-            postFavoriteRequest.mediaType,
-            postFavoriteRequest.mediaId,
-            postFavoriteRequest.favorite
+            sessionRepository.getAccountId().toString(),
+            sessionRepository.getSessionId(),
+            PostFavoriteRequest(
+                postFavoriteRequest.mediaType,
+                postFavoriteRequest.mediaId,
+                postFavoriteRequest.favorite
+            )
+
         )
     }
 
     override suspend fun addMovieToWatchlist(postWatchlistRequest: PostWatchlistRequest): PostWatchlistResponse {
         return authService.saveMovieToWatchlist(
-            postWatchlistRequest.sessionId,
-            postWatchlistRequest.mediaType,
-            postWatchlistRequest.mediaId,
-            postWatchlistRequest.watchlist
+            sessionRepository.getAccountId().toString(),
+            sessionRepository.getSessionId(),
+            PostWatchlistRequest(
+                postWatchlistRequest.mediaType,
+                postWatchlistRequest.mediaId,
+                postWatchlistRequest.watchlist
+            )
         )
     }
 }

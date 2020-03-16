@@ -24,8 +24,8 @@ class RepositoryModule {
             single<LoginRepository> { LoginRepositoryImpl(get()) }
             single<SessionRepository> { SessionRepositoryImpl(get()) }
             single<DiscoverRepository> { DiscoverRepositoryImpl(get()) }
-            single<MoviesRepository> { MoviesRepositoryImpl(get()) }
-            single<AccountRepository> { AccountRepositoryImpl(get()) }
+            single<MoviesRepository> { MoviesRepositoryImpl(get(), get(), get()) }
+            single<AccountRepository> { AccountRepositoryImpl(get(), get()) }
 
         }
     }

@@ -2,6 +2,7 @@ package br.com.nerdrapido.themoviedbapp.data.repository.movies
 
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieResponse
 import br.com.nerdrapido.themoviedbapp.data.model.movieaccountstates.MovieAccountStateResponse
+import br.com.nerdrapido.themoviedbapp.data.model.movievideo.MovieVideoResponse
 import br.com.nerdrapido.themoviedbapp.data.model.recommendation.RecommendationResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -39,5 +40,14 @@ interface MoviesService {
         @Path("movie_id") movieId: String?,
         @Query("session_id") language: String?
     ): MovieAccountStateResponse
+
+    /**
+     * https://developers.themoviedb.org/3/movies/get-movie-videos
+     */
+    @GET("movie/{movie_id}/videos")
+    suspend fun movieVideos(
+        @Path("movie_id") movieId: String?,
+        @Query("language") language: String?
+    ): MovieVideoResponse
 
 }

@@ -1,3 +1,12 @@
+
+
+//Here the youtubeAipKey used to play youtube videos is read.
+//To run the video features you need to add a youtube.api.key property in the 'ocal.properties file
+//Ex. youtube.api.key=skghzkghkzdfhgkzfdhgkdzufh
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def youtubeAipKey = properties.getProperty('youtube.api.key')
+
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
@@ -7,6 +16,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+
+    defaultConfig {
+        buildConfigField "String", "YOUTUBE_API_KEY", youtubeAipKey
+    }
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "br.com.nerdrapido.themoviedbapp"
@@ -29,7 +43,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
@@ -66,5 +79,6 @@ dependencies {
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 }
 

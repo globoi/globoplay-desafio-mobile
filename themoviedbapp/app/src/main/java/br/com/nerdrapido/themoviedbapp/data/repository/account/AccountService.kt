@@ -1,13 +1,13 @@
 package br.com.nerdrapido.themoviedbapp.data.repository.account
 
 import br.com.nerdrapido.themoviedbapp.data.model.account.AccountResponse
+import br.com.nerdrapido.themoviedbapp.data.model.addfavorite.PostFavoriteRequest
 import br.com.nerdrapido.themoviedbapp.data.model.addfavorite.PostFavoriteResponse
+import br.com.nerdrapido.themoviedbapp.data.model.addwatchlist.PostWatchlistRequest
 import br.com.nerdrapido.themoviedbapp.data.model.addwatchlist.PostWatchlistResponse
 import br.com.nerdrapido.themoviedbapp.data.model.favoritemovies.FavoriteMoviesResponse
 import br.com.nerdrapido.themoviedbapp.data.model.watchlistmovies.WatchlistMoviesResponse
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  * Created By FELIPE GUSBERTI @ 15/03/2020
@@ -49,22 +49,20 @@ interface AccountService {
     /**
      * https://developers.themoviedb.org/3/account/mark-as-favorite
      */
-    @GET("account/{account_id}/favorite")
+    @POST("account/{account_id}/favorite")
     suspend fun markMovieToFavorite(
         @Path("account_id") accountId: String?,
-        @Query("media_type") mediaType: String?,
-        @Query("media_id") mediaId: Int?,
-        @Query("favorite") favorite: Boolean?
-    ) : PostFavoriteResponse
+        @Query("session_id") sessionId: String?,
+        @Body body: PostFavoriteRequest
+    ): PostFavoriteResponse
 
     /**
      * https://developers.themoviedb.org/3/account/add-to-watchlist
      */
-    @GET("account/{account_id}/watchlist")
+    @POST("account/{account_id}/watchlist")
     suspend fun saveMovieToWatchlist(
         @Path("account_id") accountId: String?,
-        @Query("media_type") mediaType: String?,
-        @Query("media_id") mediaId: Int?,
-        @Query("watchlist") watchlist: Boolean?
-    ) : PostWatchlistResponse
+        @Query("session_id") sessionId: String?,
+        @Body body: PostWatchlistRequest
+    ): PostWatchlistResponse
 }
