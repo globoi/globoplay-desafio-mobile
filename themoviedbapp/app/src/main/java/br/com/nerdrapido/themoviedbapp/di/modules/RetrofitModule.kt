@@ -1,7 +1,8 @@
 package br.com.nerdrapido.themoviedbapp.di.modules
 
-import br.com.nerdrapido.themoviedbapp.domain.retrofit.RetrofitClientInstance
+import br.com.nerdrapido.themoviedbapp.domain.retrofit.RetrofitInitializer
 import br.com.nerdrapido.themoviedbapp.domain.retrofit.ServiceInterceptor
+import okhttp3.Interceptor
 import org.koin.dsl.module
 
 /**
@@ -11,8 +12,8 @@ class RetrofitModule {
 
     companion object {
         fun getRetrofitModule() = module {
-            single { ServiceInterceptor(get()) }
-            single { RetrofitClientInstance(get()).retrofit }
+            single<Interceptor>(override = true) { ServiceInterceptor(get()) }
+            single { RetrofitInitializer(get()).retrofit }
         }
     }
 }

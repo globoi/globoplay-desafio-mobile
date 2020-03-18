@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.domain.usecase
 
+import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
 import br.com.nerdrapido.themoviedbapp.data.model.login.DeleteAccessTokenRequest
 import br.com.nerdrapido.themoviedbapp.data.repository.login.LoginRepository
 import br.com.nerdrapido.themoviedbapp.data.repository.session.SessionRepository
@@ -21,8 +22,17 @@ class LogoutUseCase(
                     sessionId
                 )
             )
-            result = deleteAccessTokenResponse.success
+            result = when (deleteAccessTokenResponse) {
+                is ResponseWrapper.Success -> deleteAccessTokenResponse.value.success
+                else -> false
+            }
         }
+        deleteSession()
+
+        return result
+    }
+
+    private fun deleteSession() {
         sessionRepository.setSessionId(null)
         sessionRepository.setIso6391(null)
         sessionRepository.setIso3161(null)
@@ -30,7 +40,5 @@ class LogoutUseCase(
         sessionRepository.setIncludeAdult(false)
         sessionRepository.setUserName(null)
         sessionRepository.setAccountId(0)
-
-        return result
     }
 }

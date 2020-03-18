@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.ui.abstracts
 
+import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
 import br.com.nerdrapido.themoviedbapp.domain.usecase.GetLogInStateUseCase
 import timber.log.Timber
 
@@ -56,5 +57,12 @@ abstract class AbstractPresenterImpl<V : View>(
         Timber.d("%s is closed", view.javaClass.simpleName)
     }
 
-
+    override fun <T> onResponseWrapper(response: ResponseWrapper<T>?, onSuccessAction: (responseObject: T) -> Unit) {
+        when (response) {
+            is ResponseWrapper.NetworkError -> view.showNetworkError()
+            is ResponseWrapper.GenericError -> view.showApiErrorResponse()
+            is ResponseWrapper.Success<T> -> onSuccessAction(response.value)
+            else -> view.showUnknownError()
+        }
+    }
 }

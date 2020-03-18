@@ -1,53 +1,81 @@
 package br.com.nerdrapido.themoviedbapp.data.repository.login
 
+import br.com.nerdrapido.themoviedbapp.data.model.login.CreateSessionRequest
+import br.com.nerdrapido.themoviedbapp.data.model.login.DeleteAccessTokenRequest
 import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenRequest
-import br.com.nerdrapido.themoviedbapp.di.KoinManager
+import br.com.nerdrapido.themoviedbapp.data.repository.abstracts.AbstractMovieDbApiReposTest
+import br.com.nerdrapido.themoviedbapp.domain.retrofit.MockErrorServiceInterceptor
 import kotlinx.coroutines.runBlocking
+import okhttp3.Interceptor
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.koin.core.context.startKoin
-import org.koin.core.context.stopKoin
-import org.koin.test.KoinTest
+import org.koin.core.module.Module
+import org.koin.dsl.module
 import org.koin.test.inject
 
 
 /**
  * Created By FELIPE GUSBERTI @ 08/03/2020
  */
-internal class LoginRepositoryImplTest : KoinTest {
+internal class LoginRepositoryImplTest : AbstractMovieDbApiReposTest() {
 
-    val loginRepository: LoginRepository by inject()
+    val repos: LoginRepository by inject()
 
     @BeforeEach
-    fun setUp() {
-        startKoin {
-            modules(KoinManager.getApplicationModules())
+    override fun setUp() {
+        super.setUp()
+    }
+
+
+    @AfterEach
+    override fun afterEach() {
+        super.afterEach()
+    }
+
+    override fun getOverrideModules(): Module {
+        return module {
+            single<Interceptor>(override = true) { MockErrorServiceInterceptor() }
         }
     }
 
-    @AfterEach
-    fun afterEach() {
-        stopKoin()
-    }
 
     @Test
-    fun createrequestToken() {
-        val accesResponse = runBlocking {
-            loginRepository.createRequestToken(
-                requestTokenRequest = RequestTokenRequest(
-                    ""
+    fun `createrequestToken test if error is treated`() {
+        runBlocking {
+            throwWhenNotApiError(
+                repos.createRequestToken(
+                    RequestTokenRequest()
                 )
             )
         }
-        accesResponse.toString()
     }
 
     @Test
-    fun createAccessToken() {
+    fun `createSession test if error is treated`() {
+        runBlocking {
+            throwWhenNotApiError(
+                repos.createSession(
+                    CreateSessionRequest(
+                        ""
+                    )
+                )
+            )
+        }
     }
 
     @Test
-    fun deleteAccessToken() {
+    fun `deleteAccessToken test if error is treated`() {
+        runBlocking {
+            throwWhenNotApiError(
+                repos.deleteAccessToken(
+                    DeleteAccessTokenRequest(
+                        ""
+                    )
+                )
+            )
+        }
     }
+
+
 }

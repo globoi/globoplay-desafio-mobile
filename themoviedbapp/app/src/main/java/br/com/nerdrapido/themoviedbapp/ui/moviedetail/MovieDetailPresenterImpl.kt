@@ -33,10 +33,12 @@ class MovieDetailPresenterImpl(
     }
 
     override suspend fun loadRelatedMoviePage(page: Int): List<MovieListResultObject> {
-        return movieListResultObject?.id?.let {
-            val movieResponse = movieUseCase.getMovieRecommendationByMovieId(it, 1)
-            movieResponse.results
-        } ?: emptyList()
+        val movieId = movieListResultObject?.id ?: return emptyList()
+        var movieList: List<MovieListResultObject> = emptyList()
+        onResponseWrapper(
+            movieUseCase.getMovieRecommendationByMovieId(movieId, 1)
+        ) { responseObject -> movieList = responseObject.results ?: emptyList() }
+        return movieList
     }
 
     override fun myListButtonClicked() {
@@ -54,24 +56,21 @@ class MovieDetailPresenterImpl(
     }
 
     private fun initMovieInfo(movieListResultObject: MovieListResultObject) {
+        val movieId = movieListResultObject.id ?: return
         GlobalScope.launch {
-            movieListResultObject.id?.let {
-                val movieStateResponse = movieUseCase.getMovieAccountState(it)
-                isMovieInWatchlist = movieStateResponse.watchlist
+            onResponseWrapper(movieUseCase.getMovieAccountState(movieId)) {
+                isMovieInWatchlist = it.watchlist
                 view.setMovieListState(isMovieInWatchlist)
             }
         }
         GlobalScope.launch {
-            movieListResultObject.id?.let {
-                val movieResponse = movieUseCase.getMovieById(it)
-                view.movieInfoLoaded(movieResponse)
+            onResponseWrapper(movieUseCase.getMovieById(movieId)) {
+                view.movieInfoLoaded(it)
             }
         }
         GlobalScope.launch {
-            movieListResultObject.id?.let {
-                val movieUrl = movieUseCase.getMovieVideoUrl(it)
-                movieUrl?.let { movieUrlLocal -> view.movieVideoLoaded(movieUrlLocal) }
-            }
+            val movieUrl = movieUseCase.getMovieVideoUrl(movieId)
+            movieUrl?.let { movieUrlLocal -> view.movieVideoLoaded(movieUrlLocal) }
         }
     }
 }

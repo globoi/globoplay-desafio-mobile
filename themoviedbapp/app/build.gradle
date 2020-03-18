@@ -1,11 +1,13 @@
 
 
 //Here the youtubeAipKey used to play youtube videos is read.
-//To run the video features you need to add a youtube.api.key property in the 'ocal.properties file
+//To run the video features you need to add a youtube.api.key property in the 'local.properties file
 //Ex. youtube.api.key=skghzkghkzdfhgkzfdhgkdzufh
+//You also need to add a The Movie Db api Key https://developers.themoviedb.org/3/getting-started
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 def youtubeAipKey = properties.getProperty('youtube.api.key')
+def tmdbAipKey = properties.getProperty('tmdb.api.key')
 
 apply plugin: 'com.android.application'
 
@@ -19,6 +21,7 @@ android {
 
     defaultConfig {
         buildConfigField "String", "YOUTUBE_API_KEY", youtubeAipKey
+        buildConfigField "String", "TMDB_API_KEY", tmdbAipKey
     }
 
     compileSdkVersion 28
@@ -57,7 +60,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.7.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4"
 
     implementation 'org.koin:koin-core:2.0.1'
     implementation 'org.koin:koin-core-ext:2.0.1'
@@ -76,7 +79,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.6.0'
     testImplementation 'io.kotlintest:kotlintest-runner-junit5:3.4.2'
     testImplementation 'io.kotlintest:kotlintest-extensions-koin:3.4.2'
-
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.4'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation files('libs/YouTubeAndroidPlayerApi.jar')

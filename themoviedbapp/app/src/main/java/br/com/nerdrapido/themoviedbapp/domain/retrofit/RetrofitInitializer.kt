@@ -1,6 +1,8 @@
 package br.com.nerdrapido.themoviedbapp.domain.retrofit
 
 import br.com.nerdrapido.themoviedbapp.BuildConfig
+import br.com.nerdrapido.themoviedbapp.constant.URL
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -11,12 +13,8 @@ import retrofit2.converter.gson.GsonConverterFactory
  *
  * Retrofit initialization class using Movie Db API 4
  */
-class RetrofitClientInstance(serviceInterceptor: ServiceInterceptor) {
+class RetrofitInitializer(serviceInterceptor: Interceptor) {
     var retrofit: Retrofit
-
-    companion object {
-        private const val BASE_URL = "https://api.themoviedb.org/3/"
-    }
 
     init {
         val clientBuilder = OkHttpClient.Builder()
@@ -27,7 +25,7 @@ class RetrofitClientInstance(serviceInterceptor: ServiceInterceptor) {
             clientBuilder.addInterceptor(logging)
         }
         retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(URL.BASE_TMDB_API.url)
             .client(clientBuilder.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()

@@ -16,4 +16,10 @@ interface View {
 
     fun dismissLoading()
 
+    fun showNetworkError()
+
+    fun showApiErrorResponse()
+
+    fun showUnknownError()
+
 }

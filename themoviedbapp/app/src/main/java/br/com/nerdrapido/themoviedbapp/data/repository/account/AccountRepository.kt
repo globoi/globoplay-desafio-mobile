@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.data.repository.account
 
+import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
 import br.com.nerdrapido.themoviedbapp.data.model.account.AccountRequest
 import br.com.nerdrapido.themoviedbapp.data.model.account.AccountResponse
 import br.com.nerdrapido.themoviedbapp.data.model.addfavorite.PostFavoriteRequest
@@ -16,14 +17,14 @@ import br.com.nerdrapido.themoviedbapp.data.model.watchlistmovies.WatchlistMovie
  */
 interface AccountRepository {
 
-    suspend fun getAccount(accountRequest: AccountRequest): AccountResponse
+    suspend fun getAccount(accountRequest: AccountRequest): ResponseWrapper<AccountResponse>
 
-    suspend fun getFavoriteMovies(favoriteMoviesRequest: FavoriteMoviesRequest): FavoriteMoviesResponse
+    suspend fun getFavoriteMovies(favoriteMoviesRequest: FavoriteMoviesRequest): ResponseWrapper<FavoriteMoviesResponse>
 
-    suspend fun getWatchlistMovies(watchlistMoviesRequest: WatchlistMoviesRequest): WatchlistMoviesResponse
+    suspend fun getWatchlistMovies(watchlistMoviesRequest: WatchlistMoviesRequest): ResponseWrapper<WatchlistMoviesResponse>
 
-    suspend fun markMovieToFavorite(postFavoriteRequest: PostFavoriteRequest): PostFavoriteResponse
+    suspend fun markMovieToFavorite(postFavoriteRequest: PostFavoriteRequest): ResponseWrapper<PostFavoriteResponse>
 
-    suspend fun addMovieToWatchlist(postWatchlistRequest: PostWatchlistRequest): PostWatchlistResponse
+    suspend fun addMovieToWatchlist(postWatchlistRequest: PostWatchlistRequest): ResponseWrapper<PostWatchlistResponse>
 
 }

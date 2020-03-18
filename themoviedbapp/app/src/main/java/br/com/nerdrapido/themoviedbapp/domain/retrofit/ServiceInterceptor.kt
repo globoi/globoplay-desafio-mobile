@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.domain.retrofit
 
+import br.com.nerdrapido.themoviedbapp.BuildConfig
 import br.com.nerdrapido.themoviedbapp.data.repository.session.SessionRepository
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
@@ -14,7 +15,7 @@ class ServiceInterceptor(private val sessionRepository: SessionRepository) : Int
     /**
      * Movie Db API Token
      */
-    private val apiKey = "4fb5fac26532279273ddc58bd4af20e0"
+    private val apiKey = BuildConfig.TMDB_API_KEY
 
     /**
      * Intercepts the retrofit request to make changes to the header

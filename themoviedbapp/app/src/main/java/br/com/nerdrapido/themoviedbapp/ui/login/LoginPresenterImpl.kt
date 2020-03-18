@@ -4,13 +4,14 @@ import br.com.nerdrapido.themoviedbapp.data.model.login.CreateSessionRequest
 import br.com.nerdrapido.themoviedbapp.data.model.login.CreateSessionResponse
 import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenRequest
 import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenResponse
-import br.com.nerdrapido.themoviedbapp.domain.usecase.CreateSessionuseCase
+import br.com.nerdrapido.themoviedbapp.domain.usecase.CreateSessionUseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.GetLogInStateUseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.RequestLoginUseCase
 import br.com.nerdrapido.themoviedbapp.domain.usecase.SetSessionUseCase
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractPresenterImpl
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 /**
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
  */
 class LoginPresenterImpl(
     private val requestLoginUseCase: RequestLoginUseCase,
-    private val createSessionuseCase: CreateSessionuseCase,
+    private val createSessionUseCase: CreateSessionUseCase,
     private val setSessionUseCase: SetSessionUseCase,
     getLogInStateUseCase: GetLogInStateUseCase
 ) : AbstractPresenterImpl<LoginView>(
@@ -38,28 +39,32 @@ class LoginPresenterImpl(
 
     override fun loginWasCalled() {
         GlobalScope.launch {
-            val requestLoginResponse = requestLoginUseCase
-                .execute(RequestTokenRequest())
-            view.dismissLoading()
-            view.showMdbDialog(requestLoginResponse)
+            onResponseWrapper(
+                requestLoginUseCase
+                    .execute(RequestTokenRequest())
+            ) {
+                view.dismissLoading()
+                view.showMdbDialog(it)
+            }
         }
-    }
-
-    override fun loginAttemptHasResponse(response: Any) {
-        TODO("Not yet implemented")
     }
 
     override fun loginSuccess(requestTokenResponse: RequestTokenResponse) {
         view.showLoading()
         GlobalScope.launch {
-            val accessTokenResponse = createSessionuseCase.execute(
-                CreateSessionRequest(
-                    requestTokenResponse.requestToken
+            onResponseWrapper(
+                createSessionUseCase.execute(
+                    CreateSessionRequest(
+                        requestTokenResponse.requestToken
+                    )
                 )
-            )
-            setSessionUseCase.execute(accessTokenResponse)
-            view.dismissLoading()
-            view.goHome()
+            ) {
+                GlobalScope.launch {
+                    setSessionUseCase.execute(it)
+                    view.dismissLoading()
+                    view.goHome()
+                }
+            }
         }
     }
 

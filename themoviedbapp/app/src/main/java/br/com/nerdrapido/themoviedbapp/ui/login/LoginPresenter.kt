@@ -13,11 +13,6 @@ interface LoginPresenter : Presenter<LoginView> {
      */
     fun loginWasCalled()
 
-    /**
-     *
-     */
-    fun loginAttemptHasResponse(response: Any)
-
     fun loginSuccess(requestTokenResponse: RequestTokenResponse)
 
     fun loginDenied()

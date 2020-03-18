@@ -17,11 +17,11 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 /**
  * Created By FELIPE GUSBERTI @ 08/03/2020
  */
-abstract class AbstractActivity<V: View, P: Presenter<V>>: AppCompatActivity(), View {
+abstract class AbstractActivity<V : View, P : Presenter<V>> : AppCompatActivity(), View {
 
     abstract val presenter: P
 
-    var loadingDialog: AlertDialog? = null
+    private var loadingDialog: AlertDialog? = null
 
     /**
      * The layout id to be used in this Activity.
@@ -31,10 +31,12 @@ abstract class AbstractActivity<V: View, P: Presenter<V>>: AppCompatActivity(), 
     abstract fun getActivityTitle(): String
 
     override fun goBackToLogin() {
-        val newIntent = Intent(this, LoginActivity::class.java)
-        newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(newIntent)
+        runOnUiThread {
+            val newIntent = Intent(this, LoginActivity::class.java)
+            newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(newIntent)
+        }
     }
 
     override fun goHome() {
@@ -57,30 +59,36 @@ abstract class AbstractActivity<V: View, P: Presenter<V>>: AppCompatActivity(), 
         }
     }
 
+    override fun showNetworkError() {
+        MaterialAlertDialogBuilder(this).setNegativeButton("teste") { dialog, _ -> dialog.dismiss() }
+    }
+
+    override fun showApiErrorResponse() {
+        MaterialAlertDialogBuilder(this).setNegativeButton("teste") { dialog, _ -> dialog.dismiss() }
+    }
+
+    override fun showUnknownError() {
+        MaterialAlertDialogBuilder(this).setNegativeButton("teste") { dialog, _ -> dialog.dismiss() }
+    }
+
     override fun dismissLoading() {
         runOnUiThread { loadingDialog?.dismiss() }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        @Suppress("UNCHECKED_CAST")
-        presenter.initializeView(this as V)
-        presenter.viewIsInvoked()
         super.onCreate(savedInstanceState)
-        // Here the device nav gets its color
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val window: Window = window
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.navigationBarColor = resources.getColor(R.color.colorPrimaryDark)
-        }
-        setContentView(layoutId)
-        title = getActivityTitle()
+        onCreateCall()
     }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        onCreateCall()
+    }
+
+    private fun onCreateCall() {
         @Suppress("UNCHECKED_CAST")
         presenter.initializeView(this as V)
         presenter.viewIsInvoked()
-        super.onCreate(savedInstanceState, persistentState)
         // Here the device nav gets its color
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window: Window = window

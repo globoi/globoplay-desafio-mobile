@@ -1,6 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.domain.usecase
 
-import br.com.nerdrapido.themoviedbapp.constant.URL
+import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieRequest
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieResponse
 import br.com.nerdrapido.themoviedbapp.data.model.movieaccountstates.MovieAccountStateResponse
@@ -20,18 +20,18 @@ class MovieUseCase(
     private val moviesRepository: MoviesRepository
 ) {
 
-    suspend fun getMovieById(id: Int): MovieResponse {
+    suspend fun getMovieById(id: Int): ResponseWrapper<MovieResponse> {
         val movieRequest = MovieRequest(id, getLanguageUseCase.getLanguage())
         return moviesRepository.getMovie(movieRequest)
     }
 
-    suspend fun getMovieRecommendationByMovieId(id: Int, page: Int): RecommendationResponse {
+    suspend fun getMovieRecommendationByMovieId(id: Int, page: Int): ResponseWrapper<RecommendationResponse> {
         val recommendationRequest =
             RecommendationRequest(id, getLanguageUseCase.getLanguage(), page)
         return moviesRepository.getMovieRecommendations(recommendationRequest)
     }
 
-    suspend fun getMovieAccountState(id: Int): MovieAccountStateResponse {
+    suspend fun getMovieAccountState(id: Int): ResponseWrapper<MovieAccountStateResponse> {
         return moviesRepository.getMovieAccountState(
             MovieAccountStatesRequest(
                 id,
@@ -46,17 +46,20 @@ class MovieUseCase(
                 id,
                 getLanguageUseCase.getLanguage()
             )
-        ).results
-
-        videos.forEach {
-            if(it.site == "YouTube" && it.type == "Trailer") {
-//                return URL.YOUTUBE.url + it.key
-                val key = it.key
-//                return "http://www.youtube.com/embed/$key?autoplay=1&vq=small"
-                return  key
+        )
+        when (videos) {
+            is ResponseWrapper.NetworkError -> return null
+            is ResponseWrapper.GenericError -> return null
+            is ResponseWrapper.Success -> {
+                videos.value.results.forEach {
+                    if(it.site == "YouTube" && it.type == "Trailer") {
+                        return it.key
+                    }
+                }
+                return null
             }
+            else -> return null
         }
-        return null
     }
 
 }

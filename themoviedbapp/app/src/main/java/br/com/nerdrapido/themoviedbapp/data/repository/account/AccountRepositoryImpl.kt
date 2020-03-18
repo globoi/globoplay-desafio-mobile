@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.data.repository.account
 
+import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
 import br.com.nerdrapido.themoviedbapp.data.model.account.AccountRequest
 import br.com.nerdrapido.themoviedbapp.data.model.account.AccountResponse
 import br.com.nerdrapido.themoviedbapp.data.model.addfavorite.PostFavoriteRequest
@@ -23,52 +24,62 @@ class AccountRepositoryImpl(val sessionRepository: SessionRepository, retrofit: 
 
     private val authService: AccountService = retrofit.create(AccountService::class.java)
 
-    override suspend fun getAccount(accountRequest: AccountRequest): AccountResponse {
-        return authService.getAccount(accountRequest.sessionId)
+    override suspend fun getAccount(accountRequest: AccountRequest): ResponseWrapper<AccountResponse> {
+        return safeApiCall(dispatcher) { authService.getAccount(accountRequest.sessionId) }
     }
 
-    override suspend fun getFavoriteMovies(favoriteMoviesRequest: FavoriteMoviesRequest): FavoriteMoviesResponse {
-        return authService.getFavoriteMovies(
-            favoriteMoviesRequest.accountId,
-            favoriteMoviesRequest.language,
-            favoriteMoviesRequest.sessionId,
-            favoriteMoviesRequest.sortBy,
-            favoriteMoviesRequest.page
-        )
-    }
-
-    override suspend fun getWatchlistMovies(watchlistMoviesRequest: WatchlistMoviesRequest): WatchlistMoviesResponse {
-        return authService.getWatchlistMovies(
-            watchlistMoviesRequest.accountId,
-            watchlistMoviesRequest.language,
-            watchlistMoviesRequest.sessionId,
-            watchlistMoviesRequest.sortBy,
-            watchlistMoviesRequest.page
-        )
-    }
-
-    override suspend fun markMovieToFavorite(postFavoriteRequest: PostFavoriteRequest): PostFavoriteResponse {
-        return authService.markMovieToFavorite(
-            sessionRepository.getAccountId().toString(),
-            sessionRepository.getSessionId(),
-            PostFavoriteRequest(
-                postFavoriteRequest.mediaType,
-                postFavoriteRequest.mediaId,
-                postFavoriteRequest.favorite
+    override suspend fun getFavoriteMovies(favoriteMoviesRequest: FavoriteMoviesRequest): ResponseWrapper<FavoriteMoviesResponse> {
+        return safeApiCall(dispatcher) {
+            authService.getFavoriteMovies(
+                favoriteMoviesRequest.accountId,
+                favoriteMoviesRequest.language,
+                favoriteMoviesRequest.sessionId,
+                favoriteMoviesRequest.sortBy,
+                favoriteMoviesRequest.page
             )
-
-        )
+        }
     }
 
-    override suspend fun addMovieToWatchlist(postWatchlistRequest: PostWatchlistRequest): PostWatchlistResponse {
-        return authService.saveMovieToWatchlist(
-            sessionRepository.getAccountId().toString(),
-            sessionRepository.getSessionId(),
-            PostWatchlistRequest(
-                postWatchlistRequest.mediaType,
-                postWatchlistRequest.mediaId,
-                postWatchlistRequest.watchlist
+    override suspend fun getWatchlistMovies(watchlistMoviesRequest: WatchlistMoviesRequest): ResponseWrapper<WatchlistMoviesResponse> {
+        return safeApiCall(dispatcher) {
+            authService.getWatchlistMovies(
+                watchlistMoviesRequest.accountId,
+                watchlistMoviesRequest.language,
+                watchlistMoviesRequest.sessionId,
+                watchlistMoviesRequest.sortBy,
+                watchlistMoviesRequest.page
             )
-        )
+        }
     }
+
+
+    override suspend fun markMovieToFavorite(postFavoriteRequest: PostFavoriteRequest): ResponseWrapper<PostFavoriteResponse> {
+        return safeApiCall(dispatcher) {
+            authService.markMovieToFavorite(
+                sessionRepository.getAccountId().toString(),
+                sessionRepository.getSessionId(),
+                PostFavoriteRequest(
+                    postFavoriteRequest.mediaType,
+                    postFavoriteRequest.mediaId,
+                    postFavoriteRequest.favorite
+                )
+            )
+        }
+    }
+
+    override suspend fun addMovieToWatchlist(postWatchlistRequest: PostWatchlistRequest): ResponseWrapper<PostWatchlistResponse> {
+        return safeApiCall(dispatcher) {
+            authService.saveMovieToWatchlist(
+                sessionRepository.getAccountId().toString(),
+                sessionRepository.getSessionId(),
+                PostWatchlistRequest(
+                    postWatchlistRequest.mediaType,
+                    postWatchlistRequest.mediaId,
+                    postWatchlistRequest.watchlist
+                )
+            )
+        }
+    }
+
+
 }

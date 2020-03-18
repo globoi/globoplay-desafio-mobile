@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.data.repository.login
 
+import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
 import br.com.nerdrapido.themoviedbapp.data.model.login.*
 
 /**
@@ -7,9 +8,9 @@ import br.com.nerdrapido.themoviedbapp.data.model.login.*
  */
 interface LoginRepository {
 
-    suspend fun createRequestToken(requestTokenRequest: RequestTokenRequest): RequestTokenResponse
+    suspend fun createRequestToken(requestTokenRequest: RequestTokenRequest): ResponseWrapper<RequestTokenResponse>
 
-    suspend fun createSession(createSessionRequest: CreateSessionRequest): CreateSessionResponse
+    suspend fun createSession(createSessionRequest: CreateSessionRequest): ResponseWrapper<CreateSessionResponse>
 
-    suspend fun deleteAccessToken(deleteAccessTokenRequest: DeleteAccessTokenRequest): DeleteAccessTokenResponse
+    suspend fun deleteAccessToken(deleteAccessTokenRequest: DeleteAccessTokenRequest): ResponseWrapper<DeleteAccessTokenResponse>
 }

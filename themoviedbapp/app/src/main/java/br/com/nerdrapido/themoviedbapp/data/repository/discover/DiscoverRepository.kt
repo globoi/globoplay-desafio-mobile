@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.data.repository.discover
 
+import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
 import br.com.nerdrapido.themoviedbapp.data.model.discover.DiscoverRequest
 import br.com.nerdrapido.themoviedbapp.data.model.discover.DiscoverResponse
 
@@ -8,6 +9,6 @@ import br.com.nerdrapido.themoviedbapp.data.model.discover.DiscoverResponse
  */
 interface DiscoverRepository {
 
-    suspend fun loadDiscover(discoverRequest: DiscoverRequest): DiscoverResponse
+    suspend fun loadDiscover(discoverRequest: DiscoverRequest): ResponseWrapper<DiscoverResponse>
 
 }

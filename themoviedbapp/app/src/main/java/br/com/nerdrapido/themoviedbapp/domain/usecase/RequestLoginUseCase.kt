@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.domain.usecase
 
+import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
 import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenRequest
 import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenResponse
 import br.com.nerdrapido.themoviedbapp.data.repository.login.LoginRepository
@@ -9,7 +10,7 @@ import br.com.nerdrapido.themoviedbapp.data.repository.login.LoginRepository
  */
 class RequestLoginUseCase(private val loginRepository: LoginRepository) {
 
-    suspend fun execute(requestTokenRequest: RequestTokenRequest): RequestTokenResponse {
+    suspend fun execute(requestTokenRequest: RequestTokenRequest): ResponseWrapper<RequestTokenResponse> {
         return loginRepository.createRequestToken(requestTokenRequest)
     }
 }

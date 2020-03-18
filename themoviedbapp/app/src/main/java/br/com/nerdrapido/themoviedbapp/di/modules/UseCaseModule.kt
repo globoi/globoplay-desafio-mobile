@@ -10,7 +10,7 @@ class UseCaseModule {
     companion object {
         fun getUseCaseModule() = module {
             single { SetSessionUseCase(get(), get()) }
-            single { CreateSessionuseCase(get()) }
+            single { CreateSessionUseCase(get()) }
             single { GetLanguageUseCase() }
             single { RequestLoginUseCase(get()) }
             single { GetLogInStateUseCase(get()) }

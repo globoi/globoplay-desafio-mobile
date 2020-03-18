@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.data.repository.movies
 
+import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieRequest
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieResponse
 import br.com.nerdrapido.themoviedbapp.data.model.movieaccountstates.MovieAccountStateResponse
@@ -27,28 +28,39 @@ class MoviesRepositoryImpl(
     private val service = retrofit.create(MoviesService::class.java)
 
 
-    override suspend fun getMovie(movieRequest: MovieRequest): MovieResponse {
-        return service.moviesDetail(movieRequest.movieId.toString(), movieRequest.language)
+    override suspend fun getMovie(movieRequest: MovieRequest): ResponseWrapper<MovieResponse> {
+        return safeApiCall(dispatcher) {
+            service.moviesDetail(
+                movieRequest.movieId.toString(),
+                movieRequest.language
+            )
+        }
     }
 
-    override suspend fun getMovieRecommendations(recommendationRequest: RecommendationRequest): RecommendationResponse {
-        return service.moviesRecommendation(
-            recommendationRequest.movieId.toString(),
-            getLanguageUseCase.getLanguage(),
-            recommendationRequest.page
-        )
+    override suspend fun getMovieRecommendations(recommendationRequest: RecommendationRequest): ResponseWrapper<RecommendationResponse> {
+        return safeApiCall(dispatcher) {
+            service.moviesRecommendation(
+                recommendationRequest.movieId.toString(),
+                getLanguageUseCase.getLanguage(),
+                recommendationRequest.page
+            )
+        }
     }
 
-    override suspend fun getMovieAccountState(accountStatesRequest: MovieAccountStatesRequest): MovieAccountStateResponse {
-        return service.movieAccountState(
-            accountStatesRequest.movieId.toString(), sessionRepository.getSessionId()
-        )
+    override suspend fun getMovieAccountState(accountStatesRequest: MovieAccountStatesRequest): ResponseWrapper<MovieAccountStateResponse> {
+        return safeApiCall(dispatcher) {
+            service.movieAccountState(
+                accountStatesRequest.movieId.toString(), sessionRepository.getSessionId()
+            )
+        }
     }
 
-    override suspend fun getMovieVideos(movieVideoRequest: MovieVideoRequest): MovieVideoResponse {
-        return service.movieVideos(
-            movieVideoRequest.movieId.toString(),
-            getLanguageUseCase.getLanguage()
-        )
+    override suspend fun getMovieVideos(movieVideoRequest: MovieVideoRequest): ResponseWrapper<MovieVideoResponse> {
+        return safeApiCall(dispatcher) {
+            service.movieVideos(
+                movieVideoRequest.movieId.toString(),
+                getLanguageUseCase.getLanguage()
+            )
+        }
     }
 }

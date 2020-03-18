@@ -13,12 +13,18 @@ class LoginRepositoryImpl(retrofit: Retrofit) : AbstractMovieDbApiRepos(retrofit
 
     private val authService: AuthService = retrofit.create(AuthService::class.java)
 
-    override suspend fun createRequestToken(requestTokenRequest: RequestTokenRequest) = authService
-        .createRequestToken()
+    override suspend fun createRequestToken(requestTokenRequest: RequestTokenRequest) =
+        safeApiCall(dispatcher) {
+            authService
+                .createRequestToken()
+        }
 
-    override suspend fun createSession(createSessionRequest: CreateSessionRequest) = authService
-        .createSession(createSessionRequest)
+    override suspend fun createSession(createSessionRequest: CreateSessionRequest) =
+        safeApiCall(dispatcher) {
+            authService
+                .createSession(createSessionRequest)
+        }
 
-    override suspend fun deleteAccessToken(deleteAccessTokenRequest: DeleteAccessTokenRequest)
-            = authService.deleteAccessToken(deleteAccessTokenRequest)
+    override suspend fun deleteAccessToken(deleteAccessTokenRequest: DeleteAccessTokenRequest) =
+        safeApiCall(dispatcher) { authService.deleteAccessToken(deleteAccessTokenRequest) }
 }
