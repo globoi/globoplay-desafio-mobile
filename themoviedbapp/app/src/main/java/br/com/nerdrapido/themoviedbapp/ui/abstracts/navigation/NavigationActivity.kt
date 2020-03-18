@@ -3,6 +3,8 @@ package br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
 import br.com.nerdrapido.themoviedbapp.ui.mylist.MyListActivity
@@ -48,4 +50,42 @@ abstract class NavigationActivity<V : NavigationView, P : NavigationPresenter<V>
         return true
     }
 
+    override fun showNetworkError() {
+        runOnUiThread {
+            errorTv.text = "showNetworkError"
+            error.visibility = VISIBLE
+            navigationActivityContainer.visibility = GONE
+        }
+    }
+
+    override fun showApiErrorResponse() {
+        runOnUiThread {
+            errorTv.text = "showApiErrorResponse"
+            error.visibility = VISIBLE
+            navigationActivityContainer.visibility = GONE
+        }
+    }
+
+    override fun showUnknownError() {
+        runOnUiThread {
+            errorTv.text = "showUnknownError"
+            error.visibility = VISIBLE
+            navigationActivityContainer.visibility = GONE
+        }
+    }
+
+    override fun showLoading() {
+        runOnUiThread {
+            loading.visibility = VISIBLE
+            navigationActivityContainer.visibility = GONE
+        }
+
+    }
+
+    override fun dismissLoading() {
+        runOnUiThread {
+            loading.visibility = GONE
+            navigationActivityContainer.visibility = VISIBLE
+        }
+    }
 }

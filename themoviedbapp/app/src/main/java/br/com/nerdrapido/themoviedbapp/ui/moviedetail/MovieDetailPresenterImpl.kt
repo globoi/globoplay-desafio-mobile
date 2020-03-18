@@ -56,6 +56,7 @@ class MovieDetailPresenterImpl(
     }
 
     private fun initMovieInfo(movieListResultObject: MovieListResultObject) {
+        view.dismissLoading()
         val movieId = movieListResultObject.id ?: return
         GlobalScope.launch {
             onResponseWrapper(movieUseCase.getMovieAccountState(movieId)) {

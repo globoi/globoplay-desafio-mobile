@@ -36,14 +36,18 @@ class InfoMovieDetailFragment : MovieDetailFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setInfo(movieResponse)
+
     }
 
+    override fun onResume() {
+        super.onResume()
+        setInfo(movieResponse)
+    }
     private fun setInfo(movieResponse: MovieResponse?) {
 
-        detailInfoContainer.removeAllViews()
+        detailInfoContainer?.removeAllViews()
         addInfoView(
-            getString(R.string.detail_info_fragment_original_title),
+            context?.getString(R.string.detail_info_fragment_original_title),
             movieResponse?.originalTitle
         )
 
@@ -53,9 +57,9 @@ class InfoMovieDetailFragment : MovieDetailFragment() {
         movieResponse?.releaseDate?.let {
             calendar.time = format.parse(it)
         }
-        addInfoView(getString(R.string.detail_info_fragment_year), calendar.get(YEAR).toString())
+        addInfoView(context?.getString(R.string.detail_info_fragment_year), calendar.get(YEAR).toString())
         addInfoView(
-            getString(R.string.detail_info_fragment_overview),
+            context?.getString(R.string.detail_info_fragment_overview),
             movieResponse?.overview,
             true
         )

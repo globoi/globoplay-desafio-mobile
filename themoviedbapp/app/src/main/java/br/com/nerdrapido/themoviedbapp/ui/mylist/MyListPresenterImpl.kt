@@ -18,11 +18,13 @@ class MyListPresenterImpl(
 
     override fun viewIsAboutToBeShown() {
         super.viewIsAboutToBeShown()
+        view.showLoading()
         GlobalScope.launch {
             onResponseWrapper(
                 getWatchlistMoviesUseCase.getWatchlistMovies(1)
             ) { responseObject ->
                 responseObject.results?.let {
+                    view.dismissLoading()
                     view.listPageLoaded(it)
                 }
             }

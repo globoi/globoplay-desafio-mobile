@@ -9,9 +9,11 @@ import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import br.com.nerdrapido.themoviedbapp.R
+import br.com.nerdrapido.themoviedbapp.ui.alerts.ErrorDialog
 import br.com.nerdrapido.themoviedbapp.ui.home.HomeActivity
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.koin.android.ext.android.inject
 
 
 /**
@@ -22,6 +24,14 @@ abstract class AbstractActivity<V : View, P : Presenter<V>> : AppCompatActivity(
     abstract val presenter: P
 
     private var loadingDialog: AlertDialog? = null
+
+    private var errorDialog: ErrorDialog? = null
+        get() {
+            if (field == null) {
+                field = ErrorDialog(this)
+            }
+            return field
+        }
 
     /**
      * The layout id to be used in this Activity.
@@ -50,9 +60,6 @@ abstract class AbstractActivity<V : View, P : Presenter<V>> : AppCompatActivity(
         runOnUiThread {
             if (loadingDialog == null) {
                 loadingDialog = MaterialAlertDialogBuilder(this)
-                    .setTitle("Title")
-                    .setMessage("Message")
-                    .setPositiveButton("Ok", null)
                     .create()
             }
             loadingDialog?.show()
@@ -60,15 +67,27 @@ abstract class AbstractActivity<V : View, P : Presenter<V>> : AppCompatActivity(
     }
 
     override fun showNetworkError() {
-        MaterialAlertDialogBuilder(this).setNegativeButton("teste") { dialog, _ -> dialog.dismiss() }
+        runOnUiThread {
+            errorDialog?.setTitle("showNetworkError")
+            errorDialog?.setMessage("showNetworkError")
+            errorDialog?.show()
+        }
     }
 
     override fun showApiErrorResponse() {
-        MaterialAlertDialogBuilder(this).setNegativeButton("teste") { dialog, _ -> dialog.dismiss() }
+        runOnUiThread {
+            errorDialog?.setTitle("showApiErrorResponse")
+            errorDialog?.setMessage("showApiErrorResponse")
+            errorDialog?.show()
+        }
     }
 
     override fun showUnknownError() {
-        MaterialAlertDialogBuilder(this).setNegativeButton("teste") { dialog, _ -> dialog.dismiss() }
+        runOnUiThread {
+            errorDialog?.setTitle("showUnknownError")
+            errorDialog?.setMessage("showUnknownError")
+            errorDialog?.show()
+        }
     }
 
     override fun dismissLoading() {

@@ -159,7 +159,7 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
 
     private fun loadImageIntoView(imageView: ImageView) {
         var requestOptions = RequestOptions()
-        requestOptions = requestOptions.placeholder(R.drawable.poster_progress)
+//        requestOptions = requestOptions.placeholder(R.drawable.poster_progress)
 
         Glide.with(this)
             .load("https://image.tmdb.org/t/p/original" + movieListResultObject.backdropPath)

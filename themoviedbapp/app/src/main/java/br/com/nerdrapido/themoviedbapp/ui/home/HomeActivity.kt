@@ -1,19 +1,15 @@
 package br.com.nerdrapido.themoviedbapp.ui.home
 
 import android.os.Bundle
-import android.view.MenuItem
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
-import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation.NavigationActivity
 import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListView
 import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
@@ -60,6 +56,11 @@ class HomeActivity : NavigationActivity<HomeView, HomePresenter>(), HomeView,
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        showLoading()
+    }
+
     private fun setupList(
         title: String? = null,
         view: HorizontalMovieListView,
@@ -70,7 +71,10 @@ class HomeActivity : NavigationActivity<HomeView, HomePresenter>(), HomeView,
             override fun onLoadNextPage(page: Int) {
                 GlobalScope.launch {
                     val list = loadPage(page)
-                    runOnUiThread { view.addItemList(list) }
+                    runOnUiThread {
+                        view.addItemList(list)
+                        dismissLoading()
+                    }
                 }
             }
         })

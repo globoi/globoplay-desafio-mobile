@@ -8,7 +8,6 @@ import org.koin.dsl.module
 class ViewModule {
     companion object {
         fun getViewModule() = module {
-
         }
     }
 }
