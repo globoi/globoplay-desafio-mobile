@@ -1,18 +1,13 @@
 package br.com.nerdrapido.themoviedbapp.ui.login
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.appcompat.app.AppCompatDialog
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenResponse
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
-import br.com.nerdrapido.themoviedbapp.ui.home.HomeActivity
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginPresenterImpl.Companion.LOGIN_SUCCESS
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
@@ -32,65 +27,72 @@ class LoginActivity : AbstractActivity<LoginView, LoginPresenter>(), LoginView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loginBt.setOnClickListener {
+            loginDeniedContainer?.visibility = GONE
+            showLoading()
             presenter.loginWasCalled()
         }
     }
 
     override fun showLoading() {
         runOnUiThread {
-            loading.visibility = VISIBLE
-            loginBt.visibility = GONE
+            loading?.visibility = VISIBLE
         }
     }
 
     override fun dismissLoading() {
         runOnUiThread {
-            loading.visibility = GONE
-            loginBt.visibility = VISIBLE
+            loading?.visibility = GONE
         }
     }
 
     override fun showMdbDialog(requestTokenResponse: RequestTokenResponse) {
         runOnUiThread {
-            val alert = AppCompatDialog(this)
-            alert.setTitle(resources.getString(R.string.web_view_login_title))
-
-            @SuppressLint("InflateParams")
-            val webView: WebView = layoutInflater.inflate(R.layout.view_webview_login, null) as WebView
-            webView.loadUrl(
+            showLoading()
+            tmdbWebView?.loadUrl(
                 "https://www.themoviedb.org/authenticate/${requestTokenResponse.requestToken}?redirect_to=http://$LOGIN_SUCCESS"
             )
-            webView.settings.domStorageEnabled = true
-            webView.settings.allowContentAccess = true
-            webView.settings.allowFileAccess = true
-            webView.settings.allowFileAccessFromFileURLs = true
-            webView.settings.allowUniversalAccessFromFileURLs = true
-            webView.settings.javaScriptEnabled = true
-            webView.settings.setSupportZoom(true)
-            webView.settings.domStorageEnabled = true
-            webView.settings.databaseEnabled = true
-            webView.settings.minimumFontSize = 1
-            webView.settings.minimumLogicalFontSize = 1
-            webView.isClickable = true
-            webView.webChromeClient = WebChromeClient()
+            tmdbWebView?.settings?.domStorageEnabled = true
+            tmdbWebView?.settings?.allowContentAccess = true
+            tmdbWebView?.settings?.allowFileAccess = true
+            tmdbWebView?.settings?.allowFileAccessFromFileURLs = true
+            tmdbWebView.settings?.allowUniversalAccessFromFileURLs = true
+            tmdbWebView?.settings?.javaScriptEnabled = true
+            tmdbWebView?.settings?.setSupportZoom(true)
+            tmdbWebView?.settings?.domStorageEnabled = true
+            tmdbWebView?.settings?.databaseEnabled = true
+            tmdbWebView?.settings?.minimumFontSize = 1
+            tmdbWebView?.settings?.minimumLogicalFontSize = 1
+            tmdbWebView?.isClickable = true
+            tmdbWebView?.webChromeClient = WebChromeClient()
 
-            webView.webViewClient = object : WebViewClient() {
+            tmdbWebView.webViewClient = object : WebViewClient() {
                 override fun onPageFinished(view: WebView?, url: String?) {
                     super.onPageFinished(view, url)
                     Timber.d(url)
+                    loginDeniedContainer?.visibility = GONE
+                    tmdbWebView?.visibility = VISIBLE
+                    dismissLoading()
                     if (url != null && url.contains("approved=true")) {
-                        alert.dismiss()
+                        tmdbWebView.visibility = INVISIBLE
+                        showLoading()
                         presenter.loginSuccess(requestTokenResponse)
                     } else if (url != null && url.contains("denied=true")) {
-                        alert.dismiss()
+                        tmdbWebView.visibility = INVISIBLE
+                        showLoading()
                         presenter.loginDenied()
                     }
                 }
             }
-            alert.setContentView(webView)
-            alert.setCancelable(true)
-            alert.show()
+
         }
 
+    }
+
+    override fun showLoginDenied() {
+        runOnUiThread {
+            dismissLoading()
+            tmdbWebView?.visibility = INVISIBLE
+            loginDeniedContainer?.visibility = VISIBLE
+        }
     }
 }

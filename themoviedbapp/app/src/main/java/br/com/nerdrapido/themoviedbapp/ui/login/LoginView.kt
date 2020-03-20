@@ -10,4 +10,6 @@ interface LoginView : View {
 
     fun showMdbDialog(requestTokenResponse: RequestTokenResponse)
 
+    fun showLoginDenied()
+
 }

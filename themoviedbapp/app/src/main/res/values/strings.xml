@@ -4,7 +4,7 @@
     <string name="detail_info_fragment_year">Ano de lançamento</string>
     <string name="detail_info_fragment_overview">Sinopse</string>
     <string name="web_view_login_title">Faça Login</string>
-    <string name="login_action_sign_in">Fazer Login no Movie DB</string>
+    <string name="login_action_sign_in">Recarregar Login no TMDb</string>
     <string name="home_button">Início</string>
     <string name="my_list_button">Minha Lista</string>
     <string name="logout_button">Sair</string>
@@ -28,4 +28,6 @@
     <string name="detail_movie_overview">%s: %s</string>
     <string name="favoritos">Favoritos</string>
     <string name="houve_um_erro_ao_carregar_o_v_deo">Houve um erro ao carregar o vídeo</string>
+    <string name="login_denied">Este aplicativo depende da sua aprovação para uso no site do The Movie DB. Sem esta autorização não podemos prosseguir. Clique no botão RECARREGAR LOGIN NO TMDB abaixo.</string>
+    <string name="login_denied_title">Não podemos prosseguir!</string>
 </resources>

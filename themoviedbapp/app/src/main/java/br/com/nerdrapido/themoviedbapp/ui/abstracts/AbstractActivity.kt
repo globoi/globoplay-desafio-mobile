@@ -13,7 +13,6 @@ import br.com.nerdrapido.themoviedbapp.ui.alerts.ErrorDialog
 import br.com.nerdrapido.themoviedbapp.ui.home.HomeActivity
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.koin.android.ext.android.inject
 
 
 /**

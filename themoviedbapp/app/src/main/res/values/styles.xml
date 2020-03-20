@@ -12,6 +12,7 @@
         <item name="android:actionBarStyle">@style/MyActionBar</item>
         <item name="colorControlNormal">@color/colorWhite</item>
         <item name="android:textColorSecondary">@color/colorWhite</item>
+        <item name="android:windowAnimationStyle">@null</item>
     </style>
 
     <style name="FullScreenTheme" parent="AppTheme">

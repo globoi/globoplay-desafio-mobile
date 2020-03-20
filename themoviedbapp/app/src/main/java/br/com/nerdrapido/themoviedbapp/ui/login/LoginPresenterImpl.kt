@@ -30,6 +30,16 @@ class LoginPresenterImpl(
         const val LOGIN_SUCCESS = "LOGINSUCCESS.com"
     }
 
+    override fun viewIsAboutToBeShown() {
+        GlobalScope.launch {
+            onResponseWrapper(
+                requestLoginUseCase
+                    .execute(RequestTokenRequest())
+            ) {
+                view.showMdbDialog(it)
+            }
+        }
+    }
     /**
      * See overridden fun
      */
@@ -43,14 +53,12 @@ class LoginPresenterImpl(
                 requestLoginUseCase
                     .execute(RequestTokenRequest())
             ) {
-                view.dismissLoading()
                 view.showMdbDialog(it)
             }
         }
     }
 
     override fun loginSuccess(requestTokenResponse: RequestTokenResponse) {
-        view.showLoading()
         GlobalScope.launch {
             onResponseWrapper(
                 createSessionUseCase.execute(
@@ -61,7 +69,6 @@ class LoginPresenterImpl(
             ) {
                 GlobalScope.launch {
                     setSessionUseCase.execute(it)
-                    view.dismissLoading()
                     view.goHome()
                 }
             }
@@ -69,11 +76,9 @@ class LoginPresenterImpl(
     }
 
     override fun loginDenied() {
-        view.showLoading()
         GlobalScope.launch {
             setSessionUseCase.execute(CreateSessionResponse(null, null))
-            view.dismissLoading()
-
+            view.showLoginDenied()
         }
 
     }
