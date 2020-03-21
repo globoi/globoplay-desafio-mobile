@@ -64,8 +64,6 @@ abstract class MovieListView<T : MovieListViewHolder> @JvmOverloads constructor(
         movieListRecyclerView?.addOnScrollListener(movieListOnScrollListenerTemp)
         movieListOnScrollListener = movieListOnScrollListenerTemp
         this.onNextPageNeeded = onNextPageNeeded
-        //Tudo certo carrega a primeira pagina
-        onNextPageNeeded.onNextPageNeeded(1)
     }
 
     /**

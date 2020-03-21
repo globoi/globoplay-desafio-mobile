@@ -8,8 +8,6 @@ import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListView
 import kotlinx.android.synthetic.main.fragment_related_movies.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 /**
  * Created By FELIPE GUSBERTI @ 13/03/2020
@@ -26,33 +24,29 @@ class RelatedMovieDetailFragment() :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val newVIew = inflater.inflate(R.layout.fragment_related_movies, null)
-
-
-        return newVIew
+        return inflater.inflate(R.layout.fragment_related_movies, null)
     }
 
     override fun onResume() {
         super.onResume()
         relatedListV.setOnPageChangeListener(
-            5,
+            2,
             20,
             object : MovieListView.OnNextPageNeeded {
                 override fun onNextPageNeeded(page: Int) {
-                    GlobalScope.launch {
-                        relatedListV.addItemList(
-                            onRelatedMovieNewPageLoad?.onRelatedMovieNewPageLoad(
-                                page
-                            ) ?: emptyList()
-                        )
-                    }
+                    onRelatedMovieNewPageLoad?.onRelatedMovieNewPageLoad(page)
                 }
             }
         )
+        onRelatedMovieNewPageLoad?.onRelatedMovieNewPageLoad(1)
+    }
+
+    fun updateRelatedMovie(movieListResultObjectList: List<MovieListResultObject>) {
+        relatedListV.addItemList(movieListResultObjectList)
     }
 
     interface OnRelatedMovieNewPageLoad {
-        suspend fun onRelatedMovieNewPageLoad(page: Int): List<MovieListResultObject>
+        fun onRelatedMovieNewPageLoad(page: Int)
     }
 
 }

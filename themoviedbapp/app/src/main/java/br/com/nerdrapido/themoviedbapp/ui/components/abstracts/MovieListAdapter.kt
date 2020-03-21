@@ -43,8 +43,7 @@ abstract class MovieListAdapter<T: MovieListViewHolder>(
     }
 
     override fun onBindViewHolder(holder: T, position: Int) {
-        var requestOptions = RequestOptions()
-//        requestOptions = requestOptions.placeholder(R.drawable.poster_progress)
+        val requestOptions = RequestOptions().placeholder(R.drawable.poster_progress)
 
         Glide.with(context).load("https://image.tmdb.org/t/p/w500" + data[position].posterPath)
             .apply(requestOptions).into(holder.poster)

@@ -32,13 +32,17 @@ class MovieDetailPresenterImpl(
         initMovieInfo(movieListResultObject)
     }
 
-    override suspend fun loadRelatedMoviePage(page: Int): List<MovieListResultObject> {
-        val movieId = movieListResultObject?.id ?: return emptyList()
-        var movieList: List<MovieListResultObject> = emptyList()
-        onResponseWrapper(
-            movieUseCase.getMovieRecommendationByMovieId(movieId, 1)
-        ) { responseObject -> movieList = responseObject.results ?: emptyList() }
-        return movieList
+    override fun loadRelatedMoviePage(page: Int) {
+        val movieId = movieListResultObject?.id ?: return
+        GlobalScope.launch {
+            onResponseWrapper(
+                movieUseCase.getMovieRecommendationByMovieId(movieId, page)
+            ) { responseObject ->
+                view.loadedRelatedMoviePage(
+                    responseObject.results ?: emptyList()
+                )
+            }
+        }
     }
 
     override fun myListButtonClicked() {

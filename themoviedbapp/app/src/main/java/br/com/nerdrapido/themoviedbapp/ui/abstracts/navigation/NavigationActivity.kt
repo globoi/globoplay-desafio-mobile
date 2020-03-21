@@ -41,7 +41,6 @@ abstract class NavigationActivity<V : NavigationView, P : NavigationPresenter<V>
         when (item.itemId) {
             R.id.home -> goHome()
             R.id.list -> goMyList()
-//            R.id.favorite -> goMyList()
             R.id.logout -> presenter.logoutWasCalled()
             else -> {
                 Timber.w("Nav Menu Wass called but no option found")
@@ -52,16 +51,13 @@ abstract class NavigationActivity<V : NavigationView, P : NavigationPresenter<V>
 
     override fun showLoading() {
         runOnUiThread {
-            loading.visibility = VISIBLE
-            navigationActivityContainer.visibility = GONE
+            loading?.show()
         }
-
     }
 
     override fun dismissLoading() {
         runOnUiThread {
-            loading.visibility = GONE
-            navigationActivityContainer.visibility = VISIBLE
+            loading?.hide()
         }
     }
 }

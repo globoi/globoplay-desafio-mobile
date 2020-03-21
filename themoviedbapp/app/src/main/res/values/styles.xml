@@ -35,6 +35,11 @@
         <item name="android:textSize">@dimen/horizontal_movie_list_title_text_size</item>
     </style>
 
+    <style name="MyHorizontalProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
     <style name="MovieDetailPageTabTextStyle" parent="AppTheme">
         <item name="android:maxLines">2</item>
         <item name="android:textSize">24sp</item>

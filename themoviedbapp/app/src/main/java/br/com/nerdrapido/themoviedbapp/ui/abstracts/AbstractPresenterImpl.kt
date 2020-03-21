@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.ui.abstracts
 
+import androidx.annotation.CallSuper
 import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
 import br.com.nerdrapido.themoviedbapp.domain.usecase.GetLogInStateUseCase
 import timber.log.Timber
@@ -43,16 +44,19 @@ abstract class AbstractPresenterImpl<V : View>(
         }
     }
 
+    @CallSuper
     override fun viewIsInvoked() {
         Timber.d("%s view Is Invoked", view.javaClass.simpleName)
         needToGoBackToLoginCheck()
     }
 
+    @CallSuper
     override fun viewIsAboutToBeShown() {
         Timber.d("%s Is About To BeShown", view.javaClass.simpleName)
         needToGoBackToLoginCheck()
     }
 
+    @CallSuper
     override fun viewIsClosed() {
         Timber.d("%s is closed", view.javaClass.simpleName)
     }

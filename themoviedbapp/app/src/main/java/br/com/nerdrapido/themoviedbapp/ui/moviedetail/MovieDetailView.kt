@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.ui.moviedetail
 
+import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieResponse
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation.NavigationView
 
@@ -13,5 +14,7 @@ interface MovieDetailView : NavigationView {
     fun setMovieListState(isMovieInMyList: Boolean?)
 
     fun movieVideoLoaded(videoId: String)
+
+    fun loadedRelatedMoviePage(movieListResultObjectList: List<MovieListResultObject>)
 
 }

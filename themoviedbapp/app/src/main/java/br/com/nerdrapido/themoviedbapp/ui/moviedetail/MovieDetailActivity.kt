@@ -11,7 +11,10 @@ import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieResponse
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation.NavigationActivity
-import br.com.nerdrapido.themoviedbapp.ui.moviedetail.fragment.*
+import br.com.nerdrapido.themoviedbapp.ui.moviedetail.fragment.InfoMovieDetailFragment
+import br.com.nerdrapido.themoviedbapp.ui.moviedetail.fragment.MovieDetailFragment
+import br.com.nerdrapido.themoviedbapp.ui.moviedetail.fragment.MovieDetailPageAdapter
+import br.com.nerdrapido.themoviedbapp.ui.moviedetail.fragment.RelatedMovieDetailFragment
 import br.com.nerdrapido.themoviedbapp.ui.youtubevideo.YoutubePlayerActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -96,6 +99,10 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
         }
     }
 
+    override fun loadedRelatedMoviePage(movieListResultObjectList: List<MovieListResultObject>) {
+        runOnUiThread { relatedMovieDetailFragment.updateRelatedMovie(movieListResultObjectList) }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         val extras = intent.extras
         if (extras != null) {
@@ -158,9 +165,7 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
     }
 
     private fun loadImageIntoView(imageView: ImageView) {
-        var requestOptions = RequestOptions()
-//        requestOptions = requestOptions.placeholder(R.drawable.poster_progress)
-
+        val requestOptions = RequestOptions()
         Glide.with(this)
             .load("https://image.tmdb.org/t/p/original" + movieListResultObject.backdropPath)
             .apply(requestOptions).into(imageView)
@@ -215,9 +220,8 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
     }
 
 
-
-    override suspend fun onRelatedMovieNewPageLoad(page: Int): List<MovieListResultObject> {
-        return presenter.loadRelatedMoviePage(page)
+    override fun onRelatedMovieNewPageLoad(page: Int) {
+        presenter.loadRelatedMoviePage(page)
     }
 
 

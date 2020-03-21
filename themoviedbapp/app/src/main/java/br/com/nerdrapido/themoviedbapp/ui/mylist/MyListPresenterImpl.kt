@@ -39,8 +39,9 @@ class MyListPresenterImpl(
     }
 
     override suspend fun loadPage(page: Int): List<MovieListResultObject> {
+        view.showLoading()
         var response: WatchlistMoviesResponse? = null
-        onResponseWrapper(getWatchlistMoviesUseCase.getWatchlistMovies(1)) { value ->
+        onResponseWrapper(getWatchlistMoviesUseCase.getWatchlistMovies(page)) { value ->
             response = value
         }
         return response?.results ?: emptyList()

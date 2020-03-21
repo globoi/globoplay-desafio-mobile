@@ -8,11 +8,11 @@ import br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation.NavigationPresent
  */
 interface HomePresenter : NavigationPresenter<HomeView> {
 
-    suspend fun loadDiscoverPage(page: Int): List<MovieListResultObject>
+    fun loadDiscoverPage(page: Int)
 
-    suspend fun loadActionPage(page: Int): List<MovieListResultObject>
+    fun loadActionPage(page: Int)
 
-    suspend fun loadComedyPage(page: Int): List<MovieListResultObject>
+    fun loadComedyPage(page: Int)
 
-    suspend fun loadScienceFictionPage(page: Int): List<MovieListResultObject>
+    fun loadScienceFictionPage(page: Int)
 }

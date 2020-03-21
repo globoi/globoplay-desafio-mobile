@@ -11,7 +11,7 @@ interface MovieDetailPresenter : NavigationPresenter<MovieDetailView> {
 
     fun setMovie(movieListResultObject: MovieListResultObject)
 
-    suspend fun loadRelatedMoviePage(page: Int): List<MovieListResultObject>
+    fun loadRelatedMoviePage(page: Int)
 
     fun myListButtonClicked()
 

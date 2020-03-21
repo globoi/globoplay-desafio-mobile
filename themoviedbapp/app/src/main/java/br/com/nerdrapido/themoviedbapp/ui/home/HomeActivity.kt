@@ -8,8 +8,6 @@ import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListView
 import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
@@ -29,6 +27,34 @@ class HomeActivity : NavigationActivity<HomeView, HomePresenter>(), HomeView,
         return getString(R.string.home_title)
     }
 
+    override suspend fun loadedDiscoverPage(movieListResultObjectList: List<MovieListResultObject>) {
+        runOnUiThread {
+            homeListA?.addItemList(movieListResultObjectList)
+            dismissLoading()
+        }
+    }
+
+    override suspend fun loadedActionPage(movieListResultObjectList: List<MovieListResultObject>) {
+        runOnUiThread {
+            homeListB?.addItemList(movieListResultObjectList)
+            dismissLoading()
+        }
+    }
+
+    override suspend fun loadedComedyPage(movieListResultObjectList: List<MovieListResultObject>) {
+        runOnUiThread {
+            homeListC?.addItemList(movieListResultObjectList)
+            dismissLoading()
+        }
+    }
+
+    override suspend fun loadedScienceFictionPage(movieListResultObjectList: List<MovieListResultObject>) {
+        runOnUiThread {
+            homeListD?.addItemList(movieListResultObjectList)
+            dismissLoading()
+        }
+    }
+
     override fun goHome() {
         Timber.i("Already in home")
     }
@@ -40,20 +66,28 @@ class HomeActivity : NavigationActivity<HomeView, HomePresenter>(), HomeView,
         setupList(
             getString(R.string.em_alta),
             homeListA
-        ) { page -> presenter.loadDiscoverPage(page) }
+        ) { page ->
+            showLoading()
+            presenter.loadDiscoverPage(page)
+        }
         setupList(
             getString(R.string.filmes_de, getString(R.string.acao)),
             homeListB
-        ) { page -> presenter.loadActionPage(page) }
+        ) { page ->
+            presenter.loadActionPage(page)
+        }
         setupList(
             getString(R.string.filmes_de, getString(R.string.comedia)),
             homeListC
-        ) { page -> presenter.loadComedyPage(page) }
+        ) { page ->
+            presenter.loadComedyPage(page)
+        }
         setupList(
             getString(R.string.filmes_de, getString(R.string.ficcao_cientifica)),
             homeListD
-        ) { page -> presenter.loadScienceFictionPage(page) }
-
+        ) { page ->
+            presenter.loadScienceFictionPage(page)
+        }
     }
 
     override fun onResume() {
@@ -64,7 +98,7 @@ class HomeActivity : NavigationActivity<HomeView, HomePresenter>(), HomeView,
     private fun setupList(
         title: String? = null,
         horizontalMovieListView: HorizontalMovieListView,
-        loadPage: suspend (page: Int) -> List<MovieListResultObject>
+        loadPage: (page: Int) -> Unit
     ) {
         horizontalMovieListView.titleText = title
         horizontalMovieListView.setOnPageChangeListener(
@@ -72,13 +106,7 @@ class HomeActivity : NavigationActivity<HomeView, HomePresenter>(), HomeView,
             20,
             object : MovieListView.OnNextPageNeeded {
                 override fun onNextPageNeeded(page: Int) {
-                    GlobalScope.launch {
-                        val list = loadPage(page)
-                        runOnUiThread {
-                            horizontalMovieListView.addItemList(list)
-                            dismissLoading()
-                        }
-                    }
+                    loadPage(page)
                 }
             }
         )
