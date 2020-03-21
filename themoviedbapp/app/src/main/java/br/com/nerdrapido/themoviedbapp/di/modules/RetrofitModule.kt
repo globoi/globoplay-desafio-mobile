@@ -13,8 +13,8 @@ class RetrofitModule {
 
     companion object {
         fun getRetrofitModule() = module {
-//            single<Interceptor>(override = true) { ServiceInterceptor(get()) }
-            single<Interceptor>(override = true) { MockErrorServiceInterceptor() }
+            single<Interceptor>(override = true) { ServiceInterceptor(get()) }
+//            single<Interceptor>(override = true) { MockErrorServiceInterceptor() }
             single { RetrofitInitializer(get()).retrofit }
         }
     }

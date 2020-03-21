@@ -41,7 +41,7 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
 
     private lateinit var movieListResultObject: MovieListResultObject
 
-    private val relatedMovieDetailFragment = RelatedMovieDetailFragment(this)
+    private val relatedMovieDetailFragment = RelatedMovieDetailFragment()
 
     private val infoMovieDetailFragment = InfoMovieDetailFragment()
 
@@ -200,6 +200,7 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
         )
         // Here we set fragment titles
         relatedMovieDetailFragment.title = getString(R.string.movie_detail_related_fragment_title)
+        relatedMovieDetailFragment.onRelatedMovieNewPageLoad = this
         infoMovieDetailFragment.title = getString(R.string.movie_detail_detail_fragment_title)
         return list
     }

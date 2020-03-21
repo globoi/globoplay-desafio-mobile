@@ -14,8 +14,10 @@ import kotlinx.coroutines.runBlocking
 /**
  * Created By FELIPE GUSBERTI @ 13/03/2020
  */
-class RelatedMovieDetailFragment(private var onRelatedMovieNewPageLoad: OnRelatedMovieNewPageLoad) :
+class RelatedMovieDetailFragment() :
     MovieDetailFragment() {
+
+    var onRelatedMovieNewPageLoad: OnRelatedMovieNewPageLoad? = null
 
     override var title = ""
 
@@ -38,9 +40,9 @@ class RelatedMovieDetailFragment(private var onRelatedMovieNewPageLoad: OnRelate
                     runBlocking {
                         async(coroutineContext) {
                             relatedListV.addItemList(
-                                onRelatedMovieNewPageLoad.onRelatedMovieNewPageLoad(
+                                onRelatedMovieNewPageLoad?.onRelatedMovieNewPageLoad(
                                     page
-                                )
+                                ) ?: emptyList()
                             )
                         }
                     }
