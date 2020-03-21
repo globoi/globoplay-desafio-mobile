@@ -111,30 +111,35 @@ abstract class MovieListView<T: MovieListViewHolder> @JvmOverloads constructor(
     }
 
     fun addItem(movieListResultObject: MovieListResultObject) {
+        val oldItemCount = itemList.size
         itemList.add(movieListResultObject)
-        adapter.notifyDataSetChanged()
+        post { adapter.notifyItemInserted(oldItemCount) }
     }
 
     fun addItemList(movieListResultObjectList: List<MovieListResultObject>) {
+        val oldItemCount = itemList.size
+        if (oldItemCount == 0) {
+            replaceItemList(movieListResultObjectList)
+            return
+        }
         itemList.addAll(movieListResultObjectList)
-        post { adapter.notifyDataSetChanged() }
+        post { adapter.notifyItemRangeInserted(oldItemCount, movieListResultObjectList.size) }
 
     }
 
     fun replaceItemList(movieListResultObjectList: List<MovieListResultObject>) {
-        clearItemList()
+        itemList.clear()
         itemList.addAll(movieListResultObjectList)
-        adapter.notifyDataSetChanged()
+        post { adapter.notifyDataSetChanged() }
     }
 
     fun clearItemList() {
         itemList.clear()
+        post { adapter.notifyDataSetChanged() }
     }
 
     override fun loadPage(page: Int) {
-        onLoadNextPage?.let {
-            it.onLoadNextPage(page)
-        }
+        onLoadNextPage?.onLoadNextPage(page)
     }
 
     interface OnLoadNextPage {
