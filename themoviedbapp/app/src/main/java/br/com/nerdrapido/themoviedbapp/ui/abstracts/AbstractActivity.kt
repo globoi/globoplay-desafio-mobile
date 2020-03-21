@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.ui.abstracts
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -9,7 +10,6 @@ import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import br.com.nerdrapido.themoviedbapp.R
-import br.com.nerdrapido.themoviedbapp.ui.alerts.ErrorDialog
 import br.com.nerdrapido.themoviedbapp.ui.home.HomeActivity
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -24,10 +24,17 @@ abstract class AbstractActivity<V : View, P : Presenter<V>> : AppCompatActivity(
 
     private var loadingDialog: AlertDialog? = null
 
-    private var errorDialog: ErrorDialog? = null
+    private var errorDialog: AlertDialog? = null
         get() {
             if (field == null) {
-                field = ErrorDialog(this)
+                field = AlertDialog.Builder(this, R.style.ErrorDialog)
+                    .setPositiveButton(
+                        R.string.error_dialog_positive_button
+                    ) { dialogInterface: DialogInterface, _: Int ->
+                        dialogInterface.dismiss()
+                        recreate()
+                    }
+                    .create()
             }
             return field
         }
@@ -67,24 +74,24 @@ abstract class AbstractActivity<V : View, P : Presenter<V>> : AppCompatActivity(
 
     override fun showNetworkError() {
         runOnUiThread {
-            errorDialog?.setTitle("showNetworkError")
-            errorDialog?.setMessage("showNetworkError")
+            errorDialog?.setTitle(getString(R.string.error_message_network_title))
+            errorDialog?.setMessage(getString(R.string.error_message_network_message))
             errorDialog?.show()
         }
     }
 
     override fun showApiErrorResponse() {
         runOnUiThread {
-            errorDialog?.setTitle("showApiErrorResponse")
-            errorDialog?.setMessage("showApiErrorResponse")
+            errorDialog?.setTitle(getString(R.string.error_message_api_title))
+            errorDialog?.setMessage(getString(R.string.error_message_api_message))
             errorDialog?.show()
         }
     }
 
     override fun showUnknownError() {
         runOnUiThread {
-            errorDialog?.setTitle("showUnknownError")
-            errorDialog?.setMessage("showUnknownError")
+            errorDialog?.setTitle(getString(R.string.error_message_unknown_title))
+            errorDialog?.setMessage(getString(R.string.error_message_unknown_message))
             errorDialog?.show()
         }
     }

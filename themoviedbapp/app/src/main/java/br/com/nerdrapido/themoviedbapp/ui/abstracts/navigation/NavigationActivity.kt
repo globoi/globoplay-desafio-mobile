@@ -50,30 +50,6 @@ abstract class NavigationActivity<V : NavigationView, P : NavigationPresenter<V>
         return true
     }
 
-    override fun showNetworkError() {
-        runOnUiThread {
-            errorTv.text = "showNetworkError"
-            error.visibility = VISIBLE
-            navigationActivityContainer.visibility = GONE
-        }
-    }
-
-    override fun showApiErrorResponse() {
-        runOnUiThread {
-            errorTv.text = "showApiErrorResponse"
-            error.visibility = VISIBLE
-            navigationActivityContainer.visibility = GONE
-        }
-    }
-
-    override fun showUnknownError() {
-        runOnUiThread {
-            errorTv.text = "showUnknownError"
-            error.visibility = VISIBLE
-            navigationActivityContainer.visibility = GONE
-        }
-    }
-
     override fun showLoading() {
         runOnUiThread {
             loading.visibility = VISIBLE

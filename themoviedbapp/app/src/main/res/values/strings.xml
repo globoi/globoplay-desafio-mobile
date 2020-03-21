@@ -15,6 +15,13 @@
     <string name="splash_title">Carregando…</string>
     <string name="em_alta">Em alta</string>
     <string name="acao">Ação</string>
+    <string name="error_dialog_positive_button">Tentar novamente</string>
+    <string name="error_message_network_title">Atenção!</string>
+    <string name="error_message_network_message">Não foi possível carregar o conteúdo. Verifique sua conexão com a internet.</string>
+    <string name="error_message_api_title">Erro!</string>
+    <string name="error_message_api_message">Houve um erro ao carregar o conteúdo.</string>
+    <string name="error_message_unknown_title">Erro!</string>
+    <string name="error_message_unknown_message">Houve um erro desconhecido ao carregar o conteúdo.</string><string name="error_message_unknown">Houve um erro desconhecido ao carregar o conteúdo.</string>
     <string name="comedia">Comédia</string>
     <string name="ficcao_cientifica">Ficção cientifica</string>
     <string name="filmes_de">Filmes de %s</string>
@@ -30,4 +37,6 @@
     <string name="houve_um_erro_ao_carregar_o_v_deo">Houve um erro ao carregar o vídeo</string>
     <string name="login_denied">Este aplicativo depende da sua aprovação para uso no site do The Movie DB. Sem esta autorização não podemos prosseguir. Clique no botão RECARREGAR LOGIN NO TMDB abaixo.</string>
     <string name="login_denied_title">Não podemos prosseguir!</string>
+    <string name="attention">Atenção</string>
+    <string name="error">Error</string>
 </resources>
