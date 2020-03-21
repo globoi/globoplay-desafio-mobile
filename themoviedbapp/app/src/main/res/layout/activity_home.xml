@@ -19,8 +19,6 @@
             android:id="@+id/homeListA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:lastPage="@integer/home_list_last_page"
-            app:pageSize="@integer/home_list_page_count"
             app:titleText="Test">
 
         </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView>
@@ -29,8 +27,6 @@
             android:id="@+id/homeListB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:lastPage="@integer/home_list_last_page"
-            app:pageSize="@integer/home_list_page_count"
             app:titleText="Test">
 
         </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView>
@@ -39,8 +35,6 @@
             android:id="@+id/homeListC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:lastPage="@integer/home_list_last_page"
-            app:pageSize="@integer/home_list_page_count"
             app:titleText="Test">
 
         </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView>
@@ -49,8 +43,6 @@
             android:id="@+id/homeListD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:lastPage="@integer/home_list_last_page"
-            app:pageSize="@integer/home_list_page_count"
             app:titleText="Test">
 
         </br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView>

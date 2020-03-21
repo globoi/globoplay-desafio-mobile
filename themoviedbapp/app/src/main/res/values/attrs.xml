@@ -3,8 +3,6 @@
 
     <declare-styleable name="MovieListView">
         <attr name="titleText" format="string" />
-        <attr name="lastPage" format="integer" />
-        <attr name="pageSize" format="integer" />
     </declare-styleable>
 
 </resources>

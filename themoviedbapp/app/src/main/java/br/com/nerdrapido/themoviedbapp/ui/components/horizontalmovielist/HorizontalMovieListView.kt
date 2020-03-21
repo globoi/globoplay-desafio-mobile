@@ -4,10 +4,12 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListView
+import kotlinx.android.synthetic.main.view_movie_list_horizontal.view.*
 
 
 /**
@@ -21,10 +23,25 @@ class HorizontalMovieListView @JvmOverloads constructor(
 
     override val orientation = HORIZONTAL
 
-    override val adapter = HorizontalMovieAdapter(
-        itemList,
-        context
-    )
+    override val adapter = HorizontalMovieAdapter(itemList, context)
+
+    override lateinit var layoutManager: LinearLayoutManager
+
+    override var movieListRecyclerView: RecyclerView? = null
+
+    init {
+        inflateLayout()
+        layoutManager = LinearLayoutManager(context, orientation, false)
+
+        //defino o titulo
+        movieListTitleTextView = movieListTitleTv
+        movieListTitleTextView?.text = titleText
+
+        //defino o adapter
+        movieListRecyclerView = findViewById(R.id.movieListRv)
+        movieListRecyclerView?.layoutManager = layoutManager
+        movieListRecyclerView?.adapter = adapter
+    }
 
     override fun inflateLayout() {
         inflate(context, R.layout.view_movie_list_horizontal, this)
@@ -32,33 +49,5 @@ class HorizontalMovieListView @JvmOverloads constructor(
         set.clone(this)
     }
 
-    init {
-        val a = context.obtainStyledAttributes(
-            attrs,
-            R.styleable.MovieListView, 0, 0
-        )
-        titleText = a.getString(R.styleable.MovieListView_titleText)
-        lastPage = a.getInt(R.styleable.MovieListView_lastPage, 5)
-        pageSize = a.getInt(R.styleable.MovieListView_pageSize, -1)
-        // If pageSize is not defined the view wont load properly unless lastPage is set to 1
-        if (pageSize == -1) {
-            lastPage = 1
-        }
-        a.recycle()
-
-        inflateLayout()
-
-        layoutManager =
-            GridLayoutManager(context, 1, HORIZONTAL, false)
-
-        //defino o titulo
-        movieListTitleTextView = findViewById(R.id.movieListTitleTv)
-        movieListTitleTextView?.text = titleText
-
-        //defino o adapter
-        movieListRecyclerView = findViewById(R.id.movieListRv)
-        movieListRecyclerView.layoutManager = layoutManager
-        movieListRecyclerView.adapter = adapter
-    }
 
 }

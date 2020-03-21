@@ -6,18 +6,14 @@ import android.view.View
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
-import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieAdapter
-import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListOnScrollListener
 
 /**
  * Created By FELIPE GUSBERTI @ 14/03/2020
  */
-abstract class MovieListView<T: MovieListViewHolder> @JvmOverloads constructor(
+abstract class MovieListView<T : MovieListViewHolder> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -37,16 +33,9 @@ abstract class MovieListView<T: MovieListViewHolder> @JvmOverloads constructor(
             field = value
         }
 
-    private var onLoadNextPage: OnLoadNextPage? = null
+    private var onNextPageNeeded: OnNextPageNeeded? = null
 
-    protected var layoutManager: LinearLayoutManager
-
-    protected var pageSize: Int
-
-    /**
-     * The number of pages to be loaded
-     */
-    protected var lastPage: Int
+    protected abstract var layoutManager: LinearLayoutManager
 
     protected val itemList = mutableListOf<MovieListResultObject>()
 
@@ -54,68 +43,47 @@ abstract class MovieListView<T: MovieListViewHolder> @JvmOverloads constructor(
 
     protected var movieListTitleTextView: TextView? = null
 
-    protected var movieListRecyclerView: RecyclerView
+    protected abstract var movieListRecyclerView: RecyclerView?
 
-    init {
-        val a = context.obtainStyledAttributes(
-            attrs,
-            R.styleable.MovieListView, 0, 0
-        )
-        titleText = a.getString(R.styleable.MovieListView_titleText)
-        lastPage = a.getInt(R.styleable.MovieListView_lastPage, 5)
-        pageSize = a.getInt(R.styleable.MovieListView_pageSize, -1)
-        // If pageSize is not defined the view wont load properly unless lastPage is set to 1
-        if (pageSize == -1) {
-            lastPage = 1
-        }
-        a.recycle()
-
-        inflateLayout()
-
-        layoutManager =
-            LinearLayoutManager(context, orientation, false)
-
-        //defino o titulo
-        movieListTitleTextView = findViewById(R.id.movieListTitleTv)
-        movieListTitleTextView?.text = titleText
-
-        //defino o adapter
-        movieListRecyclerView = findViewById(R.id.movieListRv)
-        movieListRecyclerView.layoutManager = layoutManager
-        movieListRecyclerView.adapter = adapter
-    }
-
-    protected fun callInit() {
-
-    }
+    private var movieListOnScrollListener: MovieListOnScrollListener? = null
 
     abstract fun inflateLayout()
 
     fun setOnPageChangeListener(
-        onLoadNextPage: OnLoadNextPage,
-        lastPage: Int = this.lastPage,
-        pageSize: Int = this.pageSize
+        lastPage: Int,
+        pageSize: Int,
+        onNextPageNeeded: OnNextPageNeeded
     ) {
-        movieListRecyclerView.addOnScrollListener(
-            HorizontalMovieListOnScrollListener(
-                pageSize,
-                lastPage,
-                layoutManager,
-                this
-            )
-        )
-        this.onLoadNextPage = onLoadNextPage
+        movieListOnScrollListener?.let { movieListRecyclerView?.removeOnScrollListener(it) }
+        val movieListOnScrollListenerTemp = object : MovieListOnScrollListener(
+            pageSize,
+            lastPage,
+            layoutManager,
+            this
+        ) {}
+        movieListRecyclerView?.addOnScrollListener(movieListOnScrollListenerTemp)
+        movieListOnScrollListener = movieListOnScrollListenerTemp
+        this.onNextPageNeeded = onNextPageNeeded
         //Tudo certo carrega a primeira pagina
-        onLoadNextPage.onLoadNextPage(1)
-
+        onNextPageNeeded.onNextPageNeeded(1)
     }
 
+    /**
+     * Adds a single item to the View.
+     *
+     * [movieListResultObject] is the item to be added.
+     */
     fun addItem(movieListResultObject: MovieListResultObject) {
         val oldItemCount = itemList.size
         itemList.add(movieListResultObject)
         post { adapter.notifyItemInserted(oldItemCount) }
     }
 
+    /**
+     * Adds a list of items to the View.
+     *
+     * [movieListResultObjectList] is the item list to be added.
+     */
     fun addItemList(movieListResultObjectList: List<MovieListResultObject>) {
         val oldItemCount = itemList.size
         if (oldItemCount == 0) {
@@ -123,26 +91,34 @@ abstract class MovieListView<T: MovieListViewHolder> @JvmOverloads constructor(
             return
         }
         itemList.addAll(movieListResultObjectList)
-        post { adapter.notifyItemRangeInserted(oldItemCount, movieListResultObjectList.size) }
+        post { adapter.notifyItemRangeInserted(oldItemCount + 1, movieListResultObjectList.size) }
 
     }
 
+    /**
+     * Replaces the item list and reload the data set.
+     *
+     * [movieListResultObjectList] is the new item list.
+     */
     fun replaceItemList(movieListResultObjectList: List<MovieListResultObject>) {
         itemList.clear()
         itemList.addAll(movieListResultObjectList)
         post { adapter.notifyDataSetChanged() }
     }
 
+    /**
+     * Makes the item list empty.
+     */
     fun clearItemList() {
         itemList.clear()
         post { adapter.notifyDataSetChanged() }
     }
 
     override fun loadPage(page: Int) {
-        onLoadNextPage?.onLoadNextPage(page)
+        onNextPageNeeded?.onNextPageNeeded(page)
     }
 
-    interface OnLoadNextPage {
-        fun onLoadNextPage(page: Int)
+    interface OnNextPageNeeded {
+        fun onNextPageNeeded(page: Int)
     }
 }

@@ -24,7 +24,8 @@ abstract class MovieListOnScrollListener(
             if (visibleItemCount + firstVisibleItemPosition >= totalItemCount - 5
                 && firstVisibleItemPosition >= 0 && totalItemCount >= pageSize
             ) {
-                onNextPageNeeded.loadPage(++page)
+                page++
+                onNextPageNeeded.loadPage(page)
             }
         }
     }

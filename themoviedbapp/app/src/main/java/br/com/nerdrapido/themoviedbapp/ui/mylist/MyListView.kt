@@ -9,6 +9,8 @@ import br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation.NavigationView
  */
 interface MyListView : NavigationView {
 
+    fun listSizeLoaded(totalPages: Int, pageSize: Int)
+
     fun listPageLoaded(list: List<MovieListResultObject>)
 
 }

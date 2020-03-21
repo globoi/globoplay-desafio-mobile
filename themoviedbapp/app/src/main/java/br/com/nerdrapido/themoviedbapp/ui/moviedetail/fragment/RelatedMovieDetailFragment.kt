@@ -8,8 +8,8 @@ import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListView
 import kotlinx.android.synthetic.main.fragment_related_movies.*
-import kotlinx.coroutines.async
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * Created By FELIPE GUSBERTI @ 13/03/2020
@@ -35,21 +35,19 @@ class RelatedMovieDetailFragment() :
     override fun onResume() {
         super.onResume()
         relatedListV.setOnPageChangeListener(
-            object : MovieListView.OnLoadNextPage {
-                override fun onLoadNextPage(page: Int) {
-                    runBlocking {
-                        async(coroutineContext) {
-                            relatedListV.addItemList(
-                                onRelatedMovieNewPageLoad?.onRelatedMovieNewPageLoad(
-                                    page
-                                ) ?: emptyList()
-                            )
-                        }
+            5,
+            20,
+            object : MovieListView.OnNextPageNeeded {
+                override fun onNextPageNeeded(page: Int) {
+                    GlobalScope.launch {
+                        relatedListV.addItemList(
+                            onRelatedMovieNewPageLoad?.onRelatedMovieNewPageLoad(
+                                page
+                            ) ?: emptyList()
+                        )
                     }
                 }
-            },
-            5,
-            20
+            }
         )
     }
 

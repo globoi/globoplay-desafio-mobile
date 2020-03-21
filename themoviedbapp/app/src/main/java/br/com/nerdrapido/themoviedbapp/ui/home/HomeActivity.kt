@@ -63,20 +63,24 @@ class HomeActivity : NavigationActivity<HomeView, HomePresenter>(), HomeView,
 
     private fun setupList(
         title: String? = null,
-        view: HorizontalMovieListView,
+        horizontalMovieListView: HorizontalMovieListView,
         loadPage: suspend (page: Int) -> List<MovieListResultObject>
     ) {
-        view.titleText = title
-        view.setOnPageChangeListener(object : MovieListView.OnLoadNextPage {
-            override fun onLoadNextPage(page: Int) {
-                GlobalScope.launch {
-                    val list = loadPage(page)
-                    runOnUiThread {
-                        view.addItemList(list)
-                        dismissLoading()
+        horizontalMovieListView.titleText = title
+        horizontalMovieListView.setOnPageChangeListener(
+            5,
+            20,
+            object : MovieListView.OnNextPageNeeded {
+                override fun onNextPageNeeded(page: Int) {
+                    GlobalScope.launch {
+                        val list = loadPage(page)
+                        runOnUiThread {
+                            horizontalMovieListView.addItemList(list)
+                            dismissLoading()
+                        }
                     }
                 }
             }
-        })
+        )
     }
 }
