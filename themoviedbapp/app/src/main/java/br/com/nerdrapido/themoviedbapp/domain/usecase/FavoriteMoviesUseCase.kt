@@ -9,7 +9,6 @@ import br.com.nerdrapido.themoviedbapp.data.model.favoritemovies.FavoriteMoviesR
 import br.com.nerdrapido.themoviedbapp.data.model.favoritemovies.FavoriteMoviesResponse
 import br.com.nerdrapido.themoviedbapp.data.repository.account.AccountRepository
 import br.com.nerdrapido.themoviedbapp.data.repository.session.SessionRepository
-import java.sql.Wrapper
 
 /**
  * Created By FELIPE GUSBERTI @ 15/03/2020
@@ -30,17 +29,11 @@ class FavoriteMoviesUseCase(
                 page
             )
         )
-//        when (response) {
-//            is ResponseWrapper.NetworkError -> return emptyList()
-//            is ResponseWrapper.GenericError -> return emptyList()
-//            is ResponseWrapper.Success -> return response.value.results ?: emptyList()
-//        }
     }
 
     /**
      * Save a [MovieListResultObject] to a favorite list.
      *
-     * TODO: make null treatment better
      */
     suspend fun addMovieToFavorite(movieListResultObject: MovieListResultObject): ResponseWrapper<PostFavoriteResponse>? {
         return movieListResultObject.id?.let {

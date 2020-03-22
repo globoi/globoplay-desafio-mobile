@@ -2,8 +2,6 @@ package br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist
 
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListViewHolder
 

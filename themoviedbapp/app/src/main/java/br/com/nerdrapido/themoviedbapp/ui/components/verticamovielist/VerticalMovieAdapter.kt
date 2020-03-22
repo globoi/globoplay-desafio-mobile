@@ -11,8 +11,8 @@ import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListAdapter
  * Created By FELIPE GUSBERTI @ 12/03/2020
  */
 class VerticalMovieAdapter(
-    private val data: MutableList<MovieListResultObject>,
-    private val context: Context
+    data: MutableList<MovieListResultObject>,
+    context: Context
 ) : MovieListAdapter<VerticalMovieViewHolder>(data, context) {
 
 

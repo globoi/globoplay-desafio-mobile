@@ -20,7 +20,7 @@ import org.koin.test.inject
  */
 internal class LoginRepositoryImplTest : AbstractMovieDbApiReposTest() {
 
-    val repos: LoginRepository by inject()
+    private val repos: LoginRepository by inject()
 
     @BeforeEach
     override fun setUp() {

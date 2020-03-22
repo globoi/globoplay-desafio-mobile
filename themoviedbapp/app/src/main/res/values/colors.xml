@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorBackground">#303030</color>
     <color name="colorPrimary">#202020</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorPrimaryLight">#404040</color>
@@ -8,12 +7,5 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorTransparent">#00000000</color>
-    <color name="default_button_background">@color/colorPrimary</color>
-    <color name="default_button_background_enabled">@color/colorPrimary</color>
-    <color name="default_button_background_disabled">@color/colorPrimaryLight</color>
-    <color name="default_button_background_pressed">@color/colorPrimary</color>
-
     <color name="button_text_default">@color/colorWhite</color>
-
-
 </resources>

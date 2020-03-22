@@ -31,6 +31,7 @@ class LoginPresenterImpl(
     }
 
     override fun viewIsAboutToBeShown() {
+        super.viewIsAboutToBeShown()
         GlobalScope.launch {
             onResponseWrapper(
                 requestLoginUseCase

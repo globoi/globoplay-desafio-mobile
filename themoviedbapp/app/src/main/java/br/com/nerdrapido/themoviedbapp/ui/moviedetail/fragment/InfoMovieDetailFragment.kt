@@ -1,5 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.ui.moviedetail.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,7 @@ class InfoMovieDetailFragment : MovieDetailFragment() {
             field = value
         }
 
+    @SuppressLint("InflateParams")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

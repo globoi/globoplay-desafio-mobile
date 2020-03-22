@@ -27,9 +27,7 @@ class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPrese
         super.onResume()
         //Use of delayed call of end of the splash screen for splashscreen demo purposes
         val handler = Handler()
-        handler.postDelayed(Runnable {
-            presenter.endOfSplashScreen()
-        }, 1)
+        presenter.endOfSplashScreen()
     }
 
     override fun goLogin() {

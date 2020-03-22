@@ -5,7 +5,7 @@ import android.app.Application
 /**
  * Created By FELIPE GUSBERTI @ 10/03/2020
  */
-class SessionRepositoryImpl(private val application: Application) : SessionRepository {
+class SessionRepositoryImpl(application: Application) : SessionRepository {
 
     companion object {
 

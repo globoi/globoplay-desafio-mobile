@@ -20,7 +20,7 @@ import org.koin.test.inject
  */
 internal class MoviesRepositoryImplTest : AbstractMovieDbApiReposTest() {
 
-    val repos: MoviesRepository by inject()
+    private val repos: MoviesRepository by inject()
 
 
     @BeforeEach

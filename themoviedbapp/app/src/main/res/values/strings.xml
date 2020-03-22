@@ -3,14 +3,12 @@
     <string name="detail_info_fragment_original_title">Título original</string>
     <string name="detail_info_fragment_year">Ano de lançamento</string>
     <string name="detail_info_fragment_overview">Sinopse</string>
-    <string name="web_view_login_title">Faça Login</string>
     <string name="login_action_sign_in">Recarregar Login no TMDb</string>
     <string name="home_button">Início</string>
     <string name="my_list_button">Minha Lista</string>
     <string name="logout_button">Sair</string>
     <string name="home_title">@string/app_name</string>
     <string name="my_list_title">Minha Lista</string>
-    <string name="my_favorite_title">Meus Filmes Favoritos</string>
     <string name="login_title">Login</string>
     <string name="splash_title">Carregando…</string>
     <string name="em_alta">Em alta</string>
@@ -21,7 +19,7 @@
     <string name="error_message_api_title">Erro!</string>
     <string name="error_message_api_message">Houve um erro ao carregar o conteúdo.</string>
     <string name="error_message_unknown_title">Erro!</string>
-    <string name="error_message_unknown_message">Houve um erro desconhecido ao carregar o conteúdo.</string><string name="error_message_unknown">Houve um erro desconhecido ao carregar o conteúdo.</string>
+    <string name="error_message_unknown_message">Houve um erro desconhecido ao carregar o conteúdo.</string>
     <string name="comedia">Comédia</string>
     <string name="ficcao_cientifica">Ficção cientifica</string>
     <string name="filmes_de">Filmes de %s</string>
@@ -37,7 +35,5 @@
     <string name="houve_um_erro_ao_carregar_o_v_deo">Houve um erro ao carregar o vídeo</string>
     <string name="login_denied">Este aplicativo depende da sua aprovação para uso no site do The Movie DB. Sem esta autorização não podemos prosseguir. Clique no botão RECARREGAR LOGIN NO TMDB abaixo.</string>
     <string name="login_denied_title">Não podemos prosseguir!</string>
-    <string name="attention">Atenção</string>
-    <string name="error">Error</string>
     <string name="backdrop">Backdrop</string>
 </resources>
