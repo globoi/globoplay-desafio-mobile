@@ -71,7 +71,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:indeterminate="true"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginBt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

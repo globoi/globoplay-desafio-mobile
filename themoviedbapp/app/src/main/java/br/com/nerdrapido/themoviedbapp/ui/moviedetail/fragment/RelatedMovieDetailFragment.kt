@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_related_movies.*
 /**
  * Created By FELIPE GUSBERTI @ 13/03/2020
  */
-class RelatedMovieDetailFragment() :
+class RelatedMovieDetailFragment :
     MovieDetailFragment() {
 
     var onRelatedMovieNewPageLoad: OnRelatedMovieNewPageLoad? = null

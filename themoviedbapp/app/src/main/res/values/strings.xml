@@ -39,4 +39,5 @@
     <string name="login_denied_title">Não podemos prosseguir!</string>
     <string name="attention">Atenção</string>
     <string name="error">Error</string>
+    <string name="backdrop">Backdrop</string>
 </resources>

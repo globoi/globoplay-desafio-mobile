@@ -34,11 +34,6 @@ class InfoMovieDetailFragment : MovieDetailFragment() {
         return inflater.inflate(R.layout.fragment_movie_detail, null)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
     override fun onResume() {
         super.onResume()
         setInfo(movieResponse)

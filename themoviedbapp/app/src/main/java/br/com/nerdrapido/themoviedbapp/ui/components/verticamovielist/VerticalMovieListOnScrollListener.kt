@@ -12,6 +12,4 @@ class VerticalMovieListOnScrollListener(
     lastPage: Int,
     layoutManager: LinearLayoutManager,
     onNextPageNeeded: OnNextPageNeeded
-) : MovieListOnScrollListener(pageSize, lastPage, layoutManager, onNextPageNeeded) {
-
-}
+) : MovieListOnScrollListener(pageSize, lastPage, layoutManager, onNextPageNeeded)

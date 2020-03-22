@@ -10,4 +10,8 @@
     <dimen name="padding_main_title">8dp</dimen>
     <dimen name="margin_movie_detail_header_left_right">32dp</dimen>
     <dimen name="margin_movie_overview_bottom">8dp</dimen>
+    <dimen name="disabled_alpha_default">0.5</dimen>
+    <dimen name="button_shape_margin">4dp</dimen>
+    <dimen name="button_shape_padding">10dp</dimen>
+    <dimen name="button_shape_radius">3dp</dimen>
 </resources>

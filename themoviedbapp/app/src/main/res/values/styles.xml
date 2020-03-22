@@ -11,9 +11,10 @@
         <item name="actionBarTheme">@style/MyActionBar</item>
         <item name="android:actionBarStyle">@style/MyActionBar</item>
         <item name="colorControlNormal">@color/colorWhite</item>
-        <item name="colorButtonNormal">@color/colorAccent</item>
         <item name="android:textColorSecondary">@color/colorWhite</item>
         <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:buttonStyle">@style/AppTheme.Button</item>
+        <item name="buttonStyle">@style/AppTheme.Button</item>
     </style>
 
     <style name="FullScreenTheme" parent="AppTheme">
@@ -57,6 +58,20 @@
 
     <style name="PositiveButtonStyle" parent="@style/Widget.MaterialComponents.Button.TextButton">
         <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Button">
+        <item name="android:background">@drawable/button_default</item>
+        <item name="android:textColor">@color/button_text_default</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Button</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+
+    <style name="AppTheme.Button.Spotlight" parent="@style/AppTheme.Button">
+        <item name="android:background">@drawable/button_spotlight</item>
     </style>
 
 </resources>
