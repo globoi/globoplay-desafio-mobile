@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import br.com.nerdrapido.themoviedbapp.R
+import br.com.nerdrapido.themoviedbapp.constant.URL
 import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieViewHolder
 import br.com.nerdrapido.themoviedbapp.ui.moviedetail.MovieDetailActivity
@@ -43,9 +44,9 @@ abstract class MovieListAdapter<T: MovieListViewHolder>(
     }
 
     override fun onBindViewHolder(holder: T, position: Int) {
-        val requestOptions = RequestOptions().placeholder(R.drawable.poster_progress)
+        val requestOptions = RequestOptions()
 
-        Glide.with(context).load("https://image.tmdb.org/t/p/w500" + data[position].posterPath)
+        Glide.with(context).load(URL.TMDB_POSTER.url + data[position].posterPath)
             .apply(requestOptions).into(holder.poster)
 
         holder.itemView.setOnClickListener {

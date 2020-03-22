@@ -1,11 +1,13 @@
 package br.com.nerdrapido.themoviedbapp.ui.login
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View.*
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import br.com.nerdrapido.themoviedbapp.R
+import br.com.nerdrapido.themoviedbapp.constant.URL
 import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenResponse
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginPresenterImpl.Companion.LOGIN_SUCCESS
@@ -45,11 +47,12 @@ class LoginActivity : AbstractActivity<LoginView, LoginPresenter>(), LoginView {
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun showMdbDialog(requestTokenResponse: RequestTokenResponse) {
         runOnUiThread {
             showLoading()
             tmdbWebView?.loadUrl(
-                "https://www.themoviedb.org/authenticate/${requestTokenResponse.requestToken}?redirect_to=http://$LOGIN_SUCCESS"
+                "${URL.TMDB_AUTHENTICATE.url}${requestTokenResponse.requestToken}?redirect_to=http://$LOGIN_SUCCESS"
             )
             tmdbWebView?.settings?.domStorageEnabled = true
             tmdbWebView?.settings?.allowContentAccess = true

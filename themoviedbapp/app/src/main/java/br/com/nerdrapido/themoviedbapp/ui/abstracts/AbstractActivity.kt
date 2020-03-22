@@ -110,7 +110,7 @@ abstract class AbstractActivity<V : View, P : Presenter<V>> : AppCompatActivity(
         onCreateCall()
     }
 
-    private fun onCreateCall() {
+    protected open fun onCreateCall() {
         @Suppress("UNCHECKED_CAST")
         presenter.initializeView(this as V)
         presenter.viewIsInvoked()

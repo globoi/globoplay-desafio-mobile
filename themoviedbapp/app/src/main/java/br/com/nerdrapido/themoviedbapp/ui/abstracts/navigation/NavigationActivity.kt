@@ -9,6 +9,7 @@ import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
 import br.com.nerdrapido.themoviedbapp.ui.mylist.MyListActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.activity_navigation.*
 import timber.log.Timber
 
@@ -23,8 +24,8 @@ abstract class NavigationActivity<V : NavigationView, P : NavigationPresenter<V>
 
     abstract val nestedActivityLayoutId: Int
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateCall() {
+        super.onCreateCall()
         (navigationView as BottomNavigationView).setOnNavigationItemSelectedListener(this)
         layoutInflater.inflate(nestedActivityLayoutId, navigationActivityContainer)
     }

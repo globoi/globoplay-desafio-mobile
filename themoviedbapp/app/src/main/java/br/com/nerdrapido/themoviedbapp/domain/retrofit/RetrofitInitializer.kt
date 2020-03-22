@@ -25,7 +25,7 @@ class RetrofitInitializer(serviceInterceptor: Interceptor) {
             clientBuilder.addInterceptor(logging)
         }
         retrofit = Retrofit.Builder()
-            .baseUrl(URL.BASE_TMDB_API.url)
+            .baseUrl(URL.TMDB_API.url)
             .client(clientBuilder.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()

@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import br.com.nerdrapido.themoviedbapp.R
+import br.com.nerdrapido.themoviedbapp.constant.URL
 import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.data.model.movie.MovieResponse
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation.NavigationActivity
@@ -53,7 +54,10 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
     }
 
     override fun movieInfoLoaded(movieResponse: MovieResponse) {
-        runOnUiThread { infoMovieDetailFragment.movieResponse = movieResponse }
+        runOnUiThread {
+            infoMovieDetailFragment.movieResponse = movieResponse
+            dismissLoading()
+        }
     }
 
     override fun setMovieListState(isMovieInMyList: Boolean?) {
@@ -100,7 +104,10 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
     }
 
     override fun loadedRelatedMoviePage(movieListResultObjectList: List<MovieListResultObject>) {
-        runOnUiThread { relatedMovieDetailFragment.updateRelatedMovie(movieListResultObjectList) }
+        runOnUiThread {
+            relatedMovieDetailFragment.updateRelatedMovie(movieListResultObjectList)
+            dismissLoading()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -134,11 +141,10 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
         // initialize pager tabs
         setTabPagerTabs(tabPager, fragments)
         // initialize listeners
-        detailVp.addOnPageChangeListener(onPageChangeListener())
-        tabPager.addOnTabSelectedListener(onTabSelectedListener(detailVp))
-
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
-        toolbar.setNavigationOnClickListener {
+        detailVp?.addOnPageChangeListener(onPageChangeListener())
+        tabPager?.addOnTabSelectedListener(onTabSelectedListener(detailVp))
+        toolbar?.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
+        toolbar?.setNavigationOnClickListener {
             goHome()
         }
 
@@ -156,18 +162,19 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
         listButton.setOnClickListener {
             presenter.myListButtonClicked()
         }
-
     }
 
     override fun onResume() {
         super.onResume()
+        showLoading()
         presenter.setMovie(movieListResultObject)
     }
 
     private fun loadImageIntoView(imageView: ImageView) {
+        showLoading()
         val requestOptions = RequestOptions()
         Glide.with(this)
-            .load("https://image.tmdb.org/t/p/original" + movieListResultObject.backdropPath)
+            .load(URL.TMDB_BACKDROP.url + movieListResultObject.backdropPath)
             .apply(requestOptions).into(imageView)
     }
 
@@ -219,8 +226,8 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
 
     }
 
-
     override fun onRelatedMovieNewPageLoad(page: Int) {
+        showLoading()
         presenter.loadRelatedMoviePage(page)
     }
 

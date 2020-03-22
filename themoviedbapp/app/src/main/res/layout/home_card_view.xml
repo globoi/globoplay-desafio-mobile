@@ -6,16 +6,6 @@
     android:layout_marginLeft="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/posterIv"
-        app:layout_constraintRight_toRightOf="@+id/posterIv"
-        app:layout_constraintTop_toBottomOf="@+id/posterIv"
-        app:layout_constraintTop_toTopOf="@+id/posterIv">
-
-    </com.google.android.material.card.MaterialCardView>
-    <!--Text View over Card View-->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/posterIv"
         android:layout_width="0dp"
