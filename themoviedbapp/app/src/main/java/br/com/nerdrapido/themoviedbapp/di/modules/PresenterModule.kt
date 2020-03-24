@@ -18,8 +18,8 @@ import org.koin.dsl.module
 class PresenterModule {
     companion object {
         fun getPresenterModule() = module {
-            factory<SplashScreenPresenter> { SplashScreenPresenterImpl(get()) }
-            factory<LoginPresenter> { LoginPresenterImpl(get(), get(), get(), get()) }
+            factory<SplashScreenPresenter> { SplashScreenPresenterImpl(get(), get()) }
+            factory<LoginPresenter> { LoginPresenterImpl(get(), get(), get(), get(), get()) }
             factory<HomePresenter> { HomePresenterImpl(get(), get(), get()) }
             factory<MovieDetailPresenter> { MovieDetailPresenterImpl(get(), get(), get(), get()) }
             factory<MyListPresenter> { MyListPresenterImpl(get(), get(), get()) }

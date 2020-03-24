@@ -46,8 +46,8 @@ abstract class AbstractMovieDbApiRepos(
 
     private fun convertErrorBody(throwable: HttpException): ErrorResponse? {
         return try {
-            throwable.response()?.errorBody()?.source()?.let {
-                Gson().fromJson(it.toString(), ErrorResponse::class.java)
+            throwable.response()?.let {
+                Gson().fromJson(it.errorBody().toString(), ErrorResponse::class.java)
             }
         } catch (exception: Exception) {
             null

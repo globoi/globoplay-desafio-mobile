@@ -2,7 +2,11 @@ package br.com.nerdrapido.themoviedbapp.ui.abstracts
 
 import androidx.annotation.CallSuper
 import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
+import br.com.nerdrapido.themoviedbapp.data.model.error.ErrorResponse
 import br.com.nerdrapido.themoviedbapp.domain.usecase.GetLogInStateUseCase
+import br.com.nerdrapido.themoviedbapp.domain.usecase.LogoutUseCase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /**
@@ -10,6 +14,7 @@ import timber.log.Timber
  */
 
 abstract class AbstractPresenterImpl<V : View>(
+    protected val logoutUseCase: LogoutUseCase,
     private val getLogInStateUseCase: GetLogInStateUseCase
 ) : Presenter<V> {
 
@@ -64,9 +69,20 @@ abstract class AbstractPresenterImpl<V : View>(
     override fun <T> onResponseWrapper(response: ResponseWrapper<T>?, onSuccessAction: (responseObject: T) -> Unit) {
         when (response) {
             is ResponseWrapper.NetworkError -> view.showNetworkError()
-            is ResponseWrapper.GenericError -> view.showApiErrorResponse()
+            is ResponseWrapper.GenericError -> treatApiError(response.code)
             is ResponseWrapper.Success<T> -> onSuccessAction(response.value)
             else -> view.showUnknownError()
+        }
+    }
+
+    private fun treatApiError(errorResponse: Int?) {
+        if (errorResponse == 401) {
+            GlobalScope.launch {
+                logoutUseCase.execute()
+                needToGoBackToLoginCheck()
+            }
+        } else {
+            view.showApiErrorResponse()
         }
     }
 }

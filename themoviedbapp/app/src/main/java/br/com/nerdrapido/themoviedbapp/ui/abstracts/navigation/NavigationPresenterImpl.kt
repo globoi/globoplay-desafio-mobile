@@ -10,10 +10,10 @@ import kotlinx.coroutines.launch
  * Created By FELIPE GUSBERTI @ 14/03/2020
  */
 abstract class NavigationPresenterImpl<V : NavigationView>(
-    private val logoutUseCase: LogoutUseCase,
+    logoutUseCase: LogoutUseCase,
     getLogInStateUseCase: GetLogInStateUseCase
 ) :
-    AbstractPresenterImpl<V>(getLogInStateUseCase), NavigationPresenter<V> {
+    AbstractPresenterImpl<V>(logoutUseCase, getLogInStateUseCase), NavigationPresenter<V> {
 
     override fun logoutWasCalled() {
         view.showLoading()

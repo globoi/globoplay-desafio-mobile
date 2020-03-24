@@ -1,9 +1,12 @@
 
 
-//Here the youtubeAipKey used to play youtube videos is read.
-//To run the video features you need to add a youtube.api.key property in the 'local.properties file
-//Ex. youtube.api.key=skghzkghkzdfhgkzfdhgkdzufh
-//You also need to add a The Movie Db api Key https://developers.themoviedb.org/3/getting-started
+// Here the youtubeAipKey used to play youtube videos is read.
+// To run the video features you need to add a youtube.api.key property in the 'local.properties'
+// file, ex.:
+// youtube.api.key=skghzkghkzdfhgkzfdhgkdzufh
+// You also need to add a The Movie Db api Key https://developers.themoviedb.org/3/getting-started ,
+// ex.:
+// tmdb.api.key=jkjglkxlkfgjlkfjgldkfjglk
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 def youtubeAipKey = properties.getProperty('youtube.api.key')
@@ -19,6 +22,7 @@ apply plugin: 'kotlin-kapt'
 
 android {
 
+    // If you get an gradle error here read the reader of this file
     defaultConfig {
         buildConfigField "String", "YOUTUBE_API_KEY", youtubeAipKey
         buildConfigField "String", "TMDB_API_KEY", tmdbAipKey

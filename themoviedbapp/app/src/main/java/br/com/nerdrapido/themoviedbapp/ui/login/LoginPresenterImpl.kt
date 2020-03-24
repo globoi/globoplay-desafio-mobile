@@ -4,10 +4,7 @@ import br.com.nerdrapido.themoviedbapp.data.model.login.CreateSessionRequest
 import br.com.nerdrapido.themoviedbapp.data.model.login.CreateSessionResponse
 import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenRequest
 import br.com.nerdrapido.themoviedbapp.data.model.login.RequestTokenResponse
-import br.com.nerdrapido.themoviedbapp.domain.usecase.CreateSessionUseCase
-import br.com.nerdrapido.themoviedbapp.domain.usecase.GetLogInStateUseCase
-import br.com.nerdrapido.themoviedbapp.domain.usecase.RequestLoginUseCase
-import br.com.nerdrapido.themoviedbapp.domain.usecase.SetSessionUseCase
+import br.com.nerdrapido.themoviedbapp.domain.usecase.*
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractPresenterImpl
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -20,8 +17,10 @@ class LoginPresenterImpl(
     private val requestLoginUseCase: RequestLoginUseCase,
     private val createSessionUseCase: CreateSessionUseCase,
     private val setSessionUseCase: SetSessionUseCase,
+    logoutUseCase: LogoutUseCase,
     getLogInStateUseCase: GetLogInStateUseCase
 ) : AbstractPresenterImpl<LoginView>(
+    logoutUseCase,
     getLogInStateUseCase
 ), LoginPresenter {
 
