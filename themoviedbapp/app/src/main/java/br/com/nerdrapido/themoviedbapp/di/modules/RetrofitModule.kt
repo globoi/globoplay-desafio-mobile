@@ -1,6 +1,5 @@
 package br.com.nerdrapido.themoviedbapp.di.modules
 
-import br.com.nerdrapido.themoviedbapp.domain.retrofit.MockErrorServiceInterceptor
 import br.com.nerdrapido.themoviedbapp.domain.retrofit.RetrofitInitializer
 import br.com.nerdrapido.themoviedbapp.domain.retrofit.ServiceInterceptor
 import okhttp3.Interceptor
@@ -13,8 +12,7 @@ class RetrofitModule {
 
     companion object {
         fun getRetrofitModule() = module {
-            single<Interceptor>(override = true) { ServiceInterceptor(get()) }
-//            single<Interceptor>(override = true) { MockErrorServiceInterceptor() }
+            single<Interceptor>(override = true) { ServiceInterceptor() }
             single { RetrofitInitializer(get()).retrofit }
         }
     }

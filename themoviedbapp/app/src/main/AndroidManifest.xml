@@ -10,7 +10,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/AppTheme"
         android:fullBackupContent="true">
 
@@ -18,7 +18,7 @@
             android:name=".ui.splash.SplashScreenActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize"
-            android:theme="@style/FullScreenTheme">
+            android:theme="@style/AppTheme.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -33,14 +33,14 @@
         <activity
             android:name=".ui.moviedetail.MovieDetailActivity"
             android:windowSoftInputMode="adjustResize"
-            android:theme="@style/FullScreenTheme"/>
+            android:theme="@style/AppTheme.FullScreen"/>
         <activity
             android:name=".ui.mylist.MyListActivity"
             android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ui.youtubevideo.YoutubePlayerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/FullScreenTheme"/>
+            android:theme="@style/AppTheme.FullScreen"/>
     </application>
 
 </manifest>

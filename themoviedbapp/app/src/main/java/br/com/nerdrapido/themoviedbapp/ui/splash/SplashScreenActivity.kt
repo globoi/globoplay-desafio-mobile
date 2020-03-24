@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Handler
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
-import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieListView
-import br.com.nerdrapido.themoviedbapp.ui.home.HomeActivity
 import br.com.nerdrapido.themoviedbapp.ui.login.LoginActivity
 import org.koin.android.ext.android.inject
 
@@ -13,11 +11,12 @@ import org.koin.android.ext.android.inject
 /**
  * Created By FELIPE GUSBERTI @ 08/03/2020
  */
-class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPresenter>(), SplashScreenView {
+class SplashScreenActivity : AbstractActivity<SplashScreenView, SplashScreenPresenter>(),
+    SplashScreenView {
 
-    override  val presenter: SplashScreenPresenter by inject()
+    override val presenter: SplashScreenPresenter by inject()
 
-    override  val layoutId = R.layout.activity_splash_screen
+    override val layoutId = R.layout.activity_splash_screen
 
     override fun getActivityTitle(): String {
         return getString(R.string.splash_title)
@@ -27,7 +26,9 @@ class SplashScreenActivity: AbstractActivity<SplashScreenView, SplashScreenPrese
         super.onResume()
         //Use of delayed call of end of the splash screen for splashscreen demo purposes
         val handler = Handler()
-        presenter.endOfSplashScreen()
+        handler.postDelayed(Runnable {
+            presenter.endOfSplashScreen()
+        }, 500)
     }
 
     override fun goLogin() {

@@ -1,7 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.ui.components.verticamovielist
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import br.com.nerdrapido.themoviedbapp.ui.components.abstracts.MovieListOnScrollListener
 
 /**

@@ -3,7 +3,6 @@ package br.com.nerdrapido.themoviedbapp.di
 import br.com.nerdrapido.themoviedbapp.di.modules.PresenterModule.Companion.getPresenterModule
 import br.com.nerdrapido.themoviedbapp.di.modules.RepositoryModule.Companion.getRepositoryModule
 import br.com.nerdrapido.themoviedbapp.di.modules.RetrofitModule.Companion.getRetrofitModule
-import br.com.nerdrapido.themoviedbapp.di.modules.UseCaseModule
 import br.com.nerdrapido.themoviedbapp.di.modules.UseCaseModule.Companion.getUseCaseModule
 import br.com.nerdrapido.themoviedbapp.di.modules.ViewModule.Companion.getViewModule
 import org.koin.core.module.Module

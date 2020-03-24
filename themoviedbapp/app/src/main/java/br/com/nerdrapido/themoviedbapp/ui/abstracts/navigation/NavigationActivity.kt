@@ -1,15 +1,11 @@
 package br.com.nerdrapido.themoviedbapp.ui.abstracts.navigation
 
 import android.content.Intent
-import android.os.Bundle
 import android.view.MenuItem
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractActivity
 import br.com.nerdrapido.themoviedbapp.ui.mylist.MyListActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.activity_navigation.*
 import timber.log.Timber
 
@@ -44,7 +40,7 @@ abstract class NavigationActivity<V : NavigationView, P : NavigationPresenter<V>
             R.id.list -> goMyList()
             R.id.logout -> presenter.logoutWasCalled()
             else -> {
-                Timber.w("Nav Menu Wass called but no option found")
+                Timber.w("Nav Menu Was called but no option found")
             }
         }
         return true

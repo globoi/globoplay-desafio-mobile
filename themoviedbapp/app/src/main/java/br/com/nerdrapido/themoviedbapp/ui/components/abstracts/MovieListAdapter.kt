@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.constant.URL
 import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
-import br.com.nerdrapido.themoviedbapp.ui.components.horizontalmovielist.HorizontalMovieViewHolder
 import br.com.nerdrapido.themoviedbapp.ui.moviedetail.MovieDetailActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -19,14 +18,14 @@ import com.google.gson.Gson
 /**
  * Created By FELIPE GUSBERTI @ 14/03/2020
  */
-abstract class MovieListAdapter<T: MovieListViewHolder>(
+abstract class MovieListAdapter<T : MovieListViewHolder>(
     private val data: MutableList<MovieListResultObject>,
     private val context: Context
 ) : RecyclerView.Adapter<T>() {
 
-    abstract fun getViewHolder(itemView: View) : T
+    abstract fun getViewHolder(itemView: View): T
 
-    abstract fun getViewHolderLayoutId() : Int
+    abstract fun getViewHolderLayoutId(): Int
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): T {
         val itemView: View = LayoutInflater
@@ -44,7 +43,7 @@ abstract class MovieListAdapter<T: MovieListViewHolder>(
     }
 
     override fun onBindViewHolder(holder: T, position: Int) {
-        val requestOptions = RequestOptions()
+        val requestOptions = RequestOptions().placeholder(R.drawable.poster_image_holder)
 
         Glide.with(context).load(URL.TMDB_POSTER.url + data[position].posterPath)
             .apply(requestOptions).into(holder.poster)

@@ -11,7 +11,6 @@ import br.com.nerdrapido.themoviedbapp.domain.usecase.SetSessionUseCase
 import br.com.nerdrapido.themoviedbapp.ui.abstracts.AbstractPresenterImpl
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 
 /**
@@ -41,6 +40,7 @@ class LoginPresenterImpl(
             }
         }
     }
+
     /**
      * See overridden fun
      */

@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import br.com.nerdrapido.themoviedbapp.R
 import kotlinx.android.synthetic.main.view_item_info.view.*
 

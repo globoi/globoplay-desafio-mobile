@@ -15,7 +15,7 @@
         <item name="buttonStyle">@style/AppTheme.Button</item>
     </style>
 
-    <style name="FullScreenTheme" parent="AppTheme">
+    <style name="AppTheme.FullScreen" parent="AppTheme">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
