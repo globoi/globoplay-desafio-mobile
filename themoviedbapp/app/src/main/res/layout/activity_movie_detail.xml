@@ -110,7 +110,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/trailer"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     android:layout_marginLeft="@dimen/margin_movie_detail_header_left_right"
                     style="@style/AppTheme.Button.Spotlight"
                     android:drawableStart="@drawable/ic_play_arrow_white_24dp"
