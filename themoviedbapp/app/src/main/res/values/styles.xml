@@ -1,0 +1,76 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="actionBarTheme">@style/MyActionBar</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="colorControlNormal">@color/colorWhite</item>
+        <item name="android:textColorSecondary">@color/colorWhite</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:buttonStyle">@style/AppTheme.Button</item>
+        <item name="buttonStyle">@style/AppTheme.Button</item>
+    </style>
+
+    <style name="AppTheme.FullScreen" parent="AppTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MyActionBar" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:tint">@color/colorWhite</item>
+    </style>
+
+    <style name="MovieDetailPageTab" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/horizontal_movie_list_title_text_size</item>
+    </style>
+
+    <style name="MyHorizontalProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="MovieDetailPageTabTextStyle" parent="AppTheme">
+        <item name="android:maxLines">2</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ErrorDialog" parent="Theme.MaterialComponents.Dialog.Alert">
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Button">
+        <item name="android:background">@drawable/button_default</item>
+        <item name="android:textColor">@color/button_text_default</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Button</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+
+    <style name="AppTheme.Button.Spotlight" parent="@style/AppTheme.Button">
+        <item name="android:background">@drawable/button_spotlight</item>
+    </style>
+
+</resources>
+

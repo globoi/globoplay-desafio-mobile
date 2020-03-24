@@ -1,0 +1,14 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="horizontal_movie_list_title_text_size">20sp</dimen>
+    <dimen name="padding_main_left_right">8dp</dimen>
+    <dimen name="text_title_font_size">24sp</dimen>
+    <dimen name="padding_main_title">8dp</dimen>
+    <dimen name="margin_movie_detail_header_left_right">32dp</dimen>
+    <dimen name="margin_movie_overview_bottom">8dp</dimen>
+    <dimen name="disabled_alpha_default">0.5</dimen>
+    <dimen name="button_shape_margin">4dp</dimen>
+    <dimen name="button_shape_padding">10dp</dimen>
+    <dimen name="button_shape_radius">3dp</dimen>
+</resources>
