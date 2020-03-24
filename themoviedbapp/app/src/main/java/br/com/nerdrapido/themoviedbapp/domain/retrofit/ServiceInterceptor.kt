@@ -9,7 +9,7 @@ import okhttp3.Response
 /**
  * Created By FELIPE GUSBERTI @ 04/03/2020
  */
-class ServiceInterceptor() : Interceptor {
+class ServiceInterceptor : Interceptor {
 
     /**
      * Movie Db API Token

@@ -1,6 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.domain.usecase
 
-import br.com.nerdrapido.themoviedbapp.data.model.MediaTypes
+import br.com.nerdrapido.themoviedbapp.data.model.common.MediaTypes
 import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
 import br.com.nerdrapido.themoviedbapp.data.model.addwatchlist.PostWatchlistRequest
 import br.com.nerdrapido.themoviedbapp.data.model.addwatchlist.PostWatchlistResponse
@@ -34,7 +34,6 @@ class WatchlistMoviesUseCase(
     /**
      * Save a [MovieListResultObject] to the watchlist.
      *
-     * TODO: make null treatment better
      */
     suspend fun addMovieToWatchlist(movieListResultObject: MovieListResultObject, addMovie: Boolean): ResponseWrapper<PostWatchlistResponse>? {
         return movieListResultObject.id?.let {

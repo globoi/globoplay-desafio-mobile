@@ -48,7 +48,6 @@ class InfoMovieDetailFragment : MovieDetailFragment() {
             movieResponse?.originalTitle
         )
 
-        // TODO: wrap calendar in function
         val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val calendar = Calendar.getInstance()
         movieResponse?.releaseDate?.let {

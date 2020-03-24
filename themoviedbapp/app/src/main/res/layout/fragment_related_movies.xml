@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:padding="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <br.com.nerdrapido.themoviedbapp.ui.components.verticamovielist.VerticalMovieListView

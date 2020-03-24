@@ -17,7 +17,6 @@ class UseCaseModule {
             single { LogoutUseCase(get(), get()) }
             single { GetDiscoverUseCase(get(), get(), get()) }
             single { MovieUseCase(get(), get(), get()) }
-            single { FavoriteMoviesUseCase(get(), get(), get()) }
             single { WatchlistMoviesUseCase(get(), get(), get()) }
         }
     }

@@ -1,4 +1,4 @@
-package br.com.nerdrapido.themoviedbapp.data.model
+package br.com.nerdrapido.themoviedbapp.data.model.common
 
 /**
  * Created By FELIPE GUSBERTI @ 12/03/2020

@@ -6,15 +6,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_mobvie_db"
+        android:id="@+id/nerdRapidoIv"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:src="@drawable/logo_nerd_rapido"
-        app:layout_constraintTop_toTopOf="parent"
         android:scaleType="fitCenter"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tmdbIv"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/tmdbIv"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:src="@drawable/logo_powered_by_tmdb"
+        android:scaleType="fitCenter"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintLeft_toRightOf="@+id/nerdRapidoIv"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/nerdRapidoIv"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

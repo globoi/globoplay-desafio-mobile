@@ -1,6 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.ui.home
 
-import br.com.nerdrapido.themoviedbapp.data.model.Genres
+import br.com.nerdrapido.themoviedbapp.data.model.common.Genres
 import br.com.nerdrapido.themoviedbapp.data.model.common.MovieListResultObject
 import br.com.nerdrapido.themoviedbapp.data.model.discover.DiscoverResponse
 import br.com.nerdrapido.themoviedbapp.domain.usecase.GetDiscoverUseCase

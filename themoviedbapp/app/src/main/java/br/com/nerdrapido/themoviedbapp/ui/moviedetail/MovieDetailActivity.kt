@@ -60,6 +60,12 @@ class MovieDetailActivity : NavigationActivity<MovieDetailView, MovieDetailPrese
         }
     }
 
+    /**
+     *
+     * @Suppress("DEPRECATION"): Resources.getColor(int, Theme) does not support min android version
+     *
+     */
+    @Suppress("DEPRECATION")
     override fun setMovieListState(isMovieInMyList: Boolean?) {
         runOnUiThread {
 

@@ -1,8 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.ui
 
 import android.app.Application
-import android.os.Build
-import br.com.nerdrapido.themoviedbapp.R
 import br.com.nerdrapido.themoviedbapp.di.KoinManager
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

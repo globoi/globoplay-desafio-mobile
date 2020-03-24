@@ -58,6 +58,12 @@ class YoutubePlayerActivity : YouTubeBaseActivity() {
         }
     }
 
+    /**
+     *
+     * @Suppress("DEPRECATION"): Resources.getColor(int, Theme) does not support min android version
+     *
+     */
+    @Suppress("DEPRECATION")
     override fun onResume() {
         super.onResume()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

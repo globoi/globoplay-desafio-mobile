@@ -110,6 +110,12 @@ abstract class AbstractActivity<V : View, P : Presenter<V>> : AppCompatActivity(
         onCreateCall()
     }
 
+    /**
+     *
+     * @Suppress("DEPRECATION"): Resources.getColor(int, Theme) does not support min android version
+     *
+     */
+    @Suppress("DEPRECATION")
     protected open fun onCreateCall() {
         @Suppress("UNCHECKED_CAST")
         presenter.initializeView(this as V)

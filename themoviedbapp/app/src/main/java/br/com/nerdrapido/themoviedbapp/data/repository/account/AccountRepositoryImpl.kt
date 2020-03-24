@@ -18,7 +18,7 @@ import retrofit2.Retrofit
 /**
  * Created By FELIPE GUSBERTI @ 15/03/2020
  */
-class AccountRepositoryImpl(val sessionRepository: SessionRepository, retrofit: Retrofit) :
+class AccountRepositoryImpl(private val sessionRepository: SessionRepository, retrofit: Retrofit) :
     AbstractMovieDbApiRepos(retrofit),
     AccountRepository {
 

@@ -1,6 +1,6 @@
 package br.com.nerdrapido.themoviedbapp.domain.usecase
 
-import br.com.nerdrapido.themoviedbapp.data.model.Genres
+import br.com.nerdrapido.themoviedbapp.data.model.common.Genres
 import br.com.nerdrapido.themoviedbapp.data.model.ResponseWrapper
 import br.com.nerdrapido.themoviedbapp.data.model.discover.DiscoverRequest
 import br.com.nerdrapido.themoviedbapp.data.model.discover.DiscoverResponse
