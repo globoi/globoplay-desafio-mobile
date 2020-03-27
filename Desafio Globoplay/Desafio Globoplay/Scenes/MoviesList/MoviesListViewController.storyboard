@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UwA-uD-iCD">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Movies List View Controller-->
+        <scene sceneID="8gq-FL-4pn">
+            <objects>
+                <viewController storyboardIdentifier="MoviesListViewController" id="UwA-uD-iCD" customClass="MoviesListViewController" customModule="Desafio_Globoplay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VC1-MY-TWp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pyk-Ib-akm">
+                                <rect key="frame" x="0.0" y="83" width="414" height="159"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="159" id="HLT-I0-hUN"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dmG-n5-bUH">
+                                    <size key="itemSize" width="100" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="Z7N-Gp-2E8" customClass="MovieCellCollectionViewCell" customModule="Desafio_Globoplay" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YAv-bv-rjP">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cgf-Yd-AnN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Cgf-Yd-AnN" firstAttribute="top" secondItem="YAv-bv-rjP" secondAttribute="top" id="QMT-Ci-8N8"/>
+                                                <constraint firstItem="Cgf-Yd-AnN" firstAttribute="leading" secondItem="YAv-bv-rjP" secondAttribute="leading" id="RZs-JI-hMu"/>
+                                                <constraint firstAttribute="bottom" secondItem="Cgf-Yd-AnN" secondAttribute="bottom" id="YDx-Co-z1s"/>
+                                                <constraint firstAttribute="trailing" secondItem="Cgf-Yd-AnN" secondAttribute="trailing" id="iSn-bK-ewx"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="120" height="160"/>
+                                        <connections>
+                                            <outlet property="MoviePosterImageView" destination="Cgf-Yd-AnN" id="GF6-ys-Omr"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIlmes Mais Porpulares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSE-7V-hSf">
+                                <rect key="frame" x="20" y="44" width="259" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xIy-Nl-I60">
+                                <rect key="frame" x="0.0" y="321" width="414" height="159"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="159" id="Nyv-4k-nTq"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Nd-i5-Ini">
+                                    <size key="itemSize" width="100" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="lEH-qH-5rb" customClass="MovieCellCollectionViewCell" customModule="Desafio_Globoplay" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="669-Ta-EcC">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="laI-hp-pTs">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="laI-hp-pTs" secondAttribute="bottom" id="7Gv-ko-1wa"/>
+                                                <constraint firstAttribute="trailing" secondItem="laI-hp-pTs" secondAttribute="trailing" id="EOW-bG-qqA"/>
+                                                <constraint firstItem="laI-hp-pTs" firstAttribute="leading" secondItem="669-Ta-EcC" secondAttribute="leading" id="TqB-ej-DuM"/>
+                                                <constraint firstItem="laI-hp-pTs" firstAttribute="top" secondItem="669-Ta-EcC" secondAttribute="top" id="Ueo-gA-HZg"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="120" height="160"/>
+                                        <connections>
+                                            <outlet property="MoviePosterImageView" destination="laI-hp-pTs" id="ysV-ab-Rnv"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1gz-Ub-QHQ">
+                                <rect key="frame" x="0.0" y="559" width="414" height="159"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="159" id="31o-sp-DZR"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="70w-OK-LdD">
+                                    <size key="itemSize" width="100" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="uUQ-cf-Zu1" customClass="MovieCellCollectionViewCell" customModule="Desafio_Globoplay" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VzP-SC-XB4">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OcG-L2-aZ0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OcG-L2-aZ0" firstAttribute="leading" secondItem="VzP-SC-XB4" secondAttribute="leading" id="YFL-OS-GWn"/>
+                                                <constraint firstAttribute="trailing" secondItem="OcG-L2-aZ0" secondAttribute="trailing" id="nxZ-Ku-2pR"/>
+                                                <constraint firstAttribute="bottom" secondItem="OcG-L2-aZ0" secondAttribute="bottom" id="sh0-7g-GKA"/>
+                                                <constraint firstItem="OcG-L2-aZ0" firstAttribute="top" secondItem="VzP-SC-XB4" secondAttribute="top" id="vrU-fx-8st"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="120" height="160"/>
+                                        <connections>
+                                            <outlet property="MoviePosterImageView" destination="OcG-L2-aZ0" id="y02-uz-iZC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filmes Melhores Avaliados" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y37-Kf-qX5">
+                                <rect key="frame" x="20" y="282" width="298" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Séries Mais Populares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBp-8a-AbW">
+                                <rect key="frame" x="20" y="520" width="247" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1gz-Ub-QHQ" firstAttribute="top" secondItem="EBp-8a-AbW" secondAttribute="bottom" constant="10" id="9Md-tz-sWI"/>
+                            <constraint firstItem="y37-Kf-qX5" firstAttribute="leading" secondItem="lSE-7V-hSf" secondAttribute="leading" id="9oQ-KA-KSX"/>
+                            <constraint firstItem="1gz-Ub-QHQ" firstAttribute="trailing" secondItem="LMC-6W-Bkc" secondAttribute="trailing" id="BkE-03-d1b"/>
+                            <constraint firstItem="1gz-Ub-QHQ" firstAttribute="leading" secondItem="LMC-6W-Bkc" secondAttribute="leading" id="Cj2-f2-uKZ"/>
+                            <constraint firstItem="xIy-Nl-I60" firstAttribute="trailing" secondItem="LMC-6W-Bkc" secondAttribute="trailing" id="DPF-iS-D75"/>
+                            <constraint firstItem="lSE-7V-hSf" firstAttribute="leading" secondItem="LMC-6W-Bkc" secondAttribute="leading" constant="20" id="OiQ-Pg-D5k"/>
+                            <constraint firstItem="EBp-8a-AbW" firstAttribute="top" secondItem="xIy-Nl-I60" secondAttribute="bottom" constant="40" id="P4P-TI-Wod"/>
+                            <constraint firstItem="LMC-6W-Bkc" firstAttribute="trailing" secondItem="pyk-Ib-akm" secondAttribute="trailing" id="PB6-G2-Otp"/>
+                            <constraint firstItem="xIy-Nl-I60" firstAttribute="leading" secondItem="LMC-6W-Bkc" secondAttribute="leading" id="X4o-fn-yov"/>
+                            <constraint firstItem="xIy-Nl-I60" firstAttribute="top" secondItem="y37-Kf-qX5" secondAttribute="bottom" constant="10" id="cD2-vx-Z7v"/>
+                            <constraint firstItem="pyk-Ib-akm" firstAttribute="leading" secondItem="LMC-6W-Bkc" secondAttribute="leading" id="cD6-uQ-1Ao"/>
+                            <constraint firstItem="EBp-8a-AbW" firstAttribute="leading" secondItem="y37-Kf-qX5" secondAttribute="leading" id="gPv-Bh-t0z"/>
+                            <constraint firstItem="y37-Kf-qX5" firstAttribute="top" secondItem="pyk-Ib-akm" secondAttribute="bottom" constant="40" id="hiw-YT-tHK"/>
+                            <constraint firstItem="pyk-Ib-akm" firstAttribute="top" secondItem="lSE-7V-hSf" secondAttribute="bottom" constant="10" id="i3L-kv-GLs"/>
+                            <constraint firstItem="lSE-7V-hSf" firstAttribute="top" secondItem="LMC-6W-Bkc" secondAttribute="top" id="o07-Lq-Sb7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LMC-6W-Bkc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xAw-7d-wdi"/>
+                    <connections>
+                        <outlet property="moviesCollectionView" destination="1gz-Ub-QHQ" id="EMU-re-WZ8"/>
+                        <outlet property="soapOpCollectionView" destination="pyk-Ib-akm" id="woD-ls-zwX"/>
+                        <outlet property="tvShowsCollectionView" destination="xIy-Nl-I60" id="80g-2J-5tm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XCZ-8e-aWy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1561" y="96"/>
+        </scene>
+    </scenes>
+</document>

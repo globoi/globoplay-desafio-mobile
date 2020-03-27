@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C8H-81-bvE">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Bookmarks View Controller-->
+        <scene sceneID="ZPf-n4-g8X">
+            <objects>
+                <viewController storyboardIdentifier="BookmarksViewController" id="C8H-81-bvE" customClass="BookmarksViewController" customModule="Desafio_Globoplay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WIu-jk-UBA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q8c-RF-nJ9">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Da-r7-nZi">
+                                    <size key="itemSize" width="106" height="161"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="lnk-bg-Ol6" customClass="MovieCellCollectionViewCell" customModule="Desafio_Globoplay" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="106" height="159"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="st1-To-fo8">
+                                            <rect key="frame" x="0.0" y="0.0" width="106" height="159"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="De3-Tz-rla">
+                                                    <rect key="frame" x="0.0" y="0.0" width="106" height="159"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="De3-Tz-rla" firstAttribute="leading" secondItem="st1-To-fo8" secondAttribute="leading" id="H4D-dr-tef"/>
+                                                <constraint firstAttribute="bottom" secondItem="De3-Tz-rla" secondAttribute="bottom" id="RN2-P6-NsZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="De3-Tz-rla" secondAttribute="trailing" id="XM7-j5-1mi"/>
+                                                <constraint firstItem="De3-Tz-rla" firstAttribute="top" secondItem="st1-To-fo8" secondAttribute="top" id="wtX-y3-lop"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="106" height="159"/>
+                                        <connections>
+                                            <outlet property="MoviePosterImageView" destination="De3-Tz-rla" id="VBN-Gg-HbO"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cIH-Nt-Loy" firstAttribute="bottom" secondItem="Q8c-RF-nJ9" secondAttribute="bottom" id="ABG-Dy-Guk"/>
+                            <constraint firstItem="cIH-Nt-Loy" firstAttribute="trailing" secondItem="Q8c-RF-nJ9" secondAttribute="trailing" id="Ypn-hu-Oja"/>
+                            <constraint firstItem="Q8c-RF-nJ9" firstAttribute="leading" secondItem="cIH-Nt-Loy" secondAttribute="leading" id="wCk-dI-xUc"/>
+                            <constraint firstItem="Q8c-RF-nJ9" firstAttribute="top" secondItem="cIH-Nt-Loy" secondAttribute="top" id="wxI-Lm-Vy4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cIH-Nt-Loy"/>
+                    </view>
+                    <connections>
+                        <outlet property="bookmarksCollectionView" destination="Q8c-RF-nJ9" id="faG-lO-kJ8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l1A-1b-qFy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="91.741071428571431"/>
+        </scene>
+    </scenes>
+</document>

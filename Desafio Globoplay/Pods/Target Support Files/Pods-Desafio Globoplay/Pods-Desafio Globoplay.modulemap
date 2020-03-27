@@ -1,0 +1,6 @@
+framework module Pods_Desafio_Globoplay {
+  umbrella header "Pods-Desafio Globoplay-umbrella.h"
+
+  export *
+  module * { export * }
+}

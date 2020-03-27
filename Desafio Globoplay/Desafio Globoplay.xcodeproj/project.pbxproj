@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		27B661EA25FEB5051D4CBE8A /* Pods_Desafio_Globoplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA28C30CEEA52C3E886C934F /* Pods_Desafio_Globoplay.framework */; };
+		4E2B2FB624284E640015E5AA /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2B2FB524284E630015E5AA /* MoviesListViewController.swift */; };
+		4E2B2FB824284E770015E5AA /* MoviesListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E2B2FB724284E770015E5AA /* MoviesListViewController.storyboard */; };
+		4E2B2FBC2428528B0015E5AA /* MovieCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2B2FBB2428528B0015E5AA /* MovieCellCollectionViewCell.swift */; };
+		4E2B2FBF24285A600015E5AA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2B2FBE24285A600015E5AA /* Colors.swift */; };
+		4E2B2FC424285AF60015E5AA /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2B2FC324285AF60015E5AA /* UIColor.swift */; };
+		4E429C6E242DE735006E8AAE /* BookmarksViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E429C6D242DE735006E8AAE /* BookmarksViewController.storyboard */; };
+		4E429C70242DE7E9006E8AAE /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E429C6F242DE7E9006E8AAE /* BookmarksViewController.swift */; };
+		4E429C72242DE9C4006E8AAE /* BookmarksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E429C71242DE9C4006E8AAE /* BookmarksPresenter.swift */; };
+		4E429C74242DEA8B006E8AAE /* BookmarksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E429C73242DEA8B006E8AAE /* BookmarksInteractor.swift */; };
+		4E429C76242DF335006E8AAE /* BookmarksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E429C75242DF335006E8AAE /* BookmarksRouter.swift */; };
+		4E429C79242E2F11006E8AAE /* DetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E429C78242E2F11006E8AAE /* DetailsViewController.storyboard */; };
+		4E429C7B242E2F92006E8AAE /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E429C7A242E2F92006E8AAE /* UIView.swift */; };
+		4E429C7D242E3BB5006E8AAE /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E429C7C242E3BB5006E8AAE /* DetailsViewController.swift */; };
+		4E429C7F242E3FD7006E8AAE /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E429C7E242E3FD7006E8AAE /* DetailsPresenter.swift */; };
+		4E429C81242E3FE7006E8AAE /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E429C80242E3FE7006E8AAE /* DetailsInteractor.swift */; };
+		4E429C83242E4C4C006E8AAE /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E429C82242E4C4C006E8AAE /* DetailsRouter.swift */; };
+		4EC1EFE32421575B0033D880 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC1EFE22421575B0033D880 /* AppDelegate.swift */; };
+		4EC1EFEC2421575F0033D880 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EC1EFEB2421575F0033D880 /* Assets.xcassets */; };
+		4EC1EFEF2421575F0033D880 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EC1EFED2421575F0033D880 /* LaunchScreen.storyboard */; };
+		4EDB154A242B00DC00EA5923 /* MoviesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB1549242B00DC00EA5923 /* MoviesListPresenter.swift */; };
+		4EDB154D242B06A800EA5923 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB154C242B06A800EA5923 /* Movie.swift */; };
+		4EF1335B242D557800CBF763 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1335A242D557800CBF763 /* TabBarRouter.swift */; };
+		4EF1335E242D586D00CBF763 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1335D242D586D00CBF763 /* Router.swift */; };
+		4EF13360242D630200CBF763 /* MoviesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1335F242D630200CBF763 /* MoviesListRouter.swift */; };
+		4EF13362242D68AD00CBF763 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF13361242D68AD00CBF763 /* UIWindow.swift */; };
+		4EF13364242D7B9B00CBF763 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF13363242D7B9B00CBF763 /* UIViewController.swift */; };
+		4EF44F45242BB132007DD5F8 /* RequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF44F44242BB132007DD5F8 /* RequestHelper.swift */; };
+		4EF44F47242BB172007DD5F8 /* MoviesListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF44F46242BB172007DD5F8 /* MoviesListInteractor.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4E2B2FB524284E630015E5AA /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
+		4E2B2FB724284E770015E5AA /* MoviesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoviesListViewController.storyboard; sourceTree = "<group>"; };
+		4E2B2FBB2428528B0015E5AA /* MovieCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		4E2B2FBE24285A600015E5AA /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		4E2B2FC324285AF60015E5AA /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		4E429C6D242DE735006E8AAE /* BookmarksViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookmarksViewController.storyboard; sourceTree = "<group>"; };
+		4E429C6F242DE7E9006E8AAE /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		4E429C71242DE9C4006E8AAE /* BookmarksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksPresenter.swift; sourceTree = "<group>"; };
+		4E429C73242DEA8B006E8AAE /* BookmarksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksInteractor.swift; sourceTree = "<group>"; };
+		4E429C75242DF335006E8AAE /* BookmarksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksRouter.swift; sourceTree = "<group>"; };
+		4E429C78242E2F11006E8AAE /* DetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsViewController.storyboard; sourceTree = "<group>"; };
+		4E429C7A242E2F92006E8AAE /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		4E429C7C242E3BB5006E8AAE /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		4E429C7E242E3FD7006E8AAE /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		4E429C80242E3FE7006E8AAE /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
+		4E429C82242E4C4C006E8AAE /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
+		4EC1EFDF2421575B0033D880 /* Desafio Globoplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio Globoplay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EC1EFE22421575B0033D880 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4EC1EFEB2421575F0033D880 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4EC1EFEE2421575F0033D880 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4EC1EFF02421575F0033D880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EDB1549242B00DC00EA5923 /* MoviesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListPresenter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		4EDB154C242B06A800EA5923 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		4EF1335A242D557800CBF763 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
+		4EF1335D242D586D00CBF763 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		4EF1335F242D630200CBF763 /* MoviesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListRouter.swift; sourceTree = "<group>"; };
+		4EF13361242D68AD00CBF763 /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
+		4EF13363242D7B9B00CBF763 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		4EF44F44242BB132007DD5F8 /* RequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHelper.swift; sourceTree = "<group>"; };
+		4EF44F46242BB172007DD5F8 /* MoviesListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListInteractor.swift; sourceTree = "<group>"; };
+		8DB1BACFBDB1DEC103C3D46D /* Pods-Desafio Globoplay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio Globoplay.release.xcconfig"; path = "Target Support Files/Pods-Desafio Globoplay/Pods-Desafio Globoplay.release.xcconfig"; sourceTree = "<group>"; };
+		CA28C30CEEA52C3E886C934F /* Pods_Desafio_Globoplay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Desafio_Globoplay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5136192BA7F6D880628C5D0 /* Pods-Desafio Globoplay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio Globoplay.debug.xcconfig"; path = "Target Support Files/Pods-Desafio Globoplay/Pods-Desafio Globoplay.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4EC1EFDC2421575B0033D880 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B661EA25FEB5051D4CBE8A /* Pods_Desafio_Globoplay.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		43BAC9B5B59CA1E575056720 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA28C30CEEA52C3E886C934F /* Pods_Desafio_Globoplay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4E2B2FB3242846D00015E5AA /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				4E429C77242E2EFB006E8AAE /* Details */,
+				4E429C6B242DE5DA006E8AAE /* Bookmarks */,
+				4EF13359242D555E00CBF763 /* TabBar */,
+				4E2B2FB424284E220015E5AA /* MoviesList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		4E2B2FB424284E220015E5AA /* MoviesList */ = {
+			isa = PBXGroup;
+			children = (
+				4E2B2FB524284E630015E5AA /* MoviesListViewController.swift */,
+				4E2B2FB724284E770015E5AA /* MoviesListViewController.storyboard */,
+				4E2B2FBB2428528B0015E5AA /* MovieCellCollectionViewCell.swift */,
+				4EDB1549242B00DC00EA5923 /* MoviesListPresenter.swift */,
+				4EF44F46242BB172007DD5F8 /* MoviesListInteractor.swift */,
+				4EF1335F242D630200CBF763 /* MoviesListRouter.swift */,
+			);
+			path = MoviesList;
+			sourceTree = "<group>";
+		};
+		4E2B2FBD24285A510015E5AA /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				4E2B2FBE24285A600015E5AA /* Colors.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		4E2B2FC224285AE00015E5AA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4E2B2FC324285AF60015E5AA /* UIColor.swift */,
+				4EF13361242D68AD00CBF763 /* UIWindow.swift */,
+				4EF13363242D7B9B00CBF763 /* UIViewController.swift */,
+				4E429C7A242E2F92006E8AAE /* UIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4E429C6B242DE5DA006E8AAE /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				4E429C6D242DE735006E8AAE /* BookmarksViewController.storyboard */,
+				4E429C6F242DE7E9006E8AAE /* BookmarksViewController.swift */,
+				4E429C71242DE9C4006E8AAE /* BookmarksPresenter.swift */,
+				4E429C73242DEA8B006E8AAE /* BookmarksInteractor.swift */,
+				4E429C75242DF335006E8AAE /* BookmarksRouter.swift */,
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
+		4E429C77242E2EFB006E8AAE /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				4E429C78242E2F11006E8AAE /* DetailsViewController.storyboard */,
+				4E429C7C242E3BB5006E8AAE /* DetailsViewController.swift */,
+				4E429C7E242E3FD7006E8AAE /* DetailsPresenter.swift */,
+				4E429C80242E3FE7006E8AAE /* DetailsInteractor.swift */,
+				4E429C82242E4C4C006E8AAE /* DetailsRouter.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		4EC1EFD62421575B0033D880 = {
+			isa = PBXGroup;
+			children = (
+				4EC1EFE12421575B0033D880 /* Desafio Globoplay */,
+				4EC1EFE02421575B0033D880 /* Products */,
+				F5D3CF34E309123FB26E5F95 /* Pods */,
+				43BAC9B5B59CA1E575056720 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4EC1EFE02421575B0033D880 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4EC1EFDF2421575B0033D880 /* Desafio Globoplay.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4EC1EFE12421575B0033D880 /* Desafio Globoplay */ = {
+			isa = PBXGroup;
+			children = (
+				4EF1335C242D585D00CBF763 /* Router */,
+				4EF44F43242BB113007DD5F8 /* Helpers */,
+				4EDB154B242B069700EA5923 /* Entities */,
+				4E2B2FC224285AE00015E5AA /* Extensions */,
+				4E2B2FBD24285A510015E5AA /* Styles */,
+				4E2B2FB3242846D00015E5AA /* Scenes */,
+				4EC1EFE22421575B0033D880 /* AppDelegate.swift */,
+				4EC1EFEB2421575F0033D880 /* Assets.xcassets */,
+				4EC1EFED2421575F0033D880 /* LaunchScreen.storyboard */,
+				4EC1EFF02421575F0033D880 /* Info.plist */,
+			);
+			path = "Desafio Globoplay";
+			sourceTree = "<group>";
+		};
+		4EDB154B242B069700EA5923 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4EDB154C242B06A800EA5923 /* Movie.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		4EF13359242D555E00CBF763 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				4EF1335A242D557800CBF763 /* TabBarRouter.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		4EF1335C242D585D00CBF763 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				4EF1335D242D586D00CBF763 /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		4EF44F43242BB113007DD5F8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4EF44F44242BB132007DD5F8 /* RequestHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F5D3CF34E309123FB26E5F95 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F5136192BA7F6D880628C5D0 /* Pods-Desafio Globoplay.debug.xcconfig */,
+				8DB1BACFBDB1DEC103C3D46D /* Pods-Desafio Globoplay.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4EC1EFDE2421575B0033D880 /* Desafio Globoplay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EC1EFF32421575F0033D880 /* Build configuration list for PBXNativeTarget "Desafio Globoplay" */;
+			buildPhases = (
+				815FDDC96D4CC2D02BA51614 /* [CP] Check Pods Manifest.lock */,
+				4EC1EFDB2421575B0033D880 /* Sources */,
+				4EC1EFDC2421575B0033D880 /* Frameworks */,
+				4EC1EFDD2421575B0033D880 /* Resources */,
+				B82531FC829CD5AE16A37C44 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Desafio Globoplay";
+			productName = "Desafio Globoplay";
+			productReference = 4EC1EFDF2421575B0033D880 /* Desafio Globoplay.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4EC1EFD72421575B0033D880 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "Gabriel Oliveira";
+				TargetAttributes = {
+					4EC1EFDE2421575B0033D880 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = 4EC1EFDA2421575B0033D880 /* Build configuration list for PBXProject "Desafio Globoplay" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4EC1EFD62421575B0033D880;
+			productRefGroup = 4EC1EFE02421575B0033D880 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4EC1EFDE2421575B0033D880 /* Desafio Globoplay */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4EC1EFDD2421575B0033D880 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EC1EFEF2421575F0033D880 /* LaunchScreen.storyboard in Resources */,
+				4E429C6E242DE735006E8AAE /* BookmarksViewController.storyboard in Resources */,
+				4EC1EFEC2421575F0033D880 /* Assets.xcassets in Resources */,
+				4E429C79242E2F11006E8AAE /* DetailsViewController.storyboard in Resources */,
+				4E2B2FB824284E770015E5AA /* MoviesListViewController.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		815FDDC96D4CC2D02BA51614 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Desafio Globoplay-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B82531FC829CD5AE16A37C44 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Desafio Globoplay/Pods-Desafio Globoplay-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Desafio Globoplay/Pods-Desafio Globoplay-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Desafio Globoplay/Pods-Desafio Globoplay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4EC1EFDB2421575B0033D880 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E429C70242DE7E9006E8AAE /* BookmarksViewController.swift in Sources */,
+				4EF13364242D7B9B00CBF763 /* UIViewController.swift in Sources */,
+				4E429C76242DF335006E8AAE /* BookmarksRouter.swift in Sources */,
+				4E429C74242DEA8B006E8AAE /* BookmarksInteractor.swift in Sources */,
+				4E429C83242E4C4C006E8AAE /* DetailsRouter.swift in Sources */,
+				4EF13360242D630200CBF763 /* MoviesListRouter.swift in Sources */,
+				4E2B2FC424285AF60015E5AA /* UIColor.swift in Sources */,
+				4E429C72242DE9C4006E8AAE /* BookmarksPresenter.swift in Sources */,
+				4EF44F47242BB172007DD5F8 /* MoviesListInteractor.swift in Sources */,
+				4EDB154D242B06A800EA5923 /* Movie.swift in Sources */,
+				4E429C81242E3FE7006E8AAE /* DetailsInteractor.swift in Sources */,
+				4E2B2FBF24285A600015E5AA /* Colors.swift in Sources */,
+				4EDB154A242B00DC00EA5923 /* MoviesListPresenter.swift in Sources */,
+				4EF44F45242BB132007DD5F8 /* RequestHelper.swift in Sources */,
+				4EC1EFE32421575B0033D880 /* AppDelegate.swift in Sources */,
+				4E429C7B242E2F92006E8AAE /* UIView.swift in Sources */,
+				4E2B2FB624284E640015E5AA /* MoviesListViewController.swift in Sources */,
+				4EF1335B242D557800CBF763 /* TabBarRouter.swift in Sources */,
+				4EF13362242D68AD00CBF763 /* UIWindow.swift in Sources */,
+				4E429C7F242E3FD7006E8AAE /* DetailsPresenter.swift in Sources */,
+				4E2B2FBC2428528B0015E5AA /* MovieCellCollectionViewCell.swift in Sources */,
+				4EF1335E242D586D00CBF763 /* Router.swift in Sources */,
+				4E429C7D242E3BB5006E8AAE /* DetailsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4EC1EFED2421575F0033D880 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EC1EFEE2421575F0033D880 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4EC1EFF12421575F0033D880 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4EC1EFF22421575F0033D880 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4EC1EFF42421575F0033D880 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5136192BA7F6D880628C5D0 /* Pods-Desafio Globoplay.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Desafio Globoplay/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.gabrielOliveira.Desafio-Globoplay";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		4EC1EFF52421575F0033D880 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DB1BACFBDB1DEC103C3D46D /* Pods-Desafio Globoplay.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Desafio Globoplay/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.gabrielOliveira.Desafio-Globoplay";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4EC1EFDA2421575B0033D880 /* Build configuration list for PBXProject "Desafio Globoplay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EC1EFF12421575F0033D880 /* Debug */,
+				4EC1EFF22421575F0033D880 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EC1EFF32421575F0033D880 /* Build configuration list for PBXNativeTarget "Desafio Globoplay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EC1EFF42421575F0033D880 /* Debug */,
+				4EC1EFF52421575F0033D880 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4EC1EFD72421575B0033D880 /* Project object */;
+}
