@@ -2,7 +2,7 @@
 //  Resource.swift
 //  globoplay
 //
-//  Created by Marcos Curvello on 16/04/20.
+//  Created by Marcos Curvello on 17/04/20.
 //  Copyright © 2020 Marcos Curvello. All rights reserved.
 //
 
@@ -23,7 +23,6 @@ final class Resource<A>: ObservableObject {
     
     func reload() {
         URLSession.shared.load(endpoint) { result in
-            print("Endpoint: \(self.endpoint.request)\nContent: \(result)")
             DispatchQueue.main.async {
                 self.value = try? result.get()
             }
