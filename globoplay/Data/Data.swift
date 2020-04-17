@@ -8,8 +8,11 @@
 
 import Foundation
 
-let sampleMovies: [MovieResult] = load("movies")
-let sampleShows: [ShowResult] = load("shows")
+fileprivate let movieResults: Discover<MovieResult> = load("movies")
+fileprivate let showResults: Discover<ShowResult> = load("shows")
+
+let sampleMovies = movieResults.results
+let sampleShows = showResults.results
 
 func load<A: Codable>(_ name: String) -> A {
     let url = Bundle.main.url(forResource: name, withExtension: "json")!
