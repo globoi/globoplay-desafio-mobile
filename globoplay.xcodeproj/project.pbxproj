@@ -7,16 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27367C1C2448DEDB001283E6 /* TinyNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 27367C1B2448DEDB001283E6 /* TinyNetworking */; };
+		27367C1E244902A7001283E6 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27367C1D244902A7001283E6 /* Discover.swift */; };
+		27367C2024496678001283E6 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 27367C1F24496678001283E6 /* movies.json */; };
 		2743F9EE24462FC7007B51FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743F9ED24462FC7007B51FB /* AppDelegate.swift */; };
 		2743F9F024462FC7007B51FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743F9EF24462FC7007B51FB /* SceneDelegate.swift */; };
-		2743F9F224462FC7007B51FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743F9F124462FC7007B51FB /* ContentView.swift */; };
 		2743F9F424462FC9007B51FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2743F9F324462FC9007B51FB /* Assets.xcassets */; };
 		2743F9F724462FC9007B51FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2743F9F624462FC9007B51FB /* Preview Assets.xcassets */; };
 		2743F9FA24462FC9007B51FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2743F9F824462FC9007B51FB /* LaunchScreen.storyboard */; };
 		2743FA0524462FCA007B51FB /* globoplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743FA0424462FCA007B51FB /* globoplayTests.swift */; };
 		2743FA1024462FCA007B51FB /* globoplayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743FA0F24462FCA007B51FB /* globoplayUITests.swift */; };
 		2743FA1E24467817007B51FB /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743FA1D24467817007B51FB /* Movie.swift */; };
-		2743FA212446823A007B51FB /* TinyNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 2743FA202446823A007B51FB /* TinyNetworking */; };
+		27C143F424479A8E00F04A27 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C143F324479A8E00F04A27 /* Show.swift */; };
+		27C143F62447ABF200F04A27 /* MovieRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C143F52447ABF200F04A27 /* MovieRow.swift */; };
+		27D473C22448C4D5009FC931 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D473C12448C4D5009FC931 /* Extensions.swift */; };
+		27DC59B7244A43C80092FB7E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DC59B6244A43C80092FB7E /* HomeView.swift */; };
+		27DC59B9244A4EB10092FB7E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DC59B8244A4EB10092FB7E /* ContentView.swift */; };
+		27ED68BA2448BCFC00526EE3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED68B92448BCFC00526EE3 /* Store.swift */; };
+		27ED68BC2448BD9C00526EE3 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED68BB2448BD9C00526EE3 /* Resource.swift */; };
+		27FA0C24244A007200764364 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA0C23244A007200764364 /* Data.swift */; };
+		27FA0C26244A01C200764364 /* shows.json in Resources */ = {isa = PBXBuildFile; fileRef = 27FA0C25244A01C200764364 /* shows.json */; };
+		27FA0C2A244A02CB00764364 /* ShowRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA0C29244A02CB00764364 /* ShowRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,10 +48,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27367C1D244902A7001283E6 /* Discover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover.swift; sourceTree = "<group>"; };
+		27367C1F24496678001283E6 /* movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
 		2743F9EA24462FC7007B51FB /* globoplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = globoplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2743F9ED24462FC7007B51FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2743F9EF24462FC7007B51FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2743F9F124462FC7007B51FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2743F9F324462FC9007B51FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2743F9F624462FC9007B51FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2743F9F924462FC9007B51FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +64,16 @@
 		2743FA0F24462FCA007B51FB /* globoplayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globoplayUITests.swift; sourceTree = "<group>"; };
 		2743FA1124462FCA007B51FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2743FA1D24467817007B51FB /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		27C143F324479A8E00F04A27 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
+		27C143F52447ABF200F04A27 /* MovieRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRow.swift; sourceTree = "<group>"; };
+		27D473C12448C4D5009FC931 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		27DC59B6244A43C80092FB7E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		27DC59B8244A4EB10092FB7E /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		27ED68B92448BCFC00526EE3 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		27ED68BB2448BD9C00526EE3 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		27FA0C23244A007200764364 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		27FA0C25244A01C200764364 /* shows.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shows.json; sourceTree = "<group>"; };
+		27FA0C29244A02CB00764364 /* ShowRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2743FA212446823A007B51FB /* TinyNetworking in Frameworks */,
+				27367C1C2448DEDB001283E6 /* TinyNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,14 +125,16 @@
 		2743F9EC24462FC7007B51FB /* globoplay */ = {
 			isa = PBXGroup;
 			children = (
+				27B02EF0244A1196008915C4 /* Data */,
+				27ED68B82448BCBF00526EE3 /* Model */,
+				27FA0C1E2449FC8A00764364 /* View */,
 				2743F9ED24462FC7007B51FB /* AppDelegate.swift */,
 				2743F9EF24462FC7007B51FB /* SceneDelegate.swift */,
-				2743F9F124462FC7007B51FB /* ContentView.swift */,
+				27D473C12448C4D5009FC931 /* Extensions.swift */,
 				2743F9F324462FC9007B51FB /* Assets.xcassets */,
 				2743F9F824462FC9007B51FB /* LaunchScreen.storyboard */,
 				2743F9FB24462FC9007B51FB /* Info.plist */,
 				2743F9F524462FC9007B51FB /* Preview Content */,
-				2743FA1D24467817007B51FB /* Movie.swift */,
 			);
 			path = globoplay;
 			sourceTree = "<group>";
@@ -141,6 +165,39 @@
 			path = globoplayUITests;
 			sourceTree = "<group>";
 		};
+		27B02EF0244A1196008915C4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				27FA0C23244A007200764364 /* Data.swift */,
+				27367C1F24496678001283E6 /* movies.json */,
+				27FA0C25244A01C200764364 /* shows.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		27ED68B82448BCBF00526EE3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27ED68B92448BCFC00526EE3 /* Store.swift */,
+				2743FA1D24467817007B51FB /* Movie.swift */,
+				27C143F324479A8E00F04A27 /* Show.swift */,
+				27ED68BB2448BD9C00526EE3 /* Resource.swift */,
+				27367C1D244902A7001283E6 /* Discover.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		27FA0C1E2449FC8A00764364 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27DC59B8244A4EB10092FB7E /* ContentView.swift */,
+				27DC59B6244A43C80092FB7E /* HomeView.swift */,
+				27C143F52447ABF200F04A27 /* MovieRow.swift */,
+				27FA0C29244A02CB00764364 /* ShowRow.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -158,7 +215,7 @@
 			);
 			name = globoplay;
 			packageProductDependencies = (
-				2743FA202446823A007B51FB /* TinyNetworking */,
+				27367C1B2448DEDB001283E6 /* TinyNetworking */,
 			);
 			productName = globoplay;
 			productReference = 2743F9EA24462FC7007B51FB /* globoplay.app */;
@@ -233,7 +290,7 @@
 			);
 			mainGroup = 2743F9E124462FC7007B51FB;
 			packageReferences = (
-				2743FA1F2446823A007B51FB /* XCRemoteSwiftPackageReference "tiny-networking" */,
+				27367C1A2448DEDB001283E6 /* XCRemoteSwiftPackageReference "tiny-networking" */,
 			);
 			productRefGroup = 2743F9EB24462FC7007B51FB /* Products */;
 			projectDirPath = "";
@@ -251,9 +308,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27FA0C26244A01C200764364 /* shows.json in Resources */,
 				2743F9FA24462FC9007B51FB /* LaunchScreen.storyboard in Resources */,
 				2743F9F724462FC9007B51FB /* Preview Assets.xcassets in Resources */,
 				2743F9F424462FC9007B51FB /* Assets.xcassets in Resources */,
+				27367C2024496678001283E6 /* movies.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,10 +337,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27ED68BC2448BD9C00526EE3 /* Resource.swift in Sources */,
+				27C143F424479A8E00F04A27 /* Show.swift in Sources */,
 				2743F9EE24462FC7007B51FB /* AppDelegate.swift in Sources */,
+				27DC59B7244A43C80092FB7E /* HomeView.swift in Sources */,
+				27ED68BA2448BCFC00526EE3 /* Store.swift in Sources */,
+				27D473C22448C4D5009FC931 /* Extensions.swift in Sources */,
+				27FA0C24244A007200764364 /* Data.swift in Sources */,
+				27367C1E244902A7001283E6 /* Discover.swift in Sources */,
 				2743F9F024462FC7007B51FB /* SceneDelegate.swift in Sources */,
+				27C143F62447ABF200F04A27 /* MovieRow.swift in Sources */,
+				27DC59B9244A4EB10092FB7E /* ContentView.swift in Sources */,
 				2743FA1E24467817007B51FB /* Movie.swift in Sources */,
-				2743F9F224462FC7007B51FB /* ContentView.swift in Sources */,
+				27FA0C2A244A02CB00764364 /* ShowRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,7 +676,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2743FA1F2446823A007B51FB /* XCRemoteSwiftPackageReference "tiny-networking" */ = {
+		27367C1A2448DEDB001283E6 /* XCRemoteSwiftPackageReference "tiny-networking" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/objcio/tiny-networking.git";
 			requirement = {
@@ -619,9 +687,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2743FA202446823A007B51FB /* TinyNetworking */ = {
+		27367C1B2448DEDB001283E6 /* TinyNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2743FA1F2446823A007B51FB /* XCRemoteSwiftPackageReference "tiny-networking" */;
+			package = 27367C1A2448DEDB001283E6 /* XCRemoteSwiftPackageReference "tiny-networking" */;
 			productName = TinyNetworking;
 		};
 /* End XCSwiftPackageProductDependency section */
