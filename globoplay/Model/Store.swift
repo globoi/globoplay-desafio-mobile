@@ -21,16 +21,14 @@ final class Store: ObservableObject {
 }
 
 struct api {
+    static let token = ProcessInfo.processInfo.environment["TMDB_API_TOKEN"]!
     static let base = URL(string: "https://api.themoviedb.org/3/")!
     static let languageQuery = URLQueryItem(name: "language", value: "pt-BR")
-    static let token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYTk3ZTlkNWIyOTg3NDU0MDkzMjNjYTBhMDkxODVlOSIsInN1YiI6IjVlOTYzMWU3NzcwNzAwMDAxZWExZTcxZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.f6Icgxmkps0sMry11sONx6Zegh3BOGQ7q9EOdYKfYzo"
     static var headers: [String: String] {
         ["Authorization": "Bearer " + token]
     }
     
     static func movieResults(for companyId: String) -> Endpoint<Discover<MovieResult>> {
-        print("Locale: \(Locale.current.languageCode ?? "N/A")")
-
         let url = api.base.appendingPathComponent("company/\(companyId)/movies").query([languageQuery])
         return Endpoint<Discover<MovieResult>>(json: .get, url: url, headers: headers)
     }
