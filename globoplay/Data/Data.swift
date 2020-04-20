@@ -11,6 +11,7 @@ import Foundation
 fileprivate let movieResults: Discover<MovieResult> = load("movies")
 fileprivate let showResults: Discover<ShowResult> = load("shows")
 
+let sampleMovie: Movie = load("singleMovie")
 let sampleMovies = movieResults.results
 let sampleShows = showResults.results
 
