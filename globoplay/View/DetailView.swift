@@ -8,33 +8,32 @@
 
 import SwiftUI
 
-struct MovieDetail: View {
-    @Environment(\.imageCache) var cache: ImageCache
-    @ObservedObject var resource: Resource<Movie>
+struct DetailView: View {
+    @EnvironmentObject var store: Store
+//    @ObservedObject var movie: Resource<Movie>
     
-    init(id: Int) {
-        print(api.movie(details: id))
-        self.resource = Resource<Movie>(endpoint: api.movie(details: id))
-        
-        UITableView.appearance().backgroundColor = .clear
-        UITableViewCell.appearance().backgroundColor = .clear
+    var movie: Movie
+
+    init(movie: Movie) {
+//        self.movie = Resource<Movie>(endpoint: api.movie(details: id))
+        self.movie = movie
+        UITableView.appearance().backgroundColor = .black
+        UITableViewCell.appearance().backgroundColor = .black
     }
     
     var body: some View {
         Group {
-            if resource.value == nil {
-                Text("Loading...")
-            } else {
+            if movie != nil {
                 List {
                     VStack(spacing: 5) {
-                        HeaderView(path: resource.value?.posterPath ?? "")
+                        ImageHeader(path: movie.posterPath ?? "")
                             .frame(height: 242)
                         
-                        Text(resource.value?.title ?? "")
+                        Text(movie.title ?? "")
                             .font(Font.system(size: 20))
                             .fontWeight(.bold)
                         
-                        Text(resource.value?.overview ?? "")
+                        Text(movie.overview ?? "")
                             .font(Font.system(size: 14))
                             .font(.subheadline)
                             .multilineTextAlignment(.leading)
@@ -57,7 +56,9 @@ struct MovieDetail: View {
                                 .cornerRadius(5)
                             }
                             
-                            Button(action: {}) {
+                            Button(action: {
+                                self.store.favorite(self.movie)
+                            }) {
                                 HStack {
                                     Image(systemName: "star.fill")
                                     Text("Minha Lista")
@@ -73,10 +74,10 @@ struct MovieDetail: View {
                         }
                     }
                     .foregroundColor(.white)
+                    .edgesIgnoringSafeArea(.all)
                 }
-                .background(Color.black)
-                .edgesIgnoringSafeArea(.all)
-                .navigationBarHidden(true)
+            } else {
+                Text("Loading...")
             }
         }
     }
@@ -84,9 +85,8 @@ struct MovieDetail: View {
 
 
 struct MovieDetail_Previews: PreviewProvider {
-    
     static var previews: some View {
-        MovieDetail(id: 76341)
+        DetailView(movie: sampleMovie)
             .environmentObject(Store())
     }
 }
