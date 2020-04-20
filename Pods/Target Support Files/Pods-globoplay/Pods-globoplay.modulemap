@@ -1,0 +1,6 @@
+framework module Pods_globoplay {
+  umbrella header "Pods-globoplay-umbrella.h"
+
+  export *
+  module * { export * }
+}

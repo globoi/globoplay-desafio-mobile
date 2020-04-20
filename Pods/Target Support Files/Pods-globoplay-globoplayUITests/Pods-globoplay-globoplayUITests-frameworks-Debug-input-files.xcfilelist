@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-globoplay-globoplayUITests/Pods-globoplay-globoplayUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
+${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework

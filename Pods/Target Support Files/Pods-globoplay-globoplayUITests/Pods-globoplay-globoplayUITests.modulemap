@@ -1,0 +1,6 @@
+framework module Pods_globoplay_globoplayUITests {
+  umbrella header "Pods-globoplay-globoplayUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
