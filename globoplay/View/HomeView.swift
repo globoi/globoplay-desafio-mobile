@@ -9,21 +9,22 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject private var store: Store
+    @EnvironmentObject var store: Store
     
     var body: some View {
         List {
-            MovieRow(title: "Novelas", items: store.movies)
-            MovieRow(title: "Séries", items: store.movies)
-            MovieRow(title: "Cinema", items: store.movies)
+            ResultRowView(title: "Ação", movies: store.movies)
+            ResultRowView(title: "Drama", movies: store.movies)
+            ResultRowView(title: "Suspense", movies: store.movies)
         }
-        
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
-            .environmentObject(Store())
+        NavigationView {
+            HomeView()
+                .environmentObject(Store())
+        }
     }
 }
