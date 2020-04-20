@@ -14,7 +14,7 @@ struct Movie: Codable, Identifiable {
     var genres: [Genre]
     var homepage: String?
     var id: Int
-    var imdbId: String
+    var imdbId: String?
     var originalLanguage: String
     var originalTitle: String
     var overview: String?
@@ -24,7 +24,7 @@ struct Movie: Codable, Identifiable {
     var productionCountries: [Country]
     var releaseDate: String
     var revenue: Int
-    var runtime: Int
+    var runtime: Int?
     var spokenLanguages: [Language]
     var status: String
     var tagline: String?
@@ -60,73 +60,52 @@ struct Movie: Codable, Identifiable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
-    
-    init(adult: Bool, backdropPath: String?, collection: Collection?, budget: Int?, genres: [Genre], homepage: String?, id: Int, imdbId: String, originalLanguage: String, originalTitle: String, overview: String?, popularity: Double, posterPath: String?, productionCompanies: [Company], productionCountries: [Country], releaseDate: String, revenue: Int, runtime: Int, spokenLanguages: [Language], status: String, tagline: String?, title: String, video: Bool, voteAverage: Double, voteCount: Int) {
-        self.adult = adult
-        self.backdropPath = backdropPath
-        self.collection = collection
-        self.budget = budget
-        self.genres = genres
-        self.homepage = homepage
-        self.id = id
-        self.imdbId = imdbId
-        self.originalLanguage = originalLanguage
-        self.originalTitle = originalTitle
-        self.overview = overview
-        self.popularity = popularity
-        self.posterPath = posterPath
-        self.productionCompanies = productionCompanies
-        self.productionCountries = productionCountries
-        self.releaseDate = releaseDate
-        self.revenue = revenue
-        self.runtime = runtime
-        self.spokenLanguages = spokenLanguages
-        self.status = status
-        self.tagline = tagline
-        self.title = title
-        self.video = video
-        self.voteAverage = voteAverage
-        self.voteCount = voteCount
+}
+
+extension Movie {
+    init(from object: MovieObject) {
+        self.init(
+            adult: object.adult,
+            backdropPath: object.backdropPath,
+            collection: object.collection,
+            budget: object.budget,
+            genres: object.genres ?? [],
+            homepage: object.homepage,
+            id: object.id,
+            imdbId: object.imdbId,
+            originalLanguage: object.originalLanguage,
+            originalTitle: object.title,
+            overview: object.overview,
+            popularity: object.popularity,
+            posterPath: object.posterPath,
+            productionCompanies: object.productionCompanies ?? [],
+            productionCountries: object.productionCountries ?? [],
+            releaseDate: object.releaseDate,
+            revenue: object.revenue,
+            runtime: object.runtime,
+            spokenLanguages: object.spokenLanguages ?? [],
+            status: object.status,
+            tagline: object.tagline,
+            title: object.title,
+            video: object.video,
+            voteAverage: object.voteAverage,
+            voteCount: object.voteCount)
+    }
+}
+
+extension Movie: Detailable {
+    var information: [Info] {
+        [
+            Info(id: id, name: "Título Original", value: originalTitle),
+            Info(id: id, name: "Gênero", value: genres.first?.name.capitalized ?? ""),
+            Info(id: id, name: "Ano de produção", value: releaseDate)
+        ]
     }
 }
 
 extension Movie: Equatable {
     static func == (lhs: Movie, rhs: Movie) -> Bool {
         lhs.id == rhs.id
-    }
-}
-
-struct MovieResult: Codable, Identifiable {
-    var posterPath: String?
-    var adult: Bool
-    var overview: String
-    var releaseDate: String
-    var genreIds: [Int]
-    var id: Int
-    var originalTitle: String
-    var originalLanguage: String
-    var title: String
-    var backdropPath: String?
-    var popularity: Double
-    var voteCount: Int
-    var video: Bool
-    var voteAverage: Double
-    
-    enum CodingKeys: String, CodingKey {
-        case posterPath = "poster_path"
-        case adult
-        case overview
-        case releaseDate = "release_date"
-        case genreIds = "genre_ids"
-        case id
-        case originalTitle = "original_title"
-        case originalLanguage = "original_language"
-        case title
-        case backdropPath = "backdrop_path"
-        case popularity
-        case voteCount = "vote_count"
-        case video
-        case voteAverage = "vote_average"
     }
 }
 
@@ -181,4 +160,48 @@ struct Language: Codable {
         case iso = "iso_639_1"
         case name
     }
+}
+
+struct MovieResult: Codable, Identifiable {
+    var posterPath: String?
+    var adult: Bool
+    var overview: String
+    var releaseDate: String
+    var genreIds: [Int]
+    var id: Int
+    var originalTitle: String
+    var originalLanguage: String
+    var title: String
+    var backdropPath: String?
+    var popularity: Double
+    var voteCount: Int
+    var video: Bool
+    var voteAverage: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case posterPath = "poster_path"
+        case adult
+        case overview
+        case releaseDate = "release_date"
+        case genreIds = "genre_ids"
+        case id
+        case originalTitle = "original_title"
+        case originalLanguage = "original_language"
+        case title
+        case backdropPath = "backdrop_path"
+        case popularity
+        case voteCount = "vote_count"
+        case video
+        case voteAverage = "vote_average"
+    }
+}
+
+protocol Detailable {
+    var information: [Info] { get }
+}
+
+struct Info: Hashable, Identifiable {
+    var id: Int
+    var name: String
+    var value: String
 }
