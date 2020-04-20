@@ -90,6 +90,12 @@ struct Movie: Codable, Identifiable {
     }
 }
 
+extension Movie: Equatable {
+    static func == (lhs: Movie, rhs: Movie) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
 struct MovieResult: Codable, Identifiable {
     var posterPath: String?
     var adult: Bool
