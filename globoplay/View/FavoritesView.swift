@@ -17,7 +17,7 @@ struct FavoritesView: View {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(self.store.favorites ?? []) { movie in
                         NavigationLink(destination:
-                            LazyView(DetailView(movie: sampleMovie))
+                            LazyView(DetailView(movieId: movie.id))
                         ) {
                             MovieItem(movie: movie)
                         }

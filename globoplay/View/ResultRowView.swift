@@ -22,7 +22,7 @@ struct ResultRowView: View {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(self.movies) { movie in
                         NavigationLink(destination:
-                            LazyView(DetailView(movie: sampleMovie))
+                            LazyView(DetailView(movieId: movie.id))
                         ) {
                             MovieResultItem(movie: movie)
                         }

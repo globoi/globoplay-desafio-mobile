@@ -10,30 +10,27 @@ import SwiftUI
 
 struct DetailView: View {
     @EnvironmentObject var store: Store
-//    @ObservedObject var movie: Resource<Movie>
+    @ObservedObject var movie: Resource<Movie>
     
-    var movie: Movie
-
-    init(movie: Movie) {
-//        self.movie = Resource<Movie>(endpoint: api.movie(details: id))
-        self.movie = movie
+    init(movieId: Int) {
+        self.movie = Resource<Movie>(endpoint: api.movie(details: movieId))
         UITableView.appearance().backgroundColor = .black
         UITableViewCell.appearance().backgroundColor = .black
     }
     
     var body: some View {
         Group {
-            if movie != nil {
+            if movie.value != nil {
                 List {
                     VStack(spacing: 5) {
-                        ImageHeader(path: movie.posterPath ?? "")
+                        ImageHeader(path: movie.value!.posterPath ?? "")
                             .frame(height: 242)
                         
-                        Text(movie.title ?? "")
+                        Text(movie.value!.title ?? "")
                             .font(Font.system(size: 20))
                             .fontWeight(.bold)
                         
-                        Text(movie.overview ?? "")
+                        Text(movie.value!.overview ?? "")
                             .font(Font.system(size: 14))
                             .font(.subheadline)
                             .multilineTextAlignment(.leading)
@@ -57,7 +54,7 @@ struct DetailView: View {
                             }
                             
                             Button(action: {
-                                self.store.favorite(self.movie)
+                                self.store.favorite(self.movie.value!)
                             }) {
                                 HStack {
                                     Image(systemName: "star.fill")
@@ -86,7 +83,7 @@ struct DetailView: View {
 
 struct MovieDetail_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(movie: sampleMovie)
+        DetailView(movieId: 76341)
             .environmentObject(Store())
     }
 }
