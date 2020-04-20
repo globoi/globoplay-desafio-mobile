@@ -19,15 +19,20 @@ struct ContentView: View {
                 TabView {
                     NavigationView {
                         HomeView()
-                            .environmentObject(Store())
-                    }.tabItem {
+                            .environmentObject(store)
+                            .navigationBarTitle(Text("globoplay"))
+                    }
+                    .tabItem {
                         Image(systemName: "house.fill")
                         Text("Início")
                     }
+                    
                     NavigationView {
-                        HomeView()
-                            .environmentObject(Store())
-                    }.tabItem {
+                        FavoritesView()
+                            .environmentObject(store)
+                            .navigationBarTitle(Text("minha lista"))                        
+                    }
+                    .tabItem {
                         Image(systemName: "star.fill")
                         Text("Minhas lista")
                     }
