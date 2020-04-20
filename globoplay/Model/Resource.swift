@@ -7,21 +7,27 @@
 //
 
 import Foundation
+import Combine
 import TinyNetworking
 
 final class Resource<A>: ObservableObject {
     @Published var value: A? = nil
+    var objectWillChange: AnyPublisher<A?, Never> = Publishers.Sequence<[A?], Never>(sequence: []).eraseToAnyPublisher()
     let endpoint: Endpoint<A>
     private var firstLoad = true
     
     init(endpoint: Endpoint<A>) {
         self.endpoint = endpoint
-        guard self.firstLoad else { return }
-        self.firstLoad = false
-        self.reload()
+        self.objectWillChange = $value.handleEvents(receiveSubscription: { [weak self] sub in
+            guard let s = self, s.firstLoad else { return }
+            s.firstLoad = false
+            s.reload()
+
+        }).eraseToAnyPublisher()
     }
     
     func reload() {
+        print(endpoint.request)
         URLSession.shared.load(endpoint) { result in
             DispatchQueue.main.async {
                 self.value = try? result.get()
