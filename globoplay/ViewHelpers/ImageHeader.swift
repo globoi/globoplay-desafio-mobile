@@ -16,7 +16,7 @@ struct ImageHeader: View {
     var body: some View {
         ZStack {
             AsyncImage(
-                url: api.image(for: path),
+                url: .image(path: path),
                 cache: self.cache,
                 placeholder: PlaceholderImage(),
                 configuration: { $0.resizable() }
@@ -26,7 +26,7 @@ struct ImageHeader: View {
             LinearGradient(gradient: Gradient(colors: [.clear, Color("fadingBlack"), .black]), startPoint: .top, endPoint: .bottom)
             
             AsyncImage(
-                url: api.image(for: path),
+                url: .image(path: path),
                 cache: cache,
                 placeholder: PlaceholderImage(),
                 configuration: { $0.resizable() }
@@ -39,7 +39,7 @@ struct ImageHeader: View {
     }
 }
 
-struct BackdropView_Previews: PreviewProvider {
+struct ImageHeader_Previews: PreviewProvider {
     static var previews: some View {
         ImageHeader(path: "/jZowUf4okNYuSlgj5iURE7CDMho.jpg")
             .previewLayout(.fixed(width: 350, height: 400))
