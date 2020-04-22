@@ -9,6 +9,8 @@
 import UIKit
 import TinyNetworking
 
+struct ImageError: Error {}
+
 extension Endpoint where A == UIImage {
     init(imageURL url: URL) {
         self.init(.get, url: url, expectedStatusCode: expected200to300) { data,response in
@@ -19,4 +21,3 @@ extension Endpoint where A == UIImage {
         }
     }
 }
-
