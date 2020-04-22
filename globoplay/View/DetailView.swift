@@ -7,15 +7,15 @@
 //
 
 import SwiftUI
+import TinyNetworking
 
 struct DetailView: View {
     @EnvironmentObject var store: Store
     @ObservedObject var movie: Resource<Movie>
     
     init(movieId: Int) {
-        self.movie = Resource<Movie>(endpoint: api.movie(details: movieId))
-        UITableView.appearance().backgroundColor = .black
-        UITableViewCell.appearance().backgroundColor = .black
+        let endpoint: EndpointUrl = .movie(detail: String(movieId))
+        self.movie = Resource<Movie>(endpoint: Endpoint(json: .get, url: endpoint.url!, headers: endpoint.auth))
     }
     
     var body: some View {
@@ -26,7 +26,10 @@ struct DetailView: View {
                         ImageHeader(path: movie.value!.posterPath ?? "")
                             .frame(height: 242)
                         
-                        Text(movie.value!.title ?? "")
+                        Spacer()
+                            .frame(height: 20)
+                        
+                        Text(movie.value!.title)
                             .font(Font.system(size: 20))
                             .fontWeight(.bold)
                         
@@ -48,8 +51,8 @@ struct DetailView: View {
                                 .frame(minWidth: 0, maxWidth: .infinity)
                                 .padding()
                                     
-                                .background(Color.white)
-                                .foregroundColor(.black)
+                                .background(Color.black)
+                                .foregroundColor(.white)
                                 .cornerRadius(5)
                             }
                             
@@ -62,24 +65,24 @@ struct DetailView: View {
                                 }
                                 .frame(minWidth: 0, maxWidth: .infinity)
                                 .padding()
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 5)
-                                        .stroke(Color.white, lineWidth: 1)
+                                        .stroke(Color.black, lineWidth: 1)
                                 )
                             }
                         }
                     }
-                    .foregroundColor(.white)
-                    .edgesIgnoringSafeArea(.all)
                 }
+                .foregroundColor(.black)
+                .navigationBarHidden(true)
+                .edgesIgnoringSafeArea([.top, .bottom])
             } else {
-                Text("Loading...")
+                
             }
         }
     }
 }
-
 
 struct MovieDetail_Previews: PreviewProvider {
     static var previews: some View {
