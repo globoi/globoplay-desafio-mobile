@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         Group {
             if !store.loaded {
-                // todo loader
+                // TODO loader
             } else {
                 TabView {
                     NavigationView {
@@ -29,7 +29,7 @@ struct ContentView: View {
                     
                     NavigationView {
                         FavoritesView()
-                            .environmentObject(store)
+                            .environmentObject(Persistance())
                             .navigationBarTitle(Text("minha lista"))                        
                     }
                     .tabItem {
