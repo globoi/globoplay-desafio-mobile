@@ -162,7 +162,7 @@ struct Language: Codable {
     }
 }
 
-struct MovieResult: Codable, Identifiable {
+struct MovieList: Codable, Identifiable, Hashable {
     var posterPath: String?
     var adult: Bool
     var overview: String
