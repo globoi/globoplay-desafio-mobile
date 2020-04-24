@@ -24,15 +24,6 @@ struct ImageHeader: View {
                 .clipped()
                 .blur(radius: 20)
             LinearGradient(gradient: Gradient(colors: [.clear, Color("fadingBlack"), .black]), startPoint: .top, endPoint: .bottom)
-            
-            AsyncImage(
-                url: .image(path: path),
-                cache: cache,
-                placeholder: PlaceholderImage(),
-                configuration: { $0.resizable() }
-            )
-                .frame(width: 120, height: 180)
-                .offset(x: 0, y: 20)
         }
         .clipped()
         .padding(-30)
