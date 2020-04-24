@@ -89,7 +89,7 @@ extension EndpointUrl {
     
     static func movie(detail id: String, queries: [Query] = []) -> EndpointUrl {
         return EndpointUrl(
-            path: String(format: "%@%@", "/3/movie", id),
+            path: String(format: "%@%@", "/3/movie/", id),
             queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
         )
     }
@@ -103,6 +103,13 @@ extension EndpointUrl {
     static func company(movies id: String, queries: [Query] = []) -> EndpointUrl {
         return EndpointUrl(
             path: String(format: "%@%@%@", "/3/company/", id, "/movies"),
+            queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
+        )
+    }
+    
+    static func genres(movie queries: [Query] = []) -> EndpointUrl {
+        return EndpointUrl(
+            path: "/3/genre/movie/list",
             queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
         )
     }
