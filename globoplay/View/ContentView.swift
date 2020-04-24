@@ -9,29 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject private var store: Store
+    @EnvironmentObject var store: Store
     
     var body: some View {
         Group {
             if !store.loaded {
-                // TODO loader
+                
             } else {
                 TabView {
-                    NavigationView {
-                        HomeView()
-                            .environmentObject(store)
-                            .navigationBarTitle(Text("globoplay"))
-                    }
+                    NavigationView { HomeView().environmentObject(store).navigationBarTitle(Text("globoplay")) }
                     .tabItem {
                         Image(systemName: "house.fill")
                         Text("Início")
                     }
                     
-                    NavigationView {
-                        FavoritesView()
-                            .environmentObject(Persistance())
-                            .navigationBarTitle(Text("minha lista"))                        
-                    }
+                    NavigationView { FavoritesView().environmentObject(store).navigationBarTitle(Text("minha lista")) }
                     .tabItem {
                         Image(systemName: "star.fill")
                         Text("Minhas lista")
