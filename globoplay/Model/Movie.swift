@@ -9,7 +9,7 @@
 struct Movie: Codable, Identifiable {
     var adult: Bool
     var backdropPath: String?
-    var collection: Collection?
+    var collection: MovieCollection?
     var budget: Int?
     var genres: [Genre]
     var homepage: String?
@@ -62,37 +62,6 @@ struct Movie: Codable, Identifiable {
     }
 }
 
-extension Movie {
-    init(from object: MovieObject) {
-        self.init(
-            adult: object.adult,
-            backdropPath: object.backdropPath,
-            collection: object.collection,
-            budget: object.budget,
-            genres: object.genres ?? [],
-            homepage: object.homepage,
-            id: object.id,
-            imdbId: object.imdbId,
-            originalLanguage: object.originalLanguage,
-            originalTitle: object.title,
-            overview: object.overview,
-            popularity: object.popularity,
-            posterPath: object.posterPath,
-            productionCompanies: object.productionCompanies ?? [],
-            productionCountries: object.productionCountries ?? [],
-            releaseDate: object.releaseDate,
-            revenue: object.revenue,
-            runtime: object.runtime,
-            spokenLanguages: object.spokenLanguages ?? [],
-            status: object.status,
-            tagline: object.tagline,
-            title: object.title,
-            video: object.video,
-            voteAverage: object.voteAverage,
-            voteCount: object.voteCount)
-    }
-}
-
 extension Movie: Detailable {
     var information: [Info] {
         [
@@ -109,7 +78,7 @@ extension Movie: Equatable {
     }
 }
 
-struct Collection: Codable {
+struct MovieCollection: Codable {
     var id: Int
     var name: String
     var posterPath: String
@@ -123,7 +92,7 @@ struct Collection: Codable {
     }
 }
 
-struct Genre: Codable {
+struct Genre: Codable, Hashable {
     var id: Int
     var name: String
 }
