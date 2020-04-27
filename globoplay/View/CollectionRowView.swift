@@ -14,9 +14,8 @@ struct CollectionRowView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack(alignment: .bottom) {
+            HStack(alignment: .top) {
                 Text(title)
-                    .font(Font.system(size: 18))
                     .fontWeight(.bold)
                     .padding([.leading, .top], 15)
                 Spacer()
