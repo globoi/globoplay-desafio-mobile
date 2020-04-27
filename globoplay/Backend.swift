@@ -49,12 +49,12 @@ extension Query {
     }
 }
 
-public struct EndpointUrl {
+public struct Request {
     let path: String
     var queryItems: [URLQueryItem]?
 }
 
-extension EndpointUrl {
+extension Request {
     var url: URL? {
         var components = URLComponents()
         components.scheme = "https"
@@ -72,49 +72,49 @@ extension EndpointUrl {
     }
 }
 
-extension EndpointUrl {
-    static func discover(movie queries: [Query] = []) -> EndpointUrl {
-        return EndpointUrl(
+extension Request {
+    static func discover(movie queries: [Query] = []) -> Request {
+        return Request(
             path: "/3/discover/movie",
             queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
         )
     }
     
-    static func discover(tv queries: [Query] = []) -> EndpointUrl {
-        return EndpointUrl(
+    static func discover(tv queries: [Query] = []) -> Request {
+        return Request(
             path: "/3/discover/tv",
             queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
         )
     }
     
-    static func movie(detail id: String, queries: [Query] = []) -> EndpointUrl {
-        return EndpointUrl(
+    static func movie(detail id: String, queries: [Query] = []) -> Request {
+        return Request(
             path: String(format: "%@%@", "/3/movie/", id),
             queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
         )
     }
     
-    static func image(for size: String = "original", path: String) -> EndpointUrl {
-        return EndpointUrl(
+    static func image(for size: String = "original", path: String) -> Request {
+        return Request(
             path: String(format: "%@%@%@", "/t/p/", size, path)
         )
     }
     
-    static func company(movies id: String, queries: [Query] = []) -> EndpointUrl {
-        return EndpointUrl(
+    static func company(movies id: String, queries: [Query] = []) -> Request {
+        return Request(
             path: String(format: "%@%@%@", "/3/company/", id, "/movies"),
             queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
         )
     }
     
-    static func genres(movie queries: [Query] = []) -> EndpointUrl {
-        return EndpointUrl(
+    static func genres(movie queries: [Query] = []) -> Request {
+        return Request(
             path: "/3/genre/movie/list",
             queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
         )
     }
 }
 
-extension EndpointUrl {
+extension Request {
     var auth: [String: String] { ["Authorization": "Bearer " + token.value] }
 }
