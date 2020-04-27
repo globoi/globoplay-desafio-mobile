@@ -7,16 +7,22 @@
 //
 
 import SwiftUI
+import Combine
 
 struct HomeView: View {
     @EnvironmentObject var store: Store
     
     var body: some View {
         List {
-            ResultRowView(title: "Ação", movies: store.movies)
-            ResultRowView(title: "Drama", movies: store.movies)
-            ResultRowView(title: "Suspense", movies: store.movies)
+            ForEach(store.colletions, id: \.self.genre.id) { collection in
+                CollectionRowView(
+                    title: collection.genre.name,
+                    movies: collection.resource.value?.results ?? []
+                )
+                .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
+            }
         }
+        .padding(.horizontal, -20)
     }
 }
 
