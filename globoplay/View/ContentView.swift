@@ -14,21 +14,26 @@ struct ContentView: View {
     var body: some View {
         Group {
             if !store.loaded {
-                
+                Loader()
             } else {
                 TabView {
-                    NavigationView { HomeView().environmentObject(store).navigationBarTitle(Text("globoplay")) }
+                    NavigationView {
+                        HomeView().environmentObject(store).navigationBarTitle(Text("globoplay"))
+                    }
                     .tabItem {
                         Image(systemName: "house.fill")
                         Text("Início")
                     }
                     
-                    NavigationView { FavoritesView().environmentObject(store).navigationBarTitle(Text("minha lista")) }
+                    NavigationView {
+                        FavoritesView().environmentObject(Persistance()).navigationBarTitle(Text("minha lista"))
+                    }
                     .tabItem {
                         Image(systemName: "star.fill")
                         Text("Minhas lista")
                     }
                 }
+                .accentColor(.white)
             }
         }
     }
