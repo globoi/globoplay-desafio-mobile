@@ -20,11 +20,11 @@ public protocol Persistable {
 final class MovieObject: Object {
     dynamic var adult: Bool = false
     dynamic var backdropPath: String?
-    dynamic var collection: Collection?
+    dynamic var collection: MovieCollection?
     dynamic var budget: Int?
     dynamic var genres: [Genre]?
     dynamic var homepage: String?
-    dynamic var id: Int = 0
+    dynamic var id: String = ""
     dynamic var imdbId: String?
     dynamic var originalLanguage: String = ""
     dynamic var originalTitle: String = ""
@@ -57,7 +57,7 @@ extension Movie: Persistable {
         budget = managedObject.budget
         genres = managedObject.genres ?? []
         homepage = managedObject.homepage
-        id = managedObject.id
+        id = Int(managedObject.id) ?? 0
         imdbId = managedObject.imdbId
         originalLanguage = managedObject.originalLanguage
         originalTitle = managedObject.originalTitle
@@ -86,7 +86,7 @@ extension Movie: Persistable {
         movie.budget = budget
         movie.genres = genres
         movie.homepage = homepage
-        movie.id = id
+        movie.id = String(format: "%U", id)
         movie.imdbId = imdbId
         movie.originalLanguage = originalLanguage
         movie.originalTitle = originalTitle
