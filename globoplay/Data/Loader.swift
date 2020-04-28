@@ -8,6 +8,19 @@
 
 import SwiftUI
 
+struct Loader: View {
+    var title: String? = nil
+    var body: some View {
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+            ActivityIndicator(isAnimating: .constant(true), style: .medium)
+            Text(title == nil ? "" : title!)
+                .foregroundColor(.white)
+                .offset(y: 30)
+        }
+    }
+}
+
 struct ActivityIndicator: UIViewRepresentable {
     @Binding var isAnimating: Bool
     let style: UIActivityIndicatorView.Style
@@ -23,19 +36,7 @@ struct ActivityIndicator: UIViewRepresentable {
     }
 }
 
-struct Loader: View {
-    var title: String? = nil
-    var body: some View {
-        ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
-            ActivityIndicator(isAnimating: .constant(true), style: .medium)
-            Text(title == nil ? "" : title!)
-                .foregroundColor(.white)
-                .offset(y: 30)
-        }
-    }}
-
-struct LoaderView_Previews: PreviewProvider {
+struct Loader_Previews: PreviewProvider {
     static var previews: some View {
         Loader()
     }
