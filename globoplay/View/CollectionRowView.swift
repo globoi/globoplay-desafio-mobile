@@ -27,7 +27,7 @@ struct CollectionRowView: View {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(self.movies) { movie in
                         NavigationLink(destination:
-                            LazyView(DetailView(movieId: movie.id))
+                            LazyView(DetailView(movie: movie))
                         ) {
                             CollectionRowItem(movie: movie)
                         }
@@ -47,9 +47,9 @@ struct CollectionRowItem: View {
     var body: some View {
         VStack(alignment: .leading) {
             AsyncImage(
-                url: .image(for: "w200", path: movie.posterPath ?? "N/A"),
+                url: .image(size: "w200", path: movie.posterPath ?? "N/A"),
                 cache: self.cache,
-                placeholder: PlaceholderImage(),
+                placeholder: ImagePlaceholder(),
                 configuration: { $0.renderingMode(.original).resizable() }
             )
             .frame(width: 108, height: 160)
