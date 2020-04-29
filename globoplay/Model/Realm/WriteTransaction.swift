@@ -21,6 +21,9 @@ public final class WriteTransaction {
     }
     
     public func delete<T: Persistable>(_ value: T) {
-        realm.delete(value.managedObject())
+        guard let object = realm.object(ofType: T.ManagedObject.self, forPrimaryKey: value.persistanceId) else {
+            return
+        }
+        realm.delete(object)
     }
 }
