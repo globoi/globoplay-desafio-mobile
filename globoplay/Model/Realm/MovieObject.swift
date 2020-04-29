@@ -9,13 +9,6 @@
 import Foundation
 import RealmSwift
 
-public protocol Persistable {
-    associatedtype ManagedObject: RealmSwift.Object
-
-    init(managedObject: ManagedObject)
-    func managedObject() -> ManagedObject
-}
-
 @objcMembers
 final class MovieObject: Object {
     dynamic var adult: Bool = false
@@ -50,6 +43,8 @@ final class MovieObject: Object {
 }
 
 extension Movie: Persistable {
+    var persistanceId: String { String(format: "%U", self.id) }
+    
     public init(managedObject: MovieObject) {
         adult = managedObject.adult
         backdropPath = managedObject.backdropPath
@@ -107,4 +102,13 @@ extension Movie: Persistable {
         movie.voteCount = voteCount
         return movie
     }
+}
+
+//MARK: - Protocol: Persistable
+
+public protocol Persistable {
+    associatedtype ManagedObject: RealmSwift.Object
+    var persistanceId: String { get }
+    init(managedObject: ManagedObject)
+    func managedObject() -> ManagedObject
 }
