@@ -10,15 +10,18 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var store: Store
+    @ObservedObject var home = Home()
     
     var body: some View {
         Group {
-            if !store.loaded {
+            if !home.loaded {
                 Loader()
             } else {
                 TabView {
                     NavigationView {
-                        HomeView().environmentObject(store).navigationBarTitle(Text("globoplay"))
+                        HomeView(collection: home.colletions)
+                            .environmentObject(store)
+                            .navigationBarTitle(Text("globoplay"))
                     }
                     .tabItem {
                         Image(systemName: "house.fill")
@@ -26,7 +29,9 @@ struct ContentView: View {
                     }
                     
                     NavigationView {
-                        FavoritesView().environmentObject(Persistance()).navigationBarTitle(Text("minha lista"))
+                        FavoritesView()
+                            .environmentObject(store)
+                            .navigationBarTitle(Text("minha lista"))
                     }
                     .tabItem {
                         Image(systemName: "star.fill")
