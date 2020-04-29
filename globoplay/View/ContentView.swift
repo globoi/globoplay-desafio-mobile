@@ -29,7 +29,7 @@ struct ContentView: View {
                     }
                     
                     NavigationView {
-                        FavoritesView()
+                        FavoriteMoviesView()
                             .environmentObject(store)
                             .navigationBarTitle(Text("minha lista"))
                     }
