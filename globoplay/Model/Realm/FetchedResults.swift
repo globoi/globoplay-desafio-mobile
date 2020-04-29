@@ -8,25 +8,20 @@
 
 import Foundation
 import RealmSwift
-import Combine
 
 public final class FetchedResults<T: Persistable> {
-    typealias Result = Results<T.ManagedObject>
-    @Published var value: Result? = nil
-    
-    let container = try! Container()
-    var objectWillChange: AnyPublisher<Result?, Never> = Publishers.Sequence<[Result?], Never>(sequence: []).eraseToAnyPublisher()
-    
-    init(results: Results<T.ManagedObject>) {
-        self.value = results
-        self.objectWillChange = $value.handleEvents(receiveSubscription: { [weak self] sub in
-            guard let s = self else { return }
-            s.fetch()
-        }).eraseToAnyPublisher()
+
+    internal let results: Results<T.ManagedObject>
+
+    public var count: Int {
+        return results.count
     }
-    
-    func fetch() {
-        self.value = container.values(T.self).value
+
+    internal init(results: Results<T.ManagedObject>) {
+        self.results = results
     }
-    
+
+    public func value(at index: Int) -> T {
+        return T(managedObject: results[index])
+    }
 }
