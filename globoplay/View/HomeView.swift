@@ -12,9 +12,15 @@ import Combine
 struct HomeView: View {
     @EnvironmentObject var store: Store
     
+    var homeCollection: [HomeCollection]?
+    
+    init(collection: [HomeCollection]) {
+        self.homeCollection = collection
+    }
+    
     var body: some View {
         List {
-            ForEach(store.colletions, id: \.self.genre.id) { collection in
+            ForEach(homeCollection ?? [], id: \.self.genre.id) { collection in
                 CollectionRowView(
                     title: collection.genre.name,
                     movies: collection.resource.value?.results ?? []
@@ -29,7 +35,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HomeView()
+            HomeView(collection: [])
                 .environmentObject(Store())
         }
     }
