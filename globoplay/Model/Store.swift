@@ -6,37 +6,45 @@
 //  Copyright © 2020 Marcos Curvello. All rights reserved.
 //
 
-import Foundation
 import Combine
-import TinyNetworking
+import RealmSwift
 
 final class Store: ObservableObject {
-    private let movieResultsResource = Resource(endpoint: api.movieResults(for: "18410"))
-    @Published var movies = sampleMovies
+    @Published var favoriteMovies: FetchedResults<Movie>
+    let container = try! Container()
+    private var notificationTokens: [NotificationToken] = []
+    var favorites: [MovieList] { favoriteMovies.results.map {  MovieList(movieObject: $0) }}
     
-    private let showResultsResource = Resource(endpoint: api.showResults(for: "18410"))
-    @Published var shows = sampleShows
+    init() {
+        self.favoriteMovies = container.values(Movie.self)
+        self.notificationTokens.append(favoriteMovies.results.observe { _ in
+            self.objectWillChange.send()
+        })
+    }
     
-    let loaded = true
+    public func isFavorite(movie id: Int) -> Bool {
+        return !favorites.filter { $0.id == id }.isEmpty
+    }
+    
+    public func persist(movie: Movie?) {
+        guard let movie = movie else { return }
+        _persist(movie)
+    }
+    
+    public func delete(movie: Movie?) {
+        guard let movie = movie else { return }
+        _delete(movie)
+    }
+    
+    private func _persist(_ movie: Movie) {
+        try! container.write { transaction in
+            transaction.add(movie, update: true)
+        }
+    }
+    
+    private func _delete(_ movie: Movie) {
+        try! container.write { transaction in
+            transaction.delete(movie)
+        }
+    }
 }
-
-struct api {
-    static let token = ProcessInfo.processInfo.environment["TMDB_API_TOKEN"]!
-    static let base = URL(string: "https://api.themoviedb.org/3/")!
-    static let languageQuery = URLQueryItem(name: "language", value: "pt-BR")
-    static var headers: [String: String] {
-        ["Authorization": "Bearer " + token]
-    }
-    
-    static func movieResults(for companyId: String) -> Endpoint<Discover<MovieResult>> {
-        let url = api.base.appendingPathComponent("company/\(companyId)/movies").query([languageQuery])
-        return Endpoint<Discover<MovieResult>>(json: .get, url: url, headers: headers)
-    }
-    
-    static func showResults(for companyId: String) -> Endpoint<Discover<ShowResult>> {
-        let companyQuery = URLQueryItem(name: "with_company", value: companyId)
-        let url = api.base.appendingPathComponent("discover/tv").query([companyQuery, languageQuery])
-        return Endpoint<Discover<ShowResult>>(json: .get, url: url, headers: headers)
-    }
-}
-
