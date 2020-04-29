@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import TinyNetworking
 
 protocol Order {
     var asc: String { get }
@@ -21,12 +20,8 @@ enum Sorting: String {
 }
 
 extension Sorting: Order {
-    var asc: String {
-        String(format: "%@%@", self.rawValue, ".asc")
-    }
-    var desc: String {
-        String(format: "%@%@", self.rawValue, ".desc")
-    }
+    var asc: String { String(format: "%@%@", self.rawValue, ".asc") }
+    var desc: String { String(format: "%@%@", self.rawValue, ".desc") }
 }
 
 enum QueryType: String {
@@ -94,9 +89,9 @@ extension Request {
         )
     }
     
-    static func image(for size: String = "original", path: String) -> Request {
+    static func image(size spec: String = "original", path: String) -> Request {
         return Request(
-            path: String(format: "%@%@%@", "/t/p/", size, path)
+            path: String(format: "%@%@%@", "/t/p/", spec, path)
         )
     }
     
