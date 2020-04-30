@@ -9,7 +9,9 @@
 import SwiftUI
 
 struct GridStackView: View {
-    let rows: [GridStackRow]
+    let movies: [MovieList]
+    var column: Int
+    var rows: [GridStackRow] { movies.chunked(column).map { GridStackRow(movies: $0) }}
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -17,19 +19,25 @@ struct GridStackView: View {
                 HStack {
                     ForEach(row.movies) { movie in
                         NavigationLink(destination:
-                            LazyView(DetailView(movie: movie))
+                            LazyView(
+                                DetailView(movie: movie)
+                                    .navigationBarTitle("")
+                                    .navigationBarHidden(true)
+                            )
                         ) {
                             GridStackItem(movie: movie)
-                            
                         }
                     }
+                    Spacer().padding(.trailing, -100)
                 }
             }
         }
+        .padding()
     }
     
     init(movies: [MovieList], columns: Int) {
-        self.rows = movies.chunked(columns).map { GridStackRow(movies: $0) }
+        self.movies = movies
+        self.column = columns
     }
 }
 
@@ -43,15 +51,12 @@ struct GridStackItem: View {
     var movie: MovieList
     
     var body: some View {
-        VStack(alignment: .leading) {
-            AsyncImage(
-                url: .image(size: "w200", path: movie.posterPath ?? ""),
-                cache: self.cache,
-                placeholder: ImagePlaceholder(),
-                configuration: { $0.renderingMode(.original).resizable() }
-            )
-                .frame(width: 108, height: 160)
-        }
+        AsyncImage(
+            url: .image(size: "w200", path: movie.posterPath ?? ""),
+            cache: self.cache,
+            placeholder: ImagePlaceholder(),
+            configuration: { $0.renderingMode(.original).resizable() }
+        ).frame(width: 108, height: 160)
     }
 }
 
