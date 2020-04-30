@@ -9,33 +9,40 @@
 import SwiftUI
 
 struct CollectionRowView: View {
-    var title: String
+    var title: String?
     var movies: [MovieList]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack(alignment: .top) {
-                Text(title)
-                    .fontWeight(.bold)
+            Group {
+                if title != nil {
+                    HStack(alignment: .top) {
+                        Text(title!)
+                            .fontWeight(.bold)
+                        Spacer()
+                    }
+                    .padding(.top, 10)
                     .padding([.leading, .top], 15)
-                Spacer()
+                }
             }
-            .foregroundColor(.white)
-            .frame(height: 30)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(self.movies) { movie in
                         NavigationLink(destination:
-                            LazyView(DetailView(movie: movie))
+                            LazyView(
+                                DetailView(movie: movie)
+                                    .navigationBarTitle("")
+                                    .navigationBarHidden(true)
+                            )
                         ) {
                             CollectionRowItem(movie: movie)
                         }
                     }
                 }
                 .padding([.leading, .trailing], 10)
+                .padding([.top, .bottom], 15)
             }
-            .frame(height: 200)
         }
     }
 }
@@ -45,16 +52,14 @@ struct CollectionRowItem: View {
     var movie: MovieList
     
     var body: some View {
-        VStack(alignment: .leading) {
-            AsyncImage(
-                url: .image(size: "w200", path: movie.posterPath ?? "N/A"),
-                cache: self.cache,
-                placeholder: ImagePlaceholder(),
-                configuration: { $0.renderingMode(.original).resizable() }
-            )
+        AsyncImage(
+            url: .image(size: "w200", path: movie.posterPath ?? "N/A"),
+            cache: self.cache,
+            placeholder: ImagePlaceholder(),
+            configuration: { $0.renderingMode(.original).resizable() }
+        )
             .frame(width: 108, height: 160)
-        }
-        .padding([.leading, .trailing], 3.8)
+            .padding([.leading, .trailing], 3.8)
     }
 }
 

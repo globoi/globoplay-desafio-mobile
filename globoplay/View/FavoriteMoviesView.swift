@@ -11,7 +11,6 @@ import SwiftUI
 struct FavoriteMoviesView: View {
     @EnvironmentObject var store: Store
     var favorites: [MovieList] { store.favorites }
-    //    var favorites: [MovieList] { sampleMovies }
     
     var body: some View {
         ScrollView(.vertical) {
