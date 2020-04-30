@@ -5,6 +5,7 @@
 //  Created by Marcos Curvello on 17/04/20.
 //  Copyright © 2020 Marcos Curvello. All rights reserved.
 //
+import Foundation
 
 struct Movie: Codable, Identifiable {
     var adult: Bool
@@ -62,21 +63,7 @@ struct Movie: Codable, Identifiable {
     }
 }
 
-extension Movie: Detailable {
-    var information: [Info] {
-        [
-            Info(id: id, name: "Título Original", value: originalTitle),
-            Info(id: id, name: "Gênero", value: genres.first?.name.capitalized ?? ""),
-            Info(id: id, name: "Ano de produção", value: releaseDate)
-        ]
-    }
-}
-
-extension Movie: Equatable {
-    static func == (lhs: Movie, rhs: Movie) -> Bool {
-        lhs.id == rhs.id
-    }
-}
+// MARK: - MovieCollection
 
 struct MovieCollection: Codable {
     var id: Int
@@ -92,10 +79,32 @@ struct MovieCollection: Codable {
     }
 }
 
+// MARK: - Genre
+
 struct Genre: Codable, Hashable {
     var id: Int
     var name: String
 }
+
+extension Genre {
+    static func random(sequence count: Int) -> [Genre] {
+        var interations: Int = count
+        var randomGenres: [Genre] = []
+        
+        while interations > 0 {
+            let genre = GenreType.allCases.randomElement()!.genre
+            guard !randomGenres.contains(genre) else {
+                continue
+            }
+            
+            randomGenres.append(genre)
+            interations -= 1
+        }
+        return randomGenres
+    }
+}
+
+// MARK: - Company
 
 struct Company: Codable {
     var name: String
@@ -111,6 +120,8 @@ struct Company: Codable {
     }
 }
 
+// MARK: - Country
+
 struct Country: Codable {
     var iso: String
     var name: String
@@ -120,6 +131,8 @@ struct Country: Codable {
         case name
     }
 }
+
+// MARK: - Language
 
 struct Language: Codable {
     var iso: String
@@ -131,46 +144,50 @@ struct Language: Codable {
     }
 }
 
-struct MovieList: Codable, Identifiable, Hashable {
-    var posterPath: String?
-    var adult: Bool
-    var overview: String
-    var releaseDate: String
-    var genreIds: [Int]
-    var id: Int
-    var originalTitle: String
-    var originalLanguage: String
-    var title: String
-    var backdropPath: String?
-    var popularity: Double
-    var voteCount: Int
-    var video: Bool
-    var voteAverage: Double
-    
-    enum CodingKeys: String, CodingKey {
-        case posterPath = "poster_path"
-        case adult
-        case overview
-        case releaseDate = "release_date"
-        case genreIds = "genre_ids"
-        case id
-        case originalTitle = "original_title"
-        case originalLanguage = "original_language"
-        case title
-        case backdropPath = "backdrop_path"
-        case popularity
-        case voteCount = "vote_count"
-        case video
-        case voteAverage = "vote_average"
-    }
+// MARK: - Info
+
+struct Info: Hashable, Identifiable {
+    let id = UUID()
+    var name: String
+    var value: String
 }
+
+// MARK: - Protocol: Detailable
 
 protocol Detailable {
     var information: [Info] { get }
 }
 
-struct Info: Hashable, Identifiable {
-    var id: Int
-    var name: String
-    var value: String
+extension Movie: Detailable {
+    var information: [Info] {
+        var info: [Info] = [
+            Info(name: "Original title", value: originalTitle),
+            Info(
+                name: "Genre",
+                value: String(genres.compactMap { $0.name }.reduce("") { String(format: "%@%@, ", $0, $1) }.dropLast() ))
+        ]
+        if productionCountries.count > 0 {
+            info.append(
+                Info(
+                    name: "Production Countries",
+                    value: String(productionCountries.compactMap { $0.name }.reduce("") { String(format: "%@%@, ", $0, $1) }.dropLast()) )
+            )
+        }
+        if productionCompanies.count > 0 {
+            info.append(
+                Info(
+                    name: "Production Companies",
+                    value: String(productionCompanies.compactMap { $0.name }.reduce("") { String(format: "%@%@, ", $0, $1) }.dropLast() ))
+            )
+        }
+        return info
+    }
+}
+
+// MARK: - Protocol: Equatable
+
+extension Movie: Equatable {
+    static func == (lhs: Movie, rhs: Movie) -> Bool {
+        lhs.id == rhs.id
+    }
 }
