@@ -11,9 +11,7 @@ import Combine
 
 struct HomeView: View {
     @EnvironmentObject var store: Store
-    
     var homeCollection: [HomeCollection]?
-    
     init(collection: [HomeCollection]) {
         self.homeCollection = collection
     }
@@ -25,10 +23,12 @@ struct HomeView: View {
                     title: collection.genre.name,
                     movies: collection.resource.value?.results ?? []
                 )
-                .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
+                    .foregroundColor(.white)
+                    .background(Color.backgroundGray)
+                    .listRowInsets(EdgeInsets())
             }
         }
-        .padding(.horizontal, -20)
+        .background(Color.backgroundGray)
     }
 }
 
