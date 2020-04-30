@@ -7,51 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F4D718F8447B0B2297CE8BE /* Pods_globoplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F411DCC1BFC9C98A167DF350 /* Pods_globoplay.framework */; };
-		271AE99E244BFD18009DB2BA /* ImageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271AE99D244BFD18009DB2BA /* ImageHeader.swift */; };
+		271AE99E244BFD18009DB2BA /* ImageBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271AE99D244BFD18009DB2BA /* ImageBackground.swift */; };
 		271FD188244D64E900E90EA5 /* WriteTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271FD187244D64E900E90EA5 /* WriteTransaction.swift */; };
 		271FD18A244D665900E90EA5 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271FD189244D665900E90EA5 /* Container.swift */; };
-		271FD18C244D685F00E90EA5 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271FD18B244D685F00E90EA5 /* api.swift */; };
+		271FD18C244D685F00E90EA5 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271FD18B244D685F00E90EA5 /* Backend.swift */; };
 		272D69C1244D77E80002B0C7 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272D69C0244D77E80002B0C7 /* LazyView.swift */; };
-		272D69C3244D79A90002B0C7 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272D69C2244D79A90002B0C7 /* FavoritesView.swift */; };
+		272D69C3244D79A90002B0C7 /* FavoriteMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272D69C2244D79A90002B0C7 /* FavoriteMoviesView.swift */; };
 		272D69C5244D87240002B0C7 /* singleMovie.json in Resources */ = {isa = PBXBuildFile; fileRef = 272D69C4244D87240002B0C7 /* singleMovie.json */; };
-		272D69C7244DF3860002B0C7 /* Persistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272D69C6244DF3860002B0C7 /* Persistance.swift */; };
 		27367C1C2448DEDB001283E6 /* TinyNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 27367C1B2448DEDB001283E6 /* TinyNetworking */; };
 		27367C1E244902A7001283E6 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27367C1D244902A7001283E6 /* Discover.swift */; };
 		27367C2024496678001283E6 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 27367C1F24496678001283E6 /* movies.json */; };
+		273FA989245AC32200A11ECA /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FA988245AC32200A11ECA /* Theme.swift */; };
 		2740BD63244CAAEA005B22FB /* UINavigationController+BarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BD62244CAAEA005B22FB /* UINavigationController+BarAppearance.swift */; };
 		2740BD65244CAB3C005B22FB /* BarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BD64244CAB3C005B22FB /* BarAppearance.swift */; };
-		2740BD67244CC647005B22FB /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BD66244CC647005B22FB /* InfoView.swift */; };
+		2740BD67244CC647005B22FB /* InfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2740BD66244CC647005B22FB /* InfoStackView.swift */; };
 		2743F9EE24462FC7007B51FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743F9ED24462FC7007B51FB /* AppDelegate.swift */; };
 		2743F9F024462FC7007B51FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743F9EF24462FC7007B51FB /* SceneDelegate.swift */; };
 		2743F9F424462FC9007B51FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2743F9F324462FC9007B51FB /* Assets.xcassets */; };
 		2743F9F724462FC9007B51FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2743F9F624462FC9007B51FB /* Preview Assets.xcassets */; };
 		2743F9FA24462FC9007B51FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2743F9F824462FC9007B51FB /* LaunchScreen.storyboard */; };
-		2743FA0524462FCA007B51FB /* globoplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743FA0424462FCA007B51FB /* globoplayTests.swift */; };
 		2743FA1024462FCA007B51FB /* globoplayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743FA0F24462FCA007B51FB /* globoplayUITests.swift */; };
 		2743FA1E24467817007B51FB /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743FA1D24467817007B51FB /* Movie.swift */; };
-		27C143F424479A8E00F04A27 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C143F324479A8E00F04A27 /* Show.swift */; };
-		27C143F62447ABF200F04A27 /* ResultRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C143F52447ABF200F04A27 /* ResultRowView.swift */; };
+		276BE1F2244E9B1000D76421 /* token.json in Resources */ = {isa = PBXBuildFile; fileRef = 276BE1F1244E9B1000D76421 /* token.json */; };
+		277C564724536BBD00E3E649 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277C564624536BBD00E3E649 /* Loader.swift */; };
+		2786916E2458E9BE00DC4DBE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786916D2458E9BE00DC4DBE /* Home.swift */; };
+		278691702458F1B100DC4DBE /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2786916F2458F1B100DC4DBE /* MovieList.swift */; };
+		2793698D24504D5000AAF75A /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2793698C24504D5000AAF75A /* Array.swift */; };
+		27B7858D2452B11000446300 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B7858C2452B11000446300 /* MovieTests.swift */; };
+		27BCEF3E24573E0C00BB45B0 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BCEF3D24573E0C00BB45B0 /* InfoView.swift */; };
+		27C143F62447ABF200F04A27 /* CollectionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C143F52447ABF200F04A27 /* CollectionRowView.swift */; };
 		27D0B67D244D6BC9007CBCD9 /* FetchedResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D0B67C244D6BC9007CBCD9 /* FetchedResults.swift */; };
 		27DC59B7244A43C80092FB7E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DC59B6244A43C80092FB7E /* HomeView.swift */; };
 		27DC59B9244A4EB10092FB7E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DC59B8244A4EB10092FB7E /* ContentView.swift */; };
 		27DD658F244BAFF700C985F4 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD658E244BAFF700C985F4 /* AsyncImage.swift */; };
 		27DD6591244BB01C00C985F4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD6590244BB01C00C985F4 /* ImageLoader.swift */; };
 		27DD6593244BB05800C985F4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD6592244BB05800C985F4 /* ImageCache.swift */; };
-		27DD6597244BB57E00C985F4 /* String+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD6596244BB57E00C985F4 /* String+Data.swift */; };
-		27DD6599244BB5ED00C985F4 /* URL+URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD6598244BB5ED00C985F4 /* URL+URLQueryItem.swift */; };
-		27DD659B244BB61F00C985F4 /* Endpoint+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD659A244BB61F00C985F4 /* Endpoint+UIImage.swift */; };
 		27DD659D244BB63C00C985F4 /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD659C244BB63C00C985F4 /* EnvironmentValues+ImageCache.swift */; };
-		27DD659F244BBF5B00C985F4 /* PlaceholderImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD659E244BBF5B00C985F4 /* PlaceholderImage.swift */; };
+		27DD659F244BBF5B00C985F4 /* ImagePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD659E244BBF5B00C985F4 /* ImagePlaceholder.swift */; };
 		27DD65A1244BE05B00C985F4 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DD65A0244BE05B00C985F4 /* DetailView.swift */; };
 		27DEB46D244D5AAC00C42EFE /* MovieObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DEB46C244D5AAC00C42EFE /* MovieObject.swift */; };
 		27ED68BA2448BCFC00526EE3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED68B92448BCFC00526EE3 /* Store.swift */; };
 		27ED68BC2448BD9C00526EE3 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED68BB2448BD9C00526EE3 /* Resource.swift */; };
 		27FA0C24244A007200764364 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA0C23244A007200764364 /* Data.swift */; };
-		27FA0C26244A01C200764364 /* shows.json in Resources */ = {isa = PBXBuildFile; fileRef = 27FA0C25244A01C200764364 /* shows.json */; };
-		27FA0C2A244A02CB00764364 /* ShowRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA0C29244A02CB00764364 /* ShowRow.swift */; };
-		AA0520B0994EC8BC5276DE8E /* Pods_globoplay_globoplayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815845F3DD071B8EED39F3D7 /* Pods_globoplay_globoplayUITests.framework */; };
-		F60C143EB340542EBEF58DB2 /* Pods_globoplayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E306687FCEC3A6B51CA25A8E /* Pods_globoplayTests.framework */; };
+		27FA94FB24594C8F008CB8A5 /* GridStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA94FA24594C8F008CB8A5 /* GridStackView.swift */; };
+		5D571E3ECC3DC26F79E4EDFC /* Pods_globoplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9D700734AB9ED005EE9DD1 /* Pods_globoplay.framework */; };
+		60C3D8095AF2EBBBFFCD4C52 /* Pods_globoplayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2243C8742A60C3DB95427B0A /* Pods_globoplayTests.framework */; };
+		6B866B9693F3E222EEE119A2 /* Pods_globoplay_globoplayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1D13BA8236CBF83730D8B7 /* Pods_globoplay_globoplayUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,19 +73,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		271AE99D244BFD18009DB2BA /* ImageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHeader.swift; sourceTree = "<group>"; };
+		2243C8742A60C3DB95427B0A /* Pods_globoplayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_globoplayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		271AE99D244BFD18009DB2BA /* ImageBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBackground.swift; sourceTree = "<group>"; };
 		271FD187244D64E900E90EA5 /* WriteTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTransaction.swift; sourceTree = "<group>"; };
 		271FD189244D665900E90EA5 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
-		271FD18B244D685F00E90EA5 /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
+		271FD18B244D685F00E90EA5 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		272D69C0244D77E80002B0C7 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
-		272D69C2244D79A90002B0C7 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		272D69C2244D79A90002B0C7 /* FavoriteMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesView.swift; sourceTree = "<group>"; };
 		272D69C4244D87240002B0C7 /* singleMovie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = singleMovie.json; sourceTree = "<group>"; };
-		272D69C6244DF3860002B0C7 /* Persistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistance.swift; sourceTree = "<group>"; };
 		27367C1D244902A7001283E6 /* Discover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover.swift; sourceTree = "<group>"; };
 		27367C1F24496678001283E6 /* movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
+		273FA988245AC32200A11ECA /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		2740BD62244CAAEA005B22FB /* UINavigationController+BarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+BarAppearance.swift"; sourceTree = "<group>"; };
 		2740BD64244CAB3C005B22FB /* BarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarAppearance.swift; sourceTree = "<group>"; };
-		2740BD66244CC647005B22FB /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		2740BD66244CC647005B22FB /* InfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStackView.swift; sourceTree = "<group>"; };
 		2743F9EA24462FC7007B51FB /* globoplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = globoplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2743F9ED24462FC7007B51FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2743F9EF24462FC7007B51FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,41 +95,41 @@
 		2743F9F924462FC9007B51FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2743F9FB24462FC9007B51FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2743FA0024462FCA007B51FB /* globoplayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = globoplayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2743FA0424462FCA007B51FB /* globoplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globoplayTests.swift; sourceTree = "<group>"; };
 		2743FA0624462FCA007B51FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2743FA0B24462FCA007B51FB /* globoplayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = globoplayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2743FA0F24462FCA007B51FB /* globoplayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globoplayUITests.swift; sourceTree = "<group>"; };
 		2743FA1124462FCA007B51FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2743FA1D24467817007B51FB /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		27C143F324479A8E00F04A27 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
-		27C143F52447ABF200F04A27 /* ResultRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRowView.swift; sourceTree = "<group>"; };
+		276BE1F1244E9B1000D76421 /* token.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = token.json; sourceTree = "<group>"; };
+		277C564624536BBD00E3E649 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		2786916D2458E9BE00DC4DBE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		2786916F2458F1B100DC4DBE /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
+		2793698C24504D5000AAF75A /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		27B7858C2452B11000446300 /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
+		27BCEF3D24573E0C00BB45B0 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		27C143F52447ABF200F04A27 /* CollectionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRowView.swift; sourceTree = "<group>"; };
 		27D0B67C244D6BC9007CBCD9 /* FetchedResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResults.swift; sourceTree = "<group>"; };
 		27DC59B6244A43C80092FB7E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		27DC59B8244A4EB10092FB7E /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		27DD658E244BAFF700C985F4 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		27DD6590244BB01C00C985F4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		27DD6592244BB05800C985F4 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		27DD6596244BB57E00C985F4 /* String+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Data.swift"; sourceTree = "<group>"; };
-		27DD6598244BB5ED00C985F4 /* URL+URLQueryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+URLQueryItem.swift"; sourceTree = "<group>"; };
-		27DD659A244BB61F00C985F4 /* Endpoint+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Endpoint+UIImage.swift"; sourceTree = "<group>"; };
 		27DD659C244BB63C00C985F4 /* EnvironmentValues+ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+ImageCache.swift"; sourceTree = "<group>"; };
-		27DD659E244BBF5B00C985F4 /* PlaceholderImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderImage.swift; sourceTree = "<group>"; };
+		27DD659E244BBF5B00C985F4 /* ImagePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePlaceholder.swift; sourceTree = "<group>"; };
 		27DD65A0244BE05B00C985F4 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		27DEB46C244D5AAC00C42EFE /* MovieObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieObject.swift; sourceTree = "<group>"; };
 		27ED68B92448BCFC00526EE3 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		27ED68BB2448BD9C00526EE3 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		27FA0C23244A007200764364 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		27FA0C25244A01C200764364 /* shows.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shows.json; sourceTree = "<group>"; };
-		27FA0C29244A02CB00764364 /* ShowRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRow.swift; sourceTree = "<group>"; };
-		327B5DF25535E0ABBC785A47 /* Pods-globoplay-globoplayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay-globoplayUITests.debug.xcconfig"; path = "Target Support Files/Pods-globoplay-globoplayUITests/Pods-globoplay-globoplayUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		703FDD4D3677CB216C0787F9 /* Pods-globoplay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay.debug.xcconfig"; path = "Target Support Files/Pods-globoplay/Pods-globoplay.debug.xcconfig"; sourceTree = "<group>"; };
-		815845F3DD071B8EED39F3D7 /* Pods_globoplay_globoplayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_globoplay_globoplayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9ECF24AADA730A8C70E1B6BB /* Pods-globoplay-globoplayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay-globoplayUITests.release.xcconfig"; path = "Target Support Files/Pods-globoplay-globoplayUITests/Pods-globoplay-globoplayUITests.release.xcconfig"; sourceTree = "<group>"; };
-		9F5B391BAEC6E899C761A14F /* Pods-globoplay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay.release.xcconfig"; path = "Target Support Files/Pods-globoplay/Pods-globoplay.release.xcconfig"; sourceTree = "<group>"; };
-		AD7FCDD3C3700BC8DF3E6E07 /* Pods-globoplayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplayTests.release.xcconfig"; path = "Target Support Files/Pods-globoplayTests/Pods-globoplayTests.release.xcconfig"; sourceTree = "<group>"; };
-		C90AC1D60FC416FAF096D343 /* Pods-globoplayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplayTests.debug.xcconfig"; path = "Target Support Files/Pods-globoplayTests/Pods-globoplayTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E306687FCEC3A6B51CA25A8E /* Pods_globoplayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_globoplayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F411DCC1BFC9C98A167DF350 /* Pods_globoplay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_globoplay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27FA94FA24594C8F008CB8A5 /* GridStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridStackView.swift; sourceTree = "<group>"; };
+		3A9D700734AB9ED005EE9DD1 /* Pods_globoplay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_globoplay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F1D13BA8236CBF83730D8B7 /* Pods_globoplay_globoplayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_globoplay_globoplayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		69AA39BD0D5B3672416E2B63 /* Pods-globoplayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplayTests.debug.xcconfig"; path = "Target Support Files/Pods-globoplayTests/Pods-globoplayTests.debug.xcconfig"; sourceTree = "<group>"; };
+		851F7D931C29E2AB34E7CA3F /* Pods-globoplay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay.debug.xcconfig"; path = "Target Support Files/Pods-globoplay/Pods-globoplay.debug.xcconfig"; sourceTree = "<group>"; };
+		98D855EA434AB090737F2E25 /* Pods-globoplay-globoplayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay-globoplayUITests.debug.xcconfig"; path = "Target Support Files/Pods-globoplay-globoplayUITests/Pods-globoplay-globoplayUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AC99FEC813A996880FA6BBAC /* Pods-globoplay-globoplayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay-globoplayUITests.release.xcconfig"; path = "Target Support Files/Pods-globoplay-globoplayUITests/Pods-globoplay-globoplayUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E5754A2527DCC6618CB5F8F4 /* Pods-globoplayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplayTests.release.xcconfig"; path = "Target Support Files/Pods-globoplayTests/Pods-globoplayTests.release.xcconfig"; sourceTree = "<group>"; };
+		ED8BA0BC686DEA237BCF95EA /* Pods-globoplay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay.release.xcconfig"; path = "Target Support Files/Pods-globoplay/Pods-globoplay.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27367C1C2448DEDB001283E6 /* TinyNetworking in Frameworks */,
-				0F4D718F8447B0B2297CE8BE /* Pods_globoplay.framework in Frameworks */,
+				5D571E3ECC3DC26F79E4EDFC /* Pods_globoplay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F60C143EB340542EBEF58DB2 /* Pods_globoplayTests.framework in Frameworks */,
+				60C3D8095AF2EBBBFFCD4C52 /* Pods_globoplayTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA0520B0994EC8BC5276DE8E /* Pods_globoplay_globoplayUITests.framework in Frameworks */,
+				6B866B9693F3E222EEE119A2 /* Pods_globoplay_globoplayUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +180,7 @@
 				2743FA0E24462FCA007B51FB /* globoplayUITests */,
 				2743F9EB24462FC7007B51FB /* Products */,
 				680C4E435FF07B7A035A5E15 /* Pods */,
-				CE6CF0850EBC2EA36F19D013 /* Frameworks */,
+				584AB30CA4B6E9055D4F3924 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,6 +202,7 @@
 				27FA0C1E2449FC8A00764364 /* View */,
 				27EBB4FB244D57CE006206E3 /* ViewHelpers */,
 				27DD6594244BB07300C985F4 /* AsyncImage */,
+				271FD18B244D685F00E90EA5 /* Backend.swift */,
 				2743F9ED24462FC7007B51FB /* AppDelegate.swift */,
 				2743F9EF24462FC7007B51FB /* SceneDelegate.swift */,
 				2743F9F324462FC9007B51FB /* Assets.xcassets */,
@@ -222,8 +225,8 @@
 		2743FA0324462FCA007B51FB /* globoplayTests */ = {
 			isa = PBXGroup;
 			children = (
-				2743FA0424462FCA007B51FB /* globoplayTests.swift */,
 				2743FA0624462FCA007B51FB /* Info.plist */,
+				27B7858C2452B11000446300 /* MovieTests.swift */,
 			);
 			path = globoplayTests;
 			sourceTree = "<group>";
@@ -241,9 +244,9 @@
 			isa = PBXGroup;
 			children = (
 				27FA0C23244A007200764364 /* Data.swift */,
+				276BE1F1244E9B1000D76421 /* token.json */,
 				272D69C4244D87240002B0C7 /* singleMovie.json */,
 				27367C1F24496678001283E6 /* movies.json */,
-				27FA0C25244A01C200764364 /* shows.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -261,9 +264,7 @@
 		27DD6595244BB52C00C985F4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				27DD6596244BB57E00C985F4 /* String+Data.swift */,
-				27DD6598244BB5ED00C985F4 /* URL+URLQueryItem.swift */,
-				27DD659A244BB61F00C985F4 /* Endpoint+UIImage.swift */,
+				2793698C24504D5000AAF75A /* Array.swift */,
 				27DD659C244BB63C00C985F4 /* EnvironmentValues+ImageCache.swift */,
 				2740BD62244CAAEA005B22FB /* UINavigationController+BarAppearance.swift */,
 			);
@@ -273,10 +274,14 @@
 		27EBB4FB244D57CE006206E3 /* ViewHelpers */ = {
 			isa = PBXGroup;
 			children = (
-				271AE99D244BFD18009DB2BA /* ImageHeader.swift */,
-				2740BD66244CC647005B22FB /* InfoView.swift */,
+				277C564624536BBD00E3E649 /* Loader.swift */,
+				27DD659E244BBF5B00C985F4 /* ImagePlaceholder.swift */,
+				271AE99D244BFD18009DB2BA /* ImageBackground.swift */,
+				2740BD66244CC647005B22FB /* InfoStackView.swift */,
+				27BCEF3D24573E0C00BB45B0 /* InfoView.swift */,
 				2740BD64244CAB3C005B22FB /* BarAppearance.swift */,
 				272D69C0244D77E80002B0C7 /* LazyView.swift */,
+				273FA988245AC32200A11ECA /* Theme.swift */,
 			);
 			path = ViewHelpers;
 			sourceTree = "<group>";
@@ -286,10 +291,9 @@
 			children = (
 				271FD186244D5AEC00E90EA5 /* Realm */,
 				27ED68B92448BCFC00526EE3 /* Store.swift */,
-				272D69C6244DF3860002B0C7 /* Persistance.swift */,
-				271FD18B244D685F00E90EA5 /* api.swift */,
+				2786916D2458E9BE00DC4DBE /* Home.swift */,
 				2743FA1D24467817007B51FB /* Movie.swift */,
-				27C143F324479A8E00F04A27 /* Show.swift */,
+				2786916F2458F1B100DC4DBE /* MovieList.swift */,
 				27ED68BB2448BD9C00526EE3 /* Resource.swift */,
 				27367C1D244902A7001283E6 /* Discover.swift */,
 			);
@@ -299,38 +303,37 @@
 		27FA0C1E2449FC8A00764364 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				27FA94FA24594C8F008CB8A5 /* GridStackView.swift */,
 				27DC59B8244A4EB10092FB7E /* ContentView.swift */,
 				27DC59B6244A43C80092FB7E /* HomeView.swift */,
-				272D69C2244D79A90002B0C7 /* FavoritesView.swift */,
-				27C143F52447ABF200F04A27 /* ResultRowView.swift */,
-				27FA0C29244A02CB00764364 /* ShowRow.swift */,
-				27DD659E244BBF5B00C985F4 /* PlaceholderImage.swift */,
+				272D69C2244D79A90002B0C7 /* FavoriteMoviesView.swift */,
+				27C143F52447ABF200F04A27 /* CollectionRowView.swift */,
 				27DD65A0244BE05B00C985F4 /* DetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
+		584AB30CA4B6E9055D4F3924 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A9D700734AB9ED005EE9DD1 /* Pods_globoplay.framework */,
+				5F1D13BA8236CBF83730D8B7 /* Pods_globoplay_globoplayUITests.framework */,
+				2243C8742A60C3DB95427B0A /* Pods_globoplayTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		680C4E435FF07B7A035A5E15 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				703FDD4D3677CB216C0787F9 /* Pods-globoplay.debug.xcconfig */,
-				9F5B391BAEC6E899C761A14F /* Pods-globoplay.release.xcconfig */,
-				327B5DF25535E0ABBC785A47 /* Pods-globoplay-globoplayUITests.debug.xcconfig */,
-				9ECF24AADA730A8C70E1B6BB /* Pods-globoplay-globoplayUITests.release.xcconfig */,
-				C90AC1D60FC416FAF096D343 /* Pods-globoplayTests.debug.xcconfig */,
-				AD7FCDD3C3700BC8DF3E6E07 /* Pods-globoplayTests.release.xcconfig */,
+				851F7D931C29E2AB34E7CA3F /* Pods-globoplay.debug.xcconfig */,
+				ED8BA0BC686DEA237BCF95EA /* Pods-globoplay.release.xcconfig */,
+				98D855EA434AB090737F2E25 /* Pods-globoplay-globoplayUITests.debug.xcconfig */,
+				AC99FEC813A996880FA6BBAC /* Pods-globoplay-globoplayUITests.release.xcconfig */,
+				69AA39BD0D5B3672416E2B63 /* Pods-globoplayTests.debug.xcconfig */,
+				E5754A2527DCC6618CB5F8F4 /* Pods-globoplayTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		CE6CF0850EBC2EA36F19D013 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F411DCC1BFC9C98A167DF350 /* Pods_globoplay.framework */,
-				815845F3DD071B8EED39F3D7 /* Pods_globoplay_globoplayUITests.framework */,
-				E306687FCEC3A6B51CA25A8E /* Pods_globoplayTests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,11 +343,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2743FA1424462FCA007B51FB /* Build configuration list for PBXNativeTarget "globoplay" */;
 			buildPhases = (
-				7E4FC15A6079F970FC7C8430 /* [CP] Check Pods Manifest.lock */,
+				035EF09DD47A31BDBC622954 /* [CP] Check Pods Manifest.lock */,
 				2743F9E624462FC7007B51FB /* Sources */,
 				2743F9E724462FC7007B51FB /* Frameworks */,
 				2743F9E824462FC7007B51FB /* Resources */,
-				ADE85C68A5A63A1FE8D41473 /* [CP] Embed Pods Frameworks */,
+				6296EBA0F96902D60811D866 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -362,7 +365,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2743FA1724462FCA007B51FB /* Build configuration list for PBXNativeTarget "globoplayTests" */;
 			buildPhases = (
-				2AE8A3A5EE68E29DF2F22134 /* [CP] Check Pods Manifest.lock */,
+				B3F810322FD4D91501A6D37B /* [CP] Check Pods Manifest.lock */,
 				2743F9FC24462FCA007B51FB /* Sources */,
 				2743F9FD24462FCA007B51FB /* Frameworks */,
 				2743F9FE24462FCA007B51FB /* Resources */,
@@ -381,11 +384,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2743FA1A24462FCA007B51FB /* Build configuration list for PBXNativeTarget "globoplayUITests" */;
 			buildPhases = (
-				68406EC598351D77DF88F5AA /* [CP] Check Pods Manifest.lock */,
+				7D047D061B5A48C55B157632 /* [CP] Check Pods Manifest.lock */,
 				2743FA0724462FCA007B51FB /* Sources */,
 				2743FA0824462FCA007B51FB /* Frameworks */,
 				2743FA0924462FCA007B51FB /* Resources */,
-				220E87E1EB57DF8F01A299F1 /* [CP] Embed Pods Frameworks */,
+				BBAF9019A3E543B6BED4ACDA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -448,8 +451,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27FA0C26244A01C200764364 /* shows.json in Resources */,
 				2743F9FA24462FC9007B51FB /* LaunchScreen.storyboard in Resources */,
+				276BE1F2244E9B1000D76421 /* token.json in Resources */,
 				272D69C5244D87240002B0C7 /* singleMovie.json in Resources */,
 				2743F9F724462FC9007B51FB /* Preview Assets.xcassets in Resources */,
 				2743F9F424462FC9007B51FB /* Assets.xcassets in Resources */,
@@ -474,68 +477,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		220E87E1EB57DF8F01A299F1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-globoplay-globoplayUITests/Pods-globoplay-globoplayUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-globoplay-globoplayUITests/Pods-globoplay-globoplayUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-globoplay-globoplayUITests/Pods-globoplay-globoplayUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2AE8A3A5EE68E29DF2F22134 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-globoplayTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		68406EC598351D77DF88F5AA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-globoplay-globoplayUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7E4FC15A6079F970FC7C8430 /* [CP] Check Pods Manifest.lock */ = {
+		035EF09DD47A31BDBC622954 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -557,7 +499,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ADE85C68A5A63A1FE8D41473 /* [CP] Embed Pods Frameworks */ = {
+		6296EBA0F96902D60811D866 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -574,6 +516,67 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-globoplay/Pods-globoplay-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7D047D061B5A48C55B157632 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-globoplay-globoplayUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3F810322FD4D91501A6D37B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-globoplayTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBAF9019A3E543B6BED4ACDA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-globoplay-globoplayUITests/Pods-globoplay-globoplayUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-globoplay-globoplayUITests/Pods-globoplay-globoplayUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-globoplay-globoplayUITests/Pods-globoplay-globoplayUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -584,36 +587,37 @@
 				27DD658F244BAFF700C985F4 /* AsyncImage.swift in Sources */,
 				27ED68BC2448BD9C00526EE3 /* Resource.swift in Sources */,
 				27DD6593244BB05800C985F4 /* ImageCache.swift in Sources */,
+				2793698D24504D5000AAF75A /* Array.swift in Sources */,
 				27DD6591244BB01C00C985F4 /* ImageLoader.swift in Sources */,
-				271AE99E244BFD18009DB2BA /* ImageHeader.swift in Sources */,
-				272D69C7244DF3860002B0C7 /* Persistance.swift in Sources */,
-				27C143F424479A8E00F04A27 /* Show.swift in Sources */,
+				271AE99E244BFD18009DB2BA /* ImageBackground.swift in Sources */,
 				2740BD63244CAAEA005B22FB /* UINavigationController+BarAppearance.swift in Sources */,
 				271FD188244D64E900E90EA5 /* WriteTransaction.swift in Sources */,
-				27DD6599244BB5ED00C985F4 /* URL+URLQueryItem.swift in Sources */,
-				27DD659B244BB61F00C985F4 /* Endpoint+UIImage.swift in Sources */,
+				278691702458F1B100DC4DBE /* MovieList.swift in Sources */,
 				27DEB46D244D5AAC00C42EFE /* MovieObject.swift in Sources */,
 				2743F9EE24462FC7007B51FB /* AppDelegate.swift in Sources */,
 				27DC59B7244A43C80092FB7E /* HomeView.swift in Sources */,
 				2740BD65244CAB3C005B22FB /* BarAppearance.swift in Sources */,
 				27ED68BA2448BCFC00526EE3 /* Store.swift in Sources */,
+				277C564724536BBD00E3E649 /* Loader.swift in Sources */,
 				27DD659D244BB63C00C985F4 /* EnvironmentValues+ImageCache.swift in Sources */,
+				27FA94FB24594C8F008CB8A5 /* GridStackView.swift in Sources */,
 				272D69C1244D77E80002B0C7 /* LazyView.swift in Sources */,
-				27DD659F244BBF5B00C985F4 /* PlaceholderImage.swift in Sources */,
-				27DD6597244BB57E00C985F4 /* String+Data.swift in Sources */,
+				27DD659F244BBF5B00C985F4 /* ImagePlaceholder.swift in Sources */,
 				27D0B67D244D6BC9007CBCD9 /* FetchedResults.swift in Sources */,
 				27FA0C24244A007200764364 /* Data.swift in Sources */,
 				27367C1E244902A7001283E6 /* Discover.swift in Sources */,
-				2740BD67244CC647005B22FB /* InfoView.swift in Sources */,
+				2740BD67244CC647005B22FB /* InfoStackView.swift in Sources */,
+				2786916E2458E9BE00DC4DBE /* Home.swift in Sources */,
 				27DD65A1244BE05B00C985F4 /* DetailView.swift in Sources */,
-				271FD18C244D685F00E90EA5 /* api.swift in Sources */,
+				271FD18C244D685F00E90EA5 /* Backend.swift in Sources */,
 				2743F9F024462FC7007B51FB /* SceneDelegate.swift in Sources */,
-				27C143F62447ABF200F04A27 /* ResultRowView.swift in Sources */,
+				27C143F62447ABF200F04A27 /* CollectionRowView.swift in Sources */,
 				27DC59B9244A4EB10092FB7E /* ContentView.swift in Sources */,
-				272D69C3244D79A90002B0C7 /* FavoritesView.swift in Sources */,
+				272D69C3244D79A90002B0C7 /* FavoriteMoviesView.swift in Sources */,
+				27BCEF3E24573E0C00BB45B0 /* InfoView.swift in Sources */,
 				271FD18A244D665900E90EA5 /* Container.swift in Sources */,
 				2743FA1E24467817007B51FB /* Movie.swift in Sources */,
-				27FA0C2A244A02CB00764364 /* ShowRow.swift in Sources */,
+				273FA989245AC32200A11ECA /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,7 +625,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2743FA0524462FCA007B51FB /* globoplayTests.swift in Sources */,
+				27B7858D2452B11000446300 /* MovieTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,49 +780,55 @@
 		};
 		2743FA1524462FCA007B51FB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 703FDD4D3677CB216C0787F9 /* Pods-globoplay.debug.xcconfig */;
+			baseConfigurationReference = 851F7D931C29E2AB34E7CA3F /* Pods-globoplay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"globoplay/Preview Content\"";
 				DEVELOPMENT_TEAM = 54M97Z4Y29;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = globoplay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcoscurvello.globoplay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		2743FA1624462FCA007B51FB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F5B391BAEC6E899C761A14F /* Pods-globoplay.release.xcconfig */;
+			baseConfigurationReference = ED8BA0BC686DEA237BCF95EA /* Pods-globoplay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"globoplay/Preview Content\"";
 				DEVELOPMENT_TEAM = 54M97Z4Y29;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = globoplay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcoscurvello.globoplay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		2743FA1824462FCA007B51FB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C90AC1D60FC416FAF096D343 /* Pods-globoplayTests.debug.xcconfig */;
+			baseConfigurationReference = 69AA39BD0D5B3672416E2B63 /* Pods-globoplayTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -841,7 +851,7 @@
 		};
 		2743FA1924462FCA007B51FB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD7FCDD3C3700BC8DF3E6E07 /* Pods-globoplayTests.release.xcconfig */;
+			baseConfigurationReference = E5754A2527DCC6618CB5F8F4 /* Pods-globoplayTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -864,7 +874,7 @@
 		};
 		2743FA1B24462FCA007B51FB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 327B5DF25535E0ABBC785A47 /* Pods-globoplay-globoplayUITests.debug.xcconfig */;
+			baseConfigurationReference = 98D855EA434AB090737F2E25 /* Pods-globoplay-globoplayUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -885,7 +895,7 @@
 		};
 		2743FA1C24462FCA007B51FB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9ECF24AADA730A8C70E1B6BB /* Pods-globoplay-globoplayUITests.release.xcconfig */;
+			baseConfigurationReference = AC99FEC813A996880FA6BBAC /* Pods-globoplay-globoplayUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

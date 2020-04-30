@@ -27,6 +27,22 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2743F9E924462FC7007B51FB"
+            BuildableName = "globoplay.app"
+            BlueprintName = "globoplay"
+            ReferencedContainer = "container:globoplay.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2743F9FF24462FCA007B51FB"
+            BuildableName = "globoplayTests.xctest"
+            BlueprintName = "globoplayTests"
+            ReferencedContainer = "container:globoplay.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
