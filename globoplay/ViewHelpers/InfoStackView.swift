@@ -10,16 +10,14 @@ import SwiftUI
 import TinyNetworking
 
 struct InfoStackView: View {
-    @State var selection: Selection? = .related
+    @State var selection: Selection = .details
     @ObservedObject var resource: Resource<Discover<MovieList>>
     var relatedMovies: [MovieList]? { resource.value?.results.filter { $0.id != self.movie!.id } }
     var movie: Movie?
     
     init(movie: Movie) {
         self.movie = movie
-        var relatedId: Int = 12
-        if let id = movie.genres.first?.id { relatedId = id }
-        let query = Query(name: .genre, value: String(format: "%d", relatedId))
+        let query = Query(name: .genre, value: String(format: "%D", movie.genres.first?.id != nil ? movie.genres.first!.id : 12))
         let related: Request = .discover(movie: [query])
         self.resource = Resource<Discover<MovieList>>(endpoint: Endpoint(json: .get, url: related.url!, headers: related.auth))
     }
