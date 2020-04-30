@@ -15,11 +15,8 @@ struct DetailView: View {
     @EnvironmentObject var store: Store
     @ObservedObject var resource: Resource<Movie>
     var movie: Movie? { resource.value }
-//    var movie: Movie? { sampleMovie }
-    var isFavorite = false
-
-    init(movieId id: String) {
-        let details: Request = .movie(detail: id)
+    init(movie: MovieList) {
+        let details: Request = .movie(detail: String(movie.id))
         self.resource = Resource<Movie>(endpoint: Endpoint(json: .get, url: details.url!, headers: details.auth))
     }
     
@@ -30,27 +27,34 @@ struct DetailView: View {
             } else {
                 List {
                     VStack {
-                        Spacer()
+                        HStack {
+                            Button(action: {}) {
+                                Image(systemName: "arrow.left")
+                                    .foregroundColor(.white)
+                                    .padding()
+                            }.onTapGesture { self.presentationMode.wrappedValue.dismiss() }
+                            Spacer()
+                        }
+                        .offset(x: -10, y: 22)
+                        
                         AsyncImage(
                             url: .image(path: movie?.posterPath ?? ""),
                             cache: cache,
-                            placeholder: PlaceholderImage(),
+                            placeholder: ImagePlaceholder(),
                             configuration: { $0.resizable() }
-                        )
-                            .frame(width: 108, height: 160)
-                            .padding(.top, 40)
+                        ).frame(width: 114, height: 166).padding(.top, -8)
                         
                         VStack {
                             Text(movie!.title)
-                                .font(.system(size: 20))
-                                .fontWeight(.bold)
-                                .lineLimit(5)
+                                .foregroundColor(.white)
+                                .font(.system(size: 20, weight: .bold))
+                                .lineLimit(0)
+                                .multilineTextAlignment(.center)
                                 .padding([.top, .bottom], 5)
                             
                             Text(movie!.overview ?? "")
-                                .font(.system(size: 14))
-                                .font(.subheadline)
-                                .lineLimit(5)
+                                .font(.caption)
+                                .lineLimit(nil)
                                 .multilineTextAlignment(.leading)
                                 .padding(.bottom, 5)
                             
@@ -69,7 +73,7 @@ struct DetailView: View {
                                 
                                 Button(action: {}) {
                                     HStack {
-                                        if self.isFavorite {
+                                        if store.isFavorite(movie: movie!.id) {
                                             Image(systemName: "checkmark")
                                             Text("Adicionado")
                                         } else {
@@ -77,37 +81,29 @@ struct DetailView: View {
                                             Text("Minha Lista")
                                         }
                                     }
+                                    .onTapGesture { self.store.toggleFavorite(movie: self.movie!) }
                                     .frame(maxWidth: .infinity)
                                     .padding()
                                     .foregroundColor(.white)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 5).stroke(Color.white, lineWidth: 1)
-                                    )
+                                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.white, lineWidth: 1))
                                 }
                             }
                         }
                     }
-                    .foregroundColor(Color.white)
-                    .frame(maxHeight: 410)
-                    .background(
-                        ImageBackground(path: movie?.posterPath ?? "")
-                            .frame(height: 410)
-                    )
-
-                    InfoStackView(movie: movie!)
-                        .frame(minHeight: 350)
-                        .listRowInsets(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
+                    .background(ImageBackground(path: movie!.posterPath ?? ""))
                     
-                    Spacer()
-
+                    InfoStackView(movie: movie!)
+                        .listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 0))
+                        .background(
+                            VStack {
+                                Color.backgroundGray
+                                    .frame(minHeight: 300)
+                                    .padding(.bottom, -200)
+                            }
+                    )
                 }
+                .background(Color.black)
                 .edgesIgnoringSafeArea(.all)
-                .onAppear {
-                    UITableView.appearance().tableFooterView = UIView()
-                    UITableView.appearance().backgroundColor = .black
-                    UITableViewCell.appearance().backgroundColor = .clear
-                    UITableView.appearance().separatorStyle = .none
-                }
             }
         }
     }
@@ -115,7 +111,7 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(movieId: sampleMovies.first!.id.stringValue)
+        DetailView(movie: sampleMovies.first!)
             .environmentObject(Store())
     }
 }
