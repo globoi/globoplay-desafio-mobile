@@ -27,6 +27,7 @@ struct InfoView: View {
             List(information) { info in
                 VStack(alignment: .leading, spacing: 3) {
                     Text(info.name)
+                        .foregroundColor(.gray3)
                         .fontWeight(.bold)
                     Text(info.value)
                         .font(.caption)
