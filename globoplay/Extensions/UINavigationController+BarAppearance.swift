@@ -6,11 +6,25 @@
 //  Copyright © 2020 Marcos Curvello. All rights reserved.
 //
 
-import SwiftUI
+import UIKit
 
 extension UINavigationController {
     override open func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.standardAppearance = BarAppearance.navigationBarDefault
+        let standardAppearance = UINavigationBarAppearance()
+        standardAppearance.backgroundColor = .black
+        standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationBar.standardAppearance = standardAppearance
     }
 }
+
+extension UITabBarController {
+    override open func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let standardAppearance = UITabBarAppearance()
+        standardAppearance.backgroundColor = .black
+        standardAppearance.shadowColor = .black
+        tabBar.standardAppearance = standardAppearance
+    }
+}
+
