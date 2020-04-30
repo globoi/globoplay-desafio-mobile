@@ -10,16 +10,23 @@ import Combine
 import RealmSwift
 
 final class Store: ObservableObject {
-    @Published var favoriteMovies: FetchedResults<Movie>
-    let container = try! Container()
-    private var notificationTokens: [NotificationToken] = []
-    var favorites: [MovieList] { favoriteMovies.results.map {  MovieList(movieObject: $0) }}
-    
+    @Published var favoriteMovies: FetchedResults<Movie>? = nil
+    let container = try? Container()
+    var favorites: [MovieList] { favoriteMovies?.results.map {  MovieList(movieObject: $0) } ?? [] }
+    private var notificationTokens: [NotificationToken?] = []
+
     init() {
-        self.favoriteMovies = container.values(Movie.self)
-        self.notificationTokens.append(favoriteMovies.results.observe { _ in
-            self.objectWillChange.send()
-        })
+        self.favoriteMovies = container?.values(Movie.self)
+        self.notificationTokens.append(
+            favoriteMovies?.results.observe { [weak self] _ in
+                guard let s = self else { return }
+                s.objectWillChange.send()
+            }
+        )
+    }
+    
+    public func toggleFavorite(movie: Movie) {
+        isFavorite(movie: movie.id) ? _delete(movie) : _persist(movie)
     }
     
     public func isFavorite(movie id: Int) -> Bool {
@@ -37,14 +44,18 @@ final class Store: ObservableObject {
     }
     
     private func _persist(_ movie: Movie) {
-        try! container.write { transaction in
+        try! container?.write { transaction in
             transaction.add(movie, update: true)
         }
     }
     
     private func _delete(_ movie: Movie) {
-        try! container.write { transaction in
+        try! container?.write { transaction in
             transaction.delete(movie)
         }
+    }
+    
+    deinit {
+        _ = notificationTokens.map { $0?.invalidate() }
     }
 }
