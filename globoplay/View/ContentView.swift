@@ -21,24 +21,26 @@ struct ContentView: View {
                     NavigationView {
                         HomeView(collection: home.colletions)
                             .environmentObject(store)
-                            .navigationBarTitle(Text("globoplay"))
-                    }
-                    .tabItem {
+                            .navigationBarTitle(Text("globoplay"), displayMode: .inline)
+                    }.tabItem {
                         Image(systemName: "house.fill")
-                        Text("Início")
-                    }
+                        Text("Início") }.tag(0)
                     
                     NavigationView {
                         FavoriteMoviesView()
                             .environmentObject(store)
-                            .navigationBarTitle(Text("minha lista"))
-                    }
-                    .tabItem {
+                            .navigationBarTitle(Text("minha lista"), displayMode: .inline)
+                    }.tabItem {
                         Image(systemName: "star.fill")
-                        Text("Minhas lista")
-                    }
+                        Text("Minhas lista")}.tag(1)
                 }
                 .accentColor(.white)
+                .onAppear {
+                    UITableView.appearance().tableFooterView = UIView()
+                    UITableView.appearance().separatorStyle = .none
+                    UITableView.appearance().backgroundColor = .clear
+                    UITableViewCell.appearance().backgroundColor = .clear
+                }
             }
         }
     }
