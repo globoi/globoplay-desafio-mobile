@@ -17,7 +17,12 @@ struct BarAppearance {
         let button = UIBarButtonItemAppearance()
         button.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
         appearance.buttonAppearance = button
-        
+        return appearance
+    }
+    
+    static var tabbarDefault: UITabBarAppearance {
+        let appearance = UITabBarAppearance()
+        appearance.backgroundColor = UIColor.black
         return appearance
     }
 }
