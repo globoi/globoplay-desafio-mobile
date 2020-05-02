@@ -13,16 +13,14 @@ final class Store: ObservableObject {
     @Published var favoriteMovies: FetchedResults<Movie>? = nil
     let container = try? Container()
     var favorites: [MovieList] { favoriteMovies?.results.map {  MovieList(movieObject: $0) } ?? [] }
-    private var notificationTokens: [NotificationToken?] = []
+    var notificationToken: NotificationToken?
 
     init() {
         self.favoriteMovies = container?.values(Movie.self)
-        self.notificationTokens.append(
-            favoriteMovies?.results.observe { [weak self] _ in
-                guard let s = self else { return }
-                s.objectWillChange.send()
-            }
-        )
+        self.notificationToken = favoriteMovies?.results.observe { [weak self] _ in
+            guard let s = self else { return }
+            s.objectWillChange.send()
+        }
     }
     
     public func toggleFavorite(movie: Movie) {
@@ -56,6 +54,6 @@ final class Store: ObservableObject {
     }
     
     deinit {
-        _ = notificationTokens.map { $0?.invalidate() }
+        notificationToken?.invalidate()
     }
 }
