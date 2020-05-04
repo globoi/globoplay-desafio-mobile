@@ -10,10 +10,10 @@ import SwiftUI
 import TinyNetworking
 
 struct DetailView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @Environment(\.imageCache) var cache: ImageCache
     @EnvironmentObject var store: Store
     @ObservedObject var resource: Resource<Movie>
+    @Environment(\.imageCache) var cache: ImageCache
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var movie: Movie? { resource.value }
     init(movie: MovieList) {
@@ -52,6 +52,11 @@ struct DetailView: View {
                                 .lineLimit(0)
                                 .multilineTextAlignment(.center)
                                 .padding([.top, .bottom], 5)
+                            
+                            Text(movie!.genres.first?.name ?? "")
+                                .foregroundColor(.gray4)
+                                .font(.caption)
+                                .padding(.bottom, 5)
                             
                             Text(movie!.overview ?? "")
                                 .foregroundColor(.gray4)
@@ -94,7 +99,7 @@ struct DetailView: View {
                             }
                         }
                     }
-                    .frame(minHeight: 400)
+                    .frame(height: 420)
                     .background(ImageBackground(path: movie!.posterPath ?? ""))
                     
                     InfoStackView(movie: movie!)
@@ -105,7 +110,7 @@ struct DetailView: View {
                                     .frame(minHeight: 300)
                                     .padding(.bottom, -200)
                             }
-                        )
+                    )
                 }
                 .background(Color.black)
                 .edgesIgnoringSafeArea(.all)
