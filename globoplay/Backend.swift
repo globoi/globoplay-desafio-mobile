@@ -123,12 +123,14 @@ public struct Request {
 }
 
 extension Request {
-    init(_ path: Path, queries: [Query]? = nil) {
+    init(_ path: Path, queries: [Query]? = defaultQuery) {
         self.init(path: path, queryItems: queries?.compactMap { $0.item })
     }
 }
 
 extension Request {
+    static var defaultQuery: [Query] { [Query(name: .language, value: "pt-BR")] }
+    var auth: [String: String] { ["Authorization": "Bearer " + token.value] }
     var url: URL? {
         var components = URLComponents()
         components.scheme = "https"
@@ -144,8 +146,4 @@ extension Request {
         components.path = path.value
         return components.url
     }
-}
-
-extension Request {
-    var auth: [String: String] { ["Authorization": "Bearer " + token.value] }
 }
