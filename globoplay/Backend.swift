@@ -53,7 +53,9 @@ enum GenreType: Int, CaseIterable {
         }
     }
     
-    var genre: Genre { Genre(id: self.rawValue, name: title) }
+    var genre: Genre {
+        Genre(id: self.rawValue, name: title)
+    }
 }
 
 protocol Order {
@@ -83,10 +85,14 @@ enum QueryType: String {
 
 struct Query {
     let name: QueryType
-    let value: Int
+    let value: String
 }
 
 extension Query {
+    init(name: QueryType, value: Int) {
+        self.init(name: name, value: String(value))
+    }
+    
     var item: URLQueryItem {
         return URLQueryItem(name: name.rawValue, value: String(value))
     }
