@@ -39,6 +39,7 @@ struct ContentView: View {
                     UITableView.appearance().tableFooterView = UIView()
                     UITableView.appearance().separatorStyle = .none
                     UITableView.appearance().backgroundColor = .clear
+                    UITableView.appearance().showsVerticalScrollIndicator = false
                     UITableViewCell.appearance().backgroundColor = .clear
                 }
             }
