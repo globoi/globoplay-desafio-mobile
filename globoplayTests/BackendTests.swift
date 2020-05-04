@@ -7,27 +7,24 @@
 //
 
 import XCTest
+@testable
+import globoplay
 
 class BackendTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testImageRequestUrlInit_shouldReturnEqual() {
+        let stringURL = "https://image.tmdb.org/t/p/w200/4E4TTsCXVFyhBtYu9fKy0gIT3Ih.jpg"
+        let url = URL(string: stringURL)!
+        
+        let request = Request(.image("w200", "/4E4TTsCXVFyhBtYu9fKy0gIT3Ih.jpg"))
+        XCTAssertEqual(request.imageUrl!, url)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testMovieDetailRequestUrlInit_shouldReturnEqual() {
+        let stringURL = "https://api.themoviedb.org/3/movie/181812"
+        let url = URL(string: stringURL)!
+        
+        let request = Request(.detail(.movie, 181812))
+        XCTAssertEqual(request.url!, url)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
