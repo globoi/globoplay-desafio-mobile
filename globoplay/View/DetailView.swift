@@ -36,14 +36,14 @@ struct DetailView: View {
                             }.onTapGesture { self.presentationMode.wrappedValue.dismiss() }
                             Spacer()
                         }
-                        .offset(x: -10, y: 22)
+                        .offset(x: -10, y: 28)
                         
                         AsyncImage(
                             url: Request(.image("w200", movie?.posterPath ?? "")),
                             cache: cache,
                             placeholder: ImagePlaceholder(),
                             configuration: { $0.resizable() }
-                        ).frame(width: 114, height: 166).padding(.top, -8)
+                        ).frame(width: 108, height: 160).padding(.top, -10)
                         
                         VStack {
                             Text(movie!.title)
@@ -54,9 +54,11 @@ struct DetailView: View {
                                 .padding([.top, .bottom], 5)
                             
                             Text(movie!.overview ?? "")
-                                .font(.caption)
-                                .lineLimit(nil)
+                                .foregroundColor(.gray4)
+                                .font(.system(size: 13))
+                                .lineLimit(6)
                                 .multilineTextAlignment(.leading)
+                                .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 5)
                             
                             HStack {
@@ -80,6 +82,7 @@ struct DetailView: View {
                                         } else {
                                             Image(systemName: "star.fill")
                                             Text("Minha Lista")
+                                            
                                         }
                                     }
                                     .onTapGesture { self.store.toggleFavorite(movie: self.movie!) }
@@ -91,17 +94,18 @@ struct DetailView: View {
                             }
                         }
                     }
+                    .frame(minHeight: 400)
                     .background(ImageBackground(path: movie!.posterPath ?? ""))
                     
                     InfoStackView(movie: movie!)
-                        .listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 0))
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
                         .background(
                             VStack {
                                 Color.backgroundGray
                                     .frame(minHeight: 300)
                                     .padding(.bottom, -200)
                             }
-                    )
+                        )
                 }
                 .background(Color.black)
                 .edgesIgnoringSafeArea(.all)
