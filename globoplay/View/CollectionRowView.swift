@@ -53,7 +53,7 @@ struct CollectionRowItem: View {
     
     var body: some View {
         AsyncImage(
-            url: .image(size: "w200", path: movie.posterPath ?? "N/A"),
+            url: Request(.image("w200", movie.posterPath ?? "")),
             cache: self.cache,
             placeholder: ImagePlaceholder(),
             configuration: { $0.renderingMode(.original).resizable() }

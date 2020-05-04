@@ -14,10 +14,11 @@ struct DetailView: View {
     @Environment(\.imageCache) var cache: ImageCache
     @EnvironmentObject var store: Store
     @ObservedObject var resource: Resource<Movie>
+    
     var movie: Movie? { resource.value }
     init(movie: MovieList) {
-        let details: Request = .movie(detail: String(movie.id))
-        self.resource = Resource<Movie>(endpoint: Endpoint(json: .get, url: details.url!, headers: details.auth))
+        let request = Request(.detail(.movie, movie.id))
+        self.resource = Resource<Movie>(endpoint: Endpoint(json: .get, url: request.url!, headers: request.auth))
     }
     
     var body: some View {
@@ -38,7 +39,7 @@ struct DetailView: View {
                         .offset(x: -10, y: 22)
                         
                         AsyncImage(
-                            url: .image(path: movie?.posterPath ?? ""),
+                            url: Request(.image("w200", movie?.posterPath ?? "")),
                             cache: cache,
                             placeholder: ImagePlaceholder(),
                             configuration: { $0.resizable() }

@@ -25,15 +25,15 @@ final class Home: ObservableObject {
     var genreResourceThree: MovieDiscover
     
     init() {
-        let genreEndpoint: Request = .discover(movie: [Query(name: .genre, value: String(genres[0].id))])
-        let genreEndpointOne: Request = .discover(movie: [Query(name: .genre, value: String(genres[1].id))])
-        let genreEndpointTwo: Request = .discover(movie: [Query(name: .genre, value: String(genres[2].id))])
-        let genreEndpointThree: Request = .discover(movie: [Query(name: .genre, value: String(genres[3].id))])
+        let request = Request(.discover(.movie), queries: [Query(name: .genre, value: genres[0].id)])
+        let requestOne = Request(.discover(.movie), queries: [Query(name: .genre, value: genres[1].id)])
+        let requestTwo = Request(.discover(.movie), queries: [Query(name: .genre, value: genres[2].id)])
+        let requestThree = Request(.discover(.movie), queries: [Query(name: .genre, value: genres[3].id)])
 
-        genreResource = MovieDiscover(endpoint: Endpoint(json: .get, url: genreEndpoint.url!, headers: genreEndpoint.auth))
-        genreResourceOne = MovieDiscover(endpoint: Endpoint(json: .get, url: genreEndpointOne.url!, headers: genreEndpoint.auth))
-        genreResourceTwo = MovieDiscover(endpoint: Endpoint(json: .get, url: genreEndpointTwo.url!, headers: genreEndpoint.auth))
-        genreResourceThree = MovieDiscover(endpoint: Endpoint(json: .get, url: genreEndpointThree.url!, headers: genreEndpoint.auth))
+        genreResource = MovieDiscover(endpoint: Endpoint(json: .get, url: request.url!, headers: request.auth))
+        genreResourceOne = MovieDiscover(endpoint: Endpoint(json: .get, url: requestOne.url!, headers: requestOne.auth))
+        genreResourceTwo = MovieDiscover(endpoint: Endpoint(json: .get, url: requestTwo.url!, headers: requestTwo.auth))
+        genreResourceThree = MovieDiscover(endpoint: Endpoint(json: .get, url: requestThree.url!, headers: requestThree.auth))
 
         objectWillChange = genreResource.objectWillChange.zip(
             genreResourceOne.objectWillChange,

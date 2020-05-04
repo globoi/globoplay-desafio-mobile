@@ -79,31 +79,6 @@ struct MovieCollection: Codable {
     }
 }
 
-// MARK: - Genre
-
-struct Genre: Codable, Hashable {
-    var id: Int
-    var name: String
-}
-
-extension Genre {
-    static func random(sequence count: Int) -> [Genre] {
-        var interations: Int = count
-        var randomGenres: [Genre] = []
-        
-        while interations > 0 {
-            let genre = GenreType.allCases.randomElement()!.genre
-            guard !randomGenres.contains(genre) else {
-                continue
-            }
-            
-            randomGenres.append(genre)
-            interations -= 1
-        }
-        return randomGenres
-    }
-}
-
 // MARK: - Company
 
 struct Company: Codable {
@@ -150,6 +125,32 @@ struct Info: Hashable, Identifiable {
     let id = UUID()
     var name: String
     var value: String
+}
+
+
+// MARK: - Genre
+
+struct Genre: Codable, Hashable {
+    var id: Int
+    var name: String
+}
+
+extension Genre {
+    static func random(sequence count: Int) -> [Genre] {
+        var interations: Int = count
+        var randomGenres: [Genre] = []
+        
+        while interations > 0 {
+            let genre = GenreType.allCases.randomElement()!.genre
+            guard !randomGenres.contains(genre) else {
+                continue
+            }
+            
+            randomGenres.append(genre)
+            interations -= 1
+        }
+        return randomGenres
+    }
 }
 
 // MARK: - Protocol: Detailable

@@ -52,7 +52,7 @@ struct GridStackItem: View {
     
     var body: some View {
         AsyncImage(
-            url: .image(size: "w200", path: movie.posterPath ?? ""),
+            url: Request(.image("w200", movie.posterPath ?? "")),
             cache: self.cache,
             placeholder: ImagePlaceholder(),
             configuration: { $0.renderingMode(.original).resizable() }

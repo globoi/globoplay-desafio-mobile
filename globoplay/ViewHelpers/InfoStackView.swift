@@ -17,9 +17,10 @@ struct InfoStackView: View {
     
     init(movie: Movie) {
         self.movie = movie
-        let query = Query(name: .genre, value: String(format: "%D", movie.genres.first?.id != nil ? movie.genres.first!.id : 12))
-        let related: Request = .discover(movie: [query])
-        self.resource = Resource<Discover<MovieList>>(endpoint: Endpoint(json: .get, url: related.url!, headers: related.auth))
+        let id =  movie.genres.first?.id != nil ? movie.genres.first!.id : 0
+        let query = Query(name: .genre, value: id)
+        let request = Request(.discover(.movie), queries: [query])
+        self.resource = Resource<Discover<MovieList>>(endpoint: Endpoint(json: .get, url: request.url!, headers: request.auth))
     }
     
     var body: some View {

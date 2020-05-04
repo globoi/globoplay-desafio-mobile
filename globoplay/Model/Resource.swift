@@ -27,6 +27,7 @@ final class Resource<A>: ObservableObject {
     }
     
     func reload() {
+        print(endpoint)
         URLSession.shared.load(endpoint) { result in
             DispatchQueue.main.async {
                 self.value = try? result.get()
