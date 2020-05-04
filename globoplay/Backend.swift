@@ -116,24 +116,24 @@ extension Request {
 }
 
 extension Request {
-    static func discover(movie queries: [Query] = []) -> Request {
+    static func discover(movie queries: [Query]? = nil) -> Request {
         return Request(
             path: "/3/discover/movie",
-            queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
+            queryItems: queries?.compactMap{ $0.item }
         )
     }
     
-    static func discover(tv queries: [Query] = []) -> Request {
+    static func discover(tv queries: [Query]? = nil) -> Request {
         return Request(
             path: "/3/discover/tv",
-            queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
+            queryItems: queries?.compactMap{ $0.item }
         )
     }
     
-    static func movie(detail id: String, queries: [Query] = []) -> Request {
+    static func movie(detail id: String, queries: [Query]? = nil) -> Request {
         return Request(
             path: String(format: "%@%@", "/3/movie/", id),
-            queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
+            queryItems: queries?.compactMap{ $0.item }
         )
     }
     
@@ -143,17 +143,17 @@ extension Request {
         )
     }
     
-    static func company(movies id: String, queries: [Query] = []) -> Request {
+    static func company(movies id: String, queries: [Query]? = nil) -> Request {
         return Request(
             path: String(format: "%@%@%@", "/3/company/", id, "/movies"),
-            queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
+            queryItems: queries?.compactMap{ $0.item }
         )
     }
     
-    static func genres(movie queries: [Query] = []) -> Request {
+    static func genres(movie queries: [Query]? = nil) -> Request {
         return Request(
             path: "/3/genre/movie/list",
-            queryItems: queries.isEmpty ? nil : queries.map{ $0.item }
+            queryItems: queries?.compactMap{ $0.item }
         )
     }
 }
