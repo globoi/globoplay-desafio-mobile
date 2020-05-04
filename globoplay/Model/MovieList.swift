@@ -12,7 +12,7 @@ struct MovieList: Codable, Identifiable, Hashable {
     var posterPath: String?
     var adult: Bool
     var overview: String
-    var releaseDate: String
+    var releaseDate: String?
     var genreIds: [Int]
     var id: Int
     var originalTitle: String
