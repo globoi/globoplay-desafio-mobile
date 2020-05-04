@@ -26,17 +26,14 @@ struct InfoView: View {
             
             List(information) { info in
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(info.name)
-                        .foregroundColor(.gray3)
-                        .fontWeight(.bold)
+                    Text(info.name).fontWeight(.bold)
                     Text(info.value)
-                        .font(.caption)
                 }
-                .font(.system(size: 12))
+                .font(.system(size: 13))
             }
-            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 400, trailing: 0))
+            .listRowInsets(EdgeInsets())
             .background(Color.backgroundGray)
-            .foregroundColor(Color.gray3)
+            .foregroundColor(Color.gray4)
         }
     }
 }
