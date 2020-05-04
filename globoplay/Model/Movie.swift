@@ -82,9 +82,9 @@ struct MovieCollection: Codable {
 // MARK: - Company
 
 struct Company: Codable {
-    var name: String
     var id: Int
     var logoPath: String?
+    var name: String
     var originCountry: String
     
     enum CodingKeys: String, CodingKey {
@@ -165,20 +165,21 @@ extension Movie: Detailable {
             Info(name: "Original title", value: originalTitle),
             Info(
                 name: "Genre",
-                value: String(genres.compactMap { $0.name }.reduce("") { String(format: "%@%@, ", $0, $1) }.dropLast() ))
+                value: genres.map { $0.name }.joined(separator: ", ")
+            )
         ]
         if productionCountries.count > 0 {
             info.append(
                 Info(
                     name: "Production Countries",
-                    value: String(productionCountries.compactMap { $0.name }.reduce("") { String(format: "%@%@, ", $0, $1) }.dropLast()) )
+                    value: productionCountries.map { $0.name }.joined(separator: ", ") )
             )
         }
         if productionCompanies.count > 0 {
             info.append(
                 Info(
                     name: "Production Companies",
-                    value: String(productionCompanies.compactMap { $0.name }.reduce("") { String(format: "%@%@, ", $0, $1) }.dropLast() ))
+                    value: productionCompanies.map { $0.name }.joined(separator: ", ") )
             )
         }
         return info
