@@ -83,18 +83,43 @@ enum QueryType: String {
 
 struct Query {
     let name: QueryType
-    let value: String
+    let value: Int
 }
 
 extension Query {
     var item: URLQueryItem {
-        return URLQueryItem(name: name.rawValue, value: value)
+        return URLQueryItem(name: name.rawValue, value: String(value))
     }
 }
 
 public struct Request {
-    let path: String
+    enum `Type`: String {
+        case movie
+        case tv
+    }
+    
+    enum Path {
+        case discover(Type)
+        case detail(Type, Int)
+        case image(String, String)
+        
+        var value: String {
+            switch self {
+            case let .discover(type): return String(format: "%@%@", "/3/discover/", type.rawValue)
+            case let .detail(type, id): return String(format: "%@%@/%u", "/3/", type.rawValue, id)
+            case let .image(size, path): return String(format: "%@%@%@", "/t/p/", size, path)
+            }
+        }
+    }
+
+    let path: Path
     var queryItems: [URLQueryItem]?
+}
+
+extension Request {
+    init(_ path: Path, queries: [Query]? = nil) {
+        self.init(path: path, queryItems: queries?.compactMap { $0.item })
+    }
 }
 
 extension Request {
@@ -102,7 +127,7 @@ extension Request {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.themoviedb.org"
-        components.path = path
+        components.path = path.value
         components.queryItems = queryItems
         return components.url
     }
@@ -110,51 +135,8 @@ extension Request {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "image.tmdb.org"
-        components.path = path
+        components.path = path.value
         return components.url
-    }
-}
-
-extension Request {
-    static func discover(movie queries: [Query]? = nil) -> Request {
-        return Request(
-            path: "/3/discover/movie",
-            queryItems: queries?.compactMap{ $0.item }
-        )
-    }
-    
-    static func discover(tv queries: [Query]? = nil) -> Request {
-        return Request(
-            path: "/3/discover/tv",
-            queryItems: queries?.compactMap{ $0.item }
-        )
-    }
-    
-    static func movie(detail id: String, queries: [Query]? = nil) -> Request {
-        return Request(
-            path: String(format: "%@%@", "/3/movie/", id),
-            queryItems: queries?.compactMap{ $0.item }
-        )
-    }
-    
-    static func image(size spec: String = "original", path: String) -> Request {
-        return Request(
-            path: String(format: "%@%@%@", "/t/p/", spec, path)
-        )
-    }
-    
-    static func company(movies id: String, queries: [Query]? = nil) -> Request {
-        return Request(
-            path: String(format: "%@%@%@", "/3/company/", id, "/movies"),
-            queryItems: queries?.compactMap{ $0.item }
-        )
-    }
-    
-    static func genres(movie queries: [Query]? = nil) -> Request {
-        return Request(
-            path: "/3/genre/movie/list",
-            queryItems: queries?.compactMap{ $0.item }
-        )
     }
 }
 
