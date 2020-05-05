@@ -153,13 +153,7 @@ extension Genre {
     }
 }
 
-// MARK: - Protocol: Detailable
-
-protocol Detailable {
-    var information: [Info] { get }
-}
-
-extension Movie: Detailable {
+extension Movie {
     var information: [Info] {
         var info: [Info] = [
             Info(name: "Original title", value: originalTitle),
