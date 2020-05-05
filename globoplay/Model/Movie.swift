@@ -68,8 +68,8 @@ struct Movie: Codable, Identifiable {
 struct MovieCollection: Codable {
     var id: Int
     var name: String
-    var posterPath: String
-    var backdropPath: String
+    var posterPath: String?
+    var backdropPath: String?
     
     enum CodingKeys: String, CodingKey {
         case id
