@@ -31,25 +31,25 @@ enum GenreType: Int, CaseIterable {
     
     var title: String {
         switch self {
-        case .action: return "Action"
-        case .adventure: return "Adventure"
-        case .animation: return "Animation"
-        case .comedy: return "Comedy"
+        case .action: return "Ação"
+        case .adventure: return "Aventura"
+        case .animation: return "Animação"
+        case .comedy: return "Comédia"
         case .crime: return "Crime"
-        case .documentary: return "Documentary"
+        case .documentary: return "Documentário"
         case .drama: return "Drama"
-        case .family: return "Family"
-        case .fantasy: return "Fantasy"
-        case .history: return "History"
-        case .horror: return "Horror"
-        case .music: return "Music"
-        case .mystery: return "Mystery"
+        case .family: return "Família"
+        case .fantasy: return "Fantasia"
+        case .history: return "História"
+        case .horror: return "Terror"
+        case .music: return "Música"
+        case .mystery: return "Mistério"
         case .romance: return "Romance"
-        case .scifi: return "Science Fiction"
-        case .tvmovie: return "TV Movie"
+        case .scifi: return "Ficção científica"
+        case .tvmovie: return "Cinema TV"
         case .thriller: return "Thriller"
-        case .war: return "War"
-        case .western: return "Western"
+        case .war: return "Guerra"
+        case .western: return "Faroeste"
         }
     }
     
@@ -119,24 +119,24 @@ public struct Request {
     }
 
     let path: Path
-    var queryItems: [URLQueryItem]?
+    var queryItems: [Query]?
 }
 
 extension Request {
-    init(_ path: Path, queries: [Query]? = defaultQuery) {
-        self.init(path: path, queryItems: queries?.compactMap { $0.item })
+    init(_ path: Path, queries: [Query]? = nil) {
+        self.init(path: path, queryItems: queries)
     }
 }
 
 extension Request {
-    static var defaultQuery: [Query] { [Query(name: .language, value: "pt-BR")] }
+    var defaultQuery: [Query] { [Query(name: .language, value: "pt-BR")] }
     var auth: [String: String] { ["Authorization": "Bearer " + token.value] }
     var url: URL? {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.themoviedb.org"
         components.path = path.value
-        components.queryItems = queryItems
+        components.queryItems = defaultQuery.map { $0.item } + (queryItems?.map { $0.item } ?? [])
         return components.url
     }
     var imageUrl: URL? {
