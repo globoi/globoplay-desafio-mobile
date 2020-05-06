@@ -10,16 +10,23 @@ import SwiftUI
 
 struct Loader: View {
     var title: String? = nil
+    @Binding var isAnimating: Bool
+    
+    init(_ animating: Binding<Bool>) {
+        self._isAnimating = animating
+     }
+    
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
-            ActivityIndicator(isAnimating: .constant(true), style: .medium)
+            ActivityIndicator(isAnimating: $isAnimating, style: .medium)
             Text(title == nil ? "" : title!)
                 .foregroundColor(.white)
                 .offset(y: 30)
         }
     }
 }
+
 
 struct ActivityIndicator: UIViewRepresentable {
     @Binding var isAnimating: Bool
@@ -38,6 +45,6 @@ struct ActivityIndicator: UIViewRepresentable {
 
 struct Loader_Previews: PreviewProvider {
     static var previews: some View {
-        Loader()
+        Loader(.constant(true))
     }
 }

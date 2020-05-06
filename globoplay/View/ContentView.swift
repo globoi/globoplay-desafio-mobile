@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         Group {
             if !home.loaded {
-                Loader()
+                Loader(.constant(true))
             } else {
                 TabView {
                     NavigationView {
