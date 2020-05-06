@@ -14,7 +14,7 @@ struct ImageBackground: View {
     
     var body: some View {
         AsyncImage(
-            url: Request(.image("original", path)),
+            url: Request(.image("w300", path)),
             cache: self.cache,
             placeholder: ImagePlaceholder(),
             configuration: { $0.resizable() }
