@@ -10,16 +10,17 @@ import SwiftUI
 import TinyNetworking
 
 struct InfoStackView: View {
-    @State var selection: Selection = .details
+    @Binding var selection: Selection
     @ObservedObject var resource: Resource<Discover<MovieList>>
     var relatedMovies: [MovieList]? { resource.value?.results.filter { $0.id != self.movie!.id } }
     var movie: Movie?
     
-    init(movie: Movie) {
+    init(movie: Movie, selection: Binding<Selection>) {
         self.movie = movie
+        self._selection = selection
+        
         let id =  movie.genres.first?.id != nil ? movie.genres.first!.id : 0
-        let query = Query(name: .genre, value: id)
-        let request = Request(.discover(.movie), queries: [query])
+        let request = Request(.discover(.movie), queries: [Query(name: .genre, value: id)])
         self.resource = Resource<Discover<MovieList>>(endpoint: Endpoint(json: .get, url: request.url!, headers: request.auth))
     }
     
@@ -55,7 +56,7 @@ struct InfoStackView: View {
                 VStack {
                     Group {
                         if relatedMovies == nil {
-                            Loader()
+                            Loader(.constant(true))
                         } else {
                             CollectionRowView(movies: self.relatedMovies!).padding(.top, 10)
                         }
@@ -80,7 +81,7 @@ extension InfoStackView {
 struct InfoStackView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            InfoStackView(movie: sampleMovie)
+            InfoStackView(movie: sampleMovie, selection: .constant(.details))
                 .environmentObject(Store())
                 .frame(height: 300)
         }
