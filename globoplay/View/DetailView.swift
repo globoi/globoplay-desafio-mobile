@@ -16,6 +16,11 @@ struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var movie: Movie? { resource.value }
+    var error: ResourceError? { resource.error }
+    
+    private var hasError: Bool { self.error != nil }
+    private var isFavorite: Bool { self.store.isFavorite(movie: self.movie?.id ?? 0) }
+    
     init(movie: MovieList) {
         let request = Request(.detail(.movie, movie.id))
         self.resource = Resource<Movie>(endpoint: Endpoint(json: .get, url: request.url!, headers: request.auth))
@@ -23,8 +28,15 @@ struct DetailView: View {
     
     var body: some View {
         Group {
-            if movie == nil {
-                Loader()
+            if movie == nil || error != nil {
+                Loader(.constant(!hasError))
+                    .alert(isPresented: .constant(hasError)) {
+                        Alert(
+                            title: Text("We have a problem"),
+                            message: Text(error!.message),
+                            dismissButton: .default(Text("OK"), action: { self.presentationMode.wrappedValue.dismiss() })
+                        )
+                }
             } else {
                 List {
                     VStack {
@@ -51,7 +63,7 @@ struct DetailView: View {
                                 .font(.system(size: 20, weight: .bold))
                                 .lineLimit(0)
                                 .multilineTextAlignment(.center)
-                                .padding([.top, .bottom], 5)
+                                .padding([.bottom], 5)
                             
                             Text(movie!.genres.first?.name ?? "")
                                 .foregroundColor(.gray4)
@@ -61,7 +73,7 @@ struct DetailView: View {
                             Text(movie!.overview ?? "")
                                 .foregroundColor(.gray4)
                                 .font(.system(size: 13))
-                                .lineLimit(6)
+                                .lineLimit(5)
                                 .multilineTextAlignment(.leading)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 5)
@@ -81,7 +93,7 @@ struct DetailView: View {
                                 
                                 Button(action: {}) {
                                     HStack {
-                                        if store.isFavorite(movie: movie!.id) {
+                                        if isFavorite {
                                             Image(systemName: "checkmark")
                                             Text("Adicionado")
                                         } else {
@@ -102,7 +114,7 @@ struct DetailView: View {
                     .frame(height: 420)
                     .background(ImageBackground(path: movie!.posterPath ?? ""))
                     
-                    InfoStackView(movie: movie!)
+                    InfoStackView(movie: movie!, selection: isFavorite ? .constant(.related) : .constant(.details))
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
                         .background(
                             VStack {
