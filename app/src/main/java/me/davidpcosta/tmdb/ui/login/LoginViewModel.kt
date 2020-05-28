@@ -3,52 +3,65 @@ package me.davidpcosta.tmdb.ui.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import android.util.Patterns
-import me.davidpcosta.tmdb.data.LoginRepository
-import me.davidpcosta.tmdb.data.Result
+import me.davidpcosta.tmdb.data.AuthenticationRepository
+import me.davidpcosta.tmdb.data.model.AuthenticationResult
+import rx.Observable
 
-import me.davidpcosta.tmdb.R
+class LoginViewModel(private val loginRepository: AuthenticationRepository) : ViewModel() {
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+    var username: String = "davidpcosta"
+    var password: String = "1234qwer"
 
-    private val _loginForm = MutableLiveData<LoginFormState>()
-    val loginFormState: LiveData<LoginFormState> = _loginForm
+    lateinit var requestToken: String
+    lateinit var sessionId: String
 
-    private val _loginResult = MutableLiveData<LoginResult>()
-    val loginResult: LiveData<LoginResult> = _loginResult
+    val loginResult: LiveData<AuthenticationResult> = MutableLiveData()
 
-    fun login(username: String, password: String) {
-        // can be launched in a separate asynchronous job
-        val result = loginRepository.login(username, password)
-
-        if (result is Result.Success) {
-            _loginResult.value = LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
-        } else {
-            _loginResult.value = LoginResult(error = R.string.login_failed)
-        }
+    init {
+        createRequestToken()
     }
 
-    fun loginDataChanged(username: String, password: String) {
-        if (!isUserNameValid(username)) {
-            _loginForm.value = LoginFormState(usernameError = R.string.invalid_username)
-        } else if (!isPasswordValid(password)) {
-            _loginForm.value = LoginFormState(passwordError = R.string.invalid_password)
-        } else {
-            _loginForm.value = LoginFormState(isDataValid = true)
-        }
+    fun login() {
+        loginRepository.login(username, password, requestToken).subscribe({
+            if (it.success) {
+                loginResult as MutableLiveData
+                loginResult.value = it
+                createSession()
+            } else {
+                TODO("Mensagem de erro")
+            }
+        },
+            { e ->
+                e.printStackTrace()
+                TODO("Mensagem de erro")
+            })
     }
 
-    // A placeholder username validation check
-    private fun isUserNameValid(username: String): Boolean {
-        return if (username.contains('@')) {
-            Patterns.EMAIL_ADDRESS.matcher(username).matches()
-        } else {
-            username.isNotBlank()
-        }
+    private fun createRequestToken() {
+        loginRepository.createRequestToken().subscribe ({
+            if (it.success) {
+                requestToken = it.requestToken // TODO: Necessário checar o requestToken?
+            } else {
+                TODO("Mensagem de erro")
+            }
+        },
+            { e ->
+                e.printStackTrace()
+                TODO("Mensagem de erro")
+            })
     }
 
-    // A placeholder password validation check
-    private fun isPasswordValid(password: String): Boolean {
-        return password.length > 5
+    private fun createSession() {
+        loginRepository.createSession(requestToken).subscribe({
+            if (it.success) {
+                sessionId = it.sessionId
+            } else {
+                TODO("Mensagem de erro")
+            }
+        },
+            { e ->
+                e.printStackTrace()
+                TODO("Mensagem de erro")
+            })
     }
 }
