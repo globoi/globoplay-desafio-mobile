@@ -9,14 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import me.davidpcosta.tmdb.R
-import me.davidpcosta.tmdb.data.model.Movie
 
 
 class WatchlistFragment : Fragment() {
 
     private lateinit var watchlistViewModel: WatchlistViewModel
-
-    private var movies: List<Movie> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
