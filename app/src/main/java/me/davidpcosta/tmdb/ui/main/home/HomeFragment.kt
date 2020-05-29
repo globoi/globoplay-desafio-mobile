@@ -4,28 +4,41 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import me.davidpcosta.tmdb.R
+import me.davidpcosta.tmdb.adapters.GenreAdapter
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var genresRecyclerView: RecyclerView
+    private lateinit var genreAdapter: GenreAdapter
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = view.findViewById(R.id.text_home)
 
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        homeViewModel = ViewModelProvider(this, HomeViewModelFactory()).get(HomeViewModel::class.java)
+        viewManager = LinearLayoutManager(activity!!.applicationContext)
+        genreAdapter = GenreAdapter(activity!!.applicationContext)
+
+        genresRecyclerView = view.findViewById<RecyclerView>(R.id.genres_list).apply {
+            layoutManager = viewManager
+            adapter = genreAdapter
+        }
+
+        homeViewModel.fetchGeneres()
+        homeViewModel.genres.observe(viewLifecycleOwner, Observer {
+            genreAdapter.genres = it
+            genreAdapter.notifyDataSetChanged()
         })
 
         return view

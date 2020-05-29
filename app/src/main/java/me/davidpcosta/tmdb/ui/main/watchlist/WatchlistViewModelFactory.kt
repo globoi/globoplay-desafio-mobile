@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import me.davidpcosta.tmdb.data.ApiService
 import me.davidpcosta.tmdb.data.WatchlistRepository
 
+@Suppress("UNCHECKED_CAST")
 class WatchlistViewModelFactory : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

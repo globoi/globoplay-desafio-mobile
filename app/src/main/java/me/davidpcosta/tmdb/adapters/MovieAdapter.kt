@@ -1,4 +1,4 @@
-package me.davidpcosta.tmdb.ui.main.watchlist
+package me.davidpcosta.tmdb.adapters
 
 import android.content.Context
 import android.view.LayoutInflater

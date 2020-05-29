@@ -1,17 +1,17 @@
-package me.davidpcosta.tmdb.ui.login
+package me.davidpcosta.tmdb.ui.main.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import me.davidpcosta.tmdb.data.ApiService
-import me.davidpcosta.tmdb.data.AuthenticationRepository
+import me.davidpcosta.tmdb.data.MoviesRepository
 
 @Suppress("UNCHECKED_CAST")
-class LoginViewModelFactory : ViewModelProvider.Factory {
+class HomeViewModelFactory : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-            return LoginViewModel(
-                    loginRepository = AuthenticationRepository(
+        if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            return HomeViewModel(
+                    moviesRepository = MoviesRepository(
                             api = ApiService.instance
                     )
             ) as T

@@ -3,11 +3,17 @@ package me.davidpcosta.tmdb.ui.main.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import me.davidpcosta.tmdb.data.MoviesRepository
+import me.davidpcosta.tmdb.data.model.Genre
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    val genres: LiveData<List<Genre>> = MutableLiveData()
+
+    fun fetchGeneres() {
+        moviesRepository.generes().subscribe {
+            genres as MutableLiveData
+            genres.value = it.genres
+        }
     }
-    val text: LiveData<String> = _text
 }
