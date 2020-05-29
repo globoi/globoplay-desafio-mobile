@@ -62,7 +62,7 @@
             android:layout_marginBottom="64dp"
             android:enabled="true"
             android:text="@string/action_sign_in"
-            android:onClick="@{() -> activity.login()}"
+            android:onClick="@{() -> activity.handleLoginClick()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

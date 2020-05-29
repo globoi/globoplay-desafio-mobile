@@ -1,6 +1,8 @@
 package me.davidpcosta.tmdb.data
 
 import me.davidpcosta.tmdb.data.model.AuthenticationResult
+import me.davidpcosta.tmdb.data.model.Movie
+import me.davidpcosta.tmdb.data.model.Result
 import me.davidpcosta.tmdb.data.model.SessionResult
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers

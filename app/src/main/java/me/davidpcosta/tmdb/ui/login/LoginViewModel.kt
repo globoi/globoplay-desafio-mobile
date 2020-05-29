@@ -5,7 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import me.davidpcosta.tmdb.data.AuthenticationRepository
 import me.davidpcosta.tmdb.data.model.AuthenticationResult
-import rx.Observable
+import me.davidpcosta.tmdb.data.model.SessionResult
+
 
 class LoginViewModel(private val loginRepository: AuthenticationRepository) : ViewModel() {
 
@@ -13,9 +14,9 @@ class LoginViewModel(private val loginRepository: AuthenticationRepository) : Vi
     var password: String = "1234qwer"
 
     lateinit var requestToken: String
-    lateinit var sessionId: String
 
     val loginResult: LiveData<AuthenticationResult> = MutableLiveData()
+    val sessionResult: LiveData<SessionResult> = MutableLiveData()
 
     init {
         createRequestToken()
@@ -54,7 +55,8 @@ class LoginViewModel(private val loginRepository: AuthenticationRepository) : Vi
     private fun createSession() {
         loginRepository.createSession(requestToken).subscribe({
             if (it.success) {
-                sessionId = it.sessionId
+                sessionResult as MutableLiveData
+                sessionResult.value = it
             } else {
                 TODO("Mensagem de erro")
             }
