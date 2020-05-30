@@ -5,23 +5,44 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.data.model.Genre
+import me.davidpcosta.tmdb.ui.main.home.HomeViewModel
 
-class GenreAdapter(applicationContext: Context): RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
+class GenreAdapter(
+    applicationContext: Context,
+    private val homeViewModel: HomeViewModel,
+    private val lifecycleOwner: LifecycleOwner
+): RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
 
-
+    private lateinit var viewManager: LinearLayoutManager
+    private lateinit var movieAdapter: MovieRecycleViewAdapter
     private var inflater: LayoutInflater = LayoutInflater.from(applicationContext)
     var genres: List<Genre> = ArrayList()
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        val genre = view.findViewById(R.id.genre) as TextView
+        val genre: TextView = view.findViewById(R.id.genre_name)
+        val moviesRecycleView: RecyclerView = view.findViewById(R.id.movies_list)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = inflater.inflate(R.layout.genre_item, parent, false) as View
-        return ViewHolder(view)
+        val viewHolder = ViewHolder(view)
+
+        viewManager = LinearLayoutManager(parent.context)
+        viewManager.orientation = LinearLayoutManager.HORIZONTAL
+        movieAdapter = MovieRecycleViewAdapter(parent.context)
+
+        viewHolder.moviesRecycleView.tag = movieAdapter
+        viewHolder.moviesRecycleView.apply {
+            layoutManager = viewManager
+            adapter = movieAdapter
+        }
+        return viewHolder
     }
 
     override fun getItemCount(): Int {
@@ -29,39 +50,24 @@ class GenreAdapter(applicationContext: Context): RecyclerView.Adapter<GenreAdapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.genre.text = genres[position].name
-    }
+        val genre = genres[position]
+        holder.genre.text = genre.name
+        val adapter = holder.moviesRecycleView.tag as MovieRecycleViewAdapter
 
-//    override fun getCount(): Int {
-//        return genres.size
-//    }
-//
-//    override fun getItem(i: Int): Genre {
-//        return genres[i]
-//    }
-//
-//    override fun getItemId(i: Int): Long {
-//        return genres[i].id
-//    }
-//
-//
-//    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
-//        val view: View?
-//        val vh: ViewHolder
-//        val genge = getItem(position)
-//
-//        if (convertView == null) {
-//            view = inflater.inflate(R.layout.genre_item, parent, false)
-//            vh = ViewHolder(view)
-//            view.tag = vh
-//        } else {
-//            view = convertView
-//            vh = view.tag as ViewHolder
-//        }
-//
-//        vh.genre.text = genge.name
-//
-//        return view
-//    }
+        genre.movies?.let {
+            adapter.movies = it
+            adapter.notifyDataSetChanged()
+            return
+        }
+
+        // Caso nao carregado ainda
+        homeViewModel.fetchMoviesByGenre(genre.id).observe(lifecycleOwner, Observer {
+            genre.movies = it
+            adapter.movies = it
+            adapter.notifyDataSetChanged()
+        })
+
+
+    }
 }
 

@@ -3,7 +3,7 @@ package me.davidpcosta.tmdb.ui.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import me.davidpcosta.tmdb.data.AuthenticationRepository
+import me.davidpcosta.tmdb.data.repository.AuthenticationRepository
 import me.davidpcosta.tmdb.data.model.AuthenticationResult
 import me.davidpcosta.tmdb.data.model.SessionResult
 

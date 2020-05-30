@@ -3,7 +3,7 @@ package me.davidpcosta.tmdb.ui.main.watchlist
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import me.davidpcosta.tmdb.data.WatchlistRepository
+import me.davidpcosta.tmdb.data.repository.WatchlistRepository
 import me.davidpcosta.tmdb.data.model.Movie
 
 class WatchlistViewModel(private val watchlistRepository: WatchlistRepository) : ViewModel() {

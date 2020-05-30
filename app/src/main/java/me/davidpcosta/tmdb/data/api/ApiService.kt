@@ -1,6 +1,7 @@
-package me.davidpcosta.tmdb.data
+package me.davidpcosta.tmdb.data.api
 
 import com.google.gson.GsonBuilder
+import me.davidpcosta.tmdb.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -19,8 +20,8 @@ object ApiService {
 
         val gson = GsonBuilder().setLenient().create()
 
-        var retrofit = Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/")
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.TMDB_BASE_URL)
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(httpClient.build())

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
+import me.davidpcosta.tmdb.BuildConfig
 import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.data.model.Movie
 
@@ -30,22 +31,22 @@ class MovieAdapter(var applicationContext: Context): BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
         val view: View?
-        val vh: ViewHolder
+        val viewHolder: ViewHolder
         val movie = getItem(position)
 
         if (convertView == null) {
             view = inflater.inflate(R.layout.movie_item, parent, false)
-            vh = ViewHolder(view)
-            view.tag = vh
+            viewHolder = ViewHolder(view)
+            view.tag = viewHolder
         } else {
             view = convertView
-            vh = view.tag as ViewHolder
+            viewHolder = view.tag as ViewHolder
         }
 
-        vh.poster.contentDescription = movie.title
+        viewHolder.poster.contentDescription = movie.title
         Picasso.with(applicationContext)
-            .load("https://image.tmdb.org/t/p/w220_and_h330_face" + movie.posterPath)
-            .into(vh.poster)
+            .load(BuildConfig.TMDB_IMAGE_URL + movie.posterPath)
+            .into(viewHolder.poster)
 
         return view
     }

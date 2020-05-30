@@ -2,8 +2,8 @@ package me.davidpcosta.tmdb.ui.main.watchlist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import me.davidpcosta.tmdb.data.ApiService
-import me.davidpcosta.tmdb.data.WatchlistRepository
+import me.davidpcosta.tmdb.data.api.ApiService
+import me.davidpcosta.tmdb.data.repository.WatchlistRepository
 
 @Suppress("UNCHECKED_CAST")
 class WatchlistViewModelFactory : ViewModelProvider.Factory {
@@ -12,7 +12,7 @@ class WatchlistViewModelFactory : ViewModelProvider.Factory {
         if (modelClass.isAssignableFrom(WatchlistViewModel::class.java)) {
             return WatchlistViewModel(
                     watchlistRepository = WatchlistRepository(
-                            api = ApiService.instance
+                        api = ApiService.instance
                     )
             ) as T
         }

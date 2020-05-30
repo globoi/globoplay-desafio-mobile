@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.adapters.GenreAdapter
+import me.davidpcosta.tmdb.toast
 
 class HomeFragment : Fragment() {
 
@@ -27,17 +29,17 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         homeViewModel = ViewModelProvider(this, HomeViewModelFactory()).get(HomeViewModel::class.java)
-        viewManager = LinearLayoutManager(activity!!.applicationContext)
-        genreAdapter = GenreAdapter(activity!!.applicationContext)
+        viewManager = LinearLayoutManager(requireActivity().applicationContext)
+        genreAdapter = GenreAdapter(requireActivity().applicationContext, homeViewModel, viewLifecycleOwner)
 
         genresRecyclerView = view.findViewById<RecyclerView>(R.id.genres_list).apply {
             layoutManager = viewManager
             adapter = genreAdapter
         }
 
-        homeViewModel.fetchGeneres()
-        homeViewModel.genres.observe(viewLifecycleOwner, Observer {
-            genreAdapter.genres = it
+        homeViewModel.fetchGenres()
+        homeViewModel.genres.observe(viewLifecycleOwner, Observer { genres ->
+            genreAdapter.genres = genres
             genreAdapter.notifyDataSetChanged()
         })
 

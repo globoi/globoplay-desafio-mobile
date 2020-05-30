@@ -6,5 +6,6 @@ data class Generes (
 
 data class Genre (
     var id: Long,
-    var name: String
+    var name: String,
+    var movies: List<Movie>?
 )
