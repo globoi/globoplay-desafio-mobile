@@ -49,10 +49,23 @@ interface Api {
     @GET("discover/movie?session_id=c136a5251c169b1654a3ee2388cae932b2e8c0f2&page=1")
     fun moviesByGenre(
         @Query("with_genres") genreId: Long,
-//        @Query("sort_by") sortBy: String = "popularity.desc",
         @Query("include_adult") includeAdults: Boolean = false,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY,
         @Query("language") language: String = BuildConfig.TMDB_LANGUAGE
     ): Observable<PagedResult<Movie>>
+
+    @GET("movie/{movieId}/similar?session_id=c136a5251c169b1654a3ee2388cae932b2e8c0f2&page=1")
+    fun similarMovies(
+        @Path("movieId") movieId: Long,
+        @Query("include_adult") includeAdults: Boolean = false,
+        @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY,
+        @Query("language") language: String = BuildConfig.TMDB_LANGUAGE
+    ): Observable<PagedResult<Movie>>
+
+    @GET("movie/{movieId}/credits")
+    fun movieCredits(
+        @Path("movieId") movieId: Long,
+        @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
+    ): Observable<Credits>
 
 }

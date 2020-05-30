@@ -9,17 +9,17 @@
         android:id="@+id/navigation_home"
         android:name="me.davidpcosta.tmdb.ui.main.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/activity_main_fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="me.davidpcosta.tmdb.ui.main.watchlist.WatchlistFragment"
         android:label="@string/title_watchlist"
-        tools:layout="@layout/fragment_watchlist" />
+        tools:layout="@layout/activity_main_fragment_watchlist" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="me.davidpcosta.tmdb.ui.main.account.AccountFragment"
         android:label="@string/title_account"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/activity_main_fragment_account" />
 </navigation>

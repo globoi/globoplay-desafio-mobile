@@ -1,6 +1,7 @@
 package me.davidpcosta.tmdb.data.repository
 
 import me.davidpcosta.tmdb.data.api.Api
+import me.davidpcosta.tmdb.data.model.Credits
 import me.davidpcosta.tmdb.data.model.Generes
 import me.davidpcosta.tmdb.data.model.Movie
 import me.davidpcosta.tmdb.data.model.PagedResult
@@ -18,6 +19,18 @@ class MoviesRepository(private val api: Api) {
 
     fun moviesByGenre(genreId: Long): Observable<PagedResult<Movie>> {
         return api.moviesByGenre(genreId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun similarMovies(movieId: Long): Observable<PagedResult<Movie>> {
+        return api.similarMovies(movieId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun credits(movieId: Long): Observable<Credits> {
+        return api.movieCredits(movieId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

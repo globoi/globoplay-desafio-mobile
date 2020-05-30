@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.data.model.Genre
 import me.davidpcosta.tmdb.ui.main.home.HomeViewModel
+import me.davidpcosta.tmdb.ui.main.home.MovieRecycleViewAdapter
 
 class GenreAdapter(
     applicationContext: Context,
@@ -35,7 +36,8 @@ class GenreAdapter(
 
         viewManager = LinearLayoutManager(parent.context)
         viewManager.orientation = LinearLayoutManager.HORIZONTAL
-        movieAdapter = MovieRecycleViewAdapter(parent.context)
+        movieAdapter =
+            MovieRecycleViewAdapter(parent.context)
 
         viewHolder.moviesRecycleView.tag = movieAdapter
         viewHolder.moviesRecycleView.apply {

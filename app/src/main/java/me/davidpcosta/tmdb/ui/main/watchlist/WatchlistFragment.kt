@@ -1,5 +1,6 @@
 package me.davidpcosta.tmdb.ui.main.watchlist
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.adapters.MovieAdapter
 import me.davidpcosta.tmdb.toast
+import me.davidpcosta.tmdb.ui.highlight.HighlightActivity
 
 
 class WatchlistFragment : Fragment() {
@@ -25,7 +27,7 @@ class WatchlistFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_watchlist, container, false)
+        val view = inflater.inflate(R.layout.activity_main_fragment_watchlist, container, false)
 
         watchlistViewModel = ViewModelProvider(this, WatchlistViewModelFactory()).get(WatchlistViewModel::class.java)
         movieAdapter = MovieAdapter(requireActivity().applicationContext)
@@ -33,7 +35,11 @@ class WatchlistFragment : Fragment() {
         watchlistGrid = view.findViewById<GridView>(R.id.watchlist).apply {
             adapter = movieAdapter
             onItemClickListener =  AdapterView.OnItemClickListener { parent, view, position, id ->
-                requireActivity().toast(watchlistViewModel.movies.value!![position].title)
+                val movie = watchlistViewModel.movies.value!![position]
+                requireActivity().toast(movie.title)
+                val intent = Intent(requireActivity(), HighlightActivity::class.java)
+                intent.putExtra("movie", movie)
+                requireActivity().startActivity(intent)
             }
         }
 

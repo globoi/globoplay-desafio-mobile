@@ -1,19 +1,19 @@
-package me.davidpcosta.tmdb.adapters
+package me.davidpcosta.tmdb.ui.main.home
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridView
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import me.davidpcosta.tmdb.BuildConfig
 import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.data.model.Movie
 import me.davidpcosta.tmdb.toast
+import me.davidpcosta.tmdb.ui.highlight.HighlightActivity
+import me.davidpcosta.tmdb.ui.main.MainActivity
 
 class MovieRecycleViewAdapter(
     private val applicationContext: Context
@@ -29,7 +29,9 @@ class MovieRecycleViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = inflater.inflate(R.layout.movie_item, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(
+            view
+        )
     }
 
     override fun getItemCount(): Int {
@@ -45,6 +47,9 @@ class MovieRecycleViewAdapter(
 
         holder.itemView.setOnClickListener {
             applicationContext.toast(movie.title)
+            val intent = Intent(applicationContext, HighlightActivity::class.java)
+            intent.putExtra("movie", movie)
+            applicationContext.startActivity(intent)
         }
     }
 }

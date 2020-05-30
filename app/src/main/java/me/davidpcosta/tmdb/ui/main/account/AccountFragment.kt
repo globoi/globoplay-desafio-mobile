@@ -20,7 +20,7 @@ class AccountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         accountViewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
-        val view = inflater.inflate(R.layout.fragment_account, container, false)
+        val view = inflater.inflate(R.layout.activity_main_fragment_account, container, false)
         val textView: TextView = view.findViewById(R.id.text_notifications)
         accountViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
