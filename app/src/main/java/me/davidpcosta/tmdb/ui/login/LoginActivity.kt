@@ -29,23 +29,17 @@ class LoginActivity : AppCompatActivity() {
             this.activity = this@LoginActivity
         }
 
-        observeLoginResult() // TODO: Acho que nao sera necessario
         observeSessionResult()
+        observeErrorMessage()
     }
 
     fun handleLoginClick () {
-        loginViewModel.login()
+        loginViewModel.validateLogin()
     }
 
-
-    private fun observeLoginResult() {
-        loginViewModel.loginResult.observe(this, Observer {
-            if (it.success) {
-                toast("Login OK " + it.requestToken)
-            }
-            else {
-                toast("Erro")
-            }
+    private fun observeErrorMessage() {
+        loginViewModel.errorMessage.observe(this, Observer {
+            toast(it)
         })
     }
 
@@ -54,9 +48,6 @@ class LoginActivity : AppCompatActivity() {
             if (it.success) {
                 saveSessionId()
                 goToMainActivity()
-            }
-            else {
-                toast("Erro")
             }
         })
     }

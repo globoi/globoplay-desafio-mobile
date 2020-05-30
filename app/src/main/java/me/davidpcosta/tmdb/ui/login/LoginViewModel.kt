@@ -15,40 +15,47 @@ class LoginViewModel(private val loginRepository: AuthenticationRepository) : Vi
 
     lateinit var requestToken: String
 
+    val errorMessage: LiveData<String> = MutableLiveData()
     val loginResult: LiveData<AuthenticationResult> = MutableLiveData()
     val sessionResult: LiveData<SessionResult> = MutableLiveData()
 
-    init {
+
+    fun validateLogin() {
         createRequestToken()
     }
 
-    fun login() {
+    private fun login() {
         loginRepository.login(username, password, requestToken).subscribe({
             if (it.success) {
                 loginResult as MutableLiveData
                 loginResult.value = it
                 createSession()
             } else {
-                TODO("Mensagem de erro")
+                errorMessage as MutableLiveData
+                errorMessage.value = "Login ou senha incorretos"
             }
         },
             { e ->
                 e.printStackTrace()
-                TODO("Mensagem de erro")
+                errorMessage as MutableLiveData
+                errorMessage.value = e.message
             })
     }
 
     private fun createRequestToken() {
         loginRepository.createRequestToken().subscribe ({
             if (it.success) {
-                requestToken = it.requestToken // TODO: Necessário checar o requestToken?
+                requestToken = it.requestToken
+                login()
             } else {
-                TODO("Mensagem de erro")
+                errorMessage as MutableLiveData
+                errorMessage.value = "Erro gerando token"
             }
         },
             { e ->
                 e.printStackTrace()
-                TODO("Mensagem de erro")
+                errorMessage as MutableLiveData
+                errorMessage.value = e.message
             })
     }
 
@@ -58,12 +65,14 @@ class LoginViewModel(private val loginRepository: AuthenticationRepository) : Vi
                 sessionResult as MutableLiveData
                 sessionResult.value = it
             } else {
-                TODO("Mensagem de erro")
+                errorMessage as MutableLiveData
+                errorMessage.value = "Sessão inválida"
             }
         },
             { e ->
                 e.printStackTrace()
-                TODO("Mensagem de erro")
+                errorMessage as MutableLiveData
+                errorMessage.value = e.message
             })
     }
 }
