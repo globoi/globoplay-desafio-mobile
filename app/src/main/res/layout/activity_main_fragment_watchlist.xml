@@ -3,13 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.watchlist.WatchlistFragment">
+    tools:context=".ui.main.watchlist.WatchlistFragment"
+    style="@style/AppTheme.Activity">
 
     <GridView
         android:id="@+id/watchlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="3"
+        android:verticalSpacing="16dp"
+        android:horizontalSpacing="16dp"
+        android:layout_margin="16dp"
+        android:scrollbars="none"
         android:scrollbarStyle="outsideOverlay" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

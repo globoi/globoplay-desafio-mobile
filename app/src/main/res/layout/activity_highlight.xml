@@ -10,7 +10,9 @@
         android:layout_height="wrap_content"
         tools:context=".ui.highlight.HighlightActivity"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        style="@style/AppTheme.Activity"
+        android:background="@color/colorPrimary">
 
         <ImageView
             android:id="@+id/movie_backdrop"
@@ -19,6 +21,16 @@
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:contentDescription="@string/movie_poster_content_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/view_pager"/>
+
+        <View
+            android:id="@+id/movie_backdrop_gradient"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_backdrop_gradient"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -36,63 +48,76 @@
 
         <TextView
             android:id="@+id/movie_title"
+            style="@style/AppTheme.Highlight.MovieTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/app_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/movie_poster" />
+            app:layout_constraintTop_toBottomOf="@id/movie_poster"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin" />
 
         <TextView
             android:id="@+id/movie_overview"
-            android:layout_width="wrap_content"
+            style="@style/AppTheme.Highlight.MovieOverview"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/app_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/movie_title" />
+            app:layout_constraintTop_toBottomOf="@id/movie_title"
+            android:layout_marginBottom="24dp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_play"
+            style="@style/AppTheme.PrimaryButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Assista"
+            android:drawableStart="@drawable/ic_play_arrow_black_24dp"
             app:layout_constraintEnd_toStartOf="@+id/button_add_to_watchlist"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/movie_overview" />
+            app:layout_constraintTop_toBottomOf="@id/movie_overview"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_add_to_watchlist"
+            style="@style/AppTheme.SecondaryButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Minha lista"
+
+            android:drawableStart="@drawable/ic_star_white_24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toEndOf="@+id/button_play"
-            app:layout_constraintTop_toBottomOf="@id/movie_overview" />
+            app:layout_constraintTop_toBottomOf="@id/movie_overview"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin" />
 
             <com.google.android.material.tabs.TabLayout
+                style="@style/AppTheme.Highlight.TabBar"
                 android:id="@+id/tabs"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="36dp"
                 android:background="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/button_play">
 
                 <com.google.android.material.tabs.TabItem
-                    android:text="@string/tab_text_1"
+                    android:text="@string/tab_text_similar"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content" />
 
                 <com.google.android.material.tabs.TabItem
-                    android:text="@string/tab_text_2"
+                    android:text="@string/tab_text_details"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"/>
 
@@ -101,7 +126,7 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="550dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tabs">

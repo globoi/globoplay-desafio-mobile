@@ -12,13 +12,13 @@
         tools:layout="@layout/activity_main_fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_watchlist"
         android:name="me.davidpcosta.tmdb.ui.main.watchlist.WatchlistFragment"
         android:label="@string/title_watchlist"
         tools:layout="@layout/activity_main_fragment_watchlist" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_my_account"
         android:name="me.davidpcosta.tmdb.ui.main.account.AccountFragment"
         android:label="@string/title_account"
         tools:layout="@layout/activity_main_fragment_account" />

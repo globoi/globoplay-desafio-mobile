@@ -11,7 +11,7 @@ import me.davidpcosta.tmdb.BuildConfig
 import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.data.model.Movie
 
-class MovieAdapter(var applicationContext: Context): BaseAdapter() {
+class MovieAdapter(private val applicationContext: Context): BaseAdapter() {
 
     private var inflater: LayoutInflater = LayoutInflater.from(applicationContext)
     var movies: List<Movie> = ArrayList()

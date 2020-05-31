@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.data.model.Genre
+import me.davidpcosta.tmdb.hide
+import me.davidpcosta.tmdb.show
 import me.davidpcosta.tmdb.ui.main.home.HomeViewModel
 import me.davidpcosta.tmdb.ui.main.home.MovieRecycleViewAdapter
 
@@ -28,6 +31,7 @@ class GenreAdapter(
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val genre: TextView = view.findViewById(R.id.genre_name)
         val moviesRecycleView: RecyclerView = view.findViewById(R.id.movies_list)
+        val loading: ProgressBar = view.findViewById(R.id.loading)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -67,6 +71,8 @@ class GenreAdapter(
             genre.movies = it
             adapter.movies = it
             adapter.notifyDataSetChanged()
+            holder.loading.hide()
+            holder.moviesRecycleView.show()
         })
 
 

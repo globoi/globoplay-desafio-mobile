@@ -17,4 +17,74 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AppTheme.Activity">
+        <item name="android:background">@color/colorBackground</item>
+    </style>
+
+    <style name="AppTheme.PrimaryButton">
+<!--        <item name="background">@drawable/shape_button_primary</item>-->
+        <item name="android:backgroundTint">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:padding">18dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.SecondaryButton">
+<!--        <item name="background">@drawable/shape_button_secondary</item>-->
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:padding">18dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.EditText">
+        <item name="android:background">@color/colorBackground</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="AppTheme.Home" />
+    <style name="AppTheme.Home.GenreLabel">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">6dp</item>
+    </style>
+
+    <style name="AppTheme.Highlight" />
+    <style name="AppTheme.Highlight.MovieTitle">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+    <style name="AppTheme.Highlight.MovieOverview">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+    <style name="AppTheme.Highlight.TabBar" parent="Widget.MaterialComponents.TabLayout.Colored">
+    </style>
+
+
+    <style name="AppTheme.Highlight.Details" />
+    <style name="AppTheme.Highlight.Details.Title">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+    <style name="AppTheme.Highlight.Details.Item">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:alpha">0.7</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="AppTheme.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored" />
+
 </resources>

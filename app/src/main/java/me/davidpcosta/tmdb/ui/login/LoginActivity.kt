@@ -4,17 +4,21 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import me.davidpcosta.tmdb.*
 import me.davidpcosta.tmdb.ui.main.MainActivity
-import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.databinding.ActivityLoginBinding
-import me.davidpcosta.tmdb.toast
 
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var loading: ProgressBar
+    private lateinit var loginButton: Button
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -29,16 +33,23 @@ class LoginActivity : AppCompatActivity() {
             this.activity = this@LoginActivity
         }
 
+        loading = findViewById(R.id.loading)
+        loginButton = findViewById(R.id.login_button)
+
         observeSessionResult()
         observeErrorMessage()
     }
 
     fun handleLoginClick () {
+        loading.show()
+        loginButton.disable()
         loginViewModel.validateLogin()
     }
 
     private fun observeErrorMessage() {
         loginViewModel.errorMessage.observe(this, Observer {
+            loading.hide()
+            loginButton.enable()
             toast(it)
         })
     }
@@ -46,6 +57,8 @@ class LoginActivity : AppCompatActivity() {
     private fun observeSessionResult() {
         loginViewModel.sessionResult.observe(this, Observer {
             if (it.success) {
+                loading.hide()
+                loginButton.enable()
                 saveSessionId()
                 goToMainActivity()
             }
