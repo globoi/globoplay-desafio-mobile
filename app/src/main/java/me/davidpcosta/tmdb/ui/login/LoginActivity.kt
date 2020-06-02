@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
+import android.preference.PreferenceManager
 import android.widget.Button
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +12,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import me.davidpcosta.tmdb.*
-import me.davidpcosta.tmdb.ui.main.MainActivity
 import me.davidpcosta.tmdb.databinding.ActivityLoginBinding
+import me.davidpcosta.tmdb.ui.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -26,7 +26,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
-        sharedPreferences = getSharedPreferences("sessionId", Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("user_login", MODE_PRIVATE)
+
 
         DataBindingUtil.setContentView<ActivityLoginBinding>(this, R.layout.activity_login).apply {
             this.viewModel = loginViewModel
@@ -36,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
         loading = findViewById(R.id.loading)
         loginButton = findViewById(R.id.login_button)
 
-        observeSessionResult()
+        observeAccountDetails()
         observeErrorMessage()
     }
 
@@ -54,23 +55,25 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun observeSessionResult() {
-        loginViewModel.sessionResult.observe(this, Observer {
-            if (it.success) {
-                loading.hide()
-                loginButton.enable()
-                saveSessionId()
-                goToMainActivity()
-            }
+    private fun observeAccountDetails() {
+        loginViewModel.accountDetails.observe(this, Observer {
+            loading.hide()
+            loginButton.enable()
+            saveUserInfo()
+            goToMainActivity()
+            finish()
         })
     }
 
-    private fun saveSessionId() {
-        loginViewModel.sessionResult.value?.let {
-            val editor: SharedPreferences.Editor = sharedPreferences.edit()
-            editor.putString("sessionId", it.sessionId)
-            editor.apply()
+    private fun saveUserInfo() {
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        loginViewModel.accountDetails.value?.let {
+            editor.putLong("account_id", it.id)
         }
+        loginViewModel.sessionResult.value?.let {
+            editor.putString("session_id", it.sessionId)
+        }
+        editor.apply()
     }
 
     private fun goToMainActivity() {

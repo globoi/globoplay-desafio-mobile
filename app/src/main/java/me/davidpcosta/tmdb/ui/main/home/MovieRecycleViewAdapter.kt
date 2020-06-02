@@ -13,7 +13,6 @@ import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.data.model.Movie
 import me.davidpcosta.tmdb.toast
 import me.davidpcosta.tmdb.ui.highlight.HighlightActivity
-import me.davidpcosta.tmdb.ui.main.MainActivity
 
 class MovieRecycleViewAdapter(
     private val applicationContext: Context
@@ -43,14 +42,19 @@ class MovieRecycleViewAdapter(
         holder.poster.contentDescription = movie.title
         Picasso.with(applicationContext)
             .load(BuildConfig.TMDB_IMAGE_URL + movie.posterPath)
+            .placeholder(R.drawable.movie_poster_placeholder)
             .into(holder.poster)
 
         holder.itemView.setOnClickListener {
             applicationContext.toast(movie.title)
-            val intent = Intent(applicationContext, HighlightActivity::class.java)
-            intent.putExtra("movie", movie)
-            applicationContext.startActivity(intent)
+            goToMovie(movie)
         }
+    }
+
+    private fun goToMovie(movie: Movie) {
+        val intent = Intent(applicationContext, HighlightActivity::class.java)
+        intent.putExtra("movie", movie)
+        applicationContext.startActivity(intent)
     }
 }
 

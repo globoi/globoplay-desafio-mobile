@@ -1,13 +1,14 @@
 package me.davidpcosta.tmdb.data.repository
 
 import me.davidpcosta.tmdb.data.api.Api
+import me.davidpcosta.tmdb.data.model.AccountDetails
 import me.davidpcosta.tmdb.data.model.AuthenticationResult
 import me.davidpcosta.tmdb.data.model.SessionResult
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
-class AuthenticationRepository(private val api: Api) {
+class AccountRepository(private val api: Api) {
 
     fun login(username: String, password: String, requestToken: String): Observable<AuthenticationResult> {
         return api.validateWithLogin(username, password, requestToken)
@@ -27,8 +28,10 @@ class AuthenticationRepository(private val api: Api) {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun logout() {
-        TODO("Handle logout")
+    fun accountDetails(sessionId: String): Observable<AccountDetails> {
+        return api.accountDetails(sessionId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
     }
 
 }

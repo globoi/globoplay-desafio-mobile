@@ -1,10 +1,12 @@
 package me.davidpcosta.tmdb
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
+import java.util.*
 
 fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
@@ -24,5 +26,11 @@ fun Button.disable() {
 
 fun Button.enable() {
     this.isEnabled = false
+}
+
+@SuppressLint("SimpleDateFormat")
+fun Date.toLongFormatString(): String {
+    val formatter = java.text.SimpleDateFormat("dd 'de' MMMM 'de' yyyy")
+    return formatter.format(this)
 }
 

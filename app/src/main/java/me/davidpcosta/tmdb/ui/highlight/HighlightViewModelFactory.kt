@@ -14,6 +14,9 @@ class HighlightViewModelFactory : ViewModelProvider.Factory {
             return HighlightViewModel(
                     moviesRepository = MoviesRepository(
                         api = ApiService.instance
+                    ),
+                    watchlistRepository = WatchlistRepository(
+                        api = ApiService.instance
                     )
             ) as T
         }

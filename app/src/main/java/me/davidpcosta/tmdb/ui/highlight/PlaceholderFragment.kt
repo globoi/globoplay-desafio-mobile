@@ -2,6 +2,7 @@ package me.davidpcosta.tmdb.ui.highlight
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,10 @@ import androidx.lifecycle.ViewModelProvider
 import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.adapters.MovieAdapter
 import me.davidpcosta.tmdb.data.model.Cast
+import me.davidpcosta.tmdb.data.model.Genre
 import me.davidpcosta.tmdb.data.model.Movie
+import me.davidpcosta.tmdb.data.model.MovieDetails
+import me.davidpcosta.tmdb.toLongFormatString
 
 class PlaceholderFragment : Fragment() {
 
@@ -34,6 +38,7 @@ class PlaceholderFragment : Fragment() {
     var sectionNumber: Int = -1
     lateinit var movie: Movie
     private lateinit var highlightViewModel: HighlightViewModel
+    private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,60 +51,72 @@ class PlaceholderFragment : Fragment() {
         when (sectionNumber) {
             SECTION_SIMILAR -> {
                 view = inflater.inflate(R.layout.activity_highlight_fragment_similar, container, false)
-                val movieAdapter = MovieAdapter(requireActivity().applicationContext)
+                movieAdapter = MovieAdapter(requireActivity().applicationContext)
                 view.findViewById<GridView>(R.id.similar_movies).apply {
                     adapter = movieAdapter
-                    onItemClickListener =  AdapterView.OnItemClickListener { parent, view, position, id ->
-                        val movie = highlightViewModel.similarMovies.value!![position]
-                        val intent = Intent(requireActivity(), HighlightActivity::class.java)
-                        intent.putExtra("movie", movie)
-                        requireActivity().startActivity(intent)
+                    onItemClickListener =  AdapterView.OnItemClickListener { _, _, position, _ ->
+                        goToMovie(highlightViewModel.similarMovies.value!![position])
                     }
                 }
-                highlightViewModel.fetchSimilarMovies(movie.id)
-                highlightViewModel.similarMovies.observe(viewLifecycleOwner, Observer<List<Movie>> {
-                    movieAdapter.movies = it
-                    movieAdapter.notifyDataSetChanged()
-                })
+                fetchSimilarMovies()
             }
             SECTION_DETAILS -> {
                 view = inflater.inflate(R.layout.activity_highlight_fragment_details, container, false)
-
-                val originalTitle = view.findViewById<TextView>(R.id.original_title)
-                val originalTitleHtml = "<b>Título original:</b> " + movie.originalTitle
-                originalTitle.text = HtmlCompat.fromHtml(originalTitleHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
-
-                val genres = view.findViewById<TextView>(R.id.genres)
-                val genresHtml = "<b>Generos:</b> " + movie.genreIds.joinToString(", ")
-                genres.text = HtmlCompat.fromHtml(genresHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
-
-                val releaseDate = view.findViewById<TextView>(R.id.release_date)
-                val releaseDateLanguageHtml = "<b>Data de lançamento:</b> " + movie.releaseDate.toString()
-                releaseDate.text =HtmlCompat.fromHtml(releaseDateLanguageHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
-
-                val originalLanguage = view.findViewById<TextView>(R.id.original_language)
-                val originalLanguageHtml = "<b>Idioma original:</b> " + movie.originalLanguage
-                originalLanguage.text =HtmlCompat.fromHtml(originalLanguageHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
-
-                val averageRate = view.findViewById<TextView>(R.id.average_rate)
-                val averageRateHtml = "<b>Nota:</b> " +movie.voteAbarege.toString()
-                averageRate.text = HtmlCompat.fromHtml(averageRateHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
-
-                val cast = view.findViewById<TextView>(R.id.cast)
-
-                highlightViewModel.fetchCredits(movie.id)
-                highlightViewModel.cast.observe(viewLifecycleOwner, Observer<List<Cast>> {
-                    val castHtml = "<b>Elenco:</b> " + castToStringList(it)
-                    cast.text = HtmlCompat.fromHtml(castHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
-                })
+                fetchMovieDetails()
+                fetchMovieCast()
             }
             else -> {
-                view = inflater.inflate(R.layout.activity_highlight_fragment_details, container, false)
-                R.layout.activity_highlight_fragment_details
+                throw Error("View not supported")
             }
         }
 
         return view
+    }
+
+    private fun fetchMovieCast() {
+        highlightViewModel.fetchCredits(movie.id)
+        highlightViewModel.cast.observe(viewLifecycleOwner, Observer<List<Cast>> {
+            view?.let {view ->
+                val cast = view.findViewById<TextView>(R.id.cast)
+                cast.text = formatHtmlTextView("Elenco", castToStringList(it))
+            }
+        })
+    }
+
+    private fun fetchMovieDetails() {
+        highlightViewModel.movieDetails(movie.id)
+        highlightViewModel.movieDetails.observe(viewLifecycleOwner, Observer<MovieDetails> {
+            view?.let {view ->
+                val originalTitle = view.findViewById<TextView>(R.id.original_title)
+                originalTitle.text = formatHtmlTextView("Título original", it.originalTitle)
+
+                val genres = view.findViewById<TextView>(R.id.genres)
+                genres.text = formatHtmlTextView("Generos", genresToStringList(it.genres))
+
+                val releaseDate = view.findViewById<TextView>(R.id.release_date)
+                releaseDate.text = formatHtmlTextView("Data de lançamento", it.releaseDate.toLongFormatString())
+
+                val originalLanguage = view.findViewById<TextView>(R.id.original_language)
+                originalLanguage.text = formatHtmlTextView("Idioma original", it.originalLanguage)
+
+                val averageRate = view.findViewById<TextView>(R.id.average_rate)
+                averageRate.text = formatHtmlTextView("Nota", it.voteAbarege.toString())
+            }
+        })
+    }
+
+    private fun fetchSimilarMovies() {
+        highlightViewModel.fetchSimilarMovies(movie.id)
+        highlightViewModel.similarMovies.observe(viewLifecycleOwner, Observer<List<Movie>> {
+            movieAdapter.movies = it
+            movieAdapter.notifyDataSetChanged()
+        })
+    }
+
+    private fun goToMovie(movie: Movie) {
+        val intent = Intent(requireActivity(), HighlightActivity::class.java)
+        intent.putExtra("movie", movie)
+        requireActivity().startActivity(intent)
     }
 
     private fun castToStringList(cast: List<Cast>?): String {
@@ -111,5 +128,21 @@ class PlaceholderFragment : Fragment() {
             }
         }
         return ""
+    }
+
+    private fun genresToStringList(genres: List<Genre>?): String {
+        val maxCast = 15;
+        genres?.let { genre ->
+            val newMaxCast = if (genre.size < maxCast) genre.size else maxCast
+            return genre.subList(0, newMaxCast).joinToString {
+                it.name
+            }
+        }
+        return ""
+    }
+
+    private fun formatHtmlTextView(label: String, value: String): Spanned {
+        return HtmlCompat.fromHtml("<b>$label:</b> $value", HtmlCompat.FROM_HTML_MODE_LEGACY)
+
     }
 }

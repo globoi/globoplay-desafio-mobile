@@ -1,6 +1,8 @@
 package me.davidpcosta.tmdb.ui.main.watchlist
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.adapters.MovieAdapter
+import me.davidpcosta.tmdb.data.model.Movie
 import me.davidpcosta.tmdb.toast
 import me.davidpcosta.tmdb.ui.highlight.HighlightActivity
 
@@ -21,6 +24,7 @@ class WatchlistFragment : Fragment() {
     private lateinit var watchlistViewModel: WatchlistViewModel
     private lateinit var watchlistGrid: GridView
     private lateinit var movieAdapter: MovieAdapter
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +32,9 @@ class WatchlistFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.activity_main_fragment_watchlist, container, false)
+        sharedPreferences = requireActivity().getSharedPreferences("user_login", Context.MODE_PRIVATE)
+        val sessionId = sharedPreferences.getString("session_id", "")
+        val accountId = sharedPreferences.getLong("account_id", 0)
 
         watchlistViewModel = ViewModelProvider(this, WatchlistViewModelFactory()).get(WatchlistViewModel::class.java)
         movieAdapter = MovieAdapter(requireActivity().applicationContext)
@@ -37,18 +44,22 @@ class WatchlistFragment : Fragment() {
             onItemClickListener =  AdapterView.OnItemClickListener { parent, view, position, id ->
                 val movie = watchlistViewModel.movies.value!![position]
                 requireActivity().toast(movie.title)
-                val intent = Intent(requireActivity(), HighlightActivity::class.java)
-                intent.putExtra("movie", movie)
-                requireActivity().startActivity(intent)
+                goToMovie(movie)
             }
         }
 
-        watchlistViewModel.fetchWatchlist()
+        watchlistViewModel.fetchWatchlist(accountId, sessionId)
         watchlistViewModel.movies.observe(viewLifecycleOwner, Observer {
             movieAdapter.movies = it
             movieAdapter.notifyDataSetChanged()
         })
 
         return view
+    }
+
+    private fun goToMovie(movie: Movie) {
+        val intent = Intent(requireActivity(), HighlightActivity::class.java)
+        intent.putExtra("movie", movie)
+        requireActivity().startActivity(intent)
     }
 }

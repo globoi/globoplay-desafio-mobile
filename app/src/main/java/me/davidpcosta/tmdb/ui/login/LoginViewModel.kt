@@ -3,12 +3,13 @@ package me.davidpcosta.tmdb.ui.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import me.davidpcosta.tmdb.data.repository.AuthenticationRepository
+import me.davidpcosta.tmdb.data.model.AccountDetails
+import me.davidpcosta.tmdb.data.repository.AccountRepository
 import me.davidpcosta.tmdb.data.model.AuthenticationResult
 import me.davidpcosta.tmdb.data.model.SessionResult
 
 
-class LoginViewModel(private val loginRepository: AuthenticationRepository) : ViewModel() {
+class LoginViewModel(private val loginRepository: AccountRepository) : ViewModel() {
 
     var username: String = "davidpcosta"
     var password: String = "1234qwer"
@@ -16,8 +17,8 @@ class LoginViewModel(private val loginRepository: AuthenticationRepository) : Vi
     lateinit var requestToken: String
 
     val errorMessage: LiveData<String> = MutableLiveData()
-    val loginResult: LiveData<AuthenticationResult> = MutableLiveData()
     val sessionResult: LiveData<SessionResult> = MutableLiveData()
+    val accountDetails: LiveData<AccountDetails> = MutableLiveData()
 
 
     fun validateLogin() {
@@ -27,8 +28,6 @@ class LoginViewModel(private val loginRepository: AuthenticationRepository) : Vi
     private fun login() {
         loginRepository.login(username, password, requestToken).subscribe({
             if (it.success) {
-                loginResult as MutableLiveData
-                loginResult.value = it
                 createSession()
             } else {
                 errorMessage as MutableLiveData
@@ -64,10 +63,23 @@ class LoginViewModel(private val loginRepository: AuthenticationRepository) : Vi
             if (it.success) {
                 sessionResult as MutableLiveData
                 sessionResult.value = it
+                getAccountDetails()
             } else {
                 errorMessage as MutableLiveData
                 errorMessage.value = "Sessão inválida"
             }
+        },
+            { e ->
+                e.printStackTrace()
+                errorMessage as MutableLiveData
+                errorMessage.value = e.message
+            })
+    }
+
+    private fun getAccountDetails() {
+        loginRepository.accountDetails(sessionResult.value!!.sessionId).subscribe({
+            accountDetails as MutableLiveData
+            accountDetails.value = it
         },
             { e ->
                 e.printStackTrace()

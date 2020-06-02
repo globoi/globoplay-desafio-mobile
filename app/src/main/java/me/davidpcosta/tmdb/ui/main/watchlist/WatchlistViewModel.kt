@@ -10,8 +10,8 @@ class WatchlistViewModel(private val watchlistRepository: WatchlistRepository) :
 
     val movies: LiveData<List<Movie>> = MutableLiveData()
 
-    fun fetchWatchlist() {
-        watchlistRepository.watchlist().subscribe {
+    fun fetchWatchlist(accountId: Long, sessionId: String) {
+        watchlistRepository.watchlist(accountId, sessionId).subscribe {
             movies as MutableLiveData
             movies.value = it.results
         }

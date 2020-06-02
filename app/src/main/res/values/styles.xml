@@ -13,6 +13,19 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.ActionBar.Transparent" parent="AppTheme">
+        <item name="windowActionBarOverlay">true</item>
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="android:displayOptions">showHome</item>
+    </style>
+
+    <style name="AppTheme.FullScream" parent="android:Theme.Material.Wallpaper.NoTitleBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -22,18 +35,18 @@
     </style>
 
     <style name="AppTheme.PrimaryButton">
-<!--        <item name="background">@drawable/shape_button_primary</item>-->
-        <item name="android:backgroundTint">@color/colorAccent</item>
+        <item name="android:background">@drawable/selector_button_primary</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:padding">18dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">8dp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="AppTheme.SecondaryButton">
-<!--        <item name="background">@drawable/shape_button_secondary</item>-->
-        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:background">@drawable/selector_button_secondary</item>
         <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:padding">18dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">8dp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -45,6 +58,7 @@
     </style>
 
     <style name="AppTheme.Home" />
+
     <style name="AppTheme.Home.GenreLabel">
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textSize">18sp</item>
@@ -55,6 +69,7 @@
     </style>
 
     <style name="AppTheme.Highlight" />
+
     <style name="AppTheme.Highlight.MovieTitle">
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textSize">24sp</item>
@@ -62,22 +77,25 @@
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
     </style>
+
     <style name="AppTheme.Highlight.MovieOverview">
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textSize">12sp</item>
         <item name="android:paddingBottom">8dp</item>
     </style>
-    <style name="AppTheme.Highlight.TabBar" parent="Widget.MaterialComponents.TabLayout.Colored">
-    </style>
+
+    <style name="AppTheme.Highlight.TabBar" parent="Widget.MaterialComponents.TabLayout.Colored" />
 
 
     <style name="AppTheme.Highlight.Details" />
+
     <style name="AppTheme.Highlight.Details.Title">
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginBottom">16dp</item>
     </style>
+
     <style name="AppTheme.Highlight.Details.Item">
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:alpha">0.7</item>
@@ -86,5 +104,16 @@
     </style>
 
     <style name="AppTheme.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored" />
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
 
 </resources>

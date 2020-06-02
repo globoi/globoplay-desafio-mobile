@@ -46,6 +46,7 @@ class MovieAdapter(private val applicationContext: Context): BaseAdapter() {
         viewHolder.poster.contentDescription = movie.title
         Picasso.with(applicationContext)
             .load(BuildConfig.TMDB_IMAGE_URL + movie.posterPath)
+            .placeholder(R.drawable.movie_poster_placeholder)
             .into(viewHolder.poster)
 
         return view
