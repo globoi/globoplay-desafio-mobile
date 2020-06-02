@@ -20,4 +20,8 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="const_shared_preference">user_login</string>
+    <string name="const_key_account_id">account_id</string>
+    <string name="const_key_session_id">session_id</string>
+    <string name="const_key_movie">movie</string>
 </resources>

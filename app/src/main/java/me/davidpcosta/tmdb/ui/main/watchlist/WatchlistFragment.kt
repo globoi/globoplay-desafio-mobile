@@ -32,9 +32,9 @@ class WatchlistFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.activity_main_fragment_watchlist, container, false)
-        sharedPreferences = requireActivity().getSharedPreferences("user_login", Context.MODE_PRIVATE)
-        val sessionId = sharedPreferences.getString("session_id", "")
-        val accountId = sharedPreferences.getLong("account_id", 0)
+        sharedPreferences = requireActivity().getSharedPreferences(getString(R.string.const_shared_preference), Context.MODE_PRIVATE)
+        val sessionId = sharedPreferences.getString(getString(R.string.const_key_session_id), "")
+        val accountId = sharedPreferences.getLong(getString(R.string.const_key_account_id), 0)
 
         watchlistViewModel = ViewModelProvider(this, WatchlistViewModelFactory()).get(WatchlistViewModel::class.java)
         movieAdapter = MovieAdapter(requireActivity().applicationContext)
@@ -59,7 +59,7 @@ class WatchlistFragment : Fragment() {
 
     private fun goToMovie(movie: Movie) {
         val intent = Intent(requireActivity(), HighlightActivity::class.java)
-        intent.putExtra("movie", movie)
+        intent.putExtra(getString(R.string.const_key_movie), movie)
         requireActivity().startActivity(intent)
     }
 }

@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
-        sharedPreferences = getSharedPreferences("user_login", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(getString(R.string.const_shared_preference), MODE_PRIVATE)
 
 
         DataBindingUtil.setContentView<ActivityLoginBinding>(this, R.layout.activity_login).apply {
@@ -68,10 +68,10 @@ class LoginActivity : AppCompatActivity() {
     private fun saveUserInfo() {
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         loginViewModel.accountDetails.value?.let {
-            editor.putLong("account_id", it.id)
+            editor.putLong(getString(R.string.const_key_account_id), it.id)
         }
         loginViewModel.sessionResult.value?.let {
-            editor.putString("session_id", it.sessionId)
+            editor.putString(getString(R.string.const_key_session_id), it.sessionId)
         }
         editor.apply()
     }

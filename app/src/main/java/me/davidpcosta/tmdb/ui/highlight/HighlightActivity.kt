@@ -37,12 +37,12 @@ class HighlightActivity : AppCompatActivity() {
         sessionId = sharedPreferences.getString("session_id", "")!!
         accountId = sharedPreferences.getLong("account_id", 0)
 
-        initViewComponents()
+        initComponents()
         setViewData()
         observeWatchlistOperationResponse()
     }
 
-    private fun initViewComponents() {
+    private fun initComponents() {
         val viewPager: ViewPager = findViewById(R.id.view_pager)
         viewPager.adapter = SectionsPagerAdapter(movie,this, supportFragmentManager)
 

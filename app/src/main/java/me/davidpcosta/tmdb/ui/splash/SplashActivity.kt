@@ -19,15 +19,15 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        sharedPreferences = getSharedPreferences("user_login", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(getString(R.string.const_shared_preference), MODE_PRIVATE)
 
         Observable.timer(800, TimeUnit.MILLISECONDS)
-            .map { chechUserLoggedIn() }
+            .map { checkUserLoggedIn() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe()
     }
 
-    private fun chechUserLoggedIn() {
+    private fun checkUserLoggedIn() {
         if (isUserLoggedIn()) {
             goToMain()
         } else {
@@ -48,8 +48,9 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun isUserLoggedIn(): Boolean {
-        val sessionId = sharedPreferences.getString("session_id", "")
-        return sessionId!!.isNotBlank()
+        val sessionId = sharedPreferences.getString(getString(R.string.const_key_session_id), "")
+        val accountId = sharedPreferences.getLong(getString(R.string.const_key_account_id), 0)
+        return sessionId!!.isNotBlank() && accountId > 0
     }
 
 }

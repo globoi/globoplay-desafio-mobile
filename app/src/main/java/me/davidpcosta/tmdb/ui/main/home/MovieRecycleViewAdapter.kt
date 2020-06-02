@@ -53,7 +53,7 @@ class MovieRecycleViewAdapter(
 
     private fun goToMovie(movie: Movie) {
         val intent = Intent(applicationContext, HighlightActivity::class.java)
-        intent.putExtra("movie", movie)
+        intent.putExtra(applicationContext.getString(R.string.const_key_movie), movie)
         applicationContext.startActivity(intent)
     }
 }

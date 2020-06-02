@@ -35,47 +35,23 @@ class AccountFragment : Fragment() {
         val view = inflater.inflate(R.layout.activity_main_fragment_account, container, false)
 
         accountViewModel = ViewModelProvider(this, AccountViewModelFactory()).get(AccountViewModel::class.java)
-        sharedPreferences = requireActivity().getSharedPreferences("user_login", Context.MODE_PRIVATE)
-        sessionId = sharedPreferences.getString("session_id", "")!!
+        sharedPreferences = requireActivity().getSharedPreferences(getString(R.string.const_shared_preference), Context.MODE_PRIVATE)
+        sessionId = sharedPreferences.getString(getString(R.string.const_key_session_id), "")!!
 
-        val avatar: ImageView = view.findViewById(R.id.avatar)
-        val name: TextView = view.findViewById(R.id.name)
-        val username: TextView = view.findViewById(R.id.username)
-        val loading: ProgressBar = view.findViewById(R.id.loading)
-        val logoutButton: Button = view.findViewById(R.id.logout_button)
-
-        logoutButton.setOnClickListener {
-            handleLogoutButtonClicked()
-        }
-
-        accountViewModel.fetchAccountDetails(sessionId)
-        accountViewModel.accountDetails.observe(viewLifecycleOwner, Observer {
-
-            Picasso.with(activity)
-                .load(BuildConfig.GRAVATAR_BASE_URL + it.avatar.gravatar.hash)
-                .into(avatar)
-
-            name.text = it.name
-            username.text = it.username
-
-            avatar.show()
-            name.show()
-            username.show()
-            logoutButton.show()
-            loading.hide()
-        })
+        initComponents()
+        fetchAccountDetails()
         return view
     }
 
-    fun handleLogoutButtonClicked() {
+    private fun handleLogoutButtonClicked() {
         deleteUserInfo()
         goToLogin()
     }
 
     private fun deleteUserInfo() {
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        editor.remove("session_id")
-        editor.remove("account_id")
+        editor.remove(getString(R.string.const_key_session_id))
+        editor.remove(getString(R.string.const_key_account_id))
         editor.apply()
     }
 
@@ -86,5 +62,38 @@ class AccountFragment : Fragment() {
         requireActivity().finish()
     }
 
+    private fun fetchAccountDetails() {
+        accountViewModel.fetchAccountDetails(sessionId)
+        accountViewModel.accountDetails.observe(viewLifecycleOwner, Observer {
+            view?.let {view ->
+                val avatar: ImageView = view.findViewById(R.id.avatar)
+                val name: TextView = view.findViewById(R.id.name)
+                val username: TextView = view.findViewById(R.id.username)
+                val loading: ProgressBar = view.findViewById(R.id.loading)
+                val logoutButton: Button = view.findViewById(R.id.logout_button)
 
+                Picasso.with(activity)
+                    .load(BuildConfig.GRAVATAR_BASE_URL + it.avatar.gravatar.hash)
+                    .into(avatar)
+
+                name.text = it.name
+                username.text = it.username
+
+                avatar.show()
+                name.show()
+                username.show()
+                logoutButton.show()
+                loading.hide()
+            }
+        })
+    }
+
+    private fun initComponents() {
+        view?.let {view->
+            val logoutButton: Button = view.findViewById(R.id.logout_button)
+            logoutButton.setOnClickListener {
+                handleLogoutButtonClicked()
+            }
+        }
+    }
 }

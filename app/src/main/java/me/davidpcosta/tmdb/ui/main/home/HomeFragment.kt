@@ -30,17 +30,26 @@ class HomeFragment : Fragment() {
         viewManager = LinearLayoutManager(requireActivity().applicationContext)
         genreAdapter = GenreAdapter(requireActivity().applicationContext, homeViewModel, viewLifecycleOwner)
 
-        genresRecyclerView = view.findViewById<RecyclerView>(R.id.genres_list).apply {
-            layoutManager = viewManager
-            adapter = genreAdapter
-        }
+        initComponents()
+        fetchGenres()
 
+        return view
+    }
+
+    private fun initComponents() {
+        view?.let {view ->
+            genresRecyclerView = view.findViewById<RecyclerView>(R.id.genres_list).apply {
+                layoutManager = viewManager
+                adapter = genreAdapter
+            }
+        }
+    }
+
+    private fun fetchGenres() {
         homeViewModel.fetchGenres()
         homeViewModel.genres.observe(viewLifecycleOwner, Observer { genres ->
             genreAdapter.genres = genres
             genreAdapter.notifyDataSetChanged()
         })
-
-        return view
     }
 }
