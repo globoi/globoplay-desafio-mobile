@@ -1,25 +1,24 @@
 <resources>
-    <string name="app_name">TMDb</string>
+    <string name="app_name">TMDb Play</string>
+
     <!-- Strings related to login -->
     <string name="prompt_username">Usuário</string>
     <string name="prompt_password">Senha</string>
     <string name="action_sign_in">Entrar</string>
     <string name="login_failed">"Login ou senha incorretos"</string>
 
-    <string name="title_activity_main">MainActivity</string>
+
     <string name="title_home">Home</string>
     <string name="title_watchlist">Minha lista</string>
     <string name="title_account">Minha conta</string>
 
-    <string name="title_activity_highlight">HighlightActivity</string>
     <string name="tab_text_similar">Assista Também</string>
     <string name="tab_text_details">Detalhes</string>
-
+    <string name="highlight_details_details_label">Ficha técinica</string>
     <string name="movie_poster_content_description">Poster do filme</string>
+    <string name="account_button_logout_label">Logout</string>
 
-    <string name="title_activity_splash">SplashActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+
     <string name="const_shared_preference">user_login</string>
     <string name="const_key_account_id">account_id</string>
     <string name="const_key_session_id">session_id</string>

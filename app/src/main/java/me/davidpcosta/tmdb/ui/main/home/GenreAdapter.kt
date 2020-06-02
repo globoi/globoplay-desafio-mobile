@@ -1,4 +1,4 @@
-package me.davidpcosta.tmdb.adapters
+package me.davidpcosta.tmdb.ui.main.home
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -14,8 +14,6 @@ import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.data.model.Genre
 import me.davidpcosta.tmdb.hide
 import me.davidpcosta.tmdb.show
-import me.davidpcosta.tmdb.ui.main.home.HomeViewModel
-import me.davidpcosta.tmdb.ui.main.home.MovieRecycleViewAdapter
 
 class GenreAdapter(
     applicationContext: Context,
@@ -36,12 +34,12 @@ class GenreAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = inflater.inflate(R.layout.genre_item, parent, false) as View
-        val viewHolder = ViewHolder(view)
+        val viewHolder =
+            ViewHolder(view)
 
         viewManager = LinearLayoutManager(parent.context)
         viewManager.orientation = LinearLayoutManager.HORIZONTAL
-        movieAdapter =
-            MovieRecycleViewAdapter(parent.context)
+        movieAdapter = MovieRecycleViewAdapter(parent.context)
 
         viewHolder.moviesRecycleView.tag = movieAdapter
         viewHolder.moviesRecycleView.apply {

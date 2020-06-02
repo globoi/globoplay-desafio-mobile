@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import me.davidpcosta.tmdb.R
-import me.davidpcosta.tmdb.adapters.GenreAdapter
 
 class HomeFragment : Fragment() {
 
@@ -30,7 +29,11 @@ class HomeFragment : Fragment() {
         viewManager = LinearLayoutManager(requireActivity().applicationContext)
         genreAdapter = GenreAdapter(requireActivity().applicationContext, homeViewModel, viewLifecycleOwner)
 
-        initComponents()
+        genresRecyclerView = view.findViewById<RecyclerView>(R.id.genres_list).apply {
+            layoutManager = viewManager
+            adapter = genreAdapter
+        }
+
         fetchGenres()
 
         return view
