@@ -2,10 +2,8 @@ package me.davidpcosta.tmdb.data.api
 
 import me.davidpcosta.tmdb.BuildConfig
 import me.davidpcosta.tmdb.data.model.*
-import okhttp3.MediaType
 import retrofit2.Call
 import retrofit2.http.*
-import rx.Observable
 
 interface Api {
 
@@ -14,7 +12,7 @@ interface Api {
     @GET("/3/authentication/token/new")
     fun createRequestToken(
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
-    ): Observable<AuthenticationResult>
+    ): Call<AuthenticationResult>
 
     @FormUrlEncoded
     @POST("/3/authentication/token/validate_with_login")
@@ -23,14 +21,14 @@ interface Api {
         @Field("password") password: String,
         @Field("request_token") requestToken: String,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
-    ): Observable<AuthenticationResult>
+    ): Call<AuthenticationResult>
 
     @FormUrlEncoded
     @POST("authentication/session/new")
     fun createSession(
         @Field("request_token") requestToken: String,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
-    ): Observable<SessionResult>
+    ): Call<SessionResult>
 
     // Account Details
 
@@ -38,7 +36,7 @@ interface Api {
     fun accountDetails(
         @Query("session_id") sessionId: String,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
-    ): Observable<AccountDetails>
+    ): Call<AccountDetails>
 
     // Watchlist
 

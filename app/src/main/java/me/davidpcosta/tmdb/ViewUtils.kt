@@ -22,10 +22,12 @@ fun View.hide() {
 
 fun Button.disable() {
     this.isEnabled = false
+    this.isActivated = false
 }
 
 fun Button.enable() {
-    this.isEnabled = false
+    this.isEnabled = true
+    this.isActivated = true
 }
 
 @SuppressLint("SimpleDateFormat")

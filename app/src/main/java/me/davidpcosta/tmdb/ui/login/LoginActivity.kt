@@ -1,10 +1,8 @@
 package me.davidpcosta.tmdb.ui.login
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.widget.Button
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import me.davidpcosta.tmdb.*
+import me.davidpcosta.tmdb.data.model.LoginResponse
 import me.davidpcosta.tmdb.databinding.ActivityLoginBinding
 import me.davidpcosta.tmdb.ui.main.MainActivity
 
@@ -36,14 +35,24 @@ class LoginActivity : AppCompatActivity() {
         loading = findViewById(R.id.loading)
         loginButton = findViewById(R.id.login_button)
 
-        observeAccountDetails()
         observeErrorMessage()
     }
 
     fun handleLoginClick () {
         loading.show()
         loginButton.disable()
-        loginViewModel.validateLogin()
+        loginViewModel.validateLogin().observe(this, Observer {
+            loading.hide()
+            loginButton.enable()
+            if (it.success!!) {
+                saveUserInfo(it)
+                goToMainActivity()
+                finish()
+            }
+            else {
+                toast(it.errorMessage!!)
+            }
+        })
     }
 
     private fun observeErrorMessage() {
@@ -54,24 +63,10 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun observeAccountDetails() {
-        loginViewModel.accountDetails.observe(this, Observer {
-            loading.hide()
-            loginButton.enable()
-            saveUserInfo()
-            goToMainActivity()
-            finish()
-        })
-    }
-
-    private fun saveUserInfo() {
+    private fun saveUserInfo(authenticationResult: LoginResponse) {
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        loginViewModel.accountDetails.value?.let {
-            editor.putLong(getString(R.string.const_key_account_id), it.id)
-        }
-        loginViewModel.sessionResult.value?.let {
-            editor.putString(getString(R.string.const_key_session_id), it.sessionId)
-        }
+        editor.putLong(getString(R.string.const_key_account_id), authenticationResult.accountId!!)
+        editor.putString(getString(R.string.const_key_session_id), authenticationResult.sessionId)
         editor.apply()
     }
 
