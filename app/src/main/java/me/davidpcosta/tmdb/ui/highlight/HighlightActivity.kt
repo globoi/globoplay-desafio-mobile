@@ -9,12 +9,14 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.BlurTransformation
 import me.davidpcosta.tmdb.BuildConfig
 import me.davidpcosta.tmdb.R
+import me.davidpcosta.tmdb.data.dao.AppDatabase
 import me.davidpcosta.tmdb.data.model.Movie
 import me.davidpcosta.tmdb.toast
 
@@ -31,7 +33,7 @@ class HighlightActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_highlight)
 
-        highlightViewModel = ViewModelProvider(this, HighlightViewModelFactory()).get(HighlightViewModel::class.java)
+        highlightViewModel = ViewModelProvider(this, HighlightViewModelFactory(this)).get(HighlightViewModel::class.java)
         movie = intent.getSerializableExtra("movie") as Movie
         sharedPreferences = getSharedPreferences("user_login", Context.MODE_PRIVATE)
         sessionId = sharedPreferences.getString("session_id", "")!!
@@ -49,15 +51,15 @@ class HighlightActivity : AppCompatActivity() {
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
 
-//        val watchlistButton: Button = findViewById(R.id.add_to_watchlist_button)
-//        watchlistButton.setOnClickListener {
-//            highlightViewModel.addToWatchlist(accountId, sessionId, movie.id)
-//        }
-
         val watchlistButton: Button = findViewById(R.id.add_to_watchlist_button)
         watchlistButton.setOnClickListener {
-            highlightViewModel.removeFromWatchlist(accountId, sessionId, movie.id)
+            highlightViewModel.addToWatchlist(accountId, sessionId, movie)
         }
+
+//        val watchlistButton: Button = findViewById(R.id.add_to_watchlist_button)
+//        watchlistButton.setOnClickListener {
+//            highlightViewModel.removeFromWatchlist(accountId, sessionId, movie.id)
+//        }
     }
 
     private fun setViewData() {

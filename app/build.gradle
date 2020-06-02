@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "kotlin-kapt"
 
 android {
     compileSdkVersion 28
@@ -73,6 +74,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'androidx.room:room-runtime:2.2.5'
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+
 
     //noinspection GradleDependency
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'

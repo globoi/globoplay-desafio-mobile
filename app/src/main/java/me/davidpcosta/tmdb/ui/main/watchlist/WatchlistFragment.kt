@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import me.davidpcosta.tmdb.R
-import me.davidpcosta.tmdb.adapters.MovieAdapter
 import me.davidpcosta.tmdb.data.model.Movie
 import me.davidpcosta.tmdb.toast
 import me.davidpcosta.tmdb.ui.highlight.HighlightActivity
@@ -33,15 +32,16 @@ class WatchlistFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.activity_main_fragment_watchlist, container, false)
         sharedPreferences = requireActivity().getSharedPreferences(getString(R.string.const_shared_preference), Context.MODE_PRIVATE)
-        val sessionId = sharedPreferences.getString(getString(R.string.const_key_session_id), "")
+        val sessionId = sharedPreferences.getString(getString(R.string.const_key_session_id), "")!!
         val accountId = sharedPreferences.getLong(getString(R.string.const_key_account_id), 0)
 
-        watchlistViewModel = ViewModelProvider(this, WatchlistViewModelFactory()).get(WatchlistViewModel::class.java)
-        movieAdapter = MovieAdapter(requireActivity().applicationContext)
+        watchlistViewModel = ViewModelProvider(this, WatchlistViewModelFactory(requireActivity().applicationContext)).get(WatchlistViewModel::class.java)
+        movieAdapter =
+            MovieAdapter(requireActivity().applicationContext)
 
         watchlistGrid = view.findViewById<GridView>(R.id.watchlist).apply {
             adapter = movieAdapter
-            onItemClickListener =  AdapterView.OnItemClickListener { parent, view, position, id ->
+            onItemClickListener =  AdapterView.OnItemClickListener { _, _, position, _ ->
                 val movie = watchlistViewModel.movies.value!![position]
                 requireActivity().toast(movie.title)
                 goToMovie(movie)

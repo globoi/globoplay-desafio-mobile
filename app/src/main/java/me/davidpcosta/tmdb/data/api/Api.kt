@@ -52,8 +52,8 @@ interface Api {
     @POST("account/{account_id}/watchlist")
     fun addToWatchlist(
         @Body media: Media,
-        @Query("session_id") sessionId: String,
         @Path("account_id") accountId: Long,
+        @Query("session_id") sessionId: String,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
     ): Observable<WatchlistOperationResponse>
 

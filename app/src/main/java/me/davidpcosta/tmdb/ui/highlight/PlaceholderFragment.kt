@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import me.davidpcosta.tmdb.R
-import me.davidpcosta.tmdb.adapters.MovieAdapter
+import me.davidpcosta.tmdb.ui.main.watchlist.MovieAdapter
 import me.davidpcosta.tmdb.data.model.Cast
 import me.davidpcosta.tmdb.data.model.Genre
 import me.davidpcosta.tmdb.data.model.Movie
@@ -42,7 +42,7 @@ class PlaceholderFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        highlightViewModel = ViewModelProvider(this, HighlightViewModelFactory()).get(HighlightViewModel::class.java)
+        highlightViewModel = ViewModelProvider(this, HighlightViewModelFactory(requireActivity())).get(HighlightViewModel::class.java)
     }
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -51,7 +51,10 @@ class PlaceholderFragment : Fragment() {
         when (sectionNumber) {
             SECTION_SIMILAR -> {
                 view = inflater.inflate(R.layout.activity_highlight_fragment_similar, container, false)
-                movieAdapter = MovieAdapter(requireActivity().applicationContext)
+                movieAdapter =
+                    MovieAdapter(
+                        requireActivity().applicationContext
+                    )
                 view.findViewById<GridView>(R.id.similar_movies).apply {
                     adapter = movieAdapter
                     onItemClickListener =  AdapterView.OnItemClickListener { _, _, position, _ ->
@@ -119,9 +122,9 @@ class PlaceholderFragment : Fragment() {
         requireActivity().startActivity(intent)
     }
 
-    private fun castToStringList(cast: List<Cast>?): String {
-        val maxCast = 15;
-        cast?.let { cast ->
+    private fun castToStringList(castLis: List<Cast>?): String {
+        val maxCast = 15
+        castLis?.let { cast ->
             val newMaxCast = if (cast.size < maxCast) cast.size else maxCast
             return cast.subList(0, newMaxCast).joinToString {
                 it.name
@@ -131,10 +134,8 @@ class PlaceholderFragment : Fragment() {
     }
 
     private fun genresToStringList(genres: List<Genre>?): String {
-        val maxCast = 15;
         genres?.let { genre ->
-            val newMaxCast = if (genre.size < maxCast) genre.size else maxCast
-            return genre.subList(0, newMaxCast).joinToString {
+            return genre.joinToString {
                 it.name
             }
         }

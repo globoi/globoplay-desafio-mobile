@@ -1,13 +1,16 @@
 package me.davidpcosta.tmdb.ui.highlight
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
 import me.davidpcosta.tmdb.data.api.ApiService
+import me.davidpcosta.tmdb.data.dao.AppDatabase
 import me.davidpcosta.tmdb.data.repository.MoviesRepository
 import me.davidpcosta.tmdb.data.repository.WatchlistRepository
 
 @Suppress("UNCHECKED_CAST")
-class HighlightViewModelFactory : ViewModelProvider.Factory {
+class HighlightViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HighlightViewModel::class.java)) {
@@ -16,7 +19,11 @@ class HighlightViewModelFactory : ViewModelProvider.Factory {
                         api = ApiService.instance
                     ),
                     watchlistRepository = WatchlistRepository(
-                        api = ApiService.instance
+                        api = ApiService.instance,
+                        movieDao = Room.databaseBuilder(
+                            context,
+                            AppDatabase::class.java, "database-name"
+                        ).allowMainThreadQueries().build().movieDao()
                     )
             ) as T
         }

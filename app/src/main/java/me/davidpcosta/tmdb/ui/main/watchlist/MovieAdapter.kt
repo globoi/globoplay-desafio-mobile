@@ -1,4 +1,4 @@
-package me.davidpcosta.tmdb.adapters
+package me.davidpcosta.tmdb.ui.main.watchlist
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -36,7 +36,10 @@ class MovieAdapter(private val applicationContext: Context): BaseAdapter() {
 
         if (convertView == null) {
             view = inflater.inflate(R.layout.movie_item, parent, false)
-            viewHolder = ViewHolder(view)
+            viewHolder =
+                ViewHolder(
+                    view
+                )
             view.tag = viewHolder
         } else {
             view = convertView

@@ -1,11 +1,15 @@
 package me.davidpcosta.tmdb.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import java.util.*
 
+
+@Entity
 data class Movie (
-    @SerializedName("id") var id: Long,
+    @PrimaryKey @SerializedName("id") var id: Long,
     @SerializedName("title") var title: String,
     @SerializedName("original_title") var originalTitle: String,
     @SerializedName("backdrop_path") var backdropPath: String,

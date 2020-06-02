@@ -38,8 +38,8 @@ class HighlightViewModel(private val moviesRepository: MoviesRepository, private
         }
     }
 
-    fun addToWatchlist(accountId: Long, sessionId: String, movieId: Long) {
-        watchlistRepository.addToWatchlist(accountId, sessionId, movieId).subscribe {
+    fun addToWatchlist(accountId: Long, sessionId: String, movie: Movie) {
+        watchlistRepository.addToWatchlist(accountId, sessionId, movie).subscribe {
             watchlistOperationResponse as MutableLiveData
             watchlistOperationResponse.value = it
         }
