@@ -39,15 +39,6 @@ class HomeFragment : Fragment() {
         return view
     }
 
-    private fun initComponents() {
-        view?.let {view ->
-            genresRecyclerView = view.findViewById<RecyclerView>(R.id.genres_list).apply {
-                layoutManager = viewManager
-                adapter = genreAdapter
-            }
-        }
-    }
-
     private fun fetchGenres() {
         homeViewModel.fetchGenres()
         homeViewModel.genres.observe(viewLifecycleOwner, Observer { genres ->
