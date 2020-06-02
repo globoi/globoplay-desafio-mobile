@@ -61,19 +61,17 @@ class GenreAdapter(
         genre.movies?.let {
             adapter.movies = it
             adapter.notifyDataSetChanged()
-            return
+            return // previne carregar sempre
         }
 
-        // Caso nao carregado ainda
-        homeViewModel.fetchMoviesByGenre(genre.id).observe(lifecycleOwner, Observer {
+        homeViewModel.fetchMoviesByGenre(genre.id)
+        homeViewModel.movies.observe(lifecycleOwner, Observer {
             genre.movies = it
             adapter.movies = it
             adapter.notifyDataSetChanged()
             holder.loading.hide()
             holder.moviesRecycleView.show()
         })
-
-
     }
 }
 

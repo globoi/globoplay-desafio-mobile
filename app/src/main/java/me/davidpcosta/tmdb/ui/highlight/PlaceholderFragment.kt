@@ -14,12 +14,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import me.davidpcosta.tmdb.R
-import me.davidpcosta.tmdb.ui.main.watchlist.MovieAdapter
 import me.davidpcosta.tmdb.data.model.Cast
 import me.davidpcosta.tmdb.data.model.Genre
 import me.davidpcosta.tmdb.data.model.Movie
 import me.davidpcosta.tmdb.data.model.MovieDetails
 import me.davidpcosta.tmdb.toLongFormatString
+import me.davidpcosta.tmdb.ui.main.watchlist.MovieAdapter
 
 class PlaceholderFragment : Fragment() {
 
@@ -81,7 +81,7 @@ class PlaceholderFragment : Fragment() {
         highlightViewModel.cast.observe(viewLifecycleOwner, Observer<List<Cast>> {
             view?.let {view ->
                 val cast = view.findViewById<TextView>(R.id.cast)
-                cast.text = formatHtmlTextView("Elenco", castToStringList(it))
+                cast.text = formatHtmlTextView(requireActivity().getString(R.string.highlight_details_cast_label), castToStringList(it))
             }
         })
     }
@@ -91,19 +91,19 @@ class PlaceholderFragment : Fragment() {
         highlightViewModel.movieDetails.observe(viewLifecycleOwner, Observer<MovieDetails> {
             view?.let {view ->
                 val originalTitle = view.findViewById<TextView>(R.id.original_title)
-                originalTitle.text = formatHtmlTextView("Título original", it.originalTitle)
+                originalTitle.text = formatHtmlTextView(requireActivity().getString(R.string.highlight_details_original_title_label), it.originalTitle)
 
                 val genres = view.findViewById<TextView>(R.id.genres)
-                genres.text = formatHtmlTextView("Generos", genresToStringList(it.genres))
+                genres.text = formatHtmlTextView(requireActivity().getString(R.string.highlight_details_genres_label), genresToStringList(it.genres))
 
                 val releaseDate = view.findViewById<TextView>(R.id.release_date)
-                releaseDate.text = formatHtmlTextView("Data de lançamento", it.releaseDate.toLongFormatString())
+                releaseDate.text = formatHtmlTextView(requireActivity().getString(R.string.highlight_details_release_date_label), it.releaseDate.toLongFormatString())
 
                 val originalLanguage = view.findViewById<TextView>(R.id.original_language)
-                originalLanguage.text = formatHtmlTextView("Idioma original", it.originalLanguage)
+                originalLanguage.text = formatHtmlTextView(requireActivity().getString(R.string.highlight_details_original_language_label), it.originalLanguage)
 
                 val averageRate = view.findViewById<TextView>(R.id.average_rate)
-                averageRate.text = formatHtmlTextView("Nota", it.voteAbarege.toString())
+                averageRate.text = formatHtmlTextView(requireActivity().getString(R.string.highlight_details_vote_average_label), it.voteAverage.toString())
             }
         })
     }
@@ -118,7 +118,7 @@ class PlaceholderFragment : Fragment() {
 
     private fun goToMovie(movie: Movie) {
         val intent = Intent(requireActivity(), HighlightActivity::class.java)
-        intent.putExtra("movie", movie)
+        intent.putExtra(getString(R.string.const_key_movie), movie)
         requireActivity().startActivity(intent)
     }
 

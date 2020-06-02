@@ -3,21 +3,21 @@ package me.davidpcosta.tmdb.ui.highlight
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.room.Room
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.BlurTransformation
 import me.davidpcosta.tmdb.BuildConfig
 import me.davidpcosta.tmdb.R
-import me.davidpcosta.tmdb.data.dao.AppDatabase
 import me.davidpcosta.tmdb.data.model.Movie
+import me.davidpcosta.tmdb.databinding.ActivityHighlightBinding
 import me.davidpcosta.tmdb.toast
 
 
@@ -31,17 +31,19 @@ class HighlightActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_highlight)
+
+        DataBindingUtil.setContentView<ActivityHighlightBinding>(this, R.layout.activity_highlight).apply {
+            this.activity = this@HighlightActivity
+        }
 
         highlightViewModel = ViewModelProvider(this, HighlightViewModelFactory(this)).get(HighlightViewModel::class.java)
-        movie = intent.getSerializableExtra("movie") as Movie
-        sharedPreferences = getSharedPreferences("user_login", Context.MODE_PRIVATE)
-        sessionId = sharedPreferences.getString("session_id", "")!!
-        accountId = sharedPreferences.getLong("account_id", 0)
+        movie = intent.getSerializableExtra(getString(R.string.const_key_movie)) as Movie
+        sharedPreferences = getSharedPreferences(getString(R.string.const_shared_preference), Context.MODE_PRIVATE)
+        sessionId = sharedPreferences.getString(getString(R.string.const_key_session_id), "")!!
+        accountId = sharedPreferences.getLong(getString(R.string.const_key_account_id), 0)
 
         initComponents()
         setViewData()
-        observeWatchlistOperationResponse()
     }
 
     private fun initComponents() {
@@ -51,15 +53,41 @@ class HighlightActivity : AppCompatActivity() {
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
 
-        val watchlistButton: Button = findViewById(R.id.add_to_watchlist_button)
-        watchlistButton.setOnClickListener {
-            highlightViewModel.addToWatchlist(accountId, sessionId, movie)
-        }
+        val watchlistButton: AppCompatButton = findViewById(R.id.add_to_watchlist_button)
+        highlightViewModel.isOnWatchlist(movie)
+        highlightViewModel.isOnWatchlist.observe(this, Observer {
+            if (it) {
+                watchlistButton.text = getString(R.string.highlight_button_watchlist_added_label)
+                watchlistButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_done_white_24dp, 0, 0, 0)
+            } else {
+                watchlistButton.text = getString(R.string.highlight_button_watchlist_add_label)
+                watchlistButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star_white_24dp, 0, 0, 0)
+            }
+        })
+    }
 
-//        val watchlistButton: Button = findViewById(R.id.add_to_watchlist_button)
-//        watchlistButton.setOnClickListener {
-//            highlightViewModel.removeFromWatchlist(accountId, sessionId, movie.id)
-//        }
+    fun handleWatchlistButtonClicked() {
+        if (highlightViewModel.isOnWatchlist.value == false) {
+            highlightViewModel.addToWatchlist(accountId, sessionId, movie)
+                .observe(this, Observer {
+                    if (it.statusCode == 1 || it.statusCode == 12) {
+                        highlightViewModel.isOnWatchlist(movie)
+                        toast(getString(R.string.highlight_message_watchlist_added))
+                    }
+                })
+        } else {
+            highlightViewModel.removeFromWatchlist(accountId, sessionId, movie)
+                .observe(this, Observer {
+                    if (it.statusCode == 13) {
+                        highlightViewModel.isOnWatchlist(movie)
+                        toast(getString(R.string.highlight_message_watchlist_removed))
+                    }
+                })
+        }
+    }
+
+    fun handlePlayButtonClicked() {
+        toast("Não implementado :(")
     }
 
     private fun setViewData() {
@@ -81,14 +109,4 @@ class HighlightActivity : AppCompatActivity() {
         movieOverview.text = movie.overview
     }
 
-    private fun observeWatchlistOperationResponse() {
-        highlightViewModel.watchlistOperationResponse.observe(this, Observer {
-            if (it.statusCode == 1 || it.statusCode == 12) {
-                toast("Filme adicionado à sua lista")
-            }
-            else if (it.statusCode == 13) {
-                toast("Filme removido sua lista")
-            }
-        })
-    }
 }

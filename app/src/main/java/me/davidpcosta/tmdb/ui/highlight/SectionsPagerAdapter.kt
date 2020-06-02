@@ -8,11 +8,11 @@ import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.data.model.Movie
 
 class SectionsPagerAdapter(private val movie: Movie, private val context: Context, fm: FragmentManager) :
-FragmentPagerAdapter(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private val TAB_TITLES = arrayOf(
-        R.string.tab_text_similar,
-        R.string.tab_text_details
+        R.string.highlight_tab_text_similar,
+        R.string.highlight_tab_text_details
     )
 
     override fun getItem(position: Int): Fragment {

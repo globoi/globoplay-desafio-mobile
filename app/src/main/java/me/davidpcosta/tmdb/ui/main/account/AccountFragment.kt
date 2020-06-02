@@ -27,23 +27,23 @@ class AccountFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var sessionId: String
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.activity_main_fragment_account, container, false)
 
         accountViewModel = ViewModelProvider(this, AccountViewModelFactory()).get(AccountViewModel::class.java)
         sharedPreferences = requireActivity().getSharedPreferences(getString(R.string.const_shared_preference), Context.MODE_PRIVATE)
         sessionId = sharedPreferences.getString(getString(R.string.const_key_session_id), "")!!
 
-        initComponents()
+        val logoutButton: Button = view.findViewById(R.id.logout_button)
+        logoutButton.setOnClickListener {
+            handleLogoutButtonClicked()
+        }
+
         fetchAccountDetails()
         return view
     }
 
-    private fun handleLogoutButtonClicked() {
+    fun handleLogoutButtonClicked() {
         deleteUserInfo()
         goToLogin()
     }
@@ -88,12 +88,4 @@ class AccountFragment : Fragment() {
         })
     }
 
-    private fun initComponents() {
-        view?.let {view->
-            val logoutButton: Button = view.findViewById(R.id.logout_button)
-            logoutButton.setOnClickListener {
-                handleLogoutButtonClicked()
-            }
-        }
-    }
 }

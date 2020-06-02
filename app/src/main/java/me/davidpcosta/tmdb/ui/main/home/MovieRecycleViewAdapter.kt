@@ -11,7 +11,6 @@ import com.squareup.picasso.Picasso
 import me.davidpcosta.tmdb.BuildConfig
 import me.davidpcosta.tmdb.R
 import me.davidpcosta.tmdb.data.model.Movie
-import me.davidpcosta.tmdb.toast
 import me.davidpcosta.tmdb.ui.highlight.HighlightActivity
 
 class MovieRecycleViewAdapter(
@@ -46,7 +45,6 @@ class MovieRecycleViewAdapter(
             .into(holder.poster)
 
         holder.itemView.setOnClickListener {
-            applicationContext.toast(movie.title)
             goToMovie(movie)
         }
     }

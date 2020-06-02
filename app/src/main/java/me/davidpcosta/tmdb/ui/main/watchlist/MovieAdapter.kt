@@ -28,7 +28,6 @@ class MovieAdapter(private val applicationContext: Context): BaseAdapter() {
         return movies[i].id
     }
 
-
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
         val view: View?
         val viewHolder: ViewHolder
@@ -36,10 +35,7 @@ class MovieAdapter(private val applicationContext: Context): BaseAdapter() {
 
         if (convertView == null) {
             view = inflater.inflate(R.layout.movie_item, parent, false)
-            viewHolder =
-                ViewHolder(
-                    view
-                )
+            viewHolder = ViewHolder(view)
             view.tag = viewHolder
         } else {
             view = convertView

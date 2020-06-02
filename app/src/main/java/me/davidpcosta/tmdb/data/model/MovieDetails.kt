@@ -10,7 +10,7 @@ data class MovieDetails (
     @SerializedName("original_title") var originalTitle: String,
     @SerializedName("release_date") var releaseDate: Date,
     @SerializedName("original_language") var originalLanguage: String,
-    @SerializedName("vote_average") var voteAbarege: Double,
+    @SerializedName("vote_average") var voteAverage: Double,
     @SerializedName("genres") var genres: List<Genre>,
     @SerializedName("backdrop_path") var backdropPath: String,
     @SerializedName("overview") var overview: String,

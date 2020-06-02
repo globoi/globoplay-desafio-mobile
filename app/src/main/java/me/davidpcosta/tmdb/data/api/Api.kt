@@ -3,6 +3,7 @@ package me.davidpcosta.tmdb.data.api
 import me.davidpcosta.tmdb.BuildConfig
 import me.davidpcosta.tmdb.data.model.*
 import okhttp3.MediaType
+import retrofit2.Call
 import retrofit2.http.*
 import rx.Observable
 
@@ -47,7 +48,7 @@ interface Api {
         @Query("session_id") sessionId: String,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY,
         @Query("language") language: String = BuildConfig.TMDB_LANGUAGE
-    ): Observable<PagedResult<Movie>>
+    ): Call<PagedResult<Movie>>
 
     @POST("account/{account_id}/watchlist")
     fun addToWatchlist(
@@ -55,7 +56,7 @@ interface Api {
         @Path("account_id") accountId: Long,
         @Query("session_id") sessionId: String,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
-    ): Observable<WatchlistOperationResponse>
+    ): Call<WatchlistOperationResponse>
 
     @POST("account/{account_id}/watchlist")
     fun removeFromWatchlist(
@@ -63,7 +64,7 @@ interface Api {
         @Path("account_id") accountId: Long,
         @Query("session_id") sessionId: String,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
-    ): Observable<WatchlistOperationResponse>
+    ): Call<WatchlistOperationResponse>
 
     // Movies
 
@@ -71,7 +72,7 @@ interface Api {
     fun genres(
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY,
         @Query("language") language: String = BuildConfig.TMDB_LANGUAGE
-    ): Observable<Generes>
+    ): Call<Generes>
 
     @GET("discover/movie")
     fun moviesByGenre(
@@ -79,14 +80,14 @@ interface Api {
         @Query("include_adult") includeAdults: Boolean = false,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY,
         @Query("language") language: String = BuildConfig.TMDB_LANGUAGE
-    ): Observable<PagedResult<Movie>>
+    ): Call<PagedResult<Movie>>
 
     @GET("movie/{movie_id}")
     fun movieDetails(
         @Path("movie_id") movieId: Long,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY,
         @Query("language") language: String = BuildConfig.TMDB_LANGUAGE
-    ): Observable<MovieDetails>
+    ): Call<MovieDetails>
 
     @GET("movie/{movie_id}/similar")
     fun similarMovies(
@@ -94,12 +95,12 @@ interface Api {
         @Query("include_adult") includeAdults: Boolean = false,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY,
         @Query("language") language: String = BuildConfig.TMDB_LANGUAGE
-    ): Observable<PagedResult<Movie>>
+    ): Call<PagedResult<Movie>>
 
     @GET("movie/{movieId}/credits")
     fun movieCredits(
         @Path("movieId") movieId: Long,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
-    ): Observable<Credits>
+    ): Call<Credits>
 
 }

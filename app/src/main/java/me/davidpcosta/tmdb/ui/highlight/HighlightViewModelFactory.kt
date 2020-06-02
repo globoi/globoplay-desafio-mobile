@@ -22,7 +22,7 @@ class HighlightViewModelFactory(private val context: Context) : ViewModelProvide
                         api = ApiService.instance,
                         movieDao = Room.databaseBuilder(
                             context,
-                            AppDatabase::class.java, "database-name"
+                            AppDatabase::class.java, "database-watchlist"
                         ).allowMainThreadQueries().build().movieDao()
                     )
             ) as T

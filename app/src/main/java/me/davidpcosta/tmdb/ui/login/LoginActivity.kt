@@ -28,7 +28,6 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
         sharedPreferences = getSharedPreferences(getString(R.string.const_shared_preference), MODE_PRIVATE)
 
-
         DataBindingUtil.setContentView<ActivityLoginBinding>(this, R.layout.activity_login).apply {
             this.viewModel = loginViewModel
             this.activity = this@LoginActivity

@@ -8,12 +8,16 @@ import me.davidpcosta.tmdb.data.model.Movie
 
 class WatchlistViewModel(private val watchlistRepository: WatchlistRepository) : ViewModel() {
 
-    val movies: LiveData<List<Movie>> = MutableLiveData()
+    lateinit var movies: LiveData<List<Movie>>
 
     fun fetchWatchlist(accountId: Long, sessionId: String) {
-        watchlistRepository.watchlist(accountId, sessionId).subscribe {
-            movies as MutableLiveData
-            movies.value = it.results
+        movies = watchlistRepository.watchlist(accountId, sessionId)
+    }
+
+    fun updateFromLocalWatchlist() {
+        movies.let {
+            it as MutableLiveData
+            it.value = watchlistRepository.localWatchlist()
         }
     }
 }

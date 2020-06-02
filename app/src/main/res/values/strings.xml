@@ -12,15 +12,28 @@
     <string name="title_watchlist">Minha lista</string>
     <string name="title_account">Minha conta</string>
 
-    <string name="tab_text_similar">Assista Também</string>
-    <string name="tab_text_details">Detalhes</string>
+    <string name="highlight_tab_text_similar">Assista Também</string>
+    <string name="highlight_tab_text_details">Detalhes</string>
     <string name="highlight_details_details_label">Ficha técinica</string>
-    <string name="movie_poster_content_description">Poster do filme</string>
-    <string name="account_button_logout_label">Logout</string>
+    <string name="highlight_movie_poster_content_description">Poster do filme</string>
+    <string name="highlight_button_watchlist_add_label">Minha lista</string>
+    <string name="highlight_button_watchlist_added_label">Adicionado</string>
+    <string name="highlight_message_watchlist_added">"Filme adicionado à sua lista"</string>
+    <string name="highlight_message_watchlist_removed">Filme removido da sua lista</string>
+    <string name="highlight_button_play">Assista</string>
+    <string name="highlight_details_original_title_label">Título original</string>
+    <string name="highlight_details_genres_label">Generos</string>
+    <string name="highlight_details_release_date_label">Data de lançamento</string>
+    <string name="highlight_details_original_language_label">Idioma original</string>
+    <string name="highlight_details_vote_average_label">Nota</string>
+    <string name="highlight_details_cast_label">Elenco</string>
 
+    <string name="account_button_logout_label">Logout</string>
 
     <string name="const_shared_preference">user_login</string>
     <string name="const_key_account_id">account_id</string>
     <string name="const_key_session_id">session_id</string>
     <string name="const_key_movie">movie</string>
+
+
 </resources>

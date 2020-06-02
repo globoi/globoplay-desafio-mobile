@@ -1,29 +1,21 @@
 package me.davidpcosta.tmdb.ui.main.home
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import me.davidpcosta.tmdb.data.repository.MoviesRepository
 import me.davidpcosta.tmdb.data.model.Genre
 import me.davidpcosta.tmdb.data.model.Movie
+import me.davidpcosta.tmdb.data.repository.MoviesRepository
 
 class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
 
-    val genres: LiveData<List<Genre>> = MutableLiveData()
+    lateinit var genres: LiveData<List<Genre>>
+    lateinit var movies: LiveData<List<Movie>>
 
     fun fetchGenres() {
-        if (genres.value != null) return
-        moviesRepository.genres().subscribe {
-            genres as MutableLiveData
-            genres.value = it.genres
-        }
+        genres = moviesRepository.genres()
     }
 
-    fun fetchMoviesByGenre(genreId: Long): LiveData<List<Movie>> {
-        val movies = MutableLiveData<List<Movie>>()
-        moviesRepository.moviesByGenre(genreId).subscribe {
-            movies.value = it.results
-        }
-        return movies
+    fun fetchMoviesByGenre(genreId: Long) {
+        movies = moviesRepository.moviesByGenre(genreId)
     }
 }

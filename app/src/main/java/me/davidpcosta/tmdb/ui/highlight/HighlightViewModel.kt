@@ -12,43 +12,33 @@ import me.davidpcosta.tmdb.data.repository.WatchlistRepository
 
 class HighlightViewModel(private val moviesRepository: MoviesRepository, private val watchlistRepository: WatchlistRepository) : ViewModel() {
 
-    val watchlistOperationResponse: LiveData<WatchlistOperationResponse> = MutableLiveData()
-    val similarMovies: LiveData<List<Movie>> = MutableLiveData()
-    val movieDetails: LiveData<MovieDetails> = MutableLiveData()
-    val cast: LiveData<List<Cast>> = MutableLiveData()
+    lateinit var similarMovies: LiveData<List<Movie>>
+    lateinit var movieDetails: LiveData<MovieDetails>
+    lateinit var cast: LiveData<List<Cast>>
+    val isOnWatchlist: LiveData<Boolean> = MutableLiveData(false)
 
     fun fetchSimilarMovies(movieId: Long) {
-        moviesRepository.similarMovies(movieId).subscribe {
-            similarMovies as MutableLiveData
-            similarMovies.value = it.results
-        }
+        similarMovies = moviesRepository.similarMovies(movieId)
     }
 
     fun fetchCredits(movieId: Long) {
-        moviesRepository.credits(movieId).subscribe {
-            cast as MutableLiveData
-            cast.value = it.cast
-        }
+        cast = moviesRepository.credits(movieId)
     }
 
     fun movieDetails(movieId: Long) {
-        moviesRepository.movieDetails(movieId).subscribe {
-            movieDetails as MutableLiveData
-            movieDetails.value = it
-        }
+        movieDetails = moviesRepository.movieDetails(movieId)
     }
 
-    fun addToWatchlist(accountId: Long, sessionId: String, movie: Movie) {
-        watchlistRepository.addToWatchlist(accountId, sessionId, movie).subscribe {
-            watchlistOperationResponse as MutableLiveData
-            watchlistOperationResponse.value = it
-        }
+    fun addToWatchlist(accountId: Long, sessionId: String, movie: Movie): LiveData<WatchlistOperationResponse> {
+        return watchlistRepository.addToWatchlist(accountId, sessionId, movie)
     }
 
-    fun removeFromWatchlist(accountId: Long, sessionId: String, movieId: Long) {
-        watchlistRepository.removeFromWatchlist(accountId, sessionId, movieId).subscribe {
-            watchlistOperationResponse as MutableLiveData
-            watchlistOperationResponse.value = it
-        }
+    fun removeFromWatchlist(accountId: Long, sessionId: String, movie: Movie): LiveData<WatchlistOperationResponse> {
+        return watchlistRepository.removeFromWatchlist(accountId, sessionId, movie)
+    }
+
+    fun isOnWatchlist(movie: Movie) {
+        isOnWatchlist as MutableLiveData
+        isOnWatchlist.value = watchlistRepository.isInWatchlist(movie)
     }
 }
