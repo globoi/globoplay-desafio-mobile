@@ -1,0 +1,18 @@
+platform:ios, '10.0'
+
+target 'My Movies' do 
+	use_frameworks!
+  
+  pod 'Kingfisher', '~> 5.0'
+
+	target 'My MoviesTests' do
+  	inherit! :search_paths
+  	# Pods for testing
+	end
+
+	target 'My MoviesUITests' do
+  	inherit! :search_paths
+  	# Pods for testing
+	end
+end
+
