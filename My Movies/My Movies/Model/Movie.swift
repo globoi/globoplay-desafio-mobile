@@ -14,7 +14,9 @@ struct Movie {
     let overview: String?
     let originalTitle: String?
     let genres: [Genre]?
+    let genreIds: [Int]?
     let releaseDate: String?
+    let posterPath: String?
 }
 
 extension Movie: Decodable {
@@ -23,6 +25,8 @@ extension Movie: Decodable {
         case id, title, overview, genres
         case originalTitle = "original_title"
         case releaseDate = "release_date"
+        case posterPath = "poster_path"
+        case genreIds = "genre_ids"
     }
     
     init?(data: Data) {

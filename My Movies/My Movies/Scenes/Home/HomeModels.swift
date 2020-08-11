@@ -10,4 +10,24 @@ import Foundation
 
 struct HomeModels {
     
+    // MARK: - Use Cases
+    
+    enum FetchMovies {
+        struct Request {
+            let page: Int
+            let genre: Int
+        }
+        
+        struct Response: Decodable {
+            var genre: Int
+            var movies: [Movie]
+        }
+        
+        struct ViewModel {
+            struct DisplayedMovie {
+                var title: String
+            }
+            var displayedStatements: [DisplayedMovie]
+        }
+    }
 }

@@ -9,11 +9,32 @@
 import Foundation
 
 protocol HomePresentationLogic {
-
+    func presentFetchedMovies(response: HomeModels.FetchMovies.Response)
+    func presentError(_ error: Error)
 }
 
 class HomePresenter: HomePresentationLogic {
 
     weak var viewController: HomeDisplayLogic?
     
+    func presentFetchedMovies(response: HomeModels.FetchMovies.Response) {
+        
+        var displayedMovies: [HomeModels.FetchMovies.ViewModel.DisplayedMovie] = []
+        
+        for movie in response.movies {
+            let displayedMovie = HomeModels
+                .FetchMovies
+                .ViewModel
+                .DisplayedMovie(title: movie.title ?? "Unknown")
+            
+            displayedMovies.append(displayedMovie)
+        }
+        
+        let viewModel = HomeModels.FetchMovies.ViewModel(displayedStatements: displayedMovies)
+        viewController?.displayFetchedMovies(viewModel: viewModel, forGenre: response.genre)
+    }
+    
+    func presentError(_ error: Error) {
+        viewController?.displayError(withMessage: error.localizedDescription)
+    }
 }
