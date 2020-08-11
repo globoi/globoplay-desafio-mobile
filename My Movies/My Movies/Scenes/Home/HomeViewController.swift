@@ -99,12 +99,21 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return GenresList.allCases.count
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return GenresList.allCases[section].getTitle()
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return HomeTableViewCell.height
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+
+        let label = UILabel()
+        label.frame = CGRect.init(x: 16, y: 5, width: headerView.frame.width - 10, height: headerView.frame.height - 10)
+        label.text = GenresList.allCases[section].getTitle()
+        label.font = UIFont.systemFont(ofSize: 16) // my custom font
+
+        headerView.addSubview(label)
+
+        return headerView
     }
 }
 
