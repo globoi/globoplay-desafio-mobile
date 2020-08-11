@@ -22,14 +22,16 @@ class HomePresenter: HomePresentationLogic {
         var displayedMovies: [HomeModels.FetchMovies.ViewModel.DisplayedMovie] = []
         
         for movie in response.movies {
+            let posterPathUrl = Constants.baseImagesURL + "w185/\(movie.posterPath ?? "")"
+            
             let displayedMovie = HomeModels
                 .FetchMovies
                 .ViewModel
-                .DisplayedMovie(title: movie.title ?? "Unknown")
+                .DisplayedMovie(title: movie.title ?? "Unknown",
+                                posterPath: posterPathUrl)
             
             displayedMovies.append(displayedMovie)
         }
-        
         let viewModel = HomeModels.FetchMovies.ViewModel(displayedStatements: displayedMovies)
         viewController?.displayFetchedMovies(viewModel: viewModel, forGenre: response.genre)
     }

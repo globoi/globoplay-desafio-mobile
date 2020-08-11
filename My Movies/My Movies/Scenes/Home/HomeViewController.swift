@@ -54,10 +54,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTable()
+        fetchMovies()
+    }
+    
+    private func setupTable() {
         tableView.dataSource = self
         tableView.delegate = self
-        
-        fetchMovies()
+        tableView.register(UINib(nibName: HomeTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: HomeTableViewCell.identifier)
     }
     
     // MARK: - Fetch Data
@@ -75,15 +79,20 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let movies = displayedMovies[GenresList.allCases[indexPath.section].getId()]!
-        cell.textLabel?.text = movies[indexPath.row].title
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.render(displayedMovies: displayedMovies[GenresList.allCases[indexPath.section].getId()]!)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let genreId = GenresList.allCases[section].getId()
-        return displayedMovies[genreId]?.count ?? 0
+        
+        guard let displayedMovies = displayedMovies[genreId] else { return 0 }
+        return displayedMovies.count > 0 ? 1 : 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -92,6 +101,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return GenresList.allCases[section].getTitle()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return HomeTableViewCell.height
     }
 }
 

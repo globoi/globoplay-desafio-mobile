@@ -26,6 +26,7 @@ struct HomeModels {
         struct ViewModel {
             struct DisplayedMovie {
                 var title: String
+                var posterPath: String?
             }
             var displayedStatements: [DisplayedMovie]
         }
