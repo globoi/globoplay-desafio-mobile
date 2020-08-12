@@ -55,11 +55,13 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var watchButton: UIButton!
+    @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var moviesCollectionView: MoviesCollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         fetchMovieDetails()
     }
     

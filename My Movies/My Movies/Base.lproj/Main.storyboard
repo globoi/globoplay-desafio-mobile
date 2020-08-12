@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -104,10 +103,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hz1-v8-ul6" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="915"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="891"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0aM-mV-J5S">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
+                                                <rect key="frame" x="0.0" y="56" width="414" height="312"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -115,8 +114,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="M2o-Am-NqS">
-                                                <rect key="frame" x="22" y="380" width="370" height="35"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="M2o-Am-NqS">
+                                                <rect key="frame" x="22" y="380" width="370" height="471"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dvL-1K-vdB">
                                                         <rect key="frame" x="0.0" y="0.0" width="370" height="35"/>
@@ -134,6 +133,13 @@
                                                             <constraint firstAttribute="height" constant="35" id="NGc-NN-x3G"/>
                                                         </constraints>
                                                     </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oTE-9B-91X" customClass="MoviesCollectionView" customModule="My_Movies" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="49" width="370" height="422"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="oTE-9B-91X" secondAttribute="height" multiplier="3:3.42" id="BnT-sS-qeq"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSd-2R-uPc">
@@ -177,13 +183,12 @@
                                             <constraint firstItem="fSd-2R-uPc" firstAttribute="top" secondItem="7kn-wL-LDy" secondAttribute="bottom" constant="24" id="WPV-tF-JHz"/>
                                             <constraint firstItem="M2o-Am-NqS" firstAttribute="leading" secondItem="Hz1-v8-ul6" secondAttribute="leading" constant="22" id="WlO-st-0DF"/>
                                             <constraint firstAttribute="trailing" secondItem="fSd-2R-uPc" secondAttribute="trailing" constant="24" id="bH8-Uc-kqm"/>
-                                            <constraint firstAttribute="bottom" secondItem="M2o-Am-NqS" secondAttribute="bottom" constant="500" id="bI9-G8-1VZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="M2o-Am-NqS" secondAttribute="bottom" constant="40" id="bI9-G8-1VZ"/>
                                             <constraint firstAttribute="trailing" secondItem="M2o-Am-NqS" secondAttribute="trailing" constant="22" id="fGS-Kt-xrm"/>
                                             <constraint firstItem="00M-Gx-blp" firstAttribute="top" secondItem="fSd-2R-uPc" secondAttribute="bottom" constant="8" id="fJj-ab-DZD"/>
                                             <constraint firstAttribute="trailing" secondItem="SIt-0o-zAV" secondAttribute="trailing" constant="24" id="hWY-NS-qFQ"/>
                                             <constraint firstItem="SIt-0o-zAV" firstAttribute="leading" secondItem="Hz1-v8-ul6" secondAttribute="leading" constant="24" id="jVG-Pd-i10"/>
                                             <constraint firstItem="7kn-wL-LDy" firstAttribute="centerX" secondItem="0aM-mV-J5S" secondAttribute="centerX" id="vls-MK-OwJ"/>
-                                            <constraint firstItem="fSd-2R-uPc" firstAttribute="centerX" secondItem="0aM-mV-J5S" secondAttribute="centerX" id="yfM-Bs-C4J"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -210,8 +215,10 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="0aM-mV-J5S" id="MQp-8T-jYI"/>
+                        <outlet property="contentStackView" destination="M2o-Am-NqS" id="Hzq-vJ-YXR"/>
                         <outlet property="descriptionLabel" destination="SIt-0o-zAV" id="XcF-8s-Dbf"/>
                         <outlet property="favoriteButton" destination="t21-0e-h9L" id="sHZ-ax-5YA"/>
+                        <outlet property="moviesCollectionView" destination="oTE-9B-91X" id="lYo-ds-CIC"/>
                         <outlet property="posterImageView" destination="7kn-wL-LDy" id="8Mv-GA-uw2"/>
                         <outlet property="subtitleLabel" destination="00M-Gx-blp" id="CBT-bu-pdP"/>
                         <outlet property="titleLabel" destination="fSd-2R-uPc" id="jig-Q9-l4N"/>
