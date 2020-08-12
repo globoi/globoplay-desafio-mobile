@@ -9,10 +9,17 @@
 import Foundation
 import UIKit
 
+protocol DisplayableMovie {
+    var title: String { get set }
+    var posterPath: String? { get set }
+}
+
 class MoviesCollectionView: UIView {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var displayableMovies: [DisplayableMovie] = []
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,19 +31,21 @@ class MoviesCollectionView: UIView {
         initSubViews()
     }
     
-    private func setupView() {
-        backgroundColor = .red
+    func setMovies(_ displayableMovies: [DisplayableMovie]) {
+        self.displayableMovies = displayableMovies
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     private func initSubViews() {
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: Bundle(for: type(of: self)))
         nib.instantiate(withOwner: self, options: nil)
+        
         containerView.backgroundColor = .red
         containerView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(containerView)
         self.addConstraints()
-        
-        collectionView.backgroundColor = .blue
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -56,11 +65,14 @@ class MoviesCollectionView: UIView {
 extension MoviesCollectionView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return displayableMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as! MovieCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.render(withDisplayableMovie: displayableMovies[indexPath.row])
         return cell
     }
     

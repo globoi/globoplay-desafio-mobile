@@ -31,11 +31,10 @@ class APIManager {
     ///   - endPoint: Operation to perform
     ///   - completion: APIResponse with the completion status of the operation
     func request(body: String = "",
-                 method: HttpMethod,
                  endPoint: EndPoint,
                  completion: @escaping ((APIResponse) -> Void)) {
         
-        guard let request = asURLRequest(body: body, method: method, endPoint: endPoint) else {
+        guard let request = asURLRequest(body: body, method: endPoint.getHttpMethod(), endPoint: endPoint) else {
             completion(.error(ApplicationError.urlNotFound))
             return
         }

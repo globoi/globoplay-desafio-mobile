@@ -27,4 +27,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
             imageView.kf.setImage(with: url)
         }
     }
+    
+    func render(withDisplayableMovie displayableMovie: DisplayableMovie) {
+        titleLabel.text = displayableMovie.title
+        
+        if let posterPath = displayableMovie.posterPath, let url = URL(string: posterPath) {
+            imageView.kf.setImage(with: url)
+        }
+    }
 }

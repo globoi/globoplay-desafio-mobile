@@ -12,6 +12,7 @@ enum EndPoint {
     
     case getMovieDetails(String)
     case discoverMovies(Int, Int)
+    case getMovieRecommendations(String)
     
     func getPath() -> String {
         switch self {
@@ -19,13 +20,16 @@ enum EndPoint {
             return "\(Constants.baseURL)/movie/\(movieId)?api_key=\(Constants.apiKey)"
         case .discoverMovies(let page, let genre):
             return "\(Constants.baseURL)/discover/movie/?api_key=\(Constants.apiKey)&sort_by=popularity.desc&page=\(page)&with_genres=\(genre)"
+        case .getMovieRecommendations(let movieId):
+            return "\(Constants.baseURL)/movie/\(movieId)/recommendations?api_key=\(Constants.apiKey)"
         }
     }
     
     func getHttpMethod() -> HttpMethod {
         switch self {
-        case .getMovieDetails(_),
-             .discoverMovies:
+        case .getMovieDetails,
+             .discoverMovies,
+             .getMovieRecommendations:
             return .get
         }
     }

@@ -10,6 +10,7 @@ import UIKit
 
 protocol MovieDetailsDisplayLogic: class {
     func displayFetchedMovieDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel)
+    func displayFetchedMovieRecommendations(viewModel: MovieDetailsModels.FetchMovieRecommendations.ViewModel)
 }
 
 class MovieDetailsViewController: UIViewController {
@@ -61,18 +62,31 @@ class MovieDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         fetchMovieDetails()
+        fetchMovieRecommendations()
     }
     
     private func fetchMovieDetails() {
         guard let movieId = movie.id else { return }
         interactor?.fetchMovieDetails(movieId)
     }
+    
+    private func fetchMovieRecommendations() {
+        guard let movieId = movie.id else { return }
+        interactor?.fetchMovieRecommendations(movieId)
+    }
 }
 
 // MARK: - MovieDetailsDisplayLogic
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
+    
+    func displayFetchedMovieRecommendations(viewModel: MovieDetailsModels.FetchMovieRecommendations.ViewModel) {
+        
+        let displayedMovies = viewModel.displayedMovies
+        moviesCollectionView.setMovies(displayedMovies)
+    }
+    
     func displayFetchedMovieDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel) {
         
         let displayedMovie = viewModel.displayedMovie

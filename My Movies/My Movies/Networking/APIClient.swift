@@ -21,27 +21,47 @@ final class APIClient {
     ///   - movieId: Movie ID
     ///   - completion: Closure with request completion
     func getMovieDetails(_ movieId: String, completion: @escaping (MovieDetailsResponse) -> Void) {
-        manager.request(method: .get, endPoint: .getMovieDetails(movieId)) { (response) in
+        manager.request(endPoint: .getMovieDetails(movieId)) { (response) in
             switch response {
             case .sucess(let data):
-                completion(MovieDetailsResponse.parse(data))
+                completion(MovieDetailsResponse.parse(data)); break
             case .error(let appError):
-                completion(MovieDetailsResponse.failed(error: appError))
+                completion(MovieDetailsResponse.failed(error: appError)); break
             }
         }
     }
     
     /// Gets movies based on query params
-    /// - Parameter completion: Closure with request completion
+    /// - Parameters:
+    ///   - page: Page number
+    ///   - genre: Movie genre
+    ///   - completion: Closure with request completion
     func discoverMovies(onPage page: Int,
                         withGenre genre: Int,
                         completion: @escaping (MoviesResponse) -> Void) {
-        manager.request(method: .get, endPoint: .discoverMovies(page, genre)) { (response) in
+        manager.request(endPoint: .discoverMovies(page, genre)) { (response) in
             switch response {
             case .sucess(let data):
-                completion(MoviesResponse.parse(data))
+                completion(MoviesResponse.parse(data)); break
             case .error(let appError):
-                completion(MoviesResponse.failed(error: appError))
+                completion(MoviesResponse.failed(error: appError)); break
+            }
+        }
+    }
+    
+    
+    /// Gets movies recommendations based on a specific movie
+    /// - Parameters:
+    ///   - movieId: Movie ID
+    ///   - completion: Closure with request completion
+    func gerMovieRecomendations(_ movieId: String, completion: @escaping (MoviesResponse) -> Void) {
+        
+        manager.request(endPoint: .getMovieRecommendations(movieId)) { (response) in
+            switch response {
+            case .sucess(let data):
+                completion(MoviesResponse.parse(data)); break
+            case .error(let error):
+                completion(MoviesResponse.failed(error: error)); break
             }
         }
     }

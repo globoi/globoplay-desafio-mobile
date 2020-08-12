@@ -10,6 +10,7 @@ import Foundation
 
 protocol MovieDetailsBusinessLogic {
     func fetchMovieDetails(_ movieId: Int)
+    func fetchMovieRecommendations(_ movieId: Int)
 }
 
 protocol MovieDetailsDataStore {
@@ -37,6 +38,20 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
             case .error(let error):
                 self?.presenter?.presentError(error)
                 break
+            }
+        }
+    }
+    
+    func fetchMovieRecommendations(_ movieId: Int) {
+        let request = MovieDetailsModels.FetchMovieRecommendations.Request(movieId: String(movieId))
+        
+        worker.fetchMovieRecommendations(request: request) { [weak self] (response) in
+            switch response {
+            case .success(movies: let movies):
+                self?.presenter?.presentFetchedRecommendations(response: MovieDetailsModels.FetchMovieRecommendations.Response(movies: movies))
+                break
+            case .error(error: let error):
+                self?.presenter?.presentError(error); break
             }
         }
     }
