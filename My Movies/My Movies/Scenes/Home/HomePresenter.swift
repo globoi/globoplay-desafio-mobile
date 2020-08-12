@@ -17,22 +17,24 @@ class HomePresenter: HomePresentationLogic {
 
     weak var viewController: HomeDisplayLogic?
     
+    // MARK: - HomePresentationLogic
+    
     func presentFetchedMovies(response: HomeModels.FetchMovies.Response) {
         
         var displayedMovies: [HomeModels.FetchMovies.ViewModel.DisplayedMovie] = []
         
         for movie in response.movies {
-            let posterPathUrl = Constants.baseImagesURL + "w185/\(movie.posterPath ?? "")"
+            let posterPathURL = Constants.baseImagesURL + "w185/\(movie.posterPath ?? "")"
             
             let displayedMovie = HomeModels
                 .FetchMovies
                 .ViewModel
                 .DisplayedMovie(title: movie.title ?? "Unknown",
-                                posterPath: posterPathUrl)
+                                posterPath: posterPathURL)
             
             displayedMovies.append(displayedMovie)
         }
-        let viewModel = HomeModels.FetchMovies.ViewModel(displayedStatements: displayedMovies)
+        let viewModel = HomeModels.FetchMovies.ViewModel(displayedMovies: displayedMovies)
         viewController?.displayFetchedMovies(viewModel: viewModel, forGenre: response.genre)
     }
     

@@ -9,7 +9,7 @@
 import Foundation
 
 @objc protocol HomeRoutingLogic {
-    
+    func navigateToMovieDetails(atIndexPath indexPath: IndexPath, withGenre genre: Int)
 }
 
 protocol HomeDataPassing {
@@ -21,4 +21,19 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
     weak var viewController: HomeViewController?
     var dataStore: HomeDataStore?
     
+    // MARK: - Navigation
+    func navigateToMovieDetails(atIndexPath indexPath: IndexPath, withGenre genre: Int) {
+        
+        if let genreMovies = dataStore?.movies[genre], genreMovies.count > indexPath.row {
+            let selectedMovie = genreMovies[indexPath.row]
+            
+            guard let vc = viewController?.storyboard?.instantiateViewController(identifier: MovieDetailsViewController.identifier, creator: { coder in
+                return MovieDetailsViewController(coder: coder, selectedMovie: selectedMovie)
+            }) else {
+                fatalError("Failed to load MovieDetailsViewController from storyboard.")
+            }
+            
+            viewController?.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }

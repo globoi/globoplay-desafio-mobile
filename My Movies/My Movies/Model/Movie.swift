@@ -11,12 +11,13 @@ import Foundation
 struct Movie {
     let id: Int?
     let title: String?
-    let overview: String?
     let originalTitle: String?
+    let overview: String?
     let genres: [Genre]?
     let genreIds: [Int]?
     let releaseDate: String?
     let posterPath: String?
+    let backdropPath: String?
 }
 
 extension Movie: Decodable {
@@ -27,6 +28,7 @@ extension Movie: Decodable {
         case releaseDate = "release_date"
         case posterPath = "poster_path"
         case genreIds = "genre_ids"
+        case backdropPath = "backdrop_path"
     }
     
     init?(data: Data) {

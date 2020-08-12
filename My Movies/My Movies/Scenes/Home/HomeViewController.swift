@@ -84,7 +84,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        cell.render(displayedMovies: displayedMovies[GenresList.allCases[indexPath.section].getId()]!)
+        let genreId = GenresList.allCases[indexPath.section].getId()
+        guard let displayedMovies = displayedMovies[genreId] else {
+            return UITableViewCell()
+        }
+        
+        cell.render(displayedMovies: displayedMovies, withGenre: genreId)
+        cell.delegate = self
         return cell
     }
     
@@ -124,17 +130,25 @@ extension HomeViewController: HomeDisplayLogic {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         
-        DispatchQueue.main.async {
-            self.present(alertController, animated: true, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alertController, animated: true, completion: nil)
         }
     }
     
     func displayFetchedMovies(viewModel: HomeModels.FetchMovies.ViewModel, forGenre genre: Int) {
-        let displayedMovies = viewModel.displayedStatements
+        let displayedMovies = viewModel.displayedMovies
         self.displayedMovies[genre] = displayedMovies
         
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
         }
+    }
+}
+
+// MARK: - HomeTableViewCellDelegate
+extension HomeViewController: HomeTableViewCellDelegate {
+    
+    func didSelectMovieAtIndex(_ indexPath: IndexPath, forGenre genre: Int) {
+        router?.navigateToMovieDetails(atIndexPath: indexPath, withGenre: genre)
     }
 }

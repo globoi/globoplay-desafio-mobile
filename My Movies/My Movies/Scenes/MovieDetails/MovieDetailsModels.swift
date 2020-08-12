@@ -1,34 +1,35 @@
 //
-//  HomeModels.swift
+//  MovieDetailsModels.swift
 //  My Movies
 //
-//  Created by Rafael Valer on 10/08/20.
+//  Created by Rafael Valer on 11/08/20.
 //  Copyright © 2020 Rafael Valer. All rights reserved.
 //
 
 import Foundation
 
-struct HomeModels {
+struct MovieDetailsModels {
     
     // MARK: - Use Cases
     
-    enum FetchMovies {
+    enum FetchMovieDetails {
         struct Request {
-            let page: Int
-            let genre: Int
+            let movieId: String
         }
         
         struct Response: Decodable {
-            var genre: Int
-            var movies: [Movie]
+            var movie: Movie
         }
         
         struct ViewModel {
             struct DisplayedMovie {
                 var title: String
                 var posterPath: String?
+                var backdropPath: String?
+                var overview: String?
+                var type: String?
             }
-            var displayedMovies: [DisplayedMovie]
+            var displayedMovie: DisplayedMovie
         }
     }
 }

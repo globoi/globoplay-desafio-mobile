@@ -8,13 +8,19 @@
 
 import UIKit
 
+protocol HomeTableViewCellDelegate: class {
+    func didSelectMovieAtIndex(_ indexPath: IndexPath, forGenre genre: Int)
+}
+
 class HomeTableViewCell: UITableViewCell {
     
     static let identifier: String = "HomeTableViewCell"
     static let height: CGFloat = 240.0
     
     @IBOutlet weak var collectionView: UICollectionView!
+    weak var delegate: HomeTableViewCellDelegate?
     
+    var genre: Int!
     var displayedMovies: [HomeModels.FetchMovies.ViewModel.DisplayedMovie] = []
     
     override func awakeFromNib() {
@@ -32,14 +38,15 @@ class HomeTableViewCell: UITableViewCell {
         collectionView.register(UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
     }
     
-    func render(displayedMovies: [HomeModels.FetchMovies.ViewModel.DisplayedMovie]) {
+    func render(displayedMovies: [HomeModels.FetchMovies.ViewModel.DisplayedMovie], withGenre genre: Int) {
+        self.genre = genre
         self.displayedMovies = displayedMovies
         self.collectionView.reloadData()
     }
 }
 
-// MARK: - UICollectionViewDataSource
-extension HomeTableViewCell: UICollectionViewDataSource {
+// MARK: - UICollectionView
+extension HomeTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayedMovies.count
@@ -54,18 +61,13 @@ extension HomeTableViewCell: UICollectionViewDataSource {
         cell.render(withViewModel: displayedMovies[indexPath.row])
         return cell
     }
-}
-
-// MARK: - UICollectionViewDelegate
-extension HomeTableViewCell: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        delegate?.didSelectMovieAtIndex(indexPath, forGenre: genre)
     }
-}
-
-extension HomeTableViewCell: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 140, height: 240)
     }
 }
+

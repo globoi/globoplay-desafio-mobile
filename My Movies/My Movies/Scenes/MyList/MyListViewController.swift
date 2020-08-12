@@ -53,7 +53,7 @@ class MyListViewController: UIViewController {
     }
 }
 
-// MARK: - MyListViewController
+// MARK: - MyListDisplayLogic
 extension MyListViewController: MyListDisplayLogic {
     
 }

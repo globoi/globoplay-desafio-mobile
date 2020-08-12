@@ -13,7 +13,7 @@ protocol HomeBusinessLogic {
 }
 
 protocol HomeDataStore {
-    var movies: [Movie]? { get set }
+    var movies: [Int: [Movie]] { get set }
 }
 
 class HomeInteractor: HomeBusinessLogic, HomeDataStore {
@@ -23,7 +23,7 @@ class HomeInteractor: HomeBusinessLogic, HomeDataStore {
     
     // MARK: - HomeDataStore
     
-    var movies: [Movie]?
+    var movies: [Int: [Movie]] = [:]
     
     // MARK: - HomeBusinessLogic
     
@@ -33,7 +33,7 @@ class HomeInteractor: HomeBusinessLogic, HomeDataStore {
         worker.fetchMovies(request: request) { [weak self] (response) in
             switch response {
             case .success(let movies):
-                self?.movies = movies
+                self?.movies[genre] = movies
                 self?.presenter?.presentFetchedMovies(response: HomeModels.FetchMovies.Response(genre: genre, movies: movies))
                 break
             case .error(let error):
