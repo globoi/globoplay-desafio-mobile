@@ -51,6 +51,7 @@ class MovieDetailsViewController: UIViewController {
     // MARK: View lifecycle
     
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
