@@ -58,18 +58,29 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var watchButton: UIButton!
     @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var favoriteButton: UIButton!
-    @IBOutlet weak var moviesCollectionView: MoviesCollectionView!
+    @IBOutlet weak var movieDetailsButton: UIButton!
+    @IBOutlet weak var recommendationsButton: UIButton!
     
+    private var moviesCollectionView: MoviesCollectionView!
     private var movieDetailsView: MovieDetailsView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        movieDetailsView = MovieDetailsView()
-        contentStackView.addArrangedSubview(movieDetailsView)
-        
+        setupView()
         fetchMovieDetails()
         fetchMovieRecommendations()
+    }
+    
+    private func setupView() {
+        moviesCollectionView = MoviesCollectionView()
+        contentStackView.addArrangedSubview(moviesCollectionView)
+        
+        movieDetailsView = MovieDetailsView()
+        movieDetailsView.isHidden = true
+        contentStackView.addArrangedSubview(movieDetailsView)
+        
+        favoriteButton.setImage(UIImage(named: "baseline-star_rate")?.withTintColor(.white), for: .normal)
     }
     
     private func fetchMovieDetails() {
@@ -85,11 +96,17 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func recommendationsButtonTouched(_ sender: Any) {
+        movieDetailsView.isHidden = true
         moviesCollectionView.isHidden = false
+        recommendationsButton.setTitleColor(.white, for: .normal)
+        movieDetailsButton.setTitleColor(.darkGray, for: .normal)
     }
     
     @IBAction func detailsButtonTouched(_ sender: Any) {
+        movieDetailsView.isHidden = false
         moviesCollectionView.isHidden = true
+        movieDetailsButton.setTitleColor(.white, for: .normal)
+        recommendationsButton.setTitleColor(.darkGray, for: .normal)
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MovieDetailsPresentationLogic {
     func presentFetchedMovieDetails(response: MovieDetailsModels.FetchMovieDetails.Response)

@@ -18,9 +18,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="HD2-Tf-Zum">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="HD2-Tf-Zum" customClass="ContentSizedCollectionView" customModule="My_Movies" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="414" height="356"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WCh-cg-mcn">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -29,12 +29,12 @@
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="HD2-Tf-Zum" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="AKv-9p-Rh1"/>
+                <constraint firstItem="HD2-Tf-Zum" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="2gZ-Lq-i0c"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="HD2-Tf-Zum" secondAttribute="bottom" id="5jA-0v-da4"/>
                 <constraint firstItem="HD2-Tf-Zum" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ITP-0w-S20"/>
                 <constraint firstItem="HD2-Tf-Zum" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="R4W-1m-yOI"/>
-                <constraint firstItem="HD2-Tf-Zum" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="njh-xQ-zEF"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

@@ -103,7 +103,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hz1-v8-ul6" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="940"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="514"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0aM-mV-J5S">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
@@ -117,19 +117,42 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient_background" translatesAutoresizingMaskIntoConstraints="NO" id="dBb-oI-b0G">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
                                             </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="M2o-Am-NqS">
-                                                <rect key="frame" x="22" y="380" width="370" height="520"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="M2o-Am-NqS">
+                                                <rect key="frame" x="22" y="380" width="370" height="94"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dvL-1K-vdB">
                                                         <rect key="frame" x="0.0" y="0.0" width="370" height="35"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHA-id-ZJ9">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHA-id-ZJ9">
                                                                 <rect key="frame" x="0.0" y="0.0" width="179" height="35"/>
-                                                                <state key="normal" title="Assista"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="Assista" image="baseline-play_arrow">
+                                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="4"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t21-0e-h9L">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t21-0e-h9L">
                                                                 <rect key="frame" x="191" y="0.0" width="179" height="35"/>
-                                                                <state key="normal" title="Minha Lista"/>
+                                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="Minha Lista">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="4"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -137,40 +160,49 @@
                                                         </constraints>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4Y-Z4-8Jf">
-                                                        <rect key="frame" x="0.0" y="49" width="370" height="35"/>
+                                                        <rect key="frame" x="0.0" y="59" width="370" height="35"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpu-04-bHM">
-                                                                <rect key="frame" x="0.0" y="0.0" width="112" height="35"/>
-                                                                <state key="normal" title="Assista Também"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="133" height="35"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <state key="normal" title="ASSISTA TAMBÉM">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
                                                                 <connections>
                                                                     <action selector="recommendationsButtonTouched:" destination="G2E-a7-8OK" eventType="touchUpInside" id="hwi-RJ-f0X"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbS-Bs-0AU">
-                                                                <rect key="frame" x="136" y="0.0" width="61" height="35"/>
-                                                                <state key="normal" title="Detalhes"/>
+                                                                <rect key="frame" x="157" y="0.0" width="79" height="35"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <state key="normal" title="DETALHES">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
                                                                 <connections>
                                                                     <action selector="detailsButtonTouched:" destination="G2E-a7-8OK" eventType="touchUpInside" id="AMF-Ov-Qey"/>
                                                                 </connections>
                                                             </button>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzO-gr-TFG">
+                                                                <rect key="frame" x="0.0" y="35" width="133" height="1"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="aQM-Lw-iD7"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="WbS-Bs-0AU" secondAttribute="bottom" id="3Tj-NN-Jz6"/>
                                                             <constraint firstItem="WbS-Bs-0AU" firstAttribute="top" secondItem="r4Y-Z4-8Jf" secondAttribute="top" id="6S0-pC-1DT"/>
+                                                            <constraint firstItem="uzO-gr-TFG" firstAttribute="leading" secondItem="vpu-04-bHM" secondAttribute="leading" id="9oQ-9c-NTr"/>
                                                             <constraint firstItem="vpu-04-bHM" firstAttribute="top" secondItem="r4Y-Z4-8Jf" secondAttribute="top" id="LKH-yM-ijd"/>
-                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WbS-Bs-0AU" secondAttribute="trailing" constant="173" id="S2R-QQ-t9t"/>
+                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WbS-Bs-0AU" secondAttribute="trailing" constant="20" id="S2R-QQ-t9t"/>
+                                                            <constraint firstItem="uzO-gr-TFG" firstAttribute="trailing" secondItem="vpu-04-bHM" secondAttribute="trailing" id="SXs-hj-YMn"/>
+                                                            <constraint firstItem="uzO-gr-TFG" firstAttribute="top" secondItem="vpu-04-bHM" secondAttribute="bottom" id="egm-hX-y0I"/>
                                                             <constraint firstAttribute="height" constant="35" id="fLi-yZ-XN4"/>
                                                             <constraint firstAttribute="bottom" secondItem="vpu-04-bHM" secondAttribute="bottom" id="h50-y1-CVE"/>
                                                             <constraint firstItem="vpu-04-bHM" firstAttribute="leading" secondItem="r4Y-Z4-8Jf" secondAttribute="leading" id="sNG-8n-CrC"/>
                                                             <constraint firstItem="WbS-Bs-0AU" firstAttribute="leading" secondItem="vpu-04-bHM" secondAttribute="trailing" constant="24" id="xkP-xP-ON0"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oTE-9B-91X" customClass="MoviesCollectionView" customModule="My_Movies" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="98" width="370" height="422"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="oTE-9B-91X" secondAttribute="height" multiplier="3:3.42" id="BnT-sS-qeq"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -201,7 +233,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="dBb-oI-b0G" firstAttribute="top" secondItem="0aM-mV-J5S" secondAttribute="top" id="0sM-4s-Gfq"/>
                                             <constraint firstItem="00M-Gx-blp" firstAttribute="leading" secondItem="Hz1-v8-ul6" secondAttribute="leading" constant="24" id="76l-gM-BFd"/>
@@ -240,7 +272,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="TAB-xT-dye"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8A5-UZ-iC7" firstAttribute="top" secondItem="Mxz-ba-mU3" secondAttribute="top" id="2Uo-VF-fK2"/>
                             <constraint firstItem="Mxz-ba-mU3" firstAttribute="trailing" secondItem="8A5-UZ-iC7" secondAttribute="trailing" id="Bsl-SE-6f1"/>
@@ -255,8 +287,9 @@
                         <outlet property="contentStackView" destination="M2o-Am-NqS" id="Hzq-vJ-YXR"/>
                         <outlet property="descriptionLabel" destination="SIt-0o-zAV" id="XcF-8s-Dbf"/>
                         <outlet property="favoriteButton" destination="t21-0e-h9L" id="sHZ-ax-5YA"/>
-                        <outlet property="moviesCollectionView" destination="oTE-9B-91X" id="lYo-ds-CIC"/>
+                        <outlet property="movieDetailsButton" destination="WbS-Bs-0AU" id="Ozs-rk-pGx"/>
                         <outlet property="posterImageView" destination="7kn-wL-LDy" id="8Mv-GA-uw2"/>
+                        <outlet property="recommendationsButton" destination="vpu-04-bHM" id="J3I-gA-iFG"/>
                         <outlet property="subtitleLabel" destination="00M-Gx-blp" id="CBT-bu-pdP"/>
                         <outlet property="titleLabel" destination="fSd-2R-uPc" id="jig-Q9-l4N"/>
                         <outlet property="watchButton" destination="eHA-id-ZJ9" id="osU-nP-64u"/>
@@ -269,6 +302,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="baseline-play_arrow" width="11" height="14"/>
         <image name="gradient_background" width="322" height="322"/>
     </resources>
 </document>

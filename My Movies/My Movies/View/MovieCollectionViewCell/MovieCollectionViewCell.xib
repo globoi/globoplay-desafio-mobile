@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="8" width="213" height="288"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1n5-cp-RH8" firstAttribute="centerX" secondItem="fg0-MU-UBd" secondAttribute="centerX" id="75b-6b-moz"/>
                             <constraint firstItem="1n5-cp-RH8" firstAttribute="centerY" secondItem="fg0-MU-UBd" secondAttribute="centerY" id="BLc-48-gKl"/>

@@ -17,7 +17,7 @@ protocol DisplayableMovie {
 class MoviesCollectionView: UIView {
     
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: ContentSizedCollectionView!
     
     var displayableMovies: [DisplayableMovie] = []
 
@@ -41,28 +41,27 @@ class MoviesCollectionView: UIView {
     private func initSubViews() {
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: Bundle(for: type(of: self)))
         nib.instantiate(withOwner: self, options: nil)
-        
-        containerView.backgroundColor = .red
         containerView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(containerView)
         self.addConstraints()
-        
+
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
     }
-    
+        
     private func addConstraints() {
         NSLayoutConstraint.activate([
             self.topAnchor.constraint(equalTo: containerView.topAnchor),
-            self.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             self.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            self.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             self.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
     }
 }
 
 extension MoviesCollectionView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayableMovies.count

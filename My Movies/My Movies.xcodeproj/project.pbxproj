@@ -26,6 +26,8 @@
 		D9517BB524E57C4C003D0BE6 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9517BB424E57C4C003D0BE6 /* DateFormatter+Extensions.swift */; };
 		D9517BB724E57CA6003D0BE6 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9517BB624E57CA6003D0BE6 /* String+Extensions.swift */; };
 		D9517BB924E58750003D0BE6 /* ProductionCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9517BB824E58750003D0BE6 /* ProductionCountry.swift */; };
+		D9517BBB24E5A631003D0BE6 /* ContentSizedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9517BBA24E5A631003D0BE6 /* ContentSizedCollectionView.swift */; };
+		D9517BBD24E5B2D4003D0BE6 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9517BBC24E5B2D4003D0BE6 /* UIButton+Extensions.swift */; };
 		D95F868924E0E53A00BE0A84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F868824E0E53A00BE0A84 /* AppDelegate.swift */; };
 		D95F868B24E0E53A00BE0A84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F868A24E0E53A00BE0A84 /* SceneDelegate.swift */; };
 		D95F869024E0E53A00BE0A84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95F868E24E0E53A00BE0A84 /* Main.storyboard */; };
@@ -103,6 +105,8 @@
 		D9517BB424E57C4C003D0BE6 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		D9517BB624E57CA6003D0BE6 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		D9517BB824E58750003D0BE6 /* ProductionCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionCountry.swift; sourceTree = "<group>"; };
+		D9517BBA24E5A631003D0BE6 /* ContentSizedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedCollectionView.swift; sourceTree = "<group>"; };
+		D9517BBC24E5B2D4003D0BE6 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		D95F868524E0E53A00BE0A84 /* My Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Movies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95F868824E0E53A00BE0A84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D95F868A24E0E53A00BE0A84 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,9 +201,10 @@
 		D90165E024E2E41400AF64D4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D9517BAF24E4AA09003D0BE6 /* MovieDetailsView */,
-				D9517BA924E4932A003D0BE6 /* MovieCollectionViewCell */,
 				D9517BA824E49313003D0BE6 /* MovieCollectionView */,
+				D9517BA924E4932A003D0BE6 /* MovieCollectionViewCell */,
+				D9517BAF24E4AA09003D0BE6 /* MovieDetailsView */,
+				D9517BBA24E5A631003D0BE6 /* ContentSizedCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				D95F86C124E1773C00BE0A84 /* JSONDecoder+Extensions.swift */,
 				D9517BB424E57C4C003D0BE6 /* DateFormatter+Extensions.swift */,
 				D9517BB624E57CA6003D0BE6 /* String+Extensions.swift */,
+				D9517BBC24E5B2D4003D0BE6 /* UIButton+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -628,6 +634,7 @@
 				D95F86E024E20D1300BE0A84 /* HomeViewController.swift in Sources */,
 				D9517BB524E57C4C003D0BE6 /* DateFormatter+Extensions.swift in Sources */,
 				D95F86E424E20D8D00BE0A84 /* MyListViewController.swift in Sources */,
+				D9517BBD24E5B2D4003D0BE6 /* UIButton+Extensions.swift in Sources */,
 				D90165F124E3114500AF64D4 /* MovieDetailsInteractor.swift in Sources */,
 				D95F86F824E2177300BE0A84 /* HomeInteractor.swift in Sources */,
 				D95F86D324E1C0DB00BE0A84 /* Constants.swift in Sources */,
@@ -649,6 +656,7 @@
 				D95F86EA24E211D400BE0A84 /* MyListRouter.swift in Sources */,
 				D90165ED24E3112D00AF64D4 /* MovieDetailsRouter.swift in Sources */,
 				D9517BA624E42D3E003D0BE6 /* MoviesCollectionView.swift in Sources */,
+				D9517BBB24E5A631003D0BE6 /* ContentSizedCollectionView.swift in Sources */,
 				D95F86DA24E1D17800BE0A84 /* MoviesResponse.swift in Sources */,
 				D9517BB724E57CA6003D0BE6 /* String+Extensions.swift in Sources */,
 				D95F86BD24E1736200BE0A84 /* Movie.swift in Sources */,
