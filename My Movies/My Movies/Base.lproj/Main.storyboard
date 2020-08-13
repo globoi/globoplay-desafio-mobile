@@ -189,6 +189,13 @@
                                                                     <constraint firstAttribute="height" constant="1" id="aQM-Lw-iD7"/>
                                                                 </constraints>
                                                             </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTc-s3-shy">
+                                                                <rect key="frame" x="157" y="35" width="79" height="1"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="dhP-PE-dac"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -198,10 +205,13 @@
                                                             <constraint firstItem="vpu-04-bHM" firstAttribute="top" secondItem="r4Y-Z4-8Jf" secondAttribute="top" id="LKH-yM-ijd"/>
                                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WbS-Bs-0AU" secondAttribute="trailing" constant="20" id="S2R-QQ-t9t"/>
                                                             <constraint firstItem="uzO-gr-TFG" firstAttribute="trailing" secondItem="vpu-04-bHM" secondAttribute="trailing" id="SXs-hj-YMn"/>
+                                                            <constraint firstItem="qTc-s3-shy" firstAttribute="centerY" secondItem="uzO-gr-TFG" secondAttribute="centerY" id="dzB-Eu-WxW"/>
                                                             <constraint firstItem="uzO-gr-TFG" firstAttribute="top" secondItem="vpu-04-bHM" secondAttribute="bottom" id="egm-hX-y0I"/>
                                                             <constraint firstAttribute="height" constant="35" id="fLi-yZ-XN4"/>
                                                             <constraint firstAttribute="bottom" secondItem="vpu-04-bHM" secondAttribute="bottom" id="h50-y1-CVE"/>
+                                                            <constraint firstItem="qTc-s3-shy" firstAttribute="trailing" secondItem="WbS-Bs-0AU" secondAttribute="trailing" id="jZL-BP-JuN"/>
                                                             <constraint firstItem="vpu-04-bHM" firstAttribute="leading" secondItem="r4Y-Z4-8Jf" secondAttribute="leading" id="sNG-8n-CrC"/>
+                                                            <constraint firstItem="qTc-s3-shy" firstAttribute="leading" secondItem="WbS-Bs-0AU" secondAttribute="leading" id="xBm-MC-UQ5"/>
                                                             <constraint firstItem="WbS-Bs-0AU" firstAttribute="leading" secondItem="vpu-04-bHM" secondAttribute="trailing" constant="24" id="xkP-xP-ON0"/>
                                                         </constraints>
                                                     </view>
@@ -288,8 +298,10 @@
                         <outlet property="descriptionLabel" destination="SIt-0o-zAV" id="XcF-8s-Dbf"/>
                         <outlet property="favoriteButton" destination="t21-0e-h9L" id="sHZ-ax-5YA"/>
                         <outlet property="movieDetailsButton" destination="WbS-Bs-0AU" id="Ozs-rk-pGx"/>
+                        <outlet property="movieDetailsUnderlineView" destination="qTc-s3-shy" id="5vd-NN-Hmt"/>
                         <outlet property="posterImageView" destination="7kn-wL-LDy" id="8Mv-GA-uw2"/>
                         <outlet property="recommendationsButton" destination="vpu-04-bHM" id="J3I-gA-iFG"/>
+                        <outlet property="recommendationsUnderlineView" destination="uzO-gr-TFG" id="33Z-mw-EAD"/>
                         <outlet property="subtitleLabel" destination="00M-Gx-blp" id="CBT-bu-pdP"/>
                         <outlet property="titleLabel" destination="fSd-2R-uPc" id="jig-Q9-l4N"/>
                         <outlet property="watchButton" destination="eHA-id-ZJ9" id="osU-nP-64u"/>

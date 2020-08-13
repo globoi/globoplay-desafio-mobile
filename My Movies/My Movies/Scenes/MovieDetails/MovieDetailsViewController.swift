@@ -59,7 +59,9 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var movieDetailsButton: UIButton!
+    @IBOutlet weak var movieDetailsUnderlineView: UIView!
     @IBOutlet weak var recommendationsButton: UIButton!
+    @IBOutlet weak var recommendationsUnderlineView: UIView!
     
     private var moviesCollectionView: MoviesCollectionView!
     private var movieDetailsView: MovieDetailsView!
@@ -78,6 +80,7 @@ class MovieDetailsViewController: UIViewController {
         
         movieDetailsView = MovieDetailsView()
         movieDetailsView.isHidden = true
+        movieDetailsUnderlineView.isHidden = true
         contentStackView.addArrangedSubview(movieDetailsView)
         
         favoriteButton.setImage(UIImage(named: "baseline-star_rate")?.withTintColor(.white), for: .normal)
@@ -100,6 +103,8 @@ class MovieDetailsViewController: UIViewController {
         moviesCollectionView.isHidden = false
         recommendationsButton.setTitleColor(.white, for: .normal)
         movieDetailsButton.setTitleColor(.darkGray, for: .normal)
+        movieDetailsUnderlineView.isHidden = true
+        recommendationsUnderlineView.isHidden = false
     }
     
     @IBAction func detailsButtonTouched(_ sender: Any) {
@@ -107,6 +112,8 @@ class MovieDetailsViewController: UIViewController {
         moviesCollectionView.isHidden = true
         movieDetailsButton.setTitleColor(.white, for: .normal)
         recommendationsButton.setTitleColor(.darkGray, for: .normal)
+        movieDetailsUnderlineView.isHidden = false
+        recommendationsUnderlineView.isHidden = true
     }
 }
 
