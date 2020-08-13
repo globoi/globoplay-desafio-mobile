@@ -51,7 +51,6 @@ class MovieDetailsViewController: UIViewController {
     // MARK: View lifecycle
     
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -61,8 +60,13 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var moviesCollectionView: MoviesCollectionView!
     
+    private var movieDetailsView: MovieDetailsView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        movieDetailsView = MovieDetailsView()
+        contentStackView.addArrangedSubview(movieDetailsView)
         
         fetchMovieDetails()
         fetchMovieRecommendations()
@@ -76,6 +80,16 @@ class MovieDetailsViewController: UIViewController {
     private func fetchMovieRecommendations() {
         guard let movieId = movie.id else { return }
         interactor?.fetchMovieRecommendations(movieId)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func recommendationsButtonTouched(_ sender: Any) {
+        moviesCollectionView.isHidden = false
+    }
+    
+    @IBAction func detailsButtonTouched(_ sender: Any) {
+        moviesCollectionView.isHidden = true
     }
 }
 
@@ -91,6 +105,7 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
     func displayFetchedMovieDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel) {
         
         let displayedMovie = viewModel.displayedMovie
+        movieDetailsView.setMovieDetails(displayedMovie)
         
         DispatchQueue.main.async { [weak self] in
             self?.titleLabel.text = displayedMovie.title

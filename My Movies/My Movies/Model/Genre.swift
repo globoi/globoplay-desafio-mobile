@@ -9,8 +9,8 @@
 import Foundation
 
 struct Genre {
-    let id: Int?
-    let name: String?
+    let id: Int
+    let name: String
 }
 
 extension Genre: Decodable {

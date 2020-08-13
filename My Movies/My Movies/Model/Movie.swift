@@ -18,6 +18,8 @@ struct Movie {
     let releaseDate: String?
     let posterPath: String?
     let backdropPath: String?
+    let voteAverage: Double?
+    let productionCountries: [ProductionCountry]?
 }
 
 extension Movie: Decodable {
@@ -29,6 +31,8 @@ extension Movie: Decodable {
         case posterPath = "poster_path"
         case genreIds = "genre_ids"
         case backdropPath = "backdrop_path"
+        case voteAverage = "vote_average"
+        case productionCountries = "production_countries"
     }
     
     init?(data: Data) {

@@ -21,12 +21,17 @@ struct MovieDetailsModels {
             var movie: Movie
         }
         struct ViewModel {
-            struct DisplayedMovie {
+            struct DisplayedMovie: DisplayableMovieDetails {
                 var title: String
                 var posterPath: String?
                 var backdropPath: String?
                 var overview: String?
                 var type: String?
+                var releaseDate: String?
+                var genres: String?
+                var originalTitle: String?
+                var score: String?
+                var productionCountries: String?
             }
             var displayedMovie: DisplayedMovie
         }

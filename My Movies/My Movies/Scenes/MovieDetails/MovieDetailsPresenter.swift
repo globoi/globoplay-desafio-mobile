@@ -25,14 +25,30 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         let movie = response.movie
         let posterPathURL = Constants.baseImagesURL + "w185/\(movie.posterPath ?? "")"
         let backdropPathURL = Constants.baseImagesURL + "w500/\(movie.backdropPath ?? "")"
+        let releaseDateText = "Data de Lançamento: \(movie.releaseDate?.convert(fromDateFormat: "yyyy-MM-dd", toDateFormat: "dd/MM/yyyy") ?? "")"
+        let originalTitleText = "Título Original: \(movie.originalTitle ?? "")"
+        let scoreText = "Avaliação: " + String(movie.voteAverage ?? 0) + "/10"
         
-        let displayedMovie =  MovieDetailsModels
-            .FetchMovieDetails.ViewModel
+        var genresText = ""
+        if let genres = movie.genres {
+            genresText = "Gêneros: " + genres.reduce("", { ($0.isEmpty ? "" : $0 + ", ") + $1.name })
+        }
+        
+        var productionCountriesText = ""
+        if let countries = movie.productionCountries {
+            productionCountriesText = "Países: " + countries.reduce("", { ($0.isEmpty ? "" : $0 + ", ") + $1.name })
+        }
+        
+        let displayedMovie = MovieDetailsModels.FetchMovieDetails
+            .ViewModel
             .DisplayedMovie(title: movie.title ?? "",
                             posterPath: posterPathURL,
                             backdropPath: backdropPathURL,
                             overview: movie.overview ?? "",
-                            type: "Filme")
+                            type: "Filme", releaseDate: releaseDateText,
+                            genres: genresText, originalTitle: originalTitleText,
+                            score: scoreText,
+                            productionCountries: productionCountriesText)
         
         let viewModel = MovieDetailsModels.FetchMovieDetails.ViewModel(displayedMovie: displayedMovie)
         viewController?.displayFetchedMovieDetails(viewModel: viewModel)
