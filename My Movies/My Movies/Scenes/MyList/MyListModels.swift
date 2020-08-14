@@ -10,4 +10,20 @@ import Foundation
 
 struct MyListModels {
     
+    // MARK: - Use Cases
+    
+    enum FetchFavoriteMovies {
+        
+        struct Response {
+            var favoriteMovies: [Movie]
+        }
+        
+        struct ViewModel {
+            struct DisplayedMovie: DisplayableMovie {
+                var title: String
+                var posterPath: String?
+            }
+            var displayedMovies: [DisplayedMovie]
+        }
+    }
 }

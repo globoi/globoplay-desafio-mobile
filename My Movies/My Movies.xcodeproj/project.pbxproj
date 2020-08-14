@@ -19,6 +19,7 @@
 		D90165ED24E3112D00AF64D4 /* MovieDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90165EC24E3112D00AF64D4 /* MovieDetailsRouter.swift */; };
 		D90165EF24E3113800AF64D4 /* MovieDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90165EE24E3113800AF64D4 /* MovieDetailsPresenter.swift */; };
 		D90165F124E3114500AF64D4 /* MovieDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90165F024E3114500AF64D4 /* MovieDetailsInteractor.swift */; };
+		D939C09624E61A4700995FB3 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C09524E61A4700995FB3 /* UserPreferences.swift */; };
 		D9517BA424E42CBF003D0BE6 /* MoviesCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9517BA324E42CBF003D0BE6 /* MoviesCollectionView.xib */; };
 		D9517BA624E42D3E003D0BE6 /* MoviesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9517BA524E42D3E003D0BE6 /* MoviesCollectionView.swift */; };
 		D9517BB124E4AA20003D0BE6 /* MovieDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9517BB024E4AA20003D0BE6 /* MovieDetailsView.xib */; };
@@ -49,7 +50,6 @@
 		D95F86E024E20D1300BE0A84 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F86DF24E20D1300BE0A84 /* HomeViewController.swift */; };
 		D95F86E424E20D8D00BE0A84 /* MyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F86E324E20D8D00BE0A84 /* MyListViewController.swift */; };
 		D95F86E624E211B400BE0A84 /* MyListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F86E524E211B400BE0A84 /* MyListModels.swift */; };
-		D95F86E824E211C100BE0A84 /* MyListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F86E724E211C100BE0A84 /* MyListWorker.swift */; };
 		D95F86EA24E211D400BE0A84 /* MyListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F86E924E211D400BE0A84 /* MyListRouter.swift */; };
 		D95F86EC24E211E200BE0A84 /* MyListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F86EB24E211E200BE0A84 /* MyListPresenter.swift */; };
 		D95F86EE24E211F200BE0A84 /* MyListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F86ED24E211F200BE0A84 /* MyListInteractor.swift */; };
@@ -98,6 +98,7 @@
 		D90165EC24E3112D00AF64D4 /* MovieDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsRouter.swift; sourceTree = "<group>"; };
 		D90165EE24E3113800AF64D4 /* MovieDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsPresenter.swift; sourceTree = "<group>"; };
 		D90165F024E3114500AF64D4 /* MovieDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsInteractor.swift; sourceTree = "<group>"; };
+		D939C09524E61A4700995FB3 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		D9517BA324E42CBF003D0BE6 /* MoviesCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesCollectionView.xib; sourceTree = "<group>"; };
 		D9517BA524E42D3E003D0BE6 /* MoviesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionView.swift; sourceTree = "<group>"; };
 		D9517BB024E4AA20003D0BE6 /* MovieDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailsView.xib; sourceTree = "<group>"; };
@@ -134,7 +135,6 @@
 		D95F86DF24E20D1300BE0A84 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D95F86E324E20D8D00BE0A84 /* MyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewController.swift; sourceTree = "<group>"; };
 		D95F86E524E211B400BE0A84 /* MyListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListModels.swift; sourceTree = "<group>"; };
-		D95F86E724E211C100BE0A84 /* MyListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListWorker.swift; sourceTree = "<group>"; };
 		D95F86E924E211D400BE0A84 /* MyListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListRouter.swift; sourceTree = "<group>"; };
 		D95F86EB24E211E200BE0A84 /* MyListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListPresenter.swift; sourceTree = "<group>"; };
 		D95F86ED24E211F200BE0A84 /* MyListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListInteractor.swift; sourceTree = "<group>"; };
@@ -356,6 +356,7 @@
 				D95F86D224E1C0DB00BE0A84 /* Constants.swift */,
 				D95F86DC24E1D40400BE0A84 /* AppError.swift */,
 				D90165D924E2DC8F00AF64D4 /* GenresList.swift */,
+				D939C09524E61A4700995FB3 /* UserPreferences.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -390,7 +391,6 @@
 			children = (
 				D95F86E324E20D8D00BE0A84 /* MyListViewController.swift */,
 				D95F86E524E211B400BE0A84 /* MyListModels.swift */,
-				D95F86E724E211C100BE0A84 /* MyListWorker.swift */,
 				D95F86E924E211D400BE0A84 /* MyListRouter.swift */,
 				D95F86EB24E211E200BE0A84 /* MyListPresenter.swift */,
 				D95F86ED24E211F200BE0A84 /* MyListInteractor.swift */,
@@ -624,6 +624,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D95F86CD24E19E9F00BE0A84 /* APIManager.swift in Sources */,
+				D939C09624E61A4700995FB3 /* UserPreferences.swift in Sources */,
 				D9517BB924E58750003D0BE6 /* ProductionCountry.swift in Sources */,
 				D95F86C224E1773C00BE0A84 /* JSONDecoder+Extensions.swift in Sources */,
 				D95F86D124E1BAB300BE0A84 /* EndPoint.swift in Sources */,
@@ -643,7 +644,6 @@
 				D95F86EC24E211E200BE0A84 /* MyListPresenter.swift in Sources */,
 				D95F86F424E2173D00BE0A84 /* HomeRouter.swift in Sources */,
 				D95F86EE24E211F200BE0A84 /* MyListInteractor.swift in Sources */,
-				D95F86E824E211C100BE0A84 /* MyListWorker.swift in Sources */,
 				D90165DD24E2DE8700AF64D4 /* HomeTableViewCell.swift in Sources */,
 				D95F86D824E1D14600BE0A84 /* MovieDetailsResponse.swift in Sources */,
 				D90165E724E3110700AF64D4 /* MovieDetailsViewController.swift in Sources */,

@@ -11,10 +11,13 @@ import Foundation
 protocol MovieDetailsBusinessLogic {
     func fetchMovieDetails(_ movieId: Int)
     func fetchMovieRecommendations(_ movieId: Int)
+    func addOrRemoveMovieFromFavorites(_ movieId: Int)
+    func checkIfMovieIsFavorite(_ movieId: Int)
 }
 
 protocol MovieDetailsDataStore {
     var movie: Movie? { get set }
+    var isMovieFavorited: Bool { get set }
 }
 
 class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
@@ -22,10 +25,26 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
     var presenter: MovieDetailsPresentationLogic?
     var worker: MovieDetailsWorker = MovieDetailsWorker()
     
+    private func addMovieToFavorites() {
+        guard let movie = movie, let movieId = movie.id else { return }
+        
+        UserPreferences.shared.addFavoriteMovie(movieId: String(movieId), title: movie.title, posterPath: movie.posterPath)
+        self.isMovieFavorited = true
+        presenter?.presentIsMovieOnFavorites(isMovieFavorited)
+    }
+    
+    private func removeMovieFromFavorites(_ movieId: Int) {
+        UserPreferences.shared.removeFavoriteMovie(movieId: String(movieId))
+        self.isMovieFavorited = false
+        presenter?.presentIsMovieOnFavorites(isMovieFavorited)
+    }
+    
     // MARK: - MovieDetailsDataStore
     var movie: Movie?
+    var isMovieFavorited: Bool = false
     
     // MARK: - MovieDetailsBusinessLogic
+    
     func fetchMovieDetails(_ movieId: Int) {
         let request = MovieDetailsModels.FetchMovieDetails.Request(movieId: String(movieId))
         
@@ -54,5 +73,19 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
                 self?.presenter?.presentError(error); break
             }
         }
+    }
+    
+    func addOrRemoveMovieFromFavorites(_ movieId: Int) {
+        if isMovieFavorited {
+            removeMovieFromFavorites(movieId)
+        } else {
+            addMovieToFavorites()
+        }
+    }
+    
+    func checkIfMovieIsFavorite(_ movieId: Int) {
+        let isMovieOnFavorites = UserPreferences.shared.isMovieOnFavorites(String(movieId))
+        self.isMovieFavorited = isMovieOnFavorites
+        presenter?.presentIsMovieOnFavorites(isMovieOnFavorites)
     }
 }

@@ -27,8 +27,8 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
         if let genreMovies = dataStore?.movies[genre], genreMovies.count > indexPath.row {
             let selectedMovie = genreMovies[indexPath.row]
             
-            guard let vc = viewController?.storyboard?.instantiateViewController(identifier: MovieDetailsViewController.identifier, creator: { coder in
-                return MovieDetailsViewController(coder: coder, selectedMovie: selectedMovie)
+            guard let movieId = selectedMovie.id, let vc = viewController?.storyboard?.instantiateViewController(identifier: MovieDetailsViewController.identifier, creator: { coder in
+                return MovieDetailsViewController(coder: coder, movieId: movieId)
             }) else {
                 fatalError("Failed to load MovieDetailsViewController from storyboard.")
             }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MyListDisplayLogic: class {
-    
+    func displayFavoriteMovies(viewModel: MyListModels.FetchFavoriteMovies.ViewModel)
 }
 
 class MyListViewController: UIViewController {
@@ -48,12 +48,25 @@ class MyListViewController: UIViewController {
     
     // MARK: View lifecycle
 
+    @IBOutlet weak var moviesCollectionView: MoviesCollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchFavoriteMovies()
+    }
+    
+    private func fetchFavoriteMovies() {
+        interactor?.fetchFavoriteMovies()
     }
 }
 
 // MARK: - MyListDisplayLogic
 extension MyListViewController: MyListDisplayLogic {
     
+    func displayFavoriteMovies(viewModel: MyListModels.FetchFavoriteMovies.ViewModel) {
+        
+        let displayedMovies = viewModel.displayedMovies
+        moviesCollectionView.setMovies(displayedMovies)
+    }
 }

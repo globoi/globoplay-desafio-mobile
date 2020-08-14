@@ -11,20 +11,21 @@ import UIKit
 protocol MovieDetailsDisplayLogic: class {
     func displayFetchedMovieDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel)
     func displayFetchedMovieRecommendations(viewModel: MovieDetailsModels.FetchMovieRecommendations.ViewModel)
+    func displayFavoriteButton(withImage image: UIImage?, text: String)
 }
 
 class MovieDetailsViewController: UIViewController {
     
     static let identifier: String = "MovieDetailsViewController"
     
-    var movie: Movie
+    var movieId: Int
     var interactor: MovieDetailsBusinessLogic?
     var router: (NSObject & MovieDetailsRoutingLogic & MovieDetailsDataPassing)?
 
     // MARK: Object lifecycle
     
-    init?(coder: NSCoder, selectedMovie: Movie) {
-        self.movie = selectedMovie
+    init?(coder: NSCoder, movieId: Int) {
+        self.movieId = movieId
         super.init(coder: coder)
         setup()
     }
@@ -70,6 +71,7 @@ class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        
         fetchMovieDetails()
         fetchMovieRecommendations()
     }
@@ -87,16 +89,19 @@ class MovieDetailsViewController: UIViewController {
     }
     
     private func fetchMovieDetails() {
-        guard let movieId = movie.id else { return }
         interactor?.fetchMovieDetails(movieId)
+        interactor?.checkIfMovieIsFavorite(movieId)
     }
     
     private func fetchMovieRecommendations() {
-        guard let movieId = movie.id else { return }
         interactor?.fetchMovieRecommendations(movieId)
     }
     
     // MARK: - Actions
+    
+    @IBAction func favoriteButtonTouched(_ sender: Any) {
+        interactor?.addOrRemoveMovieFromFavorites(movieId)
+    }
     
     @IBAction func recommendationsButtonTouched(_ sender: Any) {
         movieDetailsView.isHidden = true
@@ -119,6 +124,11 @@ class MovieDetailsViewController: UIViewController {
 
 // MARK: - MovieDetailsDisplayLogic
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
+    
+    func displayFavoriteButton(withImage image: UIImage?, text: String) {
+        favoriteButton.setTitle(text, for: .normal)
+        favoriteButton.setImage(image, for: .normal)
+    }
     
     func displayFetchedMovieRecommendations(viewModel: MovieDetailsModels.FetchMovieRecommendations.ViewModel) {
         

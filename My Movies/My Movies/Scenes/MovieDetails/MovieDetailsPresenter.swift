@@ -13,6 +13,7 @@ protocol MovieDetailsPresentationLogic {
     func presentFetchedMovieDetails(response: MovieDetailsModels.FetchMovieDetails.Response)
     func presentFetchedRecommendations(response: MovieDetailsModels.FetchMovieRecommendations.Response)
     func presentError(_ error: Error)
+    func presentIsMovieOnFavorites(_ isFavorite: Bool)
 }
 
 class MovieDetailsPresenter: MovieDetailsPresentationLogic {
@@ -79,5 +80,11 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
     
     func presentError(_ error: Error) {
         
+    }
+    
+    func presentIsMovieOnFavorites(_ isFavorite: Bool) {
+        let image = UIImage(named: isFavorite ? "baseline-check" : "baseline-star_rate")?.withTintColor(.white)
+        let text = isFavorite ? "Adicionado" : "Minha Lista"
+        viewController?.displayFavoriteButton(withImage: image, text: text)
     }
 }

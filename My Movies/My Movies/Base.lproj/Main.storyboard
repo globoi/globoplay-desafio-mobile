@@ -14,10 +14,25 @@
                     <view key="view" contentMode="scaleToFill" id="1da-fW-hjU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jXc-qL-FK1" customClass="MoviesCollectionView" customModule="My_Movies" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1215505227" green="0.1215790585" blue="0.12154868990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="jXc-qL-FK1" firstAttribute="leading" secondItem="RUe-g2-TjN" secondAttribute="leading" id="7UA-Dg-b7R"/>
+                            <constraint firstItem="RUe-g2-TjN" firstAttribute="trailing" secondItem="jXc-qL-FK1" secondAttribute="trailing" id="JVY-kn-SDf"/>
+                            <constraint firstItem="jXc-qL-FK1" firstAttribute="top" secondItem="RUe-g2-TjN" secondAttribute="top" id="OWZ-2S-bG2"/>
+                            <constraint firstItem="RUe-g2-TjN" firstAttribute="bottom" secondItem="jXc-qL-FK1" secondAttribute="bottom" id="Vx8-A6-OLH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="RUe-g2-TjN"/>
                     </view>
                     <navigationItem key="navigationItem" title="Minha Lista" id="hmq-gf-PrD"/>
+                    <connections>
+                        <outlet property="moviesCollectionView" destination="jXc-qL-FK1" id="Evy-nv-t9o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d22-2F-wo7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -31,7 +46,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lcw-fn-5dW">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lcw-fn-5dW">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" red="0.1215505227" green="0.1215790585" blue="0.12154868990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
@@ -153,6 +168,9 @@
                                                                         <real key="value" value="1"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="favoriteButtonTouched:" destination="G2E-a7-8OK" eventType="touchUpInside" id="i3N-jI-blJ"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
