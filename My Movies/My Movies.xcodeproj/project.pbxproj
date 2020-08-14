@@ -20,6 +20,7 @@
 		D90165EF24E3113800AF64D4 /* MovieDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90165EE24E3113800AF64D4 /* MovieDetailsPresenter.swift */; };
 		D90165F124E3114500AF64D4 /* MovieDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90165F024E3114500AF64D4 /* MovieDetailsInteractor.swift */; };
 		D939C09624E61A4700995FB3 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C09524E61A4700995FB3 /* UserPreferences.swift */; };
+		D939C09824E6C74300995FB3 /* Notification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C09724E6C74300995FB3 /* Notification+Extensions.swift */; };
 		D9517BA424E42CBF003D0BE6 /* MoviesCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9517BA324E42CBF003D0BE6 /* MoviesCollectionView.xib */; };
 		D9517BA624E42D3E003D0BE6 /* MoviesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9517BA524E42D3E003D0BE6 /* MoviesCollectionView.swift */; };
 		D9517BB124E4AA20003D0BE6 /* MovieDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9517BB024E4AA20003D0BE6 /* MovieDetailsView.xib */; };
@@ -99,6 +100,7 @@
 		D90165EE24E3113800AF64D4 /* MovieDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsPresenter.swift; sourceTree = "<group>"; };
 		D90165F024E3114500AF64D4 /* MovieDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsInteractor.swift; sourceTree = "<group>"; };
 		D939C09524E61A4700995FB3 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		D939C09724E6C74300995FB3 /* Notification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
 		D9517BA324E42CBF003D0BE6 /* MoviesCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesCollectionView.xib; sourceTree = "<group>"; };
 		D9517BA524E42D3E003D0BE6 /* MoviesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionView.swift; sourceTree = "<group>"; };
 		D9517BB024E4AA20003D0BE6 /* MovieDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailsView.xib; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				D9517BB424E57C4C003D0BE6 /* DateFormatter+Extensions.swift */,
 				D9517BB624E57CA6003D0BE6 /* String+Extensions.swift */,
 				D9517BBC24E5B2D4003D0BE6 /* UIButton+Extensions.swift */,
+				D939C09724E6C74300995FB3 /* Notification+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				D95F86CF24E1A34900BE0A84 /* APIClient.swift in Sources */,
 				D9517BB324E4AA2F003D0BE6 /* MovieDetailsView.swift in Sources */,
 				D95F86E024E20D1300BE0A84 /* HomeViewController.swift in Sources */,
+				D939C09824E6C74300995FB3 /* Notification+Extensions.swift in Sources */,
 				D9517BB524E57C4C003D0BE6 /* DateFormatter+Extensions.swift in Sources */,
 				D95F86E424E20D8D00BE0A84 /* MyListViewController.swift in Sources */,
 				D9517BBD24E5B2D4003D0BE6 /* UIButton+Extensions.swift in Sources */,

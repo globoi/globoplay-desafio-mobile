@@ -81,6 +81,8 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
         } else {
             addMovieToFavorites()
         }
+        
+        NotificationCenter.default.post(name: .FavoriteMoviesUpdated, object: nil)
     }
     
     func checkIfMovieIsFavorite(_ movieId: Int) {

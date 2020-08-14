@@ -54,9 +54,11 @@ class MyListViewController: UIViewController {
         super.viewDidLoad()
         
         fetchFavoriteMovies()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchFavoriteMovies), name: .FavoriteMoviesUpdated, object: nil)
     }
     
-    private func fetchFavoriteMovies() {
+    @objc private func fetchFavoriteMovies() {
         interactor?.fetchFavoriteMovies()
     }
 }
