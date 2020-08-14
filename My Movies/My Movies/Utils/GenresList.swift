@@ -15,7 +15,7 @@ enum GenresList: CaseIterable {
     func getId() -> Int {
         switch self {
         case .action: return 28
-        case .comedy: return 14
+        case .comedy: return 35
         case .crime: return 80
         case .scifi: return 878
         case .romance: return 10749
@@ -28,7 +28,7 @@ enum GenresList: CaseIterable {
         case .comedy: return "Comédia"
         case .crime: return "Crime"
         case .romance: return "Romance"
-        case .scifi: return "Science Fiction"
+        case .scifi: return "Ficção Científica"
         }
     }
 }

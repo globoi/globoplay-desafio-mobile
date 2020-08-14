@@ -17,6 +17,7 @@ protocol MovieDetailsBusinessLogic {
 
 protocol MovieDetailsDataStore {
     var movie: Movie? { get set }
+    var recommendedMovies: [Movie] { get set }
     var isMovieFavorited: Bool { get set }
 }
 
@@ -41,6 +42,7 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
     
     // MARK: - MovieDetailsDataStore
     var movie: Movie?
+    var recommendedMovies: [Movie] = []
     var isMovieFavorited: Bool = false
     
     // MARK: - MovieDetailsBusinessLogic
@@ -67,6 +69,7 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
         worker.fetchMovieRecommendations(request: request) { [weak self] (response) in
             switch response {
             case .success(movies: let movies):
+                self?.recommendedMovies = movies
                 self?.presenter?.presentFetchedRecommendations(response: MovieDetailsModels.FetchMovieRecommendations.Response(movies: movies))
                 break
             case .error(error: let error):

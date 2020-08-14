@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 @objc protocol HomeRoutingLogic {
     func navigateToMovieDetails(atIndexPath indexPath: IndexPath, withGenre genre: Int)
@@ -32,8 +33,12 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
             }) else {
                 fatalError("Failed to load MovieDetailsViewController from storyboard.")
             }
-            vc.modalTransitionStyle = .crossDissolve
-            viewController?.navigationController?.present(vc, animated: true, completion: nil)
+            
+            let navVC = UINavigationController(rootViewController: vc)
+            navVC.modalTransitionStyle = .crossDissolve
+            navVC.modalPresentationStyle = .fullScreen
+            navVC.navigationBar.isHidden = true
+            viewController?.navigationController?.present(navVC, animated: true, completion: nil)
         }
     }
 }

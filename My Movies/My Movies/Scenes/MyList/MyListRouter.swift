@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 @objc protocol MyListRoutingLogic {
     func navigateToMovieDetails(atIndexPath indexPath: IndexPath)
@@ -30,7 +31,10 @@ class MyListRouter: NSObject, MyListRoutingLogic, MyListDataPassing {
             fatalError("Failed to load MovieDetailsViewController from storyboard.")
         }
         
-        vc.modalTransitionStyle = .crossDissolve
-        viewController?.navigationController?.present(vc, animated: true, completion: nil)
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.modalTransitionStyle = .crossDissolve
+        navVC.modalPresentationStyle = .fullScreen
+        navVC.navigationBar.isHidden = true
+        viewController?.navigationController?.present(navVC, animated: true, completion: nil)
     }
 }

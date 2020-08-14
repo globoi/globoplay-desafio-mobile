@@ -51,6 +51,8 @@ class MovieDetailsViewController: UIViewController {
     
     // MARK: View lifecycle
     
+    @IBOutlet weak var topBarView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -63,6 +65,8 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var movieDetailsUnderlineView: UIView!
     @IBOutlet weak var recommendationsButton: UIButton!
     @IBOutlet weak var recommendationsUnderlineView: UIView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     
     private var moviesCollectionView: MoviesCollectionView!
     private var movieDetailsView: MovieDetailsView!
@@ -77,15 +81,22 @@ class MovieDetailsViewController: UIViewController {
     }
     
     private func setupView() {
+        scrollView.delegate = self
+        topBarView.alpha = 0
+        
         moviesCollectionView = MoviesCollectionView()
         contentStackView.addArrangedSubview(moviesCollectionView)
         
         movieDetailsView = MovieDetailsView()
         movieDetailsView.isHidden = true
         movieDetailsUnderlineView.isHidden = true
+        moviesCollectionView.delegate = self
         contentStackView.addArrangedSubview(movieDetailsView)
         
         favoriteButton.setImage(UIImage(named: "baseline-star_rate")?.withTintColor(.white), for: .normal)
+        
+        // hides back button for the first view controller of navigation stack
+        backButton.isHidden = navigationController?.viewControllers.count ?? 0 <= 1
     }
     
     private func fetchMovieDetails() {
@@ -119,6 +130,14 @@ class MovieDetailsViewController: UIViewController {
         recommendationsButton.setTitleColor(.darkGray, for: .normal)
         movieDetailsUnderlineView.isHidden = false
         recommendationsUnderlineView.isHidden = true
+    }
+    
+    @IBAction func backButtonTouched(_ sender: Any) {
+        self.router?.navigateToPreviousView()
+    }
+    
+    @IBAction func closeButtonTouched(_ sender: Any) {
+        router?.dismiss()
     }
 }
 
@@ -154,5 +173,17 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
                 self?.backgroundImageView.kf.setImage(with: url)
             }
         }
+    }
+}
+
+extension MovieDetailsViewController: MoviesCollectionViewDelegate {
+    func didSelectItem(at indexPath: IndexPath) {
+        router?.navigateToMovieDetails(atIndexPath: indexPath)
+    }
+}
+
+extension MovieDetailsViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        topBarView.alpha = scrollView.contentOffset.y / 100
     }
 }
