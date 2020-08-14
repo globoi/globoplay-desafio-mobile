@@ -15,8 +15,9 @@ protocol HomeTableViewCellDelegate: class {
 class HomeTableViewCell: UITableViewCell {
     
     static let identifier: String = "HomeTableViewCell"
-    static let height: CGFloat = 240.0
+    static let height: CGFloat = 280.0
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     weak var delegate: HomeTableViewCellDelegate?
     
@@ -38,8 +39,9 @@ class HomeTableViewCell: UITableViewCell {
         collectionView.register(UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
     }
     
-    func render(displayedMovies: [HomeModels.FetchMovies.ViewModel.DisplayedMovie], withGenre genre: Int) {
-        self.genre = genre
+    func render(displayedMovies: [HomeModels.FetchMovies.ViewModel.DisplayedMovie], withGenre genre: GenresList) {
+        self.genre = genre.getId()
+        self.titleLabel.text = genre.getTitle()
         self.displayedMovies = displayedMovies
         self.collectionView.reloadData()
     }

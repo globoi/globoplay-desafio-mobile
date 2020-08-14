@@ -7,33 +7,33 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Minha Lista-->
         <scene sceneID="LpC-iJ-rnz">
             <objects>
                 <viewController storyboardIdentifier="MyListViewController" id="qt9-zG-ZT9" customClass="MyListViewController" customModule="My_Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1da-fW-hjU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="RUe-g2-TjN"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="Ma9-Fr-Qu1"/>
+                    <navigationItem key="navigationItem" title="Minha Lista" id="hmq-gf-PrD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d22-2F-wo7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-525" y="407"/>
+            <point key="canvasLocation" x="384.05797101449281" y="406.47321428571428"/>
         </scene>
-        <!--Home View Controller-->
+        <!--My Movies-->
         <scene sceneID="uAr-bz-4IF">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="MuH-x0-9aZ" customClass="HomeViewController" customModule="My_Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nbL-5T-agO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lcw-fn-5dW">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <color key="backgroundColor" red="0.1215505227" green="0.1215790585" blue="0.12154868990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -45,7 +45,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2rS-IB-Ivb"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xm2-30-i8D"/>
+                    <navigationItem key="navigationItem" title="My Movies" id="xm2-30-i8D"/>
                     <connections>
                         <outlet property="tableView" destination="Lcw-fn-5dW" id="lee-HG-nmG"/>
                     </connections>
@@ -58,27 +58,27 @@
         <scene sceneID="92T-Gc-XXB">
             <objects>
                 <tabBarController id="IjU-eP-vjq" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gPp-Wu-WlQ">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="gPp-Wu-WlQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="E2E-pY-J6h" kind="relationship" relationship="viewControllers" id="8gb-JU-adr"/>
-                        <segue destination="qt9-zG-ZT9" kind="relationship" relationship="viewControllers" id="uGD-wo-db1"/>
+                        <segue destination="Y2G-yl-ksK" kind="relationship" relationship="viewControllers" id="uGD-wo-db1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zie-tj-BNW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1441" y="83"/>
         </scene>
-        <!--Item 1-->
+        <!--Início-->
         <scene sceneID="sg0-Gc-lDj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E2E-pY-J6h" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="0lb-BA-41v"/>
+                    <tabBarItem key="tabBarItem" title="Início" image="home" id="0lb-BA-41v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ivx-Uu-O4X">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ivx-Uu-O4X">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -312,9 +312,30 @@
             </objects>
             <point key="canvasLocation" x="1214.4927536231885" y="-242.41071428571428"/>
         </scene>
+        <!--Minha Lista-->
+        <scene sceneID="4Hc-yd-gCo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y2G-yl-ksK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Minha Lista" image="baseline-star_rate" id="Ma9-Fr-Qu1"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="50W-uX-Z35">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qt9-zG-ZT9" kind="relationship" relationship="rootViewController" id="jMU-Xt-HkS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y5O-r2-rRn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-526.08695652173913" y="406.47321428571428"/>
+        </scene>
     </scenes>
     <resources>
         <image name="baseline-play_arrow" width="11" height="14"/>
+        <image name="baseline-star_rate" width="16" height="16"/>
         <image name="gradient_background" width="322" height="322"/>
+        <image name="home" width="20" height="17"/>
     </resources>
 </document>

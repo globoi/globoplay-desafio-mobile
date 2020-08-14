@@ -26,7 +26,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vYx-dq-wLY">
-                                <rect key="frame" x="0.0" y="8" width="213" height="288"/>
+                                <rect key="frame" x="0.0" y="0.0" width="213" height="304"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -36,13 +36,14 @@
                             <constraint firstAttribute="trailing" secondItem="1n5-cp-RH8" secondAttribute="trailing" constant="16" id="IZU-Gd-eZZ"/>
                             <constraint firstAttribute="trailing" secondItem="vYx-dq-wLY" secondAttribute="trailing" id="T9W-iN-qWu"/>
                             <constraint firstItem="vYx-dq-wLY" firstAttribute="leading" secondItem="fg0-MU-UBd" secondAttribute="leading" id="UCD-6W-i91"/>
-                            <constraint firstItem="vYx-dq-wLY" firstAttribute="top" secondItem="fg0-MU-UBd" secondAttribute="top" constant="8" id="hyB-Eg-dpn"/>
+                            <constraint firstItem="vYx-dq-wLY" firstAttribute="top" secondItem="fg0-MU-UBd" secondAttribute="top" id="hyB-Eg-dpn"/>
                             <constraint firstItem="1n5-cp-RH8" firstAttribute="leading" secondItem="fg0-MU-UBd" secondAttribute="leading" constant="16" id="i9D-RB-qGV"/>
-                            <constraint firstAttribute="bottom" secondItem="vYx-dq-wLY" secondAttribute="bottom" constant="8" id="k0q-hI-GX7"/>
+                            <constraint firstAttribute="bottom" secondItem="vYx-dq-wLY" secondAttribute="bottom" id="k0q-hI-GX7"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fg0-MU-UBd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9FW-VU-bPu"/>
                 <constraint firstAttribute="trailing" secondItem="fg0-MU-UBd" secondAttribute="trailing" id="Vd1-iV-FdH"/>

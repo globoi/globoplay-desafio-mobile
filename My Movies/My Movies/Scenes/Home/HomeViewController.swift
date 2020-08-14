@@ -88,8 +88,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         guard let displayedMovies = displayedMovies[genreId] else {
             return UITableViewCell()
         }
-        
-        cell.render(displayedMovies: displayedMovies, withGenre: genreId)
+
+        cell.render(displayedMovies: displayedMovies, withGenre: GenresList.allCases[indexPath.section])
         cell.delegate = self
         return cell
     }
@@ -109,18 +109,19 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return HomeTableViewCell.height
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
-
-        let label = UILabel()
-        label.frame = CGRect.init(x: 16, y: 5, width: headerView.frame.width - 10, height: headerView.frame.height - 10)
-        label.text = GenresList.allCases[section].getTitle()
-        label.font = UIFont.systemFont(ofSize: 16) // my custom font
-
-        headerView.addSubview(label)
-
-        return headerView
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+//
+//        let label = UILabel()
+//        label.frame = CGRect.init(x: 16, y: 5, width: headerView.frame.width - 10, height: headerView.frame.height - 10)
+//        label.textColor = .white
+//        label.text = GenresList.allCases[section].getTitle()
+//        label.font = UIFont.systemFont(ofSize: 16) // my custom font
+//
+//        headerView.addSubview(label)
+//
+//        return headerView
+//    }
 }
 
 // MARK: - HomeDisplayLogic
