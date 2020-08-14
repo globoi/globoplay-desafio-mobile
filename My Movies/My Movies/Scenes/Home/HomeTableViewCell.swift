@@ -48,7 +48,7 @@ class HomeTableViewCell: UITableViewCell {
 }
 
 // MARK: - UICollectionView
-extension HomeTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension HomeTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayedMovies.count

@@ -55,6 +55,7 @@ class MyListViewController: UIViewController {
         
         fetchFavoriteMovies()
         
+        moviesCollectionView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(fetchFavoriteMovies), name: .FavoriteMoviesUpdated, object: nil)
     }
     
@@ -70,5 +71,12 @@ extension MyListViewController: MyListDisplayLogic {
         
         let displayedMovies = viewModel.displayedMovies
         moviesCollectionView.setMovies(displayedMovies)
+    }
+}
+
+// MARK: - MoviesCollectionViewDelegate
+extension MyListViewController: MoviesCollectionViewDelegate {
+    func didSelectItem(at indexPath: IndexPath) {
+        router?.navigateToMovieDetails(atIndexPath: indexPath)
     }
 }

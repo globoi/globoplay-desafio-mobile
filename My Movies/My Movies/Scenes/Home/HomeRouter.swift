@@ -32,8 +32,8 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
             }) else {
                 fatalError("Failed to load MovieDetailsViewController from storyboard.")
             }
-            
-            viewController?.navigationController?.pushViewController(vc, animated: true)
+            vc.modalTransitionStyle = .crossDissolve
+            viewController?.navigationController?.present(vc, animated: true, completion: nil)
         }
     }
 }

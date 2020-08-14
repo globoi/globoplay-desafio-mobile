@@ -9,7 +9,7 @@
 import Foundation
 
 @objc protocol MyListRoutingLogic {
-    
+    func navigateToMovieDetails(atIndexPath indexPath: IndexPath)
 }
 
 protocol MyListDataPassing {
@@ -17,8 +17,20 @@ protocol MyListDataPassing {
 }
 
 class MyListRouter: NSObject, MyListRoutingLogic, MyListDataPassing {
-    
+
     weak var viewController: MyListViewController?
     var dataStore: MyListDataStore?
     
+    // MARK: - MyListRoutingLogic
+    func navigateToMovieDetails(atIndexPath indexPath: IndexPath) {
+        
+        guard let movieId = dataStore?.favoriteMovies[indexPath.row].id, let vc = viewController?.storyboard?.instantiateViewController(identifier: MovieDetailsViewController.identifier, creator: { coder in
+            return MovieDetailsViewController(coder: coder, movieId: movieId)
+        }) else {
+            fatalError("Failed to load MovieDetailsViewController from storyboard.")
+        }
+        
+        vc.modalTransitionStyle = .crossDissolve
+        viewController?.navigationController?.present(vc, animated: true, completion: nil)
+    }
 }

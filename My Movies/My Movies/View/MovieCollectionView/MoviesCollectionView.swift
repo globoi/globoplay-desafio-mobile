@@ -14,11 +14,16 @@ protocol DisplayableMovie {
     var posterPath: String? { get set }
 }
 
+protocol MoviesCollectionViewDelegate: class {
+    func didSelectItem(at indexPath: IndexPath)
+}
+
 class MoviesCollectionView: UIView {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var collectionView: ContentSizedCollectionView!
     
+    weak var delegate: MoviesCollectionViewDelegate?
     var displayableMovies: [DisplayableMovie] = []
 
     override init(frame: CGRect) {
@@ -80,5 +85,9 @@ extension MoviesCollectionView: UICollectionViewDataSource, UICollectionViewDele
         let cellWidth = viewWidth / 3 - 8
         let cellHeight = cellWidth * 1.71
         return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectItem(at: indexPath)
     }
 }
