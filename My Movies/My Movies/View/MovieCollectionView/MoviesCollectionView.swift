@@ -23,6 +23,7 @@ class MoviesCollectionView: UIView {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var collectionView: ContentSizedCollectionView!
     
+    private let identifier: String = "MoviesCollectionView"
     weak var delegate: MoviesCollectionViewDelegate?
     var displayableMovies: [DisplayableMovie] = []
 
@@ -44,7 +45,7 @@ class MoviesCollectionView: UIView {
     }
     
     private func initSubViews() {
-        let nib = UINib(nibName: String(describing: type(of: self)), bundle: Bundle(for: type(of: self)))
+        let nib = UINib(nibName: identifier, bundle: Bundle(identifier: identifier))
         nib.instantiate(withOwner: self, options: nil)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(containerView)

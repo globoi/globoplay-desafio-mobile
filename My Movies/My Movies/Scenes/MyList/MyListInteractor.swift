@@ -19,30 +19,24 @@ protocol MyListDataStore {
 class MyListInteractor: MyListBusinessLogic, MyListDataStore {
     
     var presenter: MyListPresentationLogic?
+    var worker: MyListWorker = MyListWorker()
     
     // MARK: - MyListDataStore
     var favoriteMovies: [Movie] = []
     
     // MARK: - MyListBusinessLogic
     func fetchFavoriteMovies() {
-        guard let response = UserPreferences.shared.getFavoriteMovies(),
-            !response.isEmpty else {
-            presenter?.presentEmptyMessage()
-            return
-        }
         
-        var favMovies: [Movie] = []
-        response.forEach { (key, value) in
-            let movie = Movie(id: Int(key), title: value[0],
-                              originalTitle: nil, overview: nil, genres: nil,
-                              genreIds: nil, releaseDate: nil, posterPath: value[1],
-                              backdropPath: nil, voteAverage: nil,
-                              productionCountries: nil)
-            
-            favMovies.append(movie)
+        worker.fetchFavoriteMovies { [weak self] (response) in
+            switch response {
+            case .success(let movies):
+                self?.favoriteMovies = movies
+                self?.presenter?.presentFavoriteMovies(response: MyListModels.FetchFavoriteMovies.Response(favoriteMovies: movies))
+                break
+            case .emptyResult(_):
+                self?.presenter?.presentEmptyMessage()
+                break
+            }
         }
-        
-        self.favoriteMovies = favMovies
-        presenter?.presentFavoriteMovies(response: MyListModels.FetchFavoriteMovies.Response(favoriteMovies: favMovies))
     }
 }

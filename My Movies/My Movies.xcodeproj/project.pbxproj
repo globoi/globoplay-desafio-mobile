@@ -65,6 +65,10 @@
 		D9878A4424E83ABE00345C20 /* Seeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9878A4324E83ABE00345C20 /* Seeds.swift */; };
 		D9878A4624E83E3700345C20 /* HomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9878A4524E83E3700345C20 /* HomeInteractorTests.swift */; };
 		D9878A4824E84FDD00345C20 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9878A4724E84FDD00345C20 /* HomeViewControllerTests.swift */; };
+		D9878A4A24E8557C00345C20 /* MyListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9878A4924E8557B00345C20 /* MyListPresenterTests.swift */; };
+		D9878A4C24E8589400345C20 /* MyListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9878A4B24E8589400345C20 /* MyListInteractorTests.swift */; };
+		D9878A4E24E85DFA00345C20 /* MyListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9878A4D24E85DFA00345C20 /* MyListWorker.swift */; };
+		D9878A5024E8697E00345C20 /* MyListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9878A4F24E8697D00345C20 /* MyListViewControllerTests.swift */; };
 		DAB6E6750165F0313B30ACDC /* Pods_My_MoviesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0526E89BAA5D61DD92F5DA6 /* Pods_My_MoviesTests.framework */; };
 		EE0DB690FB520B4E621E5102 /* Pods_My_MoviesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D45299E6BA027446ED4E69A1 /* Pods_My_MoviesUITests.framework */; };
 /* End PBXBuildFile section */
@@ -157,6 +161,10 @@
 		D9878A4324E83ABE00345C20 /* Seeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeds.swift; sourceTree = "<group>"; };
 		D9878A4524E83E3700345C20 /* HomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTests.swift; sourceTree = "<group>"; };
 		D9878A4724E84FDD00345C20 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		D9878A4924E8557B00345C20 /* MyListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListPresenterTests.swift; sourceTree = "<group>"; };
+		D9878A4B24E8589400345C20 /* MyListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListInteractorTests.swift; sourceTree = "<group>"; };
+		D9878A4D24E85DFA00345C20 /* MyListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListWorker.swift; sourceTree = "<group>"; };
+		D9878A4F24E8697D00345C20 /* MyListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewControllerTests.swift; sourceTree = "<group>"; };
 		E9181DDA883920CF0237964C /* Pods-My Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My Movies.release.xcconfig"; path = "Target Support Files/Pods-My Movies/Pods-My Movies.release.xcconfig"; sourceTree = "<group>"; };
 		F447E74C8FF4E5C58DA1799F /* Pods-My MoviesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My MoviesTests.debug.xcconfig"; path = "Target Support Files/Pods-My MoviesTests/Pods-My MoviesTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -421,6 +429,7 @@
 				D95F86E924E211D400BE0A84 /* MyListRouter.swift */,
 				D95F86EB24E211E200BE0A84 /* MyListPresenter.swift */,
 				D95F86ED24E211F200BE0A84 /* MyListInteractor.swift */,
+				D9878A4D24E85DFA00345C20 /* MyListWorker.swift */,
 			);
 			path = MyList;
 			sourceTree = "<group>";
@@ -445,6 +454,9 @@
 		D9878A3E24E8384900345C20 /* MyList */ = {
 			isa = PBXGroup;
 			children = (
+				D9878A4924E8557B00345C20 /* MyListPresenterTests.swift */,
+				D9878A4B24E8589400345C20 /* MyListInteractorTests.swift */,
+				D9878A4F24E8697D00345C20 /* MyListViewControllerTests.swift */,
 			);
 			path = MyList;
 			sourceTree = "<group>";
@@ -706,6 +718,7 @@
 				D939C09824E6C74300995FB3 /* Notification+Extensions.swift in Sources */,
 				D9517BB524E57C4C003D0BE6 /* DateFormatter+Extensions.swift in Sources */,
 				D95F86E424E20D8D00BE0A84 /* MyListViewController.swift in Sources */,
+				D9878A4E24E85DFA00345C20 /* MyListWorker.swift in Sources */,
 				D9517BBD24E5B2D4003D0BE6 /* UIButton+Extensions.swift in Sources */,
 				D90165F124E3114500AF64D4 /* MovieDetailsInteractor.swift in Sources */,
 				D95F86F824E2177300BE0A84 /* HomeInteractor.swift in Sources */,
@@ -743,10 +756,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9878A4C24E8589400345C20 /* MyListInteractorTests.swift in Sources */,
+				D9878A4A24E8557C00345C20 /* MyListPresenterTests.swift in Sources */,
 				D9878A4824E84FDD00345C20 /* HomeViewControllerTests.swift in Sources */,
 				D95F86A024E0E53D00BE0A84 /* My_MoviesTests.swift in Sources */,
 				D9878A4124E8388400345C20 /* HomePresenterTests.swift in Sources */,
 				D9878A4424E83ABE00345C20 /* Seeds.swift in Sources */,
+				D9878A5024E8697E00345C20 /* MyListViewControllerTests.swift in Sources */,
 				D9878A4624E83E3700345C20 /* HomeInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
