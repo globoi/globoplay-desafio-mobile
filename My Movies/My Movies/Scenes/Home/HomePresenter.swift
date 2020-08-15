@@ -39,6 +39,6 @@ class HomePresenter: HomePresentationLogic {
     }
     
     func presentError(_ error: Error) {
-        viewController?.displayError(withMessage: error.localizedDescription)
+        viewController?.displayError(withMessage: "Houve algum problema ao conectar no My Movies.\nTente novamente mais tarde.")
     }
 }

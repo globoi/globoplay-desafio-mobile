@@ -114,11 +114,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomeViewController: HomeDisplayLogic {
 
     func displayError(withMessage message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         
         DispatchQueue.main.async { [weak self] in
-            self?.present(alertController, animated: true, completion: nil)
+            let errorMessageView = CustomMessageView(message: message, buttonTitle: "Tentar Novamente")
+            errorMessageView.delegate = self
+            self?.tableView.backgroundView = errorMessageView
         }
     }
     
@@ -128,6 +128,7 @@ extension HomeViewController: HomeDisplayLogic {
         DispatchQueue.main.async { [weak self] in
             self?.displayedMovies[genre] = displayedMovies
             self?.tableView.reloadData()
+            self?.tableView.backgroundView = nil
         }
     }
 }
@@ -137,5 +138,11 @@ extension HomeViewController: HomeTableViewCellDelegate {
     
     func didSelectMovieAtIndex(_ indexPath: IndexPath, forGenre genre: Int) {
         router?.navigateToMovieDetails(atIndexPath: indexPath, withGenre: genre)
+    }
+}
+
+extension HomeViewController: CustomMessageViewDelegate {
+    func tryAgainTouched() {
+        fetchMovies()
     }
 }

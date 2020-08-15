@@ -10,6 +10,7 @@ import Foundation
 
 protocol MyListPresentationLogic {
     func presentFavoriteMovies(response: MyListModels.FetchFavoriteMovies.Response)
+    func presentEmptyMessage()
 }
 
 class MyListPresenter: MyListPresentationLogic {
@@ -17,6 +18,10 @@ class MyListPresenter: MyListPresentationLogic {
     weak var viewController: MyListDisplayLogic?
     
     //MARK: - MyListPresentationLogic
+    
+    func presentEmptyMessage() {
+        viewController?.displayMessage("Você ainda não possui nenhum filme\n na sua lista de favoritos.")
+    }
     
     func presentFavoriteMovies(response: MyListModels.FetchFavoriteMovies.Response) {
         var displayedMovies: [MyListModels.FetchFavoriteMovies.ViewModel.DisplayedMovie] = []

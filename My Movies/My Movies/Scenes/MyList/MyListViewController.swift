@@ -10,6 +10,7 @@ import UIKit
 
 protocol MyListDisplayLogic: class {
     func displayFavoriteMovies(viewModel: MyListModels.FetchFavoriteMovies.ViewModel)
+    func displayMessage(_ message: String)
 }
 
 class MyListViewController: UIViewController {
@@ -68,9 +69,14 @@ class MyListViewController: UIViewController {
 extension MyListViewController: MyListDisplayLogic {
     
     func displayFavoriteMovies(viewModel: MyListModels.FetchFavoriteMovies.ViewModel) {
-        
         let displayedMovies = viewModel.displayedMovies
         moviesCollectionView.setMovies(displayedMovies)
+        moviesCollectionView.collectionView.backgroundView = nil
+    }
+    
+    func displayMessage(_ message: String) {
+        let customMessageView = CustomMessageView(message: message)
+        moviesCollectionView.collectionView.backgroundView = customMessageView
     }
 }
 

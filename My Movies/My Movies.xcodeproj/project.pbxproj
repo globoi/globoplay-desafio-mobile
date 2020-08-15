@@ -19,6 +19,8 @@
 		D90165ED24E3112D00AF64D4 /* MovieDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90165EC24E3112D00AF64D4 /* MovieDetailsRouter.swift */; };
 		D90165EF24E3113800AF64D4 /* MovieDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90165EE24E3113800AF64D4 /* MovieDetailsPresenter.swift */; };
 		D90165F124E3114500AF64D4 /* MovieDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90165F024E3114500AF64D4 /* MovieDetailsInteractor.swift */; };
+		D9079DAD24E73D9700E762C6 /* CustomMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9079DAC24E73D9700E762C6 /* CustomMessageView.xib */; };
+		D9079DAF24E73DA600E762C6 /* CustomMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9079DAE24E73DA600E762C6 /* CustomMessageView.swift */; };
 		D939C09624E61A4700995FB3 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C09524E61A4700995FB3 /* UserPreferences.swift */; };
 		D939C09824E6C74300995FB3 /* Notification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939C09724E6C74300995FB3 /* Notification+Extensions.swift */; };
 		D9517BA424E42CBF003D0BE6 /* MoviesCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9517BA324E42CBF003D0BE6 /* MoviesCollectionView.xib */; };
@@ -99,6 +101,8 @@
 		D90165EC24E3112D00AF64D4 /* MovieDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsRouter.swift; sourceTree = "<group>"; };
 		D90165EE24E3113800AF64D4 /* MovieDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsPresenter.swift; sourceTree = "<group>"; };
 		D90165F024E3114500AF64D4 /* MovieDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsInteractor.swift; sourceTree = "<group>"; };
+		D9079DAC24E73D9700E762C6 /* CustomMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomMessageView.xib; sourceTree = "<group>"; };
+		D9079DAE24E73DA600E762C6 /* CustomMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageView.swift; sourceTree = "<group>"; };
 		D939C09524E61A4700995FB3 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		D939C09724E6C74300995FB3 /* Notification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
 		D9517BA324E42CBF003D0BE6 /* MoviesCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesCollectionView.xib; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 		D90165E024E2E41400AF64D4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D9079DAB24E73D7B00E762C6 /* ErrorMessageView */,
 				D9517BA824E49313003D0BE6 /* MovieCollectionView */,
 				D9517BA924E4932A003D0BE6 /* MovieCollectionViewCell */,
 				D9517BAF24E4AA09003D0BE6 /* MovieDetailsView */,
@@ -222,6 +227,15 @@
 				D90165F024E3114500AF64D4 /* MovieDetailsInteractor.swift */,
 			);
 			path = MovieDetails;
+			sourceTree = "<group>";
+		};
+		D9079DAB24E73D7B00E762C6 /* ErrorMessageView */ = {
+			isa = PBXGroup;
+			children = (
+				D9079DAC24E73D9700E762C6 /* CustomMessageView.xib */,
+				D9079DAE24E73DA600E762C6 /* CustomMessageView.swift */,
+			);
+			path = ErrorMessageView;
 			sourceTree = "<group>";
 		};
 		D9517BA824E49313003D0BE6 /* MovieCollectionView */ = {
@@ -516,6 +530,7 @@
 				D95F869224E0E53D00BE0A84 /* Assets.xcassets in Resources */,
 				D90165DE24E2DE8700AF64D4 /* HomeTableViewCell.xib in Resources */,
 				D95F869024E0E53A00BE0A84 /* Main.storyboard in Resources */,
+				D9079DAD24E73D9700E762C6 /* CustomMessageView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +658,7 @@
 				D90165F124E3114500AF64D4 /* MovieDetailsInteractor.swift in Sources */,
 				D95F86F824E2177300BE0A84 /* HomeInteractor.swift in Sources */,
 				D95F86D324E1C0DB00BE0A84 /* Constants.swift in Sources */,
+				D9079DAF24E73DA600E762C6 /* CustomMessageView.swift in Sources */,
 				D95F86DD24E1D40500BE0A84 /* AppError.swift in Sources */,
 				D90165E324E2E43C00AF64D4 /* MovieCollectionViewCell.swift in Sources */,
 				D95F86EC24E211E200BE0A84 /* MyListPresenter.swift in Sources */,

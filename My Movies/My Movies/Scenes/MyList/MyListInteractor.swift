@@ -25,7 +25,9 @@ class MyListInteractor: MyListBusinessLogic, MyListDataStore {
     
     // MARK: - MyListBusinessLogic
     func fetchFavoriteMovies() {
-        guard let response = UserPreferences.shared.getFavoriteMovies() else {
+        guard let response = UserPreferences.shared.getFavoriteMovies(),
+            !response.isEmpty else {
+            presenter?.presentEmptyMessage()
             return
         }
         
@@ -41,6 +43,6 @@ class MyListInteractor: MyListBusinessLogic, MyListDataStore {
         }
         
         self.favoriteMovies = favMovies
-        self.presenter?.presentFavoriteMovies(response: MyListModels.FetchFavoriteMovies.Response(favoriteMovies: favMovies))
+        presenter?.presentFavoriteMovies(response: MyListModels.FetchFavoriteMovies.Response(favoriteMovies: favMovies))
     }
 }
