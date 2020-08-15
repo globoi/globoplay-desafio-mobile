@@ -61,6 +61,10 @@
 		D95F86F424E2173D00BE0A84 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F86F324E2173D00BE0A84 /* HomeRouter.swift */; };
 		D95F86F624E2175F00BE0A84 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F86F524E2175F00BE0A84 /* HomePresenter.swift */; };
 		D95F86F824E2177300BE0A84 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F86F724E2177300BE0A84 /* HomeInteractor.swift */; };
+		D9878A4124E8388400345C20 /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9878A4024E8388400345C20 /* HomePresenterTests.swift */; };
+		D9878A4424E83ABE00345C20 /* Seeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9878A4324E83ABE00345C20 /* Seeds.swift */; };
+		D9878A4624E83E3700345C20 /* HomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9878A4524E83E3700345C20 /* HomeInteractorTests.swift */; };
+		D9878A4824E84FDD00345C20 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9878A4724E84FDD00345C20 /* HomeViewControllerTests.swift */; };
 		DAB6E6750165F0313B30ACDC /* Pods_My_MoviesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0526E89BAA5D61DD92F5DA6 /* Pods_My_MoviesTests.framework */; };
 		EE0DB690FB520B4E621E5102 /* Pods_My_MoviesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D45299E6BA027446ED4E69A1 /* Pods_My_MoviesUITests.framework */; };
 /* End PBXBuildFile section */
@@ -149,6 +153,10 @@
 		D95F86F324E2173D00BE0A84 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		D95F86F524E2175F00BE0A84 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		D95F86F724E2177300BE0A84 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		D9878A4024E8388400345C20 /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
+		D9878A4324E83ABE00345C20 /* Seeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeds.swift; sourceTree = "<group>"; };
+		D9878A4524E83E3700345C20 /* HomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTests.swift; sourceTree = "<group>"; };
+		D9878A4724E84FDD00345C20 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		E9181DDA883920CF0237964C /* Pods-My Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My Movies.release.xcconfig"; path = "Target Support Files/Pods-My Movies/Pods-My Movies.release.xcconfig"; sourceTree = "<group>"; };
 		F447E74C8FF4E5C58DA1799F /* Pods-My MoviesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My MoviesTests.debug.xcconfig"; path = "Target Support Files/Pods-My MoviesTests/Pods-My MoviesTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -309,6 +317,8 @@
 		D95F869E24E0E53D00BE0A84 /* My MoviesTests */ = {
 			isa = PBXGroup;
 			children = (
+				D9878A4224E83AAD00345C20 /* Seeds */,
+				D9878A3C24E8382F00345C20 /* Scenes */,
 				D95F869F24E0E53D00BE0A84 /* My_MoviesTests.swift */,
 				D95F86A124E0E53D00BE0A84 /* Info.plist */,
 			);
@@ -381,9 +391,9 @@
 		D95F86DE24E20BB200BE0A84 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D95F86E124E20D1900BE0A84 /* Home */,
 				D90165E524E310D700AF64D4 /* MovieDetails */,
 				D95F86E224E20D6B00BE0A84 /* MyList */,
-				D95F86E124E20D1900BE0A84 /* Home */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -413,6 +423,48 @@
 				D95F86ED24E211F200BE0A84 /* MyListInteractor.swift */,
 			);
 			path = MyList;
+			sourceTree = "<group>";
+		};
+		D9878A3C24E8382F00345C20 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D9878A3F24E8384F00345C20 /* Home */,
+				D9878A3D24E8384000345C20 /* MovieDetails */,
+				D9878A3E24E8384900345C20 /* MyList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D9878A3D24E8384000345C20 /* MovieDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MovieDetails;
+			sourceTree = "<group>";
+		};
+		D9878A3E24E8384900345C20 /* MyList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyList;
+			sourceTree = "<group>";
+		};
+		D9878A3F24E8384F00345C20 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D9878A4024E8388400345C20 /* HomePresenterTests.swift */,
+				D9878A4524E83E3700345C20 /* HomeInteractorTests.swift */,
+				D9878A4724E84FDD00345C20 /* HomeViewControllerTests.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D9878A4224E83AAD00345C20 /* Seeds */ = {
+			isa = PBXGroup;
+			children = (
+				D9878A4324E83ABE00345C20 /* Seeds.swift */,
+			);
+			path = Seeds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -691,7 +743,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9878A4824E84FDD00345C20 /* HomeViewControllerTests.swift in Sources */,
 				D95F86A024E0E53D00BE0A84 /* My_MoviesTests.swift in Sources */,
+				D9878A4124E8388400345C20 /* HomePresenterTests.swift in Sources */,
+				D9878A4424E83ABE00345C20 /* Seeds.swift in Sources */,
+				D9878A4624E83E3700345C20 /* HomeInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
