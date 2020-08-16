@@ -12,6 +12,7 @@ import UIKit
 protocol MovieDetailsPresentationLogic {
     func presentFetchedMovieDetails(response: MovieDetailsModels.FetchMovieDetails.Response)
     func presentFetchedRecommendations(response: MovieDetailsModels.FetchMovieRecommendations.Response)
+    func presentFetchedTrailer(response: MovieDetailsModels.FetchMovieTrailer.Response)
     func presentError(_ error: Error)
     func presentIsMovieOnFavorites(_ isFavorite: Bool)
 }
@@ -86,5 +87,15 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         let image = UIImage(named: isFavorite ? "baseline-check" : "baseline-star_rate")?.withTintColor(.white)
         let text = isFavorite ? "Adicionado" : "Minha Lista"
         viewController?.displayFavoriteButton(withImage: image, text: text)
+    }
+    
+    // safe video url
+    // "https://www.youtube.com/watch?v=\(response.trailer.key)?autoplay=1"
+    func presentFetchedTrailer(response: MovieDetailsModels.FetchMovieTrailer.Response) {
+        guard let url = URL(string: "https://www.youtube.com/watch?v=\(response.trailer.key)?autoplay=1&mute=0") else {
+            return
+        }
+        
+        viewController?.displayTrailer(withURL: url)
     }
 }

@@ -150,6 +150,9 @@
                                                                         <real key="value" value="4"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="watchButtonTouched:" destination="G2E-a7-8OK" eventType="touchUpInside" id="gS3-5w-ib5"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t21-0e-h9L">
                                                                 <rect key="frame" x="191" y="0.0" width="179" height="35"/>
@@ -344,15 +347,29 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="7Z3-vo-Zl3"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="TAB-xT-dye"/>
                             </scrollView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGk-Bm-DT2">
+                                <rect key="frame" x="0.0" y="862" width="414" height="0.0"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="oBh-xT-IxZ"/>
+                                </constraints>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8A5-UZ-iC7" firstAttribute="top" secondItem="Mxz-ba-mU3" secondAttribute="top" id="2Uo-VF-fK2"/>
                             <constraint firstItem="Mxz-ba-mU3" firstAttribute="trailing" secondItem="8A5-UZ-iC7" secondAttribute="trailing" id="Bsl-SE-6f1"/>
+                            <constraint firstItem="sGk-Bm-DT2" firstAttribute="leading" secondItem="Mxz-ba-mU3" secondAttribute="leading" id="HDZ-zy-atk"/>
+                            <constraint firstItem="Mxz-ba-mU3" firstAttribute="bottom" secondItem="sGk-Bm-DT2" secondAttribute="bottom" id="Twb-9N-rbO"/>
                             <constraint firstItem="8A5-UZ-iC7" firstAttribute="leading" secondItem="Mxz-ba-mU3" secondAttribute="leading" id="fdu-6Z-FUP"/>
                             <constraint firstItem="Mxz-ba-mU3" firstAttribute="bottom" secondItem="8A5-UZ-iC7" secondAttribute="bottom" id="jzX-ne-sce"/>
                             <constraint firstItem="rFH-04-noa" firstAttribute="top" secondItem="Mxz-ba-mU3" secondAttribute="top" id="oIy-TU-nAk"/>
                             <constraint firstItem="0aM-mV-J5S" firstAttribute="top" secondItem="Mxz-ba-mU3" secondAttribute="top" priority="750" id="ury-pE-btz"/>
+                            <constraint firstItem="Mxz-ba-mU3" firstAttribute="trailing" secondItem="sGk-Bm-DT2" secondAttribute="trailing" id="zeh-ma-fsk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mxz-ba-mU3"/>
                     </view>
@@ -373,6 +390,7 @@
                         <outlet property="titleLabel" destination="fSd-2R-uPc" id="jig-Q9-l4N"/>
                         <outlet property="topBarView" destination="rFH-04-noa" id="FMj-5n-2wi"/>
                         <outlet property="watchButton" destination="eHA-id-ZJ9" id="osU-nP-64u"/>
+                        <outlet property="webView" destination="sGk-Bm-DT2" id="qAZ-lI-Ils"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6b-7s-ZU3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -19,6 +19,11 @@ class MovieDetailsWorker {
         case success([Movie])
         case error(Error)
     }
+    
+    enum MovieTrailerResponse {
+        case success(Video)
+        case error(Error)
+    }
 
     func fetchMovieDetails(request: MovieDetailsModels.FetchMovieDetails.Request,
                            completion: @escaping (MovieDetailsResponse) -> Void) {
@@ -37,11 +42,33 @@ class MovieDetailsWorker {
     func fetchMovieRecommendations(request: MovieDetailsModels.FetchMovieRecommendations.Request,
                                    completion: @escaping (MovieRecommendationsResponse) -> Void) {
         
-        APIClient(manager: APIManager.shared).gerMovieRecomendations(request.movieId) { (response) in
+        APIClient(manager: APIManager.shared).getMovieRecomendations(request.movieId) { (response) in
             
             switch response {
             case .success(movies: let movies):
                 completion(.success(movies)); break
+            case .failed(error: let error):
+                completion(.error(error)); break
+            }
+        }
+    }
+    
+    func fetchMovieTrailer(request: MovieDetailsModels.FetchMovieTrailer.Request, completion: @escaping (MovieTrailerResponse) -> Void) {
+        
+        APIClient(manager: APIManager.shared).getMovieTrailer(request.movieId) { (response) in
+            
+            switch response {
+            case .success(videos: let videos):
+                
+                // filter results that match YouTube provider and Trailer type
+                videos.forEach { (video) in
+                    if video.site == "YouTube" && video.type == "Trailer" {
+                        completion(.success(video));
+                        return
+                    }
+                }
+                
+                completion(.error(ApplicationError.missingData)); break
             case .failed(error: let error):
                 completion(.error(error)); break
             }

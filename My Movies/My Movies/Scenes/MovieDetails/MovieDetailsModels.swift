@@ -53,4 +53,17 @@ struct MovieDetailsModels {
             var displayedMovies: [DisplayedMovie]
         }
     }
+    
+    // MARK: - FetchMovieTrailer
+    enum FetchMovieTrailer {
+        struct Request {
+            let movieId: String
+        }
+        struct Response {
+            var trailer: Video
+        }
+        struct ViewModel {
+            
+        }
+    }
 }

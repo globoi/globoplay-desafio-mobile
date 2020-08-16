@@ -54,7 +54,7 @@ final class APIClient {
     /// - Parameters:
     ///   - movieId: Movie ID
     ///   - completion: Closure with request completion
-    func gerMovieRecomendations(_ movieId: String, completion: @escaping (MoviesResponse) -> Void) {
+    func getMovieRecomendations(_ movieId: String, completion: @escaping (MoviesResponse) -> Void) {
         
         manager.request(endPoint: .getMovieRecommendations(movieId)) { (response) in
             switch response {
@@ -62,6 +62,23 @@ final class APIClient {
                 completion(MoviesResponse.parse(data)); break
             case .error(let error):
                 completion(MoviesResponse.failed(error: error)); break
+            }
+        }
+    }
+    
+    
+    /// Gets movie videos based on a specific movie
+    /// - Parameters:
+    ///   - movieId: Movie ID
+    ///   - completion: Closure with request completion
+    func getMovieTrailer(_ movieId: String, completion: @escaping (VideosResponse) -> Void) {
+     
+        manager.request(endPoint: .getMovieTrailer(movieId)) { (response) in
+            switch response{
+            case .sucess(let data):
+                completion(VideosResponse.parse(data)); break
+            case .error(let error):
+                completion(.failed(error: error)); break
             }
         }
     }

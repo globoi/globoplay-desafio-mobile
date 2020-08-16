@@ -13,6 +13,7 @@ protocol MovieDetailsBusinessLogic {
     func fetchMovieRecommendations(_ movieId: Int)
     func addOrRemoveMovieFromFavorites(_ movieId: Int)
     func checkIfMovieIsFavorite(_ movieId: Int)
+    func fetchMovieTrailer(_ movieId: Int)
 }
 
 protocol MovieDetailsDataStore {
@@ -92,5 +93,19 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
         let isMovieOnFavorites = UserPreferences.shared.isMovieOnFavorites(String(movieId))
         self.isMovieFavorited = isMovieOnFavorites
         presenter?.presentIsMovieOnFavorites(isMovieOnFavorites)
+    }
+    
+    func fetchMovieTrailer(_ movieId: Int) {
+        let request = MovieDetailsModels.FetchMovieTrailer.Request(movieId: String(movieId))
+        
+        worker.fetchMovieTrailer(request: request) { (response) in
+            switch response {
+            case .success(let video):
+                self.presenter?.presentFetchedTrailer(response: MovieDetailsModels.FetchMovieTrailer.Response(trailer: video))
+                break
+            case .error(let error):
+                self.presenter?.presentError(error); break
+            }
+        }
     }
 }

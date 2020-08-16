@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import WebKit
 
 protocol MovieDetailsDisplayLogic: class {
     func displayFetchedMovieDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel)
     func displayFetchedMovieRecommendations(viewModel: MovieDetailsModels.FetchMovieRecommendations.ViewModel)
     func displayFavoriteButton(withImage image: UIImage?, text: String)
+    func displayTrailer(withURL url: URL)
 }
 
 class MovieDetailsViewController: UIViewController {
@@ -67,6 +69,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var recommendationsUnderlineView: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var webView: WKWebView!
     
     var moviesCollectionView: MoviesCollectionView!
     var movieDetailsView: MovieDetailsView!
@@ -109,6 +112,10 @@ class MovieDetailsViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    @IBAction func watchButtonTouched(_ sender: Any) {
+        interactor?.fetchMovieTrailer(movieId)
+    }
     
     @IBAction func favoriteButtonTouched(_ sender: Any) {
         interactor?.addOrRemoveMovieFromFavorites(movieId)
@@ -172,6 +179,12 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
             if let backdropPath = displayedMovie.backdropPath, let url = URL(string: backdropPath) {
                 self?.backgroundImageView.kf.setImage(with: url)
             }
+        }
+    }
+    
+    func displayTrailer(withURL url: URL) {
+        DispatchQueue.main.async {
+            self.webView.load(URLRequest(url: url))
         }
     }
 }
