@@ -68,8 +68,8 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     
-    private var moviesCollectionView: MoviesCollectionView!
-    private var movieDetailsView: MovieDetailsView!
+    var moviesCollectionView: MoviesCollectionView!
+    var movieDetailsView: MovieDetailsView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

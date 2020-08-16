@@ -16,8 +16,9 @@ struct Seeds {
                                   originalTitle: "Original Movie 1",
                                   overview: "Movie about a character that fights the evil",
                                   genres: [Genre(id: 3, name: "Comedy")],
-                                  genreIds: [3], releaseDate: "07-10-2018",
-                                  posterPath: "posterPath.jpg", backdropPath: nil, voteAverage: 7.9,
+                                  genreIds: [3], releaseDate: "2018-10-21",
+                                  posterPath: "posterPath.jpg",
+                                  backdropPath: "backdropPath.jpg", voteAverage: 7.9,
                                   productionCountries: [ProductionCountry(name: "Brazil")])
     }
 }

@@ -27,6 +27,8 @@ class MovieDetailsView: UIView {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
+    private let identifier: String = "MovieDetailsView"
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initSubViews()
@@ -38,7 +40,7 @@ class MovieDetailsView: UIView {
     }
     
     private func initSubViews() {
-        let nib = UINib(nibName: String(describing: type(of: self)), bundle: Bundle(for: type(of: self)))
+        let nib = UINib(nibName: identifier, bundle: Bundle(identifier: identifier))
         nib.instantiate(withOwner: self, options: nil)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(containerView)
