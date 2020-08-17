@@ -14,6 +14,7 @@ protocol MovieDetailsDisplayLogic: class {
     func displayFetchedMovieRecommendations(viewModel: MovieDetailsModels.FetchMovieRecommendations.ViewModel)
     func displayFavoriteButton(withImage image: UIImage?, text: String)
     func displayTrailer(withURL url: URL)
+    func displayErrorAlert(withTitle title: String, message: String)
 }
 
 class MovieDetailsViewController: UIViewController {
@@ -78,7 +79,6 @@ class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
-        
         fetchMovieDetails()
         fetchMovieRecommendations()
     }
@@ -181,10 +181,19 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
             }
         }
     }
+
     
     func displayTrailer(withURL url: URL) {
-        DispatchQueue.main.async {
-            self.webView.load(URLRequest(url: url))
+        DispatchQueue.main.async { [weak self] in
+            self?.webView.load(URLRequest(url: url))
+        }
+    }
+    
+    func displayErrorAlert(withTitle title: String, message: String) {
+        DispatchQueue.main.async { [weak self] in
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self?.present(alert, animated: true, completion: nil)
         }
     }
 }

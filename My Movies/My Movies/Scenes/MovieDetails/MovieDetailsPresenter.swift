@@ -80,7 +80,7 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
     }
     
     func presentError(_ error: Error) {
-        
+        viewController?.displayErrorAlert(withTitle: "Erro", message: "Desculpe, parece que ocorreu algo inesperado. Por favor, tente novamente mais tarde.")
     }
     
     func presentIsMovieOnFavorites(_ isFavorite: Bool) {
@@ -88,11 +88,10 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         let text = isFavorite ? "Adicionado" : "Minha Lista"
         viewController?.displayFavoriteButton(withImage: image, text: text)
     }
-    
-    // safe video url
-    // "https://www.youtube.com/watch?v=\(response.trailer.key)?autoplay=1"
+
     func presentFetchedTrailer(response: MovieDetailsModels.FetchMovieTrailer.Response) {
-        guard let url = URL(string: "https://www.youtube.com/watch?v=\(response.trailer.key)?autoplay=1&mute=0") else {
+        guard let url = URL(string: "https://www.youtube.com/watch?v=\(response.trailer.key)?autoplay=1&playsinline=1") else {
+            viewController?.displayErrorAlert(withTitle: "Erro de URL", message: "Ocorreu um erro ao executar o Trailer. Tente novamente mais tarde.")
             return
         }
         

@@ -37,10 +37,14 @@ class MovieDetailsRouter: NSObject, MovieDetailsRoutingLogic, MovieDetailsDataPa
     }
     
     func navigateToPreviousView() {
-        self.viewController?.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.viewController?.navigationController?.popViewController(animated: true)
+        }
     }
     
     func dismiss() {
-        self.viewController?.navigationController?.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            self?.viewController?.navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
 }

@@ -60,15 +60,19 @@ class MovieDetailsWorker {
             switch response {
             case .success(videos: let videos):
                 
+                var trailerVideo: Video?
                 // filter results that match YouTube provider and Trailer type
-                videos.forEach { (video) in
+                for video in videos {
                     if video.site == "YouTube" && video.type == "Trailer" {
-                        completion(.success(video));
-                        return
+                        trailerVideo = video; break
                     }
                 }
                 
-                completion(.error(ApplicationError.missingData)); break
+                if let trailerVideo = trailerVideo {
+                    completion(.success(trailerVideo)); break
+                } else {
+                    completion(.error(ApplicationError.missingData)); break
+                }
             case .failed(error: let error):
                 completion(.error(error)); break
             }

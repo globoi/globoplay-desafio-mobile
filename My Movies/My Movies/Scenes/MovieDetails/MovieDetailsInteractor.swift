@@ -58,8 +58,7 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
                 self?.presenter?.presentFetchedMovieDetails(response: MovieDetailsModels.FetchMovieDetails.Response(movie: movie))
                 break
             case .error(let error):
-                self?.presenter?.presentError(error)
-                break
+                self?.presenter?.presentError(error); break
             }
         }
     }
