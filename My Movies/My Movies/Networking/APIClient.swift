@@ -82,4 +82,20 @@ final class APIClient {
             }
         }
     }
+    
+    /// Gets movie videos based on a specific query text
+    /// - Parameters:
+    ///   - queryString: Quey text String
+    ///   - completion: Closure with request completion
+    func getSearchMovies(_ queryString: String, completion: @escaping (MoviesResponse) -> Void) {
+        
+        manager.request(endPoint: .getSearchMovies(queryString)) { (response) in
+            switch response {
+            case .sucess(let data):
+                completion(MoviesResponse.parse(data)); break
+            case .error(let error):
+                completion(.failed(error: error)); break
+            }
+        }
+    }
 }

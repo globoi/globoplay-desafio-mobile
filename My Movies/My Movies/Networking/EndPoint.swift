@@ -14,6 +14,7 @@ enum EndPoint {
     case discoverMovies(Int, Int)
     case getMovieRecommendations(String)
     case getMovieTrailer(String)
+    case getSearchMovies(String)
     
     func getPath() -> String {
         switch self {
@@ -25,6 +26,9 @@ enum EndPoint {
             return "\(Constants.baseURL)/movie/\(movieId)/recommendations?api_key=\(Constants.apiKey)"
         case .getMovieTrailer(let movieId):
             return "\(Constants.baseURL)/movie/\(movieId)/videos?api_key=\(Constants.apiKey)"
+        case .getSearchMovies(let searchString):
+            let queryText = searchString.replacingOccurrences(of: " ", with: "%20")
+            return "\(Constants.baseURL)/search/movie?api_key=\(Constants.apiKey)&query=\(queryText)"
         }
     }
     
@@ -33,7 +37,8 @@ enum EndPoint {
         case .getMovieDetails,
              .discoverMovies,
              .getMovieRecommendations,
-             .getMovieTrailer:
+             .getMovieTrailer,
+             .getSearchMovies:
             return .get
         }
     }

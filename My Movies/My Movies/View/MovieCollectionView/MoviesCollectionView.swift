@@ -56,6 +56,7 @@ class MoviesCollectionView: UIView {
         addSubview(containerView)
         self.addConstraints()
 
+        collectionView.keyboardDismissMode = .onDrag
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
