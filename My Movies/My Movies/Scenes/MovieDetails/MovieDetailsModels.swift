@@ -32,6 +32,7 @@ struct MovieDetailsModels {
                 var originalTitle: String?
                 var score: String?
                 var productionCountries: String?
+                var productionCompanies: String?
             }
             var displayedMovie: DisplayedMovie
         }

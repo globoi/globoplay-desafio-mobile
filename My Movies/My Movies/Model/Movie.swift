@@ -20,6 +20,7 @@ struct Movie {
     let backdropPath: String?
     let voteAverage: Double?
     let productionCountries: [ProductionCountry]?
+    let productionCompanies: [Company]?
 }
 
 extension Movie: Decodable {
@@ -33,6 +34,7 @@ extension Movie: Decodable {
         case backdropPath = "backdrop_path"
         case voteAverage = "vote_average"
         case productionCountries = "production_countries"
+        case productionCompanies = "production_companies"
     }
     
     init?(data: Data) {

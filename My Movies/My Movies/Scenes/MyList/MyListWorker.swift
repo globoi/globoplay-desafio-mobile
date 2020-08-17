@@ -24,11 +24,12 @@ class MyListWorker {
         
         var favMovies: [Movie] = []
         response.forEach { (key, value) in
+
             let movie = Movie(id: Int(key), title: value[0],
                               originalTitle: nil, overview: nil, genres: nil,
                               genreIds: nil, releaseDate: nil, posterPath: value[1],
                               backdropPath: nil, voteAverage: nil,
-                              productionCountries: nil)
+                              productionCountries: nil, productionCompanies: nil)
             
             favMovies.append(movie)
         }

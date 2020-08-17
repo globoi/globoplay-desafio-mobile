@@ -19,11 +19,20 @@ struct Seeds {
                                   genreIds: [3], releaseDate: "2018-10-21",
                                   posterPath: "posterPath.jpg",
                                   backdropPath: "backdropPath.jpg", voteAverage: 7.9,
-                                  productionCountries: [ProductionCountry(name: "Brazil")])
+                                  productionCountries: [Seeds.Countries.country1],
+                                  productionCompanies: [Seeds.Companies.company1])
     }
     
     struct Videos {
         static let video1 = Video(key: "key1", site: "site1", type: "trailer")
         static let video2 = Video(key: "key2", site: "site2", type: "trailer")
+    }
+    
+    struct Companies {
+        static let company1 = Company(id: 1, name: "Company 1")
+    }
+    
+    struct Countries {
+        static let country1 = ProductionCountry(name: "Brazil")
     }
 }

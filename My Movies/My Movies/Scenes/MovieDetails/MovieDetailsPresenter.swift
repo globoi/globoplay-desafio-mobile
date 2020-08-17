@@ -33,13 +33,18 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         let scoreText = "Avaliação: " + String(movie.voteAverage ?? 0) + "/10"
         
         var genresText = ""
-        if let genres = movie.genres {
+        if let genres = movie.genres, !genres.isEmpty {
             genresText = "Gêneros: " + genres.reduce("", { ($0.isEmpty ? "" : $0 + ", ") + $1.name })
         }
         
         var productionCountriesText = ""
-        if let countries = movie.productionCountries {
+        if let countries = movie.productionCountries, !countries.isEmpty {
             productionCountriesText = "Países: " + countries.reduce("", { ($0.isEmpty ? "" : $0 + ", ") + $1.name })
+        }
+        
+        var productionCompaniesText = ""
+        if let companies = movie.productionCompanies, !companies.isEmpty {
+            productionCompaniesText = "Produtoras: " + companies.reduce("", { ($0.isEmpty ? "" : $0 + ", ") + $1.name })
         }
         
         let displayedMovie = MovieDetailsModels.FetchMovieDetails
@@ -51,7 +56,8 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
                             type: "Filme", releaseDate: releaseDateText,
                             genres: genresText, originalTitle: originalTitleText,
                             score: scoreText,
-                            productionCountries: productionCountriesText)
+                            productionCountries: productionCountriesText,
+                            productionCompanies: productionCompaniesText)
         
         let viewModel = MovieDetailsModels.FetchMovieDetails.ViewModel(displayedMovie: displayedMovie)
         viewController?.displayFetchedMovieDetails(viewModel: viewModel)

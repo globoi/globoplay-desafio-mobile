@@ -15,6 +15,7 @@ protocol DisplayableMovieDetails {
     var releaseDate: String? { get set }
     var score: String? { get set }
     var productionCountries: String? { get set }
+    var productionCompanies: String? { get set }
 }
 
 class MovieDetailsView: UIView {
@@ -24,6 +25,7 @@ class MovieDetailsView: UIView {
     @IBOutlet weak var originalTitleLabel: UILabel!
     @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var productionCountriesLabel: UILabel!
+    @IBOutlet weak var productionCompaniesLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
@@ -63,6 +65,7 @@ class MovieDetailsView: UIView {
             self?.releaseDateLabel.text = displayableMovie.releaseDate
             self?.scoreLabel.text = displayableMovie.score
             self?.productionCountriesLabel.text = displayableMovie.productionCountries
+            self?.productionCompaniesLabel.text = displayableMovie.productionCompanies
         }
     }
 }
