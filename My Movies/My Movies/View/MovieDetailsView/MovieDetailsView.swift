@@ -21,6 +21,7 @@ protocol DisplayableMovieDetails {
 class MovieDetailsView: UIView {
     
     @IBOutlet var containerView: UIView!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var originalTitleLabel: UILabel!
     @IBOutlet weak var genresLabel: UILabel!
@@ -60,12 +61,20 @@ class MovieDetailsView: UIView {
     
     func setMovieDetails(_ displayableMovie: DisplayableMovieDetails) {
         DispatchQueue.main.async { [weak self] in
+            
             self?.originalTitleLabel.text = displayableMovie.originalTitle
             self?.genresLabel.text = displayableMovie.genres
             self?.releaseDateLabel.text = displayableMovie.releaseDate
             self?.scoreLabel.text = displayableMovie.score
             self?.productionCountriesLabel.text = displayableMovie.productionCountries
             self?.productionCompaniesLabel.text = displayableMovie.productionCompanies
+
+            self?.originalTitleLabel.isHidden = displayableMovie.originalTitle == nil
+            self?.genresLabel.isHidden = displayableMovie.genres == nil
+            self?.releaseDateLabel.isHidden = displayableMovie.releaseDate == nil
+            self?.scoreLabel.isHidden = displayableMovie.score == nil
+            self?.productionCountriesLabel.isHidden = displayableMovie.productionCountries == nil
+            self?.productionCompaniesLabel.isHidden = displayableMovie.productionCompanies == nil
         }
     }
 }

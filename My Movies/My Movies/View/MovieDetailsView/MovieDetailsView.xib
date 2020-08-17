@@ -16,6 +16,7 @@
                 <outlet property="productionCountriesLabel" destination="WXO-Fm-P4J" id="iEi-ZO-Uru"/>
                 <outlet property="releaseDateLabel" destination="HlQ-u2-Ta3" id="gQW-Vl-1R0"/>
                 <outlet property="scoreLabel" destination="wJc-wb-gCj" id="mBJ-te-TLp"/>
+                <outlet property="stackView" destination="gx0-A6-NED" id="1eZ-gN-tNh"/>
                 <outlet property="titleLabel" destination="VxU-iV-iMI" id="1ft-hl-eZn"/>
             </connections>
         </placeholder>

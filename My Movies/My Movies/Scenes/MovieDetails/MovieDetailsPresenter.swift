@@ -32,17 +32,17 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         let originalTitleText = "Título Original: \(movie.originalTitle ?? "")"
         let scoreText = "Avaliação: " + String(movie.voteAverage ?? 0) + "/10"
         
-        var genresText = ""
+        var genresText: String? = nil
         if let genres = movie.genres, !genres.isEmpty {
             genresText = "Gêneros: " + genres.reduce("", { ($0.isEmpty ? "" : $0 + ", ") + $1.name })
         }
         
-        var productionCountriesText = ""
+        var productionCountriesText: String? = nil
         if let countries = movie.productionCountries, !countries.isEmpty {
             productionCountriesText = "Países: " + countries.reduce("", { ($0.isEmpty ? "" : $0 + ", ") + $1.name })
         }
         
-        var productionCompaniesText = ""
+        var productionCompaniesText: String? = nil
         if let companies = movie.productionCompanies, !companies.isEmpty {
             productionCompaniesText = "Produtoras: " + companies.reduce("", { ($0.isEmpty ? "" : $0 + ", ") + $1.name })
         }
