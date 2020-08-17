@@ -65,9 +65,6 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        
-        guard let text = searchBar.text else { return }
-        interactor?.fetchSearchMovies(text)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

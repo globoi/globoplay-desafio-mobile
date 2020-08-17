@@ -65,8 +65,8 @@ class MovieDetailsPresenterTests: XCTestCase {
             fetchedMovieTraillerURL = url
             displayFetchedTrailerCalled = true
         }
-        
-        func displayErrorAlert(withTitle title: String, message: String) {
+       
+        func displayErrorAlert(withTitle title: String, message: String, isTerminal: Bool) {
             displayErrorAlertCalled = true
         }
     }

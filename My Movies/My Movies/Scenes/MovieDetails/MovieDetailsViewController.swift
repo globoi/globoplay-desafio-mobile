@@ -14,7 +14,7 @@ protocol MovieDetailsDisplayLogic: class {
     func displayFetchedMovieRecommendations(viewModel: MovieDetailsModels.FetchMovieRecommendations.ViewModel)
     func displayFavoriteButton(withImage image: UIImage?, text: String)
     func displayTrailer(withURL url: URL)
-    func displayErrorAlert(withTitle title: String, message: String)
+    func displayErrorAlert(withTitle title: String, message: String, isTerminal: Bool)
 }
 
 class MovieDetailsViewController: UIViewController {
@@ -104,6 +104,7 @@ class MovieDetailsViewController: UIViewController {
     }
     
     private func fetchMovieDetails() {
+        view.displayAnimatedActivityIndicatorView()
         interactor?.fetchMovieDetails(movieId)
         interactor?.checkIfMovieIsFavorite(movieId)
     }
@@ -171,6 +172,7 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         
         DispatchQueue.main.async { [weak self] in
             
+            self?.view.hideAnimatedActivityIndicatorView()
             self?.titleLabel.text = displayedMovie.title
             self?.subtitleLabel.text = displayedMovie.type
             self?.descriptionLabel.text = displayedMovie.overview
@@ -192,11 +194,14 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         }
     }
     
-    func displayErrorAlert(withTitle title: String, message: String) {
+    func displayErrorAlert(withTitle title: String, message: String, isTerminal: Bool) {
         DispatchQueue.main.async { [weak self] in
             self?.hideAnimatedActivityIndicatorView()
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            let handler: (UIAlertAction) -> Void = { _ in
+                self?.router?.dismiss()
+            }
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: isTerminal ? handler : nil))
             self?.present(alert, animated: true, completion: nil)
         }
     }

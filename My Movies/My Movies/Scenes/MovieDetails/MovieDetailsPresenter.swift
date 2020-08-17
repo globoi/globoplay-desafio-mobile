@@ -13,7 +13,7 @@ protocol MovieDetailsPresentationLogic {
     func presentFetchedMovieDetails(response: MovieDetailsModels.FetchMovieDetails.Response)
     func presentFetchedRecommendations(response: MovieDetailsModels.FetchMovieRecommendations.Response)
     func presentFetchedTrailer(response: MovieDetailsModels.FetchMovieTrailer.Response)
-    func presentError(_ error: Error)
+    func presentError(_ error: Error, isTerminal: Bool)
     func presentIsMovieOnFavorites(_ isFavorite: Bool)
 }
 
@@ -85,8 +85,8 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         viewController?.displayFetchedMovieRecommendations(viewModel: viewModel)
     }
     
-    func presentError(_ error: Error) {
-        viewController?.displayErrorAlert(withTitle: "Erro", message: "Desculpe, parece que ocorreu algo inesperado. Por favor, tente novamente mais tarde.")
+    func presentError(_ error: Error, isTerminal: Bool) {
+        viewController?.displayErrorAlert(withTitle: "Erro", message: "Desculpe, parece que ocorreu algo inesperado. Por favor, tente novamente mais tarde.", isTerminal: isTerminal)
     }
     
     func presentIsMovieOnFavorites(_ isFavorite: Bool) {
@@ -97,7 +97,7 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
 
     func presentFetchedTrailer(response: MovieDetailsModels.FetchMovieTrailer.Response) {
         guard let url = URL(string: "https://www.youtube.com/watch?v=\(response.trailer.key)?autoplay=1&playsinline=1") else {
-            viewController?.displayErrorAlert(withTitle: "Erro de URL", message: "Ocorreu um erro ao executar o Trailer. Tente novamente mais tarde.")
+            viewController?.displayErrorAlert(withTitle: "Erro de URL", message: "Ocorreu um erro ao executar o Trailer. Tente novamente mais tarde.", isTerminal: false)
             return
         }
         

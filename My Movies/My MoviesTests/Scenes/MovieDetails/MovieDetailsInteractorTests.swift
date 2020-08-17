@@ -33,7 +33,7 @@ class MovieDetailsInteractorTests: XCTestCase {
     // MARK: - Test doubles
     
     class MovieDetailsPresentationLogicSpy: MovieDetailsPresentationLogic {
-        
+       
         // MARK: Method call expectations
         var presentFetchedMovieDetailsCalled = false
         var presentFetchedRecommendationsCalled = false
@@ -54,7 +54,7 @@ class MovieDetailsInteractorTests: XCTestCase {
             presentIsMovieOnFavoritesCalled = true
         }
         
-        func presentError(_ error: Error) {
+        func presentError(_ error: Error, isTerminal: Bool) {
             presentErrorCalled = true
         }
         

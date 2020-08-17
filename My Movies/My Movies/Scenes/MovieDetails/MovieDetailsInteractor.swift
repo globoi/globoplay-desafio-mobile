@@ -58,7 +58,7 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
                 self?.presenter?.presentFetchedMovieDetails(response: MovieDetailsModels.FetchMovieDetails.Response(movie: movie))
                 break
             case .error(let error):
-                self?.presenter?.presentError(error); break
+                self?.presenter?.presentError(error, isTerminal: true); break
             }
         }
     }
@@ -73,7 +73,7 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
                 self?.presenter?.presentFetchedRecommendations(response: MovieDetailsModels.FetchMovieRecommendations.Response(movies: movies))
                 break
             case .error(error: let error):
-                self?.presenter?.presentError(error); break
+                self?.presenter?.presentError(error, isTerminal: false); break
             }
         }
     }
@@ -103,7 +103,7 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
                 self.presenter?.presentFetchedTrailer(response: MovieDetailsModels.FetchMovieTrailer.Response(trailer: video))
                 break
             case .error(let error):
-                self.presenter?.presentError(error); break
+                self.presenter?.presentError(error, isTerminal: false); break
             }
         }
     }
