@@ -39,6 +39,7 @@ class MovieDetailsInteractorTests: XCTestCase {
         var presentFetchedRecommendationsCalled = false
         var presentIsMovieOnFavoritesCalled = false
         var presentErrorCalled = false
+        var presentFetchedTrailerCalled = false
         
         // MARK: Argument expectations
         var movieDetailsResponse: MovieDetailsModels.FetchMovieDetails.Response!
@@ -63,6 +64,10 @@ class MovieDetailsInteractorTests: XCTestCase {
         func presentError(_ error: Error) {
             presentErrorCalled = true
         }
+        
+        func presentFetchedTrailer(response: MovieDetailsModels.FetchMovieTrailer.Response) {
+            presentFetchedTrailerCalled = true
+        }
     }
     
     class MovieDetailsWorkerSpy: MovieDetailsWorker {
@@ -71,6 +76,7 @@ class MovieDetailsInteractorTests: XCTestCase {
         
         var fetchMovieDetailsCalled = false
         var fetchMovieRecommendationsCalled = false
+        var fetchMovieTrailerCalled = false
         
         override func fetchMovieDetails(request: MovieDetailsModels.FetchMovieDetails.Request, completion: @escaping (MovieDetailsWorker.MovieDetailsResponse) -> Void) {
             
@@ -91,6 +97,12 @@ class MovieDetailsInteractorTests: XCTestCase {
             } else {
                 completion(.success([Seeds.Movies.movie1]))
             }
+        }
+        
+        override func fetchMovieTrailer(request: MovieDetailsModels.FetchMovieTrailer.Request, completion: @escaping (MovieDetailsWorker.MovieTrailerResponse) -> Void) {
+            
+            fetchMovieTrailerCalled = true
+            completion(.success(Seeds.Videos.video1))
         }
     }
     
@@ -151,5 +163,20 @@ class MovieDetailsInteractorTests: XCTestCase {
         sut.fetchMovieRecommendations(MovieDetailsWorkerSpy.invalidMovieId)
         
         XCTAssert(movieDetailsPresentationLogicSpy.presentErrorCalled, "FetchMoviesDetails with invalid id should ask presenter to present error")
+    }
+    
+    func testFetchMovieTrailerShouldAskMovieDetailsWorkerToFetchAndPresenterToFormatResults() {
+        // Given
+        let movieDetailsPresentationLogicSpy = MovieDetailsPresentationLogicSpy()
+        sut.presenter = movieDetailsPresentationLogicSpy
+        let movieDetailsWorkerSpy = MovieDetailsWorkerSpy()
+        sut.worker = movieDetailsWorkerSpy
+        
+        // When
+        sut.fetchMovieTrailer(1)
+        
+        // Then
+        XCTAssert(movieDetailsWorkerSpy.fetchMovieTrailerCalled, "FetchMovieTrailer should ask MovieDetailsWorker to fetch movie trailer")
+        XCTAssert(movieDetailsPresentationLogicSpy.presentFetchedTrailerCalled, "FetchMovieTrailer should ask presenter to format the video result")
     }
 }

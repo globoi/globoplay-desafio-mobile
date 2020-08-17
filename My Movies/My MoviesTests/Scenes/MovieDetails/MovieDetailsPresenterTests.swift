@@ -36,10 +36,13 @@ class MovieDetailsPresenterTests: XCTestCase {
         var displayFetchedMovieDetailsCalled = false
         var displayFetchedMovieRecommendationsCalled = false
         var displayFavoriteButtonCalled = false
+        var displayFetchedTrailerCalled = false
+        var displayErrorAlertCalled = false
         
         // MARK: Argument expectations
         var fetchedMovieDetailsViewModel: MovieDetailsModels.FetchMovieDetails.ViewModel!
         var fetchedMovieRecommendationsViewModel: MovieDetailsModels.FetchMovieRecommendations.ViewModel!
+        var fetchedMovieTraillerURL: URL!
         var favoriteButtonText: String!
         
         // MARK: Spied methods
@@ -56,6 +59,15 @@ class MovieDetailsPresenterTests: XCTestCase {
         func displayFavoriteButton(withImage image: UIImage?, text: String) {
             displayFavoriteButtonCalled = true
             favoriteButtonText = text
+        }
+        
+        func displayTrailer(withURL url: URL) {
+            fetchedMovieTraillerURL = url
+            displayFetchedTrailerCalled = true
+        }
+        
+        func displayErrorAlert(withTitle title: String, message: String) {
+            displayErrorAlertCalled = true
         }
     }
     
@@ -122,5 +134,21 @@ class MovieDetailsPresenterTests: XCTestCase {
         // Then
         XCTAssertEqual(movieDetailsDisplayLogicSpy.favoriteButtonText, "Adicionado")
         XCTAssert(movieDetailsDisplayLogicSpy.displayFavoriteButtonCalled, "Presenting movie is on favorites should ask view controller to display it.")
+    }
+    
+    func testPresentFetchedMovieTrailer() {
+        // Given
+        let movieDetailsDisplayLogicSpy = MovieDetailsDisplayLogicSpy()
+        sut.viewController = movieDetailsDisplayLogicSpy
+        
+        // When
+        let response = MovieDetailsModels.FetchMovieTrailer.Response(trailer: Seeds.Videos.video1)
+        sut.presentFetchedTrailer(response: response)
+
+        // Then
+        let displayedTrailer = movieDetailsDisplayLogicSpy.fetchedMovieTraillerURL
+        XCTAssertNotNil(displayedTrailer, "URL to be displayed should not be nil")
+        
+        XCTAssert(movieDetailsDisplayLogicSpy.displayFetchedTrailerCalled, "Presenting fetched movie trailer should ask view controller to display it.")
     }
 }

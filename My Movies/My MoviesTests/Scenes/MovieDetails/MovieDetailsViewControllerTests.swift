@@ -53,6 +53,7 @@ class MovieDetailsViewControllerTests: XCTestCase {
         var fetchMovieRecommendationsCalled = false
         var addOrRemoveMovieFromFavoritesCalled = false
         var checkIfMovieIsFavoriteCalled = false
+        var fetchMovieTrailerCalled = false
         
         func fetchMovieDetails(_ movieId: Int) {
             fetchMovieDetailsCalled = true
@@ -68,6 +69,10 @@ class MovieDetailsViewControllerTests: XCTestCase {
         
         func checkIfMovieIsFavorite(_ movieId: Int) {
             checkIfMovieIsFavoriteCalled = true
+        }
+        
+        func fetchMovieTrailer(_ movieId: Int) {
+            fetchMovieTrailerCalled = true
         }
     }
     
@@ -163,5 +168,18 @@ class MovieDetailsViewControllerTests: XCTestCase {
         
         // Then
         XCTAssert(movieDetailsViewSpy.setMovieDetailsCalled, "Displaying fetched movie details should set movie details to be displayed")
+    }
+    
+    func testShouldFetchMovieTrailerWhenWatchButtonPressed() {
+        // Given
+        let movieDetailsBusinessLogicSpy = MovieDetailsBusinessLogicSpy()
+        sut.interactor = movieDetailsBusinessLogicSpy
+        loadView()
+        
+        // When
+        sut.watchButtonTouched("test")
+        
+        // Then
+        XCTAssert(movieDetailsBusinessLogicSpy.fetchMovieTrailerCalled, "Should fetch movie trailer when watch button pressed")
     }
 }

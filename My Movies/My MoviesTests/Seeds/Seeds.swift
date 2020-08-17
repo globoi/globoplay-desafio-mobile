@@ -21,4 +21,9 @@ struct Seeds {
                                   backdropPath: "backdropPath.jpg", voteAverage: 7.9,
                                   productionCountries: [ProductionCountry(name: "Brazil")])
     }
+    
+    struct Videos {
+        static let video1 = Video(key: "key1", site: "site1", type: "trailer")
+        static let video2 = Video(key: "key2", site: "site2", type: "trailer")
+    }
 }

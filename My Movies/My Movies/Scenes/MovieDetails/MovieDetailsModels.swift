@@ -62,8 +62,5 @@ struct MovieDetailsModels {
         struct Response {
             var trailer: Video
         }
-        struct ViewModel {
-            
-        }
     }
 }
