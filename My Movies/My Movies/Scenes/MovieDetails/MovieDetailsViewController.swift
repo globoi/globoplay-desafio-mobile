@@ -84,6 +84,7 @@ class MovieDetailsViewController: UIViewController {
     }
     
     private func setupView() {
+        webView.navigationDelegate = self
         scrollView.delegate = self
         topBarView.alpha = 0
         
@@ -114,6 +115,7 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func watchButtonTouched(_ sender: Any) {
+        displayAnimatedActivityIndicatorView()
         interactor?.fetchMovieTrailer(movieId)
     }
     
@@ -168,6 +170,7 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         movieDetailsView.setMovieDetails(displayedMovie)
         
         DispatchQueue.main.async { [weak self] in
+            
             self?.titleLabel.text = displayedMovie.title
             self?.subtitleLabel.text = displayedMovie.type
             self?.descriptionLabel.text = displayedMovie.overview
@@ -191,10 +194,27 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
     
     func displayErrorAlert(withTitle title: String, message: String) {
         DispatchQueue.main.async { [weak self] in
+            self?.hideAnimatedActivityIndicatorView()
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self?.present(alert, animated: true, completion: nil)
         }
+    }
+}
+
+// MARK: - 
+extension MovieDetailsViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        self.hideAnimatedActivityIndicatorView()
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        self.hideAnimatedActivityIndicatorView()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.hideAnimatedActivityIndicatorView()
     }
 }
 

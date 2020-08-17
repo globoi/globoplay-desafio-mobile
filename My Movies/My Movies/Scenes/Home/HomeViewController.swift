@@ -56,6 +56,8 @@ class HomeViewController: UIViewController {
         
         setupTable()
         fetchMovies()
+        
+        displayAnimatedActivityIndicatorView()
     }
     
     private func setupTable() {
@@ -116,6 +118,7 @@ extension HomeViewController: HomeDisplayLogic {
     func displayError(withMessage message: String) {
         
         DispatchQueue.main.async { [weak self] in
+            self?.hideAnimatedActivityIndicatorView()
             let errorMessageView = CustomMessageView(message: message, buttonTitle: "Tentar Novamente")
             errorMessageView.delegate = self
             self?.tableView.backgroundView = errorMessageView
@@ -126,6 +129,7 @@ extension HomeViewController: HomeDisplayLogic {
         
         let displayedMovies = viewModel.displayedMovies
         DispatchQueue.main.async { [weak self] in
+            self?.hideAnimatedActivityIndicatorView()
             self?.displayedMovies[genre] = displayedMovies
             self?.tableView.reloadData()
             self?.tableView.backgroundView = nil

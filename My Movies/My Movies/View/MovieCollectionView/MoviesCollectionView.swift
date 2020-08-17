@@ -39,8 +39,8 @@ class MoviesCollectionView: UIView {
     
     func setMovies(_ displayableMovies: [DisplayableMovie]) {
         self.displayableMovies = displayableMovies
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
         }
     }
     
