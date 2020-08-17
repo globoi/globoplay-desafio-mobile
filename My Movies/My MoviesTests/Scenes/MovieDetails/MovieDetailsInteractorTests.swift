@@ -41,20 +41,13 @@ class MovieDetailsInteractorTests: XCTestCase {
         var presentErrorCalled = false
         var presentFetchedTrailerCalled = false
         
-        // MARK: Argument expectations
-        var movieDetailsResponse: MovieDetailsModels.FetchMovieDetails.Response!
-        var movieRecommendationsResponse: MovieDetailsModels.FetchMovieRecommendations.Response!
-        var isFavorite: Bool!
-        
         // MARK: Spied methods
         func presentFetchedMovieDetails(response: MovieDetailsModels.FetchMovieDetails.Response) {
             presentFetchedMovieDetailsCalled = true
-            movieDetailsResponse = response
         }
         
         func presentFetchedRecommendations(response: MovieDetailsModels.FetchMovieRecommendations.Response) {
             presentFetchedRecommendationsCalled = true
-            movieRecommendationsResponse = response
         }
         
         func presentIsMovieOnFavorites(_ isFavorite: Bool) {

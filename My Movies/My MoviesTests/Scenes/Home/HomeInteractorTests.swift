@@ -38,13 +38,9 @@ class HomeInteractorTests: XCTestCase {
         var presentFetchedMoviesCalled = false
         var presentErrorCalled = false
         
-        // MARK: Argument expectations
-        var moviesResponse: HomeModels.FetchMovies.Response!
-        
         // MARK: Spied methods
         func presentFetchedMovies(response: HomeModels.FetchMovies.Response) {
             presentFetchedMoviesCalled = true
-            moviesResponse = response
         }
         
         func presentError(_ error: Error) {

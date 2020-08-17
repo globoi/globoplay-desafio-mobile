@@ -37,13 +37,9 @@ class MyListInteractorTests: XCTestCase {
         // MARK: Method call expectations
         var presentFavoriteMoviesCalled = false
         
-        // MARK: Argument expectations
-        var favMoviesResponse: MyListModels.FetchFavoriteMovies.Response!
-        
         // MARK: Spied methods
         func presentFavoriteMovies(response: MyListModels.FetchFavoriteMovies.Response) {
             presentFavoriteMoviesCalled = true
-            favMoviesResponse = response
         }
     }
     
