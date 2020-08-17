@@ -27,7 +27,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9A-Wp-Nkd">
-                        <rect key="frame" x="16" y="14" width="48.5" height="26"/>
+                        <rect key="frame" x="16" y="14" width="48.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                     <constraint firstAttribute="trailing" secondItem="qzS-15-Mvc" secondAttribute="trailing" id="NRn-JQ-iWP"/>
                     <constraint firstItem="R9A-Wp-Nkd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Xci-V9-5aL"/>
                     <constraint firstItem="qzS-15-Mvc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZUL-XT-rmp"/>
-                    <constraint firstItem="qzS-15-Mvc" firstAttribute="top" secondItem="R9A-Wp-Nkd" secondAttribute="bottom" id="fkT-f1-9Iq"/>
+                    <constraint firstItem="qzS-15-Mvc" firstAttribute="top" secondItem="R9A-Wp-Nkd" secondAttribute="bottom" constant="8" id="fkT-f1-9Iq"/>
                     <constraint firstItem="qzS-15-Mvc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="hFw-o9-Hyy"/>
                     <constraint firstItem="R9A-Wp-Nkd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="wQa-3Y-P7J"/>
                 </constraints>
