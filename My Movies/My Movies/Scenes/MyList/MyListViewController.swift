@@ -10,7 +10,6 @@ import UIKit
 
 protocol MyListDisplayLogic: class {
     func displayFavoriteMovies(viewModel: MyListModels.FetchFavoriteMovies.ViewModel)
-    func displayMessage(_ message: String)
 }
 
 class MyListViewController: UIViewController {
@@ -57,6 +56,7 @@ class MyListViewController: UIViewController {
         fetchFavoriteMovies()
         
         moviesCollectionView.delegate = self
+        moviesCollectionView.emptyResultMessage = "Você ainda não possui nenhum filme\n na sua lista de favoritos."
         NotificationCenter.default.addObserver(self, selector: #selector(fetchFavoriteMovies), name: .FavoriteMoviesUpdated, object: nil)
     }
     
@@ -71,12 +71,6 @@ extension MyListViewController: MyListDisplayLogic {
     func displayFavoriteMovies(viewModel: MyListModels.FetchFavoriteMovies.ViewModel) {
         let displayedMovies = viewModel.displayedMovies
         moviesCollectionView.setMovies(displayedMovies)
-        moviesCollectionView.collectionView.backgroundView = nil
-    }
-    
-    func displayMessage(_ message: String) {
-        let customMessageView = CustomMessageView(message: message)
-        moviesCollectionView.collectionView.backgroundView = customMessageView
     }
 }
 

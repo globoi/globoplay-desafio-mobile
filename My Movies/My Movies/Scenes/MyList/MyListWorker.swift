@@ -12,14 +12,13 @@ class MyListWorker {
     
     enum FavoriteMoviesResponse {
         case success([Movie])
-        case emptyResult(Void)
     }
     
     func fetchFavoriteMovies(completion: @escaping (FavoriteMoviesResponse) -> Void) {
         
         guard let response = UserPreferences.shared.getFavoriteMovies(),
             !response.isEmpty else {
-                completion(.emptyResult(()))
+                completion(.success([]))
                 return
         }
         

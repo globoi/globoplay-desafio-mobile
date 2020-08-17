@@ -33,9 +33,6 @@ class MyListInteractor: MyListBusinessLogic, MyListDataStore {
                 self?.favoriteMovies = movies
                 self?.presenter?.presentFavoriteMovies(response: MyListModels.FetchFavoriteMovies.Response(favoriteMovies: movies))
                 break
-            case .emptyResult(_):
-                self?.presenter?.presentEmptyMessage()
-                break
             }
         }
     }

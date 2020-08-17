@@ -34,7 +34,6 @@ class MyListPresenterTests: XCTestCase {
         
         // MARK: Method call expectations
         var displayFavoriteMoviesCalled = false
-        var displayMessageCalled = false
         
         // MARK: Argument expectations
         var fetchedFavoriteMoviesViewModel: MyListModels.FetchFavoriteMovies.ViewModel!
@@ -44,11 +43,6 @@ class MyListPresenterTests: XCTestCase {
         func displayFavoriteMovies(viewModel: MyListModels.FetchFavoriteMovies.ViewModel) {
             displayFavoriteMoviesCalled = true
             fetchedFavoriteMoviesViewModel = viewModel
-        }
-        
-        func displayMessage(_ message: String) {
-            displayMessageCalled = true
-            displayedMessage = message
         }
     }
     
@@ -74,19 +68,5 @@ class MyListPresenterTests: XCTestCase {
         }
         
         XCTAssert(myListDisplayLogicSpy.displayFavoriteMoviesCalled, "Presenting fetched favorite movies should ask view controller to display them")
-    }
-
-    func testPresentEmptyMessage() {
-
-        // Given
-        let myListDisplayLogicSpy = MyListDisplayLogicSpy()
-        sut.viewController = myListDisplayLogicSpy
-
-        // When
-        sut.presentEmptyMessage()
-
-        // Then
-        XCTAssertEqual(myListDisplayLogicSpy.displayedMessage, "Você ainda não possui nenhum filme\n na sua lista de favoritos.")
-        XCTAssert(myListDisplayLogicSpy.displayMessageCalled, "Presenting empty message should ask view controller to display it")
     }
 }

@@ -92,8 +92,11 @@ class HomeViewControllerTests: XCTestCase {
         sut.displayFetchedMovies(viewModel: viewModel, forGenre: 1)
         
         // Then
+        let asyncExpectation = expectation(description: "Async block executed")
         DispatchQueue.main.async {
             XCTAssert(tableViewSpy.reloadDataCalled, "Displaying fetched movies should reload table view")
+            asyncExpectation.fulfill()
         }
+        waitForExpectations(timeout: 1, handler: nil)
     }
 }

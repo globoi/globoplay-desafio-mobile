@@ -24,8 +24,10 @@ class MoviesCollectionView: UIView {
     @IBOutlet weak var collectionView: ContentSizedCollectionView!
     
     private let identifier: String = "MoviesCollectionView"
+    
     weak var delegate: MoviesCollectionViewDelegate?
     var displayableMovies: [DisplayableMovie] = []
+    var emptyResultMessage: String = "Nenhum filme foi encontrado."
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,8 +41,11 @@ class MoviesCollectionView: UIView {
     
     func setMovies(_ displayableMovies: [DisplayableMovie]) {
         self.displayableMovies = displayableMovies
+        
         DispatchQueue.main.async { [weak self] in
-            self?.collectionView.reloadData()
+            guard let self = self else { return }
+            self.collectionView.backgroundView = displayableMovies.count == 0 ? CustomMessageView(message: self.emptyResultMessage) : nil
+            self.collectionView.reloadData()
         }
     }
     
@@ -58,6 +63,7 @@ class MoviesCollectionView: UIView {
         
     private func addConstraints() {
         NSLayoutConstraint.activate([
+            self.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
             self.topAnchor.constraint(equalTo: containerView.topAnchor),
             self.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             self.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),

@@ -36,7 +36,6 @@ class MyListInteractorTests: XCTestCase {
         
         // MARK: Method call expectations
         var presentFavoriteMoviesCalled = false
-        var presentEmptyMessageCalled = false
         
         // MARK: Argument expectations
         var favMoviesResponse: MyListModels.FetchFavoriteMovies.Response!
@@ -46,15 +45,9 @@ class MyListInteractorTests: XCTestCase {
             presentFavoriteMoviesCalled = true
             favMoviesResponse = response
         }
-        
-        func presentEmptyMessage() {
-            presentEmptyMessageCalled = true
-        }
     }
     
     class MyListWorkerSpy: MyListWorker {
-        
-        var shouldReturnEmpty = false
         
         // MARK: Method call expectations
         var fetchFavoriteMoviesCalled = false
@@ -62,11 +55,7 @@ class MyListInteractorTests: XCTestCase {
         override func fetchFavoriteMovies(completion: @escaping (MyListWorker.FavoriteMoviesResponse) -> Void) {
             fetchFavoriteMoviesCalled = true
             
-            if shouldReturnEmpty {
-                completion(.emptyResult(()))
-            } else {
-                completion(.success([Seeds.Movies.movie1]))
-            }
+            completion(.success([Seeds.Movies.movie1]))
         }
     }
     
@@ -78,7 +67,6 @@ class MyListInteractorTests: XCTestCase {
         let myListPresentationLogicSpy = MyListPresentationLogicSpy()
         sut.presenter = myListPresentationLogicSpy
         let myListWorkerSpy = MyListWorkerSpy()
-        myListWorkerSpy.shouldReturnEmpty = false
         sut.worker = myListWorkerSpy
         
         // When
@@ -87,21 +75,5 @@ class MyListInteractorTests: XCTestCase {
         // Then
         XCTAssert(myListWorkerSpy.fetchFavoriteMoviesCalled, "FetchFavoriteMovies should ask MyListWorker to fetch movies")
         XCTAssert(myListPresentationLogicSpy.presentFavoriteMoviesCalled, "FetchFavoriteMovies should ask presenter to format movies results")
-    }
-    
-    func testFetchFavoriteMoviesWithNoResultShouldAskPresenterToPresentEmptyMessage() {
-        // Given
-        let myListPresentationLogicSpy = MyListPresentationLogicSpy()
-        sut.presenter = myListPresentationLogicSpy
-        let myListWorkerSpy = MyListWorkerSpy()
-        myListWorkerSpy.shouldReturnEmpty = true
-        sut.worker = myListWorkerSpy
-        
-        // When
-        sut.fetchFavoriteMovies()
-        
-        // Then
-        XCTAssert(myListWorkerSpy.fetchFavoriteMoviesCalled, "FetchFavoriteMovies should ask MyListWorker to fetch movies")
-        XCTAssert(myListPresentationLogicSpy.presentEmptyMessageCalled, "FetchFavoriteMovies with no result should ask presenter to present an empty message")
     }
 }
