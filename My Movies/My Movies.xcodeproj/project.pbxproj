@@ -279,6 +279,15 @@
 			path = MovieDetails;
 			sourceTree = "<group>";
 		};
+		D905419524EAF5FA00B1D008 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				D95F868E24E0E53A00BE0A84 /* Main.storyboard */,
+				D95F869324E0E53D00BE0A84 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		D9079DAB24E73D7B00E762C6 /* ErrorMessageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,16 +372,15 @@
 		D95F868724E0E53A00BE0A84 /* My Movies */ = {
 			isa = PBXGroup;
 			children = (
+				D95F869624E0E53D00BE0A84 /* Info.plist */,
 				D95F868824E0E53A00BE0A84 /* AppDelegate.swift */,
 				D95F868A24E0E53A00BE0A84 /* SceneDelegate.swift */,
-				D95F868E24E0E53A00BE0A84 /* Main.storyboard */,
 				D95F869124E0E53D00BE0A84 /* Assets.xcassets */,
-				D95F869324E0E53D00BE0A84 /* LaunchScreen.storyboard */,
-				D95F869624E0E53D00BE0A84 /* Info.plist */,
 				D95F86C024E1772400BE0A84 /* Extensions */,
 				D95F86BB24E1734300BE0A84 /* Model */,
 				D95F86B824E16D5500BE0A84 /* Networking */,
 				D95F86DE24E20BB200BE0A84 /* Scenes */,
+				D905419524EAF5FA00B1D008 /* Storyboard */,
 				D95F86DB24E1D3E200BE0A84 /* Utils */,
 				D90165E024E2E41400AF64D4 /* View */,
 			);
