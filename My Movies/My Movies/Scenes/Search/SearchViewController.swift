@@ -57,6 +57,7 @@ class SearchViewController: UIViewController {
         
         searchBar.delegate = self
         moviesCollectionView.delegate = self
+        reload()
     }
 }
 
@@ -76,7 +77,10 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     @objc func reload() {
-        guard let text = searchBar.text else { return }
+        guard let text = searchBar.text, !text.isEmpty else {
+            interactor?.discoverPopularMovies()
+            return
+        }
         interactor?.fetchSearchMovies(text)
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 
 protocol SearchBusinessLogic {
+    func discoverPopularMovies()
     func fetchSearchMovies(_ queryText: String)
 }
 
@@ -35,6 +36,20 @@ class SearchInteractor: SearchBusinessLogic, SearchDataStore {
         let request = SearchModels.FetchSearchMovies.Request(queryText: queryText)
         
         worker.fetchMovies(request: request) { [weak self] (response) in
+            switch response {
+            case .success(let movies):
+                self?.searchedMovies = movies
+                let response = SearchModels.FetchSearchMovies.Response(movies: movies)
+                self?.presenter?.presentFetchedMovies(response: response)
+                break
+            case .error(let error):
+                self?.presenter?.presentError(error); break
+            }
+        }
+    }
+    
+    func discoverPopularMovies() {
+        worker.discoverPopularMovies { [weak self] (response) in
             switch response {
             case .success(let movies):
                 self?.searchedMovies = movies

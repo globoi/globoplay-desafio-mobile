@@ -37,7 +37,7 @@ final class APIClient {
     ///   - genre: Movie genre
     ///   - completion: Closure with request completion
     func discoverMovies(onPage page: Int,
-                        withGenre genre: Int,
+                        withGenre genre: Int? = nil,
                         completion: @escaping (MoviesResponse) -> Void) {
         manager.request(endPoint: .discoverMovies(page, genre)) { (response) in
             switch response {

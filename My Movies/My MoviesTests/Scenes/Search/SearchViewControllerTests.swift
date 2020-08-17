@@ -48,9 +48,14 @@ class SearchViewControllerTests: XCTestCase {
         
         // MARK: - Method call expectations
         var fetchSearchMoviesCalled = false
+        var discoverPopularMoviesCalled = false
         
         func fetchSearchMovies(_ queryText: String) {
             fetchSearchMoviesCalled = true
+        }
+        
+        func discoverPopularMovies() {
+            discoverPopularMoviesCalled = true
         }
     }
     
@@ -79,7 +84,20 @@ class SearchViewControllerTests: XCTestCase {
         sut.reload()
         
         // Then
-        XCTAssert(searchBusinessLogicSpy.fetchSearchMoviesCalled, "Should fetch favorite movies after view is loaded")
+        XCTAssert(searchBusinessLogicSpy.fetchSearchMoviesCalled, "Should fetch movies after user types a text in the search bar")
+    }
+    
+    func testShouldFetchPopularMoviesWhenViewDidLoad() {
+        // Given
+        let searchBusinessLogicSpy = SearchBusinessLogicSpy()
+        sut.interactor = searchBusinessLogicSpy
+        loadView()
+        
+        // When
+        sut.viewDidLoad()
+        
+        // Then
+        XCTAssert(searchBusinessLogicSpy.discoverPopularMoviesCalled, "Should fetch popular movies after view is loaded")
     }
     
     func testShouldDisplayFetchedSearchMovies() {

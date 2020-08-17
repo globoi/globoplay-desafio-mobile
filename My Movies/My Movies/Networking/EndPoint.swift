@@ -11,7 +11,7 @@ import Foundation
 enum EndPoint {
     
     case getMovieDetails(String)
-    case discoverMovies(Int, Int)
+    case discoverMovies(Int, Int?)
     case getMovieRecommendations(String)
     case getMovieTrailer(String)
     case getSearchMovies(String)
@@ -21,7 +21,11 @@ enum EndPoint {
         case .getMovieDetails(let movieId):
             return "\(Constants.baseURL)/movie/\(movieId)?api_key=\(Constants.apiKey)&language=pt-BR"
         case .discoverMovies(let page, let genre):
-            return "\(Constants.baseURL)/discover/movie/?api_key=\(Constants.apiKey)&sort_by=popularity.desc&page=\(page)&with_genres=\(genre)"
+            var path = "\(Constants.baseURL)/discover/movie/?api_key=\(Constants.apiKey)&sort_by=popularity.desc&page=\(page)"
+            if let genre = genre {
+                path += "&with_genres=\(genre)"
+            }
+            return path
         case .getMovieRecommendations(let movieId):
             return "\(Constants.baseURL)/movie/\(movieId)/recommendations?api_key=\(Constants.apiKey)"
         case .getMovieTrailer(let movieId):
