@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A2CEF42252B5F5C00A38F18 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEF41252B5F5C00A38F18 /* Movie.swift */; };
+		1A2CEF43252B5F5C00A38F18 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEF41252B5F5C00A38F18 /* Movie.swift */; };
+		1A2CEF47252B611400A38F18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEF46252B611400A38F18 /* Constants.swift */; };
+		1A2CEF48252B611400A38F18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEF46252B611400A38F18 /* Constants.swift */; };
+		1A2CEF4D252B63D800A38F18 /* MovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEF4C252B63D800A38F18 /* MovieStore.swift */; };
+		1A2CEF4E252B63D800A38F18 /* MovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEF4C252B63D800A38F18 /* MovieStore.swift */; };
+		1A2CEF55252B665400A38F18 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEF54252B665400A38F18 /* MovieService.swift */; };
+		1A2CEF56252B665500A38F18 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEF54252B665400A38F18 /* MovieService.swift */; };
+		1A2CEF5F252B686B00A38F18 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FF96CD76EF892B94A4D6968A /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */; };
+		1A2CEF62252B686D00A38F18 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 887DBB79EF110FEE094F058B /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */; };
+		1A2CEF65252B687000A38F18 /* Pods-globoplay-desafio-mobile.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E740385840AD3E5D1CD3BF13 /* Pods-globoplay-desafio-mobile.release.xcconfig */; };
+		1A2CEF68252B687100A38F18 /* Pods-globoplay-desafio-mobile.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = F4FA683BF365983E40F8576A /* Pods-globoplay-desafio-mobile.debug.xcconfig */; };
+		1A2CEFE6252BC05500A38F18 /* movieComponentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A2CEFE5252BC05500A38F18 /* movieComponentCell.xib */; };
+		1A2CEFEA252BC0A900A38F18 /* movieComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A2CEFE9252BC0A900A38F18 /* movieComponent.xib */; };
+		1A2CEFEE252BC0F200A38F18 /* MovieComponentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEFED252BC0F200A38F18 /* MovieComponentCollectionViewCell.swift */; };
+		1A2CEFF2252BC66500A38F18 /* MovieComponentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEFF1252BC66400A38F18 /* MovieComponentTableViewCell.swift */; };
 		1AC228992529F3B100FC7988 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC228982529F3B100FC7988 /* AppDelegate.swift */; };
 		1AC2289B2529F3B100FC7988 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC2289A2529F3B100FC7988 /* SceneDelegate.swift */; };
 		1AC2289D2529F3B100FC7988 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC2289C2529F3B100FC7988 /* ViewController.swift */; };
@@ -14,6 +30,8 @@
 		1AC228A22529F3BD00FC7988 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AC228A12529F3BD00FC7988 /* Assets.xcassets */; };
 		1AC228A52529F3BD00FC7988 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AC228A32529F3BD00FC7988 /* LaunchScreen.storyboard */; };
 		1AC228B02529F3BD00FC7988 /* globoplay_desafio_mobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC228AF2529F3BD00FC7988 /* globoplay_desafio_mobileUITests.swift */; };
+		1ADBAB23252A32F700C36575 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBAB22252A32F700C36575 /* Genre.swift */; };
+		1ADBAB24252A32F700C36575 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBAB22252A32F700C36575 /* Genre.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +45,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A2CEF41252B5F5C00A38F18 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		1A2CEF46252B611400A38F18 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1A2CEF4C252B63D800A38F18 /* MovieStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStore.swift; sourceTree = "<group>"; };
+		1A2CEF54252B665400A38F18 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
+		1A2CEFE5252BC05500A38F18 /* movieComponentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = movieComponentCell.xib; sourceTree = "<group>"; };
+		1A2CEFE9252BC0A900A38F18 /* movieComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = movieComponent.xib; sourceTree = "<group>"; };
+		1A2CEFED252BC0F200A38F18 /* MovieComponentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieComponentCollectionViewCell.swift; sourceTree = "<group>"; };
+		1A2CEFF1252BC66400A38F18 /* MovieComponentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieComponentTableViewCell.swift; sourceTree = "<group>"; };
 		1AC228952529F3B100FC7988 /* globoplay-desafio-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "globoplay-desafio-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC228982529F3B100FC7988 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AC2289A2529F3B100FC7988 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +64,13 @@
 		1AC228AB2529F3BD00FC7988 /* globoplay-desafio-mobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "globoplay-desafio-mobileUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC228AF2529F3BD00FC7988 /* globoplay_desafio_mobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globoplay_desafio_mobileUITests.swift; sourceTree = "<group>"; };
 		1AC228B12529F3BD00FC7988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1ADBAB22252A32F700C36575 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		3FCA9F20CF7A3E9D9F190A88 /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		887DBB79EF110FEE094F058B /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig"; path = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		88A3214EDBB4431ADACA3216 /* Pods_globoplay_desafio_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_globoplay_desafio_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E740385840AD3E5D1CD3BF13 /* Pods-globoplay-desafio-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay-desafio-mobile.release.xcconfig"; path = "Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		F4FA683BF365983E40F8576A /* Pods-globoplay-desafio-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay-desafio-mobile.debug.xcconfig"; path = "Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile.debug.xcconfig"; sourceTree = "<group>"; };
+		FF96CD76EF892B94A4D6968A /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig"; path = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,12 +91,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A2CEF4B252B63C600A38F18 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				1A2CEF4C252B63D800A38F18 /* MovieStore.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		1A2CEF53252B664700A38F18 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1A2CEF54252B665400A38F18 /* MovieService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		1A2CEF79252B8C3500A38F18 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1A2CEFED252BC0F200A38F18 /* MovieComponentCollectionViewCell.swift */,
+				1A2CEFF1252BC66400A38F18 /* MovieComponentTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		1AC2288C2529F3B100FC7988 = {
 			isa = PBXGroup;
 			children = (
 				1AC228972529F3B100FC7988 /* globoplay-desafio-mobile */,
 				1AC228AE2529F3BD00FC7988 /* globoplay-desafio-mobileUITests */,
 				1AC228962529F3B100FC7988 /* Products */,
+				55C09A7B317AB6B8FF372DBA /* Pods */,
+				A21E5AB666A80C118696970D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +139,10 @@
 		1AC228972529F3B100FC7988 /* globoplay-desafio-mobile */ = {
 			isa = PBXGroup;
 			children = (
+				1A2CEF79252B8C3500A38F18 /* Cells */,
+				1A2CEF53252B664700A38F18 /* Services */,
+				1A2CEF4B252B63C600A38F18 /* Store */,
+				1ADBAB21252A32DD00C36575 /* Models */,
 				1AC228982529F3B100FC7988 /* AppDelegate.swift */,
 				1AC2289A2529F3B100FC7988 /* SceneDelegate.swift */,
 				1AC2289C2529F3B100FC7988 /* ViewController.swift */,
@@ -86,6 +150,9 @@
 				1AC228A12529F3BD00FC7988 /* Assets.xcassets */,
 				1AC228A32529F3BD00FC7988 /* LaunchScreen.storyboard */,
 				1AC228A62529F3BD00FC7988 /* Info.plist */,
+				1A2CEF46252B611400A38F18 /* Constants.swift */,
+				1A2CEFE5252BC05500A38F18 /* movieComponentCell.xib */,
+				1A2CEFE9252BC0A900A38F18 /* movieComponent.xib */,
 			);
 			path = "globoplay-desafio-mobile";
 			sourceTree = "<group>";
@@ -99,6 +166,35 @@
 			path = "globoplay-desafio-mobileUITests";
 			sourceTree = "<group>";
 		};
+		1ADBAB21252A32DD00C36575 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1ADBAB22252A32F700C36575 /* Genre.swift */,
+				1A2CEF41252B5F5C00A38F18 /* Movie.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		55C09A7B317AB6B8FF372DBA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F4FA683BF365983E40F8576A /* Pods-globoplay-desafio-mobile.debug.xcconfig */,
+				E740385840AD3E5D1CD3BF13 /* Pods-globoplay-desafio-mobile.release.xcconfig */,
+				887DBB79EF110FEE094F058B /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */,
+				FF96CD76EF892B94A4D6968A /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A21E5AB666A80C118696970D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88A3214EDBB4431ADACA3216 /* Pods_globoplay_desafio_mobile.framework */,
+				3FCA9F20CF7A3E9D9F190A88 /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,6 +202,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AC228B42529F3BD00FC7988 /* Build configuration list for PBXNativeTarget "globoplay-desafio-mobile" */;
 			buildPhases = (
+				E0BC89582CD2514C2B7C8D66 /* [CP] Check Pods Manifest.lock */,
 				1AC228912529F3B100FC7988 /* Sources */,
 				1AC228922529F3B100FC7988 /* Frameworks */,
 				1AC228932529F3B100FC7988 /* Resources */,
@@ -123,6 +220,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AC228B72529F3BD00FC7988 /* Build configuration list for PBXNativeTarget "globoplay-desafio-mobileUITests" */;
 			buildPhases = (
+				35DF560F66DEC49905506732 /* [CP] Check Pods Manifest.lock */,
 				1AC228A72529F3BD00FC7988 /* Sources */,
 				1AC228A82529F3BD00FC7988 /* Frameworks */,
 				1AC228A92529F3BD00FC7988 /* Resources */,
@@ -180,9 +278,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2CEF62252B686D00A38F18 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig in Resources */,
+				1A2CEFEA252BC0A900A38F18 /* movieComponent.xib in Resources */,
 				1AC228A52529F3BD00FC7988 /* LaunchScreen.storyboard in Resources */,
+				1A2CEFE6252BC05500A38F18 /* movieComponentCell.xib in Resources */,
+				1A2CEF68252B687100A38F18 /* Pods-globoplay-desafio-mobile.debug.xcconfig in Resources */,
+				1A2CEF5F252B686B00A38F18 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig in Resources */,
 				1AC228A22529F3BD00FC7988 /* Assets.xcassets in Resources */,
 				1AC228A02529F3B100FC7988 /* Main.storyboard in Resources */,
+				1A2CEF65252B687000A38F18 /* Pods-globoplay-desafio-mobile.release.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +299,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		35DF560F66DEC49905506732 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0BC89582CD2514C2B7C8D66 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-globoplay-desafio-mobile-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1AC228912529F3B100FC7988 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -202,7 +353,14 @@
 			files = (
 				1AC2289D2529F3B100FC7988 /* ViewController.swift in Sources */,
 				1AC228992529F3B100FC7988 /* AppDelegate.swift in Sources */,
+				1A2CEFEE252BC0F200A38F18 /* MovieComponentCollectionViewCell.swift in Sources */,
 				1AC2289B2529F3B100FC7988 /* SceneDelegate.swift in Sources */,
+				1ADBAB23252A32F700C36575 /* Genre.swift in Sources */,
+				1A2CEF42252B5F5C00A38F18 /* Movie.swift in Sources */,
+				1A2CEFF2252BC66500A38F18 /* MovieComponentTableViewCell.swift in Sources */,
+				1A2CEF47252B611400A38F18 /* Constants.swift in Sources */,
+				1A2CEF55252B665400A38F18 /* MovieService.swift in Sources */,
+				1A2CEF4D252B63D800A38F18 /* MovieStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +368,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2CEF56252B665500A38F18 /* MovieService.swift in Sources */,
 				1AC228B02529F3BD00FC7988 /* globoplay_desafio_mobileUITests.swift in Sources */,
+				1ADBAB24252A32F700C36575 /* Genre.swift in Sources */,
+				1A2CEF43252B5F5C00A38F18 /* Movie.swift in Sources */,
+				1A2CEF48252B611400A38F18 /* Constants.swift in Sources */,
+				1A2CEF4E252B63D800A38F18 /* MovieStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +457,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -348,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -360,9 +523,11 @@
 		};
 		1AC228B52529F3BD00FC7988 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4FA683BF365983E40F8576A /* Pods-globoplay-desafio-mobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y4W6JT86B2;
 				INFOPLIST_FILE = "globoplay-desafio-mobile/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -370,16 +535,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mariela.globoplay-desafio-mobile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		1AC228B62529F3BD00FC7988 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E740385840AD3E5D1CD3BF13 /* Pods-globoplay-desafio-mobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y4W6JT86B2;
 				INFOPLIST_FILE = "globoplay-desafio-mobile/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -387,13 +554,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mariela.globoplay-desafio-mobile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		1AC228B82529F3BD00FC7988 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 887DBB79EF110FEE094F058B /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -413,6 +581,7 @@
 		};
 		1AC228B92529F3BD00FC7988 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF96CD76EF892B94A4D6968A /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

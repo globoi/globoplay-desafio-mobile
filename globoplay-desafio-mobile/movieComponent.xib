@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mcColCell" id="VjU-cN-PCM" customClass="MovieComponentCollectionViewCell" customModule="globoplay_desafio_mobile" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VdG-CO-quT">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rw3-9p-70P">
+                        <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_rate" id="qOp-7g-jZw">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="12s-YH-RNC"/>
+                            <constraint firstAttribute="height" constant="100" id="lF9-gj-2Cj"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="rw3-9p-70P" firstAttribute="leading" secondItem="VdG-CO-quT" secondAttribute="leading" id="Bmu-2i-ilX"/>
+                    <constraint firstAttribute="trailing" secondItem="rw3-9p-70P" secondAttribute="trailing" id="OXm-eF-bN1"/>
+                    <constraint firstItem="rw3-9p-70P" firstAttribute="top" secondItem="VdG-CO-quT" secondAttribute="top" id="YR3-xZ-Gok"/>
+                    <constraint firstAttribute="bottom" secondItem="rw3-9p-70P" secondAttribute="bottom" id="jn3-cP-984"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="226" height="203"/>
+            <connections>
+                <outlet property="moviePoster" destination="qOp-7g-jZw" id="ozH-4P-wTU"/>
+            </connections>
+            <point key="canvasLocation" x="-59.420289855072468" y="-235.71428571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="star_rate" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

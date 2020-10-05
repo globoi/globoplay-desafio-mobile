@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0DED771FEC43D06A4776CEA7F7C4FFCA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B231598492FE6AB7A922CF933B0A053C /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7EFEAE8D373F826F62B71FE83BAC929C /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F27950671EEF6444B60F2582683D326 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m */; };
+		B717B13E24FD43C807B542D0DC9B4EFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		BF94EF44EEFD372428B90CBC3B9F82DC /* Pods-globoplay-desafio-mobile-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A633FB35A5E6AF9044523EA12225CE /* Pods-globoplay-desafio-mobile-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4BEFCFF5C1AC9F870B0B43DC6841952 /* Pods-globoplay-desafio-mobile-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 549CB58F517FD1942EEFCC1EFADF5C63 /* Pods-globoplay-desafio-mobile-dummy.m */; };
+		E5599D272E99B774FB80BDA0ED4F45B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1272E3CC8DE79AB70FBDC0BF109DD9A6 /* Pods-globoplay-desafio-mobile.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-globoplay-desafio-mobile.modulemap"; sourceTree = "<group>"; };
+		295BC326F1118716243AAAA23D4F0BCA /* Pods-globoplay-desafio-mobile-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-globoplay-desafio-mobile-acknowledgements.markdown"; sourceTree = "<group>"; };
+		30AAEB33F8EFE9CF44A501660CC25DDA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		50F85041C94C9FE3F3E78DBAB21000F8 /* Pods-globoplay-desafio-mobile-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-globoplay-desafio-mobile-acknowledgements.plist"; sourceTree = "<group>"; };
+		549CB58F517FD1942EEFCC1EFADF5C63 /* Pods-globoplay-desafio-mobile-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-globoplay-desafio-mobile-dummy.m"; sourceTree = "<group>"; };
+		576D2AA72B8DFD4B81629B9356361394 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		58FE68D2E4EECF33789AD56BED0384D6 /* Pods_globoplay_desafio_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_globoplay_desafio_mobile.framework; path = "Pods-globoplay-desafio-mobile.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ABC7499639CC8A20D3BDAEE6330C921 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist"; sourceTree = "<group>"; };
+		6A7832A7C5E9DF29FF5B839F04CD09E4 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F27950671EEF6444B60F2582683D326 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m"; sourceTree = "<group>"; };
+		AC32D7653DC7E97D9775C82F469136BE /* Pods-globoplay-desafio-mobile-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-globoplay-desafio-mobile-Info.plist"; sourceTree = "<group>"; };
+		B231598492FE6AB7A922CF933B0A053C /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h"; sourceTree = "<group>"; };
+		B34BBA0AB47AC0DD9E4A087E0CE62EC2 /* Pods-globoplay-desafio-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-globoplay-desafio-mobile.debug.xcconfig"; sourceTree = "<group>"; };
+		B3ADC782E737382DB69D4A9FA2A75B7B /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B62ACBBB1A2C0ADF7DC72DC460F4959D /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CC09909DFC5DC18C70DCEF35923D44C2 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		F2A633FB35A5E6AF9044523EA12225CE /* Pods-globoplay-desafio-mobile-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-globoplay-desafio-mobile-umbrella.h"; sourceTree = "<group>"; };
+		F81A2ECA3391B96913BFBA81A2A433AF /* Pods-globoplay-desafio-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-globoplay-desafio-mobile.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3EDB6DD7824883826E33DB8525F0B464 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B717B13E24FD43C807B542D0DC9B4EFD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA297DF42309B0D78D7A610E39B8CB35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5599D272E99B774FB80BDA0ED4F45B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F9F117C8CFA80BABE23FE6DE074EE6A /* Pods-globoplay-desafio-mobile */ = {
+			isa = PBXGroup;
+			children = (
+				1272E3CC8DE79AB70FBDC0BF109DD9A6 /* Pods-globoplay-desafio-mobile.modulemap */,
+				295BC326F1118716243AAAA23D4F0BCA /* Pods-globoplay-desafio-mobile-acknowledgements.markdown */,
+				50F85041C94C9FE3F3E78DBAB21000F8 /* Pods-globoplay-desafio-mobile-acknowledgements.plist */,
+				549CB58F517FD1942EEFCC1EFADF5C63 /* Pods-globoplay-desafio-mobile-dummy.m */,
+				AC32D7653DC7E97D9775C82F469136BE /* Pods-globoplay-desafio-mobile-Info.plist */,
+				F2A633FB35A5E6AF9044523EA12225CE /* Pods-globoplay-desafio-mobile-umbrella.h */,
+				B34BBA0AB47AC0DD9E4A087E0CE62EC2 /* Pods-globoplay-desafio-mobile.debug.xcconfig */,
+				F81A2ECA3391B96913BFBA81A2A433AF /* Pods-globoplay-desafio-mobile.release.xcconfig */,
+			);
+			name = "Pods-globoplay-desafio-mobile";
+			path = "Target Support Files/Pods-globoplay-desafio-mobile";
+			sourceTree = "<group>";
+		};
+		9C55C5E6CA7CF46FBD7E605699006627 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6A7832A7C5E9DF29FF5B839F04CD09E4 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap */,
+				576D2AA72B8DFD4B81629B9356361394 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.markdown */,
+				CC09909DFC5DC18C70DCEF35923D44C2 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.plist */,
+				9F27950671EEF6444B60F2582683D326 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m */,
+				5ABC7499639CC8A20D3BDAEE6330C921 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist */,
+				B231598492FE6AB7A922CF933B0A053C /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h */,
+				B62ACBBB1A2C0ADF7DC72DC460F4959D /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */,
+				30AAEB33F8EFE9CF44A501660CC25DDA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */,
+			);
+			name = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests";
+			path = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests";
+			sourceTree = "<group>";
+		};
+		B9872A068081182BE1039FC1FC9BB36E /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2F9F117C8CFA80BABE23FE6DE074EE6A /* Pods-globoplay-desafio-mobile */,
+				9C55C5E6CA7CF46FBD7E605699006627 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C256EDA479FEE6290962BD4236427B4B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				58FE68D2E4EECF33789AD56BED0384D6 /* Pods_globoplay_desafio_mobile.framework */,
+				B3ADC782E737382DB69D4A9FA2A75B7B /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				C256EDA479FEE6290962BD4236427B4B /* Products */,
+				B9872A068081182BE1039FC1FC9BB36E /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0D3921D107E7864F0774B52D665588B7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DED771FEC43D06A4776CEA7F7C4FFCA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28B7B6B814E309A12E1D6586E80B4A41 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF94EF44EEFD372428B90CBC3B9F82DC /* Pods-globoplay-desafio-mobile-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1C4D663D9D16B5ABDA15CD7F1CF264FD /* Pods-globoplay-desafio-mobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0ED25A66ECA3C87C87D4CC8D9D518BB3 /* Build configuration list for PBXNativeTarget "Pods-globoplay-desafio-mobile" */;
+			buildPhases = (
+				28B7B6B814E309A12E1D6586E80B4A41 /* Headers */,
+				C70DAD8CFAD9E79DEC66112ECC3C70EC /* Sources */,
+				3EDB6DD7824883826E33DB8525F0B464 /* Frameworks */,
+				D733126F9788EAB893B3331E22E814B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-globoplay-desafio-mobile";
+			productName = "Pods-globoplay-desafio-mobile";
+			productReference = 58FE68D2E4EECF33789AD56BED0384D6 /* Pods_globoplay_desafio_mobile.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3F597E112707B09E38B3E94751D41073 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6D232B741DDB72BF6AC6DE2A2956285 /* Build configuration list for PBXNativeTarget "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests" */;
+			buildPhases = (
+				0D3921D107E7864F0774B52D665588B7 /* Headers */,
+				501DF00740105F136935AB0365897215 /* Sources */,
+				CA297DF42309B0D78D7A610E39B8CB35 /* Frameworks */,
+				15C2124EAE46296FF4550E88603F3D28 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests";
+			productName = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests";
+			productReference = B3ADC782E737382DB69D4A9FA2A75B7B /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = C256EDA479FEE6290962BD4236427B4B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C4D663D9D16B5ABDA15CD7F1CF264FD /* Pods-globoplay-desafio-mobile */,
+				3F597E112707B09E38B3E94751D41073 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		15C2124EAE46296FF4550E88603F3D28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D733126F9788EAB893B3331E22E814B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		501DF00740105F136935AB0365897215 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EFEAE8D373F826F62B71FE83BAC929C /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C70DAD8CFAD9E79DEC66112ECC3C70EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4BEFCFF5C1AC9F870B0B43DC6841952 /* Pods-globoplay-desafio-mobile-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3A85BCE211C9624E48E81E045A5E9734 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B62ACBBB1A2C0ADF7DC72DC460F4959D /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		637EFE98FEF0996A17AA115BC544AA61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F81A2ECA3391B96913BFBA81A2A433AF /* Pods-globoplay-desafio-mobile.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		939F1A8F6BCEB7F9F64D9EEE50CAE014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		94CD8B14A2055FEB0CB3F149FDB61661 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30AAEB33F8EFE9CF44A501660CC25DDA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ECB437504DF805BD96CAABF97400B526 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		EDD3CB121A6122CFF1CA4784E53AB2E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B34BBA0AB47AC0DD9E4A087E0CE62EC2 /* Pods-globoplay-desafio-mobile.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0ED25A66ECA3C87C87D4CC8D9D518BB3 /* Build configuration list for PBXNativeTarget "Pods-globoplay-desafio-mobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDD3CB121A6122CFF1CA4784E53AB2E5 /* Debug */,
+				637EFE98FEF0996A17AA115BC544AA61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				939F1A8F6BCEB7F9F64D9EEE50CAE014 /* Debug */,
+				ECB437504DF805BD96CAABF97400B526 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6D232B741DDB72BF6AC6DE2A2956285 /* Build configuration list for PBXNativeTarget "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A85BCE211C9624E48E81E045A5E9734 /* Debug */,
+				94CD8B14A2055FEB0CB3F149FDB61661 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
