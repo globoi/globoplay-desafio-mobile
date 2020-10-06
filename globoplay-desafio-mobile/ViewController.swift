@@ -12,7 +12,7 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var moviesTV: UITableView!
     
-    
+    //toDetailsView
     override func viewDidLoad() {
         
         let colViewCellId = "mcColCell"
@@ -39,20 +39,20 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
             cell.title.text = "Em Alta"
             cell.tableIndex = 0
-            cell.name = "arrow_back"
+            cell.name = "teste1"
             return cell
         }
         if (indexPath.row == 1){
             let cellMovies = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
             cellMovies.title.text = "Movies"
             cellMovies.tableIndex = 1
-            cellMovies.name = "check_black"
+            cellMovies.name = "teste2"
             return cellMovies
         }
         else {
             let cellMovies = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
             cellMovies.title.text = "Séries"
-            cellMovies.name = "play_arrow"
+            cellMovies.name = "teste3"
             cellMovies.tableIndex = 2
             return cellMovies
         }

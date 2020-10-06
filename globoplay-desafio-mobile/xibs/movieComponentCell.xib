@@ -4,32 +4,33 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieComp" rowHeight="243" id="1B9-fJ-qfD" customClass="MovieComponentTableViewCell" customModule="globoplay_desafio_mobile" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="437" height="243"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieComp" rowHeight="279" id="1B9-fJ-qfD" customClass="MovieComponentTableViewCell" customModule="globoplay_desafio_mobile" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="436" height="279"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1B9-fJ-qfD" id="td0-Ub-N4q">
-                <rect key="frame" x="0.0" y="0.0" width="437" height="243"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1B9-fJ-qfD" id="td0-Ub-N4q">
+                <rect key="frame" x="0.0" y="0.0" width="436" height="279"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kM-GX-VAB">
-                        <rect key="frame" x="0.0" y="0.0" width="437" height="241"/>
+                        <rect key="frame" x="0.0" y="0.0" width="436" height="279"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Em Alta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhO-Xl-ClT">
-                                <rect key="frame" x="16" y="30" width="405" height="64"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="16" y="30" width="404" height="31.5"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" id="upT-Lw-KIg">
-                                <rect key="frame" x="16" y="110" width="409" height="100"/>
+                                <rect key="frame" x="16" y="69" width="409" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IZp-A1-rTW">
                                     <size key="itemSize" width="80" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -42,13 +43,13 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="HhO-Xl-ClT" secondAttribute="trailing" constant="16" id="83U-zY-2pN"/>
                             <constraint firstItem="HhO-Xl-ClT" firstAttribute="top" secondItem="5kM-GX-VAB" secondAttribute="top" constant="30" id="Riq-yl-I96"/>
-                            <constraint firstAttribute="height" constant="241" id="c0f-Re-PZ2"/>
+                            <constraint firstAttribute="height" constant="279" id="c0f-Re-PZ2"/>
+                            <constraint firstItem="upT-Lw-KIg" firstAttribute="top" secondItem="HhO-Xl-ClT" secondAttribute="bottom" constant="7.5" id="dET-7a-mee"/>
                             <constraint firstItem="HhO-Xl-ClT" firstAttribute="leading" secondItem="5kM-GX-VAB" secondAttribute="leading" constant="16" id="eQx-1L-oBc"/>
-                            <constraint firstItem="upT-Lw-KIg" firstAttribute="top" secondItem="HhO-Xl-ClT" secondAttribute="bottom" constant="16" id="rRr-78-8xq"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -63,12 +64,12 @@
                 <outlet property="cv" destination="upT-Lw-KIg" id="pn6-fJ-cFq"/>
                 <outlet property="title" destination="HhO-Xl-ClT" id="dlv-Ug-WUh"/>
             </connections>
-            <point key="canvasLocation" x="50.000000000000007" y="82.03125"/>
+            <point key="canvasLocation" x="49.275362318840585" y="93.415178571428569"/>
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="background">
+            <color red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

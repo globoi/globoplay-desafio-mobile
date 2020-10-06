@@ -4,38 +4,140 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Minha lista-->
         <scene sceneID="3F3-zM-whr">
             <objects>
-                <viewController id="hW1-S1-NS1" sceneMemberID="viewController">
+                <viewController id="hW1-S1-NS1" customClass="MyListViewController" customModule="globoplay_desafio_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Co6-iu-ful">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MINHA LISTA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g80-Wu-535">
-                                <rect key="frame" x="140" y="404" width="135" height="88"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DaQ-4n-kA5">
+                                <rect key="frame" x="0.0" y="88" width="414" height="737"/>
+                                <color key="backgroundColor" name="background"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="TQA-Fu-Frp">
+                                    <size key="itemSize" width="150" height="270"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="myListCell" id="d38-ct-k0o" customClass="MyListMovieCollectionViewCell" customModule="globoplay_desafio_mobile" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="5" width="150" height="270"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lEZ-43-Few">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="270"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L2t-se-cKz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="270"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="150" id="LXM-4I-xbH"/>
+                                                        <constraint firstAttribute="width" constant="270" id="jv4-gX-oNj"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="L2t-se-cKz" firstAttribute="leading" secondItem="lEZ-43-Few" secondAttribute="leading" id="Ckd-6g-EDU"/>
+                                                <constraint firstItem="L2t-se-cKz" firstAttribute="top" secondItem="lEZ-43-Few" secondAttribute="top" id="Smn-F0-mAD"/>
+                                                <constraint firstItem="L2t-se-cKz" firstAttribute="centerY" secondItem="lEZ-43-Few" secondAttribute="centerY" id="hMW-R3-Yk0"/>
+                                                <constraint firstItem="L2t-se-cKz" firstAttribute="centerX" secondItem="lEZ-43-Few" secondAttribute="centerX" id="uQj-We-RWn"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="150" height="270"/>
+                                        <connections>
+                                            <outlet property="myListMoviePoster" destination="L2t-se-cKz" id="vdP-Zr-jPK"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="hW1-S1-NS1" id="afc-7L-bBi"/>
+                                    <outlet property="delegate" destination="hW1-S1-NS1" id="vkb-36-x32"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QaS-Us-wl1"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
-                            <constraint firstItem="g80-Wu-535" firstAttribute="centerY" secondItem="QaS-Us-wl1" secondAttribute="centerY" constant="19.5" id="FTp-ml-sb5"/>
-                            <constraint firstItem="g80-Wu-535" firstAttribute="centerX" secondItem="QaS-Us-wl1" secondAttribute="centerX" constant="0.5" id="uzT-Wc-J6S"/>
+                            <constraint firstItem="QaS-Us-wl1" firstAttribute="trailing" secondItem="DaQ-4n-kA5" secondAttribute="trailing" id="910-uy-UWL"/>
+                            <constraint firstItem="DaQ-4n-kA5" firstAttribute="top" secondItem="QaS-Us-wl1" secondAttribute="top" id="9gk-Wp-cy6"/>
+                            <constraint firstItem="DaQ-4n-kA5" firstAttribute="leading" secondItem="QaS-Us-wl1" secondAttribute="leading" id="efv-y8-nO2"/>
+                            <constraint firstItem="DaQ-4n-kA5" firstAttribute="bottom" secondItem="QaS-Us-wl1" secondAttribute="bottom" constant="12" id="mEg-2y-ufM"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Minha lista" image="star_rate" id="1OY-38-TzH"/>
+                    <connections>
+                        <outlet property="collectionViewMyList" destination="DaQ-4n-kA5" id="1H4-Jc-q6d"/>
+                        <segue destination="8VU-jF-MBI" kind="show" identifier="toDetailsView" id="X7G-kO-jqg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dnz-Ls-bSp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="597.10144927536237" y="-137.27678571428569"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="T4p-7E-paO">
+            <objects>
+                <viewController id="8VU-jF-MBI" customClass="DetailsViewController" customModule="globoplay_desafio_mobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="De7-m9-zed">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="300" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oHu-Sd-y06">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailsCell" rowHeight="216" id="ygF-UL-FsA">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="216"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ygF-UL-FsA" id="YRT-Al-DVQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8VU-jF-MBI" id="Jik-Tp-Uh3"/>
+                                    <outlet property="delegate" destination="8VU-jF-MBI" id="nyU-P6-Qlt"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cWU-0O-Pdf"/>
+                        <color key="backgroundColor" name="background"/>
+                        <constraints>
+                            <constraint firstItem="oHu-Sd-y06" firstAttribute="top" secondItem="cWU-0O-Pdf" secondAttribute="top" id="EFh-bD-FwB"/>
+                            <constraint firstItem="cWU-0O-Pdf" firstAttribute="bottom" secondItem="oHu-Sd-y06" secondAttribute="bottom" id="k8E-nx-nTH"/>
+                            <constraint firstItem="cWU-0O-Pdf" firstAttribute="trailing" secondItem="oHu-Sd-y06" secondAttribute="trailing" id="ox9-9d-C41"/>
+                            <constraint firstItem="oHu-Sd-y06" firstAttribute="leading" secondItem="cWU-0O-Pdf" secondAttribute="leading" id="z61-D7-6HV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="304-RX-ufv">
+                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="acy-hb-18O">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Wn-ZN-lTQ">
+                                <rect key="frame" x="20" y="10" width="78" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="arrow_back"/>
+                                <connections>
+                                    <action selector="dismissView:" destination="8VU-jF-MBI" eventType="touchUpInside" id="BVf-D3-1qH"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="detailsTV" destination="oHu-Sd-y06" id="iK6-q9-7Xg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="He5-MU-x7u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1497.1014492753625" y="-128.57142857142856"/>
         </scene>
         <!--Início-->
         <scene sceneID="65y-9s-huM">
@@ -45,9 +147,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tFq-dG-Ex1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tFq-dG-Ex1">
                                 <rect key="frame" x="0.0" y="88" width="414" height="1029"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="background"/>
+                                <color key="sectionIndexBackgroundColor" name="background"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="93" id="Lbi-Uh-A6Y" customClass="MoviesTableViewCell" customModule="globoplay_desafio_mobile" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="93"/>
@@ -65,7 +168,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rLy-cW-Qbx"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="tFq-dG-Ex1" firstAttribute="top" secondItem="rLy-cW-Qbx" secondAttribute="top" id="BC2-8l-663"/>
                             <constraint firstItem="rLy-cW-Qbx" firstAttribute="bottom" secondItem="tFq-dG-Ex1" secondAttribute="bottom" id="HZF-P0-YVK"/>
@@ -90,6 +193,13 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3ED-N5-guc">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="C6E-LK-t8m" kind="relationship" relationship="rootViewController" id="8Vo-pl-gZJ"/>
@@ -99,15 +209,17 @@
             </objects>
             <point key="canvasLocation" x="-642" y="-1282"/>
         </scene>
-        <!--Globoplay-->
+        <!--globoplay-->
         <scene sceneID="4QD-93-GMU">
             <objects>
                 <tabBarController id="C6E-LK-t8m" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Globoplay" id="8Fv-xf-GG0"/>
+                    <navigationItem key="navigationItem" title="globoplay" id="8Fv-xf-GG0"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="54m-1b-SHe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="UrR-yc-ZVG" kind="relationship" relationship="viewControllers" id="HFC-mB-zFz"/>
@@ -120,8 +232,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow_back" width="24" height="24"/>
         <image name="home_black" width="24" height="24"/>
         <image name="star_rate" width="24" height="24"/>
+        <namedColor name="background">
+            <color red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

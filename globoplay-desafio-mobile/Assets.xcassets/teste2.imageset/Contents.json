@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "Captura de Tela 2020-10-05 às 21.05.24.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "arrow_back.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -17,8 +17,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }

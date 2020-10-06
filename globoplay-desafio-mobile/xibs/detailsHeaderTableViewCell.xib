@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerDetailsCell" rowHeight="644" id="Rhg-tE-xoP" customClass="DetailsHeaderTableViewCell" customModule="globoplay_desafio_mobile" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="547" height="644"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rhg-tE-xoP" id="bjK-SV-oVi">
+                <rect key="frame" x="0.0" y="0.0" width="547" height="644"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKA-EA-5RS">
+                        <rect key="frame" x="0.0" y="0.0" width="547" height="644"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="644" id="wPB-CT-VPz"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="EKA-EA-5RS" secondAttribute="bottom" id="ByP-4g-T1g"/>
+                    <constraint firstAttribute="trailing" secondItem="EKA-EA-5RS" secondAttribute="trailing" id="iAP-mW-6wy"/>
+                    <constraint firstItem="EKA-EA-5RS" firstAttribute="top" secondItem="bjK-SV-oVi" secondAttribute="top" id="vNY-66-MXX"/>
+                    <constraint firstItem="EKA-EA-5RS" firstAttribute="leading" secondItem="bjK-SV-oVi" secondAttribute="leading" id="zwo-Tb-ug4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="238.40579710144928" y="130.58035714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
