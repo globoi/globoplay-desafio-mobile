@@ -20,6 +20,15 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var actualIndex2 :Int!
     
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+//        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.navigationBar.backgroundColor = .clear
+        self.navigationController!.navigationBar.isTranslucent = true
+        self.navigationController!.navigationBar.backgroundColor = .clear
+        
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
