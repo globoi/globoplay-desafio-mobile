@@ -44,6 +44,8 @@
 		1AC8E722252CB56A00098AED /* SegmentedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC8E721252CB56A00098AED /* SegmentedTableViewCell.swift */; };
 		1ADBAB23252A32F700C36575 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBAB22252A32F700C36575 /* Genre.swift */; };
 		1ADBAB24252A32F700C36575 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBAB22252A32F700C36575 /* Genre.swift */; };
+		E313A72A00B3A8B912163F27 /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCA9F20CF7A3E9D9F190A88 /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework */; };
+		F7F28371EB558C68FE3DD5BF /* Pods_globoplay_desafio_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A3214EDBB4431ADACA3216 /* Pods_globoplay_desafio_mobile.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7F28371EB558C68FE3DD5BF /* Pods_globoplay_desafio_mobile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E313A72A00B3A8B912163F27 /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +278,7 @@
 				1AC228912529F3B100FC7988 /* Sources */,
 				1AC228922529F3B100FC7988 /* Frameworks */,
 				1AC228932529F3B100FC7988 /* Resources */,
+				FEAAF740116F7E8348435A3C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -292,6 +297,7 @@
 				1AC228A72529F3BD00FC7988 /* Sources */,
 				1AC228A82529F3BD00FC7988 /* Frameworks */,
 				1AC228A92529F3BD00FC7988 /* Resources */,
+				45109B8B684E285B99AD6B31 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -394,6 +400,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		45109B8B684E285B99AD6B31 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E0BC89582CD2514C2B7C8D66 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,6 +437,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEAAF740116F7E8348435A3C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -7,6 +7,7 @@ target 'globoplay-desafio-mobile' do
 
    #pod 'Alamofire', '~> 5.2'
    #pod 'Kingfisher', '~> 5.15'
+   pod 'XCDYouTubeKit', '~> 2.14'
 
   # Pods for globoplay-desafio-mobile
 

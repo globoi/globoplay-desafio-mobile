@@ -6,11 +6,14 @@
 //  Copyright © 2020 Mariela. All rights reserved.
 //
 
+import AVKit
 import UIKit
+import XCDYouTubeKit
 
 class DetailsHeaderTableViewCell: UITableViewCell {
     var segmentedControlValue = 0
     var isMinhaLista: Bool?
+    var youTubeID = "Lk7LPTq0_XY"
     
     @IBOutlet weak var segmentedControlDetails  : UISegmentedControl!
     @IBOutlet weak var trailerButton            : CustomButton!
@@ -45,6 +48,20 @@ class DetailsHeaderTableViewCell: UITableViewCell {
     }
     @IBAction func playTrailer(_ sender: Any) {
         print("[DEBUG] - CLICOU NO PLAY")
+        let playerViewController: AVPlayerViewController = AVPlayerViewController()
+        self.window?.rootViewController!.present(playerViewController, animated: true, completion: nil)
+                
+        XCDYouTubeClient.default().getVideoWithIdentifier(youTubeID) { (video, error) in
+
+            guard let video: XCDYouTubeVideo = video else {
+                playerViewController.dismiss(animated: true, completion: nil)
+                return
+            }
+            
+            playerViewController.player = AVPlayer(url: video.streamURL!)
+            playerViewController.player?.play()
+
+        }
     }
     
     @IBAction func addToMinhaLista(_ sender: Any) {

@@ -3,153 +3,340 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DED771FEC43D06A4776CEA7F7C4FFCA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B231598492FE6AB7A922CF933B0A053C /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7EFEAE8D373F826F62B71FE83BAC929C /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F27950671EEF6444B60F2582683D326 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m */; };
-		B717B13E24FD43C807B542D0DC9B4EFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		BF94EF44EEFD372428B90CBC3B9F82DC /* Pods-globoplay-desafio-mobile-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F2A633FB35A5E6AF9044523EA12225CE /* Pods-globoplay-desafio-mobile-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4BEFCFF5C1AC9F870B0B43DC6841952 /* Pods-globoplay-desafio-mobile-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 549CB58F517FD1942EEFCC1EFADF5C63 /* Pods-globoplay-desafio-mobile-dummy.m */; };
-		E5599D272E99B774FB80BDA0ED4F45B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		0F82BBD2330862DE1465700269829542 /* XCDYouTubeClient.h in Headers */ = {isa = PBXBuildFile; fileRef = A2D625B4A8CDE43323DBBFB3F4CDDF32 /* XCDYouTubeClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		16A6158063B9E3DDE2A8E4C7F5DE0051 /* XCDYouTubePlayerScript.h in Headers */ = {isa = PBXBuildFile; fileRef = EA6D5232862ACE0A4A739B6BF76293D6 /* XCDYouTubePlayerScript.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		19831C5C4FB5C9ABFC6912E82B4318D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE4B360840A619567BA21A8DCC612EA /* Foundation.framework */; };
+		1A5BD4854CA760B101BABC9A5B22EE27 /* XCDYouTubeVideoQueryOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70664A77E73C9D64811986ED65B0D11E /* XCDYouTubeVideoQueryOperation.m */; };
+		1CB85C56130766F07995B1EAE4A2E6EC /* XCDYouTubeDashManifestXML.h in Headers */ = {isa = PBXBuildFile; fileRef = CDFA84EAE7273E0750CA747FEA1C4039 /* XCDYouTubeDashManifestXML.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1FA10594C3AE6B5F9BE25BA1B3C7B45C /* XCDYouTubeDashManifestXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F24DA424DA83489F1A302678CB58D /* XCDYouTubeDashManifestXML.m */; };
+		20C47A629C5E41BBE41087BF3F78F690 /* XCDYouTubePlayerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE0A7759DEF724264A68FF133E2326 /* XCDYouTubePlayerScript.m */; };
+		2959009F9F5E17D803EDA6663C32B968 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5519CEC8D713F107FBB528A867DDFEB2 /* JavaScriptCore.framework */; };
+		3872CF66AA4C4D71A940A29368A44723 /* XCDYouTubeLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 218CA1C7217C8B2011BA865F454EB6FC /* XCDYouTubeLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39720DA42E46EF201FC37ABB83A987B7 /* XCDYouTubeVideo+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA93EF1B15F5BC1ACC04643D0BFAF8E /* XCDYouTubeVideo+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3AA8C3B6F06D82EFEE46595BAD6AD177 /* XCDYouTubeVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 01022113489B9B9DB1F8F8A93616D63B /* XCDYouTubeVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4B5BF1CCDEEB77DCAACC42220285138A /* XCDURLHEADOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A77A313AD1026AFD4C05BE8B167A475E /* XCDURLHEADOperation.m */; };
+		4EDCAF1722F12E0378616C24AF675CEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE4B360840A619567BA21A8DCC612EA /* Foundation.framework */; };
+		54E76F9F2044E686B9337AFF6BB21491 /* Pods-globoplay-desafio-mobile-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E50947BF396066E43DED9A431B98C /* Pods-globoplay-desafio-mobile-dummy.m */; };
+		62B4B926F73BEB982B61E60F0B2893C3 /* XCDYouTubeKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCD235374A0FBB235F179420DF4B0C6 /* XCDYouTubeKit-dummy.m */; };
+		64D00C7773BF8EC0DA6454B606DA5E7F /* XCDURLHEADOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD26ACAC1A777E822A2EDD9B0A96A81 /* XCDURLHEADOperation.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		656EBA456373D5A2A8CA3A4A3F8A583E /* XCDYouTubeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D493157EB67EE016540F2DF47D8719C /* XCDYouTubeClient.m */; };
+		6F067E714244A7ACAD622AD65E4DD740 /* XCDYouTubeError.h in Headers */ = {isa = PBXBuildFile; fileRef = ABEFDDF81E24F630559245547AA5166D /* XCDYouTubeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		72677E0EBB5E4F371E76615EDFE69EE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE4B360840A619567BA21A8DCC612EA /* Foundation.framework */; };
+		77FCE0F5F5956A6473485869F16C9262 /* XCDYouTubeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E17F609660A98F91D4FD3364981AB0AE /* XCDYouTubeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8027FB48419039C8A6073CF35C859193 /* XCDYouTubeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5433A0B37E09D973CD154322B92235DB /* XCDYouTubeVideo.m */; };
+		837E8235D05BFCC026D60DD5E84C2F52 /* XCDYouTubeVideoWebpage.h in Headers */ = {isa = PBXBuildFile; fileRef = F02728514D6092EE508CDBD8B5336C56 /* XCDYouTubeVideoWebpage.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		83C805E0C375D192D23F87D92051E9BF /* XCDYouTubeVideoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B701D5298C18098C83F476B06984D2B /* XCDYouTubeVideoOperation.m */; };
+		885BD21DF93BB9FB3CA4DB15C0AC3063 /* XCDURLGETOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1634952FC8E0F80D77CD1FCF6D0DF7 /* XCDURLGETOperation.m */; };
+		9D03E5F19939799562BEB7C4ADF05129 /* XCDYouTubeVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B1DE6C0AD908B35D38D1E1135FA4F2 /* XCDYouTubeVideoPlayerViewController.m */; };
+		A6D1812D800236B5C003C88EDB4DB1B4 /* Pods-globoplay-desafio-mobile-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DAE24C870B74FD5A4D457DA4193C41AC /* Pods-globoplay-desafio-mobile-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6F7FBEA3EB8A09AFEEBD71882487DCF /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 171624FC5A1CF8449AEFD87128300ABF /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m */; };
+		AAA865537AD88242AAE3F2C72631A915 /* XCDYouTubeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 154C2A8FF04D2419E0754C3870A88AA9 /* XCDYouTubeOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B703AB180F9B0A7FA7D7999CB1F95174 /* XCDURLGETOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BB8501B86E1F9599EB13296F9B4BF76 /* XCDURLGETOperation.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		CC57BE637F0AB272CB8FA584B1A2C58C /* XCDYouTubeLogger+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = BB7ACE6D2D0AC2FF2BA3611A5D972219 /* XCDYouTubeLogger+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		CDA669C9BA17ADE1A4170F43C2F305F1 /* XCDYouTubeKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC1E43BE8E6F100EBEB3C8CAB5DA3C4 /* XCDYouTubeKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D69C96B69D1AC2C80D367F0F7F99A889 /* XCDYouTubeVideoOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F054FD3E6AA6623593C0AC6217F270D4 /* XCDYouTubeVideoOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8D6AEBEAD198E6C21B996EC89FAC305 /* XCDYouTubeLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EBBBE9427F06FF42559365718CFEA5 /* XCDYouTubeLogger.m */; };
+		E000FFAC46A3840B10ECF54C8355A7AF /* XCDYouTubeVideoQueryOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0409C398AB854C114CD8EB3C43D318A2 /* XCDYouTubeVideoQueryOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E25C36998F43CD9423473C402C1E4907 /* XCDYouTubeVideoPlayerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E91DCD2A83100AACBE832F3F4274A38 /* XCDYouTubeVideoPlayerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC71959A52FEDAFBC87079DED5EF8647 /* XCDYouTubeVideoWebpage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4779C79D8F8C3CAA057D1A89182772 /* XCDYouTubeVideoWebpage.m */; };
+		F405076617AD460FC234845A02856021 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF5D7FCD870D0AC432B650F0508D4F7 /* MediaPlayer.framework */; };
+		FEB36BADBEE790AC771CFA08EF7D38B7 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 14F3B9533761157BD865D51ACC5982EA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4F1A12D7D459C144E8F363787F720B2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C60A0DC53D93FE007BCBC2589A5EE400;
+			remoteInfo = XCDYouTubeKit;
+		};
+		A519C668A25167EFFFB621D72537AD11 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C60A0DC53D93FE007BCBC2589A5EE400;
+			remoteInfo = XCDYouTubeKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		1272E3CC8DE79AB70FBDC0BF109DD9A6 /* Pods-globoplay-desafio-mobile.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-globoplay-desafio-mobile.modulemap"; sourceTree = "<group>"; };
-		295BC326F1118716243AAAA23D4F0BCA /* Pods-globoplay-desafio-mobile-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-globoplay-desafio-mobile-acknowledgements.markdown"; sourceTree = "<group>"; };
-		30AAEB33F8EFE9CF44A501660CC25DDA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig"; sourceTree = "<group>"; };
-		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		50F85041C94C9FE3F3E78DBAB21000F8 /* Pods-globoplay-desafio-mobile-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-globoplay-desafio-mobile-acknowledgements.plist"; sourceTree = "<group>"; };
-		549CB58F517FD1942EEFCC1EFADF5C63 /* Pods-globoplay-desafio-mobile-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-globoplay-desafio-mobile-dummy.m"; sourceTree = "<group>"; };
-		576D2AA72B8DFD4B81629B9356361394 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		01022113489B9B9DB1F8F8A93616D63B /* XCDYouTubeVideo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeVideo.h; path = XCDYouTubeKit/XCDYouTubeVideo.h; sourceTree = "<group>"; };
+		0409C398AB854C114CD8EB3C43D318A2 /* XCDYouTubeVideoQueryOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeVideoQueryOperation.h; path = XCDYouTubeKit/XCDYouTubeVideoQueryOperation.h; sourceTree = "<group>"; };
+		0FAE0A7759DEF724264A68FF133E2326 /* XCDYouTubePlayerScript.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubePlayerScript.m; path = XCDYouTubeKit/XCDYouTubePlayerScript.m; sourceTree = "<group>"; };
+		14F3B9533761157BD865D51ACC5982EA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h"; sourceTree = "<group>"; };
+		154C2A8FF04D2419E0754C3870A88AA9 /* XCDYouTubeOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeOperation.h; path = XCDYouTubeKit/XCDYouTubeOperation.h; sourceTree = "<group>"; };
+		171624FC5A1CF8449AEFD87128300ABF /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m"; sourceTree = "<group>"; };
+		1D919F5FDBF090B37B4496BC23070135 /* Pods-globoplay-desafio-mobile-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-globoplay-desafio-mobile-Info.plist"; sourceTree = "<group>"; };
+		1EB1D959E9DEBECA80479A142198EB6B /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		218CA1C7217C8B2011BA865F454EB6FC /* XCDYouTubeLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeLogger.h; path = XCDYouTubeKit/XCDYouTubeLogger.h; sourceTree = "<group>"; };
+		24EE92B853DD053E609C27446946731B /* Pods-globoplay-desafio-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-globoplay-desafio-mobile.debug.xcconfig"; sourceTree = "<group>"; };
+		25EBBBE9427F06FF42559365718CFEA5 /* XCDYouTubeLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeLogger.m; path = XCDYouTubeKit/XCDYouTubeLogger.m; sourceTree = "<group>"; };
+		2E0FC50145BBC5F0FDC2A0BFBB0B61FC /* Pods-globoplay-desafio-mobile-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-globoplay-desafio-mobile-acknowledgements.markdown"; sourceTree = "<group>"; };
+		34B1DE6C0AD908B35D38D1E1135FA4F2 /* XCDYouTubeVideoPlayerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeVideoPlayerViewController.m; path = XCDYouTubeKit/XCDYouTubeVideoPlayerViewController.m; sourceTree = "<group>"; };
+		3D2BBDED9B7AD6AB3C66EB7D25F44038 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap"; sourceTree = "<group>"; };
+		3FE4B360840A619567BA21A8DCC612EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4BB8501B86E1F9599EB13296F9B4BF76 /* XCDURLGETOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDURLGETOperation.h; path = XCDYouTubeKit/XCDURLGETOperation.h; sourceTree = "<group>"; };
+		4C0F24DA424DA83489F1A302678CB58D /* XCDYouTubeDashManifestXML.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeDashManifestXML.m; path = XCDYouTubeKit/XCDYouTubeDashManifestXML.m; sourceTree = "<group>"; };
+		4D4779C79D8F8C3CAA057D1A89182772 /* XCDYouTubeVideoWebpage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeVideoWebpage.m; path = XCDYouTubeKit/XCDYouTubeVideoWebpage.m; sourceTree = "<group>"; };
+		5433A0B37E09D973CD154322B92235DB /* XCDYouTubeVideo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeVideo.m; path = XCDYouTubeKit/XCDYouTubeVideo.m; sourceTree = "<group>"; };
+		5519CEC8D713F107FBB528A867DDFEB2 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		58FE68D2E4EECF33789AD56BED0384D6 /* Pods_globoplay_desafio_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_globoplay_desafio_mobile.framework; path = "Pods-globoplay-desafio-mobile.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5ABC7499639CC8A20D3BDAEE6330C921 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist"; sourceTree = "<group>"; };
-		6A7832A7C5E9DF29FF5B839F04CD09E4 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap"; sourceTree = "<group>"; };
+		5B701D5298C18098C83F476B06984D2B /* XCDYouTubeVideoOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeVideoOperation.m; path = XCDYouTubeKit/XCDYouTubeVideoOperation.m; sourceTree = "<group>"; };
+		65BCA8E5A082BA954DEBBDF8F02A4D64 /* XCDYouTubeKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XCDYouTubeKit.debug.xcconfig; sourceTree = "<group>"; };
+		6ABE6495BF96A2FD8CD04D1661209E3B /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-frameworks.sh"; sourceTree = "<group>"; };
+		6D493157EB67EE016540F2DF47D8719C /* XCDYouTubeClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeClient.m; path = XCDYouTubeKit/XCDYouTubeClient.m; sourceTree = "<group>"; };
+		6E91DCD2A83100AACBE832F3F4274A38 /* XCDYouTubeVideoPlayerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeVideoPlayerViewController.h; path = XCDYouTubeKit/XCDYouTubeVideoPlayerViewController.h; sourceTree = "<group>"; };
+		70664A77E73C9D64811986ED65B0D11E /* XCDYouTubeVideoQueryOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDYouTubeVideoQueryOperation.m; path = XCDYouTubeKit/XCDYouTubeVideoQueryOperation.m; sourceTree = "<group>"; };
+		739F81B1533355386D0574A2AB7D40F6 /* Pods-globoplay-desafio-mobile.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-globoplay-desafio-mobile.modulemap"; sourceTree = "<group>"; };
+		7992E407B2EF091047B7FD0AD016F8E5 /* XCDYouTubeKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = XCDYouTubeKit.modulemap; sourceTree = "<group>"; };
+		7CCD6C3B624872431C2B7B0B9D07B6C6 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		842B7D6C4814D1257FF7380C8E0E4B92 /* XCDYouTubeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = XCDYouTubeKit.framework; path = XCDYouTubeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BA93EF1B15F5BC1ACC04643D0BFAF8E /* XCDYouTubeVideo+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "XCDYouTubeVideo+Private.h"; path = "XCDYouTubeKit/XCDYouTubeVideo+Private.h"; sourceTree = "<group>"; };
+		94C5BE7AFC970D1F6D344E396EC5243C /* Pods-globoplay-desafio-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-globoplay-desafio-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		9D0B671CEDDBC20CEA3AE521364FFC96 /* XCDYouTubeKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "XCDYouTubeKit-Info.plist"; sourceTree = "<group>"; };
+		9D6E50947BF396066E43DED9A431B98C /* Pods-globoplay-desafio-mobile-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-globoplay-desafio-mobile-dummy.m"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F27950671EEF6444B60F2582683D326 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m"; sourceTree = "<group>"; };
-		AC32D7653DC7E97D9775C82F469136BE /* Pods-globoplay-desafio-mobile-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-globoplay-desafio-mobile-Info.plist"; sourceTree = "<group>"; };
-		B231598492FE6AB7A922CF933B0A053C /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h"; sourceTree = "<group>"; };
-		B34BBA0AB47AC0DD9E4A087E0CE62EC2 /* Pods-globoplay-desafio-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-globoplay-desafio-mobile.debug.xcconfig"; sourceTree = "<group>"; };
+		A2D625B4A8CDE43323DBBFB3F4CDDF32 /* XCDYouTubeClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeClient.h; path = XCDYouTubeKit/XCDYouTubeClient.h; sourceTree = "<group>"; };
+		A77A313AD1026AFD4C05BE8B167A475E /* XCDURLHEADOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDURLHEADOperation.m; path = XCDYouTubeKit/XCDURLHEADOperation.m; sourceTree = "<group>"; };
+		A8D5FFD8408F2930BECC5EC26B23C2B7 /* Pods-globoplay-desafio-mobile-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-globoplay-desafio-mobile-acknowledgements.plist"; sourceTree = "<group>"; };
+		AAD26ACAC1A777E822A2EDD9B0A96A81 /* XCDURLHEADOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDURLHEADOperation.h; path = XCDYouTubeKit/XCDURLHEADOperation.h; sourceTree = "<group>"; };
+		ABEFDDF81E24F630559245547AA5166D /* XCDYouTubeError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeError.h; path = XCDYouTubeKit/XCDYouTubeError.h; sourceTree = "<group>"; };
 		B3ADC782E737382DB69D4A9FA2A75B7B /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B62ACBBB1A2C0ADF7DC72DC460F4959D /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		CC09909DFC5DC18C70DCEF35923D44C2 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		F2A633FB35A5E6AF9044523EA12225CE /* Pods-globoplay-desafio-mobile-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-globoplay-desafio-mobile-umbrella.h"; sourceTree = "<group>"; };
-		F81A2ECA3391B96913BFBA81A2A433AF /* Pods-globoplay-desafio-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-globoplay-desafio-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		B6815CE8224F5D98F01AD8D2816DE8CC /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BA6A55A6CD815899AE746D5686A22349 /* Pods-globoplay-desafio-mobile-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-globoplay-desafio-mobile-frameworks.sh"; sourceTree = "<group>"; };
+		BAC1E43BE8E6F100EBEB3C8CAB5DA3C4 /* XCDYouTubeKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCDYouTubeKit-umbrella.h"; sourceTree = "<group>"; };
+		BB7ACE6D2D0AC2FF2BA3611A5D972219 /* XCDYouTubeLogger+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "XCDYouTubeLogger+Private.h"; path = "XCDYouTubeKit/XCDYouTubeLogger+Private.h"; sourceTree = "<group>"; };
+		BE1634952FC8E0F80D77CD1FCF6D0DF7 /* XCDURLGETOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XCDURLGETOperation.m; path = XCDYouTubeKit/XCDURLGETOperation.m; sourceTree = "<group>"; };
+		BFCD1E1092156E7477676CFCD4B237D7 /* XCDYouTubeKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XCDYouTubeKit.release.xcconfig; sourceTree = "<group>"; };
+		CDFA84EAE7273E0750CA747FEA1C4039 /* XCDYouTubeDashManifestXML.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeDashManifestXML.h; path = XCDYouTubeKit/XCDYouTubeDashManifestXML.h; sourceTree = "<group>"; };
+		D147634DBFA81E57FE79621F7A3AC5E9 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DAE24C870B74FD5A4D457DA4193C41AC /* Pods-globoplay-desafio-mobile-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-globoplay-desafio-mobile-umbrella.h"; sourceTree = "<group>"; };
+		E17F609660A98F91D4FD3364981AB0AE /* XCDYouTubeKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeKit.h; path = XCDYouTubeKit/XCDYouTubeKit.h; sourceTree = "<group>"; };
+		EA6D5232862ACE0A4A739B6BF76293D6 /* XCDYouTubePlayerScript.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubePlayerScript.h; path = XCDYouTubeKit/XCDYouTubePlayerScript.h; sourceTree = "<group>"; };
+		EBCD235374A0FBB235F179420DF4B0C6 /* XCDYouTubeKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XCDYouTubeKit-dummy.m"; sourceTree = "<group>"; };
+		ECF5D7FCD870D0AC432B650F0508D4F7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
+		EF3755F3F02650978E29A775C1484D7E /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist"; sourceTree = "<group>"; };
+		F02728514D6092EE508CDBD8B5336C56 /* XCDYouTubeVideoWebpage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeVideoWebpage.h; path = XCDYouTubeKit/XCDYouTubeVideoWebpage.h; sourceTree = "<group>"; };
+		F054FD3E6AA6623593C0AC6217F270D4 /* XCDYouTubeVideoOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCDYouTubeVideoOperation.h; path = XCDYouTubeKit/XCDYouTubeVideoOperation.h; sourceTree = "<group>"; };
+		FEEAFB25F55913AB2DCBBDB16629D2E9 /* XCDYouTubeKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCDYouTubeKit-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3EDB6DD7824883826E33DB8525F0B464 /* Frameworks */ = {
+		145CDCB8FC480EC654B7DDA2C47995D8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B717B13E24FD43C807B542D0DC9B4EFD /* Foundation.framework in Frameworks */,
+				19831C5C4FB5C9ABFC6912E82B4318D5 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA297DF42309B0D78D7A610E39B8CB35 /* Frameworks */ = {
+		8611974F9D3D7E81F7E18805B503E149 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5599D272E99B774FB80BDA0ED4F45B1 /* Foundation.framework in Frameworks */,
+				72677E0EBB5E4F371E76615EDFE69EE6 /* Foundation.framework in Frameworks */,
+				2959009F9F5E17D803EDA6663C32B968 /* JavaScriptCore.framework in Frameworks */,
+				F405076617AD460FC234845A02856021 /* MediaPlayer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C433D5A2F43A74F00CEB57508D8D4F72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EDCAF1722F12E0378616C24AF675CEC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2F9F117C8CFA80BABE23FE6DE074EE6A /* Pods-globoplay-desafio-mobile */ = {
+		03C5C200A0787E300053CFA8F53CA094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1272E3CC8DE79AB70FBDC0BF109DD9A6 /* Pods-globoplay-desafio-mobile.modulemap */,
-				295BC326F1118716243AAAA23D4F0BCA /* Pods-globoplay-desafio-mobile-acknowledgements.markdown */,
-				50F85041C94C9FE3F3E78DBAB21000F8 /* Pods-globoplay-desafio-mobile-acknowledgements.plist */,
-				549CB58F517FD1942EEFCC1EFADF5C63 /* Pods-globoplay-desafio-mobile-dummy.m */,
-				AC32D7653DC7E97D9775C82F469136BE /* Pods-globoplay-desafio-mobile-Info.plist */,
-				F2A633FB35A5E6AF9044523EA12225CE /* Pods-globoplay-desafio-mobile-umbrella.h */,
-				B34BBA0AB47AC0DD9E4A087E0CE62EC2 /* Pods-globoplay-desafio-mobile.debug.xcconfig */,
-				F81A2ECA3391B96913BFBA81A2A433AF /* Pods-globoplay-desafio-mobile.release.xcconfig */,
+				2CABD4EA7BF3AF0C3EE78EBA88944738 /* iOS */,
 			);
-			name = "Pods-globoplay-desafio-mobile";
-			path = "Target Support Files/Pods-globoplay-desafio-mobile";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9C55C5E6CA7CF46FBD7E605699006627 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests */ = {
+		2CABD4EA7BF3AF0C3EE78EBA88944738 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				6A7832A7C5E9DF29FF5B839F04CD09E4 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap */,
-				576D2AA72B8DFD4B81629B9356361394 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.markdown */,
-				CC09909DFC5DC18C70DCEF35923D44C2 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.plist */,
-				9F27950671EEF6444B60F2582683D326 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m */,
-				5ABC7499639CC8A20D3BDAEE6330C921 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist */,
-				B231598492FE6AB7A922CF933B0A053C /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h */,
-				B62ACBBB1A2C0ADF7DC72DC460F4959D /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */,
-				30AAEB33F8EFE9CF44A501660CC25DDA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */,
+				3FE4B360840A619567BA21A8DCC612EA /* Foundation.framework */,
+				5519CEC8D713F107FBB528A867DDFEB2 /* JavaScriptCore.framework */,
+				ECF5D7FCD870D0AC432B650F0508D4F7 /* MediaPlayer.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		3FA5905209C322ED62277D4510477994 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A7064C23B2D29DA06D0A6CD6E3CF995F /* XCDYouTubeKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		45EB75380E21C1145716C7EF8DD2E00B /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A1C80212DE4072F4F548C09166D42E7A /* Pods-globoplay-desafio-mobile */,
+				825EAF70EB9FA828123228D73E7CE608 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		70209D2DDFEB5FF54DA70E5C0DAEFB16 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7992E407B2EF091047B7FD0AD016F8E5 /* XCDYouTubeKit.modulemap */,
+				EBCD235374A0FBB235F179420DF4B0C6 /* XCDYouTubeKit-dummy.m */,
+				9D0B671CEDDBC20CEA3AE521364FFC96 /* XCDYouTubeKit-Info.plist */,
+				FEEAFB25F55913AB2DCBBDB16629D2E9 /* XCDYouTubeKit-prefix.pch */,
+				BAC1E43BE8E6F100EBEB3C8CAB5DA3C4 /* XCDYouTubeKit-umbrella.h */,
+				65BCA8E5A082BA954DEBBDF8F02A4D64 /* XCDYouTubeKit.debug.xcconfig */,
+				BFCD1E1092156E7477676CFCD4B237D7 /* XCDYouTubeKit.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/XCDYouTubeKit";
+			sourceTree = "<group>";
+		};
+		825EAF70EB9FA828123228D73E7CE608 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3D2BBDED9B7AD6AB3C66EB7D25F44038 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap */,
+				7CCD6C3B624872431C2B7B0B9D07B6C6 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.markdown */,
+				1EB1D959E9DEBECA80479A142198EB6B /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-acknowledgements.plist */,
+				171624FC5A1CF8449AEFD87128300ABF /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m */,
+				6ABE6495BF96A2FD8CD04D1661209E3B /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-frameworks.sh */,
+				EF3755F3F02650978E29A775C1484D7E /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist */,
+				14F3B9533761157BD865D51ACC5982EA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h */,
+				D147634DBFA81E57FE79621F7A3AC5E9 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */,
+				B6815CE8224F5D98F01AD8D2816DE8CC /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */,
 			);
 			name = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests";
 			path = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests";
 			sourceTree = "<group>";
 		};
-		B9872A068081182BE1039FC1FC9BB36E /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2F9F117C8CFA80BABE23FE6DE074EE6A /* Pods-globoplay-desafio-mobile */,
-				9C55C5E6CA7CF46FBD7E605699006627 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		C256EDA479FEE6290962BD4236427B4B /* Products */ = {
+		97565902A84480E5ABD2F035FDE82222 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				58FE68D2E4EECF33789AD56BED0384D6 /* Pods_globoplay_desafio_mobile.framework */,
 				B3ADC782E737382DB69D4A9FA2A75B7B /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework */,
+				842B7D6C4814D1257FF7380C8E0E4B92 /* XCDYouTubeKit.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A1C80212DE4072F4F548C09166D42E7A /* Pods-globoplay-desafio-mobile */ = {
+			isa = PBXGroup;
+			children = (
+				739F81B1533355386D0574A2AB7D40F6 /* Pods-globoplay-desafio-mobile.modulemap */,
+				2E0FC50145BBC5F0FDC2A0BFBB0B61FC /* Pods-globoplay-desafio-mobile-acknowledgements.markdown */,
+				A8D5FFD8408F2930BECC5EC26B23C2B7 /* Pods-globoplay-desafio-mobile-acknowledgements.plist */,
+				9D6E50947BF396066E43DED9A431B98C /* Pods-globoplay-desafio-mobile-dummy.m */,
+				BA6A55A6CD815899AE746D5686A22349 /* Pods-globoplay-desafio-mobile-frameworks.sh */,
+				1D919F5FDBF090B37B4496BC23070135 /* Pods-globoplay-desafio-mobile-Info.plist */,
+				DAE24C870B74FD5A4D457DA4193C41AC /* Pods-globoplay-desafio-mobile-umbrella.h */,
+				24EE92B853DD053E609C27446946731B /* Pods-globoplay-desafio-mobile.debug.xcconfig */,
+				94C5BE7AFC970D1F6D344E396EC5243C /* Pods-globoplay-desafio-mobile.release.xcconfig */,
+			);
+			name = "Pods-globoplay-desafio-mobile";
+			path = "Target Support Files/Pods-globoplay-desafio-mobile";
+			sourceTree = "<group>";
+		};
+		A7064C23B2D29DA06D0A6CD6E3CF995F /* XCDYouTubeKit */ = {
+			isa = PBXGroup;
+			children = (
+				4BB8501B86E1F9599EB13296F9B4BF76 /* XCDURLGETOperation.h */,
+				BE1634952FC8E0F80D77CD1FCF6D0DF7 /* XCDURLGETOperation.m */,
+				AAD26ACAC1A777E822A2EDD9B0A96A81 /* XCDURLHEADOperation.h */,
+				A77A313AD1026AFD4C05BE8B167A475E /* XCDURLHEADOperation.m */,
+				A2D625B4A8CDE43323DBBFB3F4CDDF32 /* XCDYouTubeClient.h */,
+				6D493157EB67EE016540F2DF47D8719C /* XCDYouTubeClient.m */,
+				CDFA84EAE7273E0750CA747FEA1C4039 /* XCDYouTubeDashManifestXML.h */,
+				4C0F24DA424DA83489F1A302678CB58D /* XCDYouTubeDashManifestXML.m */,
+				ABEFDDF81E24F630559245547AA5166D /* XCDYouTubeError.h */,
+				E17F609660A98F91D4FD3364981AB0AE /* XCDYouTubeKit.h */,
+				218CA1C7217C8B2011BA865F454EB6FC /* XCDYouTubeLogger.h */,
+				25EBBBE9427F06FF42559365718CFEA5 /* XCDYouTubeLogger.m */,
+				BB7ACE6D2D0AC2FF2BA3611A5D972219 /* XCDYouTubeLogger+Private.h */,
+				154C2A8FF04D2419E0754C3870A88AA9 /* XCDYouTubeOperation.h */,
+				EA6D5232862ACE0A4A739B6BF76293D6 /* XCDYouTubePlayerScript.h */,
+				0FAE0A7759DEF724264A68FF133E2326 /* XCDYouTubePlayerScript.m */,
+				01022113489B9B9DB1F8F8A93616D63B /* XCDYouTubeVideo.h */,
+				5433A0B37E09D973CD154322B92235DB /* XCDYouTubeVideo.m */,
+				8BA93EF1B15F5BC1ACC04643D0BFAF8E /* XCDYouTubeVideo+Private.h */,
+				F054FD3E6AA6623593C0AC6217F270D4 /* XCDYouTubeVideoOperation.h */,
+				5B701D5298C18098C83F476B06984D2B /* XCDYouTubeVideoOperation.m */,
+				6E91DCD2A83100AACBE832F3F4274A38 /* XCDYouTubeVideoPlayerViewController.h */,
+				34B1DE6C0AD908B35D38D1E1135FA4F2 /* XCDYouTubeVideoPlayerViewController.m */,
+				0409C398AB854C114CD8EB3C43D318A2 /* XCDYouTubeVideoQueryOperation.h */,
+				70664A77E73C9D64811986ED65B0D11E /* XCDYouTubeVideoQueryOperation.m */,
+				F02728514D6092EE508CDBD8B5336C56 /* XCDYouTubeVideoWebpage.h */,
+				4D4779C79D8F8C3CAA057D1A89182772 /* XCDYouTubeVideoWebpage.m */,
+				70209D2DDFEB5FF54DA70E5C0DAEFB16 /* Support Files */,
+			);
+			name = XCDYouTubeKit;
+			path = XCDYouTubeKit;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				C256EDA479FEE6290962BD4236427B4B /* Products */,
-				B9872A068081182BE1039FC1FC9BB36E /* Targets Support Files */,
+				03C5C200A0787E300053CFA8F53CA094 /* Frameworks */,
+				3FA5905209C322ED62277D4510477994 /* Pods */,
+				97565902A84480E5ABD2F035FDE82222 /* Products */,
+				45EB75380E21C1145716C7EF8DD2E00B /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0D3921D107E7864F0774B52D665588B7 /* Headers */ = {
+		270FAEA9FB40F7BDF3E04C39E87E7A23 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DED771FEC43D06A4776CEA7F7C4FFCA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h in Headers */,
+				B703AB180F9B0A7FA7D7999CB1F95174 /* XCDURLGETOperation.h in Headers */,
+				64D00C7773BF8EC0DA6454B606DA5E7F /* XCDURLHEADOperation.h in Headers */,
+				0F82BBD2330862DE1465700269829542 /* XCDYouTubeClient.h in Headers */,
+				1CB85C56130766F07995B1EAE4A2E6EC /* XCDYouTubeDashManifestXML.h in Headers */,
+				6F067E714244A7ACAD622AD65E4DD740 /* XCDYouTubeError.h in Headers */,
+				CDA669C9BA17ADE1A4170F43C2F305F1 /* XCDYouTubeKit-umbrella.h in Headers */,
+				77FCE0F5F5956A6473485869F16C9262 /* XCDYouTubeKit.h in Headers */,
+				CC57BE637F0AB272CB8FA584B1A2C58C /* XCDYouTubeLogger+Private.h in Headers */,
+				3872CF66AA4C4D71A940A29368A44723 /* XCDYouTubeLogger.h in Headers */,
+				AAA865537AD88242AAE3F2C72631A915 /* XCDYouTubeOperation.h in Headers */,
+				16A6158063B9E3DDE2A8E4C7F5DE0051 /* XCDYouTubePlayerScript.h in Headers */,
+				39720DA42E46EF201FC37ABB83A987B7 /* XCDYouTubeVideo+Private.h in Headers */,
+				3AA8C3B6F06D82EFEE46595BAD6AD177 /* XCDYouTubeVideo.h in Headers */,
+				D69C96B69D1AC2C80D367F0F7F99A889 /* XCDYouTubeVideoOperation.h in Headers */,
+				E25C36998F43CD9423473C402C1E4907 /* XCDYouTubeVideoPlayerViewController.h in Headers */,
+				E000FFAC46A3840B10ECF54C8355A7AF /* XCDYouTubeVideoQueryOperation.h in Headers */,
+				837E8235D05BFCC026D60DD5E84C2F52 /* XCDYouTubeVideoWebpage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28B7B6B814E309A12E1D6586E80B4A41 /* Headers */ = {
+		5C3AA17DECBA3605F9DE0F4DFF1D3E69 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF94EF44EEFD372428B90CBC3B9F82DC /* Pods-globoplay-desafio-mobile-umbrella.h in Headers */,
+				A6D1812D800236B5C003C88EDB4DB1B4 /* Pods-globoplay-desafio-mobile-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D296775EEF3893BE63A9B73A71258AEB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEB36BADBEE790AC771CFA08EF7D38B7 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,16 +345,17 @@
 /* Begin PBXNativeTarget section */
 		1C4D663D9D16B5ABDA15CD7F1CF264FD /* Pods-globoplay-desafio-mobile */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0ED25A66ECA3C87C87D4CC8D9D518BB3 /* Build configuration list for PBXNativeTarget "Pods-globoplay-desafio-mobile" */;
+			buildConfigurationList = 3A758BFA84FB44815A03419B777443C9 /* Build configuration list for PBXNativeTarget "Pods-globoplay-desafio-mobile" */;
 			buildPhases = (
-				28B7B6B814E309A12E1D6586E80B4A41 /* Headers */,
-				C70DAD8CFAD9E79DEC66112ECC3C70EC /* Sources */,
-				3EDB6DD7824883826E33DB8525F0B464 /* Frameworks */,
-				D733126F9788EAB893B3331E22E814B0 /* Resources */,
+				5C3AA17DECBA3605F9DE0F4DFF1D3E69 /* Headers */,
+				F1711B1BBB241BA276FB6DD086CC523D /* Sources */,
+				C433D5A2F43A74F00CEB57508D8D4F72 /* Frameworks */,
+				3366B1D401C112F1F967A663DC5E5797 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C11CA4B9F2165324BBB2787F169C0B3C /* PBXTargetDependency */,
 			);
 			name = "Pods-globoplay-desafio-mobile";
 			productName = "Pods-globoplay-desafio-mobile";
@@ -176,20 +364,39 @@
 		};
 		3F597E112707B09E38B3E94751D41073 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A6D232B741DDB72BF6AC6DE2A2956285 /* Build configuration list for PBXNativeTarget "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests" */;
+			buildConfigurationList = 7842A849C22950BE474E6A7E98B32CD3 /* Build configuration list for PBXNativeTarget "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests" */;
 			buildPhases = (
-				0D3921D107E7864F0774B52D665588B7 /* Headers */,
-				501DF00740105F136935AB0365897215 /* Sources */,
-				CA297DF42309B0D78D7A610E39B8CB35 /* Frameworks */,
-				15C2124EAE46296FF4550E88603F3D28 /* Resources */,
+				D296775EEF3893BE63A9B73A71258AEB /* Headers */,
+				28E705C59278FBBEA26ACE6C80FECC57 /* Sources */,
+				145CDCB8FC480EC654B7DDA2C47995D8 /* Frameworks */,
+				711D4331E8B1E785A896B25943669050 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				49074CEBD1B6644CB0228451A9BE1A77 /* PBXTargetDependency */,
+			);
+			name = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests";
+			productName = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests";
+			productReference = B3ADC782E737382DB69D4A9FA2A75B7B /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C60A0DC53D93FE007BCBC2589A5EE400 /* XCDYouTubeKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5E1D0B7DFB337B8E735A373A1D5C127 /* Build configuration list for PBXNativeTarget "XCDYouTubeKit" */;
+			buildPhases = (
+				270FAEA9FB40F7BDF3E04C39E87E7A23 /* Headers */,
+				A81B6175EDC1F1C20060DA4586341448 /* Sources */,
+				8611974F9D3D7E81F7E18805B503E149 /* Frameworks */,
+				3616159F155A93A3C94EB38363D30A8B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests";
-			productName = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests";
-			productReference = B3ADC782E737382DB69D4A9FA2A75B7B /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework */;
+			name = XCDYouTubeKit;
+			productName = XCDYouTubeKit;
+			productReference = 842B7D6C4814D1257FF7380C8E0E4B92 /* XCDYouTubeKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -202,7 +409,7 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 10.0";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -210,25 +417,33 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = C256EDA479FEE6290962BD4236427B4B /* Products */;
+			productRefGroup = 97565902A84480E5ABD2F035FDE82222 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				1C4D663D9D16B5ABDA15CD7F1CF264FD /* Pods-globoplay-desafio-mobile */,
 				3F597E112707B09E38B3E94751D41073 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests */,
+				C60A0DC53D93FE007BCBC2589A5EE400 /* XCDYouTubeKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		15C2124EAE46296FF4550E88603F3D28 /* Resources */ = {
+		3366B1D401C112F1F967A663DC5E5797 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D733126F9788EAB893B3331E22E814B0 /* Resources */ = {
+		3616159F155A93A3C94EB38363D30A8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		711D4331E8B1E785A896B25943669050 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -238,28 +453,231 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		501DF00740105F136935AB0365897215 /* Sources */ = {
+		28E705C59278FBBEA26ACE6C80FECC57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EFEAE8D373F826F62B71FE83BAC929C /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m in Sources */,
+				A6F7FBEA3EB8A09AFEEBD71882487DCF /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C70DAD8CFAD9E79DEC66112ECC3C70EC /* Sources */ = {
+		A81B6175EDC1F1C20060DA4586341448 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4BEFCFF5C1AC9F870B0B43DC6841952 /* Pods-globoplay-desafio-mobile-dummy.m in Sources */,
+				885BD21DF93BB9FB3CA4DB15C0AC3063 /* XCDURLGETOperation.m in Sources */,
+				4B5BF1CCDEEB77DCAACC42220285138A /* XCDURLHEADOperation.m in Sources */,
+				656EBA456373D5A2A8CA3A4A3F8A583E /* XCDYouTubeClient.m in Sources */,
+				1FA10594C3AE6B5F9BE25BA1B3C7B45C /* XCDYouTubeDashManifestXML.m in Sources */,
+				62B4B926F73BEB982B61E60F0B2893C3 /* XCDYouTubeKit-dummy.m in Sources */,
+				D8D6AEBEAD198E6C21B996EC89FAC305 /* XCDYouTubeLogger.m in Sources */,
+				20C47A629C5E41BBE41087BF3F78F690 /* XCDYouTubePlayerScript.m in Sources */,
+				8027FB48419039C8A6073CF35C859193 /* XCDYouTubeVideo.m in Sources */,
+				83C805E0C375D192D23F87D92051E9BF /* XCDYouTubeVideoOperation.m in Sources */,
+				9D03E5F19939799562BEB7C4ADF05129 /* XCDYouTubeVideoPlayerViewController.m in Sources */,
+				1A5BD4854CA760B101BABC9A5B22EE27 /* XCDYouTubeVideoQueryOperation.m in Sources */,
+				EC71959A52FEDAFBC87079DED5EF8647 /* XCDYouTubeVideoWebpage.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1711B1BBB241BA276FB6DD086CC523D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54E76F9F2044E686B9337AFF6BB21491 /* Pods-globoplay-desafio-mobile-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		49074CEBD1B6644CB0228451A9BE1A77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = XCDYouTubeKit;
+			target = C60A0DC53D93FE007BCBC2589A5EE400 /* XCDYouTubeKit */;
+			targetProxy = A519C668A25167EFFFB621D72537AD11 /* PBXContainerItemProxy */;
+		};
+		C11CA4B9F2165324BBB2787F169C0B3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = XCDYouTubeKit;
+			target = C60A0DC53D93FE007BCBC2589A5EE400 /* XCDYouTubeKit */;
+			targetProxy = 4F1A12D7D459C144E8F363787F720B2E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		3A85BCE211C9624E48E81E045A5E9734 /* Debug */ = {
+		1422B121EAEAEA11307496903FA623C6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B62ACBBB1A2C0ADF7DC72DC460F4959D /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		681861A754A2CF414CB0E111A4A531A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFCD1E1092156E7477676CFCD4B237D7 /* XCDYouTubeKit.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/XCDYouTubeKit/XCDYouTubeKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/XCDYouTubeKit/XCDYouTubeKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/XCDYouTubeKit/XCDYouTubeKit.modulemap";
+				PRODUCT_MODULE_NAME = XCDYouTubeKit;
+				PRODUCT_NAME = XCDYouTubeKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8E761E26A97CEAEB1AFC729064E5768D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65BCA8E5A082BA954DEBBDF8F02A4D64 /* XCDYouTubeKit.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/XCDYouTubeKit/XCDYouTubeKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/XCDYouTubeKit/XCDYouTubeKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/XCDYouTubeKit/XCDYouTubeKit.modulemap";
+				PRODUCT_MODULE_NAME = XCDYouTubeKit;
+				PRODUCT_NAME = XCDYouTubeKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		90724CB59DE38314F78D442578F465CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24EE92B853DD053E609C27446946731B /* Pods-globoplay-desafio-mobile.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B03EDA04B5E347075A59F4343ACAD411 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D147634DBFA81E57FE79621F7A3AC5E9 /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -274,7 +692,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -295,9 +713,9 @@
 			};
 			name = Debug;
 		};
-		637EFE98FEF0996A17AA115BC544AA61 /* Release */ = {
+		B4270510737272F49B980A5BED33B943 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F81A2ECA3391B96913BFBA81A2A433AF /* Pods-globoplay-desafio-mobile.release.xcconfig */;
+			baseConfigurationReference = 94C5BE7AFC970D1F6D344E396EC5243C /* Pods-globoplay-desafio-mobile.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -312,7 +730,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,7 +752,46 @@
 			};
 			name = Release;
 		};
-		939F1A8F6BCEB7F9F64D9EEE50CAE014 /* Debug */ = {
+		ED0C6AFD3A8AC27B6513E5E4BB2511C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6815CE8224F5D98F01AD8D2816DE8CC /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ED7888FA6713EABBF66D26A8003AD1CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -385,7 +842,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -398,151 +855,14 @@
 			};
 			name = Debug;
 		};
-		94CD8B14A2055FEB0CB3F149FDB61661 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30AAEB33F8EFE9CF44A501660CC25DDA /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		ECB437504DF805BD96CAABF97400B526 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		EDD3CB121A6122CFF1CA4784E53AB2E5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B34BBA0AB47AC0DD9E4A087E0CE62EC2 /* Pods-globoplay-desafio-mobile.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-globoplay-desafio-mobile/Pods-globoplay-desafio-mobile.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0ED25A66ECA3C87C87D4CC8D9D518BB3 /* Build configuration list for PBXNativeTarget "Pods-globoplay-desafio-mobile" */ = {
+		3A758BFA84FB44815A03419B777443C9 /* Build configuration list for PBXNativeTarget "Pods-globoplay-desafio-mobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EDD3CB121A6122CFF1CA4784E53AB2E5 /* Debug */,
-				637EFE98FEF0996A17AA115BC544AA61 /* Release */,
+				90724CB59DE38314F78D442578F465CF /* Debug */,
+				B4270510737272F49B980A5BED33B943 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -550,17 +870,26 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				939F1A8F6BCEB7F9F64D9EEE50CAE014 /* Debug */,
-				ECB437504DF805BD96CAABF97400B526 /* Release */,
+				ED7888FA6713EABBF66D26A8003AD1CA /* Debug */,
+				1422B121EAEAEA11307496903FA623C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A6D232B741DDB72BF6AC6DE2A2956285 /* Build configuration list for PBXNativeTarget "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests" */ = {
+		7842A849C22950BE474E6A7E98B32CD3 /* Build configuration list for PBXNativeTarget "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3A85BCE211C9624E48E81E045A5E9734 /* Debug */,
-				94CD8B14A2055FEB0CB3F149FDB61661 /* Release */,
+				B03EDA04B5E347075A59F4343ACAD411 /* Debug */,
+				ED0C6AFD3A8AC27B6513E5E4BB2511C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5E1D0B7DFB337B8E735A373A1D5C127 /* Build configuration list for PBXNativeTarget "XCDYouTubeKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E761E26A97CEAEB1AFC729064E5768D /* Debug */,
+				681861A754A2CF414CB0E111A4A531A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
