@@ -93,10 +93,14 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="playTrailer:" destination="Rhg-tE-xoP" eventType="touchUpInside" id="QhR-vC-asi"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6je-gN-WcG" customClass="CustomButton" customModule="globoplay_desafio_mobile" customModuleProvider="target">
                                                 <rect key="frame" x="278.5" y="0.0" width="268.5" height="55"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Minha Lista" image="star_rate"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -109,6 +113,9 @@
                                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addToMinhaLista:" destination="Rhg-tE-xoP" eventType="touchUpInside" id="tek-Wu-NfU"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -156,7 +163,9 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="myListButton" destination="6je-gN-WcG" id="bkl-BZ-FTy"/>
                 <outlet property="segmentedControlDetails" destination="cBV-6y-hue" id="tRA-IH-BFg"/>
+                <outlet property="trailerButton" destination="TAw-H5-Nyr" id="GbN-Ae-MtB"/>
             </connections>
             <point key="canvasLocation" x="238.40579710144928" y="130.58035714285714"/>
         </tableViewCell>

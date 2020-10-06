@@ -44,11 +44,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCell(withIdentifier: idHeaderCell, for: indexPath) as! DetailsHeaderTableViewCell
 
             actualIndex2 = cell.segmentedControlValue
-            print("actualIndex X- \(actualIndex2)")
-            
             cell.segmentedControlDetails.addTarget(self, action: #selector(self.onSegChange(_:)), for: .valueChanged)
-
-
             print("Segmented control - \(cell.segmentedControlDetails.selectedSegmentIndex)\n\n")
 
             return cell
@@ -57,14 +53,11 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         else {
             
             if (actualIndex2 == 0){
-                print("actualIndex - \(actualIndex2)")
                 let cell = tableView.dequeueReusableCell(withIdentifier: idWatchCell, for: indexPath) as! DetailsWatchTableViewCell
                 return cell
 
             }
             else{
-                print("actualIndex - \(actualIndex2)")
-
                 let cell = tableView.dequeueReusableCell(withIdentifier: idDetailsCell, for: indexPath) as! DetailsBodyTableViewCell
                 return cell
             }

@@ -10,22 +10,7 @@ import UIKit
 
 @IBDesignable
 class CustomButton: UIButton {
-    
-//    @IBOutlet var imgView: UIImageView!
-    //@IBOutlet var titulo: UILabel!
-    
     // MARK: - Properties
-    
-//    @IBInspectable
-//    var label: String {
-//        get {
-//            return titulo.text ?? "Titulo"
-//        }
-//        set {
-//            titulo.text = newValue
-//        }
-//    }
-
     @IBInspectable
     var cornerRadius: CGFloat {
         get {
@@ -95,18 +80,5 @@ class CustomButton: UIButton {
         let checkIcon = UIImage(named: "arrow_black", in: bundle, compatibleWith: nil)
         setImage(checkIcon, for: .selected)
         setTitleColor(.white, for: .selected)
-
-        
-        addGestureRecognizer(
-            UITapGestureRecognizer(target: self, action: #selector(didTap(recognizer:)))
-        )
     }
-    
-    // MARK: - Actions
-    
-    @objc
-    private func didTap(recognizer: UITapGestureRecognizer) {
-        let location = recognizer.location(in: self)
-    }
-    
 }
