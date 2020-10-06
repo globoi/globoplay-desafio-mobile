@@ -14,11 +14,13 @@ class MovieComponentTableViewCell: UITableViewCell, UICollectionViewDelegate, UI
     @IBOutlet weak var cv: UICollectionView!
     public var name: String!
     public var tableIndex: Int!
+    var delegate: CollectionViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         let nibNameCol = UINib(nibName: "movieComponent", bundle: nil)
         self.cv.register(nibNameCol, forCellWithReuseIdentifier: "mcColCell")
+        cv.delegate = self
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -34,5 +36,13 @@ class MovieComponentTableViewCell: UITableViewCell, UICollectionViewDelegate, UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selecionou - \(indexPath.row) - \(tableIndex)\n\n\n" )
+        self.delegate?.cellWasPressed()
     }
 }
+
+protocol CollectionViewCellDelegate {
+    func cellWasPressed()
+}
+
+
+

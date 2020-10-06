@@ -84,7 +84,7 @@
         <!--Details View Controller-->
         <scene sceneID="T4p-7E-paO">
             <objects>
-                <viewController id="8VU-jF-MBI" customClass="DetailsViewController" customModule="globoplay_desafio_mobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="DetailsViewController" storyboardIdentifier="DetailsViewController" id="8VU-jF-MBI" customClass="DetailsViewController" customModule="globoplay_desafio_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="De7-m9-zed">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,6 +181,7 @@
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="moviesTV" destination="tFq-dG-Ex1" id="umw-Sa-ZJm"/>
+                        <segue destination="8VU-jF-MBI" kind="show" identifier="toDetailViewFromHome" id="CdA-5S-9WA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9L-dg-zCV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -231,6 +232,9 @@
             <point key="canvasLocation" x="-641" y="-593"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="CdA-5S-9WA"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow_back" width="24" height="24"/>
         <image name="home_black" width="24" height="24"/>

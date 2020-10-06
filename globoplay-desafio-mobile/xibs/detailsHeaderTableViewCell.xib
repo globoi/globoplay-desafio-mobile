@@ -10,7 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerDetailsCell" rowHeight="280" id="Rhg-tE-xoP" customClass="DetailsHeaderTableViewCell" customModule="globoplay_desafio_mobile" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="547" height="330"/>
+            <rect key="frame" x="0.0" y="0.0" width="547" height="340"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rhg-tE-xoP" id="bjK-SV-oVi">
                 <rect key="frame" x="0.0" y="0.0" width="547" height="330"/>
@@ -53,23 +53,23 @@
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Orgulho e Paixão" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3Z-Bo-ZEX">
                                         <rect key="frame" x="0.0" y="138" width="547" height="28"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novela" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWR-8c-q13">
                                         <rect key="frame" x="0.0" y="171" width="547" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7B-12-znI">
                                         <rect key="frame" x="0.0" y="176" width="547" height="55"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="55" id="S8A-Kq-b3J"/>
+                                            <constraint firstAttribute="height" constant="65" id="S8A-Kq-b3J"/>
                                         </constraints>
                                         <string key="text">Orgulho e paixão tem seus personagens livremente inspirados no universo da escritora ingles Jane Austen. É uma história romântica</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -120,7 +120,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="55" id="iqA-AA-peH"/>
+                                            <constraint firstAttribute="height" constant="40" id="iqA-AA-peH"/>
                                         </constraints>
                                     </stackView>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cBV-6y-hue">
@@ -139,16 +139,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="330" id="9TE-nh-a4q"/>
+                                    <constraint firstAttribute="height" constant="340" id="9TE-nh-a4q"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5IU-GC-Ey2" firstAttribute="top" secondItem="EKA-EA-5RS" secondAttribute="top" id="0It-Ug-GEK"/>
-                            <constraint firstItem="5IU-GC-Ey2" firstAttribute="leading" secondItem="EKA-EA-5RS" secondAttribute="leading" id="9em-xx-0nS"/>
-                            <constraint firstAttribute="trailing" secondItem="5IU-GC-Ey2" secondAttribute="trailing" id="IFw-Wr-FLV"/>
-                            <constraint firstAttribute="height" constant="330" id="wPB-CT-VPz"/>
+                            <constraint firstItem="5IU-GC-Ey2" firstAttribute="leading" secondItem="EKA-EA-5RS" secondAttribute="leading" constant="8" id="9em-xx-0nS"/>
+                            <constraint firstAttribute="trailing" secondItem="5IU-GC-Ey2" secondAttribute="trailing" constant="8" id="IFw-Wr-FLV"/>
+                            <constraint firstAttribute="height" constant="340" id="wPB-CT-VPz"/>
                             <constraint firstAttribute="bottom" secondItem="5IU-GC-Ey2" secondAttribute="bottom" id="z7k-Be-du0"/>
                         </constraints>
                     </view>

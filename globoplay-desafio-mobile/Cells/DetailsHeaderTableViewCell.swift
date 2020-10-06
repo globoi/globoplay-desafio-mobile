@@ -10,7 +10,7 @@ import UIKit
 
 class DetailsHeaderTableViewCell: UITableViewCell {
     var segmentedControlValue = 0
-    var isMinhaLista = false
+    var isMinhaLista: Bool?
     
     @IBOutlet weak var segmentedControlDetails  : UISegmentedControl!
     @IBOutlet weak var trailerButton            : CustomButton!
@@ -19,6 +19,25 @@ class DetailsHeaderTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        let colorNormal = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        let colorSelected = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        segmentedControlDetails.setTitleTextAttributes(colorNormal, for: .normal)
+        segmentedControlDetails.setTitleTextAttributes(colorSelected, for: .selected)
+        
+    }
+    override func layoutSubviews() {
+        setupButton()
+    }
+
+    func setupButton(){
+        if (self.isMinhaLista == true){
+            myListButton.setTitle("Adicionado", for: .normal)
+            myListButton.setImage(UIImage(named: "check_black"), for: .normal)
+        }
+        else if (self.isMinhaLista == false){
+            myListButton.setTitle("Minha Lista", for: .normal)
+            myListButton.setImage(UIImage(named: "star_rate"), for: .normal)
+        }
     }
 
     @IBAction func segmentedControlChanged(_ sender: Any) {

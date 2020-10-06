@@ -13,6 +13,7 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet var collectionViewMyList: UICollectionView!
     
     var images = ["teste1", "teste2", "teste3"]
+    var flag :Bool!
     private let spacing:CGFloat = 8.0
     
     override func viewDidLoad() {
@@ -40,10 +41,19 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "toDetailsView", sender: self)
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination.isKind(of: DetailsViewController.self) {
+            let secondVC = segue.destination as! DetailsViewController
+            secondVC.isFromHome = flag
+        }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        flag = false
+        self.performSegue(withIdentifier: "toDetailsView", sender: self)
+    }
+    
+   
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

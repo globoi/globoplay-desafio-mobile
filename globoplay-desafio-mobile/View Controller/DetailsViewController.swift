@@ -19,6 +19,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     let idSegmentedCell = "segmentedCell"
     
     var actualIndex2 :Int!
+    var isFromHome :Bool!
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
@@ -26,7 +27,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        self.navigationController?.navigationBar.backgroundColor = .clear
         self.navigationController!.navigationBar.isTranslucent = true
         self.navigationController!.navigationBar.backgroundColor = .clear
-        
     }
     
 
@@ -40,6 +40,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.detailsTV.register(nibBodyName, forCellReuseIdentifier: idDetailsCell)
         self.detailsTV.register(nibCollectionWatch, forCellReuseIdentifier: idWatchCell)
         self.detailsTV.register(nibName, forCellReuseIdentifier: idHeaderCell)
+       
     }
     
 
@@ -54,6 +55,14 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
             actualIndex2 = cell.segmentedControlValue
             cell.segmentedControlDetails.addTarget(self, action: #selector(self.onSegChange(_:)), for: .valueChanged)
+            print("[DEBUG] - flag - \(isFromHome)")
+            if (isFromHome == false){
+                cell.isMinhaLista = true
+            }
+            else if (isFromHome == true){
+                cell.isMinhaLista = false
+            }
+                
             print("Segmented control - \(cell.segmentedControlDetails.selectedSegmentIndex)\n\n")
 
             return cell

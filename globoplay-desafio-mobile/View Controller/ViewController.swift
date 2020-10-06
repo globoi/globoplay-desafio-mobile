@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource, CollectionViewCellDelegate{
     
     @IBOutlet weak var moviesTV: UITableView!
-    
-    //toDetailsView
+    var flag :Bool!
+
     override func viewDidLoad() {
         
         let colViewCellId = "mcColCell"
@@ -24,10 +24,15 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
         
         moviesTV.delegate = self
         moviesTV.dataSource = self
-        
-//        xibView.collectionView.register(UINib(nibName: "MovieComponentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MovieComponentCollectionViewCell")
-
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination.isKind(of: DetailsViewController.self) {
+            let secondVC = segue.destination as! DetailsViewController
+            secondVC.isFromHome = flag
+        }
+    }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -40,6 +45,7 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             cell.title.text = "Em Alta"
             cell.tableIndex = 0
             cell.name = "teste1"
+            cell.delegate = self
             return cell
         }
         if (indexPath.row == 1){
@@ -47,14 +53,21 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             cellMovies.title.text = "Movies"
             cellMovies.tableIndex = 1
             cellMovies.name = "teste2"
+            cellMovies.delegate = self
             return cellMovies
         }
         else {
-            let cellMovies = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
-            cellMovies.title.text = "Séries"
-            cellMovies.name = "teste3"
-            cellMovies.tableIndex = 2
-            return cellMovies
+            let cellSeries = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
+            cellSeries.title.text = "Séries"
+            cellSeries.name = "teste3"
+            cellSeries.delegate = self
+            cellSeries.tableIndex = 2
+            return cellSeries
         }
-    }  
+    }
+
+    func cellWasPressed() {
+        flag = true
+        self.performSegue(withIdentifier: "toDetailViewFromHome", sender: self)
+    }
 }
