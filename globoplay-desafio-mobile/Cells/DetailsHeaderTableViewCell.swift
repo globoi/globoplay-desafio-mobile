@@ -8,13 +8,19 @@
 
 import UIKit
 
-class DetailsHeaderTableViewCell: UITableViewHeaderFooterView {
-
+class DetailsHeaderTableViewCell: UITableViewCell {
+    
+    //UITableViewHeaderFooterView
+    
+    var segmentedControlValue = 0
+    
+    @IBOutlet weak var segmentedControlDetails: UISegmentedControl!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-   
-
+    @IBAction func segmentedControlChanged(_ sender: Any) {
+        self.segmentedControlValue = segmentedControlDetails.selectedSegmentIndex
+    }
 }
