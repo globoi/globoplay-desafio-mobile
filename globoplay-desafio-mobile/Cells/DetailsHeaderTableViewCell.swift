@@ -13,8 +13,10 @@ import XCDYouTubeKit
 class DetailsHeaderTableViewCell: UITableViewCell {
     var segmentedControlValue = 0
     var isMinhaLista: Bool?
-    var youTubeID = "Lk7LPTq0_XY"
+    var youTubeID : String? //"Lk7LPTq0_XY"
     
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var imageTitle: UIImageView!
     @IBOutlet weak var segmentedControlDetails  : UISegmentedControl!
     @IBOutlet weak var trailerButton            : CustomButton!
     @IBOutlet weak var myListButton             : CustomButton!
@@ -52,7 +54,8 @@ class DetailsHeaderTableViewCell: UITableViewCell {
         self.window?.rootViewController!.present(playerViewController, animated: true, completion: nil)
                 
         XCDYouTubeClient.default().getVideoWithIdentifier(youTubeID) { (video, error) in
-
+            
+            print("[DEBUG] - \(self.youTubeID)")
             guard let video: XCDYouTubeVideo = video else {
                 playerViewController.dismiss(animated: true, completion: nil)
                 return

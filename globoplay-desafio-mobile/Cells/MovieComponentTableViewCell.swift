@@ -17,7 +17,6 @@ class MovieComponentTableViewCell: UITableViewCell, UICollectionViewDelegate, UI
     public var tableIndex: Int!
     var delegate: CollectionViewCellDelegate?
     var movieList: [Movie]?
-    var serieList: [Serie]?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,12 +41,6 @@ class MovieComponentTableViewCell: UITableViewCell, UICollectionViewDelegate, UI
                 return cell
             }
             imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
-        }else if (serieList != nil){
-            guard let path = serieList?[indexPath.row].poster_path else {
-                cell.moviePoster.image =  UIImage(named: self.name)
-                return cell
-            }
-            imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
         }
         
         cell.moviePoster.kf.setImage(with: imageUrl)
@@ -56,13 +49,12 @@ class MovieComponentTableViewCell: UITableViewCell, UICollectionViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("Selecionou - \(indexPath.row) - \(tableIndex)\n\n\n" )
-        self.delegate?.cellWasPressed()
+        self.delegate?.cellWasPressed(index: indexPath.row, tableId: tableIndex)
     }
 }
 
 protocol CollectionViewCellDelegate {
-    func cellWasPressed()
+    func cellWasPressed(index: Int, tableId: Int)
 }
 
 

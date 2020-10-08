@@ -185,6 +185,13 @@
                     <constraint firstItem="0wu-15-gQi" firstAttribute="leading" secondItem="Wdn-jr-oRo" secondAttribute="leading" id="mLj-Gq-Eck"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="countryLabel" destination="i0n-Qa-oij" id="bKP-DC-a1L"/>
+                <outlet property="crewLabel" destination="ewD-6K-0Ca" id="u3D-h9-jlr"/>
+                <outlet property="genreLabel" destination="WmJ-jX-tKX" id="ljP-RM-Nh7"/>
+                <outlet property="productionYear" destination="q9Z-56-BnF" id="XKE-WI-LXz"/>
+                <outlet property="titleLabel" destination="05F-w5-XmJ" id="IQg-53-XZ4"/>
+            </connections>
             <point key="canvasLocation" x="-667.39130434782612" y="-202.56696428571428"/>
         </tableViewCell>
     </objects>

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A14B1EE252E2D36006F58E3 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A14B1ED252E2D36006F58E3 /* BaseModel.swift */; };
 		1A2CEF42252B5F5C00A38F18 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEF41252B5F5C00A38F18 /* Movie.swift */; };
 		1A2CEF43252B5F5C00A38F18 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEF41252B5F5C00A38F18 /* Movie.swift */; };
 		1A2CEF47252B611400A38F18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CEF46252B611400A38F18 /* Constants.swift */; };
@@ -41,8 +40,6 @@
 		1AC8E716252CA21300098AED /* DetailsWatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC8E715252CA21300098AED /* DetailsWatchTableViewCell.swift */; };
 		1AC8E71E252CB50200098AED /* segmentedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8E71D252CB50200098AED /* segmentedCell.xib */; };
 		1AC8E722252CB56A00098AED /* SegmentedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC8E721252CB56A00098AED /* SegmentedTableViewCell.swift */; };
-		1ADBAB23252A32F700C36575 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBAB22252A32F700C36575 /* Genre.swift */; };
-		1ADBAB24252A32F700C36575 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADBAB22252A32F700C36575 /* Genre.swift */; };
 		E313A72A00B3A8B912163F27 /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCA9F20CF7A3E9D9F190A88 /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework */; };
 		F7F28371EB558C68FE3DD5BF /* Pods_globoplay_desafio_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A3214EDBB4431ADACA3216 /* Pods_globoplay_desafio_mobile.framework */; };
 /* End PBXBuildFile section */
@@ -58,7 +55,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1A14B1ED252E2D36006F58E3 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		1A2CEF41252B5F5C00A38F18 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		1A2CEF46252B611400A38F18 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1A2CEF54252B665400A38F18 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
@@ -89,7 +85,6 @@
 		1AC8E715252CA21300098AED /* DetailsWatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsWatchTableViewCell.swift; sourceTree = "<group>"; };
 		1AC8E71D252CB50200098AED /* segmentedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = segmentedCell.xib; sourceTree = "<group>"; };
 		1AC8E721252CB56A00098AED /* SegmentedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedTableViewCell.swift; sourceTree = "<group>"; };
-		1ADBAB22252A32F700C36575 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		3FCA9F20CF7A3E9D9F190A88 /* Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_globoplay_desafio_mobile_globoplay_desafio_mobileUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		887DBB79EF110FEE094F058B /* Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig"; path = "Target Support Files/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests/Pods-globoplay-desafio-mobile-globoplay-desafio-mobileUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		88A3214EDBB4431ADACA3216 /* Pods_globoplay_desafio_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_globoplay_desafio_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,9 +234,7 @@
 		1ADBAB21252A32DD00C36575 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1ADBAB22252A32F700C36575 /* Genre.swift */,
 				1A2CEF41252B5F5C00A38F18 /* Movie.swift */,
-				1A14B1ED252E2D36006F58E3 /* BaseModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -470,7 +463,6 @@
 				1A7DCAF7252C02AB002FB030 /* MyListMovieCollectionViewCell.swift in Sources */,
 				1AC8E722252CB56A00098AED /* SegmentedTableViewCell.swift in Sources */,
 				1AC2289B2529F3B100FC7988 /* SceneDelegate.swift in Sources */,
-				1ADBAB23252A32F700C36575 /* Genre.swift in Sources */,
 				1AA35A10252BF58200455463 /* MyListViewController.swift in Sources */,
 				1AC8E716252CA21300098AED /* DetailsWatchTableViewCell.swift in Sources */,
 				1A2CEF42252B5F5C00A38F18 /* Movie.swift in Sources */,
@@ -478,7 +470,6 @@
 				1A2CEF47252B611400A38F18 /* Constants.swift in Sources */,
 				1A7DCB0F252C0EE0002FB030 /* DetailsBodyTableViewCell.swift in Sources */,
 				1A7DCB03252C08B8002FB030 /* DetailsViewController.swift in Sources */,
-				1A14B1EE252E2D36006F58E3 /* BaseModel.swift in Sources */,
 				1A2CEF55252B665400A38F18 /* MovieService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,7 +480,6 @@
 			files = (
 				1A2CEF56252B665500A38F18 /* MovieService.swift in Sources */,
 				1AC228B02529F3BD00FC7988 /* globoplay_desafio_mobileUITests.swift in Sources */,
-				1ADBAB24252A32F700C36575 /* Genre.swift in Sources */,
 				1A2CEF43252B5F5C00A38F18 /* Movie.swift in Sources */,
 				1A2CEF48252B611400A38F18 /* Constants.swift in Sources */,
 			);

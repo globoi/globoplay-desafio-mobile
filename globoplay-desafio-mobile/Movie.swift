@@ -14,8 +14,8 @@ struct Root : Decodable {
    let results: [Movie]
 }
 
-struct RootS : Decodable {
-   let results: [Serie]
+struct VideoRoot : Decodable {
+   let results: [Trailer]
 }
 
 struct Movie:  Decodable {
@@ -23,14 +23,13 @@ struct Movie:  Decodable {
     var id: Int
     var title: String
     var poster_path: String
+    var overview: String
+    var vote_average: Double
+    var release_date: String
 
 }
 
-struct Serie: Decodable {
+struct Trailer:  Decodable {
     
-    var id: Int
-    var poster_path: String
-    var overview: String
-    var name: String
-    
+    var key: String
 }

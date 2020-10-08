@@ -9,7 +9,13 @@
 import UIKit
 
 class DetailsBodyTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var productionYear: UILabel!
+    @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var crewLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

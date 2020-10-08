@@ -18,15 +18,18 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     let idHeaderCell = "headerDetailsCell"
     let idSegmentedCell = "segmentedCell"
     
+    var upcomingMovieList       : [Movie]?
+    var popularMovieList        : [Movie]?
+    var playingMovieList        : [Movie]?
+    var indexList               : Int?
+    var tableIndex              : Int?
+    var youTubeID               : String?
+    
     var actualIndex2 :Int!
     var isFromHome :Bool!
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-//        self.navigationController?.navigationBar.isTranslucent = true
-//        self.navigationController?.navigationBar.backgroundColor = .clear
-        self.navigationController!.navigationBar.isTranslucent = true
-        self.navigationController!.navigationBar.backgroundColor = .clear
     }
     
 
@@ -40,7 +43,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.detailsTV.register(nibBodyName, forCellReuseIdentifier: idDetailsCell)
         self.detailsTV.register(nibCollectionWatch, forCellReuseIdentifier: idWatchCell)
         self.detailsTV.register(nibName, forCellReuseIdentifier: idHeaderCell)
-       
     }
     
 
@@ -50,21 +52,23 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let list = fillPopulatedList()
+        getYoutubeId(list: list)
+        
         if (indexPath.row == 0){
             let cell = tableView.dequeueReusableCell(withIdentifier: idHeaderCell, for: indexPath) as! DetailsHeaderTableViewCell
 
             actualIndex2 = cell.segmentedControlValue
+            
             cell.segmentedControlDetails.addTarget(self, action: #selector(self.onSegChange(_:)), for: .valueChanged)
-            print("[DEBUG] - flag - \(isFromHome)")
-            if (isFromHome == false){
-                cell.isMinhaLista = true
-            }
-            else if (isFromHome == true){
-                cell.isMinhaLista = false
-            }
-                
-            print("Segmented control - \(cell.segmentedControlDetails.selectedSegmentIndex)\n\n")
-
+            
+            cell.isMinhaLista = isFromHome ? false : true
+            
+            let path = list?[indexList!].poster_path
+            var imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path! )
+            cell.imageTitle.kf.setImage(with: imageUrl)
+            cell.name.text = list![indexList!].title
+            cell.youTubeID = youTubeID
             return cell
         }
         
@@ -77,10 +81,60 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: idDetailsCell, for: indexPath) as! DetailsBodyTableViewCell
-                return cell
+                    cell.titleLabel.text = list![indexList!].title
+                    cell.crewLabel.text = list![indexList!].overview
+                    return cell
+               
             }
         }
     }
+    
+    func getYoutubeId(list: [Movie]?){
+        
+        print("[DEBUG] - \(String(list![indexList!].id))")
+        
+        MovieService.getTrailerKey(id: String(list![indexList!].id), completion: {result, error  in
+            if result != nil{
+                self.youTubeID  = result
+                self.detailsTV.reloadData()
+            } else{
+            print("[DEBUG] no results")
+            }
+        })
+        
+    }
+    
+    func fillPopulatedList() -> [Movie]?  {
+
+        var movie       : [Movie]?
+        print("[DEBUG] - \(tableIndex)")
+        
+        
+        if (upcomingMovieList != nil && tableIndex == 0){
+            movie = upcomingMovieList!
+            return movie
+        }else if (popularMovieList != nil && tableIndex == 1){
+            movie = popularMovieList!
+            return movie
+        }else {
+            movie = playingMovieList!
+            return movie
+        }
+    }
+    
+//    func fillPopulatedListSerie() -> [Serie]?  {
+//
+//        var serie       : [Serie]?
+//
+//        if (popularSerieList != nil){
+//            serie = popularSerieList!
+//            return serie
+//        }
+//        return nil
+//    }
+//
+    
+    
     
     
     

@@ -12,24 +12,16 @@ import ObjectMapper
 
 class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource, CollectionViewCellDelegate{
     
-    @IBOutlet weak var moviesTV: UITableView!
-    var flag :Bool!
-    var upcomingMovieList: [Movie]?
-    var popularMovieList: [Movie]?
-    var popularSerieList: [Serie]?
+    @IBOutlet weak var moviesTV : UITableView!
+    var flag                    : Bool!
+    var indice                  : Int!
+    var tableIndex              : Int!
+    var upcomingMovieList       : [Movie]?
+    var popularMovieList        : [Movie]?
+    var playingMovieList        : [Movie]?
     
     @IBOutlet weak var activityInd: UIActivityIndicatorView!
-    
-    
-    var service : MovieService?
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        self.service?.getUpcomingMovies(completion: {
-//            self.upcomingMovieList = self.service?.movieList
-//            self.moviesTV.reloadData()
-//        })
-//    }
-
+  
     override func viewDidLoad() {
         
         MovieService.getUpcomingMovies { results, error  in
@@ -50,9 +42,9 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             }
         }
         
-        MovieService.getPopularSeries { results, error  in
+        MovieService.getNowPlayingMovies { results, error  in
             if results != nil{
-                self.popularSerieList = results
+                self.playingMovieList = results
                 self.moviesTV.reloadData()
             } else{
                 print("no results")
@@ -79,12 +71,17 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
         if segue.destination.isKind(of: DetailsViewController.self) {
             let secondVC = segue.destination as! DetailsViewController
             secondVC.isFromHome = flag
+            secondVC.indexList = indice
+            secondVC.playingMovieList = playingMovieList
+            secondVC.popularMovieList = popularMovieList
+            secondVC.upcomingMovieList = upcomingMovieList
+            secondVC.tableIndex = tableIndex
         }
     }
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if upcomingMovieList == nil || popularMovieList == nil || popularSerieList == nil {
+        if upcomingMovieList == nil || popularMovieList == nil || playingMovieList == nil {
             return 0
         }
         activityInd.stopAnimating()
@@ -95,7 +92,7 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
         
         if (indexPath.row == 0){
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
-            cell.title.text = "Em Alta"
+            cell.title.text = "Filmes Em Breve"
             cell.tableIndex = 0
             cell.name = "teste1"
             cell.delegate = self
@@ -104,7 +101,7 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
         }
         if (indexPath.row == 1){
             let cellMovies = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
-            cellMovies.title.text = "Movies"
+            cellMovies.title.text = "Filmes Populares"
             cellMovies.tableIndex = 1
             cellMovies.name = "teste2"
             cellMovies.delegate = self
@@ -113,17 +110,19 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
         }
         else {
             let cellSeries = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
-            cellSeries.title.text = "Séries"
+            cellSeries.title.text = "Filmes Em Cartaz"
             cellSeries.name = "teste3"
             cellSeries.delegate = self
             cellSeries.tableIndex = 2
-            cellSeries.serieList = popularSerieList
+            cellSeries.movieList = playingMovieList
             return cellSeries
         }
     }
 
-    func cellWasPressed() {
+    func cellWasPressed(index: Int, tableId: Int) {
         flag = true
+        indice = index
+        tableIndex = tableId
         self.performSegue(withIdentifier: "toDetailViewFromHome", sender: self)
     }
 }
