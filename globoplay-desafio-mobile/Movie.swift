@@ -33,3 +33,20 @@ struct Trailer:  Decodable {
     
     var key: String
 }
+
+struct MovieDetails: Decodable {
+    
+    var original_title : String
+    var genres : [Genre]?
+    var release_date: String
+    var overview: String
+    var vote_average: Double
+
+}
+
+struct Genre:  Decodable {
+    
+    var id: Int
+    var name: String
+
+}

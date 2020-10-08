@@ -13,7 +13,7 @@ class MovieService: NSObject {
 //    "https://api.themoviedb.org/3/movie/upcoming?api_key=2a0eb1c99630d71df118961ee0b5864e&language=en-US&page=1
     
     static func getUpcomingMovies(completion: @escaping ([Movie]?, Error?) -> Void){
-        let URL = CONST.API_CONSTANTS.BASE_URL + CONST.API_CONSTANTS.MOVIE + CONST.API_CONSTANTS.UPCOMING + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_EN
+        let URL = CONST.API_CONSTANTS.BASE_URL +  CONST.API_CONSTANTS.UPCOMING + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_BR
         
         var movieList : [Movie]?
         
@@ -38,7 +38,7 @@ class MovieService: NSObject {
     }
     
     static func getPopularMovies(completion: @escaping ([Movie]?, Error?) -> Void){
-        let URL = CONST.API_CONSTANTS.BASE_URL + CONST.API_CONSTANTS.MOVIE + CONST.API_CONSTANTS.POPULAR + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_EN
+        let URL = CONST.API_CONSTANTS.BASE_URL +  CONST.API_CONSTANTS.POPULAR + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_BR
         
         var movieList : [Movie]?
         
@@ -63,7 +63,7 @@ class MovieService: NSObject {
     }
     
     static func getNowPlayingMovies(completion: @escaping ([Movie]?, Error?) -> Void){
-        let URL = CONST.API_CONSTANTS.BASE_URL + CONST.API_CONSTANTS.MOVIE + CONST.API_CONSTANTS.NOW_PLAYING + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_EN
+        let URL = CONST.API_CONSTANTS.BASE_URL + CONST.API_CONSTANTS.NOW_PLAYING + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_BR
         
         var movieList : [Movie]?
         
@@ -91,7 +91,7 @@ class MovieService: NSObject {
     
     static func getTrailerKey(id: String, completion: @escaping (String?, Error?) -> Void){
         
-        let URL = CONST.API_CONSTANTS.BASE_URL + CONST.API_CONSTANTS.MOVIE + id + CONST.API_CONSTANTS.VIDEO + CONST.API_CONSTANTS.API_KEY
+        let URL = CONST.API_CONSTANTS.BASE_URL +  id + CONST.API_CONSTANTS.VIDEO + CONST.API_CONSTANTS.API_KEY
         
         print("[DEBUG] - \(URL)")
         
@@ -114,5 +114,35 @@ class MovieService: NSObject {
                 
             }
         }  
+    }
+    
+    //https://api.themoviedb.org/3/movie/497582?api_key=2a0eb1c99630d71df118961ee0b5864e
+    
+    static func getMovieDetails(id: String, completion: @escaping (MovieDetails?, Error?) -> Void){
+        
+        let URL = CONST.API_CONSTANTS.BASE_URL + id + CONST.API_CONSTANTS.QUERY + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_BR
+        
+        print("[DEBUG] - \(URL)")
+        
+        var movieDetailsList : MovieDetails?
+        
+        AF.request(URL).responseData { response in
+            switch response.result {
+            case .failure(let error):
+                print(error)
+            case .success(let data):
+                do {
+                    //print(data)
+                    let root = try JSONDecoder().decode(MovieDetails.self, from: data)
+                    movieDetailsList = root
+                    print(movieDetailsList)
+                    completion(movieDetailsList, nil)
+                } catch let error {
+                    completion(nil, error)
+                    print(error)
+                }
+                
+            }
+        }
     }
 }

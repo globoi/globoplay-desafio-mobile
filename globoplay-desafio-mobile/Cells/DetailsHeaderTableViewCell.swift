@@ -20,6 +20,7 @@ class DetailsHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var segmentedControlDetails  : UISegmentedControl!
     @IBOutlet weak var trailerButton            : CustomButton!
     @IBOutlet weak var myListButton             : CustomButton!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     
     override func awakeFromNib() {

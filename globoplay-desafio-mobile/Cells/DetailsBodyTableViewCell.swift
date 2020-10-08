@@ -10,11 +10,13 @@ import UIKit
 
 class DetailsBodyTableViewCell: UITableViewCell {
     
+    var detailsList: [MovieDetails]?
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
-    @IBOutlet weak var productionYear: UILabel!
-    @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet weak var crewLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var averageVotesLabel: UILabel!
+    @IBOutlet weak var releaseDateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
