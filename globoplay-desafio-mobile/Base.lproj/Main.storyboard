@@ -64,6 +64,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QaS-Us-wl1"/>
                         <color key="backgroundColor" name="background"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="QaS-Us-wl1" firstAttribute="trailing" secondItem="DaQ-4n-kA5" secondAttribute="trailing" id="910-uy-UWL"/>
                             <constraint firstItem="DaQ-4n-kA5" firstAttribute="top" secondItem="QaS-Us-wl1" secondAttribute="top" id="9gk-Wp-cy6"/>
@@ -145,16 +146,20 @@
             <objects>
                 <viewController storyboardIdentifier="MoviesTableViewController" id="UrR-yc-ZVG" customClass="ViewController" customModule="globoplay_desafio_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S73-1T-cip">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tFq-dG-Ex1">
                                 <rect key="frame" x="0.0" y="88" width="414" height="1029"/>
                                 <color key="backgroundColor" name="background"/>
                                 <color key="sectionIndexBackgroundColor" name="background"/>
+                                <activityIndicatorView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="o17-RY-sbU">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="93" id="Lbi-Uh-A6Y" customClass="MoviesTableViewCell" customModule="globoplay_desafio_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="93"/>
+                                        <rect key="frame" x="0.0" y="72" width="414" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lbi-Uh-A6Y" id="bRD-qu-kM5">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
@@ -180,6 +185,7 @@
                     <tabBarItem key="tabBarItem" title="Início" image="home_black" id="kIg-w2-GYn"/>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
+                        <outlet property="activityInd" destination="o17-RY-sbU" id="qrA-Zm-x9S"/>
                         <outlet property="moviesTV" destination="tFq-dG-Ex1" id="umw-Sa-ZJm"/>
                         <segue destination="8VU-jF-MBI" kind="show" identifier="toDetailViewFromHome" id="CdA-5S-9WA"/>
                     </connections>
@@ -193,6 +199,7 @@
             <objects>
                 <navigationController id="prt-P8-a9a" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3ED-N5-guc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -233,7 +240,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="CdA-5S-9WA"/>
+        <segue reference="X7G-kO-jqg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow_back" width="24" height="24"/>

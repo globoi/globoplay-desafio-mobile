@@ -1,16 +1,36 @@
 PODS:
+  - Alamofire (5.0.0-rc.2)
+  - AlamofireObjectMapper (6.2.0):
+    - Alamofire (= 5.0.0-rc.2)
+    - ObjectMapper (~> 3.5.1)
+  - Kingfisher (5.15.5):
+    - Kingfisher/Core (= 5.15.5)
+  - Kingfisher/Core (5.15.5)
+  - ObjectMapper (3.5.3)
   - XCDYouTubeKit (2.14.1)
 
 DEPENDENCIES:
-  - XCDYouTubeKit (~> 2.14)
+  - Alamofire
+  - AlamofireObjectMapper
+  - Kingfisher
+  - ObjectMapper
+  - XCDYouTubeKit
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - AlamofireObjectMapper
+    - Kingfisher
+    - ObjectMapper
     - XCDYouTubeKit
 
 SPEC CHECKSUMS:
+  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  AlamofireObjectMapper: 74d1440c92c42bbcc2b5f4dc81654ac095ec669f
+  Kingfisher: e3ec347a5ab8817b7585ef46923a2d2b9a7d8fbe
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   XCDYouTubeKit: 5d50bbacdd9fedf26fb578bab901d946ff3d064c
 
-PODFILE CHECKSUM: 13d7bf0b9b81653f9bdb1e746d13431880342cc4
+PODFILE CHECKSUM: 3dfcfa20c65c9bf3e92647416319ec371879427f
 
 COCOAPODS: 1.9.1

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieComponentTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
    
@@ -15,6 +16,8 @@ class MovieComponentTableViewCell: UITableViewCell, UICollectionViewDelegate, UI
     public var name: String!
     public var tableIndex: Int!
     var delegate: CollectionViewCellDelegate?
+    var movieList: [Movie]?
+    var serieList: [Serie]?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,12 +33,30 @@ class MovieComponentTableViewCell: UITableViewCell, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mcColCell", for: indexPath) as! MovieComponentCollectionViewCell
-        cell.moviePoster.image =  UIImage(named: self.name)
+        
+        var imageUrl = URL(string: "")
+        
+        if (movieList != nil){
+            guard let path = movieList?[indexPath.row].poster_path else {
+                cell.moviePoster.image =  UIImage(named: self.name)
+                return cell
+            }
+            imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
+        }else if (serieList != nil){
+            guard let path = serieList?[indexPath.row].poster_path else {
+                cell.moviePoster.image =  UIImage(named: self.name)
+                return cell
+            }
+            imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
+        }
+        
+        cell.moviePoster.kf.setImage(with: imageUrl)
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selecionou - \(indexPath.row) - \(tableIndex)\n\n\n" )
+//        print("Selecionou - \(indexPath.row) - \(tableIndex)\n\n\n" )
         self.delegate?.cellWasPressed()
     }
 }

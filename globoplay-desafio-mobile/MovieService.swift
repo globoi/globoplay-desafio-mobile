@@ -6,55 +6,84 @@
 //  Copyright © 2020 Mariela. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import Alamofire
 
-protocol MovieService {
+class MovieService: NSObject {
+//    "https://api.themoviedb.org/3/movie/upcoming?api_key=2a0eb1c99630d71df118961ee0b5864e&language=en-US&page=1
     
-    func fetchMovies(from endpoint: Endpoint, params: [String: String]?, successHandler: @escaping (_ response: MoviesResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
-    func fetchMovie(id: Int, successHandler: @escaping (_ response: Movie) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
-    func searchMovie(query: String, params: [String: String]?, successHandler: @escaping (_ response: MoviesResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
-}
-
-
-public enum Endpoint: String, CustomStringConvertible, CaseIterable {
-    case nowPlaying = "now_playing"
-    case upcoming
-    case popular
-    case topRated = "top_rated"
-    
-    public var description: String {
-        switch self {
-        case .nowPlaying: return "Now Playing"
-        case .upcoming: return "Upcoming"
-        case .popular: return "Popular"
-        case .topRated: return "Top Rated"
+    static func getUpcomingMovies(completion: @escaping ([Movie]?, Error?) -> Void){
+        let URL = CONST.API_CONSTANTS.BASE_URL + CONST.API_CONSTANTS.MOVIE + CONST.API_CONSTANTS.UPCOMING + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_EN
+        
+        var movieList : [Movie]?
+        
+        AF.request(URL).responseData { response in
+            switch response.result {
+            case .failure(let error):
+                print(error)
+            case .success(let data):
+                do {
+                    print(data)
+                    //let pageData = try JSONDecoder().decode(Movie.self, from: data)
+                    let root = try JSONDecoder().decode(Root.self, from: data)
+                    movieList = root.results
+                    completion(movieList, nil)
+                } catch let error {
+                    completion(nil, error)
+                    print(error)
+                }
+                
+            }
         }
     }
     
-
-    public init?(index: Int) {
-        switch index {
-        case 0: self = .nowPlaying
-        case 1: self = .popular
-        case 2: self = .upcoming
-        case 3: self = .topRated
-        default: return nil
+    static func getPopularMovies(completion: @escaping ([Movie]?, Error?) -> Void){
+        let URL = CONST.API_CONSTANTS.BASE_URL + CONST.API_CONSTANTS.MOVIE + CONST.API_CONSTANTS.POPULAR + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_EN
+        
+        var movieList : [Movie]?
+        
+        AF.request(URL).responseData { response in
+            switch response.result {
+            case .failure(let error):
+                print(error)
+            case .success(let data):
+                do {
+                    print(data)
+                    //let pageData = try JSONDecoder().decode(Movie.self, from: data)
+                    let root = try JSONDecoder().decode(Root.self, from: data)
+                    movieList = root.results
+                    completion(movieList, nil)
+                } catch let error {
+                    completion(nil, error)
+                    print(error)
+                }
+                
+            }
         }
     }
     
-    public init?(description: String) {
-        guard let first = Endpoint.allCases.first(where: { $0.description == description }) else {
-            return nil
+    static func getPopularSeries(completion: @escaping ([Serie]?, Error?) -> Void){
+        let URL = CONST.API_CONSTANTS.BASE_URL + CONST.API_CONSTANTS.TV + CONST.API_CONSTANTS.POPULAR + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_EN
+        
+        var serieList : [Serie]?
+        
+        AF.request(URL).responseData { response in
+            switch response.result {
+            case .failure(let error):
+                print(error)
+            case .success(let data):
+                do {
+                    print(data)
+                    //let pageData = try JSONDecoder().decode(Movie.self, from: data)
+                    let root = try JSONDecoder().decode(RootS.self, from: data)
+                    serieList = root.results
+                    completion(serieList, nil)
+                } catch let error {
+                    completion(nil, error)
+                    print(error)
+                }
+                
+            }
         }
-        self = first
     }
-    
-}
-
-public enum MovieError: Error {
-    case apiError
-    case invalidEndpoint
-    case invalidResponse
-    case noData
-    case serializationError
 }

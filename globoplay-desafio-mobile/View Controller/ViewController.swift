@@ -7,13 +7,57 @@
 //
 
 import UIKit
+import Alamofire
+import ObjectMapper
 
 class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource, CollectionViewCellDelegate{
     
     @IBOutlet weak var moviesTV: UITableView!
     var flag :Bool!
+    var upcomingMovieList: [Movie]?
+    var popularMovieList: [Movie]?
+    var popularSerieList: [Serie]?
+    
+    @IBOutlet weak var activityInd: UIActivityIndicatorView!
+    
+    
+    var service : MovieService?
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.service?.getUpcomingMovies(completion: {
+//            self.upcomingMovieList = self.service?.movieList
+//            self.moviesTV.reloadData()
+//        })
+//    }
 
     override func viewDidLoad() {
+        
+        MovieService.getUpcomingMovies { results, error  in
+            if results != nil{
+                self.upcomingMovieList = results
+                self.moviesTV.reloadData()
+            } else{
+                print("no results")
+            }
+        }
+        
+        MovieService.getPopularMovies { results, error  in
+            if results != nil{
+                self.popularMovieList = results
+                self.moviesTV.reloadData()
+            } else{
+                print("no results")
+            }
+        }
+        
+        MovieService.getPopularSeries { results, error  in
+            if results != nil{
+                self.popularSerieList = results
+                self.moviesTV.reloadData()
+            } else{
+                print("no results")
+            }
+        }
         
         let colViewCellId = "mcColCell"
         let tvCellId = "movieComp"
@@ -24,6 +68,11 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
         
         moviesTV.delegate = self
         moviesTV.dataSource = self
+        
+        activityInd.hidesWhenStopped = true
+        activityInd.center = view.center
+        activityInd.startAnimating()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -35,6 +84,10 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if upcomingMovieList == nil || popularMovieList == nil || popularSerieList == nil {
+            return 0
+        }
+        activityInd.stopAnimating()
         return 3
     }
     
@@ -46,6 +99,7 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             cell.tableIndex = 0
             cell.name = "teste1"
             cell.delegate = self
+            cell.movieList = upcomingMovieList
             return cell
         }
         if (indexPath.row == 1){
@@ -54,6 +108,7 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             cellMovies.tableIndex = 1
             cellMovies.name = "teste2"
             cellMovies.delegate = self
+            cellMovies.movieList = popularMovieList
             return cellMovies
         }
         else {
@@ -62,6 +117,7 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             cellSeries.name = "teste3"
             cellSeries.delegate = self
             cellSeries.tableIndex = 2
+            cellSeries.serieList = popularSerieList
             return cellSeries
         }
     }

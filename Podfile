@@ -5,9 +5,11 @@ target 'globoplay-desafio-mobile' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-   #pod 'Alamofire', '~> 5.2'
-   #pod 'Kingfisher', '~> 5.15'
-   pod 'XCDYouTubeKit', '~> 2.14'
+   pod 'Alamofire'
+   pod 'AlamofireObjectMapper'
+   pod 'Kingfisher'
+   pod 'XCDYouTubeKit'
+   pod 'ObjectMapper'
 
   # Pods for globoplay-desafio-mobile
 
