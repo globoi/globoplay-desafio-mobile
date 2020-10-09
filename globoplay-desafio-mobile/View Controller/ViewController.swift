@@ -33,7 +33,6 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
         presenter.getNowPlayingMovies()
 
         let tvCellId = "movieComp"
-        
         let nibName = UINib(nibName: "movieComponentCell", bundle: nil)
         self.moviesTV.register(nibName, forCellReuseIdentifier: tvCellId)
         
@@ -59,7 +58,6 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             }else if (tableIndex == 2){
                 secondVC.currentMovie = playingMovieList?[indice]
             }
-            
             secondVC.tableIndex = tableIndex
         }
     }
@@ -82,27 +80,32 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             cell.name = "teste1"
             cell.delegate = self
             cell.movieList = upcomingMovieList
+            cell.selectionStyle = .none
             return cell
         }
         if (indexPath.row == 1){
-            let cellMovies = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
-            cellMovies.title.text = "Filmes Populares"
-            cellMovies.tableIndex = 1
-            cellMovies.name = "teste2"
-            cellMovies.delegate = self
-            cellMovies.movieList = popularMovieList
-            return cellMovies
+            let cell = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
+            cell.title.text = "Filmes Populares"
+            cell.tableIndex = 1
+            cell.name = "teste2"
+            cell.delegate = self
+            cell.movieList = popularMovieList
+            cell.selectionStyle = .none
+            return cell
         }
         else {
-            let cellSeries = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
-            cellSeries.title.text = "Filmes Em Cartaz"
-            cellSeries.name = "teste3"
-            cellSeries.delegate = self
-            cellSeries.tableIndex = 2
-            cellSeries.movieList = playingMovieList
-            return cellSeries
+            let cell = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
+            cell.title.text = "Filmes Em Cartaz"
+            cell.name = "teste3"
+            cell.delegate = self
+            cell.tableIndex = 2
+            cell.movieList = playingMovieList
+            cell.selectionStyle = .none
+            return cell
         }
     }
+    
+    //MARK: CollectionViewCellDelegate
 
     func cellWasPressed(index: Int, tableId: Int) {
         flag = true

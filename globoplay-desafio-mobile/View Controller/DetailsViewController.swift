@@ -13,35 +13,36 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var detailsTV: UITableView!
     
     
-    let idDetailsCell = "bodyDetailsCell"
-    let idWatchCell = "watchDetailsCell"
-    let idHeaderCell = "headerDetailsCell"
-    let idSegmentedCell = "segmentedCell"
+    let idDetailsCell           = "bodyDetailsCell"
+    let idWatchCell             = "watchDetailsCell"
+    let idHeaderCell            = "headerDetailsCell"
+    let idSegmentedCell         = "segmentedCell"
     
-  //  var upcomingMovieList       : [Movie]?
-  //  var popularMovieList        : [Movie]?
-  //  var playingMovieList        : [Movie]?
     var myMovieList             : [Movie]?
     var indexList               : Int?
     var tableIndex              : Int?
     var youTubeID               : String?
     
-    private var listDetails     :MovieDetails?
-    private var list            :[Movie]?
-    var currentMovie            :Movie?
+    private var listDetails     : MovieDetails?
+    private var list            : [Movie]?
+    var currentMovie            : Movie?
     
-    var actualIndex2 :Int!
-    var isFromHome :Bool!
+    var actualIndex2            : Int!
+    var isFromHome              : Bool!
+    
+    fileprivate let presenter   = DetailsPresenter(dataService: MovieService())
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-        getYoutubeId(id: String(currentMovie!.id))
-        getDetailsList(id: currentMovie!.id)
+        presenter.getYoutubeId(id: String(currentMovie!.id))
+        presenter.getDetailsList(id: currentMovie!.id)
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter.attachView(self)
         
         let nibName             = UINib(nibName: "detailsHeaderTableViewCell", bundle: nil)
         let nibBodyName         = UINib(nibName: "detailsBodyTableViewCell", bundle: nil)
@@ -50,14 +51,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.detailsTV.register(nibBodyName, forCellReuseIdentifier: idDetailsCell)
         self.detailsTV.register(nibCollectionWatch, forCellReuseIdentifier: idWatchCell)
         self.detailsTV.register(nibName, forCellReuseIdentifier: idHeaderCell)
-        
-        
-       // self.list = fillPopulatedList()
-        
-        
-       // currentMovie = list![indexList!]
-        
-        
     }
     
 
@@ -77,18 +70,12 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.isMinhaLista = isFromHome ? false : true
             
             let path = currentMovie?.poster_path ?? ""
-            var imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
+            let imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
             cell.imageTitle.kf.setImage(with: imageUrl)
             cell.name.text = currentMovie?.title ?? ""
             cell.youTubeID = youTubeID
             cell.currentMovie = currentMovie
-            
-//            let path = list?[indexList!].poster_path ?? ""
-//            var imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
-//            cell.imageTitle.kf.setImage(with: imageUrl)
-//            cell.name.text = list?[indexList!].title ?? ""
-//            cell.youTubeID = youTubeID
-//            cell.currentMovie = list?[indexList!]
+            cell.selectionStyle = .none
             return cell
         }
         
@@ -99,6 +86,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.currentMovieId = String(currentMovie!.id)
                 cell.currentMovie = currentMovie
                 cell.delegate = self
+                cell.selectionStyle = .none
                 return cell
 
             }
@@ -109,65 +97,12 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.descriptionLabel.text = listDetails?.overview
                 cell.averageVotesLabel.text = String(listDetails!.vote_average)
                 cell.releaseDateLabel.text = listDetails?.release_date
+                cell.selectionStyle = .none
                 return cell
             }
         }
     }
-    
-    func getYoutubeId(id: String){
-        
-       // print("[DEBUG] - \(String(list![indexList!].id))")
-        
-        MovieService.getTrailerKey(id: id, completion: {result, error  in
-            if result != nil{
-                self.youTubeID  = result
-                self.detailsTV.reloadData()
-            } else{
-            print("[DEBUG] no results")
-            }
-        })
-        
-    }
-    
-    func getDetailsList(id: Int){
-        
-        
-        MovieService.getMovieDetails(id: String(id), completion: {results, error  in
-            if results != nil{
-                self.listDetails = results
-                self.detailsTV.reloadData()
-            } else{
-            print("[DEBUG] no results")
-            }
-        })
-        
-    }
-    
-//    func fillPopulatedList() -> [Movie]?  {
-//
-//        var movie       : [Movie]?
-//        print("[DEBUG] - \(tableIndex)")
-//
-//
-//        if (upcomingMovieList != nil && tableIndex == 0){
-//            movie = upcomingMovieList!
-//            return movie
-//        }else if (popularMovieList != nil && tableIndex == 1){
-//            movie = popularMovieList!
-//            return movie
-//        }else if (playingMovieList != nil && tableIndex == 2){
-//            movie = playingMovieList!
-//            return movie
-//        }else{
-//            movie = myMovieList
-//            return movie
-//        }
-//    }
 
-    
-    
-    
-    
     //Mark: Actions
     
     @objc func onSegChange(_ sender: UISegmentedControl) {
@@ -186,15 +121,19 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         vc.currentMovie = newCurrentMovie
         vc.isFromHome = false
-        print(currentMovie)
         self.navigationController!.pushViewController(vc, animated:false)
-
-        //detailsTV.reloadData()
-        
     }
-
-    
-
 }
 
+extension DetailsViewController: DetailsViewProtocol {
+    func setYoutubeId(_ id: String?) {
+        self.youTubeID = id
+        self.detailsTV.reloadData()
+    }
+    
+    func setDetailsList(_ movieList: MovieDetails?) {
+        self.listDetails = movieList
+        self.detailsTV.reloadData()
+    }
+}
 

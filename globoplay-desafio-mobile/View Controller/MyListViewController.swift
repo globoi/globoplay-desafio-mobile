@@ -28,10 +28,7 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
                 let playerData = defaults.object(forKey: "favoriteListArray") as? Data
                 let decoder = PropertyListDecoder()
                 myList = try decoder.decode(Array<Movie>.self, from: playerData!)
-                print(myList)
-                
             } catch {
-                // Handle error
                 print(error)
             }
         }
@@ -56,7 +53,6 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
         if (myList == nil){
             return 0
         }
-        print(myList)
         return myList!.count
     }
     
@@ -68,13 +64,9 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
             cell.myListMoviePoster.image =  UIImage(named: "placeholder")
             return cell
         }
-        var imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
-        
+        let imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
         cell.myListMoviePoster.kf.setImage(with: imageUrl)
-        
-        
         return cell
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,7 +94,7 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
         let totalSpacing = (2 * self.spacing) + ((numberOfItemsPerRow - 1) * spacingBetweenCells)
         
         if let collection = self.collectionViewMyList {
-            let width = (collection.bounds.width - totalSpacing)/numberOfItemsPerRow
+            _ = (collection.bounds.width - totalSpacing)/numberOfItemsPerRow
             return CGSize(width: 150, height: 270)
         } else {
             return CGSize(width: 150, height: 270)
