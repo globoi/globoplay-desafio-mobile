@@ -19,49 +19,22 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
     var upcomingMovieList       : [Movie]?
     var popularMovieList        : [Movie]?
     var playingMovieList        : [Movie]?
-    
-   // var favoriteListArray :[Movie]? = []
-    
+        
     @IBOutlet weak var activityInd: UIActivityIndicatorView!
+    
+    fileprivate let presenter = MoviePresenter(dataService: MovieService())
   
     override func viewDidLoad() {
         
-//        let defaults = UserDefaults.standard
-//        let encodedData = try? NSKeyedArchiver.archivedData(withRootObject: favoriteListArray, requiringSecureCoding: false)
-//        defaults.set(encodedData, forKey: "favoriteListArray")
+        presenter.attachView(self)
         
-        MovieService.getUpcomingMovies { results, error  in
-            if results != nil{
-                self.upcomingMovieList = results
-                self.moviesTV.reloadData()
-            } else{
-                print("no results")
-            }
-        }
-        
-        MovieService.getPopularMovies { results, error  in
-            if results != nil{
-                self.popularMovieList = results
-                self.moviesTV.reloadData()
-            } else{
-                print("no results")
-            }
-        }
-        
-        MovieService.getNowPlayingMovies { results, error  in
-            if results != nil{
-                self.playingMovieList = results
-                self.moviesTV.reloadData()
-            } else{
-                print("no results")
-            }
-        }
-        
-        let colViewCellId = "mcColCell"
+        presenter.getUpcomingListView()
+        presenter.getPopularMovies()
+        presenter.getNowPlayingMovies()
+
         let tvCellId = "movieComp"
         
         let nibName = UINib(nibName: "movieComponentCell", bundle: nil)
-        let nibNameCol = UINib(nibName: "MovieComponentCollectionViewCell", bundle: nil)
         self.moviesTV.register(nibName, forCellReuseIdentifier: tvCellId)
         
         moviesTV.delegate = self
@@ -88,12 +61,6 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             }
             
             secondVC.tableIndex = tableIndex
-//            secondVC.isFromHome = flag
-//            secondVC.indexList = indice
-//            secondVC.playingMovieList = playingMovieList
-//            secondVC.popularMovieList = popularMovieList
-//            secondVC.upcomingMovieList = upcomingMovieList
-//            secondVC.tableIndex = tableIndex
         }
     }
     
@@ -142,5 +109,23 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
         indice = index
         tableIndex = tableId
         self.performSegue(withIdentifier: "toDetailViewFromHome", sender: self)
+    }
+}
+
+extension ViewController: MovieViewProtocol {
+    
+    func setUpcomingListView(_ movieList: [Movie]?) {
+        self.upcomingMovieList = movieList
+        self.moviesTV.reloadData()
+    }
+    
+    func setPopularListView(_ movieList: [Movie]?) {
+        self.popularMovieList = movieList
+        self.moviesTV.reloadData()
+    }
+    
+    func setNowPlayingMovies(_ movieList: [Movie]?) {
+        self.playingMovieList = movieList
+        self.moviesTV.reloadData()
     }
 }

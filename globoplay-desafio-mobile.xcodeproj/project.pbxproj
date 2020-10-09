@@ -28,6 +28,7 @@
 		1A7DCB03252C08B8002FB030 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7DCB02252C08B8002FB030 /* DetailsViewController.swift */; };
 		1A7DCB09252C0D91002FB030 /* detailsBodyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7DCB08252C0D91002FB030 /* detailsBodyTableViewCell.xib */; };
 		1A7DCB0F252C0EE0002FB030 /* DetailsBodyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7DCB0E252C0EE0002FB030 /* DetailsBodyTableViewCell.swift */; };
+		1A87DEBE2530ECEF009E1B36 /* MoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87DEBD2530ECEF009E1B36 /* MoviePresenter.swift */; };
 		1AA35A10252BF58200455463 /* MyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA35A0F252BF58200455463 /* MyListViewController.swift */; };
 		1AC228992529F3B100FC7988 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC228982529F3B100FC7988 /* AppDelegate.swift */; };
 		1AC2289B2529F3B100FC7988 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC2289A2529F3B100FC7988 /* SceneDelegate.swift */; };
@@ -69,6 +70,7 @@
 		1A7DCB02252C08B8002FB030 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		1A7DCB08252C0D91002FB030 /* detailsBodyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = detailsBodyTableViewCell.xib; sourceTree = "<group>"; };
 		1A7DCB0E252C0EE0002FB030 /* DetailsBodyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBodyTableViewCell.swift; sourceTree = "<group>"; };
+		1A87DEBD2530ECEF009E1B36 /* MoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePresenter.swift; sourceTree = "<group>"; };
 		1AA35A0F252BF58200455463 /* MyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewController.swift; sourceTree = "<group>"; };
 		1AC228952529F3B100FC7988 /* globoplay-desafio-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "globoplay-desafio-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC228982529F3B100FC7988 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		1A87DEC12530ECFC009E1B36 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1A87DEBD2530ECEF009E1B36 /* MoviePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		1AA35A0B252BE32800455463 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +198,7 @@
 		1AC228972529F3B100FC7988 /* globoplay-desafio-mobile */ = {
 			isa = PBXGroup;
 			children = (
+				1A87DEC12530ECFC009E1B36 /* Presenter */,
 				1AC8E70E252C9CFA00098AED /* Custom */,
 				1AC8E709252C9CDE00098AED /* View Controller */,
 				1AA35A0B252BE32800455463 /* Storyboards */,
@@ -470,6 +481,7 @@
 				1A2CEF47252B611400A38F18 /* Constants.swift in Sources */,
 				1A7DCB0F252C0EE0002FB030 /* DetailsBodyTableViewCell.swift in Sources */,
 				1A7DCB03252C08B8002FB030 /* DetailsViewController.swift in Sources */,
+				1A87DEBE2530ECEF009E1B36 /* MoviePresenter.swift in Sources */,
 				1A2CEF55252B665400A38F18 /* MovieService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

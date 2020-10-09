@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 
 class MovieService: NSObject {
-//    "https://api.themoviedb.org/3/movie/upcoming?api_key=2a0eb1c99630d71df118961ee0b5864e&language=en-US&page=1
     
     static func getUpcomingMovies(completion: @escaping ([Movie]?, Error?) -> Void){
         let URL = CONST.API_CONSTANTS.BASE_URL +  CONST.API_CONSTANTS.UPCOMING + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_BR
@@ -24,7 +23,6 @@ class MovieService: NSObject {
             case .success(let data):
                 do {
                     print(data)
-                    //let pageData = try JSONDecoder().decode(Movie.self, from: data)
                     let root = try JSONDecoder().decode(Root.self, from: data)
                     movieList = root.results
                     completion(movieList, nil)
@@ -49,7 +47,6 @@ class MovieService: NSObject {
             case .success(let data):
                 do {
                     print(data)
-                    //let pageData = try JSONDecoder().decode(Movie.self, from: data)
                     let root = try JSONDecoder().decode(Root.self, from: data)
                     movieList = root.results
                     completion(movieList, nil)
@@ -74,7 +71,6 @@ class MovieService: NSObject {
             case .success(let data):
                 do {
                     print(data)
-                    //let pageData = try JSONDecoder().decode(Movie.self, from: data)
                     let root = try JSONDecoder().decode(Root.self, from: data)
                     movieList = root.results
                     completion(movieList, nil)
@@ -87,13 +83,11 @@ class MovieService: NSObject {
         }
     }
     
-//    https://api.themoviedb.org/3/movie/297762/videos?api_key=2a0eb1c99630d71df118961ee0b5864e&language=en-US
     
     static func getTrailerKey(id: String, completion: @escaping (String?, Error?) -> Void){
         
         let URL = CONST.API_CONSTANTS.BASE_URL +  id + CONST.API_CONSTANTS.VIDEO + CONST.API_CONSTANTS.API_KEY
         
-        print("[DEBUG] - \(URL)")
         
         var key: String?
         
@@ -103,7 +97,6 @@ class MovieService: NSObject {
                 print(error)
             case .success(let data):
                 do {
-                    //print(data)
                     let root = try JSONDecoder().decode(VideoRoot.self, from: data)
                     key = root.results.first?.key ?? ""
                     completion(key, nil)
@@ -116,7 +109,6 @@ class MovieService: NSObject {
         }  
     }
     
-    //https://api.themoviedb.org/3/movie/497582?api_key=2a0eb1c99630d71df118961ee0b5864e
     
     static func getMovieDetails(id: String, completion: @escaping (MovieDetails?, Error?) -> Void){
         
@@ -142,7 +134,6 @@ class MovieService: NSObject {
         }
     }
     
-//    https://api.themoviedb.org/3/movie/497582/similar?api_key=2a0eb1c99630d71df118961ee0b5864e&language=pt-BR&page=1
     static func getRelatedMovies(id: String, completion: @escaping ([Movie]?, Error?) -> Void){
         
         let URL = CONST.API_CONSTANTS.BASE_URL + id + CONST.API_CONSTANTS.RELATED + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_BR
@@ -156,7 +147,6 @@ class MovieService: NSObject {
                 print(error)
             case .success(let data):
                 do {
-                    //print(data)
                     let root = try JSONDecoder().decode(Root.self, from: data)
                     relatedMovies = root.results
                     completion(relatedMovies, nil)
@@ -168,6 +158,4 @@ class MovieService: NSObject {
             }
         }
     }
-    
-    
 }
