@@ -18,11 +18,12 @@ struct CONST{
         static let TV               = "tv/"
         static let QUERY            = "?"
         static let UPCOMING         = "upcoming?"
+        static var RELATED          = "/similar?"
         static let POPULAR          = "popular?"
         static let NOW_PLAYING      = "now_playing?"
         static let VIDEO            = "/videos?"
         static let LANGUAGE_EN      = "&language=en-US&page=1"
-        static let LANGUAGE_BR       = "&language=pt-BR&page=1"
+        static let LANGUAGE_BR      = "&language=pt-BR&page=1"
         static let BASE_IMAGE_URL   = "https://image.tmdb.org/t/p/w185"
     }
 }

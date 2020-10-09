@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CollectionViewCellRelatedDelegate {
     
     @IBOutlet weak var detailsTV: UITableView!
     
@@ -18,23 +18,25 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     let idHeaderCell = "headerDetailsCell"
     let idSegmentedCell = "segmentedCell"
     
-    var upcomingMovieList       : [Movie]?
-    var popularMovieList        : [Movie]?
-    var playingMovieList        : [Movie]?
+  //  var upcomingMovieList       : [Movie]?
+  //  var popularMovieList        : [Movie]?
+  //  var playingMovieList        : [Movie]?
     var myMovieList             : [Movie]?
     var indexList               : Int?
     var tableIndex              : Int?
     var youTubeID               : String?
     
-    private var listDetails         :MovieDetails?
-    private var list                :[Movie]?
+    private var listDetails     :MovieDetails?
+    private var list            :[Movie]?
+    var currentMovie            :Movie?
     
     var actualIndex2 :Int!
     var isFromHome :Bool!
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-       
+        getYoutubeId(id: String(currentMovie!.id))
+        getDetailsList(id: currentMovie!.id)
     }
     
 
@@ -50,10 +52,12 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.detailsTV.register(nibName, forCellReuseIdentifier: idHeaderCell)
         
         
-        self.list = fillPopulatedList()
-        getYoutubeId(list: list)
+       // self.list = fillPopulatedList()
         
-        getDetailsList(id: list![indexList!].id)
+        
+       // currentMovie = list![indexList!]
+        
+        
     }
     
 
@@ -62,7 +66,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         if (indexPath.row == 0){
             let cell = tableView.dequeueReusableCell(withIdentifier: idHeaderCell, for: indexPath) as! DetailsHeaderTableViewCell
 
@@ -72,12 +76,19 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             cell.isMinhaLista = isFromHome ? false : true
             
-            let path = list?[indexList!].poster_path ?? ""
+            let path = currentMovie?.poster_path ?? ""
             var imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
             cell.imageTitle.kf.setImage(with: imageUrl)
-            cell.name.text = list?[indexList!].title ?? ""
+            cell.name.text = currentMovie?.title ?? ""
             cell.youTubeID = youTubeID
-            cell.currentMovie = list?[indexList!]
+            cell.currentMovie = currentMovie
+            
+//            let path = list?[indexList!].poster_path ?? ""
+//            var imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
+//            cell.imageTitle.kf.setImage(with: imageUrl)
+//            cell.name.text = list?[indexList!].title ?? ""
+//            cell.youTubeID = youTubeID
+//            cell.currentMovie = list?[indexList!]
             return cell
         }
         
@@ -85,6 +96,9 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if (actualIndex2 == 0){
                 let cell = tableView.dequeueReusableCell(withIdentifier: idWatchCell, for: indexPath) as! DetailsWatchTableViewCell
+                cell.currentMovieId = String(currentMovie!.id)
+                cell.currentMovie = currentMovie
+                cell.delegate = self
                 return cell
 
             }
@@ -100,11 +114,11 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func getYoutubeId(list: [Movie]?){
+    func getYoutubeId(id: String){
         
-        print("[DEBUG] - \(String(list![indexList!].id))")
+       // print("[DEBUG] - \(String(list![indexList!].id))")
         
-        MovieService.getTrailerKey(id: String(list![indexList!].id), completion: {result, error  in
+        MovieService.getTrailerKey(id: id, completion: {result, error  in
             if result != nil{
                 self.youTubeID  = result
                 self.detailsTV.reloadData()
@@ -129,26 +143,26 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    func fillPopulatedList() -> [Movie]?  {
-
-        var movie       : [Movie]?
-        print("[DEBUG] - \(tableIndex)")
-        
-        
-        if (upcomingMovieList != nil && tableIndex == 0){
-            movie = upcomingMovieList!
-            return movie
-        }else if (popularMovieList != nil && tableIndex == 1){
-            movie = popularMovieList!
-            return movie
-        }else if (playingMovieList != nil && tableIndex == 2){
-            movie = playingMovieList!
-            return movie
-        }else{
-            movie = myMovieList
-            return movie
-        }
-    }
+//    func fillPopulatedList() -> [Movie]?  {
+//
+//        var movie       : [Movie]?
+//        print("[DEBUG] - \(tableIndex)")
+//
+//
+//        if (upcomingMovieList != nil && tableIndex == 0){
+//            movie = upcomingMovieList!
+//            return movie
+//        }else if (popularMovieList != nil && tableIndex == 1){
+//            movie = popularMovieList!
+//            return movie
+//        }else if (playingMovieList != nil && tableIndex == 2){
+//            movie = playingMovieList!
+//            return movie
+//        }else{
+//            movie = myMovieList
+//            return movie
+//        }
+//    }
 
     
     
@@ -164,6 +178,21 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func dismissView(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    //MARK: Delegate
+    
+    func cellWasPressed(newCurrentMovie: Movie) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        vc.currentMovie = newCurrentMovie
+        vc.isFromHome = false
+        print(currentMovie)
+        self.navigationController!.pushViewController(vc, animated:false)
+
+        //detailsTV.reloadData()
+        
+    }
+
     
 
 }

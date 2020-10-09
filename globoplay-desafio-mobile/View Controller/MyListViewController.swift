@@ -82,7 +82,7 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
             let secondVC = segue.destination as! DetailsViewController
             secondVC.isFromHome = flag
             secondVC.indexList = index
-            secondVC.myMovieList = myList
+            secondVC.currentMovie = myList![index!]
         }
     }
     

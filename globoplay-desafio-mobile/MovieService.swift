@@ -122,8 +122,6 @@ class MovieService: NSObject {
         
         let URL = CONST.API_CONSTANTS.BASE_URL + id + CONST.API_CONSTANTS.QUERY + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_BR
         
-        print("[DEBUG] - \(URL)")
-        
         var movieDetailsList : MovieDetails?
         
         AF.request(URL).responseData { response in
@@ -132,10 +130,8 @@ class MovieService: NSObject {
                 print(error)
             case .success(let data):
                 do {
-                    //print(data)
                     let root = try JSONDecoder().decode(MovieDetails.self, from: data)
                     movieDetailsList = root
-                    print(movieDetailsList)
                     completion(movieDetailsList, nil)
                 } catch let error {
                     completion(nil, error)
@@ -145,4 +141,33 @@ class MovieService: NSObject {
             }
         }
     }
+    
+//    https://api.themoviedb.org/3/movie/497582/similar?api_key=2a0eb1c99630d71df118961ee0b5864e&language=pt-BR&page=1
+    static func getRelatedMovies(id: String, completion: @escaping ([Movie]?, Error?) -> Void){
+        
+        let URL = CONST.API_CONSTANTS.BASE_URL + id + CONST.API_CONSTANTS.RELATED + CONST.API_CONSTANTS.API_KEY + CONST.API_CONSTANTS.LANGUAGE_BR
+        
+        
+        var relatedMovies : [Movie]?
+        
+        AF.request(URL).responseData { response in
+            switch response.result {
+            case .failure(let error):
+                print(error)
+            case .success(let data):
+                do {
+                    //print(data)
+                    let root = try JSONDecoder().decode(Root.self, from: data)
+                    relatedMovies = root.results
+                    completion(relatedMovies, nil)
+                } catch let error {
+                    completion(nil, error)
+                    print(error)
+                }
+                
+            }
+        }
+    }
+    
+    
 }

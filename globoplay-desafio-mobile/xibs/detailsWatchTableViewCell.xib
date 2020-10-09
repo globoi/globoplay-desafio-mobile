@@ -10,27 +10,39 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="watchDetailsCell" rowHeight="898" id="lvn-86-WwE" customClass="DetailsWatchTableViewCell" customModule="globoplay_desafio_mobile" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="622" height="898"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="watchDetailsCell" rowHeight="742" id="lvn-86-WwE" customClass="DetailsWatchTableViewCell" customModule="globoplay_desafio_mobile" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="621" height="742"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lvn-86-WwE" id="BRA-tv-cJX">
-                <rect key="frame" x="0.0" y="0.0" width="622" height="898"/>
+                <rect key="frame" x="0.0" y="0.0" width="621" height="742"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COLLECTION VIEW AQUI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3j-8L-HGp">
-                        <rect key="frame" x="177" y="434.5" width="268" height="29"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Kb9-ge-Uyp">
+                        <rect key="frame" x="16" y="16" width="589" height="710"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="710" id="7dk-6i-rEe"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1un-sc-tFp">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="n3j-8L-HGp" firstAttribute="centerY" secondItem="BRA-tv-cJX" secondAttribute="centerY" id="IGh-IP-NQc"/>
-                    <constraint firstItem="n3j-8L-HGp" firstAttribute="centerX" secondItem="BRA-tv-cJX" secondAttribute="centerX" id="qyV-R4-aQB"/>
+                    <constraint firstAttribute="trailing" secondItem="Kb9-ge-Uyp" secondAttribute="trailing" constant="16" id="Nf7-k2-t1a"/>
+                    <constraint firstItem="Kb9-ge-Uyp" firstAttribute="leading" secondItem="BRA-tv-cJX" secondAttribute="leading" constant="16" id="Wc3-tb-tR0"/>
+                    <constraint firstAttribute="bottom" secondItem="Kb9-ge-Uyp" secondAttribute="bottom" constant="16" id="Xbo-S6-ufE"/>
+                    <constraint firstItem="Kb9-ge-Uyp" firstAttribute="top" secondItem="BRA-tv-cJX" secondAttribute="top" constant="16" id="xUW-xv-pr4"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="background"/>
-            <point key="canvasLocation" x="-310" y="153"/>
+            <connections>
+                <outlet property="detailsCollectionView" destination="Kb9-ge-Uyp" id="uYs-RV-m5z"/>
+            </connections>
+            <point key="canvasLocation" x="-310.86956521739131" y="100.44642857142857"/>
         </tableViewCell>
     </objects>
     <resources>

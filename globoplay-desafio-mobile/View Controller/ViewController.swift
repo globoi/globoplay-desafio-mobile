@@ -78,10 +78,22 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             let secondVC = segue.destination as! DetailsViewController
             secondVC.isFromHome = flag
             secondVC.indexList = indice
-            secondVC.playingMovieList = playingMovieList
-            secondVC.popularMovieList = popularMovieList
-            secondVC.upcomingMovieList = upcomingMovieList
+            
+            if (tableIndex == 0){
+                secondVC.currentMovie = upcomingMovieList?[indice]
+            }else if (tableIndex == 1){
+                secondVC.currentMovie = popularMovieList?[indice]
+            }else if (tableIndex == 2){
+                secondVC.currentMovie = playingMovieList?[indice]
+            }
+            
             secondVC.tableIndex = tableIndex
+//            secondVC.isFromHome = flag
+//            secondVC.indexList = indice
+//            secondVC.playingMovieList = playingMovieList
+//            secondVC.popularMovieList = popularMovieList
+//            secondVC.upcomingMovieList = upcomingMovieList
+//            secondVC.tableIndex = tableIndex
         }
     }
     
