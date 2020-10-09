@@ -20,9 +20,15 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
     var popularMovieList        : [Movie]?
     var playingMovieList        : [Movie]?
     
+   // var favoriteListArray :[Movie]? = []
+    
     @IBOutlet weak var activityInd: UIActivityIndicatorView!
   
     override func viewDidLoad() {
+        
+//        let defaults = UserDefaults.standard
+//        let encodedData = try? NSKeyedArchiver.archivedData(withRootObject: favoriteListArray, requiringSecureCoding: false)
+//        defaults.set(encodedData, forKey: "favoriteListArray")
         
         MovieService.getUpcomingMovies { results, error  in
             if results != nil{

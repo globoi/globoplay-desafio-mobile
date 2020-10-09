@@ -21,6 +21,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var upcomingMovieList       : [Movie]?
     var popularMovieList        : [Movie]?
     var playingMovieList        : [Movie]?
+    var myMovieList             : [Movie]?
     var indexList               : Int?
     var tableIndex              : Int?
     var youTubeID               : String?
@@ -75,11 +76,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             var imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
             cell.imageTitle.kf.setImage(with: imageUrl)
             cell.name.text = list?[indexList!].title ?? ""
-            
-           // cell.descriptionLabel.text = list?[indexList!].overview ?? ""
-            
-            
             cell.youTubeID = youTubeID
+            cell.currentMovie = list?[indexList!]
             return cell
         }
         
@@ -97,12 +95,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.descriptionLabel.text = listDetails?.overview
                 cell.averageVotesLabel.text = String(listDetails!.vote_average)
                 cell.releaseDateLabel.text = listDetails?.release_date
-//                cell.titleLabel.text = listDetails?.status
-//                cell.genreLabel.text = listDetails?.genres?.first?.name
-//                cell.taglineLabel.text = list?[indexList!].overview ?? ""
-                
-                    return cell
-               
+                return cell
             }
         }
     }
@@ -148,24 +141,15 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }else if (popularMovieList != nil && tableIndex == 1){
             movie = popularMovieList!
             return movie
-        }else {
+        }else if (playingMovieList != nil && tableIndex == 2){
             movie = playingMovieList!
+            return movie
+        }else{
+            movie = myMovieList
             return movie
         }
     }
-    
-//    func fillPopulatedListSerie() -> [Serie]?  {
-//
-//        var serie       : [Serie]?
-//
-//        if (popularSerieList != nil){
-//            serie = popularSerieList!
-//            return serie
-//        }
-//        return nil
-//    }
-//
-    
+
     
     
     

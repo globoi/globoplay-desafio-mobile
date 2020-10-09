@@ -18,7 +18,7 @@ struct VideoRoot : Decodable {
    let results: [Trailer]
 }
 
-struct Movie:  Decodable {
+struct Movie:  Codable {
     
     var id: Int
     var title: String

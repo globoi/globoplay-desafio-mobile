@@ -13,8 +13,29 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet var collectionViewMyList: UICollectionView!
     
     var images = ["teste1", "teste2", "teste3"]
-    var flag :Bool!
+    var flag :Bool?
+    var index :Int?
+    var myList: [Movie]?
     private let spacing:CGFloat = 8.0
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.collectionViewMyList.reloadData()
+        let defaults = UserDefaults.standard
+        
+        if defaults.object(forKey: "favoriteListArray") != nil {
+            do {
+                let playerData = defaults.object(forKey: "favoriteListArray") as? Data
+                let decoder = PropertyListDecoder()
+                myList = try decoder.decode(Array<Movie>.self, from: playerData!)
+                print(myList)
+                
+            } catch {
+                // Handle error
+                print(error)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         let layout = UICollectionViewFlowLayout()
@@ -23,6 +44,7 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
         layout.minimumInteritemSpacing = spacing
         layout.itemSize = CGSize(width: 110, height: 230)
         self.collectionViewMyList?.collectionViewLayout = layout
+        
     }
     
     override func awakeFromNib() {
@@ -30,13 +52,27 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        
+        if (myList == nil){
+            return 0
+        }
+        print(myList)
+        return myList!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myListCell", for: indexPath) as! MyListMovieCollectionViewCell
-        cell.myListMoviePoster.image =  UIImage(named: images.randomElement() ?? "placeholder")
+                
+        guard let path = myList?[indexPath.row].poster_path else {
+            cell.myListMoviePoster.image =  UIImage(named: "placeholder")
+            return cell
+        }
+        var imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
+        
+        cell.myListMoviePoster.kf.setImage(with: imageUrl)
+        
+        
         return cell
         
     }
@@ -45,11 +81,14 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
         if segue.destination.isKind(of: DetailsViewController.self) {
             let secondVC = segue.destination as! DetailsViewController
             secondVC.isFromHome = flag
+            secondVC.indexList = index
+            secondVC.myMovieList = myList
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         flag = false
+        index = indexPath.row
         self.performSegue(withIdentifier: "toDetailsView", sender: self)
     }
     
