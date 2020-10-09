@@ -11,21 +11,21 @@ import UIKit
 import XCDYouTubeKit
 
 class DetailsHeaderTableViewCell: UITableViewCell {
-    var segmentedControlValue = 0
-    var isMinhaLista: Bool?
-    var youTubeID : String? //"Lk7LPTq0_XY"
-    var currentMovie: Movie?
-    var favoriteListArray :[Movie]? = []
+    var segmentedControlValue                   = 0
+    var isMinhaLista                            : Bool?
+    var youTubeID                               : String?
+    var currentMovie                            : Movie?
+    var favoriteListArray                       :[Movie]? = []
     
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var imageTitle: UIImageView!
+    @IBOutlet weak var name                     : UILabel!
+    @IBOutlet weak var imageTitle               : UIImageView!
     @IBOutlet weak var segmentedControlDetails  : UISegmentedControl!
     @IBOutlet weak var trailerButton            : CustomButton!
     @IBOutlet weak var myListButton             : CustomButton!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel         : UILabel!
     
-    var naLista :Bool?
-    let defaults = UserDefaults.standard
+    var naLista                                 : Bool?
+    let defaults                                = UserDefaults.standard
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,24 +34,11 @@ class DetailsHeaderTableViewCell: UITableViewCell {
         segmentedControlDetails.setTitleTextAttributes(colorNormal, for: .normal)
         segmentedControlDetails.setTitleTextAttributes(colorSelected, for: .selected)
         
-
-        if defaults.object(forKey: "favoriteListArray") != nil {
-            do {
-                let data = defaults.object(forKey: "favoriteListArray") as? Data
-                let decoder = PropertyListDecoder()
-                favoriteListArray = try decoder.decode(Array<Movie>.self, from: data!)
-            } catch {
-                // Handle error
-                print(error)
-            }
-        }
-        
-        
+        getFromUserDefaults()
     }
     override func layoutSubviews() {
         setupButton()
         naLista = procuraNaLista(list: favoriteListArray, currentId: currentMovie!.id)
-
     }
 
     func setupButton(){
@@ -74,15 +61,12 @@ class DetailsHeaderTableViewCell: UITableViewCell {
                 
         XCDYouTubeClient.default().getVideoWithIdentifier(youTubeID) { (video, error) in
             
-            print("[DEBUG] - \(self.youTubeID)")
             guard let video: XCDYouTubeVideo = video else {
                 playerViewController.dismiss(animated: true, completion: nil)
                 return
             }
-            
             playerViewController.player = AVPlayer(url: video.streamURL!)
             playerViewController.player?.play()
-
         }
     }
     
@@ -91,47 +75,23 @@ class DetailsHeaderTableViewCell: UITableViewCell {
             
             if defaults.object(forKey: "favoriteListArray") != nil {
                 
-                favoriteListArray?.append(currentMovie!)
-                defaults.set(try? PropertyListEncoder().encode(favoriteListArray), forKey: "favoriteListArray")
-                
-                
-            }else{ //aray vazio
-                favoriteListArray?.append(currentMovie!)
-                print(favoriteListArray)
-                defaults.set(try? PropertyListEncoder().encode(favoriteListArray), forKey: "favoriteListArray")
-                
-                do {
-                    let playerData = defaults.object(forKey: "favoriteListArray") as? Data
-                    let decoder = PropertyListDecoder()
-                    let player = try decoder.decode(Array<Movie>.self, from: playerData!)
-                    print(player)
-                    
-                } catch {
-                    // Handle error
-                    print(error)
-                }
+                addToList()
+    
+            } else {
+                addToEmptyList()
             }
             
             var elementAdc = self.procuraNaLista(list: favoriteListArray, currentId: currentMovie!.id)
+            
             if (elementAdc == true){
                 myListButton.setTitle("Adicionado", for: .normal)
                 myListButton.setImage(UIImage(named: "check_black"), for: .normal)
                 isMinhaLista = true
             }
         }
-        else{
+        else {
             if defaults.object(forKey: "favoriteListArray") != nil {
-                var i = 0
-                guard var listAux = favoriteListArray else {return }
-                for movie in listAux {
-                    if movie.id == currentMovie?.id {
-                        listAux.remove(at: i)
-                        favoriteListArray = listAux
-                        print(favoriteListArray)
-                        defaults.set(try? PropertyListEncoder().encode(favoriteListArray), forKey: "favoriteListArray")
-                    }
-                    i += 1
-                }
+                removeFromList()
             }
             myListButton.setTitle("Minha Lista", for: .normal)
             myListButton.setImage(UIImage(named: "star_rate"), for: .normal)
@@ -140,11 +100,56 @@ class DetailsHeaderTableViewCell: UITableViewCell {
         
     }
     
+    //MARK: Aux Functions
+    
+    func getFromUserDefaults(){
+        if defaults.object(forKey: "favoriteListArray") != nil {
+            do {
+                let data = defaults.object(forKey: "favoriteListArray") as? Data
+                let decoder = PropertyListDecoder()
+                favoriteListArray = try decoder.decode(Array<Movie>.self, from: data!)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func addToList(){
+        favoriteListArray?.append(currentMovie!)
+        defaults.set(try? PropertyListEncoder().encode(favoriteListArray), forKey: "favoriteListArray")
+    }
+    
+    func addToEmptyList(){
+        favoriteListArray?.append(currentMovie!)
+        print(favoriteListArray)
+        defaults.set(try? PropertyListEncoder().encode(favoriteListArray), forKey: "favoriteListArray")
+        
+        do {
+            let playerData = defaults.object(forKey: "favoriteListArray") as? Data
+            let decoder = PropertyListDecoder()
+            let player = try decoder.decode(Array<Movie>.self, from: playerData!)
+            print(player)
+            
+        } catch {
+            print(error)
+        }
+    }
+    
+    func removeFromList(){
+        var i = 0
+        guard var listAux = favoriteListArray else {return }
+        for movie in listAux {
+            if movie.id == currentMovie?.id {
+                listAux.remove(at: i)
+                favoriteListArray = listAux
+                defaults.set(try? PropertyListEncoder().encode(favoriteListArray), forKey: "favoriteListArray")
+            }
+            i += 1
+        }
+    }
     
     func procuraNaLista(list: [Movie]?, currentId: Int) -> Bool {
-        
         guard let listAux = list else {return false}
-        
         for movie in listAux {
             if movie.id == currentId{
                 return true
@@ -152,5 +157,4 @@ class DetailsHeaderTableViewCell: UITableViewCell {
         }
         return false
     }
-    
 }
