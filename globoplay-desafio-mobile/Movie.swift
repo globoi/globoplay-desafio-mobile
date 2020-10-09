@@ -7,46 +7,17 @@
 //
 
 import Foundation
-import ObjectMapper
-
 
 struct Root : Decodable {
-   let results: [Movie]
-}
-
-struct VideoRoot : Decodable {
-   let results: [Trailer]
+   let results          : [Movie]
 }
 
 struct Movie:  Codable {
     
-    var id: Int
-    var title: String
-    var poster_path: String
-    var overview: String
-    var vote_average: Double
-    var release_date: String
-
-}
-
-struct Trailer:  Decodable {
-    
-    var key: String
-}
-
-struct MovieDetails: Decodable {
-    
-    var original_title : String
-    var genres : [Genre]?
-    var release_date: String
-    var overview: String
-    var vote_average: Double
-
-}
-
-struct Genre:  Decodable {
-    
-    var id: Int
-    var name: String
-
+    var id              : Int
+    var title           : String
+    var poster_path     : String
+    var overview        : String
+    var vote_average    : Double
+    var release_date    : String
 }
