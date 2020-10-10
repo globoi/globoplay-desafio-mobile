@@ -100,6 +100,8 @@ class MovieService: NSObject {
                     let root = try JSONDecoder().decode(VideoRoot.self, from: data)
                     key = root.results.first?.key ?? ""
                     completion(key, nil)
+                    print(key)
+                    
                 } catch let error {
                     completion(nil, error)
                     print(error)

@@ -26,6 +26,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     private var listDetails     : MovieDetails?
     private var list            : [Movie]?
     var currentMovie            : Movie?
+    private var relatedList     : [Movie]?
     
     var actualIndex2            : Int!
     var isFromHome              : Bool!
@@ -36,6 +37,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewWillAppear(animated)
         presenter.getYoutubeId(id: String(currentMovie!.id))
         presenter.getDetailsList(id: currentMovie!.id)
+        presenter.getRelatedList(id: currentMovie!.id)
     }
     
 
@@ -86,6 +88,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.currentMovieId = String(currentMovie!.id)
                 cell.currentMovie = currentMovie
                 cell.delegate = self
+                cell.relatedList = relatedList
+                cell.detailsCollectionView.reloadData()
                 cell.selectionStyle = .none
                 return cell
 
@@ -126,6 +130,11 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
 }
 
 extension DetailsViewController: DetailsViewProtocol {
+    func setRelatedList(_ relatedList: [Movie]?) {
+        self.relatedList = relatedList
+        self.detailsTV.reloadData()
+    }
+    
     func setYoutubeId(_ id: String?) {
         self.youTubeID = id
         self.detailsTV.reloadData()

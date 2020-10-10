@@ -11,6 +11,7 @@ import Foundation
 protocol DetailsViewProtocol: NSObjectProtocol {
     func setYoutubeId(_ id: String?)
     func setDetailsList(_ movieList: MovieDetails?)
+    func setRelatedList(_ relatedList: [Movie]?)
 }
 
 
@@ -34,7 +35,7 @@ class DetailsPresenter {
     func getYoutubeId(id: String){
         MovieService.getTrailerKey(id: id, completion: {result, error  in
             if result != nil{
-                self.detailsView?.setYoutubeId(id)
+                self.detailsView?.setYoutubeId(result)
             } else{
             print("[DEBUG] no results")
             }
@@ -50,6 +51,17 @@ class DetailsPresenter {
                 print("[DEBUG] no results")
             }
         })
+    }
+    
+    func getRelatedList(id: Int){
+        
+        MovieService.getRelatedMovies(id: String(id)) { (results, error) in
+            if results != nil{
+                self.detailsView?.setRelatedList(results)
+            } else{
+                print("[DEBUG] no results")
+            }
+        }
     }
 }
 

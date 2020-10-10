@@ -50,17 +50,31 @@ class DetailsHeaderTableViewCell: UITableViewCell {
             myListButton.setTitle("Minha Lista", for: .normal)
             myListButton.setImage(UIImage(named: "star_rate"), for: .normal)
         }
+       
+        if (youTubeID == nil || youTubeID == ""){
+            trailerButton.backgroundColor = .gray
+            trailerButton.tintColor = .darkGray
+            trailerButton.setTitleColor(.darkGray, for: .normal)
+            trailerButton.isUserInteractionEnabled = false
+            trailerButton.borderColor = .gray
+        }else{
+            trailerButton.backgroundColor = .white
+            trailerButton.tintColor = .black
+            trailerButton.setTitleColor(.black, for: .normal)
+            trailerButton.isUserInteractionEnabled = true
+            trailerButton.borderColor = .white
+        }
     }
 
     @IBAction func segmentedControlChanged(_ sender: Any) {
         self.segmentedControlValue = segmentedControlDetails.selectedSegmentIndex
     }
     @IBAction func playTrailer(_ sender: Any) {
+     
         let playerViewController: AVPlayerViewController = AVPlayerViewController()
         self.window?.rootViewController!.present(playerViewController, animated: true, completion: nil)
                 
-        XCDYouTubeClient.default().getVideoWithIdentifier(youTubeID) { (video, error) in
-            
+        XCDYouTubeClient.default().getVideoWithIdentifier(self.youTubeID) { (video, error) in
             guard let video: XCDYouTubeVideo = video else {
                 playerViewController.dismiss(animated: true, completion: nil)
                 return
@@ -71,7 +85,8 @@ class DetailsHeaderTableViewCell: UITableViewCell {
     }
     
     @IBAction func addToMinhaLista(_ sender: Any) {
-        if (naLista == false){
+        var search = procuraNaLista(list: favoriteListArray, currentId: currentMovie!.id)
+        if (search == false){
             
             if defaults.object(forKey: "favoriteListArray") != nil {
                 
@@ -80,24 +95,20 @@ class DetailsHeaderTableViewCell: UITableViewCell {
             } else {
                 addToEmptyList()
             }
-            
-            var elementAdc = self.procuraNaLista(list: favoriteListArray, currentId: currentMovie!.id)
-            
-            if (elementAdc == true){
-                myListButton.setTitle("Adicionado", for: .normal)
-                myListButton.setImage(UIImage(named: "check_black"), for: .normal)
-                isMinhaLista = true
-            }
+            myListButton.setTitle("Adicionado", for: .normal)
+            myListButton.setImage(UIImage(named: "check_black"), for: .normal)
+            isMinhaLista = true
+            return
         }
-        else {
+        else if (search == true) {
             if defaults.object(forKey: "favoriteListArray") != nil {
                 removeFromList()
             }
             myListButton.setTitle("Minha Lista", for: .normal)
             myListButton.setImage(UIImage(named: "star_rate"), for: .normal)
             isMinhaLista = false
+            return
         }
-        
     }
     
     //MARK: Aux Functions
@@ -136,11 +147,11 @@ class DetailsHeaderTableViewCell: UITableViewCell {
     }
     
     func removeFromList(){
-        var i = 0
+        var i = 1
         guard var listAux = favoriteListArray else {return }
         for movie in listAux {
             if movie.id == currentMovie?.id {
-                listAux.remove(at: i)
+                listAux.remove(at: i - 1)
                 favoriteListArray = listAux
                 defaults.set(try? PropertyListEncoder().encode(favoriteListArray), forKey: "favoriteListArray")
             }

@@ -17,7 +17,6 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
     var index :Int?
     var myList: [Movie]?
     private let spacing:CGFloat = 8.0
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         self.collectionViewMyList.reloadData()

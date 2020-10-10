@@ -44,11 +44,11 @@
             <connections>
                 <outlet property="moviePoster" destination="qOp-7g-jZw" id="ozH-4P-wTU"/>
             </connections>
-            <point key="canvasLocation" x="-40.579710144927539" y="-218.30357142857142"/>
+            <point key="canvasLocation" x="143" y="-221"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="placeholder" width="216" height="332"/>
+        <image name="placeholder" width="300" height="400"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
