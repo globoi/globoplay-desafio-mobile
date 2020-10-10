@@ -132,18 +132,7 @@ class DetailsHeaderTableViewCell: UITableViewCell {
     
     func addToEmptyList(){
         favoriteListArray?.append(currentMovie!)
-        print(favoriteListArray)
         defaults.set(try? PropertyListEncoder().encode(favoriteListArray), forKey: "favoriteListArray")
-        
-        do {
-            let playerData = defaults.object(forKey: "favoriteListArray") as? Data
-            let decoder = PropertyListDecoder()
-            let player = try decoder.decode(Array<Movie>.self, from: playerData!)
-            print(player)
-            
-        } catch {
-            print(error)
-        }
     }
     
     func removeFromList(){

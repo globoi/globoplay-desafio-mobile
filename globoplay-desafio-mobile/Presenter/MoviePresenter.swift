@@ -37,7 +37,7 @@ class MoviePresenter {
             if results != nil{
                 self?.movieView!.setUpcomingListView(results)
             } else{
-                print("no results")
+                print("[DEBUG] no results")
             }
         }
     }
@@ -47,7 +47,7 @@ class MoviePresenter {
             if results != nil{
                 self.movieView?.setPopularListView(results)
             } else{
-                print("no results")
+                print("[DEBUG] no results")
             }
         }
     }
@@ -57,7 +57,7 @@ class MoviePresenter {
             if results != nil{
                 self.movieView?.setNowPlayingMovies(results)
             } else{
-                print("no results")
+                print("[DEBUG] no results")
             }
         }
     }

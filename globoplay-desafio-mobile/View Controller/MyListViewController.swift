@@ -24,9 +24,9 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         if defaults.object(forKey: "favoriteListArray") != nil {
             do {
-                let playerData = defaults.object(forKey: "favoriteListArray") as? Data
+                let favData = defaults.object(forKey: "favoriteListArray") as? Data
                 let decoder = PropertyListDecoder()
-                myList = try decoder.decode(Array<Movie>.self, from: playerData!)
+                myList = try decoder.decode(Array<Movie>.self, from: favData!)
             } catch {
                 print(error)
             }

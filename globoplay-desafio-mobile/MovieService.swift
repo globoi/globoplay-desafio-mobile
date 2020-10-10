@@ -22,7 +22,6 @@ class MovieService: NSObject {
                 print(error)
             case .success(let data):
                 do {
-                    print(data)
                     let root = try JSONDecoder().decode(Root.self, from: data)
                     movieList = root.results
                     completion(movieList, nil)
@@ -46,7 +45,6 @@ class MovieService: NSObject {
                 print(error)
             case .success(let data):
                 do {
-                    print(data)
                     let root = try JSONDecoder().decode(Root.self, from: data)
                     movieList = root.results
                     completion(movieList, nil)
@@ -70,7 +68,6 @@ class MovieService: NSObject {
                 print(error)
             case .success(let data):
                 do {
-                    print(data)
                     let root = try JSONDecoder().decode(Root.self, from: data)
                     movieList = root.results
                     completion(movieList, nil)
@@ -100,7 +97,6 @@ class MovieService: NSObject {
                     let root = try JSONDecoder().decode(VideoRoot.self, from: data)
                     key = root.results.first?.key ?? ""
                     completion(key, nil)
-                    print(key)
                     
                 } catch let error {
                     completion(nil, error)
