@@ -115,7 +115,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func dismissView(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     //MARK: Delegate
