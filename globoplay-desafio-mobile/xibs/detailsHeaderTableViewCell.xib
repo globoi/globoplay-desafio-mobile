@@ -19,6 +19,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKA-EA-5RS">
                         <rect key="frame" x="0.0" y="0.0" width="547" height="345"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DE9-mp-Xca">
+                                <rect key="frame" x="0.0" y="0.0" width="553" height="325"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="degrade" translatesAutoresizingMaskIntoConstraints="NO" id="4mT-0c-LYX">
+                                <rect key="frame" x="0.0" y="0.0" width="553" height="325"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5IU-GC-Ey2">
                                 <rect key="frame" x="0.0" y="0.0" width="547" height="325"/>
                                 <subviews>
@@ -144,8 +150,16 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5IU-GC-Ey2" firstAttribute="top" secondItem="EKA-EA-5RS" secondAttribute="top" id="0It-Ug-GEK"/>
+                            <constraint firstItem="DE9-mp-Xca" firstAttribute="top" secondItem="EKA-EA-5RS" secondAttribute="top" id="5Ua-TU-AxE"/>
                             <constraint firstItem="5IU-GC-Ey2" firstAttribute="leading" secondItem="EKA-EA-5RS" secondAttribute="leading" id="9em-xx-0nS"/>
+                            <constraint firstAttribute="bottom" secondItem="4mT-0c-LYX" secondAttribute="bottom" constant="20" symbolic="YES" id="D4j-EY-Vqh"/>
+                            <constraint firstAttribute="bottom" secondItem="DE9-mp-Xca" secondAttribute="bottom" constant="20" symbolic="YES" id="Meo-MQ-32H"/>
                             <constraint firstAttribute="trailing" secondItem="5IU-GC-Ey2" secondAttribute="trailing" id="O9I-dD-OOQ"/>
+                            <constraint firstAttribute="trailing" secondItem="DE9-mp-Xca" secondAttribute="trailing" constant="-6" id="faa-DX-cJD"/>
+                            <constraint firstAttribute="trailing" secondItem="4mT-0c-LYX" secondAttribute="trailing" constant="-6" id="pVG-KY-nwT"/>
+                            <constraint firstItem="DE9-mp-Xca" firstAttribute="leading" secondItem="EKA-EA-5RS" secondAttribute="leading" id="qIy-qa-Rcc"/>
+                            <constraint firstItem="4mT-0c-LYX" firstAttribute="top" secondItem="EKA-EA-5RS" secondAttribute="top" id="sBu-lo-eQ2"/>
+                            <constraint firstItem="4mT-0c-LYX" firstAttribute="leading" secondItem="EKA-EA-5RS" secondAttribute="leading" id="vE0-gV-kBw"/>
                             <constraint firstAttribute="height" constant="345" id="wPB-CT-VPz"/>
                         </constraints>
                     </view>
@@ -160,6 +174,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="backImage" destination="DE9-mp-Xca" id="OcN-vX-ZYA"/>
                 <outlet property="imageTitle" destination="ROy-of-MDA" id="Lwj-c1-wVF"/>
                 <outlet property="myListButton" destination="6je-gN-WcG" id="bkl-BZ-FTy"/>
                 <outlet property="name" destination="C3Z-Bo-ZEX" id="1gd-uI-ScM"/>
@@ -178,7 +193,8 @@
         </designable>
     </designables>
     <resources>
-        <image name="placeholder" width="216" height="332"/>
+        <image name="degrade" width="1100" height="600"/>
+        <image name="placeholder" width="300" height="400"/>
         <image name="play_arrow" width="24" height="24"/>
         <image name="star_rate" width="24" height="24"/>
     </resources>

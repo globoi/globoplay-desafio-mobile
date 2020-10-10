@@ -12,7 +12,6 @@ class MyListViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     @IBOutlet var collectionViewMyList: UICollectionView!
     
-    var images = ["teste1", "teste2", "teste3"]
     var flag :Bool?
     var index :Int?
     var myList: [Movie]?

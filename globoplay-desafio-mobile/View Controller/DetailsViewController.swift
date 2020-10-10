@@ -76,10 +76,15 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             let path = currentMovie?.poster_path ?? ""
             let imageUrl = URL(string: CONST.API_CONSTANTS.BASE_IMAGE_URL + path )
-            cell.imageTitle.kf.setImage(with: imageUrl)
+            cell.imageTitle.kf.setImage(with: imageUrl, placeholder: UIImage(named: "placeholder"))
             cell.name.text = currentMovie?.title ?? ""
             cell.youTubeID = youTubeID
             cell.currentMovie = currentMovie
+            cell.backImage.kf.setImage(with: imageUrl, placeholder: UIImage(named: "placeholder"))
+            let blurEffect = UIBlurEffect(style: .light)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = cell.backImage.bounds
+            cell.backImage.addSubview(blurEffectView)
             cell.selectionStyle = .none
             return cell
         }

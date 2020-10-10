@@ -17,6 +17,8 @@ class DetailsHeaderTableViewCell: UITableViewCell {
     var currentMovie                            : Movie?
     var favoriteListArray                       :[Movie]? = []
     
+   
+    @IBOutlet weak var backImage                : UIImageView!
     @IBOutlet weak var name                     : UILabel!
     @IBOutlet weak var imageTitle               : UIImageView!
     @IBOutlet weak var segmentedControlDetails  : UISegmentedControl!

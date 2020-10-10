@@ -77,7 +77,6 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
             cell.title.text = "Filmes Em Breve"
             cell.tableIndex = 0
-            cell.name = "teste1"
             cell.delegate = self
             cell.movieList = upcomingMovieList
             cell.selectionStyle = .none
@@ -87,7 +86,6 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
             cell.title.text = "Filmes Populares"
             cell.tableIndex = 1
-            cell.name = "teste2"
             cell.delegate = self
             cell.movieList = popularMovieList
             cell.selectionStyle = .none
@@ -96,7 +94,6 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "movieComp", for: indexPath) as! MovieComponentTableViewCell
             cell.title.text = "Filmes Em Cartaz"
-            cell.name = "teste3"
             cell.delegate = self
             cell.tableIndex = 2
             cell.movieList = playingMovieList
