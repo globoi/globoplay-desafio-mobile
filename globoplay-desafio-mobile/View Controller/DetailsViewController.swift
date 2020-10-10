@@ -17,6 +17,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     let idWatchCell             = "watchDetailsCell"
     let idHeaderCell            = "headerDetailsCell"
     let idSegmentedCell         = "segmentedCell"
+    let idNoRelatedMovies       = "noRelatedCell"
     
     var myMovieList             : [Movie]?
     var indexList               : Int?
@@ -49,10 +50,12 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let nibName             = UINib(nibName: "detailsHeaderTableViewCell", bundle: nil)
         let nibBodyName         = UINib(nibName: "detailsBodyTableViewCell", bundle: nil)
         let nibCollectionWatch  = UINib(nibName: "detailsWatchTableViewCell", bundle: nil)
+        let nibError            = UINib(nibName: "noRelatedMovies", bundle: nil)
         
         self.detailsTV.register(nibBodyName, forCellReuseIdentifier: idDetailsCell)
         self.detailsTV.register(nibCollectionWatch, forCellReuseIdentifier: idWatchCell)
         self.detailsTV.register(nibName, forCellReuseIdentifier: idHeaderCell)
+        self.detailsTV.register(nibError, forCellReuseIdentifier: idNoRelatedMovies)
     }
     
 
@@ -84,15 +87,21 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         else {
             
             if (actualIndex2 == 0){
-                let cell = tableView.dequeueReusableCell(withIdentifier: idWatchCell, for: indexPath) as! DetailsWatchTableViewCell
-                cell.currentMovieId = String(currentMovie!.id)
-                cell.currentMovie = currentMovie
-                cell.delegate = self
-                cell.relatedList = relatedList
-                cell.detailsCollectionView.reloadData()
-                cell.selectionStyle = .none
-                return cell
-
+                
+                if (relatedList == nil || relatedList?.isEmpty == true){
+                    let cell = tableView.dequeueReusableCell(withIdentifier: idNoRelatedMovies, for: indexPath) as! NoRelatedMoviesTableViewCell
+                    return cell
+                    
+                }else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: idWatchCell, for: indexPath) as! DetailsWatchTableViewCell
+                    cell.currentMovieId = String(currentMovie!.id)
+                    cell.currentMovie = currentMovie
+                    cell.delegate = self
+                    cell.relatedList = relatedList
+                    cell.detailsCollectionView.reloadData()
+                    cell.selectionStyle = .none
+                    return cell
+                }
             }
             else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: idDetailsCell, for: indexPath) as! DetailsBodyTableViewCell
