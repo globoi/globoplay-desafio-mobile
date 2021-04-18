@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "globoplay_desafio_mobile"

@@ -1,0 +1,19 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorBackground</item>
+        <item name="colorPrimaryDark">@color/colorBackgroundDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- style SearchView -->
+   <style name="ThemeOverlay.SearchView" parent="">
+       <!-- Text color -->
+        <item name="android:editTextColor">@color/colorGrey</item>
+        <!-- Hint text color -->
+        <item name="android:textColorHint">@color/colorGrey</item>
+
+    </style>
+
+</resources>

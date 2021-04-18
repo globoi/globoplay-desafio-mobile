@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host_fragment"
+    app:startDestination="@id/movieListFragment">
+
+    <fragment
+        android:id="@+id/movieListFragment"
+        android:name="com.example.globoplay_desafio_mobile.ui.movieList.MovieListFragment"
+        android:label="movie_list_fragment"
+        tools:layout="@layout/movie_list_fragment" />
+
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.example.globoplay_desafio_mobile.ui.details.MovieDetailsFragment"
+        android:label="MovieDetailsFragment" />
+
+    <fragment
+        android:id="@+id/movieListMoreFragment"
+        android:name="com.example.globoplay_desafio_mobile.ui.movieList.MovieListMoreFragment"
+        android:label="MovieListMoreFragment" />
+
+    <fragment
+        android:id="@+id/accountDetailsActivity"
+        android:name="com.example.globoplay_desafio_mobile.ui.account.AccountDetailsFragment"
+        android:label="AccountDetailsActivity" />
+
+    <fragment
+        android:id="@+id/watchListFragment"
+        android:name="com.example.globoplay_desafio_mobile.ui.watchlist.WatchListFragment"
+        android:label="WatchListFragment" />
+
+</navigation>

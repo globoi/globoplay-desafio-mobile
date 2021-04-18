@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/movieListFragment"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_24"/>
+
+    <item
+        android:id="@+id/watchListFragment"
+        android:title="My List"
+        android:icon="@drawable/baseline_star_rate_24"/>
+
+    <item
+        android:id="@+id/accountDetailsActivity"
+        android:title="Account"
+        android:icon="@drawable/ic_baseline_account_circle_24"/>
+</menu>
