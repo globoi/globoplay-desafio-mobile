@@ -12,24 +12,39 @@
         <!--Início-->
         <scene sceneID="c6P-OW-QJh">
             <objects>
-                <viewController id="peR-1W-Jpt" sceneMemberID="viewController">
+                <viewController id="peR-1W-Jpt" customClass="HomeViewController" customModule="globoplay_desafio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Fa-Tg-oRN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FhZ-Cm-iDr">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="DvM-5i-3hV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FhZ-Cm-iDr" firstAttribute="trailing" secondItem="DvM-5i-3hV" secondAttribute="trailing" id="Wa4-rR-Pzc"/>
+                            <constraint firstItem="FhZ-Cm-iDr" firstAttribute="leading" secondItem="DvM-5i-3hV" secondAttribute="leading" id="kpk-uH-XQt"/>
+                            <constraint firstItem="FhZ-Cm-iDr" firstAttribute="bottom" secondItem="DvM-5i-3hV" secondAttribute="bottom" id="oTx-x6-qK5"/>
+                            <constraint firstItem="FhZ-Cm-iDr" firstAttribute="top" secondItem="DvM-5i-3hV" secondAttribute="top" id="wKG-4G-GaI"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Início" image="icon_home" id="wF3-F9-chb"/>
                     <navigationItem key="navigationItem" id="890-8f-vJC"/>
+                    <connections>
+                        <outlet property="moviesTableView" destination="FhZ-Cm-iDr" id="A9E-bf-cPf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6r5-0J-UKK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1525" y="535"/>
+            <point key="canvasLocation" x="1524.6376811594205" y="534.375"/>
         </scene>
         <!--Minha lista-->
         <scene sceneID="fh3-zu-2IR">
             <objects>
-                <viewController id="KQ5-Bh-AMD" sceneMemberID="viewController">
+                <viewController id="KQ5-Bh-AMD" customClass="MyListViewController" customModule="globoplay_desafio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GYq-Ea-muH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,13 +75,14 @@
             </objects>
             <point key="canvasLocation" x="279.71014492753625" y="119.86607142857142"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--globoplay-->
         <scene sceneID="7Tt-i9-bFU">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RuA-6U-M2u" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="rWF-ID-cPb"/>
+                    <navigationItem key="navigationItem" title="globoplay" id="rWF-ID-cPb"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ng9-zH-ZIe">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

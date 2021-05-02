@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum FetchError: Error {
+    case invalidJSON
+    case invalidURL
+    case networkFailed
+    case limite
+}
