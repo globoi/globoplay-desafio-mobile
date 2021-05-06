@@ -31,7 +31,7 @@ class ServiceBase {
     
     func fetch<T: Decodable>(listOf representable: T.Type,
                              withURL url: URL?,
-                             completionHandler: @escaping (Result<[T], FetchError>) -> Void) {
+                             completionHandler: @escaping (Result<T, FetchError>) -> Void) {
         
         guard let url = url else {
             completionHandler(.failure(.invalidURL))
@@ -46,28 +46,58 @@ class ServiceBase {
                 return
             }
             
-            var resultList = [T]()
-            
             guard let dataResponse = data,
                   error == nil else {
               print(error?.localizedDescription ?? "Response Error")
               return
             }
             
+            let json = try? JSONSerialization
+                .jsonObject(with: dataResponse, options: JSONSerialization.ReadingOptions(rawValue: 0))
+            print(json)
+            
             do {
                 let decoder = JSONDecoder()
-                let model = try decoder.decode([T].self, from: dataResponse)
-                resultList = model
+                let resultValue = try decoder.decode(T.self, from: dataResponse)
+                DispatchQueue.main.async {
+                    completionHandler(.success(resultValue))
+                }
             } catch let parsingError {
                 print("Error", parsingError)
+                DispatchQueue.main.async {
+                    completionHandler(.failure(.invalidJSON))
+                }
             }
-            
-            DispatchQueue.main.async {
-                completionHandler(.success(resultList))
-            }
+    
         }
         task?.resume()
     }
+    
+//    func fetchData<T: Decodable>(generalType: T,
+//                                 withURL url: URL?,
+//                                 completionHandler: @escaping (Result<T, FetchError>) -> Void) {
+//
+//        guard let url = url else {
+//            completionHandler(.failure(.invalidURL))
+//            return
+//        }
+//
+//        let task = session.data(with: url){ (data, response, error) in
+//
+//            guard let data = data else {
+//                let err = error
+//                completionHandler(.failure(.invalidURL))
+//                return
+//            }
+//
+//            let result = Result {
+//                // You know you can call `decode` with it because it's Decodable
+//                try JSONDecoder().decode(T.self, from: data)
+//            }
+//            completionHandler(.success(result))
+//        }
+//        task.resume()
+//    }
     
     internal func cancel() {
         task?.cancel()

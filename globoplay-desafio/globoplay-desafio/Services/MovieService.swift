@@ -9,9 +9,9 @@ import Foundation
 
 class MovieService: ServiceBase {
     
-    func fetch (completionHandler: @escaping (Result<[MovieResponse], FetchError>) -> Void) {
+    func fetch (path: MovieCategory, completionHandler: @escaping (Result<MovieResponse, FetchError>) -> Void) {
         
-        fetch(listOf: MovieResponse.self, withURL: url(withPath: "popular")) { (result) in
+        fetch(listOf: MovieResponse.self, withURL: url(withPath: path.rawValue)) { (result) in
             switch result {
             case .success(let movies):
                 completionHandler(Result.success(movies))

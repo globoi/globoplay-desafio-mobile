@@ -9,6 +9,7 @@ import Foundation
 
 struct Service {
     static let baseURL: String = "https://api.themoviedb.org/3/movie/"
+    static let baseImageURL: String = "https://image.tmdb.org/t/p/w500"
 }
 
 struct ServiceParameters {

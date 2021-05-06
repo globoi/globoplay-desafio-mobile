@@ -12,6 +12,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = .black
+        UINavigationBar.appearance().tintColor = .white
+        
+        let textAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 21),
+                              NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = textAttributes
+        
+        UITabBar.appearance().barTintColor = UIColor.black
+        UITabBar.appearance().isTranslucent = false
+        UITabBar.appearance().barTintColor = .black
+        UITabBar.appearance().tintColor = .white
 
         return true
     }
