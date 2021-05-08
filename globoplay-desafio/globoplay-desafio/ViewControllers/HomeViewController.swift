@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     //MARK:- Properties
     let viewModel = HomeViewModel()
     let movieSections = ["Populares","Mais Vistos","Próximos Lançamentos"]
-    
+    var selectedMovie = Movie()
     
     
     //MARK:- IBOutlets
@@ -35,10 +35,17 @@ class HomeViewController: UIViewController {
         viewModel.loadMoviesUpcoming()
         viewModel.loadMoviesTopRated()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueDetailFromHome" {
+            let detailMovie = segue.destination as! MovieDetailViewController
+            detailMovie.detailMovie = selectedMovie
+        }
+    }
 
 }
 
-//MARK:-
+//MARK:- Extension UITableViewDelegate DataSource
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieSections.count
@@ -48,17 +55,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? HomeMovieTableViewCell {
-                cell.setup(sectionTitle: self.movieSections[indexPath.row], sectionMovies: viewModel.getMoviesPopular())
+                cell.setup(sectionTitle: self.movieSections[indexPath.row], sectionMovies: viewModel.getMoviesPopular(),tableIndex: indexPath.row)
+                cell.viewDelegate = self
                 return cell
             }
         case 1:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? HomeMovieTableViewCell {
-                cell.setup(sectionTitle: self.movieSections[indexPath.row], sectionMovies: viewModel.getMoviesTopRated())
+                cell.setup(sectionTitle: self.movieSections[indexPath.row], sectionMovies: viewModel.getMoviesTopRated(),tableIndex: indexPath.row)
+                cell.viewDelegate = self
                 return cell
             }
         case 2:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? HomeMovieTableViewCell {
-                cell.setup(sectionTitle: self.movieSections[indexPath.row], sectionMovies: viewModel.getMoviesUpcoming())
+                cell.setup(sectionTitle: self.movieSections[indexPath.row], sectionMovies: viewModel.getMoviesUpcoming(),tableIndex: indexPath.row)
+                cell.viewDelegate = self
                 return cell
             }
         default:
@@ -95,4 +105,11 @@ extension HomeViewController: HomeViewModelDelegate {
     }
     
     
+}
+
+extension HomeViewController: HomeViewMovieDelegate {
+    func movieSelected(withMovie movie: Movie) {
+        selectedMovie = movie
+        self.performSegue(withIdentifier: "segueDetailFromHome", sender: self)
+    }
 }

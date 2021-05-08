@@ -28,4 +28,13 @@ struct Movie: Decodable {
     let poster_path: String
     let title: String
     let video: Bool
+    
+    init() {
+        self.id = 0
+        self.original_title = ""
+        self.overview = ""
+        self.poster_path = ""
+        self.title = ""
+        self.video = false
+    }
 }

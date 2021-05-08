@@ -52,10 +52,6 @@ class ServiceBase {
               return
             }
             
-            let json = try? JSONSerialization
-                .jsonObject(with: dataResponse, options: JSONSerialization.ReadingOptions(rawValue: 0))
-            print(json)
-            
             do {
                 let decoder = JSONDecoder()
                 let resultValue = try decoder.decode(T.self, from: dataResponse)
@@ -72,32 +68,6 @@ class ServiceBase {
         }
         task?.resume()
     }
-    
-//    func fetchData<T: Decodable>(generalType: T,
-//                                 withURL url: URL?,
-//                                 completionHandler: @escaping (Result<T, FetchError>) -> Void) {
-//
-//        guard let url = url else {
-//            completionHandler(.failure(.invalidURL))
-//            return
-//        }
-//
-//        let task = session.data(with: url){ (data, response, error) in
-//
-//            guard let data = data else {
-//                let err = error
-//                completionHandler(.failure(.invalidURL))
-//                return
-//            }
-//
-//            let result = Result {
-//                // You know you can call `decode` with it because it's Decodable
-//                try JSONDecoder().decode(T.self, from: data)
-//            }
-//            completionHandler(.success(result))
-//        }
-//        task.resume()
-//    }
     
     internal func cancel() {
         task?.cancel()
