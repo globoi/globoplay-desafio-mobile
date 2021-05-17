@@ -23,7 +23,7 @@ Pense no desafio como uma oportunidade de mostrar todo o seu conhecimento. E fa�
 
 Não existe nenhum pré-requisito, portanto sinta-se a vontande para utilizar qualquer linguagem e usar ou não usar bibliotecas.
 
-Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por isso aceitamos desafios de todos os perfis e diferentes níveis de conhecimento técnico. Mas nos preocupamos com a qualidade, saúde e evoluação do produto e por isso acreditamos bastante em testes automatizados.
+Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por isso aceitamos desafios de todos os perfis e diferentes níveis de conhecimento técnico. Mas nos preocupamos com a qualidade, saúde e evolução do produto e por isso acreditamos bastante em testes automatizados.
 
 
 # Features
@@ -33,29 +33,28 @@ Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por
 ### Essencial:
 
 - Tela de splash;
-- Listagem dos filmes
-- Minha lista
-- Detalhes do filme
-- Favoritar/Desfavoritar filmes
-- Layout estruturado
-- Tratamento de erro
+- Listagem dos filmes;
+- Minha lista;
+- Detalhes do filme;
+- Favoritar/Desfavoritar filmes;
+- Layout estruturado;
+- Tratamento de erro.
 
 
 ### Ganha mais pontos se tiver:
 
-- Filtros
-- Busca
-- Paginação
-- Animações
-- Testes unitários
-- Testes instrumentados
-- Testes funcionais.
-- Pipeline Automatizado
+- Filtros;
+- Busca;
+- Paginação;
+- Animações;
+- Testes unitários;
+- Testes instrumentados;
+- Testes funcionais;
+- Pipeline Automatizado.
 
 
 ### Iremos ficar encantados:
-
-- Play do vídeo
+- Play do vídeo.
 
 
 # Exemplos e sugestões
@@ -79,9 +78,9 @@ Para facilitar o processo, existem assets, app icons, ícones e paleta de cores 
 
 Após finalizar a implementação do desafio, abra um pull request para este repositório seguindo os passos abaixo:
 
-1. Faça um fork deste repositório, não clone este repostiório direto;
+1. Faça um fork deste repositório, não clone este repositório diretamente;
 2. Os commit's e as alterações devem ser feitas no **SEU** fork;
-3. Envie um Pull Request.
+3. Envie um Pull Request;
 4. Deixe o fork público para facilitar a inspeção do código.
 
 ### **ATENÇÃO**
