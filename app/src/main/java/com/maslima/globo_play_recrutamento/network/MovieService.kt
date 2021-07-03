@@ -12,4 +12,11 @@ interface MovieService {
         @Query("page") page: String,
         @Query("query") query: String,
     ): MovieResponse
+
+    @GET("/discover/movie")
+    suspend fun listMovies(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: String
+    ): MovieResponse
 }
