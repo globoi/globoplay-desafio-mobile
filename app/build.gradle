@@ -12,7 +12,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.codingwithmitch.mvvmrecipeapp"
+        applicationId "com.maslima.globo_play_recrutamento"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
