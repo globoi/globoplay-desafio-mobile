@@ -9,14 +9,14 @@ interface MovieService {
     suspend fun searchMovie(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
-        @Query("page") page: String,
+        @Query("page") page: Int,
         @Query("query") query: String,
     ): MovieResponse
 
-    @GET("/discover/movie")
+    @GET("discover/movie")
     suspend fun listMovies(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
-        @Query("page") page: String
+        @Query("page") page: Int
     ): MovieResponse
 }

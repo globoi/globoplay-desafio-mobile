@@ -12,14 +12,14 @@ class MovieRepositoryImpl(
 ) : MovieRepository {
 
     override suspend fun search(
-        page: String,
+        page: Int,
         query: String
     ): List<Movie> {
         val result = movieService.searchMovie(API_KEY, LANGUAGE_APP, page, query)
         return mapper.toDomainList(result.movies)
     }
 
-    override suspend fun listMovies(page: String): List<Movie> {
+    override suspend fun listMovies(page: Int): List<Movie> {
         return mapper.toDomainList(movieService.listMovies(API_KEY, LANGUAGE_APP, page).movies)
     }
 }

@@ -5,20 +5,20 @@ import com.maslima.globo_play_recrutamento.domain.util.DomainMapper
 
 class MovieDtoMapper : DomainMapper<MovieDto, Movie> {
     override fun mapToDomainModel(model: MovieDto) = Movie(
-        adult = model.adult,
-        backdropPath = model.backdrop_path,
-        genreIds = model.genre_ids,
-        id = model.id,
-        originalLanguage = model.original_language,
-        originalTitle = model.original_title,
-        overview = model.overview,
-        popularity = model.popularity,
-        posterPath = model.poster_path,
-        releaseDate = model.release_date,
-        title = model.title,
-        video = model.video,
-        voteAverage = model.vote_average,
-        voteCount = model.vote_count
+        adult = model.adult ?: false,
+        backdropPath = model.backdrop_path ?: "",
+        genreIds = model.genre_ids ?: listOf(),
+        id = model.id ?: -1,
+        originalLanguage = model.original_language ?: "",
+        originalTitle = model.original_title ?: "",
+        overview = model.overview ?: "",
+        popularity = model.popularity ?: 0.0,
+        posterPath = model.poster_path ?: "",
+        releaseDate = model.release_date ?: "",
+        title = model.title ?: "",
+        video = model.video ?: false,
+        voteAverage = model.vote_average ?: 0.0,
+        voteCount = model.vote_count ?: -1
     )
 
     override fun mapFromDomainModel(domainModel: Movie) = MovieDto(
