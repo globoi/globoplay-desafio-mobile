@@ -2,6 +2,7 @@ package com.maslima.globo_play_recrutamento.di
 
 import com.google.gson.GsonBuilder
 import com.maslima.globo_play_recrutamento.network.MovieService
+import com.maslima.globo_play_recrutamento.network.model.ImageConfigDtoMapper
 import com.maslima.globo_play_recrutamento.network.model.MovieDtoMapper
 import dagger.Module
 import dagger.Provides
@@ -18,6 +19,12 @@ object NetworkModule {
     @Provides
     fun provideMovieMapper(): MovieDtoMapper {
         return MovieDtoMapper()
+    }
+
+    @Singleton
+    @Provides
+    fun provideImageConfigMapper(): ImageConfigDtoMapper {
+        return ImageConfigDtoMapper()
     }
 
     @Singleton
