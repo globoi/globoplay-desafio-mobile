@@ -6,6 +6,6 @@ interface MovieRepository {
     suspend fun listMovies(
         page: Int,
         query: String?,
-        categoryId: Int?
+        categoryId: Int? = 0
     ): List<Movie>
 }

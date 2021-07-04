@@ -22,8 +22,10 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.Dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.maslima.globo_play_recrutamento.presentation.components.CircularIndeterminateProgressBar
 import com.maslima.globo_play_recrutamento.presentation.components.MovieCard
 import com.maslima.globo_play_recrutamento.presentation.components.SearchAppBar
+import com.maslima.globo_play_recrutamento.presentation.ui.movie_list.MovieListEvent.NextPageEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,17 +46,22 @@ class MovieListFragment : Fragment() {
                 val selectedCategory = viewModel.selectedCategory.value
                 val categoryScrollPosition = viewModel.categoryScrollPosition
                 val loading = viewModel.loading.value
+                val page = viewModel.page.value
                 val selectedItem = remember { mutableStateOf("home") }
                 val result = remember { mutableStateOf("") }
 
                 Scaffold(
                     topBar = {
                         Toolbar(query, selectedCategory)
-
                     },
                     bodyContent = {
+                        CircularIndeterminateProgressBar(isDisplayed = loading, verticalBias = 0.3f)
                         LazyVerticalGrid(cells = GridCells.Fixed(3)) {
-                            itemsIndexed(items = movies) { _, movie ->
+                            itemsIndexed(items = movies) { index, movie ->
+                                viewModel.onChangeMovieScrollPosition(index)
+                                if ((index + 1) >= (page * PAGE_SIZE) && !loading) {
+                                    viewModel.onTriggerEvent(NextPageEvent)
+                                }
                                 val url = "https://image.tmdb.org/t/p/w154".plus(movie.posterPath)
                                 MovieCard(movieUrlImage = url, onClickCard = {})
                             }
@@ -104,7 +111,7 @@ class MovieListFragment : Fragment() {
         SearchAppBar(
             query = query,
             onQueryChange = viewModel::onQueryChanged,
-            onExecuteSearch = viewModel::listMovies,
+            onExecuteSearch = { viewModel.onTriggerEvent(MovieListEvent.NewSearchEvent) },
             scrollPosition = viewModel.categoryScrollPosition,
             selectedCategory = selectedCategory,
             onSelectedCategoryChanged = viewModel::onSelectedCategoryChanged,
