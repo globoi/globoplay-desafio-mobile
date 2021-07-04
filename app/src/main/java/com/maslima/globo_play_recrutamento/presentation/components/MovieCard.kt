@@ -16,7 +16,7 @@ import com.maslima.globo_play_recrutamento.domain.model.Movie
 import com.maslima.globo_play_recrutamento.utils.loadPictures
 
 @Composable
-fun MovieCard(movie: Movie, onClickCard: () -> Unit) {
+fun MovieCard(movieUrlImage: String, onClickCard: () -> Unit) {
     Card(
         shape = MaterialTheme.shapes.small,
         modifier = Modifier
@@ -24,7 +24,7 @@ fun MovieCard(movie: Movie, onClickCard: () -> Unit) {
             .clickable(onClick = onClickCard),
         elevation = Dp(8f)
     ) {
-        val img = loadPictures(url = movie.posterPath, defaultImage = R.drawable.abc_vector_test)
+        val img = loadPictures(url = movieUrlImage, defaultImage = R.drawable.abc_vector_test)
         img.value?.let { image ->
             Image(
                 bitmap = image.asImageBitmap(),

@@ -1,6 +1,5 @@
 package com.maslima.globo_play_recrutamento.di
 
-import com.maslima.globo_play_recrutamento.network.ConfigService
 import com.maslima.globo_play_recrutamento.network.MovieService
 import com.maslima.globo_play_recrutamento.network.model.ImageConfigDtoMapper
 import com.maslima.globo_play_recrutamento.network.model.MovieDtoMapper
@@ -32,7 +31,7 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideConfigRepository(
-        configService: ConfigService,
+        configService: MovieService,
         imageConfigDtoMapper: ImageConfigDtoMapper
     ): ConfigRepository {
         return ConfigRepositoryImpl(configService, imageConfigDtoMapper)
