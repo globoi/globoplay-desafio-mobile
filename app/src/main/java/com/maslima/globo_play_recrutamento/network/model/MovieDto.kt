@@ -1,11 +1,12 @@
 package com.maslima.globo_play_recrutamento.network.model
 
 import com.google.gson.annotations.SerializedName
+import com.maslima.globo_play_recrutamento.presentation.ui.movie_list.MovieCategory
 
 data class MovieDto(
     @SerializedName("adult") val adult : Boolean?,
     @SerializedName("backdrop_path") val backdrop_path : String?,
-    @SerializedName("genre_ids") val genre_ids : List<Int>?,
+    @SerializedName("genre_ids") val genre_ids : List<MovieCategory>?,
     @SerializedName("id") val id : Int?,
     @SerializedName("original_language") val original_language : String?,
     @SerializedName("original_title") val original_title : String?,

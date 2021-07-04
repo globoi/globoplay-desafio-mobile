@@ -11,15 +11,31 @@ class MovieRepositoryImpl(
     private val mapper: MovieDtoMapper
 ) : MovieRepository {
 
-    override suspend fun search(
-        page: Int,
-        query: String
-    ): List<Movie> {
-        val result = movieService.searchMovie(API_KEY, LANGUAGE_APP, page, query)
-        return mapper.toDomainList(result.movies)
-    }
-
-    override suspend fun listMovies(page: Int): List<Movie> {
+    override suspend fun listMovies(page: Int, query: String?, categoryId: Int?): List<Movie> {
+        query?.let { text ->
+            if (text.isNotBlank()) {
+                return mapper.toDomainList(
+                    movieService.searchMovie(
+                        API_KEY,
+                        LANGUAGE_APP,
+                        page,
+                        query
+                    ).movies
+                )
+            }
+        }
+        categoryId?.let { genreId ->
+            if (categoryId != 0) {
+                return mapper.toDomainList(
+                    movieService.listMoviesByCategory(
+                        API_KEY,
+                        LANGUAGE_APP,
+                        page,
+                        genreId
+                    ).movies
+                )
+            }
+        }
         return mapper.toDomainList(movieService.listMovies(API_KEY, LANGUAGE_APP, page).movies)
     }
 }

@@ -24,7 +24,7 @@ fun MovieCard(movieUrlImage: String, onClickCard: () -> Unit) {
             .clickable(onClick = onClickCard),
         elevation = Dp(8f)
     ) {
-        val img = loadPictures(url = movieUrlImage, defaultImage = R.drawable.abc_vector_test)
+        val img = loadPictures(url = movieUrlImage, defaultImage = R.drawable.no_image_avaiable)
         img.value?.let { image ->
             Image(
                 bitmap = image.asImageBitmap(),

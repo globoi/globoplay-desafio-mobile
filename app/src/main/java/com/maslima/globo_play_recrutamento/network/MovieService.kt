@@ -21,6 +21,14 @@ interface MovieService {
         @Query("page") page: Int
     ): MovieResponse
 
+    @GET("discover/movie")
+    suspend fun listMoviesByCategory(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: Int,
+        @Query("with_genres") withGenres: Int
+    ): MovieResponse
+
     @GET("configuration")
     suspend fun getConfigInfo(@Query("api_key") apiKey: String): ConfigResponse
 }
