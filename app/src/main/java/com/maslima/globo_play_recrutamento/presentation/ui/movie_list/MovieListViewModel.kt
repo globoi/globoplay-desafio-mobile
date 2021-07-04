@@ -140,9 +140,8 @@ constructor(
 
     fun onSelectedCategoryChanged(category: String) {
         val newCategory = getMovieCategory(category)
-        selectedCategory.value = newCategory
+        setSelectedCategory(newCategory)
         onCategoryIdChanged(newCategory)
-        onQueryChanged(category)
     }
 
     fun onChangeCategoryScrollPosition(position: Float) {
@@ -168,16 +167,10 @@ constructor(
         movies.value = listOf()
         setPage(1)
         setListScrollPosition(0)
-        if (selectedCategory.value?.value != query.value)
-            clearSelectedCategory()
     }
 
     private fun setQuery(query: String) {
         this.query.value = query
         savedStateHandle.set(STATE_KEY_QUERY, query)
-    }
-
-    private fun clearSelectedCategory() {
-        selectedCategory.value = null
     }
 }
