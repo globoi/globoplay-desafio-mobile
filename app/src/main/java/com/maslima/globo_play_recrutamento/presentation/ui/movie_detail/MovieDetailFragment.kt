@@ -8,8 +8,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
@@ -19,13 +17,30 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.maslima.globo_play_recrutamento.R
+import com.maslima.globo_play_recrutamento.domain.model.Movie
+import com.maslima.globo_play_recrutamento.presentation.components.MovieEvent
 import com.maslima.globo_play_recrutamento.utils.loadDrawableImage
 import com.maslima.globo_play_recrutamento.utils.loadPictures
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @AndroidEntryPoint
 class MovieDetailFragment : Fragment() {
+
+    @ExperimentalCoroutinesApi
+    private val viewModel: MovieDetailViewModel by viewModels()
+
+    @ExperimentalCoroutinesApi
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.getInt("movieId")?.let { movieId ->
+            viewModel.onTriggerEvent(MovieEvent.GetMovieEvent(movieId))
+        }
+    }
+
+    @ExperimentalCoroutinesApi
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,70 +48,77 @@ class MovieDetailFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                ScreenDetail()
+                val loading = viewModel.loading.value
+                val movie = viewModel.movie.value
+                movie?.let {
+                    ScreenDetail(movie = it)
+                }
             }
         }
     }
 }
 
 @Composable
-fun ScreenDetail() {
+fun ScreenDetail(movie: Movie) {
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "globoplay")
-                },
-                navigationIcon = {
-                    Icon(Icons.Filled.ArrowBack)
+                    Text(
+                        text = "globoplay",
+                        modifier = Modifier.fillMaxWidth(),
+                        textAlign = TextAlign.Center
+                    )
                 },
                 elevation = Dp(7f),
             )
         },
         bodyContent = {
-            MovieContent()
+            MovieContent(movie)
         },
     )
 }
 
 @Composable
-fun MovieContent() {
+fun MovieContent(movie: Movie) {
     ScrollableColumn {
-        Column {
-            ImageSection()
-            MovieDescriptionSection()
-            RowButtons()
-
-        }
+        ImageSection(movie)
+        MovieDescriptionSection(movie)
+        RowButtons()
     }
 }
 
 @Composable
-private fun ImageSection() {
-    val bitmap = loadPictures(url = "", defaultImage = R.drawable.no_image_avaiable)
+private fun ImageSection(movie: Movie) {
+    val bitmap = loadPictures(
+        url = "https://image.tmdb.org/t/p/w500".plus(movie.posterPath),
+        defaultImage = R.drawable.no_image_avaiable
+    )
     bitmap.value?.let {
         Image(
             bitmap = it.asImageBitmap(),
             modifier = Modifier
+                .padding(10.dp)
                 .fillMaxWidth()
-                .preferredHeight(260.dp),
+                .wrapContentWidth()
+                .wrapContentHeight(),
             contentScale = ContentScale.Crop
         )
     }
 }
 
 @Composable
-private fun MovieDescriptionSection() {
+private fun MovieDescriptionSection(movie: Movie) {
     Text(
-        text = "Orgulho e Paixão",
+        text = movie.title,
         style = MaterialTheme.typography.h5,
         modifier = Modifier
-            .padding(bottom = 4.dp)
+            .padding(4.dp)
             .fillMaxWidth(),
         textAlign = TextAlign.Center
     )
     Text(
-        text = "Novela",
+        text = movie.originalTitle,
         style = MaterialTheme.typography.subtitle2,
         modifier = Modifier
             .padding(bottom = 4.dp)
@@ -104,10 +126,10 @@ private fun MovieDescriptionSection() {
         textAlign = TextAlign.Center
     )
     Text(
-        text = "Orgulho e paixão tem seus personagens livremente inspirados no universo da escritora inglesa Jane austen. É uma história romância",
+        text = movie.overview,
         style = MaterialTheme.typography.body1,
         modifier = Modifier
-            .padding(bottom = 4.dp)
+            .padding(10.dp)
             .fillMaxWidth(),
         textAlign = TextAlign.Center
     )
@@ -122,6 +144,7 @@ private fun RowButtons() {
         Button(
             onClick = { /*TODO*/ },
             Modifier
+                .padding(bottom = 40.dp)
                 .preferredHeight(40.dp)
                 .wrapContentWidth()
         ) {
@@ -135,6 +158,7 @@ private fun RowButtons() {
         Button(
             onClick = { /*TODO*/ },
             Modifier
+                .padding(bottom = 40.dp)
                 .preferredHeight(40.dp)
                 .wrapContentWidth()
         ) {

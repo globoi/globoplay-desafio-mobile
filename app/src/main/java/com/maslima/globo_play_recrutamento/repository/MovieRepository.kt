@@ -8,4 +8,8 @@ interface MovieRepository {
         query: String?,
         categoryId: Int? = 0
     ): List<Movie>
+
+    suspend fun getMovie(
+        movieId: Int,
+    ): Movie
 }
