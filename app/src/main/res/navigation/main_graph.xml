@@ -18,9 +18,23 @@
         <action
             android:id="@+id/listToDetail"
             app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/movieListToFavoriteList"
+            app:destination="@id/favoriteListFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="com.maslima.globo_play_recrutamento.presentation.ui.movie_detail.MovieDetailFragment"
         android:label="MovieDetailFragment" />
+    <fragment
+        android:id="@+id/favoriteListFragment"
+        android:name="com.maslima.globo_play_recrutamento.presentation.ui.favorite_list.FavoriteListFragment"
+        android:label="FavoriteListFragment" >
+        <action
+            android:id="@+id/favoriteListToMovieDetail"
+            app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/favoriteListToMovieList"
+            app:destination="@id/movieListFragment" />
+    </fragment>
 </navigation>

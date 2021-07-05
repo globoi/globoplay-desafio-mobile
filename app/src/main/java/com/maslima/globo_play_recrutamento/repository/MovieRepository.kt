@@ -12,4 +12,12 @@ interface MovieRepository {
     suspend fun getMovie(
         movieId: Int,
     ): Movie
+
+    suspend fun insertFavorite(movie: Movie)
+
+    suspend fun listFavorites(): List<Movie>
+
+    suspend fun getFavorite(id: Int): Movie
+
+    suspend fun deleteFavorite(movie: Movie)
 }

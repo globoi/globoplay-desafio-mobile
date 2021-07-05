@@ -29,7 +29,6 @@ constructor(
     val loading = mutableStateOf(false)
 
     init {
-        // restore if process dies
         state.get<Int>(STATE_KEY_MOVIE)?.let { movieId ->
             onTriggerEvent(MovieEvent.GetMovieEvent(movieId))
         }
@@ -43,6 +42,9 @@ constructor(
                         if (movie.value == null) {
                             getMovie(event.id)
                         }
+                    }
+                    is MovieEvent.AddMovieEvent -> {
+                        addMovie()
                     }
                 }
             } catch (e: Exception) {
@@ -59,6 +61,14 @@ constructor(
 
         state.set(STATE_KEY_MOVIE, movie.id)
 
+        loading.value = false
+    }
+
+    private suspend fun addMovie() {
+        loading.value = true
+        this.movie.value?.let {
+            movieRepository.insertFavorite(it)
+        }
         loading.value = false
     }
 }

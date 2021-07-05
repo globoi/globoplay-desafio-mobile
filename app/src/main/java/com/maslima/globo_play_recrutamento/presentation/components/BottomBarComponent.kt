@@ -9,11 +9,14 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.navigation.NavController
+import com.maslima.globo_play_recrutamento.R
 
 @Composable
 fun BottomBar(
     selectedItem: MutableState<String>,
-    result: MutableState<String>
+    result: MutableState<String>,
+    navController: NavController
 ) {
     BottomAppBar(
         content = {
@@ -24,6 +27,7 @@ fun BottomBar(
                     onClick = {
                         result.value = "home icon clicked"
                         selectedItem.value = "Início"
+                        navController.navigate(R.id.favoriteListToMovieList)
                     },
                     alwaysShowLabels = true
                 )
@@ -32,7 +36,8 @@ fun BottomBar(
                     selected = selectedItem.value == "favorite",
                     onClick = {
                         result.value = "favorite icon clicked"
-                        selectedItem.value = "Minha Lista"
+                        selectedItem.value = "Favoritos"
+                        navController.navigate(R.id.movieListToFavoriteList)
                     },
                     alwaysShowLabels = true
                 )

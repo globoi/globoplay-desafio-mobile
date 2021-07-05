@@ -1,5 +1,7 @@
 package com.maslima.globo_play_recrutamento.di
 
+import com.maslima.globo_play_recrutamento.database.MovieDatabaseDao
+import com.maslima.globo_play_recrutamento.database.MovieDatabaseMapper
 import com.maslima.globo_play_recrutamento.network.MovieService
 import com.maslima.globo_play_recrutamento.network.model.ImageConfigDtoMapper
 import com.maslima.globo_play_recrutamento.network.model.MovieDtoMapper
@@ -19,12 +21,16 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideMovieRepository(
+        movieDatabaseDao: MovieDatabaseDao,
         movieService: MovieService,
-        movieDtoMapper: MovieDtoMapper
+        movieDtoMapper: MovieDtoMapper,
+        movieDatabaseMapper: MovieDatabaseMapper
     ): MovieRepository {
         return MovieRepositoryImpl(
+            movieDatabaseDao,
             movieService,
-            movieDtoMapper
+            movieDtoMapper,
+            movieDatabaseMapper
         )
     }
 
