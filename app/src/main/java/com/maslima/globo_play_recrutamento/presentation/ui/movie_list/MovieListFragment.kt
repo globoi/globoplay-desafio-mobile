@@ -56,7 +56,7 @@ class MovieListFragment : Fragment() {
                         )
                     },
                     bottomBar = {
-                        BottomBar(selectedItem, result)
+                        BottomBar(selectedItem, result, findNavController())
                     }
                 )
             }

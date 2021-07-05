@@ -5,7 +5,7 @@ import com.maslima.globo_play_recrutamento.presentation.ui.movie_list.MovieCateg
 data class Movie(
     val adult: Boolean,
     val backdropPath: String,
-    val genreIds: List<MovieCategory>,
+    val genreIds: List<MovieCategory>? = listOf(),
     val id: Int,
     val originalLanguage: String,
     val originalTitle: String,

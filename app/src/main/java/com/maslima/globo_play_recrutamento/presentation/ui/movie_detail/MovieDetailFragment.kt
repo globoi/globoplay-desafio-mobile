@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.maslima.globo_play_recrutamento.R
 import com.maslima.globo_play_recrutamento.domain.model.Movie
-import com.maslima.globo_play_recrutamento.presentation.components.MovieEvent
+import com.maslima.globo_play_recrutamento.presentation.components.*
 import com.maslima.globo_play_recrutamento.utils.loadDrawableImage
 import com.maslima.globo_play_recrutamento.utils.loadPictures
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,14 +44,14 @@ class MovieDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
                 val loading = viewModel.loading.value
                 val movie = viewModel.movie.value
                 movie?.let {
-                    ScreenDetail(movie = it)
+                    ScreenDetail(movie = it) { viewModel.onTriggerEvent(MovieEvent.AddMovieEvent) }
                 }
             }
         }
@@ -59,114 +59,22 @@ class MovieDetailFragment : Fragment() {
 }
 
 @Composable
-fun ScreenDetail(movie: Movie) {
+fun ScreenDetail(movie: Movie, onFavoriteClick: () -> Unit) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = "globoplay",
-                        modifier = Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.Center
-                    )
-                },
-                elevation = Dp(7f),
-            )
+            GeneralToolbar()
         },
         bodyContent = {
-            MovieContent(movie)
+            MovieContent(movie, onFavoriteClick)
         },
     )
 }
 
 @Composable
-fun MovieContent(movie: Movie) {
+fun MovieContent(movie: Movie, onFavoriteClick: () -> Unit) {
     ScrollableColumn {
         ImageSection(movie)
         MovieDescriptionSection(movie)
-        RowButtons()
-    }
-}
-
-@Composable
-private fun ImageSection(movie: Movie) {
-    val bitmap = loadPictures(
-        url = "https://image.tmdb.org/t/p/w500".plus(movie.posterPath),
-        defaultImage = R.drawable.no_image_avaiable
-    )
-    bitmap.value?.let {
-        Image(
-            bitmap = it.asImageBitmap(),
-            modifier = Modifier
-                .padding(10.dp)
-                .fillMaxWidth()
-                .wrapContentWidth()
-                .wrapContentHeight(),
-            contentScale = ContentScale.Crop
-        )
-    }
-}
-
-@Composable
-private fun MovieDescriptionSection(movie: Movie) {
-    Text(
-        text = movie.title,
-        style = MaterialTheme.typography.h5,
-        modifier = Modifier
-            .padding(4.dp)
-            .fillMaxWidth(),
-        textAlign = TextAlign.Center
-    )
-    Text(
-        text = movie.originalTitle,
-        style = MaterialTheme.typography.subtitle2,
-        modifier = Modifier
-            .padding(bottom = 4.dp)
-            .fillMaxWidth(),
-        textAlign = TextAlign.Center
-    )
-    Text(
-        text = movie.overview,
-        style = MaterialTheme.typography.body1,
-        modifier = Modifier
-            .padding(10.dp)
-            .fillMaxWidth(),
-        textAlign = TextAlign.Center
-    )
-}
-
-@Composable
-private fun RowButtons() {
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Button(
-            onClick = { /*TODO*/ },
-            Modifier
-                .padding(bottom = 40.dp)
-                .preferredHeight(40.dp)
-                .wrapContentWidth()
-        ) {
-            val img = loadDrawableImage(defaultImage = R.drawable.ic_play_arrow)
-            img.value?.let {
-                Image(bitmap = it.asImageBitmap())
-            }
-            Text(text = "Assista")
-        }
-        Spacer(modifier = Modifier.padding(10.dp))
-        Button(
-            onClick = { /*TODO*/ },
-            Modifier
-                .padding(bottom = 40.dp)
-                .preferredHeight(40.dp)
-                .wrapContentWidth()
-        ) {
-            val img = loadDrawableImage(defaultImage = R.drawable.ic_star_rate)
-            img.value?.let {
-                Image(bitmap = it.asImageBitmap())
-            }
-            Text(text = "Favoritos")
-        }
+        RowButtons(onFavoriteClick)
     }
 }
