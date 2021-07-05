@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/matheus/AndroidStudioProjects/globoplayrecrutamento/app/src/main/res/drawable/ic_back.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/matheus/AndroidStudioProjects/globoplayrecrutamento/app/src/main/res/drawable/ic_check.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/matheus/AndroidStudioProjects/globoplayrecrutamento/app/src/main/res/drawable/ic_home.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/matheus/AndroidStudioProjects/globoplayrecrutamento/app/src/main/res/layout/activity_main.xml" value="0.1921875" />
       </map>
     </option>

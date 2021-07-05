@@ -12,7 +12,6 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.Dp
 import com.maslima.globo_play_recrutamento.R
-import com.maslima.globo_play_recrutamento.domain.model.Movie
 import com.maslima.globo_play_recrutamento.utils.loadPictures
 
 @Composable
