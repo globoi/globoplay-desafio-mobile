@@ -2,10 +2,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_graph"
-    app:startDestination="@id/movieListFragment">
-
+    app:startDestination="@id/splashScreenFragment">
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.maslima.globo_play_recrutamento.presentation.ui.splash.SplashScreenFragment"
+        android:label="SplashScreenFragment">
+        <action
+            android:id="@+id/splashToMovieList"
+            app:destination="@id/movieListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/movieListFragment"
         android:name="com.maslima.globo_play_recrutamento.presentation.ui.movie_list.MovieListFragment"
-        android:label="MovieListFragment" />
+        android:label="MovieListFragment">
+        <action
+            android:id="@+id/listToDetail"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.maslima.globo_play_recrutamento.presentation.ui.movie_detail.MovieDetailFragment"
+        android:label="MovieDetailFragment" />
 </navigation>

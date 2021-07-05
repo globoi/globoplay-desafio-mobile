@@ -13,28 +13,32 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.imageResource
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.maslima.globo_play_recrutamento.R
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class SplashScreenFragment : Fragment(){
+class SplashScreenFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply {
-           setContent {
-               SplashScreen()
-           }
+            setContent {
+                SplashScreen(findNavController())
+            }
         }
     }
 }
 
 @Composable
-fun SplashScreen() {
+fun SplashScreen(navController: NavController) {
     ScreenContent()
+    Thread.sleep(4000)
+    navController.navigate(R.id.splashToMovieList)
 }
 
 @Composable
