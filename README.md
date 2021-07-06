@@ -64,7 +64,7 @@ Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por
 Nossos designers elaboraram algumas sugestões de telas e fluxos para guiar você durante o desenvolvimento, portanto fique à vontade para modificar como você quiser.
 Para facilitar o processo, existem assets, app icons, ícones e paleta de cores no repositório. Mas se o seu lado designer falar mais alto, pode nos surpreender!
 
-- [Splash](assets/screenshots/splash.png)
+- [Splash](app/src/main/res/drawable-v24/splash.png)
 - [Grid de filmes](assets/screenshots/home.jpg)
 - [Detalhes](assets/screenshots/highlights-details.jpg)
 - [Assista Também](assets/screenshots/highlights.jpg)

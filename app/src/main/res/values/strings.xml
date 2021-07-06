@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GloboPlay</string>
+    <string name="splash_screen_content_description">Imagem Globo Play Splash Screen</string>
+    <string name="home_screen_back_description">Ícone de voltar</string>
+</resources>
