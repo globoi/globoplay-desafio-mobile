@@ -24,9 +24,18 @@ fun MovieListComponent(
     loading: Boolean,
     onChangeMovieScrollPosition: (Int) -> Unit,
     onTriggerEvent: () -> Unit,
-    navController: NavController
+    navController: NavController,
+    isFromFavorite: Boolean = false
 ) {
-    MovieList(movies, onChangeMovieScrollPosition, page, loading, onTriggerEvent, navController)
+    MovieList(
+        movies,
+        onChangeMovieScrollPosition,
+        page,
+        loading,
+        onTriggerEvent,
+        navController,
+        isFromFavorite
+    )
     CircularIndeterminateProgressBar(isDisplayed = loading, verticalBias = 0.3f)
 }
 
@@ -38,7 +47,8 @@ private fun MovieList(
     page: Int,
     loading: Boolean,
     onTriggerEvent: () -> Unit,
-    navController: NavController
+    navController: NavController,
+    isFromFavorite: Boolean = false
 ) {
     if (movies.isNotEmpty()) {
         LazyVerticalGrid(cells = GridCells.Fixed(3)) {
@@ -51,7 +61,11 @@ private fun MovieList(
                 MovieCard(movieUrlImage = url, onClickCard = {
                     val bundle = Bundle()
                     bundle.putInt("movieId", movie.id)
-                    navController.navigate(R.id.listToDetail, bundle)
+                    if (isFromFavorite) {
+                        navController.navigate(R.id.favoriteListToMovieDetail, bundle)
+                    } else {
+                        navController.navigate(R.id.listToDetail, bundle)
+                    }
                 })
             }
         }

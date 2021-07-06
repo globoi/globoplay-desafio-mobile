@@ -7,7 +7,6 @@ import com.maslima.globo_play_recrutamento.network.MovieService
 import com.maslima.globo_play_recrutamento.network.model.MovieDtoMapper
 import com.maslima.globo_play_recrutamento.utils.API_KEY
 import com.maslima.globo_play_recrutamento.utils.LANGUAGE_APP
-import javax.inject.Inject
 
 class MovieRepositoryImpl(
     private val movieDatabaseDao: MovieDatabaseDao,

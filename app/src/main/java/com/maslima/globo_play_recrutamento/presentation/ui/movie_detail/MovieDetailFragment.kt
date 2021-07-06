@@ -49,15 +49,12 @@ class MovieDetailFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                val loading = viewModel.loading.value
                 val movie = viewModel.movie.value
-                val movieExists = viewModel.movieExists.value
                 movie?.let {
                     ScreenDetail(
                         movie = it,
                         enableClick = { viewModel.onTriggerEvent(MovieEvent.AddMovieEvent) },
-                        disableClick = { viewModel.onTriggerEvent(MovieEvent.DeleteMovieEvent) },
-                        isAlreadyAdded = movieExists
+                        disableClick = { viewModel.onTriggerEvent(MovieEvent.DeleteMovieEvent) }
                     )
                 }
             }
@@ -67,7 +64,11 @@ class MovieDetailFragment : Fragment() {
 
 @ExperimentalCoroutinesApi
 @Composable
-fun ScreenDetail(movie: Movie, enableClick: () -> Unit, disableClick: () -> Unit, isAlreadyAdded: Boolean) {
+fun ScreenDetail(
+    movie: Movie,
+    enableClick: () -> Unit,
+    disableClick: () -> Unit
+) {
     Scaffold(
         topBar = {
             GeneralToolbar()
@@ -86,11 +87,5 @@ fun MovieContent(movie: Movie, enableClick: () -> Unit, disableClick: () -> Unit
         MovieDescriptionSection(movie)
         RowButtons(enableClick, disableClick)
         Spacer(modifier = Modifier.padding(10.dp))
-        Row {
-            Text(text = "Assista também", Modifier.clickable {
-
-            }, style = MaterialTheme.typography.h6)
-            Text(text = "Detalhes", style = MaterialTheme.typography.h6)
-        }
     }
 }
