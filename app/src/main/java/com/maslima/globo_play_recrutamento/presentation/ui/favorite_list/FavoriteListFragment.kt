@@ -17,6 +17,10 @@ import com.maslima.globo_play_recrutamento.presentation.components.GeneralToolba
 import com.maslima.globo_play_recrutamento.presentation.components.MovieListComponent
 import com.maslima.globo_play_recrutamento.presentation.ui.movie_list.MovieListEvent
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class FavoriteListFragment : Fragment() {
@@ -29,29 +33,40 @@ class FavoriteListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply {
-            val movies = viewModel.movies.value
+
+            var movies = viewModel.movies
             val loading = viewModel.loading.value
 
-            setContent {
-                val selectedItem = remember { mutableStateOf("home") }
-                val result = remember { mutableStateOf("") }
+            CoroutineScope(Dispatchers.IO).launch {
+                viewModel.onTriggerEvent(MovieListEvent.NewSearchEvent, { items -> movies = items })
+                withContext(Dispatchers.Main) {
+                    setContent {
+                        val selectedItem = remember { mutableStateOf("home") }
+                        val result = remember { mutableStateOf("") }
 
-                Scaffold(
-                    topBar = {
-                        GeneralToolbar()
-                    },
-                    bodyContent = {
-                        MovieListComponent(
-                            movies,
-                            0,
-                            loading,
-                            onChangeMovieScrollPosition = {},
-                            onTriggerEvent = { viewModel.onTriggerEvent(MovieListEvent.NextPageEvent) },
-                            navController = findNavController()
+                        Scaffold(
+                            topBar = {
+                                GeneralToolbar()
+                            },
+                            bodyContent = {
+                                MovieListComponent(
+                                    movies,
+                                    0,
+                                    loading,
+                                    onChangeMovieScrollPosition = {},
+                                    onTriggerEvent = {
+                                        viewModel.onTriggerEvent(
+                                            MovieListEvent.NextPageEvent,
+                                            {})
+                                    },
+                                    navController = findNavController(),
+                                    isFromFavorite = true
+                                )
+                            },
+                            bottomBar = { BottomBar(selectedItem, result, findNavController()) }
                         )
-                    },
-                    bottomBar = { BottomBar(selectedItem, result, findNavController()) }
-                )
+                    }
+                }
             }
         }
     }

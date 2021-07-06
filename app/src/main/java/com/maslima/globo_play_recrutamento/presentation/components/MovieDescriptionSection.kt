@@ -34,6 +34,7 @@ fun MovieDescriptionSection(movie: Movie) {
         modifier = Modifier
             .padding(10.dp)
             .fillMaxWidth(),
-        textAlign = TextAlign.Center
+        textAlign = TextAlign.Center,
+        maxLines = 4
     )
 }
