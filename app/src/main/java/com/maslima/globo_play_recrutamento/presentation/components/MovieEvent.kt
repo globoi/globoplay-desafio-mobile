@@ -7,4 +7,6 @@ sealed class MovieEvent {
         val id: Int
     ) : MovieEvent()
     object AddMovieEvent : MovieEvent()
+    object DeleteMovieEvent : MovieEvent()
+    object SelectSpecificMovie : MovieEvent()
 }

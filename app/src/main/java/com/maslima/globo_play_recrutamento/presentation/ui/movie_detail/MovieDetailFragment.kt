@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -50,31 +51,46 @@ class MovieDetailFragment : Fragment() {
             setContent {
                 val loading = viewModel.loading.value
                 val movie = viewModel.movie.value
+                val movieExists = viewModel.movieExists.value
                 movie?.let {
-                    ScreenDetail(movie = it) { viewModel.onTriggerEvent(MovieEvent.AddMovieEvent) }
+                    ScreenDetail(
+                        movie = it,
+                        enableClick = { viewModel.onTriggerEvent(MovieEvent.AddMovieEvent) },
+                        disableClick = { viewModel.onTriggerEvent(MovieEvent.DeleteMovieEvent) },
+                        isAlreadyAdded = movieExists
+                    )
                 }
             }
         }
     }
 }
 
+@ExperimentalCoroutinesApi
 @Composable
-fun ScreenDetail(movie: Movie, onFavoriteClick: () -> Unit) {
+fun ScreenDetail(movie: Movie, enableClick: () -> Unit, disableClick: () -> Unit, isAlreadyAdded: Boolean) {
     Scaffold(
         topBar = {
             GeneralToolbar()
         },
         bodyContent = {
-            MovieContent(movie, onFavoriteClick)
+            MovieContent(movie, enableClick, disableClick)
         },
     )
 }
 
+@ExperimentalCoroutinesApi
 @Composable
-fun MovieContent(movie: Movie, onFavoriteClick: () -> Unit) {
+fun MovieContent(movie: Movie, enableClick: () -> Unit, disableClick: () -> Unit) {
     ScrollableColumn {
         ImageSection(movie)
         MovieDescriptionSection(movie)
-        RowButtons(onFavoriteClick)
+        RowButtons(enableClick, disableClick)
+        Spacer(modifier = Modifier.padding(10.dp))
+        Row {
+            Text(text = "Assista também", Modifier.clickable {
+
+            }, style = MaterialTheme.typography.h6)
+            Text(text = "Detalhes", style = MaterialTheme.typography.h6)
+        }
     }
 }

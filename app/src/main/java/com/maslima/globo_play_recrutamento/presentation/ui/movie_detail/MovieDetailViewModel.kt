@@ -28,10 +28,13 @@ constructor(
 
     val loading = mutableStateOf(false)
 
+    val movieExists: MutableState<Boolean> = mutableStateOf(false)
+
     init {
         state.get<Int>(STATE_KEY_MOVIE)?.let { movieId ->
             onTriggerEvent(MovieEvent.GetMovieEvent(movieId))
         }
+        onTriggerEvent(MovieEvent.SelectSpecificMovie)
     }
 
     fun onTriggerEvent(event: MovieEvent) {
@@ -46,11 +49,33 @@ constructor(
                     is MovieEvent.AddMovieEvent -> {
                         addMovie()
                     }
+                    is MovieEvent.DeleteMovieEvent -> {
+                        removeMovie()
+                    }
+                    MovieEvent.SelectSpecificMovie -> selectSpecificMovie()
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
+    }
+
+    private suspend fun selectSpecificMovie() {
+        loading.value = true
+        this.movie.value?.let {
+            val movie1 = movieRepository.getMovie(it.id)
+            movieExists.value = movie1 != null
+        }
+
+        loading.value = false
+    }
+
+    private suspend fun removeMovie() {
+        loading.value = true
+        this.movie.value?.let {
+            movieRepository.deleteFavorite(it)
+        }
+        loading.value = false
     }
 
     private suspend fun getMovie(id: Int) {
@@ -59,7 +84,7 @@ constructor(
         val movie = movieRepository.getMovie(movieId = id)
         this.movie.value = movie
 
-        state.set(STATE_KEY_MOVIE, movie.id)
+        state.set(STATE_KEY_MOVIE, movie?.id)
 
         loading.value = false
     }
