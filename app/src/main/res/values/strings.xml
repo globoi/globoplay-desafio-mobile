@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GlobeChallenge</string>
+    <string name="toolbar_globoplay">globoplay</string>
 </resources>

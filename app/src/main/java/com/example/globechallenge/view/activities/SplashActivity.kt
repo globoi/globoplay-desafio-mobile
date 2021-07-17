@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun showLoginScreen() {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
 }
