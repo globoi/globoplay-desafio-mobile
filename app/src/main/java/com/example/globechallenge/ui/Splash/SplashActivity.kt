@@ -1,10 +1,11 @@
-package com.example.globechallenge.ui.home.activities
+package com.example.globechallenge.ui.Splash
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import com.example.globechallenge.MainActivity
 import com.example.globechallenge.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -19,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun showLoginScreen() {
-        startActivity(Intent(this, HomeActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 }

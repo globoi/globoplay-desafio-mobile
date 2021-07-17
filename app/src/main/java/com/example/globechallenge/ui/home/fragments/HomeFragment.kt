@@ -1,58 +1,66 @@
-package com.example.globechallenge.ui.home.activities
+package com.example.globechallenge.ui.home.fragments
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.globechallenge.data.repository.home.HomeRepository
-import com.example.globechallenge.databinding.ActivityHomeBinding
+import com.example.globechallenge.databinding.FragmentHomeBinding
 import com.example.globechallenge.ui.home.adapters.HomeGenreAdapter
 import com.example.globechallenge.ui.home.viewmodels.HomeViewModel
 
-class HomeActivity : AppCompatActivity() {
+class HomeFragment : Fragment() {
 
-    private lateinit var binding: ActivityHomeBinding
-
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var recyclerViewGenre: RecyclerView
     private lateinit var viewModel: HomeViewModel
     private val adapterGenre = HomeGenreAdapter()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentHomeBinding.inflate(layoutInflater)
+        val root = binding.root
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initialize()
     }
 
     private fun initialize() {
         viewBind()
         setupViewModel()
-        setupActionBar()
         setupRecyclerGenre()
         viewModel.getMovieByGenre()
     }
 
-    private fun setupActionBar() {
-        supportActionBar?.hide()
-    }
-
     private fun setupRecyclerGenre() {
         recyclerViewGenre.run {
-            layoutManager = LinearLayoutManager(this@HomeActivity, RecyclerView.VERTICAL, false)
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = adapterGenre
-        }
-    }
-
-    private fun setupViewModel() {
-        viewModel = ViewModelProvider(this, HomeViewModel.HomeViewModelFactory(HomeRepository())).get(
-            HomeViewModel::class.java)
-        viewModel.movieByGenreLiveData.observe(this) {
-            adapterGenre.addMovieToGenre(it)
         }
     }
 
     private fun viewBind() {
         recyclerViewGenre = binding.rvHomeGenre
+    }
+
+    private fun setupViewModel() {
+        viewModel = ViewModelProvider(this, HomeViewModel.HomeViewModelFactory(HomeRepository())).get(
+            HomeViewModel::class.java)
+        viewModel.movieByGenreLiveData.observe(viewLifecycleOwner) {
+            adapterGenre.addMovieToGenre(it)
+        }
+    }
+
+    companion object {
+        const val TITLE_HOME = "Home"
     }
 }
