@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/fragment_movie_height"
+    android:background="@color/grey_dark"
+    tools:context="ui.details.fragments.DetailsFragment">
+
+    <TextView
+        android:id="@+id/datasheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_26"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:text="@string/datasheet"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_18"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <TextView
+        android:id="@+id/originalTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_13"
+        android:text="@string/original_title"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/datasheet"
+        app:layout_constraintTop_toBottomOf="@+id/datasheet" />
+
+    <TextView
+        android:id="@+id/txtOriginalTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_5"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/originalTitle"
+        app:layout_constraintTop_toTopOf="@+id/originalTitle"
+        tools:text="Treze Dias Longe do Sol" />
+
+    <TextView
+        android:id="@+id/genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_13"
+        android:text="@string/genre"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/originalTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtOriginalTitle" />
+
+    <TextView
+        android:id="@+id/txtGenre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_5"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/genre"
+        app:layout_constraintTop_toTopOf="@+id/genre"
+        tools:text="Drama, Crime" />
+
+    <TextView
+        android:id="@+id/language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_12"
+        android:text="@string/languages"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/genre"
+        app:layout_constraintTop_toBottomOf="@+id/txtGenre" />
+
+    <TextView
+        android:id="@+id/txtLanguage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_5"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/language"
+        app:layout_constraintTop_toTopOf="@+id/language"
+        tools:text="Portugues, Ingles" />
+
+    <TextView
+        android:id="@+id/runtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_13"
+        android:text="@string/time"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/language"
+        app:layout_constraintTop_toBottomOf="@+id/txtLanguage" />
+
+    <TextView
+        android:id="@+id/txtRuntime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_5"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/runtime"
+        app:layout_constraintTop_toTopOf="@+id/runtime"
+        tools:text="90 min" />
+
+    <TextView
+        android:id="@+id/releaseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_13"
+        android:text="@string/release_year"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/runtime"
+        app:layout_constraintTop_toBottomOf="@+id/txtRuntime" />
+
+    <TextView
+        android:id="@+id/txtReleaseDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_5"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:layout_marginBottom="@dimen/margin_26"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/releaseDate"
+        app:layout_constraintTop_toTopOf="@+id/releaseDate"
+        tools:text="2017" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin_10">10dp</dimen>
-    <dimen name="margin_25">25dp</dimen>
+    <!--Margins-->
+    <dimen name="margin_3">3dp</dimen>
     <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_13">13dp</dimen>
     <dimen name="margin_15">15dp</dimen>
-    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="margin_16">16dp</dimen>
     <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="margin_25">25dp</dimen>
+    <dimen name="margin_26">26dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
+    <dimen name="margin_60">60dp</dimen>
+
+    <!--    Texts Size-->
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_22">22sp</dimen>
     <dimen name="text_size_26">26sp</dimen>
+
+    <!--Elevation-->
+    <dimen name="elevation_2">2dp</dimen>
+    <dimen name="elevation_5">5dp</dimen>
+
+    <!--specific measures-->
+    <dimen name="img_background_height">270dp</dimen>
+    <dimen name="img_post_width">100dp</dimen>
+    <dimen name="img_post_height">150dp</dimen>
+    <dimen name="tab_indication_height">2dp</dimen>
+    <dimen name="page_view_height">247dp</dimen>
+    <dimen name="button_watch_width">160dp</dimen>
+    <dimen name="button_watch_height">50dp</dimen>
+    <dimen name="button_my_favorite_width">160dp</dimen>
+    <dimen name="button_my_favorite_height">50dp</dimen>
+    <dimen name="fragment_movie_height">247dp</dimen>
+    <dimen name="layout_toolbar_height">60dp</dimen>
+    <dimen name="toolbar_height">60dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
+
 </resources>

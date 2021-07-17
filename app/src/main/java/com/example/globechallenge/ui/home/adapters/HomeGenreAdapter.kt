@@ -2,11 +2,13 @@ package com.example.globechallenge.ui.home.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.globechallenge.data.model.Movie
 import com.example.globechallenge.data.model.MovieToGenre
 import com.example.globechallenge.databinding.RvHomeListGenreBinding
+import com.example.globechallenge.ui.details.activities.MovieDetailsActivity
 
 class HomeGenreAdapter : RecyclerView.Adapter<HomeGenreAdapter.MyViewHolderGenre>() {
 
@@ -43,9 +45,11 @@ class HomeGenreAdapter : RecyclerView.Adapter<HomeGenreAdapter.MyViewHolderGenre
 
     private fun setListMovieToGenre(recyclerView: RecyclerView, list: List<Movie>) {
         val itemRecyclerView = HomeMovieAdapter(list) {
-            print("clique para detalhes")
+            val intent = MovieDetailsActivity.getIntentMovieDetail(recyclerView.context)
+            intent.putExtra(MovieDetailsActivity.EXTRA_ID, it.id)
+            ContextCompat.startActivity(recyclerView.context, intent, null)
         }
-       recyclerView.layoutManager =
+        recyclerView.layoutManager =
             LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
         recyclerView.adapter = itemRecyclerView
     }

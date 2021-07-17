@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">GlobeChallenge</string>
     <string name="toolbar_globoplay">globoplay</string>
+    <string name="title_activity_movie_detail">MovieDetail</string>
+    <string name="btn_watch">Assista</string>
+    <string name="btn_my_list">Minha lista</string>
+    <string name="datasheet">Ficha técnica</string>
+    <string name="original_title">Título Original:</string>
+    <string name="genre">Gênero:</string>
+    <string name="languages">Idiomas:</string>
+    <string name="time">Tempo:</string>
+    <string name="release_year">Ano de lançamento:</string>
+    <!-- TODO: To Remove when to create the section watch too -->
+    <string name="hello_blank_fragment">Preencher</string>
 </resources>

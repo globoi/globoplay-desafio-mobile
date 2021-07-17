@@ -5,14 +5,17 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GlobeChallenge">
-        <activity android:name="com.example.globechallenge.ui.home.activities.HomeActivity"/>
-        <activity android:name="com.example.globechallenge.ui.home.activities.SplashActivity"
+        <activity android:name=".ui.details.activities.MovieDetailsActivity"
+            android:theme="@style/Theme.GlobeChallenge.NoActionBar"/>
+        <activity android:name=".ui.home.activities.HomeActivity" />
+        <activity
+            android:name=".ui.home.activities.SplashActivity"
             android:theme="@style/Theme.GlobeChallenge.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
