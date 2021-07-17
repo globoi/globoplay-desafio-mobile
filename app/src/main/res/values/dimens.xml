@@ -28,18 +28,22 @@
     <dimen name="elevation_5">5dp</dimen>
 
     <!--specific measures-->
-    <dimen name="img_background_height">270dp</dimen>
-    <dimen name="img_post_width">100dp</dimen>
-    <dimen name="img_post_height">150dp</dimen>
+    <dimen name="width_0">0dp</dimen>
+    <dimen name="height_0">0dp</dimen>
     <dimen name="tab_indication_height">2dp</dimen>
-    <dimen name="page_view_height">247dp</dimen>
-    <dimen name="button_watch_width">160dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
     <dimen name="button_watch_height">50dp</dimen>
-    <dimen name="button_my_favorite_width">160dp</dimen>
     <dimen name="button_my_favorite_height">50dp</dimen>
-    <dimen name="fragment_movie_height">247dp</dimen>
     <dimen name="layout_toolbar_height">60dp</dimen>
     <dimen name="toolbar_height">60dp</dimen>
-    <dimen name="margin_12">12dp</dimen>
-
+    <dimen name="img_post_width">100dp</dimen>
+    <dimen name="img_post_height">150dp</dimen>
+    <dimen name="button_watch_width">160dp</dimen>
+    <dimen name="button_my_favorite_width">160dp</dimen>
+    <dimen name="page_view_height">247dp</dimen>
+    <dimen name="fragment_movie_height">247dp</dimen>
+    <dimen name="img_background_height">270dp</dimen>
+    <dimen name="heith_viewp_pager_300dp">300dp</dimen>
+    <dimen name="width_home_list_movie_cardview">100dp</dimen>
+    <dimen name="height_home_list_movie_cardview">160dp</dimen>
 </resources>

@@ -1,7 +1,7 @@
-package com.example.globechallenge.data.repository
+package com.example.globechallenge.data.repository.home
 
-import com.example.globechallenge.data.model.Genre
-import com.example.globechallenge.data.model.Movie
+import com.example.globechallenge.data.model.home.Genre
+import com.example.globechallenge.data.model.home.Movie
 import com.example.globechallenge.data.model.MovieToGenre
 import com.example.globechallenge.data.network.Api
 

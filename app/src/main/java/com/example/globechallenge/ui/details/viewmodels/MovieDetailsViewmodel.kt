@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.globechallenge.data.model.MovieDetails
-import com.example.globechallenge.data.repository.MovieDetailsRepository
+import com.example.globechallenge.data.model.details.MovieDetails
+import com.example.globechallenge.data.repository.details.MovieDetailsRepository
 import kotlinx.coroutines.launch
 
 class MovieDetailsViewModel(private val repository: MovieDetailsRepository) : ViewModel(){

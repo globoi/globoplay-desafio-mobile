@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.globechallenge.data.model.MovieToGenre
-import com.example.globechallenge.data.repository.HomeRepository
+import com.example.globechallenge.data.repository.home.HomeRepository
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: HomeRepository) : ViewModel() {

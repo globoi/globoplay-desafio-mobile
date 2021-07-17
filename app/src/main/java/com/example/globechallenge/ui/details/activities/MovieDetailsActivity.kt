@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import com.example.globechallenge.data.repository.MovieDetailsRepository
+import com.example.globechallenge.data.repository.details.MovieDetailsRepository
 import com.example.globechallenge.databinding.ActivityMovieDetailsBinding
 import com.example.globechallenge.helper.concatGenre
 import com.example.globechallenge.helper.loadImage

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.globechallenge.data.model.MovieDetails
+import com.example.globechallenge.data.model.details.MovieDetails
 import com.example.globechallenge.databinding.FragmentDetailsBinding
 import com.example.globechallenge.helper.concatGenre
 

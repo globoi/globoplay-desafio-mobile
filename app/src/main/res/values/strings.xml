@@ -1,7 +1,15 @@
 <resources>
+    <!-- App name   -->
     <string name="app_name">GlobeChallenge</string>
+
+    <!-- Splash screen   -->
+    <string name="content_descripiton_img_splash">imagem splash de símbolo da globoplay</string>
+
+    <!-- Home screen   -->
     <string name="toolbar_globoplay">globoplay</string>
-    <string name="title_activity_movie_detail">MovieDetail</string>
+    <string name="content_description_rv_home_list_movie_img">imagem do filme da home</string>
+
+    <!-- Movie details screen   -->
     <string name="btn_watch">Assista</string>
     <string name="btn_my_list">Minha lista</string>
     <string name="datasheet">Ficha técnica</string>
@@ -12,4 +20,6 @@
     <string name="release_year">Ano de lançamento:</string>
     <!-- TODO: To Remove when to create the section watch too -->
     <string name="hello_blank_fragment">Preencher</string>
+    <string name="content_descriptor_movie_background">imagem de fundo do filme da tela de detalhes de filme</string>
+    <string name="content_description_movie">imagem do filme da tela de detalhes de filme</string>
 </resources>

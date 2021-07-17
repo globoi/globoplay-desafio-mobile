@@ -7,8 +7,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="100dp"
-        android:layout_height="160dp"
+        android:layout_width="@dimen/width_home_list_movie_cardview"
+        android:layout_height="@dimen/height_home_list_movie_cardview"
         app:cardElevation="@dimen/elevation_5"
         android:layout_marginStart="@dimen/margin_5"
         android:layout_marginEnd="@dimen/margin_5"
@@ -25,7 +25,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/content_description_rv_home_list_movie_img" />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

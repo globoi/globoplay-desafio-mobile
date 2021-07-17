@@ -20,9 +20,9 @@
             android:scaleType="centerCrop"
             android:src="@color/grey_dark"
             app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
-            app:layout_constraintTop_toTopOf="@+id/constrainMovieDetail" />
+            app:layout_constraintTop_toTopOf="@+id/constrainMovieDetail"
+            android:contentDescription="@string/content_descriptor_movie_background" />
 
         <ImageView
             android:id="@+id/imgMovie"
@@ -35,7 +35,7 @@
             app:layout_constraintEnd_toEndOf="@+id/imgBlur"
             app:layout_constraintStart_toStartOf="@+id/imgBlur"
             app:layout_constraintTop_toTopOf="@+id/imgBlur"
-            app:layout_constraintVertical_bias="0.0" />
+            android:contentDescription="@string/content_description_movie" />
 
         <TextView
             android:id="@+id/txtTitle"
@@ -178,7 +178,7 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/heith_viewp_pager_300dp"
             android:layout_marginTop="@dimen/margin_32"
             app:layout_constraintBottom_toBottomOf="@id/constrainMovieDetail"
             app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
@@ -196,7 +196,7 @@
                 app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
                 app:layout_constraintTop_toBottomOf="@+id/layoutButton"
                 app:tabIconTint="@color/grey_medium"
-                app:tabIndicatorColor="#FFFFFF"
+                app:tabIndicatorColor="@color/white"
                 app:tabIndicatorFullWidth="false"
                 app:tabIndicatorHeight="@dimen/tab_indication_height"
                 app:tabMode="scrollable"

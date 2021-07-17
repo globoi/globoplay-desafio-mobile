@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.globechallenge.data.model.Movie
+import com.example.globechallenge.data.model.home.Movie
 import com.example.globechallenge.data.model.MovieToGenre
 import com.example.globechallenge.databinding.RvHomeListGenreBinding
 import com.example.globechallenge.ui.details.activities.MovieDetailsActivity

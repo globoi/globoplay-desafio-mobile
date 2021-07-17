@@ -1,4 +1,4 @@
-package com.example.globechallenge.data.model
+package com.example.globechallenge.data.model.home
 
 data class Movie(
     val id: String,

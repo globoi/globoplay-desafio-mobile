@@ -1,4 +1,4 @@
-package com.example.globechallenge.data.model
+package com.example.globechallenge.data.model.details
 
 import com.example.globechallenge.data.response.GenresItemDetail
 

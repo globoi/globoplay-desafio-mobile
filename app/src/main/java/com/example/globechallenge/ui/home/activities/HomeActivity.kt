@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.globechallenge.data.repository.HomeRepository
+import com.example.globechallenge.data.repository.home.HomeRepository
 import com.example.globechallenge.databinding.ActivityHomeBinding
 import com.example.globechallenge.ui.home.adapters.HomeGenreAdapter
 import com.example.globechallenge.ui.home.viewmodels.HomeViewModel
