@@ -1,4 +1,4 @@
-package com.example.globechallenge.view.adapter
+package com.example.globechallenge.ui.home.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

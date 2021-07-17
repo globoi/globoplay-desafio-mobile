@@ -1,4 +1,4 @@
-package com.example.globechallenge.view.activities
+package com.example.globechallenge.ui.home.activities
 
 import android.content.Intent
 import android.os.Bundle

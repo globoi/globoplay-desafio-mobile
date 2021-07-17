@@ -1,4 +1,4 @@
-package com.example.globechallenge.view.viewmodel
+package com.example.globechallenge.ui.home.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

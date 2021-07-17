@@ -1,4 +1,4 @@
-package com.example.globechallenge.view.activities
+package com.example.globechallenge.ui.home.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.globechallenge.data.repository.HomeRepository
 import com.example.globechallenge.databinding.ActivityHomeBinding
-import com.example.globechallenge.view.adapter.HomeGenreAdapter
-import com.example.globechallenge.view.viewmodel.HomeViewModel
+import com.example.globechallenge.ui.home.adapters.HomeGenreAdapter
+import com.example.globechallenge.ui.home.viewmodels.HomeViewModel
 
 class HomeActivity : AppCompatActivity() {
 

@@ -11,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GlobeChallenge">
-        <activity android:name=".view.activities.HomeActivity"/>
-        <activity android:name=".view.activities.SplashActivity"
+        <activity android:name="com.example.globechallenge.ui.home.activities.HomeActivity"/>
+        <activity android:name="com.example.globechallenge.ui.home.activities.SplashActivity"
             android:theme="@style/Theme.GlobeChallenge.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
