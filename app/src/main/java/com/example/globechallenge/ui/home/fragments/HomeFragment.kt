@@ -21,8 +21,6 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerViewGenre: RecyclerView
     private lateinit var viewModel: HomeViewModel
     private val adapterGenre = HomeGenreAdapter()
-    //private val adapterWatchToo = WatchTooAdapter()
-    //private lateinit var listMoveToGenre: List<MovieToGenre>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,9 +59,6 @@ class HomeFragment : Fragment() {
             HomeViewModel::class.java)
         viewModel.movieByGenreLiveData.observe(viewLifecycleOwner) {
             adapterGenre.addMovieToGenre(it)
-            //Coloquei aqui a chamada
-            //listMoveToGenre = it
-            //adapterWatchToo.addMovieToGenreWatchToo(it)
         }
     }
 

@@ -16,6 +16,7 @@
     <!-- Movie details screen   -->
     <string name="btn_watch">Assista</string>
     <string name="btn_my_list">Minha lista</string>
+    <string name="added">Adicionado</string>
     <string name="datasheet">Ficha técnica</string>
     <string name="original_title">Título Original:</string>
     <string name="genre">Gênero:</string>
@@ -31,4 +32,6 @@
     <string name="content_description_movie">imagem do filme da tela de detalhes de filme</string>
     <string name="title_activity_main">MainActivity</string>
 
+    <!-- SharedPreferences  -->
+    <string name="isFavorite">isFavorite</string>
 </resources>

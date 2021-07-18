@@ -2,8 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:state_selected="true"
-        android:color="@color/white"/>
+        android:color="@color/white"
+        android:drawableLeft="@drawable/ic_home_menu"/>
     <item
         android:state_selected="false"
-        android:color="@color/grey_light"/>
+        android:color="@color/white"
+        android:drawableLeft="@drawable/ic_star"/>
 </selector>

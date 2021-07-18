@@ -23,6 +23,9 @@
     <dimen name="text_size_22">22sp</dimen>
     <dimen name="text_size_26">26sp</dimen>
 
+    <!--padding horizonal    -->
+    <dimen name="padding_16">16dp</dimen>
+
     <!--Elevation-->
     <dimen name="elevation_2">2dp</dimen>
     <dimen name="elevation_5">5dp</dimen>
@@ -49,4 +52,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="height_view_pager_416">416dp</dimen>
+    <dimen name="padding_30">30dp</dimen>
 </resources>

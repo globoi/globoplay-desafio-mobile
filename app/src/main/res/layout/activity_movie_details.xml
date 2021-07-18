@@ -76,104 +76,40 @@
             app:layout_constraintTop_toBottomOf="@+id/txtGenre"
             tools:text="ddsadas das dsad sadsad das dsa dsa dasdsa dsa dsa dsad das dsa das dsa dsad sadsa dsa dsa dsa dsa das dsa dsad sad sa dsa dsadsadsadsad sad sadsa dsadsa dsadsa dsad asd sad sadsadsa" />
 
-        <ImageButton
+        <Button
             android:id="@+id/btnWatch"
             android:layout_width="@dimen/button_watch_width"
             android:layout_height="@dimen/button_watch_height"
-            android:layout_marginStart="@dimen/margin_24"
-            android:layout_marginTop="@dimen/margin_20"
             android:background="@drawable/btn_watch"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDescription"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="ContentDescription" />
-
-        <LinearLayout
-            android:id="@+id/viewWatch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_24"
+            android:paddingHorizontal="@dimen/padding_30"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/margin_20"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="@+id/btnWatch"
-            app:layout_constraintEnd_toEndOf="@+id/btnWatch"
-            app:layout_constraintRight_toRightOf="@+id/btnWatch"
-            app:layout_constraintStart_toStartOf="@+id/btnWatch"
-            app:layout_constraintTop_toTopOf="@+id/btnWatch">
+            android:elevation="@dimen/elevation_2"
+            android:drawableLeft="@drawable/ic_arrow_right"
+            android:text="@string/btn_watch"
+            app:backgroundTint="@android:color/white"
+            android:textColor="@color/grey_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescription"/>
 
-            <ImageView
-                android:id="@+id/imgPlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin_10"
-                android:background="@drawable/ic_arrow_right"
-                android:elevation="@dimen/elevation_2"
-                app:layout_constraintBottom_toBottomOf="@id/btnWatch"
-                app:layout_constraintEnd_toEndOf="@+id/btnWatch"
-                app:layout_constraintHorizontal_bias="0.25"
-                app:layout_constraintStart_toStartOf="@+id/btnWatch"
-                app:layout_constraintTop_toTopOf="@id/btnWatch"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_3"
-                android:elevation="@dimen/elevation_2"
-                android:text="@string/btn_watch"
-                android:textColor="@color/grey_medium"
-                app:layout_constraintBottom_toBottomOf="@+id/imgPlay"
-                app:layout_constraintStart_toEndOf="@id/imgPlay"
-                app:layout_constraintTop_toTopOf="@+id/imgPlay"
-                app:layout_constraintVertical_bias="0.110000014" />
-        </LinearLayout>
-
-        <ImageButton
+        <Button
             android:id="@+id/btnMyList"
             android:layout_width="@dimen/button_my_favorite_width"
             android:layout_height="@dimen/button_my_favorite_height"
+            android:text="@string/btn_my_list"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/padding_16"
+            android:textAllCaps="false"
+            android:textColor="@color/grey_light_extra"
+            android:drawableLeft="@drawable/ic_home_menu"
+            android:elevation="@dimen/elevation_2"
             android:layout_marginEnd="@dimen/margin_24"
             android:background="@drawable/btn_my_list"
             app:layout_constraintBottom_toBottomOf="@+id/btnWatch"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btnWatch"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="ContentDescription" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@+id/btnMyList"
-            app:layout_constraintTop_toTopOf="@+id/btnMyList"
-            app:layout_constraintEnd_toEndOf="@+id/btnMyList"
-            app:layout_constraintBottom_toBottomOf="@+id/btnMyList"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/imgStar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_star"
-                android:elevation="@dimen/elevation_2"
-                android:layout_marginEnd="@dimen/margin_10"
-                app:layout_constraintBottom_toBottomOf="@id/btnWatch"
-                app:layout_constraintEnd_toEndOf="@+id/btnMyList"
-                app:layout_constraintHorizontal_bias="0.191"
-                app:layout_constraintStart_toStartOf="@+id/btnMyList"
-                app:layout_constraintTop_toTopOf="@id/btnMyList"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="@dimen/elevation_2"
-                android:text="@string/btn_my_list"
-                android:textColor="@color/grey_light_extra"
-                app:layout_constraintBottom_toBottomOf="@+id/imgStar"
-                app:layout_constraintEnd_toEndOf="@+id/btnMyList"
-                app:layout_constraintStart_toEndOf="@id/imgStar"
-                app:layout_constraintTop_toTopOf="@+id/imgStar"
-                app:layout_constraintVertical_bias="0.110000014" />
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="@+id/btnWatch" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
@@ -181,6 +117,7 @@
             android:layout_height="@dimen/height_view_pager_416"
             android:layout_marginTop="@dimen/margin_32"
             app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
             app:layout_constraintTop_toBottomOf="@+id/btnWatch">
 
