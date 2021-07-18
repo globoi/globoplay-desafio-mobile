@@ -4,6 +4,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.globechallenge.data.network.Api
+import com.example.globechallenge.data.response.Cast
 import com.example.globechallenge.data.response.GenresItemDetail
 import jp.wasabeef.glide.transformations.BlurTransformation
 
@@ -24,6 +25,20 @@ fun List<GenresItemDetail>.concatGenre(): String {
             first = false
         } else{
             string += ", ${it.name}"
+        }
+    }
+    return string
+}
+
+fun List<Cast>.concatCast(): String {
+    var string = ""
+    var first = true
+    this.forEach {
+        if (first) {
+            string = it.originalName
+            first = false
+        } else{
+            string += ", ${it.originalName}"
         }
     }
     return string

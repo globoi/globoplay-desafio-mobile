@@ -41,7 +41,6 @@
     <dimen name="button_watch_width">160dp</dimen>
     <dimen name="button_my_favorite_width">160dp</dimen>
     <dimen name="page_view_height">247dp</dimen>
-    <dimen name="fragment_movie_height">247dp</dimen>
     <dimen name="img_background_height">270dp</dimen>
     <dimen name="heith_viewp_pager_300dp">300dp</dimen>
     <dimen name="width_home_list_movie_cardview">100dp</dimen>
@@ -49,4 +48,5 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="height_view_pager_416">416dp</dimen>
 </resources>

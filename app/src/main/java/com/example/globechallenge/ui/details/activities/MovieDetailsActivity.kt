@@ -56,6 +56,9 @@ class MovieDetailsActivity : AppCompatActivity() {
         intent.getStringExtra(EXTRA_ID).run {
             viewModel.getMovieDetail(this.toString())
         }
+        intent.getStringExtra(EXTRA_ID).run {
+            viewModel.getMovieCreditToGetCast(this.toString())
+        }
     }
 
     private fun setValues(){
@@ -66,6 +69,10 @@ class MovieDetailsActivity : AppCompatActivity() {
             binding.imgBlur.loadImage(it.postPath, true)
             binding.imgMovie.loadImage(it.postPath)
             detailFragment.setMovie(it)
+        }
+
+        viewModel.movieCreditToGetCast.observe(this) {
+            detailFragment.setMovieCast(it)
         }
     }
 

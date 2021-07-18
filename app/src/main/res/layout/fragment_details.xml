@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/fragment_movie_height"
+    android:layout_height="wrap_content"
     android:background="@color/grey_dark"
+    android:paddingTop="@dimen/margin_32"
+    android:paddingBottom="@dimen/margin_32"
     tools:context="ui.details.fragments.DetailsFragment">
 
     <TextView
@@ -12,10 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
-        android:layout_marginTop="@dimen/margin_26"
         android:layout_marginEnd="@dimen/margin_16"
         android:layout_marginBottom="@dimen/margin_16"
         android:text="@string/datasheet"
+        android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_18"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,9 +27,9 @@
         android:id="@+id/originalTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_13"
+        android:layout_marginTop="@dimen/margin_24"
         android:text="@string/original_title"
-        android:textColor="@color/white"
+        android:textColor="@color/grey_light"
         android:textSize="@dimen/text_size_16"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/datasheet"
@@ -39,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_5"
         android:layout_marginEnd="@dimen/margin_16"
-        android:textColor="@color/white"
+        android:textColor="@color/grey_light"
         android:textSize="@dimen/text_size_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/originalTitle"
@@ -50,20 +52,20 @@
         android:id="@+id/genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_13"
+        android:layout_marginTop="@dimen/margin_8"
         android:text="@string/genre"
-        android:textColor="@color/white"
+        android:textColor="@color/grey_light"
         android:textSize="@dimen/text_size_16"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/originalTitle"
-        app:layout_constraintTop_toBottomOf="@+id/txtOriginalTitle" />
+        app:layout_constraintTop_toBottomOf="@id/txtOriginalTitle" />
 
     <TextView
         android:id="@+id/txtGenre"
         android:layout_width="@dimen/width_0"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_5"
-        android:textColor="@color/white"
+        android:textColor="@color/grey_light"
         android:textSize="@dimen/text_size_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/genre"
@@ -71,47 +73,23 @@
         tools:text="Drama, Crime" />
 
     <TextView
-        android:id="@+id/language"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_12"
-        android:text="@string/languages"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_16"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/genre"
-        app:layout_constraintTop_toBottomOf="@+id/txtGenre" />
-
-    <TextView
-        android:id="@+id/txtLanguage"
-        android:layout_width="@dimen/width_0"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_5"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/language"
-        app:layout_constraintTop_toTopOf="@+id/language"
-        tools:text="Portugues, Ingles" />
-
-    <TextView
         android:id="@+id/runtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_13"
+        android:layout_marginTop="@dimen/margin_8"
         android:text="@string/time"
-        android:textColor="@color/white"
+        android:textColor="@color/grey_light"
         android:textSize="@dimen/text_size_16"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/language"
-        app:layout_constraintTop_toBottomOf="@+id/txtLanguage" />
+        app:layout_constraintStart_toStartOf="@id/genre"
+        app:layout_constraintTop_toBottomOf="@+id/genre" />
 
     <TextView
         android:id="@+id/txtRuntime"
         android:layout_width="@dimen/width_0"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_5"
-        android:textColor="@color/white"
+        android:textColor="@color/grey_light"
         android:textSize="@dimen/text_size_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/runtime"
@@ -122,9 +100,9 @@
         android:id="@+id/releaseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_13"
+        android:layout_marginTop="@dimen/margin_8"
         android:text="@string/release_year"
-        android:textColor="@color/white"
+        android:textColor="@color/grey_light"
         android:textSize="@dimen/text_size_16"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/runtime"
@@ -136,12 +114,84 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_5"
         android:layout_marginEnd="@dimen/margin_16"
-        android:textColor="@color/white"
+        android:textColor="@color/grey_light"
         android:textSize="@dimen/text_size_16"
         android:layout_marginBottom="@dimen/margin_26"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/releaseDate"
         app:layout_constraintTop_toTopOf="@+id/releaseDate"
         tools:text="2017" />
+
+    "<TextView
+        android:id="@+id/countryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:text="@string/country"
+        android:textColor="@color/grey_light"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/releaseDate"
+        app:layout_constraintTop_toBottomOf="@+id/releaseDate" />
+
+    <TextView
+        android:id="@+id/txtCountryName"
+        android:layout_width="@dimen/width_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_5"
+        android:textColor="@color/grey_light"
+        android:textSize="@dimen/text_size_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/countryName"
+        app:layout_constraintTop_toTopOf="@+id/countryName"
+        tools:text="Brasil" />
+
+    <TextView
+        android:id="@+id/direction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:text="@string/direction"
+        android:textColor="@color/grey_light"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/countryName"
+        app:layout_constraintTop_toBottomOf="@+id/countryName" />
+
+    <TextView
+        android:id="@+id/txtDirection"
+        android:layout_width="@dimen/width_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_5"
+        android:textColor="@color/grey_light"
+        android:textSize="@dimen/text_size_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/direction"
+        app:layout_constraintTop_toTopOf="@id/direction"
+        android:text="Luciano Silva" />
+
+    <TextView
+        android:id="@+id/cast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:text="@string/cast"
+        android:textColor="@color/grey_light"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/direction"
+        app:layout_constraintTop_toBottomOf="@+id/direction" />
+
+    <TextView
+        android:id="@+id/txtCast"
+        android:layout_width="@dimen/width_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_5"
+        android:textColor="@color/grey_light"
+        android:textSize="@dimen/text_size_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cast"
+        app:layout_constraintTop_toTopOf="@+id/cast"
+        tools:text="Luciano Silva, Renata Araújo, Ana Lia, Amanda Cabral" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

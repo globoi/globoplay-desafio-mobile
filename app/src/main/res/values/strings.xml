@@ -19,9 +19,12 @@
     <string name="datasheet">Ficha técnica</string>
     <string name="original_title">Título Original:</string>
     <string name="genre">Gênero:</string>
-    <string name="languages">Idiomas:</string>
+    <string name="episodes">Episódios:</string>
+    <string name="country">País:</string>
+    <string name="direction">Direção:</string>
+    <string name="cast">Elenco:</string>
     <string name="time">Tempo:</string>
-    <string name="release_year">Ano de lançamento:</string>
+    <string name="release_year">Ano de Produção:</string>
     <!-- TODO: To Remove when to create the section watch too -->
     <string name="hello_blank_fragment">Preencher</string>
     <string name="content_descriptor_movie_background">imagem de fundo do filme da tela de detalhes de filme</string>

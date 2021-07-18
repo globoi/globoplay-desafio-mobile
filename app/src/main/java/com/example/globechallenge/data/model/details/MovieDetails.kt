@@ -8,6 +8,6 @@ data class MovieDetails(
     val runtime: Int,
     val overview: String,
     val releaseDate: String,
-    val languages: String,
+    val countryName: String,
     val postPath: String
 )
