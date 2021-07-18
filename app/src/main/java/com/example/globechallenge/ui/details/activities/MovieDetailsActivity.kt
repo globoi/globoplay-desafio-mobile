@@ -5,13 +5,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import com.example.globechallenge.data.model.MovieToGenre
 import com.example.globechallenge.data.repository.details.MovieDetailsRepository
 import com.example.globechallenge.databinding.ActivityMovieDetailsBinding
 import com.example.globechallenge.helper.concatGenre
 import com.example.globechallenge.helper.loadImage
 import com.example.globechallenge.ui.details.adapters.MovieInfoAdapter
 import com.example.globechallenge.ui.details.fragments.DetailsFragment
-import com.example.globechallenge.ui.details.fragments.MyFavoriteMovieFragment
+import com.example.globechallenge.ui.details.fragments.WatchTooFragment
 import com.example.globechallenge.ui.details.viewmodels.MovieDetailsViewModel
 
 class MovieDetailsActivity : AppCompatActivity() {
@@ -19,7 +20,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailsBinding
     private lateinit var viewModel: MovieDetailsViewModel
     private val detailFragment = DetailsFragment()
-    private val myFavoriteMovieFragment = MyFavoriteMovieFragment()
+    private val watchTooFragment = WatchTooFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +39,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun setupPageView() {
         val adapter = MovieInfoAdapter(supportFragmentManager)
-        adapter.addFragment(myFavoriteMovieFragment, MyFavoriteMovieFragment.TITLE_MY_FAVORITE)
+        adapter.addFragment(watchTooFragment, WatchTooFragment.TITLE_MY_FAVORITE)
         adapter.addFragment(detailFragment, DetailsFragment.TITLE_DETAIL)
         binding.viewPager.adapter = adapter
         binding.tabs.setupWithViewPager(binding.viewPager)
@@ -59,6 +60,8 @@ class MovieDetailsActivity : AppCompatActivity() {
         intent.getStringExtra(EXTRA_ID).run {
             viewModel.getMovieCreditToGetCast(this.toString())
         }
+        val a = intent.getParcelableArrayListExtra<MovieToGenre>(EXTRA_MOVIE_TO_GENRE) as? ArrayList<MovieToGenre>
+        watchTooFragment.setMovieToGenre(a)
     }
 
     private fun setValues(){
@@ -78,6 +81,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_ID = "EXTRA_ID"
+        const val EXTRA_MOVIE_TO_GENRE = "EXTRA_MOVIE_TO_GENRE"
         fun getIntentMovieDetail(context: Context): Intent {
             return Intent(context, MovieDetailsActivity::class.java)
         }

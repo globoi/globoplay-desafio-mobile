@@ -20,8 +20,7 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailsBinding.inflate(layoutInflater)
-        val root = binding.root
-        return root
+        return binding.root
     }
 
     companion object {

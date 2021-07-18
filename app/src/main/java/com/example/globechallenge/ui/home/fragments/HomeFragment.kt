@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.globechallenge.data.model.MovieToGenre
 import com.example.globechallenge.data.repository.home.HomeRepository
 import com.example.globechallenge.databinding.FragmentHomeBinding
+import com.example.globechallenge.ui.details.adapters.WatchTooAdapter
 import com.example.globechallenge.ui.home.adapters.HomeGenreAdapter
 import com.example.globechallenge.ui.home.viewmodels.HomeViewModel
 
@@ -19,6 +21,8 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerViewGenre: RecyclerView
     private lateinit var viewModel: HomeViewModel
     private val adapterGenre = HomeGenreAdapter()
+    //private val adapterWatchToo = WatchTooAdapter()
+    //private lateinit var listMoveToGenre: List<MovieToGenre>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,6 +61,9 @@ class HomeFragment : Fragment() {
             HomeViewModel::class.java)
         viewModel.movieByGenreLiveData.observe(viewLifecycleOwner) {
             adapterGenre.addMovieToGenre(it)
+            //Coloquei aqui a chamada
+            //listMoveToGenre = it
+            //adapterWatchToo.addMovieToGenreWatchToo(it)
         }
     }
 

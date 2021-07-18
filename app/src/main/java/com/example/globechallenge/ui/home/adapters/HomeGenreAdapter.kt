@@ -12,7 +12,7 @@ import com.example.globechallenge.ui.details.activities.MovieDetailsActivity
 
 class HomeGenreAdapter : RecyclerView.Adapter<HomeGenreAdapter.MyViewHolderGenre>() {
 
-    private val movieToGenre = ArrayList<MovieToGenre>()
+    private var movieToGenre = ArrayList<MovieToGenre>()
 
     fun addMovieToGenre(list: List<MovieToGenre>) {
         movieToGenre.clear()
@@ -47,6 +47,7 @@ class HomeGenreAdapter : RecyclerView.Adapter<HomeGenreAdapter.MyViewHolderGenre
         val itemRecyclerView = HomeMovieAdapter(list) {
             val intent = MovieDetailsActivity.getIntentMovieDetail(recyclerView.context)
             intent.putExtra(MovieDetailsActivity.EXTRA_ID, it.id)
+            intent.putParcelableArrayListExtra(MovieDetailsActivity.EXTRA_MOVIE_TO_GENRE, movieToGenre)
             ContextCompat.startActivity(recyclerView.context, intent, null)
         }
         recyclerView.layoutManager =
