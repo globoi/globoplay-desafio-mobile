@@ -30,12 +30,12 @@
             android:layout_height="@dimen/img_post_height"
             android:layout_marginTop="@dimen/margin_60"
             android:background="@color/grey_dark"
-            android:src="@drawable/splash"
             app:layout_constraintBottom_toBottomOf="@+id/imgBlur"
             app:layout_constraintEnd_toEndOf="@+id/imgBlur"
             app:layout_constraintStart_toStartOf="@+id/imgBlur"
             app:layout_constraintTop_toTopOf="@+id/imgBlur"
-            android:contentDescription="@string/content_description_movie" />
+            android:contentDescription="@string/content_description_movie"
+            tools:src="@drawable/splash"/>
 
         <TextView
             android:id="@+id/txtTitle"
@@ -102,13 +102,13 @@
             android:paddingHorizontal="@dimen/padding_16"
             android:textAllCaps="false"
             android:textColor="@color/grey_light_extra"
-            android:drawableLeft="@drawable/ic_home_menu"
             android:elevation="@dimen/elevation_2"
             android:layout_marginEnd="@dimen/margin_10"
             android:background="@drawable/btn_my_list"
             app:layout_constraintBottom_toBottomOf="@+id/btnWatch"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btnWatch" />
+            app:layout_constraintTop_toTopOf="@+id/btnWatch"
+            tools:drawableLeft="@drawable/ic_home_menu" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"

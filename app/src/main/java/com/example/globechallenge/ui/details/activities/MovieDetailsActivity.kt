@@ -12,7 +12,6 @@ import com.example.globechallenge.data.model.entities.FavoriteMoviesEntity
 import com.example.globechallenge.data.model.features.home.MovieToGenre
 import com.example.globechallenge.data.repository.details.MovieDetailsRepository
 import com.example.globechallenge.databinding.ActivityMovieDetailsBinding
-import com.example.globechallenge.helper.SharedPreferenceHelper
 import com.example.globechallenge.helper.concatGenre
 import com.example.globechallenge.helper.loadImage
 import com.example.globechallenge.helper.setDrawable
@@ -30,9 +29,10 @@ class MovieDetailsActivity : AppCompatActivity() {
     private val detailFragment = DetailsFragment()
     private val watchTooFragment = WatchTooFragment()
     private var movieToGenre: ArrayList<MovieToGenre>? = ArrayList()
-    private var imageString = ""
     private lateinit var favoriteMoviesEntity: FavoriteMoviesEntity
     private var movieId = ""
+    private var imageString = ""
+    private var isClicked = false
 
     private val favoritesViewModel: FavoritesViewModel by viewModels {
         FavoritiesViewModelFactory(
@@ -55,53 +55,22 @@ class MovieDetailsActivity : AppCompatActivity() {
         setValues()
     }
 
-    private fun settingBtnMyList(isFavorite: Boolean) {
-        with(binding) {
-            if (isFavorite) {
-                btnMyList.setDrawable(this@MovieDetailsActivity, R.drawable.ic_home_menu)
-                btnMyList.text = getString(R.string.added)
-//                    val moviesList = getMovies(movieToGenre!!)
-                //favoritesViewModel.deleteOneFavoriteMovie()
-                favoritesViewModel.insert(favoriteMoviesEntity)
-                val a = imageString
-                val salve = favoritesViewModel.allFavoriteMovies
-
-            } else {
-                btnMyList.setDrawable(this@MovieDetailsActivity, R.drawable.ic_star)
-                btnMyList.text = getString(R.string.btn_my_list)
-                val a = imageString
-            }
-        }
-    }
-
-//    private fun getMovies(movieToGenre: ArrayList<MovieToGenre>): MutableList<Movie> {
-//        val moviesList = mutableListOf<Movie>()
-//        movieToGenre.forEach{ movieToGenreItem ->
-//            moviesList.addAll(movieToGenreItem.getMovies() as MutableList<Movie>)
-//        }
-//        val imagesList = mutableListOf<String>()
-//        moviesList.forEach { movie->
-//            imagesList.add(movie.image)
-//        }
-//        return imagesList
-//        return moviesList
-//    }
-
     private fun setupButtons() {
         binding.btnWatch.setOnClickListener {
 
         }
         binding.btnMyList.setOnClickListener {
-            settingBtnMyList(getTheChangefromIsFavorite())
+            isMovieSavedClicked()
         }
     }
 
-    private fun getTheChangefromIsFavorite(): Boolean {
-        val isFavorite = SharedPreferenceHelper(this@MovieDetailsActivity)
-            .getIsFavoriteSharedPreferences()
-        SharedPreferenceHelper(this@MovieDetailsActivity)
-            .setIsFavoriteSharedPreferences(!isFavorite)
-        return isFavorite
+    private fun deleteMovieInRoomById() {
+        favoritesViewModel.deleteOneFavoriteMovie(movieId)
+    }
+
+    private fun insertMovieInRoomById() {
+        setupFavoriteEntity(imageString, movieId)
+        favoritesViewModel.insert(favoriteMoviesEntity)
     }
 
     private fun setupPageView() {
@@ -124,13 +93,9 @@ class MovieDetailsActivity : AppCompatActivity() {
     private fun getValuesIntent() {
         intent.getStringExtra(EXTRA_ID).run {
             movieId = this.toString()
-            viewModel.getMovieDetail(this.toString())
+            viewModel.getMovieDetail(movieId)
+            viewModel.getMovieCreditToGetCast(movieId)
         }
-
-        intent.getStringExtra(EXTRA_ID).run {
-            viewModel.getMovieCreditToGetCast(this.toString())
-        }
-
         movieToGenre = intent.getParcelableArrayListExtra(EXTRA_MOVIE_TO_GENRE)
         watchTooFragment.setMovieToGenre(movieToGenre)
     }
@@ -142,12 +107,10 @@ class MovieDetailsActivity : AppCompatActivity() {
             binding.txtGenre.text = it.genres.concatGenre()
             binding.imgBlur.loadImage(it.postPath, true)
             binding.imgMovie.loadImage(it.postPath)
-            imageString = it.postPath
             detailFragment.setMovie(it)
-            settingFavorite(it.postPath, movieId)
-            val isFavorite = SharedPreferenceHelper(this@MovieDetailsActivity)
-                .getIsFavoriteSharedPreferences()
-            settingBtnMyList(isFavorite)
+            imageString = it.postPath
+            setupFavoriteEntity(it.postPath, movieId)
+            isInitialMovieSaved(movieId)
             setupButtons()
         }
 
@@ -156,7 +119,55 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun settingFavorite(image: String, movieId: String) {
+    private fun isInitialMovieSaved(movieId: String) {
+        favoritesViewModel.getFavoriteMovieById(movieId).observe(
+            this@MovieDetailsActivity
+        ) { favoriteMoviesEntity ->
+            val isMovieSaved = favoriteMoviesEntity != null
+            if(isMovieSaved) {
+                isClicked = true
+                setupBtnForAdded()
+            } else {
+                isClicked = false
+                setupBtnForMyList()
+            }
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if(isClicked) {
+            insertMovieInRoomById()
+        }
+        else {
+            deleteMovieInRoomById()
+        }
+    }
+
+    private fun isMovieSavedClicked() {
+        isClicked = !isClicked
+        if(isClicked) {
+            setupBtnForAdded()
+        } else {
+            setupBtnForMyList()
+        }
+    }
+
+    private fun setupBtnForAdded() {
+        with(binding) {
+            btnMyList.setDrawable(this@MovieDetailsActivity, R.drawable.ic_baseline_check)
+            btnMyList.text = getString(R.string.added)
+        }
+    }
+
+    private fun setupBtnForMyList() {
+        with(binding) {
+            btnMyList.setDrawable(this@MovieDetailsActivity, R.drawable.ic_star)
+            btnMyList.text = getString(R.string.btn_my_list)
+        }
+    }
+
+    private fun setupFavoriteEntity(image: String, movieId: String) {
         favoriteMoviesEntity = FavoriteMoviesEntity(image, movieId)
     }
 

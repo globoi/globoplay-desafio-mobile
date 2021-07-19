@@ -11,6 +11,10 @@ interface FavoriteMoviesDao {
     @Query("SELECT * FROM favorite_movies_table")
     fun getAllFavoriteMovies(): Flow<List<FavoriteMoviesEntity>>
 
+    //Flow is an coroutines interface that is reactive to work asynchronous flows
+    @Query("SELECT * FROM favorite_movies_table WHERE id = :id")
+    fun getFavoriteMovieById(id: String): Flow<FavoriteMoviesEntity>
+
     //Using couroutines - suspend is similar to async in another languages
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(favoriteMoviesEntity: FavoriteMoviesEntity)
@@ -18,7 +22,7 @@ interface FavoriteMoviesDao {
     //Using couroutines - suspend is similar to async in another languages
 //    @Query("DELETE FROM favorite_movies_table WHERE id")
     @Query("DELETE FROM favorite_movies_table WHERE id  =:id")
-    suspend fun deleteOneFavoriteMovie(id: Int)
+    suspend fun deleteOneFavoriteMovie(id: String)
 
 //    @Delete
 //    fun deleteOneFavoriteMovie(favoriteMoviesEntity : FavoriteMoviesEntity)

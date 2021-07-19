@@ -10,12 +10,15 @@ class FavoritesViewModel(private val repository: FavoriteMoviesRepository) : Vie
     val allFavoriteMovies: LiveData<List<FavoriteMoviesEntity>> =
         repository.allFavoriteMovies.asLiveData()
 
+    fun getFavoriteMovieById(movieId: String): LiveData<FavoriteMoviesEntity> =
+        repository.getFavoriteMovieById(movieId).asLiveData()
+
     fun insert(favoriteMoviesEntity: FavoriteMoviesEntity) = viewModelScope.launch {
         repository.insert(favoriteMoviesEntity)
     }
 
-    fun deleteOneFavoriteMovie(movieID: String) = viewModelScope.launch {
-        repository.deleteOneFavoriteMovie(movieID)
+    fun deleteOneFavoriteMovie(movieId: String) = viewModelScope.launch {
+        repository.deleteOneFavoriteMovie(movieId)
     }
 }
 
