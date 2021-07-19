@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "kotlin-kapt"
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.com.globo"
+        minSdkVersion 22
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        buildConfigField "String", "BASE_URL_FILE", '"http://image.tmdb.org/t/p/w500"'
+        buildConfigField "String", "API_KEY", '"a38bb7041808747f410e16a68a4ac2ae"'
+        buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
+        buildConfigField "String", "LANGUAGE", '"pt-BR"'
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    def applicationDependencies = rootProject.ext.mainApplication
+    def unitTestDependencies = rootProject.ext.unitTesting
+    def integrationTestDependencies = rootProject.ext.integrationTesting
+
+    implementation applicationDependencies.appCompat
+    implementation applicationDependencies.room
+    kapt applicationDependencies.roomCompiler
+    implementation applicationDependencies.constraintLayout
+    implementation applicationDependencies.cardView
+    implementation applicationDependencies.recyclerView
+
+    implementation applicationDependencies.materialDesign
+
+    implementation applicationDependencies.glide
+
+    implementation applicationDependencies.gson
+
+    implementation applicationDependencies.retrofit
+    implementation applicationDependencies.retrofitConverter
+    implementation applicationDependencies.rxJava
+    implementation applicationDependencies.rxAndroid
+    implementation applicationDependencies.retrofitRxJava
+
+    testImplementation unitTestDependencies.mockk
+    testImplementation unitTestDependencies.junit
+    testImplementation unitTestDependencies.coreTesting
+
+    androidTestImplementation integrationTestDependencies.espresso
+    androidTestImplementation integrationTestDependencies.runner
+    androidTestImplementation integrationTestDependencies.mockk
+    androidTestImplementation integrationTestDependencies.supportEspressoCore
+    androidTestImplementation integrationTestDependencies.androidxEspressoCore
+    androidTestImplementation integrationTestDependencies.annotationsTest
+    androidTestImplementation integrationTestDependencies.rules
+}
