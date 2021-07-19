@@ -1,4 +1,22 @@
 
+
+Ola, tudo bem? Sou caio e desenvolvi esse projeto pensando em vocês!
+
+Dediquei o máximo de esforço possível para entregar o melhor que podia no prazo do fim de semana, pois também trabalho em outro projeto!
+
+Será muito bacana ser avaliado e seria ótimo um feedback de vocês com algo que eu possa melhorar no código para ficar cada vez melhor, a opinião é sempre bem vinda!
+
+Ficou faltando praticamente os testes, resolvi deixar por ultimo pois segundo a descrição o teste eram objetivos secundários (não quer dizer que não sejam impreensindíveis), acabou que precisaria de um pouco mais de prazo para fazer instrumentado e unitário. Todavia caso surja alguma duvida de como seria feito esses testes, deixo o link outro projeto meu com essa mesma arquitetura e está coberta de testes unitários e instrumentos do jeito que eu adoraria ter feito nesse projeto!
+
+(Possui anexo página web com relatórios de testes e cobertura total do projeto!)
+https://github.com/CaioHAndradeLima/mobile-challenge
+
+
+Obrigado pela avaliação! Aguardo retorno
+
+---------------!!-----------------------------!!-----------------
+
+
 # Globoplay Recrutamento 
 
 ---

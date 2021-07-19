@@ -1,0 +1,111 @@
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+ext {
+
+    def room_version = "2.2.5"
+
+    // AndroidX Libraries
+    appCompat_version = "1.0.2"
+    archComponents_version = "2.0.0"
+    constraintLayout_version = "1.1.3"
+    cardView_version = "1.0.0"
+    recyclerView_version = "1.0.0"
+    kotlinCoroutines_version = "1.0.1"
+
+    // Google Services
+    materialDesign_version = "1.0.0"
+    firebaseCore_version = "16.0.6"
+    firebaseDatabase_version = "16.0.5"
+
+    // Third Party Libraries
+    retrofit_version = "2.5.0"
+    moshi_version = "1.8.0"
+    glide_version = "4.8.0"
+    timber_version = "4.7.1"
+    dagger_version = "2.16"
+    validator_version = "2.0.0"
+
+    // Unit Testing
+    junit_version = "4.12"
+    mockito_version = "1.5.0"
+    roboletric_version = "3.8"
+    mockk_version = "1.10.0"
+    coreTesting_version = "1.1.1"
+
+    // Integration Testing
+    runner_version = "1.0.2"
+    espresso_version = "1.0.2"
+
+    mainApplication = [
+
+            kotlin:                     "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            kotlinCoroutines:           "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutines_version",
+            kotlinCoroutinesAndroid:    "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutines_version",
+
+            appCompat:                  "androidx.appcompat:appcompat:$appCompat_version",
+            lifeCycle:                  "androidx.lifecycle:lifecycle-extensions:$archComponents_version",
+            room:                       "androidx.room:room-runtime:$room_version",
+            roomCompiler:               "androidx.room:room-compiler:$room_version",
+            constraintLayout:           "androidx.constraintlayout:constraintlayout:$constraintLayout_version",
+            cardView:                   "androidx.cardview:cardview:$cardView_version",
+            recyclerView:               "androidx.recyclerview:recyclerview:$recyclerView_version",
+            circularImageView:          "de.hdodenhof:circleimageview:3.0.0",
+            materialDesign:             "com.google.android.material:material:$materialDesign_version",
+            firebaseCore:               "com.google.firebase:firebase-core:$firebaseCore_version",
+            firebaseDatabase:           "com.google.firebase:firebase-database:$firebaseDatabase_version",
+
+            moshi:                      "com.squareup.moshi:moshi-kotlin:$moshi_version",
+            moshiConverter:             "com.squareup.retrofit2:converter-moshi:$retrofit_version",
+            glide:                      "com.github.bumptech.glide:glide:$glide_version",
+            timber:                     "com.jakewharton.timber:timber:$timber_version",
+            dagger:                     "com.google.dagger:dagger:$dagger_version",
+            daggerCompiler:             "com.google.dagger:dagger-compiler:$dagger_version",
+            daggerSupport:              "com.google.dagger:dagger-android-support:$dagger_version",
+            daggerProcessor:            "com.google.dagger:dagger-android-processor:$dagger_version",
+            validator:                  "com.github.Ilhasoft:data-binding-validator:$validator_version",
+
+            //design lib
+            gizminDesign:               "com.github.CaioHAndradeLima:DesignHelper:3.0.6",
+            datePickerLibrary:          "com.afollestad:date-picker:0.6.1",
+            BottomDatePickerLibrary:    "com.github.florent37:singledateandtimepicker:2.1.4",
+            //serializable and deserializable
+            gson :                      "com.google.code.gson:gson:2.8.5",
+
+            //reactx programming
+            rxAndroid:                  "io.reactivex.rxjava2:rxandroid:2.1.0",
+            rxJava:                     "io.reactivex.rxjava2:rxjava:2.2.2",
+
+            //networking
+            retrofit:                   "com.squareup.retrofit2:retrofit:$retrofit_version",
+            retrofitConverter :         "com.squareup.retrofit2:converter-gson:2.3.0",
+            retrofitRxJava:             "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+    ]
+
+    unitTesting = [
+
+            junit:          "junit:junit:$junit_version",
+            roomTesting:    "androidx.room:room-testing:$archComponents_version",
+            archTesting:    "androidx.arch.core:core-testing:$archComponents_version",
+            mockito:        "com.nhaarman:mockito-kotlin:$mockito_version",
+            robolectric:    "org.robolectric:robolectric:$roboletric_version",
+            mockk:          "io.mockk:mockk:$mockk_version",
+            coreTesting:    "android.arch.core:core-testing:$coreTesting_version"
+    ]
+
+    integrationTesting = [
+
+            runner:                 "com.android.support.test:runner:$runner_version",
+            espresso:               "com.android.support.test.espresso:espresso-core:$espresso_version",
+            mockk:                  "io.mockk:mockk-android:$mockk_version",
+            supportEspressoCore:    "com.android.support.test.espresso:espresso-core:3.0.2",
+            androidxEspressoCore:   "androidx.test.espresso:espresso-core:3.1.0",
+            annotationsTest:        "com.android.support:support-annotations:28.0.0",
+            rules:                  "androidx.test:rules:1.1.0",
+    ]
+
+}
