@@ -2,10 +2,10 @@ package com.example.globechallenge.ui
 
 import androidx.lifecycle.*
 import com.example.globechallenge.data.model.entities.FavoriteMoviesEntity
-import com.example.globechallenge.data.repository.Favorities.FavoriteMoviesRepository
+import com.example.globechallenge.data.repository.favorites.FavoriteMoviesRepository
 import kotlinx.coroutines.launch
 
-class FavoritiesViewModel(private val repository: FavoriteMoviesRepository) : ViewModel() {
+class FavoritesViewModel(private val repository: FavoriteMoviesRepository) : ViewModel() {
 
     val allFavoriteMovies: LiveData<List<FavoriteMoviesEntity>> =
         repository.allFavoriteMovies.asLiveData()
@@ -14,17 +14,17 @@ class FavoritiesViewModel(private val repository: FavoriteMoviesRepository) : Vi
         repository.insert(favoriteMoviesEntity)
     }
 
-    fun deleteOneFavoriteMovie() = viewModelScope.launch {
-        repository.deleteOneFavoriteMovie()
+    fun deleteOneFavoriteMovie(movieID: String) = viewModelScope.launch {
+        repository.deleteOneFavoriteMovie(movieID)
     }
 }
 
 class FavoritiesViewModelFactory(private val repository: FavoriteMoviesRepository) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(FavoritiesViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(FavoritesViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return FavoritiesViewModel(repository) as T
+            return FavoritesViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

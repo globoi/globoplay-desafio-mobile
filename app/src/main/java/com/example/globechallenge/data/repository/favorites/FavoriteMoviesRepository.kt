@@ -1,4 +1,4 @@
-package com.example.globechallenge.data.repository.Favorities
+package com.example.globechallenge.data.repository.favorites
 
 import androidx.annotation.WorkerThread
 import com.example.globechallenge.data.model.entities.FavoriteMoviesEntity
@@ -22,7 +22,7 @@ class FavoriteMoviesRepository(private val favoriteMoviesDao: FavoriteMoviesDao)
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun deleteOneFavoriteMovie() {
-        favoriteMoviesDao.deleteOneFavoriteMovie()
+    suspend fun deleteOneFavoriteMovie(movieID: String) {
+        favoriteMoviesDao.deleteOneFavoriteMovie(movieID.toInt())
     }
 }
