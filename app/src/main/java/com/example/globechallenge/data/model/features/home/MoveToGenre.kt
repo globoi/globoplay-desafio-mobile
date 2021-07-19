@@ -1,7 +1,6 @@
-package com.example.globechallenge.data.model
+package com.example.globechallenge.data.model.features.home
 
 import android.os.Parcelable
-import com.example.globechallenge.data.model.home.Movie
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

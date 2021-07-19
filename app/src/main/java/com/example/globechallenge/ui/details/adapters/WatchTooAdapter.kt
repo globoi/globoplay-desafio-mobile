@@ -3,8 +3,7 @@ package com.example.globechallenge.ui.details.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.globechallenge.data.model.MovieToGenre
-import com.example.globechallenge.data.model.home.Movie
+import com.example.globechallenge.data.model.features.home.Movie
 import com.example.globechallenge.databinding.RvHomeListMovieBinding
 import com.example.globechallenge.helper.loadImage
 

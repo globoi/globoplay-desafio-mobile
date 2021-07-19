@@ -1,7 +1,7 @@
 package com.example.globechallenge.data.repository.details
 
-import com.example.globechallenge.data.model.details.MovieCast
-import com.example.globechallenge.data.model.details.MovieDetails
+import com.example.globechallenge.data.model.features.details.MovieCast
+import com.example.globechallenge.data.model.features.details.MovieDetails
 import com.example.globechallenge.data.network.Api
 
 class MovieDetailsRepository {

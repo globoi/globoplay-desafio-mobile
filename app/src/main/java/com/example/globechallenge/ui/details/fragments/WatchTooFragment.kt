@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.globechallenge.data.model.MovieToGenre
-import com.example.globechallenge.data.model.home.Movie
+import com.example.globechallenge.data.model.features.home.MovieToGenre
+import com.example.globechallenge.data.model.features.home.Movie
 import com.example.globechallenge.databinding.FragmentWatchTooBinding
 import com.example.globechallenge.ui.details.adapters.WatchTooAdapter
 

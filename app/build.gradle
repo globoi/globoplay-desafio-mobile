@@ -70,9 +70,13 @@ dependencies {
     // Dependencies for working with Architecture components
 
     // Room components
-    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
-    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
-    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+//    implementation "androidx.room:room-ktx:$roomVersion"
+//    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:2.3.0"
+
+    implementation "androidx.room:room-runtime:2.3.0"
+    kapt  "androidx.room:room-compiler:2.3.0"
+    androidTestImplementation "androidx.room:room-testing:$roomVersion"
 
     // UI
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'

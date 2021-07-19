@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.globechallenge.data.model.MovieToGenre
+import com.example.globechallenge.data.model.features.home.MovieToGenre
 import com.example.globechallenge.data.repository.home.HomeRepository
 import kotlinx.coroutines.launch
 
@@ -20,6 +20,7 @@ class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
 
     class HomeViewModelFactory(private val repository: HomeRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            @Suppress("UNCHECKED_CAST")
             return HomeViewModel(repository) as T
         }
     }

@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.globechallenge.data.model.details.MovieCast
-import com.example.globechallenge.data.model.details.MovieDetails
+import com.example.globechallenge.data.model.features.details.MovieCast
+import com.example.globechallenge.data.model.features.details.MovieDetails
 import com.example.globechallenge.data.repository.details.MovieDetailsRepository
 import kotlinx.coroutines.launch
 
@@ -28,6 +28,7 @@ class MovieDetailsViewModel(private val repository: MovieDetailsRepository) : Vi
 
     class MovieDetailViewModelFactory(private val repository: MovieDetailsRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            @Suppress("UNCHECKED_CAST")
             return MovieDetailsViewModel(repository) as T
         }
     }
