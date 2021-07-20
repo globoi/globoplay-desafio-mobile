@@ -8,8 +8,8 @@ import com.example.globechallenge.databinding.RvWatchTooBinding
 import com.example.globechallenge.helper.loadImage
 
 class WatchTooAdapter(
-   private val list: List<Movie>
-   //private val onItemClickListener: (movie: Movie) -> Unit
+   private val list: List<Movie>,
+   private val onItemClickListener: (movie: Movie) -> Unit
 ) : RecyclerView.Adapter<WatchTooAdapter.MyViewHolderWatchToo>() {
 
     //private val list = ArrayList<MovieToGenre>()
@@ -32,9 +32,9 @@ class WatchTooAdapter(
         val movies = list[position]
         with(holder.binding) {
             imgMovieWacthToo.loadImage(movies.image)
-//            imgMovie.setOnClickListener {
-//              // onItemClickListener.invoke(movies)
-//            }
+            imgMovieWacthToo.setOnClickListener {
+               onItemClickListener.invoke(movies)
+            }
         }
     }
 

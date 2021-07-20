@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.globechallenge.data.model.features.home.MovieToGenre
 import com.example.globechallenge.data.model.features.home.Movie
 import com.example.globechallenge.databinding.FragmentWatchTooBinding
+import com.example.globechallenge.ui.details.activities.MovieDetailsActivity
 import com.example.globechallenge.ui.details.adapters.WatchTooAdapter
 
 class WatchTooFragment : Fragment() {
@@ -23,7 +25,12 @@ class WatchTooFragment : Fragment() {
        movieToGenre?.forEach{ movieToGenreItem ->
             moviesList.addAll(movieToGenreItem.getMovies() as MutableList<Movie>)
        }
-       adapterWatchToo = WatchTooAdapter(moviesList)
+       adapterWatchToo = WatchTooAdapter(moviesList) {
+           val intent = MovieDetailsActivity.getIntentMovieDetail(requireContext())
+           intent.putExtra(MovieDetailsActivity.EXTRA_ID, it.id)
+           intent.putParcelableArrayListExtra(MovieDetailsActivity.EXTRA_MOVIE_TO_GENRE, movieToGenre)
+           ContextCompat.startActivity(requireContext(), intent, null)
+       }
     }
 
     override fun onCreateView(
