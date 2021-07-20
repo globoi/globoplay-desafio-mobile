@@ -11,6 +11,7 @@
         android:layout_height="@dimen/height_home_list_movie_cardview"
         app:cardElevation="@dimen/elevation_5"
         android:layout_marginHorizontal="@dimen/margin_5"
+        android:layout_marginBottom="@dimen/margin_8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

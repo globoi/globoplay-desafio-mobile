@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.globechallenge.data.model.features.home.Movie
-import com.example.globechallenge.databinding.RvHomeListMovieBinding
+import com.example.globechallenge.databinding.RvWatchTooBinding
 import com.example.globechallenge.helper.loadImage
 
 class WatchTooAdapter(
@@ -22,7 +22,7 @@ class WatchTooAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolderWatchToo {
         return MyViewHolderWatchToo(
-            RvHomeListMovieBinding.inflate(
+            RvWatchTooBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
@@ -31,7 +31,7 @@ class WatchTooAdapter(
     override fun onBindViewHolder(holder: MyViewHolderWatchToo, position: Int) {
         val movies = list[position]
         with(holder.binding) {
-            imgMovie.loadImage(movies.image)
+            imgMovieWacthToo.loadImage(movies.image)
 //            imgMovie.setOnClickListener {
 //              // onItemClickListener.invoke(movies)
 //            }
@@ -40,6 +40,6 @@ class WatchTooAdapter(
 
     override fun getItemCount(): Int = list.size
 
-    class MyViewHolderWatchToo(val binding: RvHomeListMovieBinding) :
+    class MyViewHolderWatchToo(val binding: RvWatchTooBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

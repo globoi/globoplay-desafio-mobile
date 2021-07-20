@@ -18,7 +18,7 @@ import com.example.globechallenge.helper.concatGenre
 import com.example.globechallenge.helper.loadImage
 import com.example.globechallenge.helper.setDrawable
 import com.example.globechallenge.ui.FavoritesViewModel
-import com.example.globechallenge.ui.FavoritiesViewModelFactory
+import com.example.globechallenge.ui.FavoritesViewModelFactory
 import com.example.globechallenge.ui.details.adapters.MovieInfoAdapter
 import com.example.globechallenge.ui.details.fragments.DetailsFragment
 import com.example.globechallenge.ui.details.fragments.WatchTooFragment
@@ -38,7 +38,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private var key = ""
 
     private val favoritesViewModel: FavoritesViewModel by viewModels {
-        FavoritiesViewModelFactory(
+        FavoritesViewModelFactory(
             (application as GlobeChallengeApplication)
                 .repository
         )

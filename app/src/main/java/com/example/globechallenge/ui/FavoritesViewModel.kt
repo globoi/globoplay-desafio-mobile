@@ -22,7 +22,7 @@ class FavoritesViewModel(private val repository: FavoriteMoviesRepository) : Vie
     }
 }
 
-class FavoritiesViewModelFactory(private val repository: FavoriteMoviesRepository) :
+class FavoritesViewModelFactory(private val repository: FavoriteMoviesRepository) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FavoritesViewModel::class.java)) {

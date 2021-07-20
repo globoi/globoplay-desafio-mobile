@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_10"
         android:layout_marginTop="@dimen/margin_10"
-        android:layout_marginEnd="@dimen/margin_10" />
+        android:layout_marginEnd="@dimen/margin_10"
+        tools:listitem="@layout/rv_home_list_movie"/>
 
 </FrameLayout>

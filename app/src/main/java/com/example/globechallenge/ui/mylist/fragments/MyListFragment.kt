@@ -13,7 +13,7 @@ import com.example.globechallenge.R
 import com.example.globechallenge.application.GlobeChallengeApplication
 import com.example.globechallenge.databinding.FragmentMyListBinding
 import com.example.globechallenge.ui.FavoritesViewModel
-import com.example.globechallenge.ui.FavoritiesViewModelFactory
+import com.example.globechallenge.ui.FavoritesViewModelFactory
 import com.example.globechallenge.ui.details.fragments.WatchTooFragment
 import com.example.globechallenge.ui.mylist.adapter.MyListAdapter
 
@@ -23,7 +23,7 @@ class MyListFragment : Fragment() {
     private val adapterMyList = MyListAdapter()
 
     private val favoritesViewModel: FavoritesViewModel by viewModels {
-        FavoritiesViewModelFactory(
+        FavoritesViewModelFactory(
             (context?.applicationContext as GlobeChallengeApplication)
                 .repository
         )
@@ -43,7 +43,7 @@ class MyListFragment : Fragment() {
     }
 
     private fun initialize() {
-        getFavorities()
+        getFavorites()
         viewBind()
         setupRecyclerMyList()
     }
@@ -68,7 +68,7 @@ class MyListFragment : Fragment() {
         }
     }
 
-    private fun getFavorities() {
+    private fun getFavorites() {
         favoritesViewModel.allFavoriteMovies.observe(viewLifecycleOwner) { favoriteMoviesEntity ->
             favoriteMoviesEntity?.let {
                 adapterMyList.addMoviesToMyList(it)

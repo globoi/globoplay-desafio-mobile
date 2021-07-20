@@ -32,7 +32,7 @@
         android:layout_width="@dimen/width_0"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_25"
-        android:layout_marginBottom="@dimen/margin_20"
+        android:layout_marginBottom="@dimen/margin_16"
         android:src="@color/white"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
