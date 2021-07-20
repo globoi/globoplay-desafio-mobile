@@ -23,8 +23,9 @@
     <dimen name="text_size_22">22sp</dimen>
     <dimen name="text_size_26">26sp</dimen>
 
-    <!--padding horizonal    -->
+    <!--padding  -->
     <dimen name="padding_16">16dp</dimen>
+    <dimen name="padding_36">36dp</dimen>
 
     <!--Elevation-->
     <dimen name="elevation_2">2dp</dimen>

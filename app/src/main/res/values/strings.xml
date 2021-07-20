@@ -9,10 +9,6 @@
     <string name="toolbar_globoplay">globoplay</string>
     <string name="content_description_rv_home_list_movie_img">imagem do filme da home</string>
 
-    <!-- Bottom navigator   -->
-    <string name="home">Início</string>
-    <string name="my_list">Minha lista</string>
-
     <!-- Movie details screen   -->
     <string name="btn_watch">Assista</string>
     <string name="btn_my_list">Minha lista</string>
@@ -31,6 +27,14 @@
     <string name="content_descriptor_movie_background">imagem de fundo do filme da tela de detalhes de filme</string>
     <string name="content_description_movie">imagem do filme da tela de detalhes de filme</string>
     <string name="title_activity_main">MainActivity</string>
+
+    <!-- MyList screen   -->
+    <string name="toolbar_title">Minha lista</string>
+    <string name="content_description_rv_my_list_movie_img">imagem do filme da home</string>
+
+    <!-- Bottom navigator   -->
+    <string name="home">Início</string>
+    <string name="my_list">Minha lista</string>
 
     <!-- SharedPreferences  -->
     <string name="isFavorite">isFavorite</string>

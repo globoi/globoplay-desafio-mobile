@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_mylist"
-        android:name="com.example.globechallenge.ui.mylist.MyListFragment"
+        android:name="com.example.globechallenge.ui.mylist.fragments.MyListFragment"
         android:label="@string/my_list"
         tools:layout="@layout/fragment_my_list" />
 
