@@ -11,7 +11,7 @@ class HomeRepository {
     private val service = Api.serviceMoviesDB()
 
     private suspend fun getGenre(): List<Genre> {
-        return service.getGenre(Api.APIKEY)
+        return service.getGenre(Api.API_KEY)
             .genres
             .map {
                 Genre(it.id, it.name)
@@ -19,7 +19,7 @@ class HomeRepository {
     }
 
     private suspend fun getMovie(): List<Movie> {
-        return service.getMovie(Api.APIKEY)
+        return service.getMovie(Api.API_KEY)
             .results
             .map {
                 Movie(it.id.toString(), it.title, it.genreIds, it.posterPath)

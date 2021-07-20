@@ -1,4 +1,4 @@
-package com.example.globechallenge.ui.Splash
+package com.example.globechallenge.ui.splash
 
 import android.content.Intent
 import android.os.Bundle

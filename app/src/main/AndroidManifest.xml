@@ -12,13 +12,12 @@
         android:roundIcon="@mipmap/ic_globe_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GlobeChallenge">
-        <activity
-            android:name=".MainActivity" />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".ui.details.activities.MovieDetailsActivity"
-            android:theme="@style/Theme.GlobeChallenge.NoActionBar"/>
+            android:theme="@style/Theme.GlobeChallenge.NoActionBar" />
         <activity
-            android:name=".ui.Splash.SplashActivity"
+            android:name=".ui.splash.SplashActivity"
             android:theme="@style/Theme.GlobeChallenge.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

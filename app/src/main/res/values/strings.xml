@@ -22,8 +22,7 @@
     <string name="cast">Elenco:</string>
     <string name="time">Tempo:</string>
     <string name="release_year">Ano de Produção:</string>
-    <!-- TODO: To Remove when to create the section watch too -->
-    <string name="hello_blank_fragment">Preencher</string>
+    <string name="msg_no_filme">Não encontramos o filme, mas você pode pesquisa-lo.</string>
     <string name="content_descriptor_movie_background">imagem de fundo do filme da tela de detalhes de filme</string>
     <string name="content_description_movie">imagem do filme da tela de detalhes de filme</string>
     <string name="title_activity_main">MainActivity</string>

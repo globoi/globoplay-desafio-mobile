@@ -6,23 +6,31 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.globechallenge.data.model.features.details.MovieCast
 import com.example.globechallenge.data.model.features.details.MovieDetails
+import com.example.globechallenge.data.model.features.details.MovieVideos
 import com.example.globechallenge.data.repository.details.MovieDetailsRepository
 import kotlinx.coroutines.launch
 
 class MovieDetailsViewModel(private val repository: MovieDetailsRepository) : ViewModel(){
 
-    val movieDetail = MutableLiveData<MovieDetails>()
-    val movieCreditToGetCast = MutableLiveData<MovieCast>()
+    val movieDetailLiveData = MutableLiveData<MovieDetails>()
+    val movieCastMutableLiveData = MutableLiveData<MovieCast>()
+    val movieVideoMutableLivedata = MutableLiveData<MovieVideos>()
 
     fun getMovieDetail(id: String) {
         viewModelScope.launch {
-            movieDetail.postValue(repository.getMovieDetail(id))
+            movieDetailLiveData.postValue(repository.getMovieDetail(id))
         }
     }
 
     fun getMovieCreditToGetCast(id: String) {
         viewModelScope.launch {
-            movieCreditToGetCast.postValue(repository.getMovieCreditToGetCast(id))
+            movieCastMutableLiveData.postValue(repository.getMovieCreditToGetCast(id))
+        }
+    }
+
+    fun getMovieVideos(id: String) {
+        viewModelScope.launch {
+            movieVideoMutableLivedata.postValue(repository.getMovieVideos(id))
         }
     }
 
