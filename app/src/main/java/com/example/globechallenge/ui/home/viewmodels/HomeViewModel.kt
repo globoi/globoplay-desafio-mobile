@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.globechallenge.R
-import com.example.globechallenge.data.model.features.home.MovieToGenre
+import com.example.globechallenge.data.model.models.home.MovieToGenre
 import com.example.globechallenge.data.repository.home.HomeRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers

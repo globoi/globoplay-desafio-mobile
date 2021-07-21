@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.globechallenge.R
 import com.example.globechallenge.application.GlobeChallengeApplication
 import com.example.globechallenge.data.model.entities.FavoriteMoviesEntity
-import com.example.globechallenge.data.model.features.home.MovieToGenre
+import com.example.globechallenge.data.model.models.home.MovieToGenre
 import com.example.globechallenge.data.repository.details.MovieDetailsRepository
 import com.example.globechallenge.databinding.ActivityMovieDetailsBinding
 import com.example.globechallenge.utils.concatGenre

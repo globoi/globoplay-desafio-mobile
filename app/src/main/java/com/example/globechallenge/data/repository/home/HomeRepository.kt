@@ -1,8 +1,8 @@
 package com.example.globechallenge.data.repository.home
 
-import com.example.globechallenge.data.model.features.home.Genre
-import com.example.globechallenge.data.model.features.home.Movie
-import com.example.globechallenge.data.model.features.home.MovieToGenre
+import com.example.globechallenge.data.model.models.home.Genre
+import com.example.globechallenge.data.model.models.home.Movie
+import com.example.globechallenge.data.model.models.home.MovieToGenre
 import com.example.globechallenge.data.network.Api
 
 class HomeRepository {

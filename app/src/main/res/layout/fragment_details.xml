@@ -43,6 +43,7 @@
         android:layout_marginEnd="@dimen/margin_16"
         android:textColor="@color/grey_light"
         android:textSize="@dimen/text_size_16"
+        android:maxLines="5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/originalTitle"
         app:layout_constraintTop_toTopOf="@+id/originalTitle"
@@ -67,6 +68,7 @@
         android:layout_marginStart="@dimen/margin_5"
         android:textColor="@color/grey_light"
         android:textSize="@dimen/text_size_16"
+        android:maxLines="6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/genre"
         app:layout_constraintTop_toTopOf="@+id/genre"
@@ -82,7 +84,7 @@
         android:textSize="@dimen/text_size_16"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/genre"
-        app:layout_constraintTop_toBottomOf="@+id/genre" />
+        app:layout_constraintTop_toBottomOf="@+id/txtGenre" />
 
     <TextView
         android:id="@+id/txtRuntime"
@@ -116,6 +118,7 @@
         android:layout_marginEnd="@dimen/margin_16"
         android:textColor="@color/grey_light"
         android:textSize="@dimen/text_size_16"
+        android:maxLines="2"
         android:layout_marginBottom="@dimen/margin_26"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/releaseDate"
@@ -164,6 +167,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_5"
         android:textColor="@color/grey_light"
+        android:maxLines="4"
         android:textSize="@dimen/text_size_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/direction"
@@ -180,7 +184,7 @@
         android:textSize="@dimen/text_size_16"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/direction"
-        app:layout_constraintTop_toBottomOf="@+id/direction" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDirection" />
 
     <TextView
         android:id="@+id/txtCast"
@@ -189,6 +193,7 @@
         android:layout_marginStart="@dimen/margin_5"
         android:textColor="@color/grey_light"
         android:textSize="@dimen/text_size_16"
+        android:maxLines="16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/cast"
         app:layout_constraintTop_toTopOf="@+id/cast"

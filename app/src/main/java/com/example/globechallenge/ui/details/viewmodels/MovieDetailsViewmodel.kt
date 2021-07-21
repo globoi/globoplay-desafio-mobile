@@ -4,9 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.globechallenge.data.model.features.details.MovieCast
-import com.example.globechallenge.data.model.features.details.MovieDetails
-import com.example.globechallenge.data.model.features.details.MovieVideos
+import com.example.globechallenge.data.model.models.details.MovieCast
+import com.example.globechallenge.data.model.models.details.MovieDetails
+import com.example.globechallenge.data.model.models.details.MovieVideos
 import com.example.globechallenge.data.repository.details.MovieDetailsRepository
 import kotlinx.coroutines.launch
 

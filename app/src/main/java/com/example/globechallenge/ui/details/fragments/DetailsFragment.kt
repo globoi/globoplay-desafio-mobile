@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.globechallenge.data.model.features.details.MovieCast
-import com.example.globechallenge.data.model.features.details.MovieDetails
+import com.example.globechallenge.data.model.models.details.MovieCast
+import com.example.globechallenge.data.model.models.details.MovieDetails
 import com.example.globechallenge.databinding.FragmentDetailsBinding
 import com.example.globechallenge.utils.concatCast
 import com.example.globechallenge.utils.concatGenre
@@ -31,7 +31,7 @@ class DetailsFragment : Fragment() {
         binding.txtOriginalTitle.text = movie.title
         binding.txtGenre.text = movie.genres.concatGenre()
         binding.txtRuntime.text = movie.runtime.toString()
-        binding.txtReleaseDate.text = movie.releaseDate
+        binding.txtReleaseDate.text = movie.year
         binding.txtCountryName.text = movie.countryName
     }
 
