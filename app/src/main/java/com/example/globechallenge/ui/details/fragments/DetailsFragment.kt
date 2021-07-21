@@ -30,7 +30,7 @@ class DetailsFragment : Fragment() {
     fun setMovie(movie: MovieDetails) {
         binding.txtOriginalTitle.text = movie.title
         binding.txtGenre.text = movie.genres.concatGenre()
-        binding.txtRuntime.text = movie.runtime.toString()
+        binding.txtRuntime.text = movie.timeMinutes
         binding.txtReleaseDate.text = movie.year
         binding.txtCountryName.text = movie.countryName
     }

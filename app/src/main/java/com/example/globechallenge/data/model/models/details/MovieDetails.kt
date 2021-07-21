@@ -10,10 +10,11 @@ data class MovieDetails(
     val genres: List<GenresItemDetail>,
     val runtime: Int? = null,
     val overview: String? = null,
-    val releaseDate: String? = null,    //"1988-10-21" -> "1988"
+    val releaseDate: String? = null,
     val countryName: String? = null,
     val postPath: String
 ) {
+    //Example "1988-10-21" -> "1988"
     val year: String
         get() {
             val locale = Locale("en", "US")
@@ -24,4 +25,6 @@ data class MovieDetails(
                 ""
             }
         }
+
+    val timeMinutes = if(runtime!=null) "$runtime Minutos" else "$runtime"
 }

@@ -12,5 +12,6 @@
     <color name="grey_medium">#454545</color>
     <color name="grey_extra">#8C8687</color>
     <color name="grey_dark">#1F1F1F</color>
+    <color name="orange">#D75413</color>
     <color name="splash_background_black">#191919</color>
 </resources>
