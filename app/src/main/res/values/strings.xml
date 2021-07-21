@@ -1,0 +1,48 @@
+<resources>
+    <!-- App name   -->
+    <string name="app_name">GlobeChallenge</string>
+
+    <!-- Splash screen   -->
+    <string name="content_descripiton_img_splash">imagem splash de símbolo da globoplay</string>
+
+    <!-- Home screen   -->
+    <string name="toolbar_globoplay">globoplay</string>
+    <string name="content_description_rv_home_list_movie_img">imagem do filme da home</string>
+
+    <!-- Movie details screen   -->
+    <string name="btn_watch">Assista</string>
+    <string name="btn_my_list">Minha lista</string>
+    <string name="added">Adicionado</string>
+    <string name="datasheet">Ficha técnica</string>
+    <string name="original_title">Título Original:</string>
+    <string name="genre">Gênero:</string>
+    <string name="episodes">Episódios:</string>
+    <string name="country">País:</string>
+    <string name="direction">Direção:</string>
+    <string name="cast">Elenco:</string>
+    <string name="time">Tempo:</string>
+    <string name="release_year">Ano de Produção:</string>
+    <string name="msg_no_filme">Não encontramos o filme, mas você pode pesquisa-lo.</string>
+    <string name="content_descriptor_movie_background">imagem de fundo do filme da tela de detalhes de filme</string>
+    <string name="content_description_movie">imagem do filme da tela de detalhes de filme</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <!-- MyList screen   -->
+    <string name="toolbar_title">Minha lista</string>
+    <string name="empty_list">Lista vazia</string>
+    <string name="content_description_rv_my_list_movie_img">imagem do filme da home</string>
+
+    <!-- Bottom navigator   -->
+    <string name="home">Início</string>
+    <string name="my_list">Minha lista</string>
+
+    <!-- SharedPreferences  -->
+    <string name="isFavorite">isFavorite</string>
+
+    <!-- Error Dialog  -->
+    <string name="problem">Estamos com problema do Servidor</string>
+    <string name="try_again">Tente Novamente</string>
+    <string name="msg_error_401">Desculpe! Error 401.</string>
+    <string name="msg_error_404">Desculpe! Error 404.</string>
+    <string name="msg_generic_error">Erro Genérico.</string>
+</resources>

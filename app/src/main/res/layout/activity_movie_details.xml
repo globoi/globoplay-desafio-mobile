@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:fillViewport="true"
+    tools:context=".ui.details.activities.MovieDetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainMovieDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgBlur"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/img_background_height"
+            android:scaleType="centerCrop"
+            android:src="@color/grey_dark"
+            app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
+            app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
+            app:layout_constraintTop_toTopOf="@+id/constrainMovieDetail"
+            android:contentDescription="@string/content_descriptor_movie_background" />
+
+        <ImageView
+            android:id="@+id/imgMovie"
+            android:layout_width="@dimen/img_post_width"
+            android:layout_height="@dimen/img_post_height"
+            android:layout_marginTop="@dimen/margin_60"
+            android:background="@color/grey_dark"
+            app:layout_constraintBottom_toBottomOf="@+id/imgBlur"
+            app:layout_constraintEnd_toEndOf="@+id/imgBlur"
+            app:layout_constraintStart_toStartOf="@+id/imgBlur"
+            app:layout_constraintTop_toTopOf="@+id/imgBlur"
+            android:contentDescription="@string/content_description_movie"
+            tools:src="@drawable/splash"/>
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_22"
+            app:layout_constraintStart_toStartOf="@+id/imgMovie"
+            app:layout_constraintEnd_toEndOf="@+id/imgMovie"
+            app:layout_constraintTop_toBottomOf="@+id/imgBlur"
+            tools:text="Splash the movie" />
+
+        <TextView
+            android:id="@+id/txtGenre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/txtTitle"
+            app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+            tools:text="Animation" />
+
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_10"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginEnd="@dimen/margin_10"
+            android:maxLines="16"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtGenre"
+            tools:text="Natasha Romanoff Viúva Negra precisa confrontar partes de sua história quando surge uma conspiração perigosa ligada ao seu passado. Perseguida por uma força que não irá parar até derrotá-la, Natasha terá que lidar com sua antiga vida de espiã, e também reencontrar membros de sua família que deixou para trás antes de se tornar parte dos Vingadores." />
+
+        <Button
+            android:id="@+id/btnWatch"
+            android:layout_width="@dimen/button_watch_width"
+            android:layout_height="@dimen/button_watch_height"
+            android:background="@drawable/btn_watch"
+            android:layout_marginStart="@dimen/margin_10"
+            android:paddingHorizontal="@dimen/padding_30"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/margin_20"
+            android:gravity="center"
+            android:elevation="@dimen/elevation_2"
+            android:drawableLeft="@drawable/ic_arrow_right"
+            android:text="@string/btn_watch"
+            android:textColor="@color/grey_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescription"/>
+
+        <Button
+            android:id="@+id/btnMyList"
+            android:layout_width="@dimen/button_my_favorite_width"
+            android:layout_height="@dimen/button_my_favorite_height"
+            android:text="@string/btn_my_list"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/padding_16"
+            android:textAllCaps="false"
+            android:textColor="@color/grey_light_extra"
+            android:elevation="@dimen/elevation_2"
+            android:layout_marginEnd="@dimen/margin_10"
+            android:background="@drawable/btn_my_list"
+            app:layout_constraintBottom_toBottomOf="@+id/btnWatch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnWatch"
+            tools:drawableLeft="@drawable/ic_home_menu" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_view_pager_416"
+            android:layout_marginTop="@dimen/margin_32"
+            app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
+            app:layout_constraintTop_toBottomOf="@+id/btnWatch">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                style="@style/Widget.AppCompat.DrawerArrowToggle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
+                app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
+                app:layout_constraintTop_toBottomOf="@+id/layoutButton"
+                app:tabIconTint="@color/grey_medium"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="@dimen/tab_indication_height"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/grey_medium" />
+        </androidx.viewpager.widget.ViewPager>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
