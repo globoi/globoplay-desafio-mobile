@@ -44,18 +44,22 @@ class HomeFragment : Fragment() {
     private fun observers() {
         viewModel.viewFlipperLiveData.observe(viewLifecycleOwner, {
             it?.let { viewFlipper ->
-                with(binding) {
-                    viewFlipperHome.displayedChild = viewFlipper.first
-                    viewFlipper.second?.let { errorMessageResId ->
-                        errorDialog.dialogPhrase.text = getString(errorMessageResId)
-                    }
-                }
+                setupViewFlipperToShowError(viewFlipper)
             }
         })
 
         viewModel.movieByGenreMutableLiveData.observe(viewLifecycleOwner, {
             adapterGenre.addMovieToGenre(it)
         })
+    }
+
+    private fun setupViewFlipperToShowError(viewFlipper: Pair<Int, Int?>) {
+        with(binding) {
+            viewFlipperHome.displayedChild = viewFlipper.first
+            viewFlipper.second?.let { errorMessageResId ->
+                errorDialog.dialogPhrase.text = getString(errorMessageResId)
+            }
+        }
     }
 
     private fun getMovieByGenre() {
