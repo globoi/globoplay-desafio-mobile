@@ -43,17 +43,26 @@ Pense no desafio como uma oportunidade de mostrar todo o seu conhecimento. E fa�
 Não existe nenhum pré-requisito, portanto sinta-se a vontande para utilizar qualquer linguagem e usar ou não usar bibliotecas. 
 ----> Uso da linguagem ofical do Google: Kotlin.
 
-Bibliotecas:
-----> * Glide - Para carregamento de imagem;
+Bibliotecas:  
+----> * Glide - Para carregamento de imagem;  
+
 ----> * Retrofit - cliente HTTP de tipo seguro para Android e Java, usado para chamada as APIs. 
-----> * Converter Gson - usei  como o conversor do retrofit para serialização de Kotlin para JSON e de JSON para kotlin. Com ele uma instância Gson padrão é criada ou  pode ser configurada e passada para a GsonConverterFactory para controlar ainda mais a serialização;
-----> * Okhttp3 - Para print de logs das chamadas aos serviços da API e dos retornos das chamadas aos serviços da API;
-----> * Lifecycle -  Componentes compatíveis com o ciclo de vida realizam ações em resposta a uma mudança no status do ciclo de vida de outro componente, como atividades e fragmentos. Esses componentes ajudam você a produzir códigos mais organizados e, normalmente, mais leves e mais fáceis de manter.
-----> * Room - “Faz parte do Android JetPack” e foi usada para auxiliar na abstração das camadas de banco de dados (SQLite). Usei para salvar dados necessários para serem usados na tela de minha lista do App, na qual são mostrados os filmes favoritos;
-----> * Coroutines - o uso delas é recomendada para programação assíncrona no Android. Os recursos notáveis incluem o seguinte: Leve, menos vazamento de memória, suporte a cancelamento integrado e integração com o Jetpack;
-----> * viewBinding - Usada para a vinculação de visualizações. É um recurso que facilita a programação de códigos que interagem com visualizações. Quando a vinculação de visualizações é ativada em um módulo, ela gera uma classe de vinculação para cada arquivo de layout XML presente nesse módulo. A instância de uma classe de vinculação contém referências diretas a todas as visualizações que têm um código no layout correspondente;
-----> * Mockito - Para teste Unitário;
-----> * JUnit - Para testes Unitário.
+
+----> * Converter Gson - usei  como o conversor do retrofit para serialização de Kotlin para JSON e de JSON para kotlin. Com ele uma instância Gson padrão é criada ou  pode ser configurada e passada para a GsonConverterFactory para controlar ainda mais a serialização;  
+
+----> * Okhttp3 - Para print de logs das chamadas aos serviços da API e dos retornos das chamadas aos serviços da API;  
+
+----> * Lifecycle -  Componentes compatíveis com o ciclo de vida realizam ações em resposta a uma mudança no status do ciclo de vida de outro componente, como atividades e fragmentos. Esses componentes ajudam você a produzir códigos mais organizados e, normalmente, mais leves e mais fáceis de manter.  
+
+----> * Room - “Faz parte do Android JetPack” e foi usada para auxiliar na abstração das camadas de banco de dados (SQLite). Usei para salvar dados necessários para serem usados na tela de minha lista do App, na qual são mostrados os filmes favoritos;  
+
+----> * Coroutines - o uso delas é recomendada para programação assíncrona no Android. Os recursos notáveis incluem o seguinte: Leve, menos vazamento de memória, suporte a cancelamento integrado e integração com o Jetpack;  
+
+----> * viewBinding - Usada para a vinculação de visualizações. É um recurso que facilita a programação de códigos que interagem com visualizações. Quando a vinculação de visualizações é ativada em um módulo, ela gera uma classe de vinculação para cada arquivo de layout XML presente nesse módulo. A instância de uma classe de vinculação contém referências diretas a todas as visualizações que têm um código no layout correspondente;  
+
+----> * Mockito - Para teste Unitário;  
+
+----> * JUnit - Para testes Unitário.  
 
 Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por isso aceitamos desafios de todos os perfis e diferentes níveis de conhecimento técnico. Mas nos preocupamos com a qualidade, saúde e evolução do produto e por isso acreditamos bastante em testes automatizados.
 
@@ -63,47 +72,48 @@ Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por
 
 ### Essencial:
 
-- Tela de splash;       
-----> Feita!
+- Tela de splash;
+----> Feita!  
 
 - Listagem dos filmes;   
-----> Feita!
+----> Feita!  
 
 - Minha lista;     
-----> Feita!
+----> Feita!  
 
 - Detalhes do filme;   
------> Feito! 
+-----> Feito!   
 
 - Favoritar/Desfavoritar filmes;   
------>  Feito!
+----->  Feito!  
 
 - Layout estruturado;      
-----> Feito!
+----> Feito!  
 
 - Tratamento de erro.     
-----> Feito usando CoroutineExceptionHandlerPara lidar com exceções lançada por uma co-rotina.
+----> Feito usando CoroutineExceptionHandlerPara lidar com exceções lançada por uma co-rotina.  
 
 ### Ganha mais pontos se tiver:
 
 - Filtros;
 - Busca;
-- Paginação;
+- Paginação;  
  
 - Animações;   
-----> Feita na tela de Splash.
+----> Feita na tela de Splash.  
 
 - Testes unitários      
------> Feitos: Usando JUnit e Mockito.
+-----> Feitos: Usando JUnit e Mockito.  
 
 - Testes instrumentados;
 - Testes funcionais;
 - Pipeline Automatizado.
 
 
-### Iremos ficar encantados:
+### Iremos ficar encantados:  
+
 - Play do vídeo.     
----> Feito. Fiz o redirecionamento do usuário para o Youtube. Eu poderia ter usado componente visual VideoView do android, mas como alguns retornos da api levam para apenas o trailer do filme, achei ideal o YouTube, pois lá o usuário pode pesquisar mais sobre o filme.
+---> Feito. Fiz o redirecionamento do usuário para o Youtube. Eu poderia ter usado componente visual VideoView do android, mas como alguns retornos da api levam para apenas o trailer do filme, achei ideal o YouTube, pois lá o usuário pode pesquisar mais sobre o filme.  
 
 
 # Exemplos e sugestões
@@ -118,7 +128,7 @@ Para facilitar o processo, existem assets, app icons, ícones e paleta de cores 
 - [Detalhes](assets/screenshots/highlights-details.jpg)
 - [Assista Também](assets/screenshots/highlights.jpg)
 - [Adicionar aos favoritos](assets/screenshots/highlights-favorited.jpg)
-- [Lista de Favoritos](assets/screenshots/my-list.jpg)
+- [Lista de Favoritos](assets/screenshots/my-list.jpg)  
 
 ----> Tentei seguir o máximo que consegui durante o tempo o Layout sugerido.
 
