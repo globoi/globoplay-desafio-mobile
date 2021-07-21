@@ -16,7 +16,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.details.activities.MovieDetailsActivity"
-            android:theme="@style/Theme.GlobeChallenge.NoActionBar"
+            android:theme="@style/Theme.GlobeChallenge"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.splash.SplashActivity"

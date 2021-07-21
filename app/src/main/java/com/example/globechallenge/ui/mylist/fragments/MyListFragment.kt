@@ -12,11 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.globechallenge.R
 import com.example.globechallenge.application.GlobeChallengeApplication
 import com.example.globechallenge.databinding.FragmentMyListBinding
-import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModel
-import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModelFactory
 import com.example.globechallenge.ui.details.fragments.WatchTooFragment
 import com.example.globechallenge.ui.mylist.adapter.MyListAdapter
-import kotlinx.android.synthetic.main.fragment_my_list.*
+import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModel
+import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModelFactory
 
 class MyListFragment : Fragment() {
     private lateinit var binding: FragmentMyListBinding
@@ -71,32 +70,31 @@ class MyListFragment : Fragment() {
 
     private fun getFavorites() {
         favoritesViewModel.allFavoriteMovies.observe(viewLifecycleOwner) { favoriteMoviesEntity ->
-            if(favoriteMoviesEntity.isNullOrEmpty()) {
+            if (favoriteMoviesEntity.isNullOrEmpty()) {
                 hideFavorites()
                 showEmptyList()
             } else {
-                with(binding) {
-                    hideEmptyList()
-                    showFavorites()
-                }
+
+                hideEmptyList()
+                showFavorites()
                 adapterMyList.addMoviesToMyList(favoriteMoviesEntity)
             }
         }
     }
 
     private fun showFavorites() {
-        rvMyList.visibility = View.VISIBLE
+        binding.rvMyList.visibility = View.VISIBLE
     }
 
     private fun hideFavorites() {
-        rvMyList.visibility = View.GONE
+        binding.rvMyList.visibility = View.GONE
     }
 
     private fun showEmptyList() {
-        emptyList.visibility = View.VISIBLE
+        binding.emptyList.visibility = View.VISIBLE
     }
 
     private fun hideEmptyList() {
-        emptyList.visibility = View.GONE
+        binding.emptyList.visibility = View.GONE
     }
 }

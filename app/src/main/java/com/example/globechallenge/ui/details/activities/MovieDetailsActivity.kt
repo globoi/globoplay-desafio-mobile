@@ -4,25 +4,27 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.globechallenge.MainActivity
 import com.example.globechallenge.R
 import com.example.globechallenge.application.GlobeChallengeApplication
 import com.example.globechallenge.data.model.entities.FavoriteMoviesEntity
 import com.example.globechallenge.data.model.models.home.MovieToGenre
 import com.example.globechallenge.data.repository.details.MovieDetailsRepository
 import com.example.globechallenge.databinding.ActivityMovieDetailsBinding
-import com.example.globechallenge.utils.concatGenre
-import com.example.globechallenge.utils.loadImage
-import com.example.globechallenge.utils.setDrawable
 import com.example.globechallenge.ui.details.adapters.MovieInfoAdapter
 import com.example.globechallenge.ui.details.fragments.DetailsFragment
 import com.example.globechallenge.ui.details.fragments.WatchTooFragment
 import com.example.globechallenge.ui.details.viewmodels.MovieDetailsViewModel
 import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModel
 import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModelFactory
+import com.example.globechallenge.utils.concatGenre
+import com.example.globechallenge.utils.loadImage
+import com.example.globechallenge.utils.setDrawable
 
 class MovieDetailsActivity : AppCompatActivity() {
 
@@ -52,10 +54,19 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun initialize() {
+        val actionBar= supportActionBar
+        actionBar!!.title = ""
+        actionBar.setDisplayHomeAsUpEnabled(true)
+
         setupPageView()
         setupViewModel()
         getValuesIntent()
         setValues()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     private fun setupButtons() {
