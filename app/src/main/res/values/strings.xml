@@ -37,4 +37,11 @@
 
     <!-- SharedPreferences  -->
     <string name="isFavorite">isFavorite</string>
+
+    <!-- Error Dialog  -->
+    <string name="problem">Estamos com problema do Servidor</string>
+    <string name="try_again">Tente Novamente</string>
+    <string name="msg_error_401">Desculpe! Error 401.</string>
+    <string name="msg_error_404">Desculpe! Error 404.</string>
+    <string name="msg_generic_error">Erro Genérico.</string>
 </resources>

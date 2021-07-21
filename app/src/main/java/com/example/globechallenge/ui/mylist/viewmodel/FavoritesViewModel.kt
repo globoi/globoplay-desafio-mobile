@@ -1,4 +1,4 @@
-package com.example.globechallenge.ui
+package com.example.globechallenge.ui.mylist.viewmodel
 
 import androidx.lifecycle.*
 import com.example.globechallenge.data.model.entities.FavoriteMoviesEntity

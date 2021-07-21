@@ -7,12 +7,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object Api {
     const val API_KEY = "67068a3613aa1fd35959028414f6a670"
-    const val MOVIE_SERVICE = "https://api.themoviedb.org/3/"
-    const val IMAGE_SERVICE = "https://image.tmdb.org/t/p/original"
+    private const val MOVIE_SERVICE_BASE = "https://api.themoviedb.org/3/"
+    const val IMAGE_SERVICE_BASE = "https://image.tmdb.org/t/p/original"
 
     fun serviceMoviesDB(): Service {
         return Retrofit.Builder()
-            .baseUrl(MOVIE_SERVICE)
+            .baseUrl(MOVIE_SERVICE_BASE)
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient.Builder().apply {
                 addInterceptor(HttpLoggingInterceptor().apply {
@@ -24,7 +24,7 @@ object Api {
 
     fun serviceMovieDetail(): Service {
         return Retrofit.Builder()
-            .baseUrl(MOVIE_SERVICE)
+            .baseUrl(MOVIE_SERVICE_BASE)
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient.Builder().apply {
                 addInterceptor(HttpLoggingInterceptor().apply {
@@ -36,7 +36,7 @@ object Api {
 
     fun serviceMoviesVideo(): Service {
         return Retrofit.Builder()
-            .baseUrl(MOVIE_SERVICE)
+            .baseUrl(MOVIE_SERVICE_BASE)
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient.Builder().apply {
                 addInterceptor(HttpLoggingInterceptor().apply {

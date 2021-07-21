@@ -11,6 +11,9 @@
         android:layout_marginStart="@dimen/margin_10"
         android:layout_marginTop="@dimen/margin_10"
         android:layout_marginEnd="@dimen/margin_10"
+        android:scrollbarSize="4dp"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="vertical"
         tools:listitem="@layout/rv_home_list_movie"/>
 
 </FrameLayout>

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.globechallenge.data.model.features.home.Movie
 import com.example.globechallenge.databinding.RvHomeListMovieBinding
-import com.example.globechallenge.helper.loadImage
+import com.example.globechallenge.utils.loadImage
 
 class HomeMovieAdapter(
     private val list: List<Movie>,

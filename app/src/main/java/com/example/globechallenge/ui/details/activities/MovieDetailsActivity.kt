@@ -14,15 +14,15 @@ import com.example.globechallenge.data.model.entities.FavoriteMoviesEntity
 import com.example.globechallenge.data.model.features.home.MovieToGenre
 import com.example.globechallenge.data.repository.details.MovieDetailsRepository
 import com.example.globechallenge.databinding.ActivityMovieDetailsBinding
-import com.example.globechallenge.helper.concatGenre
-import com.example.globechallenge.helper.loadImage
-import com.example.globechallenge.helper.setDrawable
-import com.example.globechallenge.ui.FavoritesViewModel
-import com.example.globechallenge.ui.FavoritesViewModelFactory
+import com.example.globechallenge.utils.concatGenre
+import com.example.globechallenge.utils.loadImage
+import com.example.globechallenge.utils.setDrawable
 import com.example.globechallenge.ui.details.adapters.MovieInfoAdapter
 import com.example.globechallenge.ui.details.fragments.DetailsFragment
 import com.example.globechallenge.ui.details.fragments.WatchTooFragment
 import com.example.globechallenge.ui.details.viewmodels.MovieDetailsViewModel
+import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModel
+import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModelFactory
 
 class MovieDetailsActivity : AppCompatActivity() {
 

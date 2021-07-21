@@ -1,10 +1,10 @@
 package com.example.globechallenge.ui.home.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +37,28 @@ class HomeFragment : Fragment() {
         viewBind()
         setupViewModel()
         setupRecyclerGenre()
+        observers()
+        getMovieByGenre()
+    }
+
+    private fun observers() {
+        viewModel.viewFlipperLiveData.observe(viewLifecycleOwner, {
+            it?.let { viewFlipper ->
+                with(binding) {
+                    viewFlipperHome.displayedChild = viewFlipper.first
+                    viewFlipper.second?.let { errorMessageResId ->
+                        errorDialog.dialogPhrase.text = getString(errorMessageResId)
+                    }
+                }
+            }
+        })
+
+        viewModel.movieByGenreMutableLiveData.observe(viewLifecycleOwner, {
+            adapterGenre.addMovieToGenre(it)
+        })
+    }
+
+    private fun getMovieByGenre() {
         viewModel.getMovieByGenre()
     }
 
@@ -49,14 +71,16 @@ class HomeFragment : Fragment() {
 
     private fun viewBind() {
         recyclerViewGenre = binding.rvHomeGenre
+        binding.errorDialog.btnTryAgain.setOnClickListener {
+            viewModel.getMovieByGenre()
+        }
     }
 
     private fun setupViewModel() {
-        viewModel = ViewModelProvider(this, HomeViewModel.HomeViewModelFactory(HomeRepository())).get(
-            HomeViewModel::class.java)
-        viewModel.movieByGenreLiveData.observe(viewLifecycleOwner) {
-            adapterGenre.addMovieToGenre(it)
-        }
+        viewModel =
+            ViewModelProvider(this, HomeViewModel.HomeViewModelFactory(HomeRepository())).get(
+                HomeViewModel::class.java
+            )
     }
 
     companion object {

@@ -12,7 +12,7 @@ import com.example.globechallenge.ui.details.activities.MovieDetailsActivity
 
 class HomeGenreAdapter : RecyclerView.Adapter<HomeGenreAdapter.MyViewHolderGenre>() {
 
-    private var movieToGenre = ArrayList<MovieToGenre>()
+   private var movieToGenre = ArrayList<MovieToGenre>()
 
     fun addMovieToGenre(list: List<MovieToGenre>) {
         movieToGenre.clear()

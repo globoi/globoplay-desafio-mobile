@@ -11,15 +11,13 @@ interface Service {
     suspend fun getGenre(
         @Query("api_key") apiKey: String,
         @Query("language") language: String = "pt-BR"
-    )
-            : GenreResponse
+    ): GenreResponse
 
     @GET("movie/popular")
     suspend fun getMovie(
         @Query("api_key") apiKey: String,
         @Query("language") language: String = "pt-BR"
-    )
-            : MovieResponse
+    ): MovieResponse
 
     @GET("movie/{id}")
     suspend fun getMovieDetails(

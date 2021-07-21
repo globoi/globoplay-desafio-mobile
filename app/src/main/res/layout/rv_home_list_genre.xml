@@ -38,6 +38,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:scrollbarSize="4dp"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="vertical"
         app:layout_constraintTop_toBottomOf="@+id/titleGenre" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

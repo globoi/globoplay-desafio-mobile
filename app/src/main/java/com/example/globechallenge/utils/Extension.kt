@@ -1,4 +1,4 @@
-package com.example.globechallenge.helper
+package com.example.globechallenge.utils
 
 import android.content.Context
 import android.widget.Button
@@ -14,7 +14,7 @@ import jp.wasabeef.glide.transformations.BlurTransformation
 
 fun ImageView.loadImage(imageUrl: String, blur: Boolean = false) {
     val glide = Glide.with(this)
-        .load(Api.IMAGE_SERVICE + imageUrl)
+        .load(Api.IMAGE_SERVICE_BASE + imageUrl)
         .centerCrop()
     if (blur) glide.apply(RequestOptions.bitmapTransform(BlurTransformation(20, 1)))
     glide.into(this)

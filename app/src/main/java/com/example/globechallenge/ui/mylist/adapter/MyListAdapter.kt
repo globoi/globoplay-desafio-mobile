@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.globechallenge.data.model.entities.FavoriteMoviesEntity
 import com.example.globechallenge.databinding.RvMyListBinding
-import com.example.globechallenge.helper.loadImage
+import com.example.globechallenge.utils.loadImage
 
 class MyListAdapter(
         //private val onItemClickListener: (movie: Movie) -> Unit

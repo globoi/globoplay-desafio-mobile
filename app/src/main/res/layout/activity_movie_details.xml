@@ -69,12 +69,12 @@
             android:layout_marginStart="@dimen/margin_10"
             android:layout_marginTop="@dimen/margin_10"
             android:layout_marginEnd="@dimen/margin_10"
-            android:maxLines="3"
+            android:maxLines="16"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtGenre"
-            tools:text="ddsadas das dsad sadsad das dsa dsa dasdsa dsa dsa dsad das dsa das dsa dsad sadsa dsa dsa dsa dsa das dsa dsad sad sa dsa dsadsadsadsad sad sadsa dsadsa dsadsa dsad asd sad sadsadsa" />
+            tools:text="Natasha Romanoff Viúva Negra precisa confrontar partes de sua história quando surge uma conspiração perigosa ligada ao seu passado. Perseguida por uma força que não irá parar até derrotá-la, Natasha terá que lidar com sua antiga vida de espiã, e também reencontrar membros de sua família que deixou para trás antes de se tornar parte dos Vingadores." />
 
         <Button
             android:id="@+id/btnWatch"

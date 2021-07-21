@@ -4,7 +4,7 @@ import android.app.Application
 import com.example.globechallenge.data.repository.favorites.FavoriteMoviesRepository
 import com.example.globechallenge.data.repository.favorites.FavoriteMoviesRoomDatabase
 
-class GlobeChallengeApplication: Application() {
+class GlobeChallengeApplication : Application() {
 
     //First create a database
     private val database by lazy {

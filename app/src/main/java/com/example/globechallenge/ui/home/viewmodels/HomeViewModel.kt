@@ -4,17 +4,47 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.globechallenge.R
 import com.example.globechallenge.data.model.features.home.MovieToGenre
 import com.example.globechallenge.data.repository.home.HomeRepository
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
 
-    val movieByGenreLiveData = MutableLiveData<List<MovieToGenre>>()
+    val movieByGenreMutableLiveData = MutableLiveData<List<MovieToGenre>>()
+    val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
 
     fun getMovieByGenre() {
-        viewModelScope.launch {
-            movieByGenreLiveData.postValue(repository.getMovieByGenre())
+        var result: List<MovieToGenre>? = null
+        viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, exception -> }) {
+            result = repository.getMovieByGenre()
+        }.invokeOnCompletion { throwable ->
+            if (throwable != null) {
+                when (throwable) {
+                    is HttpException -> {
+                        when (throwable.code()) {
+                            401 -> {
+                                viewFlipperLiveData.postValue(Pair(VIEW_FLIPPER_ERROR, R.string.msg_error_401))
+                            }
+                            404 -> {
+                                viewFlipperLiveData.postValue(Pair(VIEW_FLIPPER_ERROR, R.string.msg_error_404))
+                            }
+                            else -> {
+                                viewFlipperLiveData.postValue(Pair(VIEW_FLIPPER_ERROR, R.string.msg_error_404))
+                            }
+                        }
+                    }
+                    else -> {
+                        viewFlipperLiveData.postValue(Pair(VIEW_FLIPPER_ERROR, R.string.msg_error_404))
+                    }
+                }
+            } else {
+                movieByGenreMutableLiveData.postValue(result!!)
+                viewFlipperLiveData.postValue(Pair(VIEW_FLIPPER_RECYCLER, null))
+            }
         }
     }
 
@@ -23,5 +53,10 @@ class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
             @Suppress("UNCHECKED_CAST")
             return HomeViewModel(repository) as T
         }
+    }
+
+    companion object {
+        private const val VIEW_FLIPPER_RECYCLER = 1
+        private const val VIEW_FLIPPER_ERROR = 2
     }
 }

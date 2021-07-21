@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.globechallenge.R
 import com.example.globechallenge.application.GlobeChallengeApplication
 import com.example.globechallenge.databinding.FragmentMyListBinding
-import com.example.globechallenge.ui.FavoritesViewModel
-import com.example.globechallenge.ui.FavoritesViewModelFactory
+import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModel
+import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModelFactory
 import com.example.globechallenge.ui.details.fragments.WatchTooFragment
 import com.example.globechallenge.ui.mylist.adapter.MyListAdapter
 
@@ -49,7 +49,7 @@ class MyListFragment : Fragment() {
     }
 
     private fun viewBind() {
-        with(binding.include.toolbarTxt) {
+        with(binding.includeToolbar.toolbarTxt) {
             gravity = Gravity.START
             text = getString(R.string.toolbar_title)
         }

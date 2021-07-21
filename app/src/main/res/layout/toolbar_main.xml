@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="?android:attr/actionBarSize"
     android:gravity="center"
+    android:paddingStart="@dimen/padding_10"
+    android:paddingEnd="@dimen/padding_10"
     android:theme="@style/Theme.GlobeChallenge.NoActionBar">
 
     <TextView

@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import com.example.globechallenge.data.model.features.details.MovieCast
 import com.example.globechallenge.data.model.features.details.MovieDetails
 import com.example.globechallenge.databinding.FragmentDetailsBinding
-import com.example.globechallenge.helper.concatCast
-import com.example.globechallenge.helper.concatGenre
+import com.example.globechallenge.utils.concatCast
+import com.example.globechallenge.utils.concatGenre
 
 class DetailsFragment : Fragment() {
 
