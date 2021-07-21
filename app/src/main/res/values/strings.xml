@@ -29,6 +29,7 @@
 
     <!-- MyList screen   -->
     <string name="toolbar_title">Minha lista</string>
+    <string name="empty_list">Lista vazia</string>
     <string name="content_description_rv_my_list_movie_img">imagem do filme da home</string>
 
     <!-- Bottom navigator   -->

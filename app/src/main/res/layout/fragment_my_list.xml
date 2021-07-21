@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:background="@color/grey_dark"
     tools:context=".ui.mylist.fragments.MyListFragment">
 
@@ -26,8 +27,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMyList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="@dimen/margin_10"
             android:layout_marginVertical="@dimen/margin_16"
             app:layout_constraintTop_toBottomOf="@id/includeToolbar"
@@ -38,6 +39,21 @@
             android:scrollbarThumbVertical="@android:color/darker_gray"
             android:scrollbars="vertical"
             tools:listitem="@layout/rv_my_list" />
+
+        <TextView
+            android:id="@+id/emptyList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/empty_list"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_22"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/includeToolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

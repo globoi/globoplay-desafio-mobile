@@ -19,14 +19,13 @@ class SplashActivity : AppCompatActivity() {
             showLoginScreen()}, 4000)
         binding.splashImage.animate().apply {
             duration = 1500
-            translationYBy(180f)
+            translationYBy(360f)
             alpha(0.5f)
         }.withEndAction {
             binding.splashImage.animate().apply {
                 duration = 1500
                 alpha(1f)
                 translationYBy(360f)
-
             }
         }
     }

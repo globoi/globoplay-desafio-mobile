@@ -16,6 +16,7 @@ import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModel
 import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModelFactory
 import com.example.globechallenge.ui.details.fragments.WatchTooFragment
 import com.example.globechallenge.ui.mylist.adapter.MyListAdapter
+import kotlinx.android.synthetic.main.fragment_my_list.*
 
 class MyListFragment : Fragment() {
     private lateinit var binding: FragmentMyListBinding
@@ -70,9 +71,32 @@ class MyListFragment : Fragment() {
 
     private fun getFavorites() {
         favoritesViewModel.allFavoriteMovies.observe(viewLifecycleOwner) { favoriteMoviesEntity ->
-            favoriteMoviesEntity?.let {
-                adapterMyList.addMoviesToMyList(it)
+            if(favoriteMoviesEntity.isNullOrEmpty()) {
+                hideFavorites()
+                showEmptyList()
+            } else {
+                with(binding) {
+                    hideEmptyList()
+                    showFavorites()
+                }
+                adapterMyList.addMoviesToMyList(favoriteMoviesEntity)
             }
         }
+    }
+
+    private fun showFavorites() {
+        rvMyList.visibility = View.VISIBLE
+    }
+
+    private fun hideFavorites() {
+        rvMyList.visibility = View.GONE
+    }
+
+    private fun showEmptyList() {
+        emptyList.visibility = View.VISIBLE
+    }
+
+    private fun hideEmptyList() {
+        emptyList.visibility = View.GONE
     }
 }
