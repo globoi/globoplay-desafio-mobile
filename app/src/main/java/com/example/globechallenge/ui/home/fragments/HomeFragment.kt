@@ -82,8 +82,4 @@ class HomeFragment : Fragment() {
                 HomeViewModel::class.java
             )
     }
-
-    companion object {
-        const val TITLE_HOME = "Home"
-    }
 }

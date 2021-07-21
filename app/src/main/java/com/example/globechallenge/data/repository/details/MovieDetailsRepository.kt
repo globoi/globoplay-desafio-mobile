@@ -7,7 +7,7 @@ import com.example.globechallenge.data.network.Api
 
 class MovieDetailsRepository {
 
-    private val service = Api.serviceMovieDetail()
+    private val service = Api.serviceMovie()
 
     suspend fun getMovieDetail(id: String): MovieDetails {
         return service.getMovieDetails(id, Api.API_KEY).run {

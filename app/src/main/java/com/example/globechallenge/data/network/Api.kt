@@ -22,19 +22,7 @@ object Api {
             .build().create(Service::class.java)
     }
 
-    fun serviceMovieDetail(): Service {
-        return Retrofit.Builder()
-            .baseUrl(MOVIE_SERVICE_BASE)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(OkHttpClient.Builder().apply {
-                addInterceptor(HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                })
-            }.build())
-            .build().create(Service::class.java)
-    }
-
-    fun serviceMoviesVideo(): Service {
+    fun serviceMovie(): Service {
         return Retrofit.Builder()
             .baseUrl(MOVIE_SERVICE_BASE)
             .addConverterFactory(GsonConverterFactory.create())

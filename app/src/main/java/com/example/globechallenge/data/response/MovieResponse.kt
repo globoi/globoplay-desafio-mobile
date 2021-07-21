@@ -3,7 +3,6 @@ package com.example.globechallenge.data.response
 import com.google.gson.annotations.SerializedName
 
 data class MovieResponse(
-
     @SerializedName("results")
     val results: List<ResultsItem>,
 )

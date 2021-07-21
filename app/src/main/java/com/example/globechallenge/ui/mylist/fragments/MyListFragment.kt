@@ -75,8 +75,4 @@ class MyListFragment : Fragment() {
             }
         }
     }
-
-    companion object {
-        const val TITLE_MY_LIST = "My List"
-    }
 }

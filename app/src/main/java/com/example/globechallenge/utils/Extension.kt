@@ -11,7 +11,6 @@ import com.example.globechallenge.data.response.Cast
 import com.example.globechallenge.data.response.GenresItemDetail
 import jp.wasabeef.glide.transformations.BlurTransformation
 
-
 fun ImageView.loadImage(imageUrl: String, blur: Boolean = false) {
     val glide = Glide.with(this)
         .load(Api.IMAGE_SERVICE_BASE + imageUrl)

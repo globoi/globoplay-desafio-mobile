@@ -20,11 +20,6 @@ interface FavoriteMoviesDao {
     suspend fun insert(favoriteMoviesEntity: FavoriteMoviesEntity)
 
     //Using couroutines - suspend is similar to async in another languages
-//    @Query("DELETE FROM favorite_movies_table WHERE id")
     @Query("DELETE FROM favorite_movies_table WHERE id  =:id")
     suspend fun deleteOneFavoriteMovie(id: String)
-
-//    @Delete
-//    fun deleteOneFavoriteMovie(favoriteMoviesEntity : FavoriteMoviesEntity)
-//
 }

@@ -65,12 +65,5 @@ class WatchTooFragment : Fragment() {
     companion object {
         const val TITLE_MY_FAVORITE = "Assista Também"
         const val GRID_LAYOUT_SPAN_COUNT = 3
-        fun newInstance(param1: String, param2: String) =
-            WatchTooFragment().apply {
-                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

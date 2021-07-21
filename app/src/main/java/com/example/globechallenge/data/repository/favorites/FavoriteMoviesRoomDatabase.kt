@@ -27,7 +27,6 @@ abstract class FavoriteMoviesRoomDatabase : RoomDatabase() {
                     .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
-                // return instance
                 instance
             }
         }
