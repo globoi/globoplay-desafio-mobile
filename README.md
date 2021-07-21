@@ -25,12 +25,19 @@ Pense no desafio como uma oportunidade de mostrar todo o seu conhecimento. E fa�
 ----->  Padrão de arquitetura  MVVM (Model View ViewModel) junto com livedata.
 
 - Consumo de APIs.  
------> 1. Get List: /movie/{movie_id}/lists; 
------> 2. Get Details: /movie/{movie_id}; 
------> 3. Get Popular: /movie/popular; 
------> 4. Get Images: /movie/{movie_id}/images; 
------> 5. Get Vídeos: /movie/{movie_id}/videos; 
------> 6. /movie/{movie_id}/credits;
+
+-----> 1. Get List: /movie/{movie_id}/lists;  
+
+-----> 2. Get Details: /movie/{movie_id};  
+
+-----> 3. Get Popular: /movie/popular;  
+
+-----> 4. Get Images: /movie/{movie_id}/images;   
+
+-----> 5. Get Vídeos: /movie/{movie_id}/videos;   
+
+-----> 6. /movie/{movie_id}/credits;  
+
 
 - GIT 
 -----> Realizado todo o processo de acordo com o pedido de entrega.
@@ -44,25 +51,26 @@ Não existe nenhum pré-requisito, portanto sinta-se a vontande para utilizar qu
 ----> Uso da linguagem ofical do Google: Kotlin.
 
 Bibliotecas:  
-----> * Glide - Para carregamento de imagem;  
 
-----> * Retrofit - cliente HTTP de tipo seguro para Android e Java, usado para chamada as APIs. 
+---->  Glide - Para carregamento de imagem;  
 
-----> * Converter Gson - usei  como o conversor do retrofit para serialização de Kotlin para JSON e de JSON para kotlin. Com ele uma instância Gson padrão é criada ou  pode ser configurada e passada para a GsonConverterFactory para controlar ainda mais a serialização;  
+---->  Retrofit - cliente HTTP de tipo seguro para Android e Java, usado para chamada as APIs. 
 
-----> * Okhttp3 - Para print de logs das chamadas aos serviços da API e dos retornos das chamadas aos serviços da API;  
+---->  Converter Gson - usei  como o conversor do retrofit para serialização de Kotlin para JSON e de JSON para kotlin. Com ele uma instância Gson padrão é criada ou  pode ser configurada e passada para a GsonConverterFactory para controlar ainda mais a serialização;  
 
-----> * Lifecycle -  Componentes compatíveis com o ciclo de vida realizam ações em resposta a uma mudança no status do ciclo de vida de outro componente, como atividades e fragmentos. Esses componentes ajudam você a produzir códigos mais organizados e, normalmente, mais leves e mais fáceis de manter.  
+---->  Okhttp3 - Para print de logs das chamadas aos serviços da API e dos retornos das chamadas aos serviços da API;  
 
-----> * Room - “Faz parte do Android JetPack” e foi usada para auxiliar na abstração das camadas de banco de dados (SQLite). Usei para salvar dados necessários para serem usados na tela de minha lista do App, na qual são mostrados os filmes favoritos;  
+---->  Lifecycle -  Componentes compatíveis com o ciclo de vida realizam ações em resposta a uma mudança no status do ciclo de vida de outro componente, como atividades e fragmentos. Esses componentes ajudam você a produzir códigos mais organizados e, normalmente, mais leves e mais fáceis de manter.  
 
-----> * Coroutines - o uso delas é recomendada para programação assíncrona no Android. Os recursos notáveis incluem o seguinte: Leve, menos vazamento de memória, suporte a cancelamento integrado e integração com o Jetpack;  
+---->  Room - “Faz parte do Android JetPack” e foi usada para auxiliar na abstração das camadas de banco de dados (SQLite). Usei para salvar dados necessários para serem usados na tela de minha lista do App, na qual são mostrados os filmes favoritos;  
 
-----> * viewBinding - Usada para a vinculação de visualizações. É um recurso que facilita a programação de códigos que interagem com visualizações. Quando a vinculação de visualizações é ativada em um módulo, ela gera uma classe de vinculação para cada arquivo de layout XML presente nesse módulo. A instância de uma classe de vinculação contém referências diretas a todas as visualizações que têm um código no layout correspondente;  
+---->  Coroutines - o uso delas é recomendada para programação assíncrona no Android. Os recursos notáveis incluem o seguinte: Leve, menos vazamento de memória, suporte a cancelamento integrado e integração com o Jetpack;  
 
-----> * Mockito - Para teste Unitário;  
+---->  viewBinding - Usada para a vinculação de visualizações. É um recurso que facilita a programação de códigos que interagem com visualizações. Quando a vinculação de visualizações é ativada em um módulo, ela gera uma classe de vinculação para cada arquivo de layout XML presente nesse módulo. A instância de uma classe de vinculação contém referências diretas a todas as visualizações que têm um código no layout correspondente;  
 
-----> * JUnit - Para testes Unitário.  
+----> Mockito - Para teste Unitário;  
+
+----> JUnit - Para testes Unitário.  
 
 Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por isso aceitamos desafios de todos os perfis e diferentes níveis de conhecimento técnico. Mas nos preocupamos com a qualidade, saúde e evolução do produto e por isso acreditamos bastante em testes automatizados.
 
@@ -72,7 +80,7 @@ Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por
 
 ### Essencial:
 
-- Tela de splash;
+- Tela de splash;  
 ----> Feita!  
 
 - Listagem dos filmes;   
