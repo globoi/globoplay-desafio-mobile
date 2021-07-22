@@ -1,7 +1,7 @@
 package com.example.globechallenge.application
 
 import android.app.Application
-import com.example.globechallenge.data.repository.favorites.FavoriteMoviesRepository
+import com.example.globechallenge.data.repository.favorites.MyListRepository
 import com.example.globechallenge.data.repository.favorites.FavoriteMoviesRoomDatabase
 
 class GlobeChallengeApplication : Application() {
@@ -13,6 +13,6 @@ class GlobeChallengeApplication : Application() {
 
     //After create a repository
     val repository by lazy {
-        FavoriteMoviesRepository(database.favoriteMoviesDao())
+        MyListRepository(database.favoriteMoviesDao())
     }
 }

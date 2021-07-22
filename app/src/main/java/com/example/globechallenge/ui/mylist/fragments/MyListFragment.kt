@@ -14,7 +14,7 @@ import com.example.globechallenge.application.GlobeChallengeApplication
 import com.example.globechallenge.databinding.FragmentMyListBinding
 import com.example.globechallenge.ui.details.fragments.WatchTooFragment
 import com.example.globechallenge.ui.mylist.adapter.MyListAdapter
-import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModel
+import com.example.globechallenge.ui.mylist.viewmodel.MyListViewModel
 import com.example.globechallenge.ui.mylist.viewmodel.FavoritesViewModelFactory
 
 class MyListFragment : Fragment() {
@@ -22,7 +22,7 @@ class MyListFragment : Fragment() {
     private lateinit var recyclerViewMyList: RecyclerView
     private val adapterMyList = MyListAdapter()
 
-    private val favoritesViewModel: FavoritesViewModel by viewModels {
+    private val myListViewModel: MyListViewModel by viewModels {
         FavoritesViewModelFactory(
             (context?.applicationContext as GlobeChallengeApplication)
                 .repository
@@ -69,12 +69,11 @@ class MyListFragment : Fragment() {
     }
 
     private fun getFavorites() {
-        favoritesViewModel.allFavoriteMovies.observe(viewLifecycleOwner) { favoriteMoviesEntity ->
+        myListViewModel.allFavoriteMovies.observe(viewLifecycleOwner) { favoriteMoviesEntity ->
             if (favoriteMoviesEntity.isNullOrEmpty()) {
                 hideFavorites()
                 showEmptyList()
             } else {
-
                 hideEmptyList()
                 showFavorites()
                 adapterMyList.addMoviesToMyList(favoriteMoviesEntity)

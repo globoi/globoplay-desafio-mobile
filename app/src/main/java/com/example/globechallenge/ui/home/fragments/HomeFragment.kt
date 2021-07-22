@@ -17,7 +17,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var recyclerViewGenre: RecyclerView
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var homeViewModel: HomeViewModel
     private val adapterGenre = HomeGenreAdapter()
 
     override fun onCreateView(
@@ -42,18 +42,18 @@ class HomeFragment : Fragment() {
     }
 
     private fun observers() {
-        viewModel.viewFlipperLiveData.observe(viewLifecycleOwner, {
+        homeViewModel.viewFlipperLiveData.observe(viewLifecycleOwner, {
             it?.let { viewFlipper ->
-                setupViewFlipperToShowError(viewFlipper)
+                setupViewFlipper(viewFlipper)
             }
         })
 
-        viewModel.movieByGenreMutableLiveData.observe(viewLifecycleOwner, {
+        homeViewModel.movieByGenreMutableLiveData.observe(viewLifecycleOwner, {
             adapterGenre.addMovieToGenre(it)
         })
     }
 
-    private fun setupViewFlipperToShowError(viewFlipper: Pair<Int, Int?>) {
+    private fun setupViewFlipper(viewFlipper: Pair<Int, Int?>) {
         with(binding) {
             viewFlipperHome.displayedChild = viewFlipper.first
             viewFlipper.second?.let { errorMessageResId ->
@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getMovieByGenre() {
-        viewModel.getMovieByGenre()
+        homeViewModel.getMovieByGenre()
     }
 
     private fun setupRecyclerGenre() {
@@ -76,12 +76,12 @@ class HomeFragment : Fragment() {
     private fun viewBind() {
         recyclerViewGenre = binding.rvHomeGenre
         binding.errorDialog.btnTryAgain.setOnClickListener {
-            viewModel.getMovieByGenre()
+            homeViewModel.getMovieByGenre()
         }
     }
 
     private fun setupViewModel() {
-        viewModel =
+        homeViewModel =
             ViewModelProvider(this, HomeViewModel.HomeViewModelFactory(HomeRepository())).get(
                 HomeViewModel::class.java
             )

@@ -16,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Handler(Looper.getMainLooper()).postDelayed({
-            showLoginScreen()}, 4000)
+            showHomeScreen()}, 4000)
         binding.splashImage.animate().apply {
             duration = 1500
             translationYBy(360f)
@@ -30,7 +30,7 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLoginScreen() {
+    private fun showHomeScreen() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }

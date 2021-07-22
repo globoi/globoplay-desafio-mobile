@@ -33,12 +33,12 @@ class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
                                 viewFlipperLiveData.postValue(Pair(VIEW_FLIPPER_ERROR, R.string.msg_error_404))
                             }
                             else -> {
-                                viewFlipperLiveData.postValue(Pair(VIEW_FLIPPER_ERROR, R.string.msg_error_404))
+                                viewFlipperLiveData.postValue(Pair(VIEW_FLIPPER_ERROR, R.string.msg_generic_error))
                             }
                         }
                     }
                     else -> {
-                        viewFlipperLiveData.postValue(Pair(VIEW_FLIPPER_ERROR, R.string.msg_error_404))
+                        viewFlipperLiveData.postValue(Pair(VIEW_FLIPPER_ERROR, R.string.msg_generic_error))
                     }
                 }
             } else {
