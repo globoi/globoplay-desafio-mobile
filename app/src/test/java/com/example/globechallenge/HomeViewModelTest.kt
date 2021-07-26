@@ -18,22 +18,22 @@ class HomeViewModelTest {
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
 
-    private lateinit var viewmodel: HomeViewModel
+    private lateinit var homeViewModel: HomeViewModel
 
     @Mock
     private lateinit var repositoryImplementation: HomeRepositoryImplementation
 
     @Before
     fun setup() {
-        viewmodel = HomeViewModel(repositoryImplementation)
+        homeViewModel = HomeViewModel(repositoryImplementation)
     }
 
     @Test
     fun `prove that function getMovieByGenre is suspend`() {
-        viewmodel.getMovieByGenre()
+        homeViewModel.getMovieByGenre()
         Assert.assertEquals(
             null,
-            viewmodel.viewFlipperLiveData.value
+            homeViewModel.viewFlipperLiveData.value
         )
     }
 }
