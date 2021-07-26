@@ -1,7 +1,7 @@
 package com.example.globechallenge
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.globechallenge.data.repository.home.HomeRepository
+import com.example.globechallenge.data.repository.home.HomeRepositoryImplementation
 import com.example.globechallenge.ui.home.viewmodels.HomeViewModel
 import org.junit.Assert
 import org.junit.Before
@@ -21,11 +21,11 @@ class HomeViewModelTest {
     private lateinit var viewmodel: HomeViewModel
 
     @Mock
-    private lateinit var repository: HomeRepository
+    private lateinit var repositoryImplementation: HomeRepositoryImplementation
 
     @Before
     fun setup() {
-        viewmodel = HomeViewModel(repository)
+        viewmodel = HomeViewModel(repositoryImplementation)
     }
 
     @Test

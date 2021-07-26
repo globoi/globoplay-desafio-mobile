@@ -12,7 +12,7 @@ import com.example.globechallenge.R
 import com.example.globechallenge.application.GlobeChallengeApplication
 import com.example.globechallenge.data.model.entities.FavoriteMoviesEntity
 import com.example.globechallenge.data.model.models.home.MovieToGenre
-import com.example.globechallenge.data.repository.details.MovieDetailsRepository
+import com.example.globechallenge.data.repository.details.MovieDetailsRepositoryImplementation
 import com.example.globechallenge.databinding.ActivityMovieDetailsBinding
 import com.example.globechallenge.ui.details.adapters.DetailsAdapter
 import com.example.globechallenge.ui.details.fragments.DetailsFragment
@@ -107,7 +107,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(
             this,
             MovieDetailsViewModel
-                .MovieDetailViewModelFactory(MovieDetailsRepository())
+                .MovieDetailViewModelFactory(MovieDetailsRepositoryImplementation())
         )
             .get(MovieDetailsViewModel::class.java)
     }

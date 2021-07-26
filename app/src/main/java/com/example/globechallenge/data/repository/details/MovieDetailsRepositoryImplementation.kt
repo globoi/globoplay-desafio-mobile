@@ -5,11 +5,11 @@ import com.example.globechallenge.data.model.models.details.MovieDetails
 import com.example.globechallenge.data.model.models.details.MovieVideos
 import com.example.globechallenge.data.network.Api
 
-class MovieDetailsRepository {
+class MovieDetailsRepositoryImplementation: MovieDetailsRespository {
 
     private val service = Api.serviceMovie()
 
-    suspend fun getMovieDetail(id: String): MovieDetails {
+    override suspend fun getMovieDetail(id: String): MovieDetails {
         return service.getMovieDetails(id, Api.API_KEY).run {
             MovieDetails(
                 title, genres, runtime, overview,
@@ -18,13 +18,13 @@ class MovieDetailsRepository {
         }
     }
 
-    suspend fun getMovieCreditToGetCast(id: String): MovieCast {
+    override suspend fun getMovieCreditToGetCast(id: String): MovieCast {
         return service.getMovieCreditToGetCast(id, Api.API_KEY).run {
             MovieCast(cast)
         }
     }
 
-    suspend fun getMovieVideos(id: String): MovieVideos {
+    override suspend fun getMovieVideos(id: String): MovieVideos {
         return service.getMovieVideos(id, Api.API_KEY).run {
             MovieVideos(this.id, results)
         }

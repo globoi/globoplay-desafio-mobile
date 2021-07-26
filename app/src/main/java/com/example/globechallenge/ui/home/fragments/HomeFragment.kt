@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.globechallenge.data.repository.home.HomeRepository
+import com.example.globechallenge.data.repository.home.HomeRepositoryImplementation
 import com.example.globechallenge.databinding.FragmentHomeBinding
 import com.example.globechallenge.ui.home.adapters.HomeGenreAdapter
 import com.example.globechallenge.ui.home.viewmodels.HomeViewModel
@@ -82,7 +82,7 @@ class HomeFragment : Fragment() {
 
     private fun setupViewModel() {
         homeViewModel =
-            ViewModelProvider(this, HomeViewModel.HomeViewModelFactory(HomeRepository())).get(
+            ViewModelProvider(this, HomeViewModel.HomeViewModelFactory(HomeRepositoryImplementation())).get(
                 HomeViewModel::class.java
             )
     }
