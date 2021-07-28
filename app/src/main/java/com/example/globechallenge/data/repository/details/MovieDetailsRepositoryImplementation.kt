@@ -5,7 +5,7 @@ import com.example.globechallenge.data.model.models.details.MovieDetails
 import com.example.globechallenge.data.model.models.details.MovieVideos
 import com.example.globechallenge.data.network.Api
 
-class MovieDetailsRepositoryImplementation: MovieDetailsRespository {
+class MovieDetailsRepositoryImplementation: MovieDetailsRepository {
 
     private val service = Api.serviceMovie()
 

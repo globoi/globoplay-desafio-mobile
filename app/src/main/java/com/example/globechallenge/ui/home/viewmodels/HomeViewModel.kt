@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.globechallenge.R
 import com.example.globechallenge.data.model.models.home.MovieToGenre
-import com.example.globechallenge.data.repository.home.HomeRepositoryImplementation
+import com.example.globechallenge.data.repository.home.HomeRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-class HomeViewModel(private val repositoryImplementation: HomeRepositoryImplementation) : ViewModel() {
+class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
 
     val movieByGenreMutableLiveData = MutableLiveData<List<MovieToGenre>>()
     val viewFlipperLiveData: MutableLiveData<Pair<Int, Int?>> = MutableLiveData()
@@ -20,7 +20,7 @@ class HomeViewModel(private val repositoryImplementation: HomeRepositoryImplemen
     fun getMovieByGenre() {
         var result: List<MovieToGenre>? = null
         viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, exception -> }) {
-            result = repositoryImplementation.getMovieByGenre()
+            result = repository.getMovieByGenre()
         }.invokeOnCompletion { throwable ->
             if (throwable != null) {
                 when (throwable) {
@@ -48,10 +48,10 @@ class HomeViewModel(private val repositoryImplementation: HomeRepositoryImplemen
         }
     }
 
-    class HomeViewModelFactory(private val repositoryImplementation: HomeRepositoryImplementation) : ViewModelProvider.Factory {
+    class HomeViewModelFactory(private val repository: HomeRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             @Suppress("UNCHECKED_CAST")
-            return HomeViewModel(repositoryImplementation) as T
+            return HomeViewModel(repository) as T
         }
     }
 
