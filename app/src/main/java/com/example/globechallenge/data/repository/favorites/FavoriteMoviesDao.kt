@@ -15,11 +15,11 @@ interface FavoriteMoviesDao {
     @Query("SELECT * FROM favorite_movies_table WHERE id = :id")
     fun getFavoriteMovieById(id: String): Flow<FavoriteMoviesEntity>
 
-    //Using couroutines - suspend is similar to async in another languages
+    //Using coroutines - suspend is similar to async in another languages
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(favoriteMoviesEntity: FavoriteMoviesEntity)
 
-    //Using couroutines - suspend is similar to async in another languages
+    //Using coroutines - suspend is similar to async in another languages
     @Query("DELETE FROM favorite_movies_table WHERE id  =:id")
     suspend fun deleteOneFavoriteMovie(id: String)
 }
