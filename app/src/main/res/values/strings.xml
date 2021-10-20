@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">GPDM</string>
+
+    <string name="home">Início</string>
+    <string name="minhaLista">Favoritos</string>home
+
+    <string name="open_app">Entrando no APP.</string>
+    <string name="erro_busca_servico">Erro ao buscar o serviço de Filmes, tente novamente mais tarde!</string>
+    <string name="total_registros">O Total de registros é :</string>
+
+</resources>
