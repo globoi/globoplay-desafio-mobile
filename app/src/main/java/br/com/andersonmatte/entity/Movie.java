@@ -16,7 +16,7 @@ import java.util.List;
 // TODO Lombock não funcionou, plugin AS OK, import no gradle OK,
 //@Getter
 //@Setter
-public class Result implements Parcelable, Serializable {
+public class Movie implements Parcelable, Serializable {
 
     @SerializedName("adult")
     @Expose
@@ -63,23 +63,25 @@ public class Result implements Parcelable, Serializable {
 
     private String URLCompleta;
 
-    public final static Parcelable.Creator<Result> CREATOR = new Creator<Result>() {
+    private String UrlVideo;
+
+    public final static Parcelable.Creator<Movie> CREATOR = new Creator<Movie>() {
 
 
         @SuppressWarnings({
                 "unchecked"
         })
-        public Result createFromParcel(Parcel in) {
-            return new Result(in);
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
         }
 
-        public Result[] newArray(int size) {
-            return (new Result[size]);
+        public Movie[] newArray(int size) {
+            return (new Movie[size]);
         }
 
     };
 
-    protected Result(Parcel in) {
+    protected Movie(Parcel in) {
         this.adult = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
         this.backdropPath = ((String) in.readValue((String.class.getClassLoader())));
         in.readList(this.genreIds, (java.lang.Integer.class.getClassLoader()));
@@ -94,9 +96,11 @@ public class Result implements Parcelable, Serializable {
         this.video = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
         this.voteAverage = ((Double) in.readValue((Integer.class.getClassLoader())));
         this.voteCount = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.URLCompleta = ((String) in.readValue((String.class.getClassLoader())));
+        this.UrlVideo = ((String) in.readValue((String.class.getClassLoader())));
     }
 
-    public Result() {
+    public Movie() {
     }
 
     public Boolean getAdult() {
@@ -219,6 +223,14 @@ public class Result implements Parcelable, Serializable {
         this.URLCompleta = URLCompleta;
     }
 
+    public String getUrlVideo() {
+        return UrlVideo;
+    }
+
+    public void setUrlVideo(String urlVideo) {
+        UrlVideo = urlVideo;
+    }
+
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(adult);
         dest.writeValue(backdropPath);
@@ -234,6 +246,8 @@ public class Result implements Parcelable, Serializable {
         dest.writeValue(video);
         dest.writeValue(voteAverage);
         dest.writeValue(voteCount);
+        dest.writeValue(URLCompleta);
+        dest.writeValue(UrlVideo);
     }
 
     public int describeContents() {

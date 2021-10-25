@@ -21,7 +21,7 @@ public class Welcome implements Parcelable {
     private Integer page;
     @SerializedName("results")
     @Expose
-    private List<Result> results = null;
+    private List<Movie> movies = null;
     @SerializedName("total_pages")
     @Expose
     private Integer totalPages;
@@ -46,7 +46,7 @@ public class Welcome implements Parcelable {
 
     protected Welcome(Parcel in) {
         this.page = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        in.readList(this.results, (Result.class.getClassLoader()));
+        in.readList(this.movies, (Movie.class.getClassLoader()));
         this.totalPages = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.totalResults = ((Integer) in.readValue((Integer.class.getClassLoader())));
     }
@@ -62,12 +62,12 @@ public class Welcome implements Parcelable {
         this.page = page;
     }
 
-    public List<Result> getResults() {
-        return results;
+    public List<Movie> getResults() {
+        return movies;
     }
 
-    public void setResults(List<Result> results) {
-        this.results = results;
+    public void setResults(List<Movie> movies) {
+        this.movies = movies;
     }
 
     public Integer getTotalPages() {
@@ -88,7 +88,7 @@ public class Welcome implements Parcelable {
 
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(page);
-        dest.writeList(results);
+        dest.writeList(movies);
         dest.writeValue(totalPages);
         dest.writeValue(totalResults);
     }

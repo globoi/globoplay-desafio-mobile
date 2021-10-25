@@ -19,14 +19,14 @@ import java.util.List;
 
 import br.com.andersonmatte.R;
 import br.com.andersonmatte.activity.MovieActivity;
-import br.com.andersonmatte.entity.Result;
+import br.com.andersonmatte.entity.Movie;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<Result> mData;
+    private List<Movie> mData;
 
-    public RecyclerViewAdapter(Context mContext, List<Result> mData) {
+    public RecyclerViewAdapter(Context mContext, List<Movie> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }

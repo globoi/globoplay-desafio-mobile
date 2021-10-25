@@ -8,13 +8,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.andersonmatte.R;
 import br.com.andersonmatte.activity.HomeActivity;
 import br.com.andersonmatte.activity.MinhaListaActivity;
+import br.com.andersonmatte.entity.Genre;
 
 public class AppCompatActivityBase extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
     private BottomNavigationView navigationView;
+
+    private List<Genre> genres = new ArrayList<Genre>();
 
     @Override
     public void setContentView(int layoutResID) {
@@ -23,6 +29,7 @@ public class AppCompatActivityBase extends AppCompatActivity implements BottomNa
         this.navigationView = (BottomNavigationView) findViewById(R.id.bottomNav);
         this.navigationView.setOnNavigationItemSelectedListener(this);
     }
+
 
     //Define os itens do BottomNavigationView e chama as suas Activities conforme seleção.
     @Override

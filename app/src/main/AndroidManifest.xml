@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreenActivity">
-        <activity android:name=".activity.MovieActivity"></activity>
+        <activity android:name=".activity.VideoPlayerActivity"></activity>
+        <activity android:name=".activity.MovieActivity" />
         <activity android:name=".activity.PesquisaActivity" />
         <activity android:name=".activity.MinhaListaActivity" />
         <activity android:name=".activity.HomeActivity" />
