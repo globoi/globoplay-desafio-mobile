@@ -24,7 +24,7 @@ https://github.com/HaarigerHarald/android-youtubeExtractor
 
 https://exoplayer.dev/
 
-##!!!!!!! Lombok!!!!!!!: Esse não rolou, não sei pq, ah coloquei o Plugin no Android Studio
+## !!!!!!! Lombok!!!!!!!: Esse não rolou, não sei pq, ah coloquei o Plugin no Android Studio
 
 https://projectlombok.org/
 
