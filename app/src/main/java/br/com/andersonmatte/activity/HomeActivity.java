@@ -38,8 +38,8 @@ public class HomeActivity extends AppCompatActivityBase {
     public void buscaPopularFilmes() {
         int contador = 0;
         // Chamar até o 10, apensa para ter uma quantidade razoável de filmes
-        for (int i = 0; i < 10; i++){
-            contador ++;
+        for (int i = 0; i < 10; i++) {
+            contador++;
             ITheMovieDB iTheMovieDB = ITheMovieDB.retrofit.create(ITheMovieDB.class);
             final Call<Welcome> callUsuario = iTheMovieDB.getFilmesPopulares(API_KEY, IDIOMA, contador);
             int finalContador = contador;
@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivityBase {
                         // Gambis!
                         filmesPorPagina = welcome.getResults();
                         movieList.addAll(filmesPorPagina);
-                        if (finalContador == 10){
+                        if (finalContador == 10) {
                             chamaAdapter();
                         }
                     } else {

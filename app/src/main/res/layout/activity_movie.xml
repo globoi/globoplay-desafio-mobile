@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fcfcfc"
+    android:background="#E0E0E0"
     tools:context=".activity.MovieActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:padding="10dp">
+        android:layout_marginTop="2dp"
+        android:padding="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +23,9 @@
                 android:layout_width="170dp"
                 android:layout_height="220dp"
                 android:background="#2d2d2d"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:contentDescription="Teste"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/nameMovie"
@@ -31,51 +33,41 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Name Movie"
+                android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="#edecec"
-                android:padding="8dp"
-                android:text="Category" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="2dp"
                 android:text="Description"
-                android:textSize="14sp" />
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <Button
-                android:id="@+id/playMovie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/play"
-                android:layout_marginStart="@android:dimen/app_icon_size"
-                android:layout_gravity="center"
-                />
-
-            <CheckBox
-                android:id="@+id/checkBox"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/favorito"
-                android:layout_marginStart="@android:dimen/app_icon_size"
-                android:layout_gravity="center"/>
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/playMovie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginStart="@android:dimen/app_icon_size"
+                    android:gravity="center"
+                    android:text="@string/play" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -1,2 +1,2 @@
-rootProject.name = "GPDM"
+rootProject.name = "Globoplay"
 include ':app'

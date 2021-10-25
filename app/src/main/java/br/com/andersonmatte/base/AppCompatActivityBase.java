@@ -16,7 +16,7 @@ import br.com.andersonmatte.activity.HomeActivity;
 import br.com.andersonmatte.activity.MinhaListaActivity;
 import br.com.andersonmatte.entity.Genre;
 
-public class AppCompatActivityBase extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+public class AppCompatActivityBase extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView navigationView;
 

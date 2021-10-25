@@ -6,11 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".activity.VideoPlayerActivity">
 
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        tools:ignore="MissingConstraints" />
-
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/player_view"
+        app:resize_mode="fit"
+        app:hide_on_touch="true"
+        app:show_timeout="5000"
+        app:use_controller="true"
+        android:background="#000" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

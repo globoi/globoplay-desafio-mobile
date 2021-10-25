@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +16,6 @@ import com.squareup.picasso.Picasso;
 import java.io.Serializable;
 
 import br.com.andersonmatte.R;
-import br.com.andersonmatte.base.AppCompatActivityBase;
 import br.com.andersonmatte.entity.Movie;
 import br.com.andersonmatte.entity.ResultPlayer;
 import br.com.andersonmatte.service.ITheMovieDB;
@@ -33,9 +31,8 @@ public class MovieActivity extends AppCompatActivity {
     private static final String URL_GET_IMAGE = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
 
     private ImageView imageView;
-    private TextView nameMovie, category, textDescription;
+    private TextView nameMovie, textDescription;
     private Movie movie;
-    private CheckBox checkBox;
     private Button buttonBuscarUsuario;
 
     @Override
@@ -44,9 +41,7 @@ public class MovieActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie);
         imageView = (ImageView) findViewById(R.id.moviethumbnail);
         nameMovie = (TextView) findViewById(R.id.nameMovie);
-        category = (TextView) findViewById(R.id.category);
         textDescription = (TextView) findViewById(R.id.textDescription);
-        checkBox = (CheckBox) findViewById(R.id.checkBox);
         buttonBuscarUsuario = (Button) findViewById(R.id.playMovie);
 
         Bundle bundle = getIntent().getBundleExtra("movie");
@@ -57,7 +52,6 @@ public class MovieActivity extends AppCompatActivity {
             Picasso.get().load(URL_GET_IMAGE + movie.getPosterPath()).into(imageView);
 
             nameMovie.setText(movie.getTitle());
-            category.setText("result.getGenreIds()");
             textDescription.setText(movie.getOverview());
 
             this.movie = movie;

@@ -1,10 +1,9 @@
 package br.com.andersonmatte.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.andersonmatte.R;
 
