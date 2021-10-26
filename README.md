@@ -12,6 +12,6 @@ projeto com boa cobertura de testes:
 
 Gostaria de receber feedback do que poderia melhorar ainda mais no projeto, assim consigo entender o que precisa para continuar crescendo! 
 Eu melhoraria o layout da tela principal e o scroll que está um pouco esquisito para ir para a horizontal porque usei dois recyclerview (foi tempo)! 
-Além de realizar os testes para o projeto todo.
+Além de realizar os testes para o projeto todo e realizar as propostas feitas por code review pelos colegas!
 
 Aguardo feedback de vocês pois hoje é dia de cupom ifood hahaha! ;D
