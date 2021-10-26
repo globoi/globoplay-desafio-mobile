@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Movies</string>
+
+    <string name="popular">Popular</string>
+    <string name="top_rated">Os Melhores</string>
+    <string name="upcoming">Chegando aí</string>
+
+    <string name="avaliation">Avaliação:</string>
+    <string name="popularity">Popularidade:</string>
+    <string name="genre">Gênero:</string>
+    <string name="original_title">Título Original:</string>
+    <string name="country">País:</string>
+    <string name="release_date">Lançado em:</string>
+    <string name="watch_more">ASSISTA TAMBÉM</string>
+    <string name="details">Detalhes</string>
+    <string name="technical_details">Ficha Técnica</string>
+    <string name="navigation_title_home">Início</string>
+    <string name="navigation_title_list">Minha lista</string>
+    <string name="my_list">Minha lista</string>
+    <string name="watch">Assista</string>
+    <string name="add">Adicionado</string>
+    <string name="error_list_user">Erro em ver sua lista</string>
+    <string name="text_error_network">Erro de conexão! Verifique sua Internet e tente novamente!</string>
+    <string name="not_found_list">Favorite filmes para ver depois!</string>
+    <string name="now_playing">Em cartaz</string>
+</resources>
