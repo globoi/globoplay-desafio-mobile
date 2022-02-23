@@ -15,6 +15,7 @@
 		30B7884127C59B5D000A640C /* Desafio_Globoplay_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7884027C59B5D000A640C /* Desafio_Globoplay_iOSTests.swift */; };
 		30B7884B27C59B5D000A640C /* Desafio_Globoplay_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7884A27C59B5D000A640C /* Desafio_Globoplay_iOSUITests.swift */; };
 		30B7884D27C59B5D000A640C /* Desafio_Globoplay_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7884C27C59B5D000A640C /* Desafio_Globoplay_iOSUITestsLaunchTests.swift */; };
+		30B7886027C664B3000A640C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7885F27C664B3000A640C /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		30B7884627C59B5D000A640C /* Desafio-Globoplay-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio-Globoplay-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B7884A27C59B5D000A640C /* Desafio_Globoplay_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_Globoplay_iOSUITests.swift; sourceTree = "<group>"; };
 		30B7884C27C59B5D000A640C /* Desafio_Globoplay_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_Globoplay_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		30B7885F27C664B3000A640C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		30B7885927C655FC000A640C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				30B7885F27C664B3000A640C /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				30B7882E27C59B5A000A640C /* MainTabController.swift in Sources */,
 				30B7882A27C59B5A000A640C /* AppDelegate.swift in Sources */,
 				30B7882C27C59B5A000A640C /* SceneDelegate.swift in Sources */,
+				30B7886027C664B3000A640C /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
