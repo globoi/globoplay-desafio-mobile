@@ -19,6 +19,7 @@
 		30B7886227C668D8000A640C /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7886127C668D8000A640C /* FeedController.swift */; };
 		30B7886427C668E9000A640C /* MyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7886327C668E9000A640C /* MyListController.swift */; };
 		30B7886627C66B48000A640C /* FilmDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7886527C66B48000A640C /* FilmDetailController.swift */; };
+		30B7886827C67485000A640C /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7886727C67485000A640C /* AlertUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		30B7886127C668D8000A640C /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		30B7886327C668E9000A640C /* MyListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListController.swift; sourceTree = "<group>"; };
 		30B7886527C66B48000A640C /* FilmDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailController.swift; sourceTree = "<group>"; };
+		30B7886727C67485000A640C /* AlertUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				30B7885F27C664B3000A640C /* Extensions.swift */,
+				30B7886727C67485000A640C /* AlertUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				30B7886627C66B48000A640C /* FilmDetailController.swift in Sources */,
 				30B7882A27C59B5A000A640C /* AppDelegate.swift in Sources */,
 				30B7886227C668D8000A640C /* FeedController.swift in Sources */,
+				30B7886827C67485000A640C /* AlertUtils.swift in Sources */,
 				30B7886427C668E9000A640C /* MyListController.swift in Sources */,
 				30B7882C27C59B5A000A640C /* SceneDelegate.swift in Sources */,
 				30B7886027C664B3000A640C /* Extensions.swift in Sources */,

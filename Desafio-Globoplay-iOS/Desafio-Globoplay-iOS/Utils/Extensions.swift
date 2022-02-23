@@ -7,6 +7,9 @@
 
 import UIKit
 
+// MARK: - UIView
+/// Format and set the anchors for all UI item.
+
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 leading: NSLayoutXAxisAnchor? = nil,
@@ -102,4 +105,27 @@ extension UIColor {
         /// Main home Backgroud color:
         static let homeBlack = UIColor.rgb(red: 31, green: 31, blue: 31)
     
+}
+
+// MARK: - UIApplication
+
+extension UIApplication {
+    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        
+        if let navigationController = controller as? UINavigationController {
+            return topViewController(controller: navigationController.visibleViewController)
+        }
+        
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return topViewController(controller: selected)
+            }
+        }
+        
+        if let presented = controller?.presentedViewController {
+            return topViewController(controller: presented)
+        }
+        
+        return controller
+    }
 }
