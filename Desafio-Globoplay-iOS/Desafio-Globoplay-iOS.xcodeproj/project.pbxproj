@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		30B7882A27C59B5A000A640C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7882927C59B5A000A640C /* AppDelegate.swift */; };
 		30B7882C27C59B5A000A640C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7882B27C59B5A000A640C /* SceneDelegate.swift */; };
-		30B7882E27C59B5A000A640C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7882D27C59B5A000A640C /* ViewController.swift */; };
-		30B7883127C59B5A000A640C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B7882F27C59B5A000A640C /* Main.storyboard */; };
+		30B7882E27C59B5A000A640C /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7882D27C59B5A000A640C /* MainTabController.swift */; };
 		30B7883327C59B5C000A640C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30B7883227C59B5C000A640C /* Assets.xcassets */; };
 		30B7883627C59B5C000A640C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B7883427C59B5C000A640C /* LaunchScreen.storyboard */; };
 		30B7884127C59B5D000A640C /* Desafio_Globoplay_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7884027C59B5D000A640C /* Desafio_Globoplay_iOSTests.swift */; };
@@ -39,8 +38,7 @@
 		30B7882627C59B5A000A640C /* Desafio-Globoplay-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio-Globoplay-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B7882927C59B5A000A640C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30B7882B27C59B5A000A640C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		30B7882D27C59B5A000A640C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		30B7883027C59B5A000A640C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		30B7882D27C59B5A000A640C /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		30B7883227C59B5C000A640C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30B7883527C59B5C000A640C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30B7883727C59B5C000A640C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,10 +97,14 @@
 		30B7882827C59B5A000A640C /* Desafio-Globoplay-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				30B7885E27C65638000A640C /* Model */,
+				30B7885D27C6562D000A640C /* View */,
+				30B7885C27C65625000A640C /* ViewModel */,
+				30B7885B27C6561A000A640C /* Controller */,
+				30B7885A27C65610000A640C /* API */,
+				30B7885927C655FC000A640C /* Utils */,
 				30B7882927C59B5A000A640C /* AppDelegate.swift */,
 				30B7882B27C59B5A000A640C /* SceneDelegate.swift */,
-				30B7882D27C59B5A000A640C /* ViewController.swift */,
-				30B7882F27C59B5A000A640C /* Main.storyboard */,
 				30B7883227C59B5C000A640C /* Assets.xcassets */,
 				30B7883427C59B5C000A640C /* LaunchScreen.storyboard */,
 				30B7883727C59B5C000A640C /* Info.plist */,
@@ -125,6 +127,49 @@
 				30B7884C27C59B5D000A640C /* Desafio_Globoplay_iOSUITestsLaunchTests.swift */,
 			);
 			path = "Desafio-Globoplay-iOSUITests";
+			sourceTree = "<group>";
+		};
+		30B7885927C655FC000A640C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		30B7885A27C65610000A640C /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		30B7885B27C6561A000A640C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				30B7882D27C59B5A000A640C /* MainTabController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		30B7885C27C65625000A640C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		30B7885D27C6562D000A640C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		30B7885E27C65638000A640C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +278,6 @@
 			files = (
 				30B7883627C59B5C000A640C /* LaunchScreen.storyboard in Resources */,
 				30B7883327C59B5C000A640C /* Assets.xcassets in Resources */,
-				30B7883127C59B5A000A640C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30B7882E27C59B5A000A640C /* ViewController.swift in Sources */,
+				30B7882E27C59B5A000A640C /* MainTabController.swift in Sources */,
 				30B7882A27C59B5A000A640C /* AppDelegate.swift in Sources */,
 				30B7882C27C59B5A000A640C /* SceneDelegate.swift in Sources */,
 			);
@@ -297,14 +341,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		30B7882F27C59B5A000A640C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				30B7883027C59B5A000A640C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		30B7883427C59B5C000A640C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -444,7 +480,6 @@
 				INFOPLIST_FILE = "Desafio-Globoplay-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -472,7 +507,6 @@
 				INFOPLIST_FILE = "Desafio-Globoplay-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
