@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/drawable/card_border_white.xml" value="0.2785" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/drawable/ic_baseline_arrow_back_white_24.xml" value="0.195" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/drawable/ic_baseline_home_primary_text_24.xml" value="0.195" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/drawable/ic_baseline_home_white_24.xml" value="0.1" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.195" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/drawable/ic_baseline_star_primary_text_24.xml" value="0.195" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/drawable/ic_baseline_star_white_24.xml" value="0.195" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/drawable/margin_btn_white.xml" value="0.1945" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout-w1240dp/row_movie_watch_too.xml" value="0.2025" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/activity_main.xml" value="0.14722222222222223" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/activity_movie_details.xml" value="0.25" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/activity_movie_details2.xml" value="0.3625" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/activity_panel.xml" value="0.26944444444444443" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/activity_play_movie.xml" value="0.2125" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/activity_splash.xml" value="0.3625" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/button_watch_my_list_movie_details.xml" value="0.3625" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/container_fail_connection.xml" value="0.3625" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/container_loading.xml" value="0.3194444444444444" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/content_movie_details.xml" value="0.3194444444444444" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/content_scrolling.xml" value="0.3625" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/fragment_genre_movies.xml" value="0.2125" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/fragment_movie_datasheet.xml" value="0.3569230769230769" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/fragment_movie_details.xml" value="0.1" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/fragment_movie_favorite.xml" value="0.3569230769230769" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/fragment_movie_watch_too.xml" value="0.25" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/fragment_movies.xml" value="0.3625" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/fragment_movies_favorite.xml" value="0.3625" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/header_movie_details.xml" value="0.3625" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/row_category_movie.xml" value="0.26944444444444443" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/row_genre_movie.xml" value="0.3625" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/row_movie.xml" value="0.3625" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/row_movie_item.xml" value="0.2361111111111111" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/row_movie_watch_too.xml" value="0.3569230769230769" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/layout/row_movies.xml" value="0.4" />
+        <entry key="..\:/Projetos/Progress/MoviesApp/app/src/main/res/menu/search_menu.xml" value="0.2125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

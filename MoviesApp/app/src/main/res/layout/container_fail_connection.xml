@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/ivFailConnection"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_baseline_warning_24"
+        app:tint="@color/orange"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_warning_24"
+        android:text="@string/msg_fail_connection"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/orange"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivFailConnection" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

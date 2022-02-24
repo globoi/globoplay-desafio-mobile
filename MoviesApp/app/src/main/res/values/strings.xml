@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Globoplay</string>
+    <string name="title_tab_home">Início</string>
+    <string name="title_tab_my_list">Minha lista</string>
+    <string name="btn_watch">Assista</string>
+    <string name="btn_my_list">Minha lista</string>
+    <string name="btn_my_list_add">Adicionado</string>
+    <string name="title_tab_details">DETALHES</string>
+    <string name="title_tab_watch_other">ASSISTA TAMBÉM</string>
+    <string name="tv_movie_datasheet">FICHA TÉCNICA</string>
+    <string name="tv_movie_title_original">Título Original</string>
+    <string name="tv_movie_genre">Gênero</string>
+    <string name="tv_movie_episodes">Episódios</string>
+    <string name="tv_movie_year_prodution">Ano de produção</string>
+    <string name="tv_movie_country">País</string>
+    <string name="tv_movie_director">Direção</string>
+    <string name="tv_movie_cast">Elenco</string>
+    <string name="tv_movie_available_to">Disponível até</string>
+    <string name="api_key_movie_db">b7e46b2da57332d44bf905f93beec29f</string>
+    <string name="locale_movie_db">pt-BR</string>
+    <string name="api_key_google">AIzaSyAeOOL9U2fOnsQA1aDthHkAv75YCqEYXgs</string>
+    <string name="msg_fail_connection">FALHA NA CONEXÃO, ENTRE EM CONTATO COM O ADMINISTRADOR</string>
+    <string name="msg_not_video">Não possui vídeo</string>
+</resources>

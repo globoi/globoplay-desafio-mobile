@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ui.movie.view.MovieDetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMovieDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <include
+            android:id="@+id/includeHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/header_movie_details"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/includeButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/button_watch_my_list_movie_details"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/includeHeader" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/movieDetailsTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/includeButtons"
+            android:background="@color/black"
+            app:layout_constraintVertical_bias="1.0"
+            app:tabIndicatorGravity="bottom"
+            app:tabIndicatorColor="@color/white"
+            app:tabIndicatorHeight="3dp"
+            app:tabGravity="fill"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+            app:tabTextColor="@color/white" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/movieDetailsViewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/colorPrimary"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movieDetailsTabLayout"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <include
+            android:id="@+id/viewMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/container_loading"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/viewFailConnection"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/container_fail_connection"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

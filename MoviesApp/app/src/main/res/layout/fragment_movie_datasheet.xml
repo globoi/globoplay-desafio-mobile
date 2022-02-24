@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    android:paddingTop="15dp"
+    android:paddingLeft="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/lblDatasheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_movie_datasheet"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_regular"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="6dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvTitleOriginal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Título Original:"
+            android:textSize="15sp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/colorPrimaryText"
+            android:fontFamily="@font/roboto_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblDatasheet"/>
+
+        <TextView
+            android:id="@+id/tvGenre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gênero:"
+            android:textSize="15sp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/colorPrimaryText"
+            android:fontFamily="@font/roboto_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleOriginal"/>
+
+        <TextView
+            android:id="@+id/tvEpisode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Episódios:"
+            android:textSize="15sp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/colorPrimaryText"
+            android:fontFamily="@font/roboto_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvGenre"/>
+
+        <TextView
+            android:id="@+id/tvYearProdution"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ano de produção:"
+            android:textSize="15sp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/colorPrimaryText"
+            android:fontFamily="@font/roboto_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEpisode"/>
+
+        <TextView
+            android:id="@+id/tvCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="País:"
+            android:textSize="15sp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/colorPrimaryText"
+            android:fontFamily="@font/roboto_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvYearProdution"/>
+
+        <TextView
+            android:id="@+id/tvDirector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Direção:"
+            android:textSize="15sp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/colorPrimaryText"
+            android:fontFamily="@font/roboto_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCountry"/>
+
+        <TextView
+            android:id="@+id/tvCast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Elenco:"
+            android:textSize="15sp"
+            android:paddingBottom="20dp"
+            android:textColor="@color/colorPrimaryText"
+            android:fontFamily="@font/roboto_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDirector"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
