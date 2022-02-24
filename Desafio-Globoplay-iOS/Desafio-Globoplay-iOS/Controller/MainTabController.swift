@@ -17,6 +17,9 @@ class MainTabController: UITabBarController {
         super.viewDidLoad()
         configureViewControllers()
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     // MARK: - API
     
@@ -27,33 +30,43 @@ class MainTabController: UITabBarController {
     }
     
     func configureViewControllers() {
-        let feed = FeedController()
+        let feed = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
         let nav1 = templateNatigationController(image: UIImage(systemName: "house.fill"), rootViewControoler: feed)
         
         let myList = MyListController()
         let nav2 = templateNatigationController(image: UIImage(systemName: "star.fill"), rootViewControoler: myList)
         
         viewControllers = [nav1, nav2]
-        /// Costumization of the `TabBar` color before the iOS 15 atualizations.
-        tabBar.backgroundColor = .homeBlack
+        /// Costumization of the `TabBar`.
+        tabBar.backgroundColor = .black
         tabBar.tintColor = .customWhite
     }
     
     func templateNatigationController(image: UIImage?, rootViewControoler: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: rootViewControoler)
         nav.tabBarItem.image = image
-        /// Costumization of the `NavigationBar` color before the iOS 15 atualizations.
+        /// Costumization of the `NavigationBar` color after the iOS 15 atualizations.
         /// Now the `standardAppearance` must be equal to `scrollEdgeAppearance` to not be transparent.
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .white
-        nav.navigationBar.standardAppearance = appearance;
-        nav.navigationBar.scrollEdgeAppearance = nav.navigationBar.standardAppearance
+        appearance.backgroundColor = .black
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.lightText] // With a balck background, make the title more readable.
         
+        nav.navigationBar.standardAppearance = appearance
+        nav.navigationBar.scrollEdgeAppearance = nav.navigationBar.standardAppearance
+        nav.navigationBar.barStyle = .black
+        nav.navigationBar.isTranslucent = false
+        nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         return nav
     }
     
     // MARK: - Selectors
 
+}
+
+extension UINavigationController {
+   open override var preferredStatusBarStyle: UIStatusBarStyle {
+       return .lightContent
+   }
 }
 

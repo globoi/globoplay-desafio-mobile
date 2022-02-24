@@ -18,6 +18,10 @@ class MyListController: UIViewController {
         configureUI()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - API
     
     // MARK: - Helper Methods

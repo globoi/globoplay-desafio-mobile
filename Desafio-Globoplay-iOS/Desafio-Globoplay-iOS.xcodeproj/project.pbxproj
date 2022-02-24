@@ -20,6 +20,13 @@
 		30B7886427C668E9000A640C /* MyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7886327C668E9000A640C /* MyListController.swift */; };
 		30B7886627C66B48000A640C /* FilmDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7886527C66B48000A640C /* FilmDetailController.swift */; };
 		30B7886827C67485000A640C /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7886727C67485000A640C /* AlertUtils.swift */; };
+		30B7886F27C69423000A640C /* MovieClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7886E27C69423000A640C /* MovieClient.swift */; };
+		30B7887427C6950C000A640C /* TopMoviesAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7887327C6950C000A640C /* TopMoviesAPIResponse.swift */; };
+		30B7887727C69AED000A640C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7887627C69AED000A640C /* Constants.swift */; };
+		30B7887B27C6AF7B000A640C /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7887A27C6AF7B000A640C /* FeedViewModel.swift */; };
+		30B7887D27C6C04D000A640C /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7887C27C6C04D000A640C /* MovieCollectionViewCell.swift */; };
+		30B7887F27C6DC96000A640C /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7887E27C6DC96000A640C /* MovieModel.swift */; };
+		D6C776BEF8C639E493C8A18F /* Pods_Desafio_Globoplay_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB963EA9D28CB3D86A2A6469 /* Pods_Desafio_Globoplay_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +64,15 @@
 		30B7886327C668E9000A640C /* MyListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListController.swift; sourceTree = "<group>"; };
 		30B7886527C66B48000A640C /* FilmDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailController.swift; sourceTree = "<group>"; };
 		30B7886727C67485000A640C /* AlertUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtils.swift; sourceTree = "<group>"; };
+		30B7886E27C69423000A640C /* MovieClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieClient.swift; sourceTree = "<group>"; };
+		30B7887327C6950C000A640C /* TopMoviesAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMoviesAPIResponse.swift; sourceTree = "<group>"; };
+		30B7887627C69AED000A640C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		30B7887A27C6AF7B000A640C /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		30B7887C27C6C04D000A640C /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		30B7887E27C6DC96000A640C /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		96669C1707278ABE0A1ED0A0 /* Pods-Desafio-Globoplay-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-Globoplay-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Desafio-Globoplay-iOS/Pods-Desafio-Globoplay-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		D14773EA1F7E8405E7F7373C /* Pods-Desafio-Globoplay-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Desafio-Globoplay-iOS.release.xcconfig"; path = "Target Support Files/Pods-Desafio-Globoplay-iOS/Pods-Desafio-Globoplay-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		EB963EA9D28CB3D86A2A6469 /* Pods_Desafio_Globoplay_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Desafio_Globoplay_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6C776BEF8C639E493C8A18F /* Pods_Desafio_Globoplay_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D881EDD959420E6E0D71B36 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB963EA9D28CB3D86A2A6469 /* Pods_Desafio_Globoplay_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		30B7881D27C59B5A000A640C = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +116,8 @@
 				30B7883F27C59B5D000A640C /* Desafio-Globoplay-iOSTests */,
 				30B7884927C59B5D000A640C /* Desafio-Globoplay-iOSUITests */,
 				30B7882727C59B5A000A640C /* Products */,
+				78632DE626E5AA1530D7154B /* Pods */,
+				0D881EDD959420E6E0D71B36 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,17 +134,17 @@
 		30B7882827C59B5A000A640C /* Desafio-Globoplay-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				30B7883727C59B5C000A640C /* Info.plist */,
+				30B7887827C6ABAC000A640C /* Application */,
 				30B7885E27C65638000A640C /* Model */,
 				30B7885D27C6562D000A640C /* View */,
 				30B7885C27C65625000A640C /* ViewModel */,
 				30B7885B27C6561A000A640C /* Controller */,
 				30B7885A27C65610000A640C /* API */,
+				30B7886D27C693F2000A640C /* Network */,
 				30B7885927C655FC000A640C /* Utils */,
-				30B7882927C59B5A000A640C /* AppDelegate.swift */,
-				30B7882B27C59B5A000A640C /* SceneDelegate.swift */,
-				30B7883227C59B5C000A640C /* Assets.xcassets */,
-				30B7883427C59B5C000A640C /* LaunchScreen.storyboard */,
-				30B7883727C59B5C000A640C /* Info.plist */,
+				30B7887527C69AD7000A640C /* Constants */,
+				30B7887927C6AC1E000A640C /* Resources */,
 			);
 			path = "Desafio-Globoplay-iOS";
 			sourceTree = "<group>";
@@ -169,6 +196,7 @@
 		30B7885C27C65625000A640C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				30B7887A27C6AF7B000A640C /* FeedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -176,6 +204,7 @@
 		30B7885D27C6562D000A640C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				30B7887C27C6C04D000A640C /* MovieCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,8 +212,53 @@
 		30B7885E27C65638000A640C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				30B7887327C6950C000A640C /* TopMoviesAPIResponse.swift */,
+				30B7887E27C6DC96000A640C /* MovieModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		30B7886D27C693F2000A640C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				30B7886E27C69423000A640C /* MovieClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		30B7887527C69AD7000A640C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				30B7887627C69AED000A640C /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		30B7887827C6ABAC000A640C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				30B7882927C59B5A000A640C /* AppDelegate.swift */,
+				30B7882B27C59B5A000A640C /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		30B7887927C6AC1E000A640C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				30B7883227C59B5C000A640C /* Assets.xcassets */,
+				30B7883427C59B5C000A640C /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		78632DE626E5AA1530D7154B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				96669C1707278ABE0A1ED0A0 /* Pods-Desafio-Globoplay-iOS.debug.xcconfig */,
+				D14773EA1F7E8405E7F7373C /* Pods-Desafio-Globoplay-iOS.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,9 +268,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30B7885027C59B5D000A640C /* Build configuration list for PBXNativeTarget "Desafio-Globoplay-iOS" */;
 			buildPhases = (
+				A289E866644F43D4E00C7CE0 /* [CP] Check Pods Manifest.lock */,
 				30B7882227C59B5A000A640C /* Sources */,
 				30B7882327C59B5A000A640C /* Frameworks */,
 				30B7882427C59B5A000A640C /* Resources */,
+				5F28365E16375C32C67256DE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -312,17 +388,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5F28365E16375C32C67256DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Desafio-Globoplay-iOS/Pods-Desafio-Globoplay-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Desafio-Globoplay-iOS/Pods-Desafio-Globoplay-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Desafio-Globoplay-iOS/Pods-Desafio-Globoplay-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A289E866644F43D4E00C7CE0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Desafio-Globoplay-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		30B7882227C59B5A000A640C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B7887B27C6AF7B000A640C /* FeedViewModel.swift in Sources */,
+				30B7886F27C69423000A640C /* MovieClient.swift in Sources */,
 				30B7882E27C59B5A000A640C /* MainTabController.swift in Sources */,
 				30B7886627C66B48000A640C /* FilmDetailController.swift in Sources */,
 				30B7882A27C59B5A000A640C /* AppDelegate.swift in Sources */,
 				30B7886227C668D8000A640C /* FeedController.swift in Sources */,
 				30B7886827C67485000A640C /* AlertUtils.swift in Sources */,
+				30B7887727C69AED000A640C /* Constants.swift in Sources */,
+				30B7887427C6950C000A640C /* TopMoviesAPIResponse.swift in Sources */,
 				30B7886427C668E9000A640C /* MyListController.swift in Sources */,
+				30B7887F27C6DC96000A640C /* MovieModel.swift in Sources */,
+				30B7887D27C6C04D000A640C /* MovieCollectionViewCell.swift in Sources */,
 				30B7882C27C59B5A000A640C /* SceneDelegate.swift in Sources */,
 				30B7886027C664B3000A640C /* Extensions.swift in Sources */,
 			);
@@ -490,6 +614,7 @@
 		};
 		30B7885127C59B5D000A640C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96669C1707278ABE0A1ED0A0 /* Pods-Desafio-Globoplay-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -517,6 +642,7 @@
 		};
 		30B7885227C59B5D000A640C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D14773EA1F7E8405E7F7373C /* Pods-Desafio-Globoplay-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
