@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  HomeController.swift
 //  Desafio-Globoplay-iOS
 //
 //  Created by Gáudio Ney on 24/02/22.
@@ -15,7 +15,7 @@ enum Sections: Int {
     case UpcomingMovies = 4
 }
 
-class HomeViewController: UIViewController {
+class HomeController: UIViewController {
     
     // MARK: - Properties
     
@@ -62,7 +62,7 @@ class HomeViewController: UIViewController {
 
 // MARK: - Extensions
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         sectionTitles.count

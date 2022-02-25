@@ -15,7 +15,7 @@ class MainTabController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewControllers()
+        configureControllers()
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -29,18 +29,22 @@ class MainTabController: UITabBarController {
         view.backgroundColor = .homeBlack
     }
     
-    func configureViewControllers() {
-        let feed = HomeViewController()
+    func configureControllers() {
+        let feed = HomeController()
         let nav1 = templateNatigationController(image: UIImage(systemName: "house.fill"), rootViewControoler: feed)
         
         let myList = MyListController()
         let nav2 = templateNatigationController(image: UIImage(systemName: "star.fill"), rootViewControoler: myList)
         
-        viewControllers = [nav1, nav2]
+        let search = SearchController()
+        let nav3 = templateNatigationController(image: UIImage(systemName: "magnifyingglass"), rootViewControoler: search)
+        
+        viewControllers = [nav1, nav2, nav3]
         
         /// Costumization of the `TabBar`.
         nav1.title = "Início"
         nav2.title = "Minha lista"
+        nav3.title = "Procurar"
         
         tabBar.backgroundColor = .black
         tabBar.tintColor = .customWhite
