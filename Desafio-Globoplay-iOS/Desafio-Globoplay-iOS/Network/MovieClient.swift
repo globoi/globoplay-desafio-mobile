@@ -10,8 +10,12 @@ import Foundation
 /// Service responsible for calling the API
 final class MovieClient {
     
-    private let topMoviesURL = Constants.ProductionServer.base + "/movie/top_rated?api_key=" + Constants.APIParameterKey.apiKey + "&language=en-US&page=1"
-    private lazy var moviesImagesURL = Constants.ProductionServer.image
+    private let topRatedMoviesURL = Constants.ProductionServer.BASE_URL + "/movie/top_rated?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR"
+    private let trendingMoviesURL = Constants.ProductionServer.BASE_URL + "/trending/movie/day?api_key=" + Constants.APIParameterKey.API_KEY
+    private let trendingTVURL = Constants.ProductionServer.BASE_URL + "/trending/tv/day?api_key=" + Constants.APIParameterKey.API_KEY
+    private let popularMoviesURL = Constants.ProductionServer.BASE_URL + "/movie/popular?api_key=" + Constants.APIParameterKey.API_KEY
+    private let upcomingMoviesURL = Constants.ProductionServer.BASE_URL + "/movie/upcoming?api_key=" + Constants.APIParameterKey.API_KEY
+    private lazy var moviesImagesURL = Constants.ProductionServer.IMAGE_URL
     
     static let shared: MovieClient = MovieClient()
     
@@ -69,18 +73,84 @@ final class MovieClient {
         }.resume()
     }
     
-    ///Function that loads the data and tries to convert it to
-    /// - Parameter url: url that opens the JASON API.
-    func getMovies(completion: @escaping (Result<TopMoviesAPIResponse, Error>) -> Void) {
-        self.request(urlString: topMoviesURL) { result in
+    func getTopRatedMovies(completion: @escaping (Result<[Movie]?, Error>) -> Void) {
+        self.request(urlString: topRatedMoviesURL) { result in
             switch result {
             case .success(let data):
                 do {
-                    let response = try JSONDecoder().decode(TopMoviesAPIResponse.self, from: data)
-                    completion(.success(response))
+                    let response = try JSONDecoder().decode(MoviesAPIResponse.self, from: data)
+                    completion(.success(response.results))
                 }
                 catch {
-                    completion(.failure(error))
+                    completion(.failure(NetworkError.urlError))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getTrendingMovies(completion: @escaping (Result<[Movie]?, Error>) -> Void) {
+        self.request(urlString: trendingMoviesURL) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(MoviesAPIResponse.self, from: data)
+                    completion(.success(response.results))
+                }
+                catch {
+                    completion(.failure(NetworkError.urlError))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getTrendingTV(completion: @escaping (Result<[Movie]?, Error>) -> Void) {
+        self.request(urlString: trendingTVURL) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(MoviesAPIResponse.self, from: data)
+                    completion(.success(response.results))
+                }
+                catch {
+                    completion(.failure(NetworkError.urlError))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getPopularMovies(completion: @escaping (Result<[Movie]?, Error>) -> Void) {
+        self.request(urlString: popularMoviesURL) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(MoviesAPIResponse.self, from: data)
+                    completion(.success(response.results))
+                }
+                catch {
+                    completion(.failure(NetworkError.urlError))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getUpcomingMovies(completion: @escaping (Result<[Movie]?, Error>) -> Void) {
+        self.request(urlString: upcomingMoviesURL) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(MoviesAPIResponse.self, from: data)
+                    completion(.success(response.results))
+                }
+                catch {
+                    completion(.failure(NetworkError.urlError))
                 }
             case .failure(let error):
                 completion(.failure(error))

@@ -1,5 +1,5 @@
 //
-//  FeedViewModel.swift
+//  MovieCollectionViewModel.swift
 //  Desafio-Globoplay-iOS
 //
 //  Created by Gáudio Ney on 23/02/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FeedViewModel {
+class MovieCollectionViewModel {
     
     // MARK: - Properties
     
@@ -20,7 +20,7 @@ class FeedViewModel {
     func formatImageUrl(for movies: [Movie]) {
         for movie in movies {
             if let posterPath = movie.posterPath {
-                movie.urlImage = Constants.ProductionServer.image + posterPath
+                movie.urlImage = Constants.ProductionServer.IMAGE_URL + posterPath
             }
         }
     }

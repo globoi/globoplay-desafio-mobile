@@ -30,14 +30,18 @@ class MainTabController: UITabBarController {
     }
     
     func configureViewControllers() {
-        let feed = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+        let feed = HomeViewController()
         let nav1 = templateNatigationController(image: UIImage(systemName: "house.fill"), rootViewControoler: feed)
         
         let myList = MyListController()
         let nav2 = templateNatigationController(image: UIImage(systemName: "star.fill"), rootViewControoler: myList)
         
         viewControllers = [nav1, nav2]
+        
         /// Costumization of the `TabBar`.
+        nav1.title = "Início"
+        nav2.title = "Minha lista"
+        
         tabBar.backgroundColor = .black
         tabBar.tintColor = .customWhite
     }
@@ -50,17 +54,40 @@ class MainTabController: UITabBarController {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .black
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.lightText] // With a balck background, make the title more readable.
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.lightText] // With a black background, make the title more readable.
         
         nav.navigationBar.standardAppearance = appearance
         nav.navigationBar.scrollEdgeAppearance = nav.navigationBar.standardAppearance
+        nav.navigationBar.tintColor = .customWhite
         nav.navigationBar.barStyle = .black
         nav.navigationBar.isTranslucent = false
         nav.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        nav.hidesBarsOnSwipe = true
+        
+        configureNavigationBar(nav: nav)
+        
+        
         return nav
     }
     
     // MARK: - Selectors
+    
+    func configureNavigationBar(nav: UINavigationController) {
+        let imageView = UIImageView(image: UIImage(named: "globoplay-text-logo"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.anchor(height: 35)
+        nav.navigationBar.topItem?.titleView = imageView
+        
+        let profileImage = UIImage(systemName: "person")
+        profileImage?.withTintColor(.customWhite)
+        profileImage?.withRenderingMode(.alwaysOriginal)
+                
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: profileImage, style: .done, target: self, action: #selector(handlePerfilTapped))
+    }
+    
+    @objc func handlePerfilTapped() {
+        AlertUtils.showAlert(message: "Por favor, crie uma conta para acessar a página de perfil.")
+    }
 
 }
 

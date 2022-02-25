@@ -10,32 +10,44 @@ import Foundation
 // MARK: - Movie Model
 
 class Movie: Codable {
-    let adult: Bool?
-    let backdropPath: String?
-    let genreIDS: [Int]?
-    let id: Int?
-    let originalLanguage: OriginalLanguage?
-    let originalTitle, overview: String?
-    let popularity: Double?
-    let posterPath, releaseDate, title: String?
-    let video: Bool?
-    let voteAverage: Double?
+    
+    let backdropPath, originalName: String?
+    let originCountry: [String]?
     let voteCount: Int?
+    let posterPath: String?
+    let voteAverage: Double?
+    let overview: String?
+    let id: Int?
+    let name, firstAirDate: String?
+    let genreIDS: [Int]?
+    let popularity: Double?
+    let mediaType: MediaType?
+    let originalLanguage: String?
+    let releaseDate: String?
+    let adult: Bool?
+    let originalTitle: String?
+    let video: Bool?
+    let title: String?
     var urlImage: String?
     
+    
     enum CodingKeys: String, CodingKey {
-        case adult
         case backdropPath = "backdrop_path"
-        case genreIDS = "genre_ids"
-        case id
+        case originalName = "original_name"
+        case originCountry = "origin_country"
         case originalLanguage = "original_language"
-        case originalTitle = "original_title"
-        case overview, popularity
-        case posterPath = "poster_path"
-        case releaseDate = "release_date"
-        case title, video
-        case voteAverage = "vote_average"
         case voteCount = "vote_count"
+        case posterPath = "poster_path"
+        case voteAverage = "vote_average"
+        case overview, id, name
+        case firstAirDate = "first_air_date"
+        case genreIDS = "genre_ids"
+        case popularity
+        case mediaType = "media_type"
+        case releaseDate = "release_date"
+        case adult
+        case originalTitle = "original_title"
+        case video, title
         case urlImage
     }
 }

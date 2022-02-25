@@ -129,3 +129,11 @@ extension UIApplication {
         return controller
     }
 }
+
+// MARK: - String
+
+extension String {
+    func capitalizedFirstLetter() -> String {
+        return self.prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+}

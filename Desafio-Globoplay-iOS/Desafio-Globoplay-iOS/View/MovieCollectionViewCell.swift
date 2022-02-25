@@ -12,18 +12,16 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var movie: Movie? {
-        didSet {
-            configureCell()
-        }
-    }
+    var movie: Movie? 
+    
+    static let reuseIdentifier = "MovieCell"
     
     private lazy var movieImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.setDimensions(width: 100, height: 150)
-        imageView.backgroundColor = .black
+        imageView.backgroundColor = .darkGray
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(movieImagePressed))
         imageView.addGestureRecognizer(tap)
@@ -43,26 +41,27 @@ class MovieCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        movieImageView.frame = contentView.bounds
+    }
+    
     // MARK: - Helper Methods
     
     func configureUI() {
-        backgroundColor = .darkGray
         
         addSubview(movieImageView)
-        movieImageView.anchor(top: topAnchor,
-                              leading: leadingAnchor)
     }
     
-    func configureCell() {
-        guard let movie = movie else { return}
+    public func configureMoviesCell(with model: String) {
 
-        let url = URL(string: movie.urlImage ?? "")
+        guard let url = URL(string: Constants.ProductionServer.IMAGE_URL + model) else { return }
         movieImageView.kf.setImage(with: url)
     }
     
     // MARK: - Selectors
     
     @objc func movieImagePressed() {
-        print("DEBUG: MOVIE IMAGE PRESSED.")
+        AlertUtils.showAlert(message: "O detalhe do filme carregará em breve. Aguarde a próxima atualização.")
     }
 }

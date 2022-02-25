@@ -1,5 +1,5 @@
 //
-//  TopMoviesAPIResponse.swift
+//  TopMoviesAPIResponseModel.swift
 //  Desafio-Globoplay-iOS
 //
 //  Created by Gáudio Ney on 23/02/22.
@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - APIResponse
-struct TopMoviesAPIResponse: Codable {
+struct MoviesAPIResponse: Codable {
     let page: Int?
     let results: [Movie]?
     let totalPages, totalResults: Int?
@@ -25,4 +25,9 @@ enum OriginalLanguage: String, Codable {
     case hi = "hi"
     case ja = "ja"
     case ko = "ko"
+}
+
+enum MediaType: String, Codable {
+    case movie = "movie"
+    case tv = "tv"
 }

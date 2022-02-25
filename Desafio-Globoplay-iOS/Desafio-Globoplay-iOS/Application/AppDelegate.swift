@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         lazy var statusBarStyle = window?.windowScene?.statusBarManager?.statusBarStyle ?? .lightContent
+        window?.overrideUserInterfaceStyle = .dark
         return true
     }
 

@@ -1,5 +1,5 @@
 //
-//  FilmDetailController.swift
+//  MovieDetailController.swift
 //  Desafio-Globoplay-iOS
 //
 //  Created by Gáudio Ney on 23/02/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilmDetailController: UIViewController {
+class MovieDetailController: UIViewController {
     
     // MARK: - Properties
     
