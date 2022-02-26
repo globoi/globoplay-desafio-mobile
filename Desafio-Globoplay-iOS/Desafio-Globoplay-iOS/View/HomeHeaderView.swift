@@ -21,7 +21,7 @@ class HomeHeaderView: UIView {
     
     private lazy var assinarButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Assinar plano", for: .normal)
+        button.setTitle("Assinar o plano", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.backgroundColor = .customWhite
         button.tintColor = .black

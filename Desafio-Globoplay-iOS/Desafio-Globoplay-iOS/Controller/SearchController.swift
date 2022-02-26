@@ -19,12 +19,22 @@ class SearchController: UIViewController {
         return tableView
     }()
     
+    private let searchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: SearchResultsController())
+        controller.searchBar.placeholder = "Pesquise por um filme ou série, aqui."
+        controller.searchBar.searchBarStyle = .minimal
+        return controller
+    }()
+    
+    private var searchBarIsEmpty: Bool?
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         fetchSearch()
+        searchController.searchResultsUpdater = self
     }
 
     override func viewDidLayoutSubviews() {
@@ -60,6 +70,10 @@ class SearchController: UIViewController {
         title = "Descubra"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
+        navigationItem.searchController = searchController
+        navigationItem.searchController?.obscuresBackgroundDuringPresentation = false
+        navigationController?.navigationBar.tintColor = .customWhite
+        definesPresentationContext = true
     }
     
     // MARK: - Selectors
@@ -88,4 +102,38 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
     }
+}
+
+extension SearchController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        
+        if ((searchBar.text?.isEmpty) == true) {
+                self.searchTableView.isHidden = false
+        } else if searchBar.text?.count ?? 0 > 0 {
+            self.searchTableView.isHidden = true
+        }
+        
+        guard let query = searchBar.text,
+              !query.trimmingCharacters(in: .whitespaces).isEmpty,
+              query.trimmingCharacters(in: .whitespaces).count >= 3,
+              let resultsController = searchController.searchResultsController as? SearchResultsController else {
+                  return
+              }
+        MovieClient.shared.search(with: query) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let movies):
+                    resultsController.movies = movies ?? []
+                    self.searchTableView.isHidden = true
+                    print(resultsController.movies)
+                    resultsController.searchResultsCollectionView.reloadData()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
 }
