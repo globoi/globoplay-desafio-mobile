@@ -35,7 +35,7 @@ class SearchController: UIViewController {
     // MARK: - API
     
     private func fetchSearch() {
-            MovieClient.shared.getUpcomingMovies { [weak self] result in
+            MovieClient.shared.getSearchedMovies { [weak self] result in
                 switch result {
                 case .success(let movies):
                     self?.movies = movies ?? []
@@ -57,7 +57,7 @@ class SearchController: UIViewController {
         searchTableView.delegate = self
         searchTableView.dataSource = self
         
-        title = "Search"
+        title = "Descubra"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
     }
@@ -79,7 +79,8 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let movie = movies[indexPath.row]
-        cell.configure(with: SearchViewModel(movieName: (movie.originalTitle ?? movie.originalName) ?? "Unknown title name", posterURL: movie.posterPath ?? ""))
+        let model = SearchViewModel(movieName: (movie.originalTitle ?? movie.originalName) ?? "Unknown title name", posterURL: movie.posterPath ?? "")
+        cell.configure(with: model)
         return cell
     }
     

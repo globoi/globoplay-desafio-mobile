@@ -17,6 +17,8 @@ final class MovieClient {
     private let upcomingMoviesURL = Constants.ProductionServer.BASE_URL + "/movie/upcoming?api_key=" + Constants.APIParameterKey.API_KEY
     private lazy var moviesImagesURL = Constants.ProductionServer.IMAGE_URL
     
+    private let searchMoviesURL = Constants.ProductionServer.BASE_URL + "/discover/movie?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate"
+    
     static let shared: MovieClient = MovieClient()
     
     // MARK:- Properties
@@ -143,6 +145,23 @@ final class MovieClient {
     
     func getUpcomingMovies(completion: @escaping (Result<[Movie]?, Error>) -> Void) {
         self.request(urlString: upcomingMoviesURL) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(MoviesAPIResponse.self, from: data)
+                    completion(.success(response.results))
+                }
+                catch {
+                    completion(.failure(NetworkError.urlError))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getSearchedMovies(completion: @escaping (Result<[Movie]?, Error>) -> Void) {
+        self.request(urlString: searchMoviesURL) { result in
             switch result {
             case .success(let data):
                 do {

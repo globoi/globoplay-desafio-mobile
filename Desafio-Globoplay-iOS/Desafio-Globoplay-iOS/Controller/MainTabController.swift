@@ -44,7 +44,7 @@ class MainTabController: UITabBarController {
         /// Costumization of the `TabBar`.
         nav1.title = "Início"
         nav2.title = "Minha lista"
-        nav3.title = "Procurar"
+        nav3.title = "Descubra"
         
         tabBar.backgroundColor = .black
         tabBar.tintColor = .customWhite
