@@ -45,7 +45,7 @@ class SearchController: UIViewController {
     // MARK: - API
     
     private func fetchSearch() {
-            MovieClient.shared.getSearchedMovies { [weak self] result in
+            MovieClient.shared.getDiscoverMovies { [weak self] result in
                 switch result {
                 case .success(let movies):
                     self?.movies = movies ?? []

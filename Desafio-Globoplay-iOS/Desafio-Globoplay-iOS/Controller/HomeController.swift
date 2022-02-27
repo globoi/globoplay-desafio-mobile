@@ -54,7 +54,6 @@ class HomeController: UIViewController {
         
         let headerView = HomeHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         homeTableView.tableHeaderView = headerView
-        
     }
     
     // MARK: - Selectors

@@ -11,6 +11,7 @@
 		3067ED4527C96BA70065FC08 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3067ED4427C96BA70065FC08 /* SearchTableViewCell.swift */; };
 		3067ED4727C96DCE0065FC08 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3067ED4627C96DCE0065FC08 /* SearchViewModel.swift */; };
 		3067ED4927C9B9E90065FC08 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3067ED4827C9B9E90065FC08 /* SearchResultsController.swift */; };
+		3067ED4B27CBF58D0065FC08 /* YouTubeSearchAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3067ED4A27CBF58D0065FC08 /* YouTubeSearchAPIResponse.swift */; };
 		30B7882A27C59B5A000A640C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7882927C59B5A000A640C /* AppDelegate.swift */; };
 		30B7882C27C59B5A000A640C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7882B27C59B5A000A640C /* SceneDelegate.swift */; };
 		30B7882E27C59B5A000A640C /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7882D27C59B5A000A640C /* MainTabController.swift */; };
@@ -58,6 +59,7 @@
 		3067ED4427C96BA70065FC08 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		3067ED4627C96DCE0065FC08 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3067ED4827C9B9E90065FC08 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
+		3067ED4A27CBF58D0065FC08 /* YouTubeSearchAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeSearchAPIResponse.swift; sourceTree = "<group>"; };
 		30B7882627C59B5A000A640C /* Desafio-Globoplay-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio-Globoplay-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B7882927C59B5A000A640C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30B7882B27C59B5A000A640C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			children = (
 				30B7887327C6950C000A640C /* TopMoviesAPIResponseModel.swift */,
 				30B7887E27C6DC96000A640C /* MovieModel.swift */,
+				3067ED4A27CBF58D0065FC08 /* YouTubeSearchAPIResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				30B7886627C66B48000A640C /* MovieDetailController.swift in Sources */,
 				30B7882A27C59B5A000A640C /* AppDelegate.swift in Sources */,
 				3067ED4727C96DCE0065FC08 /* SearchViewModel.swift in Sources */,
+				3067ED4B27CBF58D0065FC08 /* YouTubeSearchAPIResponse.swift in Sources */,
 				30B7886827C67485000A640C /* AlertUtils.swift in Sources */,
 				3067ED4327C969660065FC08 /* SearchController.swift in Sources */,
 				30B7888427C7AFF0000A640C /* HomeController.swift in Sources */,

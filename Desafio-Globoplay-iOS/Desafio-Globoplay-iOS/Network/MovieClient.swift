@@ -20,6 +20,8 @@ final class MovieClient {
     private let discoverMoviesURL = Constants.ProductionServer.BASE_URL + "/discover/movie?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate"
     private let searchMoviesAndSeriesURL = Constants.ProductionServer.BASE_URL + "/search/movie?api_key=" + Constants.APIParameterKey.API_KEY + "&query="
     
+    private let serachTraillerMoviesURL = Constants.APIYouTubeKey.YOUTUBE_BASE_URL + "&key=" + Constants.APIYouTubeKey.API_YOUTUBE_KEY + "&q="
+    
     static let shared: MovieClient = MovieClient()
     
     // MARK:- Properties
@@ -161,7 +163,7 @@ final class MovieClient {
         }
     }
     
-    func getSearchedMovies(completion: @escaping (Result<[Movie]?, Error>) -> Void) {
+    func getDiscoverMovies(completion: @escaping (Result<[Movie]?, Error>) -> Void) {
         self.request(urlString: discoverMoviesURL) { result in
             switch result {
             case .success(let data):
@@ -189,6 +191,27 @@ final class MovieClient {
                 do {
                     let response = try JSONDecoder().decode(MoviesAPIResponse.self, from: data)
                     completion(.success(response.results))
+                }
+                catch {
+                    completion(.failure(NetworkError.urlError))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getMovieTrailler(with query: String, completion: @escaping (Result<[YouTubeVideoItem]?, Error>) -> Void) {
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+        let searchURL = "\(serachTraillerMoviesURL)\(query)"
+        
+        self.request(urlString: searchURL) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(YouTubeSearchAPIResponse.self, from: data)
+                    completion(.success(response.items))
+                    print(response.items)
                 }
                 catch {
                     completion(.failure(NetworkError.urlError))

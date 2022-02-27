@@ -84,4 +84,19 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         movies.count
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let movie = movies[indexPath.row]
+        guard let movieName = movie.originalTitle ?? movie.originalName else { return }
+        
+        MovieClient.shared.getMovieTrailler(with: movieName + " trailler") { result in
+            switch result {
+            case .success(let videoItem):
+                print("DEBUG: \(videoItem?.first?.id?.videoID)")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
