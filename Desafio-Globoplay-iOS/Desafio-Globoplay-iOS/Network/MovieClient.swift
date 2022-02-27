@@ -201,7 +201,7 @@ final class MovieClient {
         }
     }
     
-    func getMovieTrailler(with query: String, completion: @escaping (Result<[YouTubeVideoItem]?, Error>) -> Void) {
+    func getMovieTrailler(with query: String, completion: @escaping (Result<YouTubeVideoItem?, Error>) -> Void) {
         guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
         let searchURL = "\(serachTraillerMoviesURL)\(query)"
         
@@ -210,8 +210,7 @@ final class MovieClient {
             case .success(let data):
                 do {
                     let response = try JSONDecoder().decode(YouTubeSearchAPIResponse.self, from: data)
-                    completion(.success(response.items))
-                    print(response.items)
+                    completion(.success(response.items?[0]))
                 }
                 catch {
                     completion(.failure(NetworkError.urlError))

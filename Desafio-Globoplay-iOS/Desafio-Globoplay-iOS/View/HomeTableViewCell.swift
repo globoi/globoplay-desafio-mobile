@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol HomeTableViewCellDelegate: AnyObject {
+    func homeTableViewCellDidTapCell(_ cell: HomeTableViewCell, viewModel: MoviePreviewViewModel)
+}
+
 class HomeTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
     static let identifier = "HomeTableViewCell"
+    
+    weak var delegate: HomeTableViewCellDelegate?
     
     private var movies: [Movie] = [Movie]()
     
@@ -90,10 +96,16 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         let movie = movies[indexPath.row]
         guard let movieName = movie.originalTitle ?? movie.originalName else { return }
         
-        MovieClient.shared.getMovieTrailler(with: movieName + " trailler") { result in
+        MovieClient.shared.getMovieTrailler(with: movieName + " trailler") { [weak self] result in
             switch result {
             case .success(let videoItem):
-                print("DEBUG: \(videoItem?.first?.id?.videoID)")
+                let movie = self?.movies[indexPath.row]
+                guard let movieDescription = movie?.overview else { return }
+                guard let strongSelf = self else { return }
+                
+                let viewModel = MoviePreviewViewModel(movieTitleText: movieName, youtubeView: videoItem!, movieDescriptionText: movieDescription)
+                self?.delegate?.homeTableViewCellDidTapCell(strongSelf, viewModel: viewModel)
+                
             case .failure(let error):
                 print(error.localizedDescription)
             }

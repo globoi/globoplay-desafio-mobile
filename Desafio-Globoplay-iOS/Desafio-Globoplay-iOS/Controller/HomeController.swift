@@ -88,6 +88,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else {
             return UITableViewCell()
         }
+        
+        cell.delegate = self
 
         switch indexPath.section {
         case Sections.PopularMovies.rawValue:
@@ -151,4 +153,12 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
+extension HomeController: HomeTableViewCellDelegate {
+    func homeTableViewCellDidTapCell(_ cell: HomeTableViewCell, viewModel: MoviePreviewViewModel) {
+        DispatchQueue.main.async { [weak self] in
+            let viewController = MoviePreviewController()
+            viewController.configurePreview(with: viewModel)
+            self?.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+}
