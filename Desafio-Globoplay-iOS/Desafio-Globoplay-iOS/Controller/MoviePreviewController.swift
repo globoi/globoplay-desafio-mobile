@@ -27,10 +27,11 @@ class MoviePreviewController: UIViewController {
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.text = "..."
         label.textColor = .customWhite
         label.font = UIFont.systemFont(ofSize: 16)
-        label.numberOfLines = 0
         return label
     }()
     
@@ -69,12 +70,12 @@ class MoviePreviewController: UIViewController {
         let stack = UIStackView(arrangedSubviews: [movieTitleLabel, descriptionLabel, myListButton])
         stack.alignment = .leading
         stack.axis = .vertical
-        stack.distribution = .fillEqually
+        stack.distribution = .fillProportionally
         stack.spacing = 8
         
         view.addSubview(stack)
-        stack.anchor(top: webView.bottomAnchor, leading: view.leadingAnchor, trailling: view.trailingAnchor,
-                     paddingTop: 12, paddingLeading: 12, paddingBottom: 12)
+        stack.anchor(top: webView.bottomAnchor, leading: view.layoutMarginsGuide.leadingAnchor, trailling: view.layoutMarginsGuide.trailingAnchor,
+                     paddingTop: 12, paddingLeading: 12, paddingBottom: 12, paddingTrailling: 12)
     }
     
     func configurePreview(with model: MoviePreviewViewModel){
