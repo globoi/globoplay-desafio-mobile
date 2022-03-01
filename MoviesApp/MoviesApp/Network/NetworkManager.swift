@@ -26,7 +26,7 @@ enum EndPoint {
     
     func getHttpMethod() -> HttpMethod {
         switch self {
-        case .listMovies(let id):
+        case .listMovies(_):
             return .get
         }
     }
