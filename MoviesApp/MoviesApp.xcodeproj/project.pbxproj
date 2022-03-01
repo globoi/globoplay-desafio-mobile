@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		93D8687927CE318C00F0F948 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8687827CE318C00F0F948 /* TitleLabel.swift */; };
+		93D8687E27CE567000F0F948 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8687D27CE567000F0F948 /* DetailsViewController.swift */; };
+		93D8688027CE570200F0F948 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8687F27CE570200F0F948 /* DetailsViewModel.swift */; };
+		93D8688227CE5D3800F0F948 /* SubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8688127CE5D3800F0F948 /* SubtitleLabel.swift */; };
+		93D8688627CE5E9200F0F948 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8688527CE5E9200F0F948 /* UIView+Extensions.swift */; };
+		93D8688827CE6C0600F0F948 /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8688727CE6C0600F0F948 /* BodyLabel.swift */; };
+		93D8688B27CE6EFE00F0F948 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8688A27CE6EFE00F0F948 /* PrimaryButton.swift */; };
+		93D8688E27CE979F00F0F948 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8688D27CE979F00F0F948 /* PersistenceManager.swift */; };
 		93ED840527C5BC8D00A89AFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED840427C5BC8D00A89AFF /* AppDelegate.swift */; };
 		93ED840727C5BC8D00A89AFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED840627C5BC8D00A89AFF /* SceneDelegate.swift */; };
 		93ED840E27C5BC9000A89AFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93ED840D27C5BC9000A89AFF /* Assets.xcassets */; };
@@ -45,6 +52,13 @@
 
 /* Begin PBXFileReference section */
 		93D8687827CE318C00F0F948 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		93D8687D27CE567000F0F948 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		93D8687F27CE570200F0F948 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		93D8688127CE5D3800F0F948 /* SubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleLabel.swift; sourceTree = "<group>"; };
+		93D8688527CE5E9200F0F948 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		93D8688727CE6C0600F0F948 /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
+		93D8688A27CE6EFE00F0F948 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		93D8688D27CE979F00F0F948 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		93ED840127C5BC8D00A89AFF /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93ED840427C5BC8D00A89AFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93ED840627C5BC8D00A89AFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,8 +110,67 @@
 			isa = PBXGroup;
 			children = (
 				93D8687827CE318C00F0F948 /* TitleLabel.swift */,
+				93D8688127CE5D3800F0F948 /* SubtitleLabel.swift */,
+				93D8688727CE6C0600F0F948 /* BodyLabel.swift */,
 			);
 			path = Labels;
+			sourceTree = "<group>";
+		};
+		93D8687A27CE563E00F0F948 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				93D8687C27CE565700F0F948 /* ViewModel */,
+				93D8687B27CE564B00F0F948 /* View */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		93D8687B27CE564B00F0F948 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93D8687D27CE567000F0F948 /* DetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		93D8687C27CE565700F0F948 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				93D8687F27CE570200F0F948 /* DetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		93D8688327CE5E7A00F0F948 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				93D8688427CE5E8100F0F948 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		93D8688427CE5E8100F0F948 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				93D8688527CE5E9200F0F948 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		93D8688927CE6EE800F0F948 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				93D8688A27CE6EFE00F0F948 /* PrimaryButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		93D8688C27CE978900F0F948 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				93D8688D27CE979F00F0F948 /* PersistenceManager.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		93ED83F827C5BC8D00A89AFF = {
@@ -123,6 +196,8 @@
 		93ED840327C5BC8D00A89AFF /* MoviesApp */ = {
 			isa = PBXGroup;
 			children = (
+				93D8688C27CE978900F0F948 /* Persistence */,
+				93D8688327CE5E7A00F0F948 /* Utils */,
 				93ED843E27C5CC9800A89AFF /* CustomViews */,
 				93ED843C27C5CC6700A89AFF /* Scenes */,
 				93ED843927C5C5AA00A89AFF /* Model */,
@@ -174,6 +249,7 @@
 		93ED843C27C5CC6700A89AFF /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				93D8687A27CE563E00F0F948 /* Details */,
 				93ED844427C5CD6900A89AFF /* Favorites */,
 				93ED843D27C5CC7300A89AFF /* Home */,
 			);
@@ -192,6 +268,7 @@
 		93ED843E27C5CC9800A89AFF /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				93D8688927CE6EE800F0F948 /* Buttons */,
 				93D8687727CE316300F0F948 /* Labels */,
 				93F7B18627C71FB400EF1826 /* Cells */,
 				93ED843F27C5CCBE00A89AFF /* AppTabBarController.swift */,
@@ -369,17 +446,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93D8688B27CE6EFE00F0F948 /* PrimaryButton.swift in Sources */,
 				93ED843627C5C09900A89AFF /* NetworkManager.swift in Sources */,
 				93ED844A27C5D26D00A89AFF /* HomeViewModel.swift in Sources */,
 				93ED844727C5CD9700A89AFF /* FavoritesViewController.swift in Sources */,
 				93ED843827C5C4E800A89AFF /* NetworkService.swift in Sources */,
 				93ED844027C5CCBE00A89AFF /* AppTabBarController.swift in Sources */,
 				93ED844327C5CD6400A89AFF /* HomeViewController.swift in Sources */,
+				93D8688627CE5E9200F0F948 /* UIView+Extensions.swift in Sources */,
+				93D8688827CE6C0600F0F948 /* BodyLabel.swift in Sources */,
 				93ED843B27C5C5C300A89AFF /* Movie.swift in Sources */,
 				93ED840527C5BC8D00A89AFF /* AppDelegate.swift in Sources */,
 				93F7B18827C71FD100EF1826 /* MovieCollectionViewCell.swift in Sources */,
 				93D8687927CE318C00F0F948 /* TitleLabel.swift in Sources */,
+				93D8688227CE5D3800F0F948 /* SubtitleLabel.swift in Sources */,
 				93ED844C27C5D80800A89AFF /* MovieList.swift in Sources */,
+				93D8688027CE570200F0F948 /* DetailsViewModel.swift in Sources */,
+				93D8688E27CE979F00F0F948 /* PersistenceManager.swift in Sources */,
+				93D8687E27CE567000F0F948 /* DetailsViewController.swift in Sources */,
 				93ED840727C5BC8D00A89AFF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,7 +19,7 @@ protocol HomeBusinessLogic {
     func downloadImage(at indexPath: IndexPath, completion: @escaping (UIImage?) -> Void)
     
     // MARK: - Navigation
-    func goToDetailsScreen(of indexPath: IndexPath)
+    func goToDetailsScreen(of indexPath: IndexPath) -> UIViewController
 }
 
 protocol HomeViewModelViewDelegate: AnyObject {
@@ -88,7 +88,11 @@ extension HomeViewModel: HomeBusinessLogic {
     }
     
     // MARK: - Navigation
-    func goToDetailsScreen(of indexPath: IndexPath) {
-        
+    func goToDetailsScreen(of indexPath: IndexPath) -> UIViewController {
+        if let movieList = trendMovieList {
+            let viewModel = DetailsViewModel(model: movieList[indexPath.row])
+            return DetailsViewController(viewModel: viewModel)
+        }
+        return UIViewController()
     }
 }

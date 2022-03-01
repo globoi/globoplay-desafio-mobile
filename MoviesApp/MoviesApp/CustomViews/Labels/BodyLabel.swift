@@ -1,5 +1,5 @@
 //
-//  TitleLabel.swift
+//  BodyLabel.swift
 //  MoviesApp
 //
 //  Created by Gustavo Tiecker on 01/03/22.
@@ -7,8 +7,7 @@
 
 import UIKit
 
-class TitleLabel: UILabel {
-    
+class BodyLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -18,17 +17,19 @@ class TitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+    convenience init(textAlignment: NSTextAlignment) {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
-        self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
     }
     
     private func configure() {
-        textColor = .white
+        textColor = .gray
+        font = UIFont.preferredFont(forTextStyle: .body)
+        adjustsFontForContentSizeCategory = true
         adjustsFontSizeToFitWidth = true
-        minimumScaleFactor = 0.9
-        numberOfLines = 2
+        minimumScaleFactor = 0.75
+        numberOfLines = 5
+        lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

@@ -30,6 +30,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     private let movieImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -46,7 +47,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     func setup(with image: UIImage?) {
         movieImageView.image = image
-        movieImageView.contentMode = .scaleAspectFit
     }
 }
 

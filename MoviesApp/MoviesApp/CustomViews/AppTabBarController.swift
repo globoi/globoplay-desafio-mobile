@@ -13,6 +13,12 @@ class AppTabBarController: UITabBarController {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = .white
         viewControllers = [createHomeViewController(), createFavoritesViewController()]
+        
+        let attributes = [NSAttributedString.Key.font:  UIFont(name: "Helvetica-Bold", size: 0.1)!, NSAttributedString.Key.foregroundColor: UIColor.clear]
+
+        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .highlighted)
+        UIBarButtonItem.appearance().tintColor = .white
     }
     
     func createHomeViewController() -> UINavigationController {

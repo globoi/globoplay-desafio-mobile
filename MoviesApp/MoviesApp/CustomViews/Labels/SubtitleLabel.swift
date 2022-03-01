@@ -1,5 +1,5 @@
 //
-//  TitleLabel.swift
+//  SubtitleLabel.swift
 //  MoviesApp
 //
 //  Created by Gustavo Tiecker on 01/03/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TitleLabel: UILabel {
+class SubtitleLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,14 +21,14 @@ class TitleLabel: UILabel {
     convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
-        self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
+        font = UIFont.systemFont(ofSize: fontSize, weight: .medium)
     }
     
     private func configure() {
-        textColor = .white
+        textColor = .lightGray
         adjustsFontSizeToFitWidth = true
-        minimumScaleFactor = 0.9
-        numberOfLines = 2
+        minimumScaleFactor = 0.90
+        lineBreakMode = .byTruncatingTail
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

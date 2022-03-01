@@ -111,7 +111,8 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.goToDetailsScreen(of: indexPath)
+        let detailsViewController = viewModel.goToDetailsScreen(of: indexPath)
+        navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
 
