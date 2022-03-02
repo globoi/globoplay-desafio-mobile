@@ -175,7 +175,9 @@ extension UIView {
         
         Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false) { time in
             self.stopActivityView()
-            AlertUtils.showAlert(message: "Falha na conexão, por favor tente novamente.")
+            if activityView != nil {
+                AlertUtils.showAlert(message: "Falha na conexão, por favor tente novamente.")
+            }
         }
     }
     

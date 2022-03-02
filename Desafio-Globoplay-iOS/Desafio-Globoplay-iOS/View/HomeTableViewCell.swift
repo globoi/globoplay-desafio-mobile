@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeTableViewCellDelegate: AnyObject {
-    func homeTableViewCellDidTapCell(_ cell: HomeTableViewCell, viewModel: MovieDetailViewModel)
+    func homeTableViewCellDidTapCell(_ cell: HomeTableViewCell, viewModel: MovieDetailViewModel, movie: [Movie])
 }
 
 class HomeTableViewCell: UITableViewCell {
@@ -67,8 +67,16 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
-    private func downloadTitleAt(indexPath: IndexPath) {
-        print("DEBUG: FILME \(movies[indexPath.row].originalTitle) ADICIONADO A MINHA LISTA.")
+    private func addMovieAt(indexPath: IndexPath) {
+        DataPersistenceManager.shared.addMovieToMyList(viewModel: movies[indexPath.row]) { result in
+            switch result {
+            case .success():
+                NotificationCenter.default.post(name: NSNotification.Name("adicionadoALista"), object: nil)
+                print("DEBUG: FILME ADIONADO À LISTA.")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     // MARK: - Selectors
@@ -112,8 +120,8 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                     
                     guard let url = URL(string: Constants.ProductionServer.IMAGE_URL + posterPath) else { return }
                     
-                    let viewModel = MovieDetailViewModel(imageURL: url, movieTitleText: ((movie?.originalName ?? movie?.name) ?? movie?.originalTitle) ?? "--", movieDescriptionText: movieDescription, releaseDateText: (movie?.releaseDate ?? movie?.firstAirDate) ?? "--", originCountryText: originCountry?.first ?? "--", originNameText: ((movie?.originalName ?? movie?.name) ?? movie?.originalTitle) ?? "--")
-                    self?.delegate?.homeTableViewCellDidTapCell(strongSelf, viewModel: viewModel)
+                    let viewModel = MovieDetailViewModel(imageURL: url, movieTitleText: ((movie?.originalName ?? movie?.name) ?? movie?.originalTitle) ?? "--", movieDescriptionText: movieDescription, releaseDateText: (movie?.releaseDate ?? movie?.firstAirDate) ?? "--", originCountryText: originCountry?.first ?? "--", originNameText: ((movie?.originalName ?? movie?.name) ?? movie?.originalTitle) ?? "--", movieIndexPath: indexPath)
+                    self?.delegate?.homeTableViewCellDidTapCell(strongSelf, viewModel: viewModel, movie: self!.movies)
                 }
                 
             case .failure(let error):
@@ -128,7 +136,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                 identifier: nil,
                 previewProvider: nil) {[weak self] _ in
                     let addMovieToListAction = UIAction(title: "Adicinar a minha lista", subtitle: nil, image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
-                        self?.downloadTitleAt(indexPath: indexPath)
+                        self?.addMovieAt(indexPath: indexPath)
                     }
                     return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [addMovieToListAction])
                 }

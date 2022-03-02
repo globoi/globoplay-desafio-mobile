@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G417" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="MovieModel" representedClassName="MovieModel" syncable="YES" codeGenerationType="class">
+        <attribute name="backdropPath" optional="YES" attributeType="String"/>
+        <attribute name="firstAirDate" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="originalName" optional="YES" attributeType="String"/>
+        <attribute name="originalTitle" optional="YES" attributeType="String"/>
+        <attribute name="originCountry" optional="YES" attributeType="String"/>
+        <attribute name="overview" optional="YES" attributeType="String"/>
+        <attribute name="posterPath" optional="YES" attributeType="String"/>
+        <attribute name="releaseDate" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="urlImage" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="MovieModel" positionX="-63" positionY="-18" width="128" height="209"/>
+    </elements>
 </model>

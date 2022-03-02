@@ -11,6 +11,10 @@ class MovieDetailController: UIViewController {
     
     // MARK: - Properties
     
+    private var movies: [Movie] = [Movie]()
+    
+    private var movieIndexPath: IndexPath?
+    
     private var movieImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -24,7 +28,6 @@ class MovieDetailController: UIViewController {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        //imageView.setDimensions(width: view.bounds.width, height: 400)
         imageView.backgroundColor = .homeBlack
         imageView.addBlurredBackground(style: .systemUltraThinMaterialDark)
         return imageView
@@ -186,14 +189,32 @@ class MovieDetailController: UIViewController {
         releaseDateLabel.text = "Data de Lançamento: \(releaseDate)"
         originalNameLabel.text = "Título Original: \(originalName)"
         originCountryLabel.text = "País: \(originCountry)"
+        movieIndexPath = viewModel.movieIndexPath
         
         movieImageView.kf.setImage(with: viewModel.imageURL)
         movieBackGroundBlurred.kf.setImage(with: viewModel.imageURL)
     }
     
+    func configureMovies(with movies: [Movie]) {
+        self.movies = movies
+    }
+    
+    private func addMovieAt(indexPath: IndexPath) {
+        DataPersistenceManager.shared.addMovieToMyList(viewModel: movies[indexPath.row]) { result in
+            switch result {
+            case .success():
+                NotificationCenter.default.post(name: NSNotification.Name("adicionadoALista"), object: nil)
+                print("DEBUG: FILME ADIONADO À LISTA.")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: - Selectors
     
     @objc func handleMyListButton() {
+        addMovieAt(indexPath: movieIndexPath!)
         AlertUtils.showAlert(message: "Conteúdo adicionado a sua lista de filmes.")
     }
     

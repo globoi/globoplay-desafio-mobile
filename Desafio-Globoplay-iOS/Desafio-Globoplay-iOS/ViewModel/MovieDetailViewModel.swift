@@ -14,4 +14,5 @@ struct MovieDetailViewModel {
     let releaseDateText: String?
     let originCountryText: String?
     let originNameText: String?
+    let movieIndexPath:IndexPath?
 }
