@@ -11,7 +11,7 @@ import WebKit
 class MoviePreviewController: UIViewController {
     
     // MARK: - Properties
-    
+        
     private let webView: WKWebView = {
         let webView =  WKWebView()
         return webView
@@ -37,12 +37,11 @@ class MoviePreviewController: UIViewController {
     
     private let myListButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .customWhite
-        button.setTitle("Adicionar a minha lista", for: .normal)
+        button.backgroundColor = .black
+        button.setTitle("★ Adicionar a minha lista", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.backgroundColor = .customWhite
-        button.tintColor = .black
-        button.layer.borderColor = UIColor.black.cgColor
+        button.tintColor = .customWhite
+        button.layer.borderColor = UIColor.customWhite.cgColor
         button.layer.borderWidth = 1
         button.setDimensions(width: 180, height: 45)
         button.layer.cornerRadius = 5
@@ -62,7 +61,7 @@ class MoviePreviewController: UIViewController {
     // MARK: - Helper Methods
     
     func configureUI() {
-        
+        view.stopActivityView()
         view.addSubview(webView)
         webView.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailling: view.trailingAnchor,
                        paddingTop: 12, paddingLeading: 12, paddingTrailling: 12, height: 300)
@@ -84,7 +83,6 @@ class MoviePreviewController: UIViewController {
         movieTitleLabel.text = model.movieTitleText
         descriptionLabel.text = model.movieDescriptionText
         webView.load(URLRequest(url: videoUrl))
-        
     }
     
     // MARK: - Selectors

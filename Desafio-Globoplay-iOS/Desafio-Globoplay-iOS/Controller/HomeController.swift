@@ -154,11 +154,20 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HomeController: HomeTableViewCellDelegate {
-    func homeTableViewCellDidTapCell(_ cell: HomeTableViewCell, viewModel: MoviePreviewViewModel) {
+    func homeTableViewCellDidTapCell(_ cell: HomeTableViewCell, viewModel: MovieDetailViewModel) {
+        homeTableView.startActivityView(forView: homeTableView)
         DispatchQueue.main.async { [weak self] in
-            let viewController = MoviePreviewController()
-            viewController.configurePreview(with: viewModel)
+            let viewController = MovieDetailController()
+            viewController.configureDetail(with: viewModel)
             self?.navigationController?.pushViewController(viewController, animated: true)
         }
     }
+    
+//    func homeTableViewCellDidTapCell(_ cell: HomeTableViewCell, viewModel: MoviePreviewViewModel) {
+//        DispatchQueue.main.async { [weak self] in
+//            let viewController = MoviePreviewController()
+//            viewController.configurePreview(with: viewModel)
+//            self?.navigationController?.pushViewController(viewController, animated: true)
+//        }
+//    }
 }

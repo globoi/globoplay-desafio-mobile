@@ -7,15 +7,21 @@
 
 import UIKit
 
+protocol SearchResultsControllerDelegate: AnyObject {
+    func searchResultsControllerDidTapMovie(_ viewModel: MoviePreviewViewModel)
+}
+
 class SearchResultsController: UIViewController {
     
     // MARK: - Properties
     
     public var movies: [Movie] = [Movie]()
     
+    public weak var delegate: SearchResultsControllerDelegate?
+    
     public let searchResultsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 - 10 , height: 200)
+        layout.itemSize = CGSize(width:  100, height: 150)
         layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.reuseIdentifier)
@@ -67,4 +73,24 @@ extension SearchResultsController: UICollectionViewDelegate, UICollectionViewDat
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let movie = movies[indexPath.row]
+        
+        guard let movieName = movie.originalTitle ?? movie.originalName else { return }
+
+        searchResultsCollectionView.startActivityView(forView: searchResultsCollectionView)
+        MovieClient.shared.getMovieTrailler(with: movieName) { [weak self] result in
+            switch result {
+            case .success(let youtubeElement):
+                self?.delegate?.searchResultsControllerDidTapMovie(MoviePreviewViewModel(movieTitleText: movieName, youtubeView: youtubeElement!, movieDescriptionText: movie.overview ?? "--"))
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
 }

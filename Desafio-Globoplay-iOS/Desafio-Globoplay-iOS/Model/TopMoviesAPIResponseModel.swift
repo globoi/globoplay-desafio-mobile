@@ -30,4 +30,5 @@ enum OriginalLanguage: String, Codable {
 enum MediaType: String, Codable {
     case movie = "movie"
     case tv = "tv"
+    case all = "all"
 }

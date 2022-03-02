@@ -11,16 +11,16 @@ import Foundation
 final class MovieClient {
     
     private let topRatedMoviesURL = Constants.ProductionServer.BASE_URL + "/movie/top_rated?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR"
-    private let trendingMoviesURL = Constants.ProductionServer.BASE_URL + "/trending/movie/day?api_key=" + Constants.APIParameterKey.API_KEY
-    private let trendingTVURL = Constants.ProductionServer.BASE_URL + "/trending/tv/day?api_key=" + Constants.APIParameterKey.API_KEY
-    private let popularMoviesURL = Constants.ProductionServer.BASE_URL + "/movie/popular?api_key=" + Constants.APIParameterKey.API_KEY
-    private let upcomingMoviesURL = Constants.ProductionServer.BASE_URL + "/movie/upcoming?api_key=" + Constants.APIParameterKey.API_KEY
+    private let trendingMoviesURL = Constants.ProductionServer.BASE_URL + "/trending/movie/day?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR"
+    private let trendingTVURL = Constants.ProductionServer.BASE_URL + "/trending/tv/day?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR"
+    private let popularMoviesURL = Constants.ProductionServer.BASE_URL + "/movie/popular?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR"
+    private let upcomingMoviesURL = Constants.ProductionServer.BASE_URL + "/movie/upcoming?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR"
     private lazy var moviesImagesURL = Constants.ProductionServer.IMAGE_URL
     
     private let discoverMoviesURL = Constants.ProductionServer.BASE_URL + "/discover/movie?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate"
-    private let searchMoviesAndSeriesURL = Constants.ProductionServer.BASE_URL + "/search/movie?api_key=" + Constants.APIParameterKey.API_KEY + "&query="
+    private let searchMoviesAndSeriesURL = Constants.ProductionServer.BASE_URL + "/search/movie?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR" + "&query="
     
-    private let serachTraillerMoviesURL = Constants.APIYouTubeKey.YOUTUBE_BASE_URL + "&key=" + Constants.APIYouTubeKey.API_YOUTUBE_KEY + "&q="
+    private let serachTraillerMoviesURL = Constants.APIYouTubeKey.YOUTUBE_BASE_URL + "&key=" + Constants.APIYouTubeKey.API_YOUTUBE_KEY + "&language=pt-BR" + "&q="
     
     static let shared: MovieClient = MovieClient()
     
@@ -211,6 +211,27 @@ final class MovieClient {
                 do {
                     let response = try JSONDecoder().decode(YouTubeSearchAPIResponse.self, from: data)
                     completion(.success(response.items?[0]))
+                }
+                catch {
+                    completion(.failure(NetworkError.urlError))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func searchSelectedMovie(with movieID: Int?, completion: @escaping (Result<Movie?, Error>) -> Void) {
+        
+        guard let movieID = movieID else { return }
+        let searchURL = "\(Constants.ProductionServer.BASE_URL)/movie/\(movieID)?api_key=8bd74769280804b48ea517b197e125c0&language=pt-BR"
+        
+        self.request(urlString: searchURL) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(MoviesAPIResponse.self, from: data)
+                    completion(.success(response.results?[0]))
                 }
                 catch {
                     completion(.failure(NetworkError.urlError))

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeTableViewCellDelegate: AnyObject {
-    func homeTableViewCellDidTapCell(_ cell: HomeTableViewCell, viewModel: MoviePreviewViewModel)
+    func homeTableViewCellDidTapCell(_ cell: HomeTableViewCell, viewModel: MovieDetailViewModel)
 }
 
 class HomeTableViewCell: UITableViewCell {
@@ -67,6 +67,10 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
+    private func downloadTitleAt(indexPath: IndexPath) {
+        print("DEBUG: FILME \(movies[indexPath.row].originalTitle) ADICIONADO A MINHA LISTA.")
+    }
+    
     // MARK: - Selectors
     
 }
@@ -94,21 +98,41 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let movie = movies[indexPath.row]
-        guard let movieName = movie.originalTitle ?? movie.originalName else { return }
         
-        MovieClient.shared.getMovieTrailler(with: movieName + " trailler") { [weak self] result in
+        guard let movieID = movie.id else { return }
+        MovieClient.shared.searchSelectedMovie(with: movieID) { [weak self] result in
             switch result {
-            case .success(let videoItem):
-                let movie = self?.movies[indexPath.row]
-                guard let movieDescription = movie?.overview else { return }
-                guard let strongSelf = self else { return }
-                
-                let viewModel = MoviePreviewViewModel(movieTitleText: movieName, youtubeView: videoItem!, movieDescriptionText: movieDescription)
-                self?.delegate?.homeTableViewCellDidTapCell(strongSelf, viewModel: viewModel)
+            case .success(_):
+                DispatchQueue.main.async {
+                    let movie = self?.movies[indexPath.row]
+                    guard let movieDescription = movie?.overview else { return }
+                    guard let strongSelf = self else { return }
+                    guard let posterPath = movie?.posterPath else { return }
+                    let originCountry = movie?.originCountry
+                    
+                    guard let url = URL(string: Constants.ProductionServer.IMAGE_URL + posterPath) else { return }
+                    
+                    let viewModel = MovieDetailViewModel(imageURL: url, movieTitleText: ((movie?.originalName ?? movie?.name) ?? movie?.originalTitle) ?? "--", movieDescriptionText: movieDescription, releaseDateText: (movie?.releaseDate ?? movie?.firstAirDate) ?? "--", originCountryText: originCountry?.first ?? "--", originNameText: ((movie?.originalName ?? movie?.name) ?? movie?.originalTitle) ?? "--")
+                    self?.delegate?.homeTableViewCellDidTapCell(strongSelf, viewModel: viewModel)
+                }
                 
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+            
+            let configureContextMenu = UIContextMenuConfiguration(
+                identifier: nil,
+                previewProvider: nil) {[weak self] _ in
+                    let addMovieToListAction = UIAction(title: "Adicinar a minha lista", subtitle: nil, image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
+                        self?.downloadTitleAt(indexPath: indexPath)
+                    }
+                    return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [addMovieToListAction])
+                }
+            
+            return configureContextMenu
+        }
 }

@@ -16,17 +16,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     static let reuseIdentifier = "MovieCell"
     
-    private lazy var movieImageView: UIImageView = {
+    private var movieImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.setDimensions(width: 100, height: 150)
         imageView.backgroundColor = .darkGray
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(movieImagePressed))
-        imageView.addGestureRecognizer(tap)
-        imageView.isUserInteractionEnabled = true
-        
         return imageView
     }()
     
@@ -61,7 +56,4 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Selectors
     
-    @objc func movieImagePressed() {
-        AlertUtils.showAlert(message: "O detalhe do filme carregará em breve. Aguarde a próxima atualização.")
-    }
 }

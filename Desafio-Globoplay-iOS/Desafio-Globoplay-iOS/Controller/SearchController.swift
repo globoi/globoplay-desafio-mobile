@@ -36,7 +36,7 @@ class SearchController: UIViewController {
         fetchSearch()
         searchController.searchResultsUpdater = self
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         searchTableView.frame = view.bounds
@@ -45,19 +45,19 @@ class SearchController: UIViewController {
     // MARK: - API
     
     private func fetchSearch() {
-            MovieClient.shared.getDiscoverMovies { [weak self] result in
-                switch result {
-                case .success(let movies):
-                    self?.movies = movies ?? []
-                    DispatchQueue.main.async {
-                        self?.searchTableView.reloadData()
-                    }
-                    
-                case .failure(let error):
-                    print(error.localizedDescription)
+        MovieClient.shared.getDiscoverMovies { [weak self] result in
+            switch result {
+            case .success(let movies):
+                self?.movies = movies ?? []
+                DispatchQueue.main.async {
+                    self?.searchTableView.reloadData()
                 }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
+    }
     
     // MARK: - Helper Methods
     
@@ -87,7 +87,7 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier, for: indexPath) as? SearchTableViewCell else {
             return UITableViewCell()
         }
@@ -102,15 +102,37 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie = movies[indexPath.row]
+        
+        guard let movieName = movie.originalTitle ?? movie.originalName else { return }
+        
+        tableView.startActivityView(forView: tableView)
+        MovieClient.shared.getMovieTrailler(with: movieName) { [weak self] result in
+            switch result {
+            case .success(let youtubeElement):
+                DispatchQueue.main.async {
+                    let viewController = MoviePreviewController()
+                    viewController.configurePreview(with: MoviePreviewViewModel(movieTitleText: movieName,
+                                                                                youtubeView: youtubeElement!,
+                                                                                movieDescriptionText: movie.overview ?? "--"))
+                    self?.navigationController?.pushViewController(viewController, animated: true)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
-extension SearchController: UISearchResultsUpdating {
+extension SearchController: UISearchResultsUpdating, SearchResultsControllerDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         
         if ((searchBar.text?.isEmpty) == true) {
-                self.searchTableView.isHidden = false
+            self.searchTableView.isHidden = false
         } else if searchBar.text?.count ?? 0 > 0 {
             self.searchTableView.isHidden = true
         }
@@ -121,6 +143,9 @@ extension SearchController: UISearchResultsUpdating {
               let resultsController = searchController.searchResultsController as? SearchResultsController else {
                   return
               }
+        
+        resultsController.delegate = self
+        
         MovieClient.shared.search(with: query) { result in
             DispatchQueue.main.async {
                 switch result {
@@ -133,6 +158,14 @@ extension SearchController: UISearchResultsUpdating {
                     print(error.localizedDescription)
                 }
             }
+        }
+    }
+    
+    func searchResultsControllerDidTapMovie(_ viewModel: MoviePreviewViewModel) {
+        DispatchQueue.main.async {
+            let viewController = MoviePreviewController()
+            viewController.configurePreview(with: viewModel)
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     

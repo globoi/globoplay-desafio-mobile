@@ -137,3 +137,45 @@ extension String {
         return self.prefix(1).uppercased() + self.lowercased().dropFirst()
     }
 }
+
+// MARK: - UIView
+
+extension UIView {
+    func addBlurredBackground(style: UIBlurEffect.Style) {
+        let blurEffect = UIBlurEffect(style: style)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = self.frame
+        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.addSubview(blurView)
+        self.sendSubviewToBack(blurView)
+    }
+    
+    func addDarkGradient(frame: CGRect, colors:[UIColor]){
+        let gradient = CAGradientLayer()
+        gradient.frame = frame
+        gradient.colors = colors.map{ $0.cgColor }
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+}
+
+// MARK: - UIViewController
+
+fileprivate var activityView: UIView?
+
+extension UIView {
+    func startActivityView(forView view: UIView) {
+        activityView = UIView(frame: view.bounds)
+        activityView?.backgroundColor = UIColor.black
+        
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = activityView!.center
+        activityIndicator.startAnimating()
+        activityView?.addSubview(activityIndicator)
+        view.addSubview(activityView!)
+    }
+    
+    func stopActivityView() {
+        activityView?.removeFromSuperview()
+        activityView = nil
+    }
+}
