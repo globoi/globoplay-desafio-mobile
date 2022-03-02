@@ -15,7 +15,6 @@ protocol HomeBusinessLogic {
     
     // MARK: - Service
     func fetchTrendMovieList(completion: @escaping () -> Void)
-    func fetchRecomendedMovieList(completion: @escaping () -> Void)
     func downloadImage(at indexPath: IndexPath, completion: @escaping (UIImage?) -> Void)
     
     // MARK: - Navigation
@@ -28,17 +27,15 @@ protocol HomeViewModelViewDelegate: AnyObject {
 
 final class HomeViewModel {
     
-    enum Sections {
+    enum Sections: CaseIterable {
         case trend
-        case recomended
     }
     
     // MARK: - Properties
-    private let networkService = NetworkService()
+    var networkService: NetworkServiceProtocol = NetworkService()
     weak var viewDelegate: HomeViewModelViewDelegate?
     
     private var trendMovieList: [Movie]?
-    private var recomendedMovieList: [Movie]?
     private var sections: [Sections] = [.trend]
     
     // MARK: - Public Methods
@@ -62,23 +59,13 @@ extension HomeViewModel: HomeBusinessLogic {
     }
     
     func getNumberOfRowsIn(section: Int) -> Int {
-        if section == 0 {
-            return trendMovieList?.count ?? 0
-        }
-        return recomendedMovieList?.count ?? 0
+        return trendMovieList?.count ?? 0
     }
     
     // MARK: - Service
     func fetchTrendMovieList(completion: @escaping () -> Void) {
         requestMovieList(id: 1) { movies in
             self.trendMovieList = movies.items
-            completion()
-        }
-    }
-    
-    func fetchRecomendedMovieList(completion: @escaping () -> Void) {
-        requestMovieList(id: 2) { movies in
-            self.recomendedMovieList = movies.items
             completion()
         }
     }

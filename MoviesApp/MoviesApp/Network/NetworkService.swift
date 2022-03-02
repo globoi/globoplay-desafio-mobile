@@ -7,7 +7,12 @@
 
 import UIKit
 
-final class NetworkService {
+protocol NetworkServiceProtocol {
+    func getMoviesList(id: Int, completion: (@escaping (Result<MovieList, APIError>) -> Void))
+    func downloadImage(from urlString: String, completion: @escaping (UIImage?) -> Void)
+}
+
+final class NetworkService: NetworkServiceProtocol {
 
     func getMoviesList(id: Int, completion: (@escaping (Result<MovieList, APIError>) -> Void)) {
         NetworkManager.shared.request(endPoint: .listMovies(id)) { response in

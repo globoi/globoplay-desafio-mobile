@@ -6,30 +6,69 @@
 //
 
 import XCTest
+@testable import MoviesApp
 
 class HomeViewModelTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    private var sut: HomeViewModel!
+    private var networkServiceSpy: NetworkServiceSpy!
+    
+    override func setUp() {
+        super.setUp()
+        sut = HomeViewModel()
+        networkServiceSpy = NetworkServiceSpy()
+        sut.networkService = networkServiceSpy
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func test_getNumberOfSections_shouldReturnSectionsCount() {
+        XCTAssertEqual(sut.getNumberOfSections(), HomeViewModel.Sections.allCases.count)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_getNumberOfRowsInSection_shouldReturnTrendMovieListCount() {
+        // Given
+        networkServiceSpy.resultToBeReturned = Result<MovieList, APIError>.success(.fixture())
+        
+        // When
+        sut.fetchTrendMovieList {}
+        
+        // Then
+        XCTAssertEqual(self.sut.getNumberOfRowsIn(section: 0), 1)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func test_fetchTrenMovieList_GivenSucessResponse_ShoulSucceed() {
+        // Given
+        networkServiceSpy.resultToBeReturned = Result<MovieList, APIError>.success(.fixture())
+        
+        // When
+        sut.fetchTrendMovieList {}
+        
+        // Then
+        guard case .success(_) = networkServiceSpy.resultToBeReturned else {
+            return XCTFail("Should be success")
         }
+        
+        XCTAssertTrue(networkServiceSpy.requestCalled)
+        XCTAssertNotNil(networkServiceSpy.completionPassed)
     }
-
+    
+    func test_fetchTrenMovieList_GivenFailureResponse_ShoulFail() throws {
+        // Given
+        let expectedError = APIError.unableToComplete
+        networkServiceSpy.resultToBeReturned = Result<MovieList, APIError>.failure(expectedError)
+        
+        // When
+        sut.fetchTrendMovieList {}
+        
+        // Then
+        XCTAssertTrue(networkServiceSpy.requestCalled)
+        XCTAssertNotNil(networkServiceSpy.completionPassed)
+        
+        guard case .failure(let error) = networkServiceSpy.resultToBeReturned else {
+            return XCTFail("Should be failure")
+        }
+        
+        let receivedError = try XCTUnwrap(error)
+        XCTAssertNotNil(receivedError)
+        XCTAssertEqual(receivedError, .unableToComplete)
+    }
 }
