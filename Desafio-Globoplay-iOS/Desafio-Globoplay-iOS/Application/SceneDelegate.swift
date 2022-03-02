@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         /// Initialize the `MainTabController` as the rootViewController:
-        window.rootViewController = MainTabController()
+        window.rootViewController = SplashScreenViewController()
         window.makeKeyAndVisible()
         self.window = window
     }
