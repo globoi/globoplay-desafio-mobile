@@ -172,6 +172,11 @@ extension UIView {
         activityIndicator.startAnimating()
         activityView?.addSubview(activityIndicator)
         view.addSubview(activityView!)
+        
+        Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false) { time in
+            self.stopActivityView()
+            AlertUtils.showAlert(message: "Falha na conexão, por favor tente novamente.")
+        }
     }
     
     func stopActivityView() {
