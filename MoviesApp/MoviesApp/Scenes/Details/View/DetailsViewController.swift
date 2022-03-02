@@ -40,6 +40,7 @@ class DetailsViewController: DataLoadingViewController {
     private let watchButton = PrimaryButton(backgroundColor: .white, textColor: .black, icon: UIImage(systemName: "play.fill"), title: "Assista")
     private let favoritesButton = PrimaryButton(backgroundColor: .black, textColor: .lightGray, icon: UIImage(systemName: "star.fill"), title: "Minha lista")
     
+    // MARK: - Initilizers
     init(viewModel: DetailsBusinessLogic) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -49,12 +50,14 @@ class DetailsViewController: DataLoadingViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewCodeElement()
         configureViewController()
     }
     
+    // MARK: - Private Methods
     private func configureViewController() {
         view.backgroundColor = .black
         
@@ -74,7 +77,7 @@ class DetailsViewController: DataLoadingViewController {
         favoritesButton.addTarget(self, action: #selector(favoritesButtonTapped(_:)), for: .touchUpInside)
     }
     
-    func checkFavorite() {
+    private func checkFavorite() {
         showLoadingView()
         viewModel.alreadyInFavorites { isFavorite in
             if isFavorite {

@@ -9,8 +9,10 @@ import UIKit
 
 class FavoritesViewController: DataLoadingViewController {
     
+    // MARK: - Properties
     private let viewModel: FavoritesBusinessLogic
     
+    // MARK: - UI Elements
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -24,6 +26,7 @@ class FavoritesViewController: DataLoadingViewController {
         return collectionView
     }()
     
+    // MARK: - Initializers
     init(viewModel: FavoritesBusinessLogic) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -46,12 +49,12 @@ class FavoritesViewController: DataLoadingViewController {
         showLoadingView()
         viewModel.getFavoritesList { [weak self] movieList in
             guard let self = self else { return }
-            print(movieList[0].title)
             self.updateUI(with: movieList)
             self.dismissLoadingView()
         }
     }
     
+    // MARK: - Public Methods
     func configureViewController() {
         view.backgroundColor = .black
         title = "Favorites"

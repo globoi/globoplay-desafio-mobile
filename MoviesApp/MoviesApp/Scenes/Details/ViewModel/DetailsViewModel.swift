@@ -8,8 +8,13 @@
 import UIKit
 
 protocol DetailsBusinessLogic {
+    // MARK: - Getters and Setters
     func getMovie() -> Movie
+    
+    // MARK: - Network
     func downloadImage(of path: String, completion: @escaping (UIImage?) -> Void)
+    
+    // MARK: - Persistence
     func addToFavorites()
     func removeFromFavorites()
     func alreadyInFavorites(completion: @escaping (Bool) -> Void)
@@ -35,14 +40,17 @@ final class DetailsViewModel {
 
 extension DetailsViewModel: DetailsBusinessLogic {
     
+    // MARK: - Getters and Setters
     func getMovie() -> Movie {
         return model
     }
     
+    // MARK: - Network
     func downloadImage(of path: String, completion: @escaping (UIImage?) -> Void) {
         networkService.downloadImage(from: path, completion: completion)
     }
     
+    // MARK: - Persistence
     func addToFavorites() {
         PersistenceManager.updateWith(favorite: model, actionType: .add) { error in
             guard let error = error else {
