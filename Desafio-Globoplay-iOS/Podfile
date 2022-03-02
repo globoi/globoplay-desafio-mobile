@@ -8,5 +8,6 @@ target 'Desafio-Globoplay-iOS' do
   # Pods for Desafio-Globoplay-iOS
 
   pod 'Kingfisher', '~> 7.1'
+  pod 'SplashScreen', '~> 1.0'
 
 end
