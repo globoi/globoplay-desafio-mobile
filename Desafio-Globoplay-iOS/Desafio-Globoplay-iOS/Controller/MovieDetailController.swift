@@ -219,7 +219,6 @@ class MovieDetailController: UIViewController {
     }
     
     @objc func handleWatchButton() {
-        //AlertUtils.showAlert(message: "Carregando filme para assistir.")
         activityView.isHidden = false
         activityView.startActivityView(forView: activityView)
         view.bringSubviewToFront(activityView)

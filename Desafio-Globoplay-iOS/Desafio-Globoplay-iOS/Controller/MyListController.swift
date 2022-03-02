@@ -22,6 +22,13 @@ class MyListController: UIViewController {
         return tableView
     }()
     
+    private let activityView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.isHidden = true
+        return view
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -43,6 +50,11 @@ class MyListController: UIViewController {
     // MARK: - Helper Methods
     
     func configureUI() {
+        view.stopActivityView()
+        view.addSubview(activityView)
+        
+        activityView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailling: view.trailingAnchor)
+        
         view.backgroundColor = .homeBlack
         title = "Minha lista"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -112,6 +124,35 @@ extension MyListController: UITableViewDelegate, UITableViewDataSource {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
         default: break
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        activityView.isHidden = false
+        activityView.startActivityView(forView: activityView)
+        view.bringSubviewToFront(activityView)
+        
+        let movie = movies[indexPath.row]
+        guard let movieName = (movie.originalName ?? movie.originalTitle) ?? movie.name else  { return }
+        guard let movieDescription = movie.overview else { return }
+
+        MovieClient.shared.getMovieTrailler(with: movieName) { [weak self] result in
+            switch result {
+            case .success(let youtubeElement):
+                DispatchQueue.main.async {
+                    self?.activityView.stopActivityView()
+                    self?.activityView.isHidden = true
+                    let viewController = MoviePreviewController()
+                    viewController.configurePreview(with: MoviePreviewViewModel(movieTitleText: movieName,
+                                                                                youtubeView: youtubeElement!,
+                                                                                movieDescriptionText: movieDescription ?? "--"))
+                    self?.navigationController?.pushViewController(viewController, animated: true)
+                }
+            case .failure(let error):
+                self?.activityView.stopActivityView()
+                self?.activityView.isHidden = true
+                print(error.localizedDescription)
+            }
         }
     }
 }
