@@ -9,6 +9,7 @@ import UIKit
 
 class PrimaryButton: UIButton {
     
+    // MARK: - Initilizers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -35,9 +36,25 @@ class PrimaryButton: UIButton {
         self.configuration = configuration
     }
      
+    // MARK: - Private Methods
     private func configure() {
         layer.cornerRadius = 8
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    // MARK: - Public Methods
+    func setAlreadyFavorited() {
+        if configuration != nil {
+            configuration!.title = "Adicionado"
+            configuration!.image = UIImage(systemName: "checkmark")
+        }
+    }
+    
+    func setNotFavorited() {
+        if configuration != nil {
+            configuration!.title = "Minha lista"
+            configuration!.image = UIImage(systemName: "star.fill")
+        }
     }
 }

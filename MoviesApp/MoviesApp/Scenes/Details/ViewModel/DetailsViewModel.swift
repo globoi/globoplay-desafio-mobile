@@ -10,24 +10,74 @@ import UIKit
 protocol DetailsBusinessLogic {
     func getMovie() -> Movie
     func downloadImage(of path: String, completion: @escaping (UIImage?) -> Void)
+    func addToFavorites()
+    func removeFromFavorites()
+    func alreadyInFavorites(completion: @escaping (Bool) -> Void)
+}
+
+protocol DetailsViewDelegate: AnyObject {
+    func didAddWithSuccess()
+    func didRemoveWithSuccess()
 }
 
 final class DetailsViewModel {
     
+    // MARK: - Properties
     private var model: Movie
+    weak var viewDelegate: DetailsViewDelegate?
     private let networkService = NetworkService()
     
+    // MARK: - Initializers
     init(model: Movie) {
         self.model = model
     }
 }
 
 extension DetailsViewModel: DetailsBusinessLogic {
+    
     func getMovie() -> Movie {
         return model
     }
     
     func downloadImage(of path: String, completion: @escaping (UIImage?) -> Void) {
         networkService.downloadImage(from: path, completion: completion)
+    }
+    
+    func addToFavorites() {
+        PersistenceManager.updateWith(favorite: model, actionType: .add) { error in
+            guard let error = error else {
+                self.viewDelegate?.didAddWithSuccess()
+                return
+            }
+            debugPrint(error)
+        }
+    }
+    
+    func removeFromFavorites() {
+        PersistenceManager.updateWith(favorite: model, actionType: .remove) { error in
+            guard let error = error else {
+                self.viewDelegate?.didRemoveWithSuccess()
+                return
+            }
+            debugPrint(error)
+        }
+    }
+    
+    func alreadyInFavorites(completion: @escaping (Bool) -> Void) {
+        PersistenceManager.retrieveFavorites { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let movieList):
+                if (movieList.first(where: { movie in
+                    return movie.id == self.model.id
+                })) != nil {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            case .failure(_):
+                debugPrint("Unable to retrieve favorites")
+            }
+        }
     }
 }

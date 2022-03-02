@@ -15,11 +15,13 @@
 		93D8688827CE6C0600F0F948 /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8688727CE6C0600F0F948 /* BodyLabel.swift */; };
 		93D8688B27CE6EFE00F0F948 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8688A27CE6EFE00F0F948 /* PrimaryButton.swift */; };
 		93D8688E27CE979F00F0F948 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8688D27CE979F00F0F948 /* PersistenceManager.swift */; };
+		93D8689227CE9F1C00F0F948 /* DataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8689127CE9F1C00F0F948 /* DataLoadingViewController.swift */; };
+		93D8689527CEA05100F0F948 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8689427CEA05100F0F948 /* FavoritesViewModel.swift */; };
+		93D8689927CF140D00F0F948 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8689827CF140D00F0F948 /* HomeViewModelTests.swift */; };
 		93ED840527C5BC8D00A89AFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED840427C5BC8D00A89AFF /* AppDelegate.swift */; };
 		93ED840727C5BC8D00A89AFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED840627C5BC8D00A89AFF /* SceneDelegate.swift */; };
 		93ED840E27C5BC9000A89AFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93ED840D27C5BC9000A89AFF /* Assets.xcassets */; };
 		93ED841127C5BC9000A89AFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93ED840F27C5BC9000A89AFF /* LaunchScreen.storyboard */; };
-		93ED841C27C5BC9000A89AFF /* MoviesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED841B27C5BC9000A89AFF /* MoviesAppTests.swift */; };
 		93ED842627C5BC9000A89AFF /* MoviesAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED842527C5BC9000A89AFF /* MoviesAppUITests.swift */; };
 		93ED842827C5BC9000A89AFF /* MoviesAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED842727C5BC9000A89AFF /* MoviesAppUITestsLaunchTests.swift */; };
 		93ED843627C5C09900A89AFF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED843527C5C09900A89AFF /* NetworkManager.swift */; };
@@ -59,6 +61,9 @@
 		93D8688727CE6C0600F0F948 /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
 		93D8688A27CE6EFE00F0F948 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		93D8688D27CE979F00F0F948 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		93D8689127CE9F1C00F0F948 /* DataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingViewController.swift; sourceTree = "<group>"; };
+		93D8689427CEA05100F0F948 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		93D8689827CF140D00F0F948 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		93ED840127C5BC8D00A89AFF /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93ED840427C5BC8D00A89AFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93ED840627C5BC8D00A89AFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +71,6 @@
 		93ED841027C5BC9000A89AFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93ED841227C5BC9000A89AFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93ED841727C5BC9000A89AFF /* MoviesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		93ED841B27C5BC9000A89AFF /* MoviesAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAppTests.swift; sourceTree = "<group>"; };
 		93ED842127C5BC9000A89AFF /* MoviesAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93ED842527C5BC9000A89AFF /* MoviesAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAppUITests.swift; sourceTree = "<group>"; };
 		93ED842727C5BC9000A89AFF /* MoviesAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -173,6 +177,38 @@
 			path = Persistence;
 			sourceTree = "<group>";
 		};
+		93D8689027CE9F0600F0F948 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				93D8689127CE9F1C00F0F948 /* DataLoadingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		93D8689327CEA04300F0F948 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				93D8689427CEA05100F0F948 /* FavoritesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		93D8689627CF13EE00F0F948 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				93D8689727CF13F300F0F948 /* Home */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		93D8689727CF13F300F0F948 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				93D8689827CF140D00F0F948 /* HomeViewModelTests.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		93ED83F827C5BC8D00A89AFF = {
 			isa = PBXGroup;
 			children = (
@@ -214,7 +250,7 @@
 		93ED841A27C5BC9000A89AFF /* MoviesAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				93ED841B27C5BC9000A89AFF /* MoviesAppTests.swift */,
+				93D8689627CF13EE00F0F948 /* Scenes */,
 			);
 			path = MoviesAppTests;
 			sourceTree = "<group>";
@@ -268,6 +304,7 @@
 		93ED843E27C5CC9800A89AFF /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				93D8689027CE9F0600F0F948 /* ViewControllers */,
 				93D8688927CE6EE800F0F948 /* Buttons */,
 				93D8687727CE316300F0F948 /* Labels */,
 				93F7B18627C71FB400EF1826 /* Cells */,
@@ -287,6 +324,7 @@
 		93ED844427C5CD6900A89AFF /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				93D8689327CEA04300F0F948 /* ViewModel */,
 				93ED844527C5CD8600A89AFF /* View */,
 			);
 			path = Favorites;
@@ -451,6 +489,7 @@
 				93ED844A27C5D26D00A89AFF /* HomeViewModel.swift in Sources */,
 				93ED844727C5CD9700A89AFF /* FavoritesViewController.swift in Sources */,
 				93ED843827C5C4E800A89AFF /* NetworkService.swift in Sources */,
+				93D8689227CE9F1C00F0F948 /* DataLoadingViewController.swift in Sources */,
 				93ED844027C5CCBE00A89AFF /* AppTabBarController.swift in Sources */,
 				93ED844327C5CD6400A89AFF /* HomeViewController.swift in Sources */,
 				93D8688627CE5E9200F0F948 /* UIView+Extensions.swift in Sources */,
@@ -460,6 +499,7 @@
 				93F7B18827C71FD100EF1826 /* MovieCollectionViewCell.swift in Sources */,
 				93D8687927CE318C00F0F948 /* TitleLabel.swift in Sources */,
 				93D8688227CE5D3800F0F948 /* SubtitleLabel.swift in Sources */,
+				93D8689527CEA05100F0F948 /* FavoritesViewModel.swift in Sources */,
 				93ED844C27C5D80800A89AFF /* MovieList.swift in Sources */,
 				93D8688027CE570200F0F948 /* DetailsViewModel.swift in Sources */,
 				93D8688E27CE979F00F0F948 /* PersistenceManager.swift in Sources */,
@@ -472,7 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93ED841C27C5BC9000A89AFF /* MoviesAppTests.swift in Sources */,
+				93D8689927CF140D00F0F948 /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

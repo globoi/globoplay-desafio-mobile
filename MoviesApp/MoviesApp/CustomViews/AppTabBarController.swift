@@ -32,7 +32,8 @@ class AppTabBarController: UITabBarController {
     }
     
     func createFavoritesViewController() -> UINavigationController {
-        let favoritesViewController = FavoritesViewController()
+        let viewModel = FavoritesViewModel()
+        let favoritesViewController = FavoritesViewController(viewModel: viewModel)
         favoritesViewController.title = "Minha lista"
         favoritesViewController.tabBarItem = UITabBarItem(title: "Minha lista", image: UIImage(systemName: "star.fill"), tag: 0)
         

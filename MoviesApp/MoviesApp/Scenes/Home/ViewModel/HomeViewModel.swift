@@ -33,6 +33,7 @@ final class HomeViewModel {
         case recomended
     }
     
+    // MARK: - Properties
     private let networkService = NetworkService()
     weak var viewDelegate: HomeViewModelViewDelegate?
     
@@ -40,6 +41,7 @@ final class HomeViewModel {
     private var recomendedMovieList: [Movie]?
     private var sections: [Sections] = [.trend]
     
+    // MARK: - Public Methods
     func requestMovieList(id: Int, completion: @escaping ((MovieList) -> Void)) {
         networkService.getMoviesList(id: id) { result in
             switch result {
@@ -91,7 +93,9 @@ extension HomeViewModel: HomeBusinessLogic {
     func goToDetailsScreen(of indexPath: IndexPath) -> UIViewController {
         if let movieList = trendMovieList {
             let viewModel = DetailsViewModel(model: movieList[indexPath.row])
-            return DetailsViewController(viewModel: viewModel)
+            let viewController = DetailsViewController(viewModel: viewModel)
+            viewModel.viewDelegate = viewController
+            return viewController
         }
         return UIViewController()
     }

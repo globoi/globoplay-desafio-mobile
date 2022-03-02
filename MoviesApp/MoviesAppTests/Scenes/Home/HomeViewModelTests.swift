@@ -1,14 +1,13 @@
 //
-//  MoviesAppTests.swift
+//  HomeViewModelTests.swift
 //  MoviesAppTests
 //
-//  Created by Gustavo Tiecker on 22/02/22.
+//  Created by Gustavo Tiecker on 01/03/22.
 //
 
 import XCTest
-@testable import MoviesApp
 
-class MoviesAppTests: XCTestCase {
+class HomeViewModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

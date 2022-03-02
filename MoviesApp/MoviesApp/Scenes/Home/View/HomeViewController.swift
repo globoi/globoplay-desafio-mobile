@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: DataLoadingViewController {
     
     private let viewModel: HomeBusinessLogic
     
@@ -39,17 +39,22 @@ class HomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showLoadingView()
+        viewModel.fetchTrendMovieList { 
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.dismissLoadingView()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         setDelegates()
         setupViewCodeElement()
-        
-        viewModel.fetchTrendMovieList {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
     }
     
     private func configureViewController() {

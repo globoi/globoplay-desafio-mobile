@@ -9,6 +9,7 @@ import UIKit
 
 class TitleLabel: UILabel {
     
+    // MARK: - Initilizers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -24,6 +25,7 @@ class TitleLabel: UILabel {
         self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
     }
     
+    // MARK: - Private Methods
     private func configure() {
         textColor = .white
         adjustsFontSizeToFitWidth = true

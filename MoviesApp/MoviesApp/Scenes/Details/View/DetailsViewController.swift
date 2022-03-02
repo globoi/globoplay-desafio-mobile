@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: DataLoadingViewController {
     
     // MARK: - Properties
     private let viewModel: DetailsBusinessLogic
@@ -38,7 +38,7 @@ class DetailsViewController: UIViewController {
     private let descriptionLabel = BodyLabel(textAlignment: .left)
     
     private let watchButton = PrimaryButton(backgroundColor: .white, textColor: .black, icon: UIImage(systemName: "play.fill"), title: "Assista")
-    private let favoritesButton = PrimaryButton(backgroundColor: .black, textColor: .darkGray, icon: UIImage(systemName: "star.fill"), title: "Minha lista")
+    private let favoritesButton = PrimaryButton(backgroundColor: .black, textColor: .lightGray, icon: UIImage(systemName: "star.fill"), title: "Minha lista")
     
     init(viewModel: DetailsBusinessLogic) {
         self.viewModel = viewModel
@@ -69,20 +69,38 @@ class DetailsViewController: UIViewController {
         titleLabel.text = movie.title
         categoryLabel.text = movie.mediaType
         descriptionLabel.text = movie.overview
-
-        favoritesButton.addTarget(self, action: #selector(favoritesButtonTapped), for: .touchUpInside)
+        
+        checkFavorite()
+        favoritesButton.addTarget(self, action: #selector(favoritesButtonTapped(_:)), for: .touchUpInside)
     }
     
-    @objc func favoritesButtonTapped() {
-        let favorite = viewModel.getMovie()
-        
-        PersistenceManager.updateWith(favorite: favorite, actionType: .add) { error in
-            guard let error = error else {
-                print("success")
-                return
+    func checkFavorite() {
+        showLoadingView()
+        viewModel.alreadyInFavorites { isFavorite in
+            if isFavorite {
+                self.favoritesButton.setAlreadyFavorited()
+            } else {
+                self.favoritesButton.setNotFavorited()
             }
+            self.dismissLoadingView()
+        }
+    }
+    
+    @objc private func favoritesButtonTapped(_ sender: UIButton) {
+        showLoadingView()
+        viewModel.alreadyInFavorites { [weak self] isFavorite in
+            guard let self = self else { return }
             
-            debugPrint(error)
+            if isFavorite {
+                self.viewModel.removeFromFavorites()
+            } else {
+                self.viewModel.addToFavorites()
+            }
+            self.dismissLoadingView()
+        }
+        
+        DispatchQueue.main.async {
+            self.checkFavorite()
         }
     }
 }
@@ -125,11 +143,23 @@ extension DetailsViewController: ViewCode {
             watchButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             watchButton.trailingAnchor.constraint(equalTo: contentView.centerXAnchor, constant: -4),
             watchButton.heightAnchor.constraint(equalToConstant: 50),
+            watchButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             favoritesButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
             favoritesButton.leadingAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 4),
             favoritesButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            favoritesButton.heightAnchor.constraint(equalToConstant: 50)
+            favoritesButton.heightAnchor.constraint(equalToConstant: 50),
+            favoritesButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+    }
+}
+
+extension DetailsViewController: DetailsViewDelegate {
+    func didAddWithSuccess() {
+        presentSuccessAlert(message: "Adicionado a sua lista!")
+    }
+    
+    func didRemoveWithSuccess() {
+        presentSuccessAlert(message: "Removido da sua lista!")
     }
 }

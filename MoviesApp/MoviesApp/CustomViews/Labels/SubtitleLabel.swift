@@ -9,6 +9,7 @@ import UIKit
 
 class SubtitleLabel: UILabel {
     
+    // MARK: - Initilizers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -24,6 +25,7 @@ class SubtitleLabel: UILabel {
         font = UIFont.systemFont(ofSize: fontSize, weight: .medium)
     }
     
+    // MARK: - Private Methods
     private func configure() {
         textColor = .lightGray
         adjustsFontSizeToFitWidth = true

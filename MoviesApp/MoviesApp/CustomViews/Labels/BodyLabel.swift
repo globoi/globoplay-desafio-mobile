@@ -8,6 +8,8 @@
 import UIKit
 
 class BodyLabel: UILabel {
+    
+    // MARK: - Initilizers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -22,6 +24,7 @@ class BodyLabel: UILabel {
         self.textAlignment = textAlignment
     }
     
+    // MARK: - Private Methods
     private func configure() {
         textColor = .gray
         font = UIFont.preferredFont(forTextStyle: .body)

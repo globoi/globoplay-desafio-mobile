@@ -26,8 +26,10 @@ import UIKit
 
 class MovieCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Properties
     static let reuseID = "MovieCollectionViewCell"
     
+    // MARK: - UI Elements
     private let movieImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -35,6 +37,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    // MARK: - Initilizers
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .black
@@ -45,12 +48,14 @@ class MovieCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
     func setup(with image: UIImage?) {
         movieImageView.image = image
     }
 }
 
 extension MovieCollectionViewCell: ViewCode {
+    
     func setupComponents() {
         contentView.addSubview(movieImageView)
     }
