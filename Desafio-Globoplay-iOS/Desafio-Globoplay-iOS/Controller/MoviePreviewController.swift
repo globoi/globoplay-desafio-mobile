@@ -55,9 +55,7 @@ class MoviePreviewController: UIViewController {
         super.viewDidLoad()
         configureUI()
     }
-    
-    // MARK: - API
-    
+        
     // MARK: - Helper Methods
     
     func configureUI() {
@@ -77,6 +75,9 @@ class MoviePreviewController: UIViewController {
                      paddingTop: 12, paddingLeading: 12, paddingBottom: 12, paddingTrailling: 12)
     }
     
+    
+    /// Configure the preview with the updated values from the ViewModel.
+    /// - Parameter model: `MoviePreviewViewModel`.
     func configurePreview(with model: MoviePreviewViewModel){
         guard let videoID = model.youtubeView.id?.videoID else { return }
         guard let videoUrl = URL(string: "https://www.youtube.com/embed/\(videoID)") else { return }

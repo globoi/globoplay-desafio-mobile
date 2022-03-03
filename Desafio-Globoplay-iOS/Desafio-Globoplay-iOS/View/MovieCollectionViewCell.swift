@@ -12,7 +12,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var movie: Movie? 
+    var movie: Movie?
     
     static let reuseIdentifier = "MovieCell"
     
@@ -44,16 +44,13 @@ class MovieCollectionViewCell: UICollectionViewCell {
     // MARK: - Helper Methods
     
     func configureUI() {
-        
         addSubview(movieImageView)
     }
     
-    public func configureMoviesCell(with model: String) {
-
-        guard let url = URL(string: Constants.ProductionServer.IMAGE_URL + model) else { return }
+    /// Function that set the image with the correct poster path.
+    /// - Parameter model: <#model description#>
+    public func configureMoviesCell(with posterPath: String) {
+        guard let url = URL(string: Constants.ProductionServer.IMAGE_URL + posterPath) else { return }
         movieImageView.kf.setImage(with: url)
     }
-    
-    // MARK: - Selectors
-    
 }

@@ -62,14 +62,16 @@ class SearchTableViewCell: UITableViewCell {
         addSubview(stack)
         
         stack.anchor(leading: leadingAnchor, trailling: trailingAnchor,
-        paddingLeading: 16, paddingTrailling: 16)
+                     paddingLeading: 16, paddingTrailling: 16)
         stack.centerY(inView: self)
     }
     
-    public func configure(with model: SearchViewModel) {
+    
+    /// Function that configure the Cell with the updated values from ViewModel.
+    /// - Parameter model: updated SearchTableViewCellViewModel.
+    public func configure(with model: SearchTableViewCellViewModel) {
         guard let url = URL(string: Constants.ProductionServer.IMAGE_URL + model.posterURL) else { return }
         movieImageView.kf.setImage(with: url)
         movieTitleLabel.text = model.movieName
     }
-    
 }

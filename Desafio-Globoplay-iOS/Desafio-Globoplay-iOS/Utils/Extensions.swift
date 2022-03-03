@@ -8,8 +8,8 @@
 import UIKit
 
 // MARK: - UIView
-/// Format and set the anchors for all UI item.
 
+/// Format and set the anchors and constraints for all UI item.
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 leading: NSLayoutXAxisAnchor? = nil,
@@ -92,6 +92,7 @@ extension UIView {
 
 // MARK: - UIColor
 
+/// Set all custom collors used.
 extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
@@ -109,8 +110,10 @@ extension UIColor {
 
 // MARK: - UIApplication
 
+fileprivate let window = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.flatMap { $0.windows }.first { $0.isKeyWindow }
+
 extension UIApplication {
-    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    class func topViewController(controller: UIViewController? = window?.rootViewController) -> UIViewController? {
         
         if let navigationController = controller as? UINavigationController {
             return topViewController(controller: navigationController.visibleViewController)
@@ -133,6 +136,9 @@ extension UIApplication {
 // MARK: - String
 
 extension String {
+    
+    /// Function that set the first letter of the string to uppercased style.
+    /// - Returns: String.
     func capitalizedFirstLetter() -> String {
         return self.prefix(1).uppercased() + self.lowercased().dropFirst()
     }
@@ -141,6 +147,9 @@ extension String {
 // MARK: - UIView
 
 extension UIView {
+    
+    /// Function that set the Blur effect at an UIView.
+    /// - Parameter style: `UIBlurEffect`
     func addBlurredBackground(style: UIBlurEffect.Style) {
         let blurEffect = UIBlurEffect(style: style)
         let blurView = UIVisualEffectView(effect: blurEffect)
@@ -150,6 +159,7 @@ extension UIView {
         self.sendSubviewToBack(blurView)
     }
     
+    /// Function that set the Gradient effect at an UIView.
     func addDarkGradient(frame: CGRect, colors:[UIColor]){
         let gradient = CAGradientLayer()
         gradient.frame = frame
@@ -158,10 +168,9 @@ extension UIView {
     }
 }
 
-// MARK: - UIViewController
-
 fileprivate var activityView: UIView?
 
+/// Configure and show an `ActiviyView` above the correspondent view.
 extension UIView {
     func startActivityView(forView view: UIView) {
         activityView = UIView(frame: view.bounds)

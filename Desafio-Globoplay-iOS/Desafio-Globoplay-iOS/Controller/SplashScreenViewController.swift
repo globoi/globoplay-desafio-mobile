@@ -26,6 +26,9 @@ class SplashScreenViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         globoLogo.center = view.center
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.animate()
         }
@@ -51,12 +54,12 @@ class SplashScreenViewController: UIViewController {
             self.globoLogo.alpha = 0
         }) { done in
             if done {
-                let viewController = MainTabController()
-                viewController.modalTransitionStyle = .crossDissolve
-                viewController.modalPresentationStyle = .fullScreen
-                self.present(viewController, animated: true)
+                    let viewController = MainTabController()
+                    viewController.modalTransitionStyle = .crossDissolve
+                    viewController.modalPresentationStyle = .fullScreen
+                    self.present(viewController, animated: true)
             }
         }
     }
-
+    
 }

@@ -45,7 +45,7 @@ class SearchController: UIViewController {
     // MARK: - API
     
     private func fetchSearch() {
-        MovieClient.shared.getDiscoverMovies { [weak self] result in
+        MovieAPIService.shared.getDiscoverMovies { [weak self] result in
             switch result {
             case .success(let movies):
                 self?.movies = movies ?? []
@@ -75,10 +75,9 @@ class SearchController: UIViewController {
         navigationController?.navigationBar.tintColor = .customWhite
         definesPresentationContext = true
     }
-    
-    // MARK: - Selectors
-    
 }
+
+// MARK: - UITableViewDelegate + UITableViewDataSource
 
 extension SearchController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,7 +92,7 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let movie = movies[indexPath.row]
-        let model = SearchViewModel(movieName: (movie.originalTitle ?? movie.originalName) ?? "Unknown title name", posterURL: movie.posterPath ?? "")
+        let model = SearchTableViewCellViewModel(movieName: (movie.originalTitle ?? movie.originalName) ?? "Unknown title name", posterURL: movie.posterPath ?? "")
         cell.configure(with: model)
         return cell
     }
@@ -109,7 +108,7 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
         guard let movieName = movie.originalTitle ?? movie.originalName else { return }
         
         tableView.startActivityView(forView: tableView)
-        MovieClient.shared.getMovieTrailler(with: movieName) { [weak self] result in
+        MovieAPIService.shared.getMovieTrailer(with: movieName) { [weak self] result in
             switch result {
             case .success(let youtubeElement):
                 DispatchQueue.main.async {
@@ -125,6 +124,8 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+//MARK: - UISearchResultsUpdating + SearchResultsControllerDelegate
 
 extension SearchController: UISearchResultsUpdating, SearchResultsControllerDelegate {
     
@@ -146,7 +147,7 @@ extension SearchController: UISearchResultsUpdating, SearchResultsControllerDele
         
         resultsController.delegate = self
         
-        MovieClient.shared.search(with: query) { result in
+        MovieAPIService.shared.search(with: query) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let movies):

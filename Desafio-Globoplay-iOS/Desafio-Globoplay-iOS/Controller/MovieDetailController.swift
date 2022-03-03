@@ -12,7 +12,6 @@ class MovieDetailController: UIViewController {
     // MARK: - Properties
     
     private var movies: [Movie] = [Movie]()
-    
     private var movieIndexPath: IndexPath?
     
     private var movieImageView: UIImageView = {
@@ -58,7 +57,6 @@ class MovieDetailController: UIViewController {
         button.tintColor = .customWhite
         button.layer.borderColor = UIColor.customWhite.cgColor
         button.layer.borderWidth = 1
-        button.setDimensions(width: 180, height: 45)
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(handleMyListButton), for: .touchUpInside)
         return button
@@ -72,7 +70,6 @@ class MovieDetailController: UIViewController {
         button.tintColor = .black
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
-        button.setDimensions(width: 180, height: 45)
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(handleWatchButton), for: .touchUpInside)
         return button
@@ -122,8 +119,6 @@ class MovieDetailController: UIViewController {
         configureUI()
     }
     
-    // MARK: - API
-    
     // MARK: - Helper Methods
     
     func configureUI() {
@@ -151,35 +146,35 @@ class MovieDetailController: UIViewController {
         stack.distribution = .fill
         
         view.addSubview(stack)
-        stack.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailling: view.trailingAnchor,
-                     paddingTop: 40,
-                     paddingLeading: 12, paddingTrailling: 12, height: 400)
+        stack.anchor(leading: view.leadingAnchor, trailling: view.trailingAnchor,
+                     paddingLeading: 12, paddingTrailling: 12, height: 362)
         stack.centerY(inView: movieBackGroundBlurred)
         
-        let buttonStack = UIStackView(arrangedSubviews: [watchButton, myListButton])
-        buttonStack.spacing = 8
-        buttonStack.distribution = .fillEqually
-        buttonStack.alignment = .center
+        view.addSubview(watchButton)
+        watchButton.anchor(top: movieBackGroundBlurred.bottomAnchor,
+                           leading: view.leadingAnchor,
+                           paddingTop: 12, paddingLeading: 12, width: 190, height: 45)
+        view.addSubview(myListButton)
+        myListButton.anchor(top: movieBackGroundBlurred.bottomAnchor,
+                           leading: watchButton.trailingAnchor, trailling: view.trailingAnchor,
+                           paddingTop: 12, paddingLeading: 12, paddingTrailling: 12, height: 45)
         
-        view.addSubview(buttonStack)
-        buttonStack.anchor(top: movieBackGroundBlurred.bottomAnchor,
-                           leading: view.leadingAnchor, trailling: view.trailingAnchor,
-                           paddingTop: 12, paddingLeading: 12, paddingTrailling: 12)
         
         let moreInfoStack = UIStackView(arrangedSubviews: [originalNameLabel, originCountryLabel, releaseDateLabel])
         moreInfoStack.spacing = 8
-        moreInfoStack.distribution = .fillEqually
+        moreInfoStack.distribution = .fill
         moreInfoStack.axis = .vertical
         moreInfoStack.alignment = .leading
         
         view.addSubview(moreInfoStack)
-        moreInfoStack.anchor(top: buttonStack.bottomAnchor,
+        moreInfoStack.anchor(top: watchButton.bottomAnchor,
                              leading: view.leadingAnchor, trailling: view.trailingAnchor,
                              paddingTop: 12, paddingLeading: 12, paddingTrailling: 12)
     }
     
+    /// Configure the detailView with the updated values from the ViewModel.
+    /// - Parameter model: `MovieDetailViewModel`.
     func configureDetail(with viewModel: MovieDetailViewModel){
-        
         guard let releaseDate = viewModel.releaseDateText else { return }
         guard let originalName = viewModel.originNameText else { return }
         guard let originCountry = viewModel.originCountryText else { return }
@@ -195,17 +190,22 @@ class MovieDetailController: UIViewController {
         movieBackGroundBlurred.kf.setImage(with: viewModel.imageURL)
     }
     
+    /// Function that update de local `movies` with de correspondent Array of `Movie.
+    /// - Parameter movies: `Movie` Array.
     func configureMovies(with movies: [Movie]) {
         self.movies = movies
     }
+    
+    // MARK: - CoreData Functions
     
     private func addMovieAt(indexPath: IndexPath) {
         DataPersistenceManager.shared.addMovieToMyList(viewModel: movies[indexPath.row]) { result in
             switch result {
             case .success():
                 NotificationCenter.default.post(name: NSNotification.Name("adicionadoALista"), object: nil)
-                print("DEBUG: FILME ADIONADO À LISTA.")
+                AlertUtils.showAlert(message: "Conteúdo adicionado a sua lista de filmes.")
             case .failure(let error):
+                AlertUtils.showAlert(message: "ERRO ao adicionar conteúdo a sua lista de filmes. Por favor, tente novamente.")
                 print(error.localizedDescription)
             }
         }
@@ -215,7 +215,6 @@ class MovieDetailController: UIViewController {
     
     @objc func handleMyListButton() {
         addMovieAt(indexPath: movieIndexPath!)
-        AlertUtils.showAlert(message: "Conteúdo adicionado a sua lista de filmes.")
     }
     
     @objc func handleWatchButton() {
@@ -225,8 +224,8 @@ class MovieDetailController: UIViewController {
         
         guard let movieName = movieTitleLabel.text ?? originalNameLabel.text else  { return }
         guard let movieDescription = descriptionLabel.text else { return }
-
-        MovieClient.shared.getMovieTrailler(with: movieName) { [weak self] result in
+        
+        MovieAPIService.shared.getMovieTrailer(with: movieName) { [weak self] result in
             switch result {
             case .success(let youtubeElement):
                 DispatchQueue.main.async {
@@ -235,7 +234,7 @@ class MovieDetailController: UIViewController {
                     let viewController = MoviePreviewController()
                     viewController.configurePreview(with: MoviePreviewViewModel(movieTitleText: movieName,
                                                                                 youtubeView: youtubeElement!,
-                                                                                movieDescriptionText: movieDescription ?? "--"))
+                                                                                movieDescriptionText: movieDescription))
                     self?.navigationController?.pushViewController(viewController, animated: true)
                 }
             case .failure(let error):

@@ -48,8 +48,6 @@ class HomeTableViewCell: UITableViewCell {
         collectionView.frame = contentView.bounds
     }
     
-    // MARK: - API
-    
     // MARK: - Helper Methods
     
     func configureUI() {
@@ -60,6 +58,9 @@ class HomeTableViewCell: UITableViewCell {
         collectionView.dataSource = self
     }
     
+    
+    /// Function that set the `movies` with the updated model.
+    /// - Parameter movies: `Movie` Array.
     func configureCell(with movies: [Movie]) {
         self.movies = movies
         DispatchQueue.main.async { [weak self] in
@@ -67,20 +68,19 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
+    
+    /// Function that save the correspondent movie at local data.
+    /// - Parameter indexPath: indexPath of the clicked` Movie`.
     private func addMovieAt(indexPath: IndexPath) {
         DataPersistenceManager.shared.addMovieToMyList(viewModel: movies[indexPath.row]) { result in
             switch result {
             case .success():
                 NotificationCenter.default.post(name: NSNotification.Name("adicionadoALista"), object: nil)
-                print("DEBUG: FILME ADIONADO À LISTA.")
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
-    
-    // MARK: - Selectors
-    
 }
 
 // MARK: - Extensions
@@ -108,7 +108,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         let movie = movies[indexPath.row]
         
         guard let movieID = movie.id else { return }
-        MovieClient.shared.searchSelectedMovie(with: movieID) { [weak self] result in
+        MovieAPIService.shared.searchSelectedMovie(with: movieID) { [weak self] result in
             switch result {
             case .success(_):
                 DispatchQueue.main.async {
@@ -131,16 +131,16 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-            
-            let configureContextMenu = UIContextMenuConfiguration(
-                identifier: nil,
-                previewProvider: nil) {[weak self] _ in
-                    let addMovieToListAction = UIAction(title: "Adicionar a minha lista", subtitle: nil, image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
-                        self?.addMovieAt(indexPath: indexPath)
-                    }
-                    return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [addMovieToListAction])
+        
+        let configureContextMenu = UIContextMenuConfiguration(
+            identifier: nil,
+            previewProvider: nil) { [weak self] _ in
+                let addMovieToListAction = UIAction(title: "Adicionar a minha lista", subtitle: nil, image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
+                    self?.addMovieAt(indexPath: indexPath)
                 }
-            
-            return configureContextMenu
-        }
+                return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [addMovieToListAction])
+            }
+        
+        return configureContextMenu
+    }
 }

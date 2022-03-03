@@ -45,7 +45,21 @@ class MyListController: UIViewController {
         mylistTableView.frame = view.bounds
     }
     
-    // MARK: - API
+    // MARK: - CoreData Functions
+    
+    private func fetchLocalMoviesList() {
+        DataPersistenceManager.shared.fetchMoviesFromDataBaseLocal { [weak self] result in
+            switch result {
+            case .success(let movies):
+                self?.movies = movies
+                DispatchQueue.main.async {
+                    self?.mylistTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     
     // MARK: - Helper Methods
     
@@ -63,28 +77,13 @@ class MyListController: UIViewController {
         view.addSubview(mylistTableView)
         mylistTableView.delegate = self
         mylistTableView.dataSource = self
+        
         fetchLocalMoviesList()
+        
         NotificationCenter.default.addObserver(forName: NSNotification.Name("adicionadoALista"), object: nil, queue: nil) { _ in
             self.fetchLocalMoviesList()
         }
     }
-    
-    private func fetchLocalMoviesList() {
-        DataPersistenceManager.shared.fetchMoviesFromDataBaseLocal { [weak self] result in
-            switch result {
-            case .success(let movies):
-                self?.movies = movies
-                DispatchQueue.main.async {
-                    self?.mylistTableView.reloadData()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    // MARK: - Selectors
-    
 }
 
 // MARK: - UITableViewDelegate
@@ -101,7 +100,7 @@ extension MyListController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let movie = movies[indexPath.row]
-        cell.configure(with: SearchViewModel(movieName: (movie.originalName ?? movie.originalTitle) ?? "Título Indisponível", posterURL: movie.posterPath ?? ""))
+        cell.configure(with: SearchTableViewCellViewModel(movieName: (movie.originalName ?? movie.originalTitle) ?? "Título Indisponível", posterURL: movie.posterPath ?? ""))
         return cell
     }
     
@@ -135,22 +134,24 @@ extension MyListController: UITableViewDelegate, UITableViewDataSource {
         let movie = movies[indexPath.row]
         guard let movieName = (movie.originalName ?? movie.originalTitle) ?? movie.name else  { return }
         guard let movieDescription = movie.overview else { return }
-
-        MovieClient.shared.getMovieTrailler(with: movieName) { [weak self] result in
+        
+        MovieAPIService.shared.getMovieTrailer(with: movieName) { [weak self] result in
             switch result {
             case .success(let youtubeElement):
                 DispatchQueue.main.async {
                     self?.activityView.stopActivityView()
                     self?.activityView.isHidden = true
                     let viewController = MoviePreviewController()
-                    viewController.configurePreview(with: MoviePreviewViewModel(movieTitleText: movieName,
-                                                                                youtubeView: youtubeElement!,
-                                                                                movieDescriptionText: movieDescription ?? "--"))
+                    viewController.configurePreview(with: MoviePreviewViewModel(
+                        movieTitleText: movieName,
+                        youtubeView: youtubeElement!,
+                        movieDescriptionText: movieDescription))
                     self?.navigationController?.pushViewController(viewController, animated: true)
                 }
             case .failure(let error):
                 self?.activityView.stopActivityView()
                 self?.activityView.isHidden = true
+                AlertUtils.showAlert(message: "ERRO ao carregar o trailer do filme. Por favor tente novamente.")
                 print(error.localizedDescription)
             }
         }

@@ -27,7 +27,7 @@ class HomeController: UIViewController {
     }()
     
     let sectionTitles: [String] = ["Filmes Populares", "Tendências na TV", "Tendências em Filmes", "Bem avaliados", "Em breve"]
-        
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -39,8 +39,6 @@ class HomeController: UIViewController {
         super.viewDidLayoutSubviews()
         homeTableView.frame = view.bounds
     }
-    
-    // MARK: - API
     
     // MARK: - Helper Methods
     
@@ -55,11 +53,11 @@ class HomeController: UIViewController {
         let headerView = HomeHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         homeTableView.tableHeaderView = headerView
     }
-    
-    // MARK: - Selectors
 }
 
 // MARK: - Extensions
+
+// MARK: - UITableViewDelegate + UITableViewDataSource
 
 extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
@@ -90,10 +88,10 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.delegate = self
-
+        
         switch indexPath.section {
         case Sections.PopularMovies.rawValue:
-            MovieClient.shared.getPopularMovies { result in
+            MovieAPIService.shared.getPopularMovies { result in
                 switch result {
                 case .success(let movies):
                     cell.configureCell(with: movies ?? [])
@@ -102,7 +100,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         case Sections.TrendingTV.rawValue:
-            MovieClient.shared.getTrendingTV { result in
+            MovieAPIService.shared.getTrendingTV { result in
                 switch result {
                 case .success(let movies):
                     cell.configureCell(with: movies ?? [])
@@ -111,7 +109,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         case Sections.TrendingMovies.rawValue:
-            MovieClient.shared.getTrendingMovies { result in
+            MovieAPIService.shared.getTrendingMovies { result in
                 switch result {
                 case .success(let movies):
                     cell.configureCell(with: movies ?? [])
@@ -120,7 +118,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         case Sections.TopRatedMovies.rawValue:
-            MovieClient.shared.getTopRatedMovies { result in
+            MovieAPIService.shared.getTopRatedMovies { result in
                 switch result {
                 case .success(let movies):
                     cell.configureCell(with: movies ?? [])
@@ -129,7 +127,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         case Sections.UpcomingMovies.rawValue:
-            MovieClient.shared.getUpcomingMovies { result in
+            MovieAPIService.shared.getUpcomingMovies { result in
                 switch result {
                 case .success(let movies):
                     cell.configureCell(with: movies ?? [])
@@ -152,6 +150,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         return 40
     }
 }
+
+// MARK: - HomeTableViewCellDelegate
 
 extension HomeController: HomeTableViewCellDelegate {
     func homeTableViewCellDidTapCell(_ cell: HomeTableViewCell, viewModel: MovieDetailViewModel, movie: [Movie]) {

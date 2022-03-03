@@ -8,8 +8,6 @@
 import UIKit
 
 class MainTabController: UITabBarController {
-
-    // MARK: - Properties
     
     // MARK: - Lifecycle
     
@@ -17,11 +15,10 @@ class MainTabController: UITabBarController {
         super.viewDidLoad()
         configureControllers()
     }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
-    // MARK: - API
     
     // MARK: - Helper Methods
     
@@ -51,8 +48,10 @@ class MainTabController: UITabBarController {
     }
     
     func templateNatigationController(image: UIImage?, rootViewControoler: UIViewController) -> UINavigationController {
+        
         let nav = UINavigationController(rootViewController: rootViewControoler)
         nav.tabBarItem.image = image
+        
         /// Costumization of the `NavigationBar` color after the iOS 15 atualizations.
         /// Now the `standardAppearance` must be equal to `scrollEdgeAppearance` to not be transparent.
         let appearance = UINavigationBarAppearance()
@@ -70,7 +69,6 @@ class MainTabController: UITabBarController {
         
         configureNavigationBar(nav: nav)
         
-        
         return nav
     }
     
@@ -85,19 +83,24 @@ class MainTabController: UITabBarController {
         let profileImage = UIImage(systemName: "person")
         profileImage?.withTintColor(.customWhite)
         profileImage?.withRenderingMode(.alwaysOriginal)
-                
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: profileImage, style: .done, target: self, action: #selector(handlePerfilTapped))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: profileImage,
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(handlePerfilTapped))
     }
     
     @objc func handlePerfilTapped() {
         AlertUtils.showAlert(message: "Por favor, crie uma conta para acessar a página de perfil.")
     }
-
+    
 }
 
+// MARK: - UINavigationController Extension
+
 extension UINavigationController {
-   open override var preferredStatusBarStyle: UIStatusBarStyle {
-       return .lightContent
-   }
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 

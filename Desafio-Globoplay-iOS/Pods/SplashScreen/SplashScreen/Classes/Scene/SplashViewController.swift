@@ -12,7 +12,7 @@
 
 import UIKit
 
-protocol SplashDisplayLogic: class
+protocol SplashDisplayLogic: AnyObject
 {
     func updateSplash()
     func showAlert(title: String, message: String, buttonLabel: String)

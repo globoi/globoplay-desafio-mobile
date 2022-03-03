@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        
+        let window = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.flatMap { $0.windows }.first { $0.isKeyWindow }
         lazy var statusBarStyle = window?.windowScene?.statusBarManager?.statusBarStyle ?? .lightContent
         window?.overrideUserInterfaceStyle = .dark
         return true

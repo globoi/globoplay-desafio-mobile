@@ -1,5 +1,5 @@
 //
-//  MovieClient.swift
+//  MovieAPIService.swift
 //  Desafio-Globoplay-iOS
 //
 //  Created by Gáudio Ney on 23/02/22.
@@ -7,8 +7,10 @@
 
 import Foundation
 
-/// Service responsible for calling the API
-final class MovieClient {
+/// Service responsible for fetch data from the API.
+final class MovieAPIService {
+    
+    // MARK: - Properties
     
     private let topRatedMoviesURL = Constants.ProductionServer.BASE_URL + "/movie/top_rated?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR"
     private let trendingMoviesURL = Constants.ProductionServer.BASE_URL + "/trending/movie/day?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR"
@@ -20,11 +22,10 @@ final class MovieClient {
     private let discoverMoviesURL = Constants.ProductionServer.BASE_URL + "/discover/movie?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate"
     private let searchMoviesAndSeriesURL = Constants.ProductionServer.BASE_URL + "/search/movie?api_key=" + Constants.APIParameterKey.API_KEY + "&language=pt-BR" + "&query="
     
-    private let serachTraillerMoviesURL = Constants.APIYouTubeKey.YOUTUBE_BASE_URL + "&key=" + Constants.APIYouTubeKey.API_YOUTUBE_KEY + "&language=pt-BR" + "&q="
+    private let serachTrailerMoviesURL = Constants.APIYouTubeKey.YOUTUBE_BASE_URL + "&key=" + Constants.APIYouTubeKey.API_YOUTUBE_KEY + "&language=pt-BR" + "&q="
     
-    static let shared: MovieClient = MovieClient()
-    
-    // MARK:- Properties
+    static let shared: MovieAPIService = MovieAPIService()
+        
     private enum NetworkError: LocalizedError {
         case urlError
         case notFound
@@ -36,22 +37,24 @@ final class MovieClient {
         var errorDescription: String {
             switch self {
             case .urlError:
-                return "Can not create URL object from provided string"
+                return "Não foi possível criar o objeto URL a partir da string fornecida."
             case .notFound:
-                return "Not Found"
+                return "Erro 404, serviço não encontrado."
             case .badRequest:
-                return "Bad request"
+                return "Erro ao enviar os dados para o Servidor."
             case .serverError:
-                return "Internal Server Error"
+                return "Erro Interno do Servidor."
             case .noDataError:
-                return "No data sent by the server"
+                return "Nenhum dado enviado pelo Servidor."
             case .unknownError:
-                return "Something went wrong."
+                return "Algo de errado aconteceu."
             }
         }
     }
     
     private let urlSession: URLSession = URLSession(configuration: .default)
+    
+    // MARK: - API Request Methods
     
     func request(urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
         guard let url = URL(string: urlString) else {
@@ -201,9 +204,9 @@ final class MovieClient {
         }
     }
     
-    func getMovieTrailler(with query: String, completion: @escaping (Result<YouTubeVideoItem?, Error>) -> Void) {
+    func getMovieTrailer(with query: String, completion: @escaping (Result<YouTubeVideoItem?, Error>) -> Void) {
         guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
-        let searchURL = "\(serachTraillerMoviesURL)\(query)"
+        let searchURL = "\(serachTrailerMoviesURL)\(query)%20trailer%20oficial"
         
         self.request(urlString: searchURL) { result in
             switch result {
@@ -241,6 +244,8 @@ final class MovieClient {
             }
         }
     }
+    
+    // MARK: - Private Functions
     
     private func handle(statusCode: Int) -> NetworkError? {
         switch statusCode {

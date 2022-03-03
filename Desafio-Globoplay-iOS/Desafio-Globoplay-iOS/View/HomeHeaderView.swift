@@ -66,9 +66,7 @@ class HomeHeaderView: UIView {
         gradientLayer.frame = bounds
         layer.addSublayer(gradientLayer)
     }
-    
-    // MARK: - API
-    
+        
     // MARK: - Selectors
     
     @objc func handleAssinarButton() {

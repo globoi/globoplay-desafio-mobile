@@ -48,12 +48,9 @@ class SearchResultsController: UIViewController {
         view.backgroundColor = .black
         view.addSubview(searchResultsCollectionView)
     }
-    
-    // MARK: - Selectors
-    
 }
 
-// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+// MARK: - UICollectionViewDelegate + UICollectionViewDataSource
 
 extension SearchResultsController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -79,11 +76,10 @@ extension SearchResultsController: UICollectionViewDelegate, UICollectionViewDat
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let movie = movies[indexPath.row]
-        
         guard let movieName = movie.originalTitle ?? movie.originalName else { return }
 
         searchResultsCollectionView.startActivityView(forView: searchResultsCollectionView)
-        MovieClient.shared.getMovieTrailler(with: movieName) { [weak self] result in
+        MovieAPIService.shared.getMovieTrailer(with: movieName) { [weak self] result in
             switch result {
             case .success(let youtubeElement):
                 self?.delegate?.searchResultsControllerDidTapMovie(MoviePreviewViewModel(movieTitleText: movieName, youtubeView: youtubeElement!, movieDescriptionText: movie.overview ?? "--"))
@@ -92,5 +88,4 @@ extension SearchResultsController: UICollectionViewDelegate, UICollectionViewDat
             }
         }
     }
-    
 }
