@@ -135,7 +135,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
             let configureContextMenu = UIContextMenuConfiguration(
                 identifier: nil,
                 previewProvider: nil) {[weak self] _ in
-                    let addMovieToListAction = UIAction(title: "Adicinar a minha lista", subtitle: nil, image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
+                    let addMovieToListAction = UIAction(title: "Adicionar a minha lista", subtitle: nil, image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
                         self?.addMovieAt(indexPath: indexPath)
                     }
                     return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [addMovieToListAction])
