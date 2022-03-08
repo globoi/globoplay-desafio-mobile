@@ -11,6 +11,9 @@ import WebKit
 class MoviePreviewController: UIViewController {
     
     // MARK: - Properties
+    
+    private var movies: [Movie] = [Movie]()
+    private var movieIndexPath: IndexPath?
         
     private let webView: WKWebView = {
         let webView =  WKWebView()
@@ -86,9 +89,31 @@ class MoviePreviewController: UIViewController {
         webView.load(URLRequest(url: videoUrl))
     }
     
+    /// Function that update de local `movies` with de correspondent Array of `Movie.
+    /// - Parameter movies: `Movie` Array.
+    func configureMovies(with movies: [Movie], at indexPath: IndexPath) {
+        self.movies = movies
+        self.movieIndexPath = indexPath
+    }
+    
+    // MARK: - CoreData Functions
+    
+    private func addMovieAt(indexPath: IndexPath) {
+        DataPersistenceManager.shared.addMovieToMyList(viewModel: movies[indexPath.row]) { result in
+            switch result {
+            case .success():
+                NotificationCenter.default.post(name: NSNotification.Name("adicionadoALista"), object: nil)
+                AlertUtils.showAlert(message: "Conteúdo adicionado a sua lista de filmes.")
+            case .failure(let error):
+                AlertUtils.showAlert(message: "ERRO ao adicionar conteúdo a sua lista de filmes. Por favor, tente novamente.")
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: - Selectors
     
     @objc func handleMyListButton() {
-        AlertUtils.showAlert(message: "Conteúdo adicionado a sua lista de filmes.")
+        addMovieAt(indexPath: movieIndexPath!)
     }
 }

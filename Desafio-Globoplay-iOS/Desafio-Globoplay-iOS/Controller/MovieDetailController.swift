@@ -235,6 +235,7 @@ class MovieDetailController: UIViewController {
                     viewController.configurePreview(with: MoviePreviewViewModel(movieTitleText: movieName,
                                                                                 youtubeView: youtubeElement!,
                                                                                 movieDescriptionText: movieDescription))
+                    viewController.configureMovies(with: self?.movies ?? [], at: (self?.movieIndexPath)!)
                     self?.navigationController?.pushViewController(viewController, animated: true)
                 }
             case .failure(let error):
