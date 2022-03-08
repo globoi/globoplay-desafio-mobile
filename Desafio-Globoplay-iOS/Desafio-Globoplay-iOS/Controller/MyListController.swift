@@ -56,6 +56,9 @@ class MyListController: UIViewController {
                     self?.mylistTableView.reloadData()
                 }
             case .failure(let error):
+                DispatchQueue.main.async {
+                    AlertUtils.showAlert(message: error.localizedDescription)
+                }
                 print(error.localizedDescription)
             }
         }

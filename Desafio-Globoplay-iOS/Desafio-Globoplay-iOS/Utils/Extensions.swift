@@ -191,7 +191,9 @@ extension UIView {
     }
     
     func stopActivityView() {
-        activityView?.removeFromSuperview()
-        activityView = nil
+        DispatchQueue.main.async {
+            activityView?.removeFromSuperview()
+            activityView = nil
+        }
     }
 }

@@ -239,8 +239,11 @@ class MovieDetailController: UIViewController {
                     self?.navigationController?.pushViewController(viewController, animated: true)
                 }
             case .failure(let error):
-                self?.activityView.stopActivityView()
-                self?.activityView.isHidden = true
+                DispatchQueue.main.async {
+                    self?.activityView.stopActivityView()
+                    self?.activityView.isHidden = true
+                    AlertUtils.showAlert(message: error.localizedDescription)
+                }
                 print(error.localizedDescription)
             }
         }

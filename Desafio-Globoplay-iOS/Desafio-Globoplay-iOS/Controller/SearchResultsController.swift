@@ -84,6 +84,9 @@ extension SearchResultsController: UICollectionViewDelegate, UICollectionViewDat
             case .success(let youtubeElement):
                 self?.delegate?.searchResultsControllerDidTapMovie(MoviePreviewViewModel(movieTitleText: movieName, youtubeView: youtubeElement!, movieDescriptionText: movie.overview ?? "--"))
             case .failure(let error):
+                DispatchQueue.main.async {
+                    AlertUtils.showAlert(message: error.localizedDescription)
+                }
                 print(error.localizedDescription)
             }
         }

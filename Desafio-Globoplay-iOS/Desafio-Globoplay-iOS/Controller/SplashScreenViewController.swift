@@ -9,6 +9,8 @@ import UIKit
 
 class SplashScreenViewController: UIViewController {
     
+    private var isInternetConnected: Bool = false
+    
     private let globoLogo: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 240, height: 128))
         image.image = UIImage(named: "globoplay-text-logo")
@@ -54,10 +56,30 @@ class SplashScreenViewController: UIViewController {
             self.globoLogo.alpha = 0
         }) { done in
             if done {
+                self.fetchTestInternet()
+                if self.isInternetConnected{
                     let viewController = MainTabController()
                     viewController.modalTransitionStyle = .crossDissolve
                     viewController.modalPresentationStyle = .fullScreen
                     self.present(viewController, animated: true)
+                } else {
+                    AlertUtils.showAlert(message: "Ops, ocorreu uma falha. Por favor, verifique a conexão com a internet ou tente novamente mais tarde.")
+                    return
+                }
+            }
+        }
+    }
+    
+    // MARK: - API
+    
+    private func fetchTestInternet() {
+        MovieAPIService.shared.getDiscoverMovies { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.isInternetConnected = true
+            case .failure(let error):
+                print(error.localizedDescription)
+                self?.isInternetConnected = false
             }
         }
     }

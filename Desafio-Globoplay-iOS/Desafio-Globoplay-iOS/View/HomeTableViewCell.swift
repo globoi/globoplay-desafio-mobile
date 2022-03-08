@@ -78,6 +78,9 @@ class HomeTableViewCell: UITableViewCell {
                 NotificationCenter.default.post(name: NSNotification.Name("adicionadoALista"), object: nil)
             case .failure(let error):
                 print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    AlertUtils.showAlert(message: error.localizedDescription)
+                }
             }
         }
     }
@@ -125,6 +128,9 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                 }
                 
             case .failure(let error):
+                DispatchQueue.main.async {
+                    AlertUtils.showAlert(message: error.localizedDescription)
+                }
                 print(error.localizedDescription)
             }
         }

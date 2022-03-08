@@ -34,6 +34,7 @@ class SearchController: UIViewController {
         super.viewDidLoad()
         configureUI()
         fetchSearch()
+        searchController.searchBar.isUserInteractionEnabled = true
         searchController.searchResultsUpdater = self
     }
     
@@ -54,6 +55,10 @@ class SearchController: UIViewController {
                 }
                 
             case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.searchController.searchBar.isUserInteractionEnabled = false
+                    AlertUtils.showAlert(message: error.localizedDescription)
+                }
                 print(error.localizedDescription)
             }
         }
@@ -83,7 +88,6 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -119,6 +123,9 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
                     self?.navigationController?.pushViewController(viewController, animated: true)
                 }
             case .failure(let error):
+                DispatchQueue.main.async {
+                    AlertUtils.showAlert(message: error.localizedDescription)
+                }
                 print(error.localizedDescription)
             }
         }
@@ -156,6 +163,9 @@ extension SearchController: UISearchResultsUpdating, SearchResultsControllerDele
                     print(resultsController.movies)
                     resultsController.searchResultsCollectionView.reloadData()
                 case .failure(let error):
+                    DispatchQueue.main.async {
+                        AlertUtils.showAlert(message: error.localizedDescription)
+                    }
                     print(error.localizedDescription)
                 }
             }
