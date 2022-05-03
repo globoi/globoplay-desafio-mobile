@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shimmer_review_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+    android:id="@+id/shimmer_review_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_ten"
+        android:background="@color/shimmer_background"
+        android:layout_margin="@dimen/dimens_eight"/>
+
+</LinearLayout>

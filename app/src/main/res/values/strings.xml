@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">globoplay</string>
+    <string name="failure_string">Falha ao Carregar Dados</string>
+    <string name="overview">Resumo</string>
+    <string name="videos">Videos</string>
+    <string name="reviews">Análise</string>
+    <string name="retry">Recarregar</string>
+    <string name="review_over">------------------------</string>
+    <string name="no_popular_movies_to_display">Nenhum Filme Para Exibir</string>
+    <string name="retry_api_call">Repetir</string>
+
+
+</resources>

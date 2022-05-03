@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimens_fifteen"
+        android:orientation="vertical"
+        app:duration="@integer/duration">
+
+        <LinearLayout
+            android:id="@+id/main_screen_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_movie_layout"/>
+            <include layout="@layout/shimmer_movie_layout"/>
+            <include layout="@layout/shimmer_movie_layout"/>
+            <include layout="@layout/shimmer_movie_layout"/>
+            <include layout="@layout/shimmer_movie_layout"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movies_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Hello World!" />
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/no_popular_movies_to_display"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/retry_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:icon="@drawable/ic_baseline_replay_24"
+        android:text="@string/retry_api_call"
+        android:layout_margin="@dimen/dimens_eight"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

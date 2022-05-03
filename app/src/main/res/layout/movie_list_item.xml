@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_screen"
+    app:cardElevation="@dimen/dimens_eight"
+    app:cardCornerRadius="@dimen/dimens_eight"
+    android:layout_margin="@dimen/dimens_eight">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_zero"
+            app:layout_constraintDimensionRatio="1:1.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"
+            android:transitionName="poster"/>
+
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/item_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Item Title Here"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:fontFamily="casual"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
