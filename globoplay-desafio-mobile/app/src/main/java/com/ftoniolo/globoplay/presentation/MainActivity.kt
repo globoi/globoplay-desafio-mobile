@@ -10,7 +10,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.ftoniolo.globoplay.R
 import com.ftoniolo.globoplay.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
