@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">globoplay-desafio-mobile</string>
+    <string name="app_menu_home">Início</string>
+    <string name="app_menu_favorites">Minha Lista</string>
 </resources>
