@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
-    <output url="file://$USER_HOME$/Documents/code/kotlin/globoplay-desafio-mobile/globoplaydesafiomobile/build/classes" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/../../../globoplay-desafio-mobile/globoplaydesafiomobile/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
