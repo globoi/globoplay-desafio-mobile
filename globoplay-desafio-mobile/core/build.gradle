@@ -4,11 +4,17 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 dependencies {
+
+    // OkHttp
+    api platform('com.squareup.okhttp3:okhttp-bom:4.9.0')
+    api 'com.squareup.okhttp3:okhttp'
+    api 'com.squareup.okhttp3:logging-interceptor'
+
     // Retrofit
     def retrofit_version = '2.9.0'
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
