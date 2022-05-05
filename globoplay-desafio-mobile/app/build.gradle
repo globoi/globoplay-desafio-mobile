@@ -9,6 +9,10 @@ apply plugin: "androidx.navigation.safeargs"
 apply plugin: 'kotlin-parcelize'
 apply from: '../config/detekt/detekt.gradle'
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion 31
     buildToolsVersion "30.0.3"
@@ -21,6 +25,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "API_KEY", apikeyProperties['API_KEY']
+        buildConfigField "String", "BASE_URL", '"http://api.themoviedb.org/3/"'
+        buildConfigField "String", "THUMBNAIL_URL", '"https://image.tmdb.org/t/p/w500/"'
+        buildConfigField "String", "LANGUAGE_BR", '"pt-BR"'
     }
 
     buildTypes {
