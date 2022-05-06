@@ -2,6 +2,7 @@ package com.ftoniolo.globoplay.framework.di
 
 import com.ftoniolo.globoplay.framework.network.interceptor.AuthorizationInterceptor
 import com.ftoniolo.globoplay.BuildConfig
+import com.ftoniolo.globoplay.framework.network.TmdbApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -50,11 +51,12 @@ object NetworkModule {
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         converterFactory: GsonConverterFactory
-    ): Retrofit {
+    ): TmdbApi {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
             .build()
+            .create(TmdbApi::class.java)
     }
 }
