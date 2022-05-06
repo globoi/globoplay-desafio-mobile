@@ -1,6 +1,6 @@
 package com.ftoniolo.globoplay.framework.di
 
-import com.ftoniolo.core.data.network.interceptor.AuthorizationInterceptor
+import com.ftoniolo.globoplay.framework.network.interceptor.AuthorizationInterceptor
 import com.ftoniolo.globoplay.BuildConfig
 import dagger.Module
 import dagger.Provides

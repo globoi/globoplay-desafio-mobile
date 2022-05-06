@@ -1,4 +1,4 @@
-package com.ftoniolo.core.data.network.response.genre
+package com.ftoniolo.globoplay.framework.network.response.genre
 
 data class GenresDataWrapperResponse(
     val genre: List<GenreResponse>

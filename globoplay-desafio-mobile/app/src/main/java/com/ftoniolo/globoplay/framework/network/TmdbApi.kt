@@ -1,7 +1,7 @@
-package com.ftoniolo.core.data.network
+package com.ftoniolo.globoplay.framework.network
 
-import com.ftoniolo.core.data.network.response.film.FilmsDataWrapperResponse
-import com.ftoniolo.core.data.network.response.genre.GenresDataWrapperResponse
+import com.ftoniolo.globoplay.framework.network.response.film.FilmsDataWrapperResponse
+import com.ftoniolo.globoplay.framework.network.response.genre.GenresDataWrapperResponse
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
