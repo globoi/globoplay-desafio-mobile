@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ftoniolo.core.domain.model.FilmPoster
+import com.ftoniolo.core.domain.model.FilmsPoster
 import com.ftoniolo.globoplay.R
 import com.ftoniolo.globoplay.databinding.ItemFilmBinding
 
@@ -14,9 +14,9 @@ class HomeHorizontalViewHolder(
 
     private val itemPoster = itemFilmBinding.itemPoster
 
-    fun bind(filmPoster: FilmPoster){
+    fun bind(filmsPoster: FilmsPoster){
         Glide.with(itemView)
-            .load(filmPoster.posterUrl)
+            .load(filmsPoster.posterUrl)
             .fallback(R.drawable.ic_img_loading_error)
             .into(itemPoster)
     }

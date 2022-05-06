@@ -5,9 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ftoniolo.core.domain.model.FilmPoster
+import com.ftoniolo.core.domain.model.FilmsPoster
 import com.ftoniolo.core.domain.model.FilmsFromGenre
-import com.ftoniolo.globoplay.R
 import com.ftoniolo.globoplay.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,14 +34,14 @@ class HomeFragment : Fragment() {
         initHomeVerticalAdapter()
 
         val listPosterMock = listOf(
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
+            FilmsPoster(posterUrl = "https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
+            FilmsPoster(posterUrl = "https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
+            FilmsPoster(posterUrl = "https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
+            FilmsPoster(posterUrl = "https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
+            FilmsPoster(posterUrl = "https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
+            FilmsPoster(posterUrl = "https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
+            FilmsPoster(posterUrl = "https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
+            FilmsPoster(posterUrl = "https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
             )
 
         homeVerticalAdapter.submitList(

@@ -1,9 +1,9 @@
 package com.ftoniolo.core.data.repository
 
 import androidx.paging.PagingSource
-import com.ftoniolo.core.domain.model.FilmsFromGenre
+import com.ftoniolo.core.domain.model.Film
 
 interface FilmsRepository {
 
-    fun getFilms(query: String): PagingSource<Int, FilmsFromGenre>
+    fun getFilms(): PagingSource<Int, Film>
 }
