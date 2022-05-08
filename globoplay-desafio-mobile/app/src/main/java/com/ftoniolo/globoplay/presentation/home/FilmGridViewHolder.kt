@@ -4,27 +4,31 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ftoniolo.core.domain.model.FilmsPoster
+import com.ftoniolo.core.domain.model.Film
 import com.ftoniolo.globoplay.R
 import com.ftoniolo.globoplay.databinding.ItemFilmBinding
 
-class HomeHorizontalViewHolder(
+class FilmGridViewHolder(
     itemFilmBinding: ItemFilmBinding
 ) : RecyclerView.ViewHolder(itemFilmBinding.root) {
 
-    private val itemPoster = itemFilmBinding.itemPoster
+    private val itemFilm = itemFilmBinding.itemPoster
+    private val itemText = itemFilmBinding.itemNameFilm
 
-    fun bind(filmsPoster: FilmsPoster){
+    fun bind(film: Film){
         Glide.with(itemView)
-            .load(filmsPoster.posterUrl)
+            .load(film.imageUrl)
             .fallback(R.drawable.ic_img_loading_error)
-            .into(itemPoster)
+            .into(itemFilm)
+
+        itemText.text = film.title
     }
+
     companion object {
-        fun create(parent: ViewGroup): HomeHorizontalViewHolder {
+        fun create(parent: ViewGroup): FilmGridViewHolder {
             val inflater = LayoutInflater.from(parent.context)
             val itemBinding = ItemFilmBinding.inflate(inflater, parent, false)
-            return HomeHorizontalViewHolder(itemBinding)
+            return FilmGridViewHolder(itemBinding)
         }
     }
 }

@@ -18,7 +18,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.marvelapp"
+        applicationId "com.ftoniolo.globoplay"
         minSdkVersion 23
         targetSdkVersion 31
         versionCode 1
@@ -27,7 +27,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "API_KEY", apikeyProperties['API_KEY']
-        buildConfigField "String", "BASE_URL", '"http://api.themoviedb.org/3/"'
+        buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
         buildConfigField "String", "THUMBNAIL_URL", '"https://image.tmdb.org/t/p/w500/"'
         buildConfigField "String", "LANGUAGE_BR", '"pt-BR"'
     }

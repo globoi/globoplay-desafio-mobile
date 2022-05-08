@@ -11,6 +11,8 @@ import java.lang.Exception
 class FilmsPagingSource(
     private val remoteDataSource: FilmsRemoteDataSource<FilmsDataWrapperResponse>
 ) : PagingSource<Int, Film>(){
+
+    @Suppress("TooGenericExceptionCaught")
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Film> {
         return try {
             val numberPag = params.key ?: 1

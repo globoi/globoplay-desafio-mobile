@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/item_films_load_more_state.xml" value="0.252" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.36231884057971014" />
+        <entry key="app/src/main/res/layout/fragment_favorites.xml" value="0.36231884057971014" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.36231884057971014" />
+        <entry key="app/src/main/res/layout/include_view_film_loading_state.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/include_view_films_error_sttate.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/item_film.xml" value="0.36231884057971014" />
+        <entry key="app/src/main/res/layout/item_films_from_genre.xml" value="0.36231884057971014" />
+        <entry key="app/src/main/res/layout/item_films_load_more_state.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/shimmer_layout_film_item.xml" value="0.24635416666666668" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/../../../globoplay-desafio-mobile/globoplaydesafiomobile/build/classes" />
   </component>
   <component name="ProjectType">

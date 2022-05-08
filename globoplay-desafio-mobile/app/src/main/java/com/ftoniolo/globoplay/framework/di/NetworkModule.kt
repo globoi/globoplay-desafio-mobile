@@ -31,10 +31,18 @@ object NetworkModule {
     }
 
     @Provides
+    fun provideAuthorizationInterceptor(): AuthorizationInterceptor {
+        return AuthorizationInterceptor(
+            apiKey = BuildConfig.API_KEY,
+            language = BuildConfig.LANGUAGE_BR,
+        )
+    }
+
+    @Provides
     fun provideOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
         authorizationInterceptor: AuthorizationInterceptor
-    ): OkHttpClient {
+        ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .addInterceptor(authorizationInterceptor)
