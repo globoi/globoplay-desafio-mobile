@@ -9,11 +9,18 @@ import com.ftoniolo.core.usecase.base.PagingUseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetFilmsUseCase @Inject constructor(
-    private val filmsRepository: FilmsRepository
-) : PagingUseCase<GetFilmsUseCase.GetFilmsParams, Film>() {
+interface GetFilmsUseCase {
+    operator fun invoke(params: GetFilmsParams): Flow<PagingData<Film>>
 
-    override fun createFlowObservable(params: GetFilmsParams
+    data class GetFilmsParams(val pagingConfig: PagingConfig)
+}
+
+class GetFilmsUseCaseImpl @Inject constructor(
+    private val filmsRepository: FilmsRepository
+) : PagingUseCase<GetFilmsUseCase.GetFilmsParams, Film>(),
+GetFilmsUseCase {
+
+    override fun createFlowObservable(params: GetFilmsUseCase.GetFilmsParams
     ): Flow<PagingData<Film>> {
 
         return Pager(config = params.pagingConfig) {
@@ -21,6 +28,5 @@ class GetFilmsUseCase @Inject constructor(
         }.flow
     }
 
-    data class GetFilmsParams(val pagingConfig: PagingConfig)
 }
 

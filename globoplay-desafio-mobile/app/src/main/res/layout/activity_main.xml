@@ -11,18 +11,17 @@
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/black"
-        app:titleTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/white">
 
         <ImageView
             android:id="@+id/toolbar_logo"
             android:layout_width="wrap_content"
-            android:contentDescription="Logo"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/globoplay_white_logo"/>
+            android:src="@drawable/logo_globoplay" />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.fragment.app.FragmentContainerView
@@ -44,10 +43,10 @@
         android:background="@color/black"
         app:itemIconTint="@drawable/tab_selector"
         app:itemTextColor="@drawable/tab_selector"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/app_menu_items"
-        app:labelVisibilityMode="labeled"/>
+        app:menu="@menu/app_menu_items" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
