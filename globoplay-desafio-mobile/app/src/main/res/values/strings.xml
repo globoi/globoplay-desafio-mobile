@@ -2,4 +2,7 @@
     <string name="app_name">globoplay-desafio-mobile</string>
     <string name="app_menu_home">Início</string>
     <string name="app_menu_favorites">Minha Lista</string>
+    <string name="error_loading_films">Erro ao tentar carregar filmes</string>
+    <string name="try_again">Tente Novamente</string>
+    <string name="error_loading_more_try_again">Erro ao tentar carregar próxima pagina</string>
 </resources>

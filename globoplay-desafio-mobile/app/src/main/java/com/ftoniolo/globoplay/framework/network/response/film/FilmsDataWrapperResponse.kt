@@ -1,4 +1,4 @@
-package com.ftoniolo.core.data.network.response.film
+package com.ftoniolo.globoplay.framework.network.response.film
 
 import com.google.gson.annotations.SerializedName
 
