@@ -6,7 +6,7 @@ import okhttp3.Response
 class AuthorizationInterceptor(
     private val apiKey: String,
     private val language: String
-) : Interceptor{
+) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val requestUrl = request.url
@@ -24,7 +24,7 @@ class AuthorizationInterceptor(
     }
 
     companion object {
-        private const val QUERY_PARAMETER_API_KEY = "apikey"
+        private const val QUERY_PARAMETER_API_KEY = "api_key"
         private const val QUERY_PT_BR = "language"
 
     }

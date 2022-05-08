@@ -5,19 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ftoniolo.core.domain.model.FilmPoster
-import com.ftoniolo.core.domain.model.FilmsFromGenre
-import com.ftoniolo.globoplay.R
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import com.ftoniolo.globoplay.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding get() = _binding!!
-
-    private val homeVerticalAdapter = HomeVerticalAdapter()
+    private val viewModel: HomeViewModel by viewModels()
+    private lateinit var filmGridAdapter: FilmGridAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,33 +37,67 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initHomeVerticalAdapter()
+        initHomeAdapter()
+        observeInitialLoadState()
 
-        val listPosterMock = listOf(
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            FilmPoster("https://image.tmdb.org/t/p/w500/soD18uucENplI81kUErvMzdb5Lm.jpg"),
-            )
-
-        homeVerticalAdapter.submitList(
-            listOf(
-                FilmsFromGenre("Ação", listPosterMock),
-                FilmsFromGenre("Aventura", listPosterMock),
-                FilmsFromGenre("Suspense", listPosterMock),
-                FilmsFromGenre("Drama", listPosterMock),
-            )
-        )
+        lifecycleScope.launch {
+            viewModel.filmsPagingData().collect { pagingData ->
+                filmGridAdapter.submitData(pagingData)
+            }
+        }
     }
 
-    private fun initHomeVerticalAdapter() {
+    @Suppress("MagicNumber")
+    private fun initHomeAdapter() {
+        filmGridAdapter = FilmGridAdapter()
         with(binding.rvVertical) {
+            scrollToPosition(0)
             setHasFixedSize(true)
-            adapter = homeVerticalAdapter
+            layoutManager = GridLayoutManager(context, 3)
+            adapter = filmGridAdapter.withLoadStateFooter(
+                footer = HomeLoadStateAdapter(
+                    filmGridAdapter::retry
+                )
+            )
         }
+    }
+
+    private fun observeInitialLoadState() {
+        lifecycleScope.launch {
+            filmGridAdapter.loadStateFlow.collectLatest { loadState ->
+                binding.flipperFilms.displayedChild = when (loadState.refresh) {
+                    is LoadState.Loading -> {
+                        setShimmerVisibility(true)
+                        FLIPPER_CHILD_LOADING
+                    }
+                    is LoadState.NotLoading -> {
+                        setShimmerVisibility(false)
+                        FLIPPER_CHILD_FILMS
+                    }
+                    is LoadState.Error -> {
+                        setShimmerVisibility(false)
+                        binding.includeViewFilmsErrorState.buttonRetry.setOnClickListener {
+                            filmGridAdapter.refresh()
+                        }
+                        FLIPPER_CHILD_ERROR
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setShimmerVisibility(visibility: Boolean) {
+        binding.includeViewFilmLoadingState.shimmerFilms.run {
+            isVisible = visibility
+            if (visibility) {
+                startShimmer()
+            } else stopShimmer()
+        }
+    }
+
+    companion object {
+        private const val FLIPPER_CHILD_LOADING = 0
+        private const val FLIPPER_CHILD_FILMS = 1
+        private const val FLIPPER_CHILD_ERROR = 2
     }
 }

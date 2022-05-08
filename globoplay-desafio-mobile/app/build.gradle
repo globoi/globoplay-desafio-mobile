@@ -18,7 +18,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.marvelapp"
+        applicationId "com.ftoniolo.globoplay"
         minSdkVersion 23
         targetSdkVersion 31
         versionCode 1
@@ -27,7 +27,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "API_KEY", apikeyProperties['API_KEY']
-        buildConfigField "String", "BASE_URL", '"http://api.themoviedb.org/3/"'
+        buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
         buildConfigField "String", "THUMBNAIL_URL", '"https://image.tmdb.org/t/p/w500/"'
         buildConfigField "String", "LANGUAGE_BR", '"pt-BR"'
     }
@@ -76,9 +76,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
 
-    def coroutines = "1.5.1"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
@@ -91,7 +90,6 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
     // Paging3
-    def paging_version = "3.0.1"
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
     // Glide
