@@ -23,7 +23,7 @@ dependencies {
     //Gson
     api 'com.google.code.gson:gson:2.8.6'
 
-    //Paging3 Common
+    // Paging3 Common
     implementation "androidx.paging:paging-common:$paging_version"
 
     //Javax Inject
@@ -31,4 +31,7 @@ dependencies {
 
     //Coroutines core
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+
+    testImplementation project(":testing")
+
 }
