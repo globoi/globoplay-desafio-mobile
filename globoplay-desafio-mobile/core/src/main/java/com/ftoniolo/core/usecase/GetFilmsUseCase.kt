@@ -22,9 +22,9 @@ GetFilmsUseCase {
 
     override fun createFlowObservable(params: GetFilmsUseCase.GetFilmsParams
     ): Flow<PagingData<Film>> {
-
+        val pagingData = filmsRepository.getFilms()
         return Pager(config = params.pagingConfig) {
-            filmsRepository.getFilms()
+            pagingData
         }.flow
     }
 
