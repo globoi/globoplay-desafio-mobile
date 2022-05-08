@@ -17,6 +17,15 @@ android {
     compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
+    signingConfigs {
+        release {
+            storeFile file('/Users/ftoniolo/Documents/code/kotlin/desafio/globoplay-desafio-mobile/globoplay-desafio-mobile/store/globoplay_app_key_store')
+            storePassword 'globo123'
+            keyAlias 'globo-app'
+            keyPassword 'globo123'
+        }
+    }
+
     defaultConfig {
         applicationId "com.ftoniolo.globoplay"
         minSdkVersion 23
@@ -33,8 +42,21 @@ android {
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            debuggable true
+        }
+        staging {
+            initWith debug
+            minifyEnabled true
+            applicationIdSuffix '.staging'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro',
+                    'proguard-rules-staging.pro'
+        }
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

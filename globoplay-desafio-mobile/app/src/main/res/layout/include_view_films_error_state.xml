@@ -27,7 +27,6 @@
         android:layout_height="wrap_content"
         android:text="@string/try_again"
         android:textColor="@color/background"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_initial_loading_error" />

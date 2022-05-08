@@ -5,7 +5,9 @@ import com.ftoniolo.globoplay.BuildConfig
 import com.google.gson.annotations.SerializedName
 
 data class FilmResponse(
+    @SerializedName("id")
     val id: Long,
+    @SerializedName("overview")
     val overview: String,
     @SerializedName("original_title")
     val title: String,
