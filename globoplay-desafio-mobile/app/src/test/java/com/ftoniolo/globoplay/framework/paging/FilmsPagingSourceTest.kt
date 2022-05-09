@@ -42,7 +42,7 @@ class FilmsPagingSourceTest {
     }
 
     @Test
-    fun `should return a sucess load rersult when load is called`() = runBlocking {
+    fun `should return a success load result when load is called`() = runBlocking {
 
         whenever(remoteDataSource.fetchFilms(any()))
             .thenReturn(filmsDataWrapperResponseFactory.create())
@@ -64,7 +64,7 @@ class FilmsPagingSourceTest {
             PagingSource.LoadResult.Page(
                 data = expected,
                 prevKey = null,
-                nextKey = 1
+                nextKey = null
             ),
             result
         )
