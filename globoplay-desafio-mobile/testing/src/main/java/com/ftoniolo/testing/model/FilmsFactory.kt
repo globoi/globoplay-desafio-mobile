@@ -18,12 +18,12 @@ class FilmsFactory {
         )
         Movie.HomemAranha -> Film(
             id = 1L, overview = "Homem Aranha Overview", title = "Homem Aranha",
-            genreIds = listOf(9L, 8L, 7L), imageUrl = "https://image.tmdb.org/t/p/w500/imagem-homem-aranha",
+            genreIds = listOf(9L, 8L, 7L), imageUrl = "https://image.tmdb.org/t/p/w500//imagem-homem-aranha",
             releaseDate = "01/01/2022", originalLanguage = "pt-BR"
         )
         Movie.DrEstranho -> Film(
             id = 1L, overview = "Dr Estranho Overview", title = "Dr Estranho ",
-            genreIds = listOf(91L, 80L, 17L), imageUrl = "https://image.tmdb.org/t/p/w500/imagem-dr-estranho",
+            genreIds = listOf(91L, 80L, 17L), imageUrl = "https://image.tmdb.org/t/p/w500//imagem-dr-estranho",
             releaseDate = "21/04/2022", originalLanguage = "pt-BR"
         )
     }
