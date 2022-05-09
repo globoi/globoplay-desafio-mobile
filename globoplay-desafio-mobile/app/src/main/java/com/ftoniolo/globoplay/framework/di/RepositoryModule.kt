@@ -20,5 +20,5 @@ interface RepositoryModule {
     @Binds
     fun bindRemoteDataSource(
         dataSource: RetrofitFilmsDataSource
-    ) : FilmsRemoteDataSource<FilmsDataWrapperResponse>
+    ) : FilmsRemoteDataSource
 }

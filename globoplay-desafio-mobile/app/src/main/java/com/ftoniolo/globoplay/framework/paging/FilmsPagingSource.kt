@@ -4,12 +4,9 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.ftoniolo.core.data.repository.FilmsRemoteDataSource
 import com.ftoniolo.core.domain.model.Film
-import com.ftoniolo.globoplay.framework.network.response.film.FilmsDataWrapperResponse
-import com.ftoniolo.globoplay.framework.network.response.film.toFilmModel
-import java.lang.Exception
 
 class FilmsPagingSource(
-    private val remoteDataSource: FilmsRemoteDataSource<FilmsDataWrapperResponse>
+    private val remoteDataSource: FilmsRemoteDataSource
 ) : PagingSource<Int, Film>(){
 
     @Suppress("TooGenericExceptionCaught")
@@ -21,13 +18,13 @@ class FilmsPagingSource(
                 "pag" to numberPag.toString()
             )
 
-            val response = remoteDataSource.fetchFilms(queries)
+            val filmPaging = remoteDataSource.fetchFilms(queries)
 
-            val responsePage = response.page
-            val responseTotalPage = response.totalPages
+            val responsePage = filmPaging.page
+            val responseTotalPage = filmPaging.totalPages
 
             LoadResult.Page(
-                data = response.results.map { it.toFilmModel()},
+                data = filmPaging.films,
                 prevKey = null,
                 nextKey = if(responsePage < responseTotalPage){
                     numberPag + ONE

@@ -1,6 +1,8 @@
 package com.ftoniolo.core.data.repository
 
-interface FilmsRemoteDataSource<T> {
+import com.ftoniolo.core.domain.model.FilmPaging
 
-    suspend fun fetchFilms(queries: Map<String, String>): T
+interface FilmsRemoteDataSource {
+
+    suspend fun fetchFilms(queries: Map<String, String>): FilmPaging
 }
