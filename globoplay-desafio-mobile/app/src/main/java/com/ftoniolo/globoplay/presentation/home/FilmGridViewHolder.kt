@@ -1,34 +1,47 @@
 package com.ftoniolo.globoplay.presentation.home
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ftoniolo.core.domain.model.Film
 import com.ftoniolo.globoplay.R
 import com.ftoniolo.globoplay.databinding.ItemFilmBinding
+import com.ftoniolo.globoplay.framework.imageLoader.ImageLoader
 
 class FilmGridViewHolder(
-    itemFilmBinding: ItemFilmBinding
+    itemFilmBinding: ItemFilmBinding,
+    private val imageLoader: ImageLoader,
+    private val onItemClick:(film: Film, view: View) -> Unit
 ) : RecyclerView.ViewHolder(itemFilmBinding.root) {
 
     private val itemFilm = itemFilmBinding.itemPoster
     private val itemText = itemFilmBinding.itemNameFilm
 
     fun bind(film: Film){
-        Glide.with(itemView)
-            .load(film.imageUrl)
-            .fallback(R.drawable.ic_img_loading_error)
-            .into(itemFilm)
+        itemFilm.transitionName = film.title
+
+        imageLoader.load(
+            itemFilm, film.imageUrl, R.drawable.ic_img_loading_error
+        )
 
         itemText.text = film.title
+
+        itemView.setOnClickListener {
+            onItemClick.invoke(film, itemFilm)
+        }
     }
 
     companion object {
-        fun create(parent: ViewGroup): FilmGridViewHolder {
+        fun create(
+            parent: ViewGroup,
+            imageLoader: ImageLoader,
+            onItemClick:(film: Film, view: View) -> Unit
+        ): FilmGridViewHolder {
             val inflater = LayoutInflater.from(parent.context)
             val itemBinding = ItemFilmBinding.inflate(inflater, parent, false)
-            return FilmGridViewHolder(itemBinding)
+            return FilmGridViewHolder(itemBinding, imageLoader ,onItemClick)
         }
     }
 }

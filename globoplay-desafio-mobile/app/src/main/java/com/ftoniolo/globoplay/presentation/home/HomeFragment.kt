@@ -8,13 +8,18 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ftoniolo.globoplay.databinding.FragmentHomeBinding
+import com.ftoniolo.globoplay.framework.imageLoader.ImageLoader
+import com.ftoniolo.globoplay.presentation.details.DetailsFilmViewArg
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -23,6 +28,9 @@ class HomeFragment : Fragment() {
     private val binding: FragmentHomeBinding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var filmGridAdapter: FilmGridAdapter
+
+    @Inject
+    lateinit var imageLoader: ImageLoader
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +57,23 @@ class HomeFragment : Fragment() {
 
     @Suppress("MagicNumber")
     private fun initHomeAdapter() {
-        filmGridAdapter = FilmGridAdapter()
+        filmGridAdapter = FilmGridAdapter(imageLoader) { film, view ->
+
+            val navExtras = FragmentNavigatorExtras(
+                view to film.title
+            )
+            val directions = HomeFragmentDirections
+                .actionHomeFragmentToDetailsFragment(
+                    DetailsFilmViewArg(
+                        id = film.id,
+                        overview = film.overview,
+                        title = film.title,
+                        imageUrl = film.imageUrl,
+                        releaseDate = film.releaseDate)
+                )
+            findNavController().navigate(directions, navExtras)
+        }
+
         with(binding.rvVertical) {
             scrollToPosition(0)
             setHasFixedSize(true)
@@ -93,6 +117,11 @@ class HomeFragment : Fragment() {
                 startShimmer()
             } else stopShimmer()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

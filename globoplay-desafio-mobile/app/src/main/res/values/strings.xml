@@ -5,4 +5,13 @@
     <string name="error_loading_films">Erro ao tentar carregar filmes</string>
     <string name="try_again">Tente Novamente</string>
     <string name="error_loading_more_try_again">Erro ao tentar carregar próxima pagina</string>
+    <string name="trailer">Trailer</string>
+    <string name="details">DETALHES</string>
+    <string name="watch_too">ASSISTA TAMBÉM</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="datasheet">Ficha Técnica</string>
+    <string name="synopsis">Sinopse:</string>
+    <string name="release_date">Data de Lançamento:</string>
+    <string name="original_title">Título Original:</string>
 </resources>
