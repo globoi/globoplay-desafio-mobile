@@ -1,26 +1,20 @@
 package com.ftoniolo.globoplay.presentation.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
-import androidx.paging.LoadState
-import androidx.recyclerview.widget.GridLayoutManager
 import com.ftoniolo.globoplay.databinding.FragmentHomeBinding
 import com.ftoniolo.globoplay.framework.imageLoader.ImageLoader
 import com.ftoniolo.globoplay.presentation.details.DetailsFilmViewArg
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@Suppress("UnusedPrivateMember")
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
@@ -28,7 +22,6 @@ class HomeFragment : Fragment() {
     private val binding: FragmentHomeBinding get() = _binding!!
 
     private val viewModel: HomeViewModel by viewModels()
-    private lateinit var filmGridAdapter: FilmGridAdapter
 
     @Inject
     lateinit var imageLoader: ImageLoader
@@ -46,78 +39,47 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initHomeAdapter()
-        observeInitialLoadState()
+//        initHomeAdapter()
+//        observeInitialLoadState()
 
-        lifecycleScope.launch {
-            viewModel.filmsPagingData().collect { pagingData ->
-                filmGridAdapter.submitData(pagingData)
-            }
-        }
-    }
+        viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
+            binding.flipperFilms.displayedChild = when (uiState) {
+                HomeViewModel.UiState.Loading -> FLIPPER_CHILD_LOADING
+                is HomeViewModel.UiState.Success -> {
+                    binding.rvVertical.run {
+                        setHasFixedSize(false)
+                        adapter = HomeParentAdapter(uiState.homeParentList, imageLoader) { film, view ->
 
-    @Suppress("MagicNumber")
-    private fun initHomeAdapter() {
-        filmGridAdapter = FilmGridAdapter(imageLoader) { film, view ->
-
-            val navExtras = FragmentNavigatorExtras(
-                view to film.title
-            )
-            val directions = HomeFragmentDirections
-                .actionHomeFragmentToDetailsFragment(
-                    DetailsFilmViewArg(
-                        id = film.id,
-                        overview = film.overview,
-                        title = film.title,
-                        imageUrl = film.imageUrl,
-                        releaseDate = film.releaseDate)
-                )
-            findNavController().navigate(directions, navExtras)
-        }
-
-        with(binding.rvVertical) {
-            scrollToPosition(0)
-            setHasFixedSize(true)
-            layoutManager = GridLayoutManager(context, 3)
-            adapter = filmGridAdapter.withLoadStateFooter(
-                footer = HomeLoadStateAdapter(
-                    filmGridAdapter::retry
-                )
-            )
-        }
-    }
-
-    private fun observeInitialLoadState() {
-        lifecycleScope.launch {
-            filmGridAdapter.loadStateFlow.collectLatest { loadState ->
-                binding.flipperFilms.displayedChild = when (loadState.refresh) {
-                    is LoadState.Loading -> {
-                        setShimmerVisibility(true)
-                        FLIPPER_CHILD_LOADING
+                                val navExtras = FragmentNavigatorExtras(
+                                    view to film.title
+                                )
+                                val directions = HomeFragmentDirections
+                                    .actionHomeFragmentToDetailsFragment(
+                                        DetailsFilmViewArg(
+                                            id = film.id,
+                                            overview = film.overview,
+                                            title = film.title,
+                                            imageUrl = film.imageUrl,
+                                            releaseDate = film.releaseDate
+                                        )
+                                    )
+                                findNavController().navigate(directions, navExtras)
+                            }
                     }
-                    is LoadState.NotLoading -> {
-                        setShimmerVisibility(false)
-                        FLIPPER_CHILD_FILMS
-                    }
-                    is LoadState.Error -> {
-                        setShimmerVisibility(false)
-                        binding.includeViewFilmsErrorState.buttonRetry.setOnClickListener {
-                            filmGridAdapter.refresh()
-                        }
-                        FLIPPER_CHILD_ERROR
-                    }
+                    FLIPPER_CHILD_FILMS
                 }
+                HomeViewModel.UiState.Error ->  {
+                    binding.includeErrorView.buttonRetry.setOnClickListener {
+                        viewModel.getFilmsByCategory()
+                    }
+                    FLIPPER_CHILD_ERROR
+                }
+
+                HomeViewModel.UiState.Empty -> FLIPPER_CHILD_EMPTY
             }
         }
-    }
+        viewModel.getFilmsByCategory()
 
-    private fun setShimmerVisibility(visibility: Boolean) {
-        binding.includeViewFilmLoadingState.shimmerFilms.run {
-            isVisible = visibility
-            if (visibility) {
-                startShimmer()
-            } else stopShimmer()
-        }
     }
 
     override fun onDestroyView() {
@@ -129,5 +91,6 @@ class HomeFragment : Fragment() {
         private const val FLIPPER_CHILD_LOADING = 0
         private const val FLIPPER_CHILD_FILMS = 1
         private const val FLIPPER_CHILD_ERROR = 2
+        private const val FLIPPER_CHILD_EMPTY = 3
     }
 }

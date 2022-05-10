@@ -24,6 +24,5 @@ class GetWatchTooUseCaseImpl @Inject constructor(
             repository.getWatchToo(params.filmId)
         }.flow
     }
-
 }
 

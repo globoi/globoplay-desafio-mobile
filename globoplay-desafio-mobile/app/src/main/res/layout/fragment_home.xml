@@ -16,12 +16,26 @@
         android:id="@+id/rv_vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_film"
+        tools:listitem="@layout/item_parent_home"
+        android:clipToPadding="false"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
 
     <include
-        android:id="@+id/include_view_films_error_state"
-        layout="@layout/include_view_films_error_state"/>
+        android:id="@+id/include_error_view"
+        layout="@layout/include_error_view"/>
+
+    <TextView
+        android:id="@+id/text_no_results"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.5"
+        android:gravity="center"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:padding="16dp"
+        android:text="@string/common_no_results_found"
+        android:textColor="@color/white"
+        app:drawableTopCompat="@drawable/ic_info" />
 
 </ViewFlipper>

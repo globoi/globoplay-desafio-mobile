@@ -19,7 +19,7 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class GetFilmsUseCaseImplTest {
+class GetPopularFilmsUseCaseImplTest {
 
     @ExperimentalCoroutinesApi
     @get:Rule
@@ -28,7 +28,7 @@ class GetFilmsUseCaseImplTest {
     @Mock
     lateinit var repository: FilmsRepository
 
-    private lateinit var getFilmsUseCase: GetFilmsUseCase
+    private lateinit var getPopularFilmsUseCase: GetPopularFilmsUseCase
 
     private val movie = FilmsFactory().create(FilmsFactory.Movie.Batman)
 
@@ -36,20 +36,20 @@ class GetFilmsUseCaseImplTest {
 
     @Before
     fun setup(){
-        getFilmsUseCase = GetFilmsUseCaseImpl(repository)
+        getPopularFilmsUseCase = GetPopularFilmsUseCaseImpl(repository)
     }
 
     @Test
     fun `should validate flow paging data creation when invoke from use case is called`() =
         runBlocking {
-            whenever(repository.getFilms())
+            whenever(repository.getPopularFilms())
                 .thenReturn(
                     fakePagingSource
                 )
-        val result = getFilmsUseCase
-            .invoke(GetFilmsUseCase.GetFilmsParams(PagingConfig(20)))
+        val result = getPopularFilmsUseCase
+            .invoke(GetPopularFilmsUseCase.GetFilmsParams(PagingConfig(20)))
 
-            verify(repository).getFilms()
+            verify(repository).getPopularFilms()
 
             assertNotNull(result.first())
     }

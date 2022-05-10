@@ -1,8 +1,7 @@
 package com.ftoniolo.globoplay.framework.remote
 
 import com.ftoniolo.core.data.repository.FilmsRemoteDataSource
-import com.ftoniolo.core.domain.model.FilmPaging
-import com.ftoniolo.core.domain.model.WatchToo
+import com.ftoniolo.core.domain.model.Film
 import com.ftoniolo.core.domain.model.WatchTooPaging
 import com.ftoniolo.globoplay.framework.network.TmdbApi
 import com.ftoniolo.globoplay.framework.network.response.film.toFilmModel
@@ -12,18 +11,16 @@ import javax.inject.Inject
 class RetrofitFilmsDataSource @Inject constructor(
     private val tmdbApi: TmdbApi
 ) : FilmsRemoteDataSource {
-    override suspend fun fetchFilms(queries: Map<String, String>): FilmPaging {
-
-        val data = tmdbApi.getFilms(queries)
-        val films = data.results.map {
+    override suspend fun fetchPopularFilms(): List<Film> {
+        return tmdbApi.getPopularFilms().results.map {
             it.toFilmModel()
         }
+    }
 
-        return FilmPaging(
-            page = data.page,
-            totalPages = data.totalPages,
-            films = films
-        )
+    override suspend fun fetchMoviesByCategory(genreId: Long): List<Film> {
+        return tmdbApi.getMoviesByCategory(genreId).results.map {
+            it.toFilmModel()
+        }
     }
 
     override suspend fun fetchWatchToo(filmId: Long, queries: Map<String, String>): WatchTooPaging {
@@ -38,10 +35,4 @@ class RetrofitFilmsDataSource @Inject constructor(
             films = films
         )
     }
-
-//    override suspend fun fetchWatchToo(filmId: Long): List<WatchToo> {
-//        return tmdbApi.getWatchToo(filmId).results.map {
-//            it.toWatchTooModel()
-//        }
-//    }
 }

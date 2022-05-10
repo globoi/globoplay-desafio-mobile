@@ -26,27 +26,3 @@ class WatchTooViewModel @Inject constructor(
         pageSize = 20
     )
 }
-
-//    private val _uiState = MutableLiveData<UiState>()
-//    val uiState: LiveData<UiState> get() = _uiState
-//
-//    fun getWatchToo(filmId: Long) = viewModelScope.launch {
-//        getWatchTooUseCase.invoke(GetWatchTooUseCase.GetWatchTooParams(filmId))
-//            .observeStatus()
-//    }
-//
-//    private fun Flow<ResultStatus<List<WatchToo>>>.observeStatus() = viewModelScope.launch {
-//        collect { status ->
-//            _uiState.value = when (status) {
-//                ResultStatus.Loading -> UiState.Loading
-//                is ResultStatus.Success -> UiState.Success(status.data)
-//                is ResultStatus.Error -> UiState.Error
-//            }
-//        }
-//    }
-//
-//    sealed class UiState {
-//        object Loading : UiState()
-//        data class Success(val watchToo: List<WatchToo>) : UiState()
-//        object Error : UiState()
-//    }

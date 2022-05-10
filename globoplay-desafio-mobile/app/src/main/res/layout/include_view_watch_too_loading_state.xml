@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
@@ -56,17 +57,7 @@
             <include layout="@layout/shimmer_layout_watch_too_item" />
             <include layout="@layout/shimmer_layout_watch_too_item" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <include layout="@layout/shimmer_layout_watch_too_item" />
-            <include layout="@layout/shimmer_layout_watch_too_item" />
-            <include layout="@layout/shimmer_layout_watch_too_item" />
-        </LinearLayout>
 
 
     </LinearLayout>

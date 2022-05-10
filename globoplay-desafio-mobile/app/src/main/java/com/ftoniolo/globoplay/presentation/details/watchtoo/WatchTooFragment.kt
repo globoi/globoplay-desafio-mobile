@@ -1,6 +1,7 @@
 package com.ftoniolo.globoplay.presentation.details.watchtoo
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -77,17 +78,23 @@ class WatchTooFragment(private val filmId: Long) : Fragment() {
             watchTooGridAdapter.loadStateFlow.collectLatest { loadState ->
                 binding.flipperWatchToo.displayedChild = when (loadState.refresh) {
                     is LoadState.Loading -> {
+                        Log.d(WatchTooFragment::class.simpleName, loadState.toString())
                         setShimmerVisibility(true)
                         FLIPPER_CHILD_LOADING
                     }
                     is LoadState.NotLoading -> {
-                        setShimmerVisibility(false)
-                        FLIPPER_CHILD_FILMS
+                        if(loadState.append.endOfPaginationReached && watchTooGridAdapter.itemCount < 1){
+                            FLIPPER_CHILD_EMPTY
+                        } else {
+                            Log.d(WatchTooFragment::class.simpleName, loadState.toString())
+                            setShimmerVisibility(false)
+                            FLIPPER_CHILD_FILMS
+                        }
                     }
                     is LoadState.Error -> {
                         setShimmerVisibility(false)
                         binding.includeViewFilmsErrorState.buttonRetry.setOnClickListener {
-                            watchTooGridAdapter.refresh()
+                            watchTooGridAdapter.retry()
                         }
                         FLIPPER_CHILD_ERROR
                     }
@@ -114,6 +121,7 @@ class WatchTooFragment(private val filmId: Long) : Fragment() {
         private const val FLIPPER_CHILD_LOADING = 0
         private const val FLIPPER_CHILD_FILMS = 1
         private const val FLIPPER_CHILD_ERROR = 2
+        private const val FLIPPER_CHILD_EMPTY = 3
     }
 
 }

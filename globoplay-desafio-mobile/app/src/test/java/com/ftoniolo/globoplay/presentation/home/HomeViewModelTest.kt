@@ -1,7 +1,7 @@
 package com.ftoniolo.globoplay.presentation.home
 
 import androidx.paging.PagingData
-import com.ftoniolo.core.usecase.GetFilmsUseCase
+import com.ftoniolo.core.usecase.GetPopularFilmsUseCase
 import com.ftoniolo.testing.MainCoroutineRule
 import com.ftoniolo.testing.model.FilmsFactory
 import com.nhaarman.mockitokotlin2.any
@@ -27,7 +27,7 @@ class HomeViewModelTest {
     var mainCoroutineRule = MainCoroutineRule()
 
     @Mock
-    lateinit var getFilmsUseCaseMock: GetFilmsUseCase
+    lateinit var getPopularFilmsUseCaseMock: GetPopularFilmsUseCase
 
     private lateinit var homeViewModel: HomeViewModel
 
@@ -43,7 +43,7 @@ class HomeViewModelTest {
     @ExperimentalCoroutinesApi
     @Before
     fun setUp() {
-        homeViewModel = HomeViewModel(getFilmsUseCaseMock)
+        homeViewModel = HomeViewModel(getPopularFilmsUseCaseMock)
     }
 
     @ExperimentalCoroutinesApi
@@ -51,7 +51,7 @@ class HomeViewModelTest {
     fun `should validate the paging data object values when calling filmsPagingData`() {
         runBlockingTest {
             whenever(
-                getFilmsUseCaseMock.invoke(
+                getPopularFilmsUseCaseMock.invoke(
                     any()
                 )
             ).thenReturn(
@@ -70,7 +70,7 @@ class HomeViewModelTest {
     @Test(expected = RuntimeException::class)
     fun `should throw an exception when the calling to the use case returns an exception`(){
         runBlockingTest {
-            whenever(getFilmsUseCaseMock.invoke(any()))
+            whenever(getPopularFilmsUseCaseMock.invoke(any()))
                 .thenThrow(RuntimeException())
 
             homeViewModel.filmsPagingData()
