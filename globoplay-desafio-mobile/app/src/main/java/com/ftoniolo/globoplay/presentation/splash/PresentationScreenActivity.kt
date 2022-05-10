@@ -9,7 +9,7 @@ import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.ftoniolo.globoplay.R
-import com.ftoniolo.globoplay.databinding.ActivitySplashScreenBinding
+import com.ftoniolo.globoplay.databinding.ActivityPresentationScreenBinding
 import com.ftoniolo.globoplay.presentation.MainActivity
 
 class PresentationScreenActivity : AppCompatActivity() {
@@ -18,7 +18,7 @@ class PresentationScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivitySplashScreenBinding.inflate(layoutInflater)
+        val binding = ActivityPresentationScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         window.setFlags(

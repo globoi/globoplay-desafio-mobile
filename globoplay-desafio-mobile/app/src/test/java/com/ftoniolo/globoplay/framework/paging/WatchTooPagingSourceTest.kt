@@ -2,51 +2,50 @@ package com.ftoniolo.globoplay.framework.paging
 
 import androidx.paging.PagingSource
 import com.ftoniolo.core.data.repository.FilmsRemoteDataSource
-import com.ftoniolo.core.domain.model.Film
-import com.ftoniolo.factory.response.FilmsDataWrapperResponseFactory
+import com.ftoniolo.core.domain.model.WatchToo
+import com.ftoniolo.factory.response.WatchTooPagingFactory
 import com.ftoniolo.testing.MainCoroutineRule
-import com.ftoniolo.testing.model.FilmsFactory
+import com.ftoniolo.testing.model.WatchTooFactory
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
-import java.lang.RuntimeException
 
+@ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
-class FilmsPagingSourceTest {
+class WatchTooPagingSourceTest {
 
-    @ExperimentalCoroutinesApi
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
-    private lateinit var filmsPagingSource: FilmsPagingSource
+    private lateinit var watchTooPagingSource: WatchTooPagingSource
 
     @Mock
     lateinit var remoteDataSource: FilmsRemoteDataSource
 
-    private val filmsDataWrapperResponseFactory = FilmsDataWrapperResponseFactory()
+    private val filmPagingFactory = WatchTooPagingFactory()
 
-    private val filmsFactory = FilmsFactory()
+    private val watchTooFactory = WatchTooFactory()
 
     @Before
     fun setup() {
-        filmsPagingSource = FilmsPagingSource(remoteDataSource)
+        watchTooPagingSource = WatchTooPagingSource(remoteDataSource, any())
     }
 
     @Test
     fun `should return a success load result when load is called`() = runBlocking {
 
-        whenever(remoteDataSource.fetchFilms(any()))
-            .thenReturn(filmsDataWrapperResponseFactory.create())
+        whenever(remoteDataSource.fetchWatchToo(1L, any()))
+            .thenReturn(filmPagingFactory.create())
 
-        val result = filmsPagingSource.load(
+        val result = watchTooPagingSource.load(
             PagingSource.LoadParams.Refresh(
                 null,
                 loadSize = 2,
@@ -55,11 +54,11 @@ class FilmsPagingSourceTest {
         )
 
         val expected = listOf(
-            filmsFactory.create(FilmsFactory.Movie.HomemAranha),
-            filmsFactory.create(FilmsFactory.Movie.DrEstranho)
+            watchTooFactory.create(WatchTooFactory.Movie.HomemAranha),
+            watchTooFactory.create(WatchTooFactory.Movie.DrEstranho)
         )
 
-        assertEquals(
+        Assert.assertEquals(
             PagingSource.LoadResult.Page(
                 data = expected,
                 prevKey = null,
@@ -73,10 +72,10 @@ class FilmsPagingSourceTest {
     fun `should return a error load result when load is called`() = runBlocking {
 
         val exception = RuntimeException()
-        whenever(remoteDataSource.fetchFilms(any())).thenThrow(exception)
+        whenever(remoteDataSource.fetchWatchToo(1L, any())).thenThrow(exception)
 
 
-        val result = filmsPagingSource.load(
+        val result = watchTooPagingSource.load(
             PagingSource.LoadParams.Refresh(
                 key = null,
                 loadSize = 2,
@@ -84,8 +83,8 @@ class FilmsPagingSourceTest {
             )
         )
 
-        assertEquals(
-            PagingSource.LoadResult.Error<Int, Film>(exception),
+        Assert.assertEquals(
+            PagingSource.LoadResult.Error<Int, WatchToo>(exception),
             result
         )
     }

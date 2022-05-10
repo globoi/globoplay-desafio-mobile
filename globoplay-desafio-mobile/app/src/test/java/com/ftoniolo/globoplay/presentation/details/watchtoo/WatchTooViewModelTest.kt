@@ -1,57 +1,54 @@
-package com.ftoniolo.globoplay.presentation.home
+package com.ftoniolo.globoplay.presentation.details.watchtoo
 
 import androidx.paging.PagingData
-import com.ftoniolo.core.usecase.GetPopularFilmsUseCase
+import com.ftoniolo.core.usecase.GetWatchTooUseCase
 import com.ftoniolo.testing.MainCoroutineRule
-import com.ftoniolo.testing.model.FilmsFactory
+import com.ftoniolo.testing.model.WatchTooFactory
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert.assertEquals
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
-import java.lang.RuntimeException
 
+@ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
-class HomeViewModelTest {
+class WatchTooViewModelTest{
 
-    @ExperimentalCoroutinesApi
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
     @Mock
-    lateinit var getPopularFilmsUseCaseMock: GetPopularFilmsUseCase
+    lateinit var getWatchTooUseCaseMock: GetWatchTooUseCase
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var watchTooViewModel: WatchTooViewModel
 
-    private val filmsFactory = FilmsFactory()
+    private val watchTooFactory = WatchTooFactory()
 
     private val pagingDataFilms = PagingData.from(
         listOf(
-            filmsFactory.create(FilmsFactory.Movie.Sonic),
-            filmsFactory.create(FilmsFactory.Movie.Batman),
+            watchTooFactory.create(WatchTooFactory.Movie.Sonic),
+            watchTooFactory.create(WatchTooFactory.Movie.Batman),
         )
     )
 
-    @ExperimentalCoroutinesApi
     @Before
     fun setUp() {
-        homeViewModel = HomeViewModel(getPopularFilmsUseCaseMock)
+        watchTooViewModel = WatchTooViewModel(getWatchTooUseCaseMock)
     }
 
-    @ExperimentalCoroutinesApi
     @Test
-    fun `should validate the paging data object values when calling filmsPagingData`() {
+    fun `should validate the paging data object values when calling watchTooPagingData`() {
         runBlockingTest {
             whenever(
-                getPopularFilmsUseCaseMock.invoke(
+                getWatchTooUseCaseMock.invoke(
                     any()
                 )
             ).thenReturn(
@@ -60,20 +57,19 @@ class HomeViewModelTest {
                 )
             )
 
-            val result = homeViewModel.filmsPagingData()
+            val result = watchTooViewModel.watchTooPagingData(1L)
 
             assertEquals(1, result.count())
         }
     }
 
-    @ExperimentalCoroutinesApi
     @Test(expected = RuntimeException::class)
     fun `should throw an exception when the calling to the use case returns an exception`(){
         runBlockingTest {
-            whenever(getPopularFilmsUseCaseMock.invoke(any()))
+            whenever(getWatchTooUseCaseMock.invoke(any()))
                 .thenThrow(RuntimeException())
 
-            homeViewModel.filmsPagingData()
+            watchTooViewModel.watchTooPagingData(1L)
         }
     }
 }
