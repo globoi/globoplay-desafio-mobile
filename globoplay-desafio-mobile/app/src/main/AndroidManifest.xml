@@ -3,6 +3,7 @@
     package="com.ftoniolo.globoplay">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".GloboPlayApplication"
         android:allowBackup="true"
@@ -13,7 +14,11 @@
         android:theme="@style/Theme.Globoplaydesafiomobile">
         <activity
             android:name=".presentation.MainActivity"
-            android:exported="true">
+            android:exported="false"/>
+        <activity
+            android:name=".presentation.splash.PresentationScreenActivity"
+            android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
