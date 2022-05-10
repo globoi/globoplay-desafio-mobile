@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ftoniolo.globoplay.databinding.FragmentMovieDetailsBinding
+import com.ftoniolo.globoplay.presentation.details.TabViewPagerArgs
 
-class MovieDetailsFragment(private val movieDetailsFilmsArgs: MovieDetailsFilmsViewArgs) :
+class MovieDetailsFragment(private val tabViewPagerArgs: TabViewPagerArgs) :
     Fragment() {
 
     private var _binding: FragmentMovieDetailsBinding? = null
@@ -30,11 +31,12 @@ class MovieDetailsFragment(private val movieDetailsFilmsArgs: MovieDetailsFilmsV
     }
 
     private fun setView() {
-        val overview = movieDetailsFilmsArgs.overview.ifEmpty { "Sem informação" }
+        val overview = tabViewPagerArgs.overview.ifEmpty {
+            "Em breve, traremos mais informações sobre este filme." }
 
-        binding.txtOriginalTitle.text = movieDetailsFilmsArgs.title
+        binding.txtOriginalTitle.text = tabViewPagerArgs.title
         binding.txtOverview.text = overview
-        binding.txtReleaseDate.text = maskDate(movieDetailsFilmsArgs.releaseDate)
+        binding.txtReleaseDate.text = maskDate(tabViewPagerArgs.releaseDate)
     }
 
     @Suppress("MagicNumber")

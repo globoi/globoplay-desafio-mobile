@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:id="@+id/flipper_watch_too"
+
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:background="@color/background"
+tools:context=".presentation.details.watchtoo.WatchTooFragment">
+
+<include
+    android:id="@+id/include_view_watch_too_loading_state"
+    layout="@layout/include_view_watch_too_loading_state"/>
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rv_watch_too"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".presentation.details.watchtoo.WatchTooFragment">
+    tools:listitem="@layout/item_watch_too"
+    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+    />
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/white"
-        android:text="Assista Tambem" />
+<include
+    android:id="@+id/include_view_films_error_state"
+    layout="@layout/include_view_films_error_state"/>
 
-</FrameLayout>
+</ViewFlipper>

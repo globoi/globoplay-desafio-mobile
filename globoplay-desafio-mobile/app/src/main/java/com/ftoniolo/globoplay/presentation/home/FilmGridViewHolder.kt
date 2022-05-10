@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.ftoniolo.core.domain.model.Film
-import com.ftoniolo.globoplay.R
 import com.ftoniolo.globoplay.databinding.ItemFilmBinding
 import com.ftoniolo.globoplay.framework.imageLoader.ImageLoader
 
@@ -17,16 +15,14 @@ class FilmGridViewHolder(
 ) : RecyclerView.ViewHolder(itemFilmBinding.root) {
 
     private val itemFilm = itemFilmBinding.itemPoster
-    private val itemText = itemFilmBinding.itemNameFilm
 
     fun bind(film: Film){
         itemFilm.transitionName = film.title
 
         imageLoader.load(
-            itemFilm, film.imageUrl, R.drawable.ic_img_loading_error
+            itemFilm, film.imageUrl
         )
 
-        itemText.text = film.title
 
         itemView.setOnClickListener {
             onItemClick.invoke(film, itemFilm)

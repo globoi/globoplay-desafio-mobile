@@ -7,7 +7,7 @@ class FilmsDataWrapperResponseFactory {
 
     fun create() = FilmsDataWrapperResponse(
         page = 1L,
-        results = listOf(
+        results = listOf<FilmResponse>(
             FilmResponse(
                 id = 1L, overview = "Homem Aranha Overview", title = "Homem Aranha",
                 genreIds = listOf(9L, 8L, 7L), posterPath = "/imagem-homem-aranha",

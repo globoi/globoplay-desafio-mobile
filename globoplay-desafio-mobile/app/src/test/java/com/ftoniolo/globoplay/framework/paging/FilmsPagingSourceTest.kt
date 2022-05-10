@@ -4,7 +4,6 @@ import androidx.paging.PagingSource
 import com.ftoniolo.core.data.repository.FilmsRemoteDataSource
 import com.ftoniolo.core.domain.model.Film
 import com.ftoniolo.factory.response.FilmsDataWrapperResponseFactory
-import com.ftoniolo.globoplay.framework.network.response.film.FilmsDataWrapperResponse
 import com.ftoniolo.testing.MainCoroutineRule
 import com.ftoniolo.testing.model.FilmsFactory
 import com.nhaarman.mockitokotlin2.any
@@ -30,7 +29,7 @@ class FilmsPagingSourceTest {
     private lateinit var filmsPagingSource: FilmsPagingSource
 
     @Mock
-    lateinit var remoteDataSource: FilmsRemoteDataSource<FilmsDataWrapperResponse>
+    lateinit var remoteDataSource: FilmsRemoteDataSource
 
     private val filmsDataWrapperResponseFactory = FilmsDataWrapperResponseFactory()
 

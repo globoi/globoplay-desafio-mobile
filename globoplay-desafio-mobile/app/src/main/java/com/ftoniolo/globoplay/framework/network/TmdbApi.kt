@@ -1,8 +1,10 @@
 package com.ftoniolo.globoplay.framework.network
 
+import com.ftoniolo.globoplay.framework.network.response.film.FilmResponse
 import com.ftoniolo.globoplay.framework.network.response.film.FilmsDataWrapperResponse
-import com.ftoniolo.globoplay.framework.network.response.genre.GenresDataWrapperResponse
+import com.ftoniolo.globoplay.framework.network.response.watchtoo.WatchTooResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.QueryMap
 
 interface TmdbApi {
@@ -11,11 +13,13 @@ interface TmdbApi {
     suspend fun getFilms(
         @QueryMap
         queries: Map<String, String>
-    ): FilmsDataWrapperResponse
+    ): FilmsDataWrapperResponse<FilmResponse>
 
-    @GET("genre/movie/list")
-    suspend fun getGenres(
+    @GET("movie/{filmId}/recommendations")
+    suspend fun getWatchToo(
+        @Path("filmId")
+        filmId: Long,
         @QueryMap
         queries: Map<String, String>
-    ):GenresDataWrapperResponse
+    ):FilmsDataWrapperResponse<WatchTooResponse>
 }

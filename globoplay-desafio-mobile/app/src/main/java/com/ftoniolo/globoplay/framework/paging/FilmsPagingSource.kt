@@ -7,7 +7,7 @@ import com.ftoniolo.core.domain.model.Film
 
 class FilmsPagingSource(
     private val remoteDataSource: FilmsRemoteDataSource
-) : PagingSource<Int, Film>(){
+) : PagingSource<Int, Film>() {
 
     @Suppress("TooGenericExceptionCaught")
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Film> {
@@ -26,7 +26,7 @@ class FilmsPagingSource(
             LoadResult.Page(
                 data = filmPaging.films,
                 prevKey = null,
-                nextKey = if(responsePage < responseTotalPage){
+                nextKey = if (responsePage < responseTotalPage) {
                     numberPag + ONE
                 } else null
             )
