@@ -1,3 +1,4 @@
+[![Build Status](https://app.bitrise.io/app/f699830e8fa311a6/status.svg?token=6-zAw_qYREnqZgp3rbiGhw)](https://app.bitrise.io/app/f699830e8fa311a6)
 
 # Globoplay Recrutamento 
 
