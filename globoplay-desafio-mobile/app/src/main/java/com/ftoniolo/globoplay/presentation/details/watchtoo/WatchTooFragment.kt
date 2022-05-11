@@ -20,12 +20,21 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class WatchTooFragment(private val filmId: Long) : Fragment() {
+class WatchTooFragment : Fragment {
+    private var filmId: Long? = null
+    constructor() : super()
+    constructor(filmId: Long){
+        this.filmId = filmId
+    }
+
+    private val id = arguments?.getLong("filmId")
 
     private var _binding: FragmentWatchTooBinding? = null
     private val binding: FragmentWatchTooBinding get() = _binding!!
 
-    private lateinit var watchTooGridAdapter: WatchTooGridAdapter
+    private val watchTooGridAdapter: WatchTooGridAdapter by lazy {
+        WatchTooGridAdapter(imageLoader)
+    }
 
     private val viewModel: WatchTooViewModel by viewModels()
 
@@ -46,21 +55,27 @@ class WatchTooFragment(private val filmId: Long) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initCharactersAdapter()
+        initFilmAdapter()
         observeInitialLoadState()
 
-        lifecycleScope.launch {
-            viewModel.watchTooPagingData(filmId).collect { pagingData ->
-                watchTooGridAdapter.submitData(pagingData)
+        viewModel.state.observe(viewLifecycleOwner) { uiState ->
+            when (uiState) {
+                is WatchTooViewModel.UiState.SearchResult -> {
+                    lifecycleScope.launch {
+                        watchTooGridAdapter.submitData(uiState.data)
+                    }
+                }
             }
+        }
+        id?.let {
+            viewModel.showFilms(it)
         }
     }
 
     @Suppress("MagicNumber")
-    private fun initCharactersAdapter() {
-        watchTooGridAdapter = WatchTooGridAdapter(imageLoader)
+    private fun initFilmAdapter() {
+        postponeEnterTransition()
         with(binding.rvWatchToo) {
-            scrollToPosition(0)
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(context, 3)
             adapter = watchTooGridAdapter.withLoadStateFooter(
@@ -68,6 +83,10 @@ class WatchTooFragment(private val filmId: Long) : Fragment() {
                     watchTooGridAdapter::retry
                 )
             )
+            viewTreeObserver.addOnPreDrawListener {
+                startPostponedEnterTransition()
+                true
+            }
         }
     }
 
@@ -81,7 +100,7 @@ class WatchTooFragment(private val filmId: Long) : Fragment() {
                         FLIPPER_CHILD_LOADING
                     }
                     is LoadState.NotLoading -> {
-                        if(loadState.append.endOfPaginationReached && watchTooGridAdapter.itemCount < 1){
+                        if (loadState.append.endOfPaginationReached && watchTooGridAdapter.itemCount < 1) {
                             FLIPPER_CHILD_EMPTY
                         } else {
                             Log.d(WatchTooFragment::class.simpleName, loadState.toString())

@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:listitem="@layout/item_watch_too" />
+        tools:listitem="@layout/item_film_grid_layout" />
 
     <include
         android:id="@+id/include_view_films_error_state"

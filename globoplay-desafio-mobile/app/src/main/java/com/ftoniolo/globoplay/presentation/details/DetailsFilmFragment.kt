@@ -5,22 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.ftoniolo.globoplay.R
 import com.ftoniolo.globoplay.databinding.FragmentDetailsBinding
 import com.ftoniolo.globoplay.framework.imageLoader.ImageLoader
+import com.ftoniolo.globoplay.presentation.extensions.showShortToast
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class DetailsFragment : Fragment() {
+class DetailsFilmFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding: FragmentDetailsBinding get() = _binding!!
 
-    private val args by navArgs<DetailsFragmentArgs>()
+    private val args by navArgs<DetailsFilmFragmentArgs>()
+
+    private val viewModel: DetailsFilmViewModel by viewModels()
 
     @Inject
     lateinit var imageLoader: ImageLoader
@@ -41,11 +45,12 @@ class DetailsFragment : Fragment() {
 
         setView()
         setSharedElementTransitionOnEnter()
+        setAndObserveFavoriteUiState(args.detailsFilmViewArgs)
         setupTabViews()
     }
 
     private fun setView(){
-        val filmViewArgs = args.detailsFilmViewArg
+        val filmViewArgs = args.detailsFilmViewArgs
         binding.itemPoster.run {
             transitionName = filmViewArgs.title
             imageLoader.load(
@@ -61,6 +66,45 @@ class DetailsFragment : Fragment() {
         binding.textNameFilm.text = filmViewArgs.title
     }
 
+    private fun setAndObserveFavoriteUiState(detailsFilmViewArg: DetailsFilmViewArg){
+        viewModel.favorite.run {
+
+            checkFavorite(detailsFilmViewArg.id)
+
+            binding.buttonFavorite.setOnClickListener {
+                update(
+                    DetailsFilmViewArg(
+                        id = detailsFilmViewArg.id,
+                        overview = detailsFilmViewArg.overview,
+                        title = detailsFilmViewArg.title,
+                        imageUrl = detailsFilmViewArg.imageUrl,
+                        releaseDate = detailsFilmViewArg.releaseDate
+                    )
+                )
+            }
+
+            state.observe(viewLifecycleOwner) { uiState ->
+                binding.flipperFavorite.displayedChild = when (uiState) {
+                    FavoriteUiActionStateLiveData.UiState.Loading ->
+                        FLIPPER_FAVORITE_CHILD_POSITION_LOADING
+                    is FavoriteUiActionStateLiveData.UiState.Button -> {
+                        binding.buttonFavorite.run {
+                            text = uiState.buttonDescription
+                            setCompoundDrawablesWithIntrinsicBounds(
+                                uiState.icon, NOT_ICON ,NOT_ICON, NOT_ICON)
+                            FLIPPER_FAVORITE_CHILD_POSITION_IMAGE
+                        }
+                    }
+                    is FavoriteUiActionStateLiveData.UiState.Error -> {
+                        showShortToast(uiState.messageResId)
+                        FLIPPER_FAVORITE_CHILD_POSITION_IMAGE
+                    }
+                }
+            }
+
+        }
+    }
+
     private fun setSharedElementTransitionOnEnter() {
         TransitionInflater.from(requireContext())
             .inflateTransition(android.R.transition.move).apply {
@@ -74,10 +118,10 @@ class DetailsFragment : Fragment() {
         val tabs = listOf(R.string.details, R.string.watch_too)
 
         val tabViewPagerArgs = TabViewPagerArgs(
-            overview = args.detailsFilmViewArg.overview,
-            title = args.detailsFilmViewArg.title,
-            releaseDate = args.detailsFilmViewArg.releaseDate,
-            id = args.detailsFilmViewArg.id
+            overview = args.detailsFilmViewArgs.overview,
+            title = args.detailsFilmViewArgs.title,
+            releaseDate = args.detailsFilmViewArgs.releaseDate,
+            id = args.detailsFilmViewArgs.id
         )
         val adapter = TabViewPagerAdapter(this, tabs, tabViewPagerArgs)
             viewpager.adapter = adapter
@@ -90,5 +134,11 @@ class DetailsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val FLIPPER_FAVORITE_CHILD_POSITION_IMAGE = 0
+        private const val FLIPPER_FAVORITE_CHILD_POSITION_LOADING = 1
+        private const val NOT_ICON = 0
     }
 }
