@@ -41,7 +41,7 @@ class WatchTooViewModelTest{
 
     @Before
     fun setUp() {
-        watchTooViewModel = WatchTooViewModel(getWatchTooUseCaseMock)
+        watchTooViewModel = WatchTooViewModel(getWatchTooUseCaseMock, mainCoroutineRule.testDispatcherProvider)
     }
 
     @Test

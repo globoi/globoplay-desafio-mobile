@@ -20,7 +20,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class WatchTooFragment(private val filmId: Long) : Fragment() {
+class WatchTooFragment : Fragment {
+    private var filmId: Long? = null
+    constructor() : super()
+    constructor(filmId: Long){
+        this.filmId = filmId
+    }
+
+    private val id = arguments?.getLong("filmId")
 
     private var _binding: FragmentWatchTooBinding? = null
     private val binding: FragmentWatchTooBinding get() = _binding!!
@@ -60,7 +67,9 @@ class WatchTooFragment(private val filmId: Long) : Fragment() {
                 }
             }
         }
-        viewModel.showFilms(filmId)
+        id?.let {
+            viewModel.showFilms(it)
+        }
     }
 
     @Suppress("MagicNumber")

@@ -47,7 +47,6 @@ class DetailsFilmFragment : Fragment() {
         setSharedElementTransitionOnEnter()
         setAndObserveFavoriteUiState(args.detailsFilmViewArgs)
         setupTabViews()
-
     }
 
     private fun setView(){

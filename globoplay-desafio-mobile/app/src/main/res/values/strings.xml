@@ -25,4 +25,5 @@
     <string name="horror_film">"Terror"</string>
     <string name="romance_film">"Romance"</string>
     <string name="war_film">"Guerra"</string>
+    <string name="no_favorite_movie">Nenhum filme favoritado</string>
 </resources>

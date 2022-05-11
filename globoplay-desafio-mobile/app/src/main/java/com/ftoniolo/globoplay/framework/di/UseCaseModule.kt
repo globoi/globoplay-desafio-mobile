@@ -1,5 +1,6 @@
 package com.ftoniolo.globoplay.framework.di
 
+import com.ftoniolo.core.data.repository.FavoritesRepository
 import com.ftoniolo.core.usecase.GetPopularFilmsUseCaseImpl
 import com.ftoniolo.core.usecase.GetPopularFilmsUseCase
 import com.ftoniolo.core.usecase.GetFilmsByCategoryUseCaseImpl
@@ -10,8 +11,11 @@ import com.ftoniolo.core.usecase.AddFavoritesUseCaseImpl
 import com.ftoniolo.core.usecase.AddFavoriteUseCase
 import com.ftoniolo.core.usecase.CheckFavoriteUseCase
 import com.ftoniolo.core.usecase.CheckFavoriteUseCaseImpl
+import com.ftoniolo.core.usecase.GetFavoritesUseCase
+import com.ftoniolo.core.usecase.GetFavoritesUseCaseImpl
 import com.ftoniolo.core.usecase.RemoveFavoriteUseCase
 import com.ftoniolo.core.usecase.RemoveFavoriteUseCaseImpl
+import com.ftoniolo.globoplay.framework.FavoritesRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -38,4 +42,6 @@ interface UseCaseModule {
     @Binds
     fun bindRemoveFavoriteUseCase(useCase: RemoveFavoriteUseCaseImpl): RemoveFavoriteUseCase
 
+    @Binds
+    fun bindGetFavoriteUseCase(useCase: GetFavoritesUseCaseImpl): GetFavoritesUseCase
 }

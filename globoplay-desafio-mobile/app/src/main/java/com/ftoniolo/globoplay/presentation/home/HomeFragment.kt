@@ -70,7 +70,10 @@ class HomeFragment : Fragment() {
                     FLIPPER_CHILD_FILMS
                 }
                 HomeUiActionStateLiveData.UiState.Error ->  {
-                    binding.includeErrorView.buttonRetry.setOnClickListener {
+
+                    binding.includeErrorView.
+
+                    buttonRetry.setOnClickListener {
                         viewModel.categories.load()
                     }
                     FLIPPER_CHILD_ERROR
