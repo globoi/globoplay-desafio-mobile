@@ -16,17 +16,17 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.ftoniolo.globoplay.presentation.details.DetailsFragment"
+        android:name="com.ftoniolo.globoplay.presentation.details.DetailsFilmFragment"
         tools:layout="@layout/fragment_details">
-        <argument
-            android:name="detailsFilmViewArg"
-            app:argType="com.ftoniolo.globoplay.presentation.details.DetailsFilmViewArg" />
         <action
             android:id="@+id/action_detailsFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
         <action
             android:id="@+id/action_detailsFragment_to_watchTooFragment"
             app:destination="@id/watchTooFragment" />
+        <argument
+            android:name="detailsFilmViewArgs"
+            app:argType="com.ftoniolo.globoplay.presentation.details.DetailsFilmViewArg" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"

@@ -10,6 +10,8 @@ import com.ftoniolo.core.usecase.AddFavoritesUseCaseImpl
 import com.ftoniolo.core.usecase.AddFavoriteUseCase
 import com.ftoniolo.core.usecase.CheckFavoriteUseCase
 import com.ftoniolo.core.usecase.CheckFavoriteUseCaseImpl
+import com.ftoniolo.core.usecase.RemoveFavoriteUseCase
+import com.ftoniolo.core.usecase.RemoveFavoriteUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -32,5 +34,8 @@ interface UseCaseModule {
 
     @Binds
     fun bindAddFavoriteUseCase(useCase: AddFavoritesUseCaseImpl): AddFavoriteUseCase
+
+    @Binds
+    fun bindRemoveFavoriteUseCase(useCase: RemoveFavoriteUseCaseImpl): RemoveFavoriteUseCase
 
 }

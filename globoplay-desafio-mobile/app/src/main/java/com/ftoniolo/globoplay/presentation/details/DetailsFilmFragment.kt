@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -18,12 +17,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class DetailsFragment : Fragment() {
+class DetailsFilmFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding: FragmentDetailsBinding get() = _binding!!
 
-    private val args by navArgs<DetailsFragmentArgs>()
+    private val args by navArgs<DetailsFilmFragmentArgs>()
 
     private val viewModel: DetailsFilmViewModel by viewModels()
 
@@ -46,13 +45,13 @@ class DetailsFragment : Fragment() {
 
         setView()
         setSharedElementTransitionOnEnter()
-        setAndObserveFavoriteUiState(args.detailsFilmViewArg)
+        setAndObserveFavoriteUiState(args.detailsFilmViewArgs)
         setupTabViews()
 
     }
 
     private fun setView(){
-        val filmViewArgs = args.detailsFilmViewArg
+        val filmViewArgs = args.detailsFilmViewArgs
         binding.itemPoster.run {
             transitionName = filmViewArgs.title
             imageLoader.load(
@@ -120,10 +119,10 @@ class DetailsFragment : Fragment() {
         val tabs = listOf(R.string.details, R.string.watch_too)
 
         val tabViewPagerArgs = TabViewPagerArgs(
-            overview = args.detailsFilmViewArg.overview,
-            title = args.detailsFilmViewArg.title,
-            releaseDate = args.detailsFilmViewArg.releaseDate,
-            id = args.detailsFilmViewArg.id
+            overview = args.detailsFilmViewArgs.overview,
+            title = args.detailsFilmViewArgs.title,
+            releaseDate = args.detailsFilmViewArgs.releaseDate,
+            id = args.detailsFilmViewArgs.id
         )
         val adapter = TabViewPagerAdapter(this, tabs, tabViewPagerArgs)
             viewpager.adapter = adapter

@@ -3,11 +3,13 @@ package com.ftoniolo.globoplay.presentation.details
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.LiveDataScope
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import com.ftoniolo.core.usecase.AddFavoriteUseCase
 import com.ftoniolo.core.usecase.CheckFavoriteUseCase
+import com.ftoniolo.core.usecase.RemoveFavoriteUseCase
 import com.ftoniolo.globoplay.R
 import com.ftoniolo.globoplay.presentation.extensions.watchStatus
 import kotlin.coroutines.CoroutineContext
@@ -15,8 +17,14 @@ import kotlin.coroutines.CoroutineContext
 class FavoriteUiActionStateLiveData(
     private val coroutineContext: CoroutineContext,
     private val checkFavoriteUseCase: CheckFavoriteUseCase,
-    private val addFavoriteUseCase: AddFavoriteUseCase
-) {
+    private val addFavoriteUseCase: AddFavoriteUseCase,
+    private val removeFavoriteUseCase: RemoveFavoriteUseCase)
+{
+
+    private var currentFavoriteButton = UiState.Button(
+        R.drawable.ic_favorite_star_menu,
+        FAVORITE_NOT
+    )
 
     private val action = MutableLiveData<Action>()
     val state: LiveData<UiState> = action.switchMap {
@@ -27,23 +35,18 @@ class FavoriteUiActionStateLiveData(
                         CheckFavoriteUseCase.Params(it.filmId)
                     ).watchStatus(
                         success = { isFavorite ->
-                            var uiStateButton = UiState.Button(
-                                R.drawable.ic_favorite_star_menu,
-                                FAVORITE_NOT
-                            )
-
                             if (isFavorite) {
-                                uiStateButton = UiState.Button(
+                                currentFavoriteButton = UiState.Button(
                                     R.drawable.ic_favorite_check,
                                     FAVORITE_ADD
                                 )
                             }
-                            emit(uiStateButton)
+                            emitFavoriteButton()
                         },
                         error = {}
                     )
                 }
-                is Action.Update -> {
+                is Action.AddFavorite -> {
                     it.detailsFilmViewArg.run {
                         addFavoriteUseCase.invoke(
                             AddFavoriteUseCase.Params(
@@ -54,15 +57,35 @@ class FavoriteUiActionStateLiveData(
                                 emit(UiState.Loading)
                             },
                             success = {
-                                emit(
-                                    UiState.Button(
-                                        R.drawable.ic_favorite_check,
-                                        FAVORITE_ADD
-                                    )
+                                currentFavoriteButton = UiState.Button(
+                                    R.drawable.ic_favorite_check,
+                                    FAVORITE_ADD
                                 )
+                                emitFavoriteButton()
                             },
                             error = {
                                 emit(UiState.Error(R.string.error_add_favorite))
+                            }
+                        )
+                    }
+                }
+                is Action.RemoveFavorite -> {
+                    it.detailsFilmViewArg.run {
+                        removeFavoriteUseCase.invoke(
+                            RemoveFavoriteUseCase.Params(id, title, imageUrl)
+                        ).watchStatus(
+                            loading = {
+                                emit(UiState.Loading)
+                            },
+                            success = {
+                                currentFavoriteButton = UiState.Button(
+                                    R.drawable.ic_favorite_star_menu,
+                                    FAVORITE_NOT
+                                )
+                                emitFavoriteButton()
+                            },
+                            error = {
+                                emit(UiState.Error(R.string.error_remove_favorite))
                             }
                         )
                     }
@@ -71,12 +94,18 @@ class FavoriteUiActionStateLiveData(
         }
     }
 
+    private suspend fun LiveDataScope<UiState>.emitFavoriteButton(){
+        emit(currentFavoriteButton)
+    }
+
     fun checkFavorite(filmId: Long) {
         action.value = Action.CheckFavorite(filmId)
     }
 
     fun update(detailsFilmViewArg: DetailsFilmViewArg) {
-        action.value = Action.Update(detailsFilmViewArg)
+        action.value = if(currentFavoriteButton.icon == R.drawable.ic_favorite_star_menu) {
+            Action.AddFavorite(detailsFilmViewArg)
+        } else Action.RemoveFavorite(detailsFilmViewArg)
     }
 
     sealed class UiState {
@@ -89,7 +118,8 @@ class FavoriteUiActionStateLiveData(
 
     sealed class Action {
         data class CheckFavorite(val filmId: Long) : Action()
-        data class Update(val detailsFilmViewArg: DetailsFilmViewArg) : Action()
+        data class AddFavorite(val detailsFilmViewArg: DetailsFilmViewArg) : Action()
+        data class RemoveFavorite(val detailsFilmViewArg: DetailsFilmViewArg) : Action()
     }
 
     companion object {
