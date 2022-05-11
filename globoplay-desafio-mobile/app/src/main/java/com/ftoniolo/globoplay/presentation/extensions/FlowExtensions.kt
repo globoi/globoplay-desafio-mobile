@@ -4,7 +4,7 @@ import com.ftoniolo.core.usecase.base.ResultStatus
 import kotlinx.coroutines.flow.Flow
 
 suspend fun <T> Flow<ResultStatus<T>>.watchStatus(
-    loading: suspend () -> Unit,
+    loading: suspend () -> Unit = {},
     success: suspend (data: T) -> Unit,
     error: suspend (throwable : Throwable) -> Unit
 ) {

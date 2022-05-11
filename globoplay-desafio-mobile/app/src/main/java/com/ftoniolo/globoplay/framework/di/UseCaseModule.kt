@@ -8,6 +8,8 @@ import com.ftoniolo.core.usecase.GetWatchTooUseCaseImpl
 import com.ftoniolo.core.usecase.GetWatchTooUseCase
 import com.ftoniolo.core.usecase.AddFavoritesUseCaseImpl
 import com.ftoniolo.core.usecase.AddFavoriteUseCase
+import com.ftoniolo.core.usecase.CheckFavoriteUseCase
+import com.ftoniolo.core.usecase.CheckFavoriteUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -26,5 +28,9 @@ interface UseCaseModule {
     fun bindGetWatchTooUseCase(useCase: GetWatchTooUseCaseImpl): GetWatchTooUseCase
 
     @Binds
-    fun bindAddFavoriteUseCAse(useCase : AddFavoritesUseCaseImpl) : AddFavoriteUseCase
+    fun bindCheckFavoriteUseCase(useCase: CheckFavoriteUseCaseImpl): CheckFavoriteUseCase
+
+    @Binds
+    fun bindAddFavoriteUseCase(useCase: AddFavoritesUseCaseImpl): AddFavoriteUseCase
+
 }

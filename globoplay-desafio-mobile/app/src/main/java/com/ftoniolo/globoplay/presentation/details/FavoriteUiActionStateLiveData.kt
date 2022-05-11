@@ -7,12 +7,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import com.ftoniolo.core.usecase.AddFavoriteUseCase
+import com.ftoniolo.core.usecase.CheckFavoriteUseCase
 import com.ftoniolo.globoplay.R
 import com.ftoniolo.globoplay.presentation.extensions.watchStatus
 import kotlin.coroutines.CoroutineContext
 
 class FavoriteUiActionStateLiveData(
     private val coroutineContext: CoroutineContext,
+    private val checkFavoriteUseCase: CheckFavoriteUseCase,
     private val addFavoriteUseCase: AddFavoriteUseCase
 ) {
 
@@ -20,12 +22,27 @@ class FavoriteUiActionStateLiveData(
     val state: LiveData<UiState> = action.switchMap {
         liveData(coroutineContext) {
             when (it) {
-                Action.Default -> emit(
-                    UiState.Button(
-                        R.drawable.ic_favorite_star_menu,
-                        FAVORITE_NOT
+                is Action.CheckFavorite -> {
+                    checkFavoriteUseCase.invoke(
+                        CheckFavoriteUseCase.Params(it.filmId)
+                    ).watchStatus(
+                        success = { isFavorite ->
+                            var uiStateButton = UiState.Button(
+                                R.drawable.ic_favorite_star_menu,
+                                FAVORITE_NOT
+                            )
+
+                            if (isFavorite) {
+                                uiStateButton = UiState.Button(
+                                    R.drawable.ic_favorite_check,
+                                    FAVORITE_ADD
+                                )
+                            }
+                            emit(uiStateButton)
+                        },
+                        error = {}
                     )
-                )
+                }
                 is Action.Update -> {
                     it.detailsFilmViewArg.run {
                         addFavoriteUseCase.invoke(
@@ -37,10 +54,12 @@ class FavoriteUiActionStateLiveData(
                                 emit(UiState.Loading)
                             },
                             success = {
-                                emit(UiState.Button(
+                                emit(
+                                    UiState.Button(
                                         R.drawable.ic_favorite_check,
                                         FAVORITE_ADD
-                                    ))
+                                    )
+                                )
                             },
                             error = {
                                 emit(UiState.Error(R.string.error_add_favorite))
@@ -52,8 +71,8 @@ class FavoriteUiActionStateLiveData(
         }
     }
 
-    fun setDefault() {
-        action.value = Action.Default
+    fun checkFavorite(filmId: Long) {
+        action.value = Action.CheckFavorite(filmId)
     }
 
     fun update(detailsFilmViewArg: DetailsFilmViewArg) {
@@ -69,7 +88,7 @@ class FavoriteUiActionStateLiveData(
     }
 
     sealed class Action {
-        object Default : Action()
+        data class CheckFavorite(val filmId: Long) : Action()
         data class Update(val detailsFilmViewArg: DetailsFilmViewArg) : Action()
     }
 

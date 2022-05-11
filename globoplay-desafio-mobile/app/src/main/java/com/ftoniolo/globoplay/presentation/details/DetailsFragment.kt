@@ -69,35 +69,41 @@ class DetailsFragment : Fragment() {
     }
 
     private fun setAndObserveFavoriteUiState(detailsFilmViewArg: DetailsFilmViewArg){
-        binding.buttonFavorite.setOnClickListener {
-            viewModel.favorite.update(
-                DetailsFilmViewArg(
-                    id = detailsFilmViewArg.id,
-                    overview = detailsFilmViewArg.overview,
-                    title = detailsFilmViewArg.title,
-                    imageUrl = detailsFilmViewArg.imageUrl,
-                    releaseDate = detailsFilmViewArg.releaseDate
-                )
-            )
-        }
+        viewModel.favorite.run {
 
-        viewModel.favorite.state.observe(viewLifecycleOwner) { uiState ->
-            binding.flipperFavorite.displayedChild = when (uiState) {
-                FavoriteUiActionStateLiveData.UiState.Loading ->
-                    FLIPPER_FAVORITE_CHILD_POSITION_LOADING
-                is FavoriteUiActionStateLiveData.UiState.Button -> {
-                    binding.buttonFavorite.run {
-                        text = uiState.buttonDescription
-                        setCompoundDrawablesWithIntrinsicBounds(
-                            uiState.icon, NOT_ICON ,NOT_ICON, NOT_ICON)
+            checkFavorite(detailsFilmViewArg.id)
+
+            binding.buttonFavorite.setOnClickListener {
+                update(
+                    DetailsFilmViewArg(
+                        id = detailsFilmViewArg.id,
+                        overview = detailsFilmViewArg.overview,
+                        title = detailsFilmViewArg.title,
+                        imageUrl = detailsFilmViewArg.imageUrl,
+                        releaseDate = detailsFilmViewArg.releaseDate
+                    )
+                )
+            }
+
+            state.observe(viewLifecycleOwner) { uiState ->
+                binding.flipperFavorite.displayedChild = when (uiState) {
+                    FavoriteUiActionStateLiveData.UiState.Loading ->
+                        FLIPPER_FAVORITE_CHILD_POSITION_LOADING
+                    is FavoriteUiActionStateLiveData.UiState.Button -> {
+                        binding.buttonFavorite.run {
+                            text = uiState.buttonDescription
+                            setCompoundDrawablesWithIntrinsicBounds(
+                                uiState.icon, NOT_ICON ,NOT_ICON, NOT_ICON)
+                            FLIPPER_FAVORITE_CHILD_POSITION_IMAGE
+                        }
+                    }
+                    is FavoriteUiActionStateLiveData.UiState.Error -> {
+                        showShortToast(uiState.messageResId)
                         FLIPPER_FAVORITE_CHILD_POSITION_IMAGE
                     }
                 }
-                is FavoriteUiActionStateLiveData.UiState.Error -> {
-                    showShortToast(uiState.messageResId)
-                    FLIPPER_FAVORITE_CHILD_POSITION_IMAGE
-                }
             }
+
         }
     }
 

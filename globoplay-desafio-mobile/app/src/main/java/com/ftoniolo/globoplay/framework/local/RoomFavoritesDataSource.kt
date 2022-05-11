@@ -18,6 +18,10 @@ class RoomFavoritesDataSource @Inject constructor(
         }
     }
 
+    override suspend fun isFavorite(filmId: Long): Boolean {
+        return favoriteDao.hasFavorite(filmId) != null
+    }
+
     override suspend fun save(filmFavorite: FilmFavorite) {
         favoriteDao.insertFavorite(filmFavorite.toFavoriteEntity())
     }
@@ -26,7 +30,7 @@ class RoomFavoritesDataSource @Inject constructor(
         favoriteDao.deleteFavorite(filmFavorite.toFavoriteEntity())
     }
 
-private fun FilmFavorite.toFavoriteEntity() = FavoriteEntity(
-    id, title, imageUrl
-)
+    private fun FilmFavorite.toFavoriteEntity() = FavoriteEntity(
+        id, title, imageUrl
+    )
 }
