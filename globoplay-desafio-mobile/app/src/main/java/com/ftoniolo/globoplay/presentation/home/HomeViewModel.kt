@@ -24,7 +24,7 @@ class HomeViewModel @Inject constructor(
     val uiState: LiveData<UiState> get() = _uiState
 
     fun getFilmsByCategory() = viewModelScope.launch {
-        getFilmsByCategoryUseCase(GetFilmsByCategoryUseCase.GetMoviesByCategoryParams(10752))
+        getFilmsByCategoryUseCase(GetFilmsByCategoryUseCase.GetMoviesByCategoryParams(ID))
             .observeStatus()
     }
 
@@ -92,5 +92,9 @@ class HomeViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    companion object{
+        private const val ID = 10752L
     }
 }
