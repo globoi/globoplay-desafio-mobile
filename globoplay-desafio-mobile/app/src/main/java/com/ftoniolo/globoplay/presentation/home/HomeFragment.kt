@@ -14,7 +14,6 @@ import com.ftoniolo.globoplay.presentation.details.DetailsFilmViewArg
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@Suppress("UnusedPrivateMember")
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
@@ -39,8 +38,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        initHomeAdapter()
-//        observeInitialLoadState()
 
         viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
             binding.flipperFilms.displayedChild = when (uiState) {

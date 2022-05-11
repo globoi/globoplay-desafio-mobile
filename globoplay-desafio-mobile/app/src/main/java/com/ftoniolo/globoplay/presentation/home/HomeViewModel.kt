@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@Suppress("MagicNumber")
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val getFilmsByCategoryUseCase: GetFilmsByCategoryUseCase

@@ -31,6 +31,7 @@
         android:background="@color/medium_grey"
         android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="4:6"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_item_category" />

@@ -58,7 +58,5 @@
             <include layout="@layout/shimmer_layout_watch_too_item" />
         </LinearLayout>
 
-
-
     </LinearLayout>
 </com.facebook.shimmer.ShimmerFrameLayout>

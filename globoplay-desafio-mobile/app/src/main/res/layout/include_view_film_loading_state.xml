@@ -57,10 +57,5 @@
             <include layout="@layout/shimmer_layout_film_without_category_item" />
         </LinearLayout>
 
-
-
-
-
-
     </LinearLayout>
 </com.facebook.shimmer.ShimmerFrameLayout>

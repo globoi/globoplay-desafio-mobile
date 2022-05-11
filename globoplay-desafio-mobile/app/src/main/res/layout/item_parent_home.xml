@@ -34,5 +34,4 @@
         app:layout_constraintTop_toBottomOf="@+id/text_item_category"
         tools:listitem="@layout/item_child_home"/>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

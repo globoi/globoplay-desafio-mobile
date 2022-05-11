@@ -23,7 +23,6 @@ import javax.inject.Inject
 class WatchTooFragment(private val filmId: Long) : Fragment() {
 
     private var _binding: FragmentWatchTooBinding? = null
-    @Suppress("UnusedPrivateMember")
     private val binding: FragmentWatchTooBinding get() = _binding!!
 
     private lateinit var watchTooGridAdapter: WatchTooGridAdapter
