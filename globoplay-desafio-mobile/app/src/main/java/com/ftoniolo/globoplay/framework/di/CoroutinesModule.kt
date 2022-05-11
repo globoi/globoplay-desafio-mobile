@@ -1,20 +1,16 @@
 package com.ftoniolo.globoplay.framework.di
 
 import com.ftoniolo.core.usecase.base.AppCoroutinesDispatchers
+import com.ftoniolo.core.usecase.base.CoroutinesDispatchers
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.Dispatchers
 
 @Module
 @InstallIn(SingletonComponent::class)
-object CoroutinesModule {
+interface CoroutinesModule {
 
-    @Provides
-    fun provideDispatchers() = AppCoroutinesDispatchers(
-        Dispatchers.IO,
-        Dispatchers.Default,
-        Dispatchers.Main
-    )
+    @Binds
+    fun bindDispatchers(dispatchers: AppCoroutinesDispatchers) : CoroutinesDispatchers
 }

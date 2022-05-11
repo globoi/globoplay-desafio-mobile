@@ -2,7 +2,7 @@ package com.ftoniolo.core.usecase
 
 import com.ftoniolo.core.data.repository.FilmsRepository
 import com.ftoniolo.core.domain.model.HomeData
-import com.ftoniolo.core.usecase.base.AppCoroutinesDispatchers
+import com.ftoniolo.core.usecase.base.CoroutinesDispatchers
 import com.ftoniolo.core.usecase.base.ResultStatus
 import com.ftoniolo.core.usecase.base.UseCase
 import kotlinx.coroutines.async
@@ -20,7 +20,7 @@ interface GetFilmsByCategoryUseCase {
 @Suppress("MagicNumber")
 class GetFilmsByCategoryUseCaseImpl @Inject constructor(
     private val repository: FilmsRepository,
-    private val dispatchers: AppCoroutinesDispatchers
+    private val dispatchers: CoroutinesDispatchers
 ) : GetFilmsByCategoryUseCase,
     UseCase<GetFilmsByCategoryUseCase.GetMoviesByCategoryParams,
             HomeData>() {
@@ -28,7 +28,7 @@ class GetFilmsByCategoryUseCaseImpl @Inject constructor(
         params: GetFilmsByCategoryUseCase.GetMoviesByCategoryParams
     ): ResultStatus<HomeData> {
 
-        return withContext(dispatchers.io) {
+        return withContext(dispatchers.io()) {
 
             val popularFilmsDeferred = async { repository.getPopularFilms() }
             val adventureDeferred = async { repository.getMoviesByCategory(12) }

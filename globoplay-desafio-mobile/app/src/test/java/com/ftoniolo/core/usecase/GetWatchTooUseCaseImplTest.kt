@@ -6,11 +6,10 @@ import com.ftoniolo.testing.MainCoroutineRule
 import com.ftoniolo.testing.model.WatchTooFactory
 import com.ftoniolo.testing.pagingsource.PagingSourceFactory
 import com.nhaarman.mockitokotlin2.whenever
-import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -41,7 +40,7 @@ class GetWatchTooUseCaseImplTest {
 
     @Test
     fun `should validate flow paging data creation when invoke from use case is called`() =
-        runBlocking {
+        runTest {
             whenever(repository.getWatchToo(1L))
                 .thenReturn(
                     fakePagingSource

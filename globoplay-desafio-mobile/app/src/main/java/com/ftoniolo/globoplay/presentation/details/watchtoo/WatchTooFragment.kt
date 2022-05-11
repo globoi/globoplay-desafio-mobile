@@ -15,7 +15,6 @@ import com.ftoniolo.globoplay.databinding.FragmentWatchTooBinding
 import com.ftoniolo.globoplay.framework.imageLoader.ImageLoader
 import com.ftoniolo.globoplay.presentation.home.HomeLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject

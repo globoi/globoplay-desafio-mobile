@@ -9,7 +9,7 @@ import com.ftoniolo.testing.model.WatchTooFactory
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -40,7 +40,7 @@ class WatchTooPagingSourceTest {
     }
 
     @Test
-    fun `should return a success load result when load is called`() = runBlocking {
+    fun `should return a success load result when load is called`() = runTest {
 
         whenever(remoteDataSource.fetchWatchToo(1L, any()))
             .thenReturn(filmPagingFactory.create())
@@ -69,7 +69,7 @@ class WatchTooPagingSourceTest {
     }
 
     @Test
-    fun `should return a error load result when load is called`() = runBlocking {
+    fun `should return a error load result when load is called`() = runTest {
 
         val exception = RuntimeException()
         whenever(remoteDataSource.fetchWatchToo(1L, any())).thenThrow(exception)
@@ -82,7 +82,6 @@ class WatchTooPagingSourceTest {
                 placeholdersEnabled = false
             )
         )
-
         Assert.assertEquals(
             PagingSource.LoadResult.Error<Int, WatchToo>(exception),
             result

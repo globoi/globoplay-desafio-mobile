@@ -9,8 +9,8 @@ import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert.*
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -46,7 +46,7 @@ class WatchTooViewModelTest{
 
     @Test
     fun `should validate the paging data object values when calling watchTooPagingData`() {
-        runBlockingTest {
+        runTest {
             whenever(
                 getWatchTooUseCaseMock.invoke(
                     any()
@@ -65,7 +65,7 @@ class WatchTooViewModelTest{
 
     @Test(expected = RuntimeException::class)
     fun `should throw an exception when the calling to the use case returns an exception`(){
-        runBlockingTest {
+        runTest {
             whenever(getWatchTooUseCaseMock.invoke(any()))
                 .thenThrow(RuntimeException())
 

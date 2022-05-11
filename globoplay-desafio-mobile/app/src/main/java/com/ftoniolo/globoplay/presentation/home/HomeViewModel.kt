@@ -12,7 +12,6 @@ import com.ftoniolo.core.usecase.base.ResultStatus
 import com.ftoniolo.globoplay.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
