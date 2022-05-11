@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shimmer_films"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:shimmer_repeat_mode="restart"
+    app:shimmer_shape="radial">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <include layout="@layout/shimmer_layout_watch_too_item" />
+            <include layout="@layout/shimmer_layout_watch_too_item" />
+            <include layout="@layout/shimmer_layout_watch_too_item" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <include layout="@layout/shimmer_layout_watch_too_item" />
+            <include layout="@layout/shimmer_layout_watch_too_item" />
+            <include layout="@layout/shimmer_layout_watch_too_item" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <include layout="@layout/shimmer_layout_watch_too_item" />
+            <include layout="@layout/shimmer_layout_watch_too_item" />
+            <include layout="@layout/shimmer_layout_watch_too_item" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <include layout="@layout/shimmer_layout_watch_too_item" />
+            <include layout="@layout/shimmer_layout_watch_too_item" />
+            <include layout="@layout/shimmer_layout_watch_too_item" />
+        </LinearLayout>
+
+    </LinearLayout>
+</com.facebook.shimmer.ShimmerFrameLayout>

@@ -9,5 +9,33 @@
         android:id="@+id/homeFragment"
         android:name="com.ftoniolo.globoplay.presentation.home.HomeFragment"
         android:label=""
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.ftoniolo.globoplay.presentation.details.DetailsFragment"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="detailsFilmViewArg"
+            app:argType="com.ftoniolo.globoplay.presentation.details.DetailsFilmViewArg" />
+        <action
+            android:id="@+id/action_detailsFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+        <action
+            android:id="@+id/action_detailsFragment_to_watchTooFragment"
+            app:destination="@id/watchTooFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.ftoniolo.globoplay.presentation.details.moviedetails.MovieDetailsFragment"
+        android:label="fragment_movie_details"
+        tools:layout="@layout/fragment_movie_details" />
+    <fragment
+        android:id="@+id/watchTooFragment"
+        android:name="com.ftoniolo.globoplay.presentation.details.watchtoo.WatchTooFragment"
+        android:label="fragment_watch_too"
+        tools:layout="@layout/fragment_watch_too" />
 </navigation>

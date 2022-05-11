@@ -16,13 +16,9 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="16dp"/>
-
     <ProgressBar
         android:id="@+id/progress_loading_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
-
-
-
 </FrameLayout>

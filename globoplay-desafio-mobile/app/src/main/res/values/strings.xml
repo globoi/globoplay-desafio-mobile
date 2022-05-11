@@ -2,7 +2,24 @@
     <string name="app_name">Globoplay</string>
     <string name="app_menu_home">Início</string>
     <string name="app_menu_favorites">Minha Lista</string>
-    <string name="error_loading_films">Erro ao tentar carregar filmes</string>
+    <string name="error_loading_data">Erro ao carregar dados</string>
     <string name="try_again">Tente Novamente</string>
     <string name="error_loading_more_try_again">Erro ao tentar carregar próxima pagina</string>
+    <string name="common_no_results_found">Nenhum resultado encontrado</string>
+    <string name="trailer">Trailer</string>
+    <string name="details">DETALHES</string>
+    <string name="watch_too">ASSISTA TAMBÉM</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="datasheet">Ficha Técnica</string>
+    <string name="synopsis">Sinopse:</string>
+    <string name="release_date">Data de Lançamento:</string>
+    <string name="original_title">Título Original:</string>
+    <string name="popular_film">"Filmes em Alta"</string>
+    <string name="anim_film">"Animação"</string>
+    <string name="adventure_film">"Aventura"</string>
+    <string name="documentary_film">"Documentário"</string>
+    <string name="crime_film">"Crime"</string>
+    <string name="horror_film">"Terror"</string>
+    <string name="romance_film">"Romance"</string>
+    <string name="war_film">"Guerra"</string>
 </resources>

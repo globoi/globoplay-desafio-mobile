@@ -1,6 +1,13 @@
 package com.ftoniolo.core.data.repository
 
-interface FilmsRemoteDataSource<T> {
+import com.ftoniolo.core.domain.model.Film
+import com.ftoniolo.core.domain.model.WatchTooPaging
 
-    suspend fun fetchFilms(queries: Map<String, String>): T
+interface FilmsRemoteDataSource {
+
+    suspend fun fetchPopularFilms(): List<Film>
+
+    suspend fun fetchMoviesByCategory(genreId: Long): List<Film>
+
+    suspend fun fetchWatchToo(filmId: Long, queries: Map<String, String>): WatchTooPaging
 }

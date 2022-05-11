@@ -13,7 +13,6 @@ abstract class UseCase <in P, R> {
     }.catch { throwable ->
         emit(ResultStatus.Error(throwable))
     }
-
     protected abstract suspend fun doWork(params: P): ResultStatus<R>
 }
 

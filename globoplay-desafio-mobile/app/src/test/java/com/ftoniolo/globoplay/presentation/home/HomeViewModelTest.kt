@@ -1,15 +1,20 @@
 package com.ftoniolo.globoplay.presentation.home
 
-import androidx.paging.PagingData
-import com.ftoniolo.core.usecase.GetFilmsUseCase
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
+import com.ftoniolo.core.domain.model.HomeData
+import com.ftoniolo.core.usecase.GetFilmsByCategoryUseCase
+import com.ftoniolo.core.usecase.base.ResultStatus
+import com.ftoniolo.globoplay.R
 import com.ftoniolo.testing.MainCoroutineRule
-import com.ftoniolo.testing.model.FilmsFactory
+import com.ftoniolo.testing.model.FilmFactory
 import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.isA
+import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -17,63 +22,116 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
-import java.lang.RuntimeException
 
+@ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class HomeViewModelTest {
 
-    @ExperimentalCoroutinesApi
+    @get:Rule
+    var instantExecutorRule = InstantTaskExecutorRule()
+
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
     @Mock
-    lateinit var getFilmsUseCaseMock: GetFilmsUseCase
+    private lateinit var getFilmsByCategoryUseCase: GetFilmsByCategoryUseCase
+
+    @Mock
+    private lateinit var uiStateObserver: Observer<HomeViewModel.UiState>
+
+    private val films = listOf(FilmFactory().create(FilmFactory.FakeFilm.FakeFilm1))
 
     private lateinit var homeViewModel: HomeViewModel
 
-    private val filmsFactory = FilmsFactory()
-
-    private val pagingDataFilms = PagingData.from(
-        listOf(
-            filmsFactory.create(FilmsFactory.Movie.Sonic),
-            filmsFactory.create(FilmsFactory.Movie.Batman),
-        )
-    )
-
-    @ExperimentalCoroutinesApi
     @Before
     fun setUp() {
-        homeViewModel = HomeViewModel(getFilmsUseCaseMock)
+        homeViewModel = HomeViewModel(getFilmsByCategoryUseCase)
+        homeViewModel.uiState.observeForever(uiStateObserver)
     }
 
-    @ExperimentalCoroutinesApi
     @Test
-    fun `should validate the paging data object values when calling filmsPagingData`() {
-        runBlockingTest {
-            whenever(
-                getFilmsUseCaseMock.invoke(
-                    any()
+    fun `should notify uiState with Success from UiState when get films categories returns success`() =
+        runTest {
+            // Arrange
+            whenever(getFilmsByCategoryUseCase.invoke(any()))
+                .thenReturn(
+                    flowOf(
+                        ResultStatus.Success(
+                            HomeData(
+                                films, films,
+                                films, films,
+                                films, films,
+                                films, films,
+                            )
+                        )
+                    )
                 )
-            ).thenReturn(
-                flowOf(
-                    pagingDataFilms
-                )
+
+            // Act
+            homeViewModel.getFilmsByCategory()
+
+            // Assert
+            verify(uiStateObserver).onChanged(isA<HomeViewModel.UiState.Success>())
+
+            val uiStateSuccess = homeViewModel.uiState.value as HomeViewModel.UiState.Success
+            val categoriesParentList = uiStateSuccess.homeParentList
+
+            assertEquals(8, categoriesParentList.size)
+            assertEquals(
+                R.string.popular_film,
+                categoriesParentList[0].categoryStringResId
             )
-
-            val result = homeViewModel.filmsPagingData()
-
-            assertEquals(1, result.count())
         }
-    }
 
-    @ExperimentalCoroutinesApi
-    @Test(expected = RuntimeException::class)
-    fun `should throw an exception when the calling to the use case returns an exception`(){
-        runBlockingTest {
-            whenever(getFilmsUseCaseMock.invoke(any()))
-                .thenThrow(RuntimeException())
+    @Test
+    fun `should notify uiState with Success from UiState when get film categories returns only film`() =
+        runTest {
+            // Arrange
+            whenever(getFilmsByCategoryUseCase.invoke(any()))
+                .thenReturn(
+                    flowOf(
+                        ResultStatus.Success(
+                            HomeData(
+                                films, listOf(),
+                                listOf(), listOf(),
+                                listOf(), listOf(),
+                                listOf(), listOf(),
+                            )
+                        )
+                    )
+                )
 
-            homeViewModel.filmsPagingData()
+            // Act
+            homeViewModel.getFilmsByCategory()
+
+            // Assert
+            verify(uiStateObserver).onChanged(isA<HomeViewModel.UiState.Success>())
+
+            val uiStateSuccess = homeViewModel.uiState.value as HomeViewModel.UiState.Success
+            val categoriesParentList = uiStateSuccess.homeParentList
+
+            assertEquals(1, categoriesParentList.size)
+            assertEquals(
+                R.string.popular_film,
+                categoriesParentList[0].categoryStringResId
+            )
         }
-    }
+
+    @Test
+    fun `should notify uiState with Error from UiState when get character categories returns an exception`() =
+        runTest {
+            // Arrange
+            whenever(getFilmsByCategoryUseCase.invoke(any()))
+                .thenReturn(
+                    flowOf(
+                        ResultStatus.Error(Throwable())
+                    )
+                )
+
+            // Act
+            homeViewModel.getFilmsByCategory()
+
+            // Assert
+            verify(uiStateObserver).onChanged(isA<HomeViewModel.UiState.Error>())
+        }
 }
