@@ -40,7 +40,7 @@
         android:id="@+id/bottom_nav_main"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:background="@drawable/bottom_navigation_view_background"
+        android:background="@drawable/button_navigation_view_background"
         app:itemIconTint="@drawable/tab_selector"
         app:itemTextColor="@drawable/tab_selector"
         app:labelVisibilityMode="labeled"

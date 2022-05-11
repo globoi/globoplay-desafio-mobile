@@ -39,44 +39,45 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
+        loadCategoriesAndObserveUiState()
+    }
+
+    private fun loadCategoriesAndObserveUiState() {
+        viewModel.categories.load()
+        viewModel.categories.state.observe(viewLifecycleOwner) { uiState ->
             binding.flipperFilms.displayedChild = when (uiState) {
-                HomeViewModel.UiState.Loading -> FLIPPER_CHILD_LOADING
-                is HomeViewModel.UiState.Success -> {
+                HomeUiActionStateLiveData.UiState.Loading -> FLIPPER_CHILD_LOADING
+                is HomeUiActionStateLiveData.UiState.Success -> {
                     binding.rvVertical.run {
                         setHasFixedSize(false)
                         adapter = HomeParentAdapter(uiState.homeParentList, imageLoader) { film, view ->
-
-                                val navExtras = FragmentNavigatorExtras(
-                                    view to film.title
-                                )
-                                val directions = HomeFragmentDirections
-                                    .actionHomeFragmentToDetailsFragment(
-                                        DetailsFilmViewArg(
-                                            id = film.id,
-                                            overview = film.overview,
-                                            title = film.title,
-                                            imageUrl = film.imageUrl,
-                                            releaseDate = film.releaseDate
-                                        )
+                            val navExtras = FragmentNavigatorExtras(
+                                view to film.title
+                            )
+                            val directions = HomeFragmentDirections
+                                .actionHomeFragmentToDetailsFragment(
+                                    DetailsFilmViewArg(
+                                        id = film.id,
+                                        overview = film.overview,
+                                        title = film.title,
+                                        imageUrl = film.imageUrl,
+                                        releaseDate = film.releaseDate
                                     )
-                                findNavController().navigate(directions, navExtras)
-                            }
+                                )
+                            findNavController().navigate(directions, navExtras)
+                        }
                     }
                     FLIPPER_CHILD_FILMS
                 }
-                HomeViewModel.UiState.Error ->  {
+                HomeUiActionStateLiveData.UiState.Error ->  {
                     binding.includeErrorView.buttonRetry.setOnClickListener {
-                        viewModel.getFilmsByCategory()
+                        viewModel.categories.load()
                     }
                     FLIPPER_CHILD_ERROR
                 }
-
-                HomeViewModel.UiState.Empty -> FLIPPER_CHILD_EMPTY
+                HomeUiActionStateLiveData.UiState.Empty -> FLIPPER_CHILD_EMPTY
             }
         }
-        viewModel.getFilmsByCategory()
-
     }
 
     override fun onDestroyView() {

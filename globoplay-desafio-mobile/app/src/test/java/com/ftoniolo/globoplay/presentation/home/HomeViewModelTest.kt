@@ -37,7 +37,7 @@ class HomeViewModelTest {
     private lateinit var getFilmsByCategoryUseCase: GetFilmsByCategoryUseCase
 
     @Mock
-    private lateinit var uiStateObserver: Observer<HomeViewModel.UiState>
+    private lateinit var uiStateObserver: Observer<HomeUiActionStateLiveData.UiState>
 
     private val films = listOf(FilmFactory().create(FilmFactory.FakeFilm.FakeFilm1))
 
@@ -45,8 +45,13 @@ class HomeViewModelTest {
 
     @Before
     fun setUp() {
-        homeViewModel = HomeViewModel(getFilmsByCategoryUseCase)
-        homeViewModel.uiState.observeForever(uiStateObserver)
+        homeViewModel = HomeViewModel(
+            getFilmsByCategoryUseCase,
+            mainCoroutineRule.testDispatcherProvider
+        ).apply {
+            categories.state.observeForever(uiStateObserver)
+
+        }
     }
 
     @Test
@@ -68,12 +73,12 @@ class HomeViewModelTest {
                 )
 
             // Act
-            homeViewModel.getFilmsByCategory()
+            homeViewModel.categories.load()
 
             // Assert
-            verify(uiStateObserver).onChanged(isA<HomeViewModel.UiState.Success>())
+            verify(uiStateObserver).onChanged(isA<HomeUiActionStateLiveData.UiState.Success>())
 
-            val uiStateSuccess = homeViewModel.uiState.value as HomeViewModel.UiState.Success
+            val uiStateSuccess = homeViewModel.categories.state.value as HomeUiActionStateLiveData.UiState.Success
             val categoriesParentList = uiStateSuccess.homeParentList
 
             assertEquals(8, categoriesParentList.size)
@@ -102,12 +107,12 @@ class HomeViewModelTest {
                 )
 
             // Act
-            homeViewModel.getFilmsByCategory()
+            homeViewModel.categories.load()
 
             // Assert
-            verify(uiStateObserver).onChanged(isA<HomeViewModel.UiState.Success>())
+            verify(uiStateObserver).onChanged(isA<HomeUiActionStateLiveData.UiState.Success>())
 
-            val uiStateSuccess = homeViewModel.uiState.value as HomeViewModel.UiState.Success
+            val uiStateSuccess = homeViewModel.categories.state.value as HomeUiActionStateLiveData.UiState.Success
             val categoriesParentList = uiStateSuccess.homeParentList
 
             assertEquals(1, categoriesParentList.size)
@@ -129,9 +134,9 @@ class HomeViewModelTest {
                 )
 
             // Act
-            homeViewModel.getFilmsByCategory()
+            homeViewModel.categories.load()
 
             // Assert
-            verify(uiStateObserver).onChanged(isA<HomeViewModel.UiState.Error>())
+            verify(uiStateObserver).onChanged(isA<HomeUiActionStateLiveData.UiState.Error>())
         }
 }

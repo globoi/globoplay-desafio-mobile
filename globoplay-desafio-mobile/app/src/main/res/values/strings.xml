@@ -2,7 +2,9 @@
     <string name="app_name">Globoplay</string>
     <string name="app_menu_home">Início</string>
     <string name="app_menu_favorites">Minha Lista</string>
+    <string name="app_menu_favorites_add">Adicionado</string>
     <string name="error_loading_data">Erro ao carregar dados</string>
+    <string name="error_add_favorite">Erro ao adicionar favoritos</string>
     <string name="try_again">Tente Novamente</string>
     <string name="error_loading_more_try_again">Erro ao tentar carregar próxima pagina</string>
     <string name="common_no_results_found">Nenhum resultado encontrado</string>

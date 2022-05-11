@@ -1,11 +1,13 @@
 package com.ftoniolo.globoplay.framework.di
 
-import com.ftoniolo.core.usecase.GetPopularFilmsUseCase
 import com.ftoniolo.core.usecase.GetPopularFilmsUseCaseImpl
-import com.ftoniolo.core.usecase.GetFilmsByCategoryUseCase
+import com.ftoniolo.core.usecase.GetPopularFilmsUseCase
 import com.ftoniolo.core.usecase.GetFilmsByCategoryUseCaseImpl
-import com.ftoniolo.core.usecase.GetWatchTooUseCase
+import com.ftoniolo.core.usecase.GetFilmsByCategoryUseCase
 import com.ftoniolo.core.usecase.GetWatchTooUseCaseImpl
+import com.ftoniolo.core.usecase.GetWatchTooUseCase
+import com.ftoniolo.core.usecase.AddFavoritesUseCaseImpl
+import com.ftoniolo.core.usecase.AddFavoriteUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -21,5 +23,8 @@ interface UseCaseModule {
     fun bindMovieByCategoryUseCase(useCase: GetFilmsByCategoryUseCaseImpl): GetFilmsByCategoryUseCase
 
     @Binds
-    fun bindGetWatchTooUseCase(useCaseImpl: GetWatchTooUseCaseImpl): GetWatchTooUseCase
+    fun bindGetWatchTooUseCase(useCase: GetWatchTooUseCaseImpl): GetWatchTooUseCase
+
+    @Binds
+    fun bindAddFavoriteUseCAse(useCase : AddFavoritesUseCaseImpl) : AddFavoriteUseCase
 }

@@ -70,19 +70,36 @@
         app:layout_constraintTop_toBottomOf="@+id/text_name_film"
         android:text="@string/trailer" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_favorite"
-        android:layout_width="170dp"
+    <ViewFlipper
+        android:id="@+id/flipper_favorite"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:paddingHorizontal="16dp"
-        android:background="@drawable/button_favorite_custom"
-        android:drawableStart="@drawable/ic_star_menu"
         app:layout_constraintBottom_toBottomOf="@+id/image_poster_blur"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_name_film"
-        android:textColor="@color/medium_grey"
-        android:text="@string/app_menu_favorites" />
+        app:layout_constraintTop_toBottomOf="@+id/text_name_film">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_favorite"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_favorite_custom"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/medium_grey"
+            app:layout_constraintBottom_toBottomOf="@+id/image_poster_blur"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_name_film"
+            tools:drawableStart="@drawable/ic_favorite_star_menu"
+            tools:text="@string/app_menu_favorites" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="56dp"
+            android:layout_gravity="center" />
+    </ViewFlipper>
+
+
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_details"

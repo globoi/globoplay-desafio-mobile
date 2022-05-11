@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.ftoniolo.globoplay.R
 import com.ftoniolo.globoplay.databinding.FragmentDetailsBinding
 import com.ftoniolo.globoplay.framework.imageLoader.ImageLoader
+import com.ftoniolo.globoplay.presentation.extensions.showShortToast
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -21,6 +24,8 @@ class DetailsFragment : Fragment() {
     private val binding: FragmentDetailsBinding get() = _binding!!
 
     private val args by navArgs<DetailsFragmentArgs>()
+
+    private val viewModel: DetailsFilmViewModel by viewModels()
 
     @Inject
     lateinit var imageLoader: ImageLoader
@@ -41,7 +46,9 @@ class DetailsFragment : Fragment() {
 
         setView()
         setSharedElementTransitionOnEnter()
+        setAndObserveFavoriteUiState(args.detailsFilmViewArg)
         setupTabViews()
+
     }
 
     private fun setView(){
@@ -59,6 +66,39 @@ class DetailsFragment : Fragment() {
         }
 
         binding.textNameFilm.text = filmViewArgs.title
+    }
+
+    private fun setAndObserveFavoriteUiState(detailsFilmViewArg: DetailsFilmViewArg){
+        binding.buttonFavorite.setOnClickListener {
+            viewModel.favorite.update(
+                DetailsFilmViewArg(
+                    id = detailsFilmViewArg.id,
+                    overview = detailsFilmViewArg.overview,
+                    title = detailsFilmViewArg.title,
+                    imageUrl = detailsFilmViewArg.imageUrl,
+                    releaseDate = detailsFilmViewArg.releaseDate
+                )
+            )
+        }
+
+        viewModel.favorite.state.observe(viewLifecycleOwner) { uiState ->
+            binding.flipperFavorite.displayedChild = when (uiState) {
+                FavoriteUiActionStateLiveData.UiState.Loading ->
+                    FLIPPER_FAVORITE_CHILD_POSITION_LOADING
+                is FavoriteUiActionStateLiveData.UiState.Button -> {
+                    binding.buttonFavorite.run {
+                        text = uiState.buttonDescription
+                        setCompoundDrawablesWithIntrinsicBounds(
+                            uiState.icon, NOT_ICON ,NOT_ICON, NOT_ICON)
+                        FLIPPER_FAVORITE_CHILD_POSITION_IMAGE
+                    }
+                }
+                is FavoriteUiActionStateLiveData.UiState.Error -> {
+                    showShortToast(uiState.messageResId)
+                    FLIPPER_FAVORITE_CHILD_POSITION_IMAGE
+                }
+            }
+        }
     }
 
     private fun setSharedElementTransitionOnEnter() {
@@ -90,5 +130,11 @@ class DetailsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val FLIPPER_FAVORITE_CHILD_POSITION_IMAGE = 0
+        private const val FLIPPER_FAVORITE_CHILD_POSITION_LOADING = 1
+        private const val NOT_ICON = 0
     }
 }
