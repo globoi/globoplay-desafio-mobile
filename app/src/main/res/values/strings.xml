@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Globoplay</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_title">Início</string>
+    <string name="search_title">Busca</string>
+    <string name="favorites_title">Minha Lista</string>
+
+</resources>
