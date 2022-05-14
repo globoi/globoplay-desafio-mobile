@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Globoplay</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_title">Início</string>
     <string name="search_title">Busca</string>
     <string name="favorites_title">Minha Lista</string>
+    <string name="poster_image">Filme poster</string>
+    <string name="movie_list_title">Cinema</string>
+    <string name="tv_novels_list_title">Novelas</string>
+    <string name="tv_episodes_title">Séries</string>
 
 </resources>

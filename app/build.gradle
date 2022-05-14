@@ -8,6 +8,10 @@ plugins {
 android {
     compileSdk 32
 
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.simonassi.globoplay"
         minSdk 26
@@ -17,8 +21,10 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        //Get the API KEY and transform a BuildConfig static variable
         buildConfigField("String", "TMDB_ACCESS_KEY", "\"" + getTMDBAccess() + "\"")
+        buildConfigField("String", "BASE_URL", "\"" + getBaseUrl() + "\"")
+        buildConfigField("String", "BUCKET_URL", "\"" + getBucketUrl() + "\"")
+
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
@@ -77,14 +83,40 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifeCycleVersion"
 
+    //For layouts dataBinding
+    kapt "com.android.databinding:compiler:3.1.4"
+
+    def glideVersion = "4.10.0"
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
 
 
 }
 
+kapt {
+    generateStubs = true
+}
+
 /**
- * Get de api key inside gradle.properties file in root project
+ * Get the api key defined inside gradle.properties file in root project
  * @return api key
  */
 def getTMDBAccess() {
     return project.findProperty("tmdb_access_key")
+}
+
+/**
+ * Get the base url defined inside gradle.properties file in root project
+ * @return The Movie Database Base Url
+ */
+def getBaseUrl(){
+    return project.findProperty("base_url")
+}
+
+/**
+ * Get image repository defined inside gradle.properties file in root project
+ * @return The Movie Database Image Repository Url
+ */
+def getBucketUrl(){
+    return project.findProperty("bucket_url")
 }
