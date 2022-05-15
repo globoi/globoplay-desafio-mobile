@@ -9,5 +9,5 @@ data class Favorite (
     @PrimaryKey val tmdbId: Long,
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "type") val type: Int?,
-    @ColumnInfo(name = "cover") val cover: String?,
+    @ColumnInfo(name = "cover") var cover: String?,
 )

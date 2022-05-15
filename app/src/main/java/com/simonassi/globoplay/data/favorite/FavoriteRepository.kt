@@ -12,7 +12,7 @@ import javax.inject.Singleton
 @Singleton
 class FavoriteRepository @Inject constructor(private val favoriteDao: FavoriteDao) {
 
-    suspend fun getFavoriteList() = favoriteDao.getAll()
+    fun getFavoriteList() = favoriteDao.getAll()
 
     suspend fun getFavoriteById(mediaId: Long) = favoriteDao.getAllByIds(mediaId)
 

@@ -1,11 +1,14 @@
 package com.simonassi.globoplay.ui.main
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 import com.simonassi.globoplay.R
 import dagger.hilt.android.AndroidEntryPoint
 

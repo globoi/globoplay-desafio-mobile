@@ -58,8 +58,6 @@ class MovieAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallba
             }
         }
     }
-
-
 }
 
 private class MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {

@@ -18,7 +18,11 @@
         android:id="@+id/favorites_pager_fragment"
         android:name="com.simonassi.globoplay.ui.main.favorites.FavoritesFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favorites_pager_fragment_to_highlights_activity"
+            app:destination="@id/highlights_activity" />
+    </fragment>
     <fragment
         android:id="@+id/search_pager_fragments"
         android:name="com.simonassi.globoplay.ui.main.search.SearchFragment"

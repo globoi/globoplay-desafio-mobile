@@ -1,5 +1,6 @@
 package com.simonassi.globoplay.data.favorite.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.simonassi.globoplay.data.favorite.entity.Favorite
 
@@ -9,7 +10,7 @@ import com.simonassi.globoplay.data.favorite.entity.Favorite
 @Dao
 interface FavoriteDao {
     @Query("SELECT * FROM favorites")
-    suspend fun getAll(): List<Favorite>
+    fun getAll(): LiveData<List<Favorite>>
 
     @Query("SELECT * FROM favorites WHERE tmdbId = :mediaId")
     suspend fun getAllByIds(mediaId: Long): List<Favorite>
