@@ -1,23 +1,27 @@
 package com.simonassi.globoplay.ui.main.home
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.simonassi.globoplay.data.Movie
 import androidx.recyclerview.widget.ListAdapter
 import com.simonassi.globoplay.BuildConfig
 import com.simonassi.globoplay.databinding.ListItemMovieBinding
-import com.simonassi.globoplay.utilities.ImageQualitySpec
+import com.simonassi.globoplay.utilities.contants.ImageQualitySpec
+import com.simonassi.globoplay.utilities.contants.ItemType
 
 class MovieAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MovieViewHolder(
-            ListItemMovieBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+            ListItemMovieBinding
+                .inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
         )
     }
 
@@ -31,13 +35,25 @@ class MovieAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallba
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.setClickListener {
-
+                binding.movieItem?.let { movie ->
+                    navigateToHighLights(it, movie)
+                }
             }
+        }
+
+        private fun navigateToHighLights(view: View, movie: Movie) {
+            val direction = HomeFragmentDirections.actionHomePagerFragmentToHighlightsActivity(
+                movie.id,
+                ItemType.MOVIE
+            )
+            view.findNavController().navigate(direction)
         }
 
         fun bind(item: Movie) {
             binding.apply {
-                imageCover = BuildConfig.BUCKET_URL + ImageQualitySpec.LOW_QUALITY + item.cover
+                item.cover = BuildConfig.BUCKET_URL + ImageQualitySpec.LOW_QUALITY + item.cover
+                item.backdropCover = BuildConfig.BUCKET_URL + ImageQualitySpec.MID_QUALITY + item.cover
+                movieItem = item
                 executePendingBindings()
             }
         }

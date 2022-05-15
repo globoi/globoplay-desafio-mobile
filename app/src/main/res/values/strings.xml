@@ -8,5 +8,7 @@
     <string name="movie_list_title">Cinema</string>
     <string name="tv_novels_list_title">Novelas</string>
     <string name="tv_episodes_title">Séries</string>
+    <string name="show_content">Assista</string>
+    <string name="my_list">Minha lista</string>
 
 </resources>

@@ -37,6 +37,14 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun getMovieById(id: Int): Movie? {
+        return moviesLiveData.value?.filter { it.id == id }?.get(0)
+    }
+
+    fun getTvById(id: Int): Tv? {
+        return tvsLiveData.value?.filter { it.id == id }?.get(0)
+    }
+
     class DiscoverViewModelFactory(private val repository: TMDBRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return HomeViewModel(repository) as T

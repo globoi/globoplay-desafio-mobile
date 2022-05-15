@@ -14,6 +14,6 @@ data class Tv(
     @SerializedName("overview") val overview: String,
     @SerializedName("original_name") val originalTitle: String,
     @SerializedName("genre_ids") val genders: List<Int>,
-    @SerializedName("poster_path") val cover: String,
-    @SerializedName("backdrop_path") val backdropCover: String
+    @SerializedName("poster_path") var cover: String,
+    @SerializedName("backdrop_path") var backdropCover: String
 )

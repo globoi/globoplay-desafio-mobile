@@ -27,7 +27,7 @@ class HomeFragment : Fragment(), LifecycleObserver {
         savedInstanceState: Bundle?
     ): View {
 
-        var binding: FragmentHomeBinding? = null
+        val binding: FragmentHomeBinding?
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
