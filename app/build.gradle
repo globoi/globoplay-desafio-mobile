@@ -98,6 +98,12 @@ dependencies {
     //For blur transformations
     implementation 'jp.wasabeef:glide-transformations:4.3.0'
 
+    //For Room API - manage Local Databases
+    def room_version = "2.4.2"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
 
 }
 

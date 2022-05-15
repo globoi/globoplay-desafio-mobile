@@ -1,6 +1,8 @@
 package com.simonassi.globoplay.data
 
 import com.simonassi.globoplay.api.TMDBService
+import com.simonassi.globoplay.data.movie.Movie
+import com.simonassi.globoplay.data.tv.Tv
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

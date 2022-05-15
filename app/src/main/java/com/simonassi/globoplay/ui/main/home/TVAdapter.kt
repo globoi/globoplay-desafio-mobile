@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import com.simonassi.globoplay.BuildConfig
-import com.simonassi.globoplay.data.Tv
+import com.simonassi.globoplay.data.tv.Tv
 import com.simonassi.globoplay.databinding.ListItemTvBinding
 import com.simonassi.globoplay.utilities.contants.ImageQualitySpec
 import com.simonassi.globoplay.utilities.contants.ItemType

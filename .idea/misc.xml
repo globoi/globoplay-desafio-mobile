@@ -25,6 +25,7 @@
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/list_item_movie.xml" value="0.5003143310546875" />
         <entry key="app/src/main/res/layout/list_item_tv.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/named_action_bar.xml" value="0.1703125" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.246875" />
       </map>
     </option>

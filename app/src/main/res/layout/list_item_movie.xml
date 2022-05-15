@@ -11,7 +11,7 @@
 
         <variable
             name="movieItem"
-            type="com.simonassi.globoplay.data.Movie" />
+            type="com.simonassi.globoplay.data.movie.Movie" />
 
     </data>
 

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.simonassi.globoplay.data.Movie
+import com.simonassi.globoplay.data.movie.Movie
 import androidx.recyclerview.widget.ListAdapter
 import com.simonassi.globoplay.BuildConfig
 import com.simonassi.globoplay.databinding.ListItemMovieBinding

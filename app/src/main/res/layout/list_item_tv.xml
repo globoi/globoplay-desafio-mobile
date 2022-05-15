@@ -11,7 +11,7 @@
 
         <variable
             name="tvItem"
-            type="com.simonassi.globoplay.data.Tv" />
+            type="com.simonassi.globoplay.data.tv.Tv" />
 
     </data>
 

@@ -1,10 +1,10 @@
 package com.simonassi.globoplay.api
 
 import com.simonassi.globoplay.BuildConfig
-import com.simonassi.globoplay.data.Movie
-import com.simonassi.globoplay.data.MovieSearchResponse
-import com.simonassi.globoplay.data.Tv
-import com.simonassi.globoplay.data.TvSearchResponse
+import com.simonassi.globoplay.data.movie.Movie
+import com.simonassi.globoplay.data.movie.MovieSearchResponse
+import com.simonassi.globoplay.data.tv.Tv
+import com.simonassi.globoplay.data.tv.TvSearchResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET

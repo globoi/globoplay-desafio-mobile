@@ -1,9 +1,9 @@
 package com.simonassi.globoplay.viewmodels
 
 import androidx.lifecycle.*
-import com.simonassi.globoplay.data.Movie
+import com.simonassi.globoplay.data.movie.Movie
 import com.simonassi.globoplay.data.TMDBRepository
-import com.simonassi.globoplay.data.Tv
+import com.simonassi.globoplay.data.tv.Tv
 import com.simonassi.globoplay.utilities.Generator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope

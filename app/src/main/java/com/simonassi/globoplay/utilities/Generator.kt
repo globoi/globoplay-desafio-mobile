@@ -1,7 +1,7 @@
 package com.simonassi.globoplay.utilities
 
-import com.simonassi.globoplay.data.Movie
-import com.simonassi.globoplay.data.Tv
+import com.simonassi.globoplay.data.movie.Movie
+import com.simonassi.globoplay.data.tv.Tv
 
 class Generator {
 

@@ -13,7 +13,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideUnsplashService(): TMDBService {
+    fun provideTMDBService(): TMDBService {
         return TMDBService.create()
     }
 }
