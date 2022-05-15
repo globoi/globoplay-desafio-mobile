@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
  * project are listed below.
  */
 data class Movie(
-    @SerializedName("id") val id: Int,
+    @SerializedName("id") val id: Long,
     @SerializedName("title") val title: String,
     @SerializedName("overview") val overview: String,
     @SerializedName("original_title") val originalTitle: String,

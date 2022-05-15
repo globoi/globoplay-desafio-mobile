@@ -10,5 +10,9 @@
     <string name="tv_episodes_title">Séries</string>
     <string name="show_content">Assista</string>
     <string name="my_list">Minha lista</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

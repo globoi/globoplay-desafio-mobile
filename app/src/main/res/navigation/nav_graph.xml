@@ -31,8 +31,7 @@
         tools:layout="@layout/activity_highlights" >
         <argument
             android:name="itemId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            app:argType="long" />
         <argument
             android:name="type"
             app:argType="integer"

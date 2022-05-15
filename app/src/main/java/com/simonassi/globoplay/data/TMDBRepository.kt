@@ -21,4 +21,16 @@ class TMDBRepository @Inject constructor(private val service: TMDBService) {
         }
     }
 
+    suspend fun getMovieById(id: Long): Movie {
+        return withContext(Dispatchers.Default){
+            service.findMovieById(id)
+        }
+    }
+
+    suspend fun getTvById(id: Long): Tv {
+        return withContext(Dispatchers.Default){
+            service.findTvById(id)
+        }
+    }
+
 }

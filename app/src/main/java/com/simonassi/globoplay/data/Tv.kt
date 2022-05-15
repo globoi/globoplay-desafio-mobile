@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
  * project are listed below.
  */
 data class Tv(
-    @SerializedName("id") val id: Int,
+    @SerializedName("id") val id: Long,
     @SerializedName("name") val title: String,
     @SerializedName("overview") val overview: String,
     @SerializedName("original_name") val originalTitle: String,

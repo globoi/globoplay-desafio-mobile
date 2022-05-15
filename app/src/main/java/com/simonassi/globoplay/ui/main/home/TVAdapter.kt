@@ -46,6 +46,7 @@ class TvAdapter : ListAdapter<Tv, RecyclerView.ViewHolder>(TvDiffCallback()) {
                 ItemType.TV
             )
             view.findNavController().navigate(direction)
+
         }
 
         fun bind(item: Tv) {

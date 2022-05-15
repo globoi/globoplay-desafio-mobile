@@ -1,10 +1,10 @@
 package com.simonassi.globoplay.viewmodels
 
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.simonassi.globoplay.data.Movie
 import com.simonassi.globoplay.data.TMDBRepository
 import com.simonassi.globoplay.data.Tv
-import com.simonassi.globoplay.utilities.Generator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,28 +13,28 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class HighlightsViewModel @Inject constructor(
     private val repository: TMDBRepository
 ) : ViewModel() {
 
-    val moviesLiveData = MutableLiveData<List<Movie>>(Generator.generateInitialMovies())
-    val tvsLiveData = MutableLiveData<List<Tv>>(Generator.generateInitialTv())
+    val movieSearchLiveData = MutableLiveData<Movie>()
+    val tvSearchLiveData = MutableLiveData<Tv>()
 
-    fun getMovies() {
+    fun getMovieById(id: Long) {
         CoroutineScope(Dispatchers.Main).launch {
-            val movies = withContext(Dispatchers.Default) {
-                repository.getMovies()
+            val movie = withContext(Dispatchers.Default) {
+                repository.getMovieById(id)
             }
-            moviesLiveData.value = movies
+            movieSearchLiveData.value = movie
         }
     }
 
-    fun getTvs() {
+    fun getTvById(id: Long) {
         CoroutineScope(Dispatchers.Main).launch {
-            val tvs = withContext(Dispatchers.Default) {
-                repository.getTvs()
+            val tv = withContext(Dispatchers.Default) {
+                repository.getTvById(id)
             }
-            tvsLiveData.value = tvs
+            tvSearchLiveData.value = tv
         }
     }
 }
