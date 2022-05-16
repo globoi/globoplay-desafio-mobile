@@ -21,5 +21,7 @@
     <string name="production_year_detail">Ano de produção:</string>
     <string name="director_details">Direção:</string>
     <string name="view_more">Veja mais</string>
+    <string name="network_error_title">Erro de conexão</string>
+    <string name="network_error_description">Por favor, verifique sua conexão e tente novamente.</string>
 
 </resources>

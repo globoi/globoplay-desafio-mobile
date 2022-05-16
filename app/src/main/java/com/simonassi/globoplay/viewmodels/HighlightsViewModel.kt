@@ -23,6 +23,7 @@ class HighlightsViewModel @Inject constructor(
     val movieSearchLiveData = MutableLiveData<Movie>()
     val tvSearchLiveData = MutableLiveData<Tv>()
     val favoriteSearchLiveData = MutableLiveData<Favorite?>()
+    val relatedMovies = MutableLiveData<List<Movie>>()
 
     fun getMovieById(id: Long) {
         CoroutineScope(Dispatchers.Main).launch {
@@ -68,4 +69,14 @@ class HighlightsViewModel @Inject constructor(
             favoriteRepository.deleteById(id)
         }
     }
+
+    fun getRelatedMovies(genreId: Long) {
+        CoroutineScope(Dispatchers.Main).launch {
+            val movies = withContext(Dispatchers.Default) {
+                repository.getRelatedMovies(genreId)
+            }
+            relatedMovies.value = movies
+        }
+    }
+
 }

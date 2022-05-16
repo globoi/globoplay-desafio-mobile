@@ -18,10 +18,13 @@ import com.bumptech.glide.request.transition.Transition
 import com.google.android.material.tabs.TabLayoutMediator
 import com.simonassi.globoplay.BuildConfig
 import com.simonassi.globoplay.R
+import com.simonassi.globoplay.data.Gender
 import com.simonassi.globoplay.data.favorite.entity.Favorite
 import com.simonassi.globoplay.data.movie.Movie
 import com.simonassi.globoplay.data.tv.Tv
 import com.simonassi.globoplay.databinding.ActivityHighlightsBinding
+import com.simonassi.globoplay.databinding.NetworkErrorLayoutBinding
+import com.simonassi.globoplay.utilities.Utils
 import com.simonassi.globoplay.utilities.contants.ImageQualitySpec
 import com.simonassi.globoplay.utilities.contants.ItemType
 import com.simonassi.globoplay.viewmodels.HighlightsViewModel
@@ -40,6 +43,13 @@ class HighlightsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if(!Utils.isNetworkAvailable(this)){
+            val errorBinding = NetworkErrorLayoutBinding.inflate(layoutInflater)
+            setContentView(errorBinding.root)
+            return
+        }
+
         binding = ActivityHighlightsBinding.inflate(layoutInflater)
         val view = binding.root
         supportActionBar?.hide()
@@ -72,7 +82,6 @@ class HighlightsActivity : AppCompatActivity() {
             val titles = listOf(R.string.suggestion_title, R.string.details_title)
             tab.text = this.getString(titles[position])
         }.attach()
-
         setupListeners()
     }
 
@@ -81,6 +90,7 @@ class HighlightsActivity : AppCompatActivity() {
         backgroundImagePath: String,
         title: String,
         overview: String,
+        genre: Gender,
         type: Int
     ) {
         Glide.with(binding.coverImageView.context)
@@ -105,6 +115,9 @@ class HighlightsActivity : AppCompatActivity() {
 
         binding.titleTextView.text = title
         binding.overviewTextView.text = overview
+        binding.typeTextView.text = genre.name
+
+        highlighthsViewModel.getRelatedMovies(genre.id)
     }
 
     fun setupMovie(movie: Movie){
@@ -115,6 +128,7 @@ class HighlightsActivity : AppCompatActivity() {
             movie.backdropCover,
             movie.title,
             movie.overview,
+            movie.currentGenders[0],
             args.type
         )
     }
@@ -127,6 +141,7 @@ class HighlightsActivity : AppCompatActivity() {
             tv.backdropCover,
             tv.title,
             tv.overview,
+            tv.currentGenders[0],
             args.type
         )
     }

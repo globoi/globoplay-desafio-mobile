@@ -45,7 +45,15 @@ interface TMDBService {
     suspend fun discoverTrendingMovies(
         @Query("language") language: String = "pt-BR",
         @Query("api_key") clientId: String = BuildConfig.TMDB_ACCESS_KEY
-    ):MovieSearchResponse
+    ): MovieSearchResponse
+
+
+    @GET("discover/movie")
+    suspend fun getRelatedMovies(
+        @Query("with_genres") genreId: Long,
+        @Query("language") language: String = "pt-BR",
+        @Query("api_key") clientId: String = BuildConfig.TMDB_ACCESS_KEY
+    ): MovieSearchResponse
 
     companion object {
         private const val BASE_URL = BuildConfig.BASE_URL

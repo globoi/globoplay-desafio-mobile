@@ -10,6 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import com.jackandphantom.carouselrecyclerview.CarouselLayoutManager
 import com.simonassi.globoplay.databinding.FragmentHomeBinding
+import com.simonassi.globoplay.databinding.NetworkErrorLayoutBinding
+import com.simonassi.globoplay.utilities.Utils
 import com.simonassi.globoplay.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
@@ -29,15 +31,17 @@ class HomeFragment : Fragment(), LifecycleObserver {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeViewModel.getMovies()
-        homeViewModel.getTvs()
-        homeViewModel.getTrending()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        if(context?.let { Utils.isNetworkAvailable(it) } != true){
+            val errorBinding = NetworkErrorLayoutBinding.inflate(inflater, container, false)
+            return errorBinding.root
+        }
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         context ?: return binding.root
@@ -52,6 +56,11 @@ class HomeFragment : Fragment(), LifecycleObserver {
         binding.carouselRecyclerView.adapter = carouselAdapter
 
         subscribeUi(movieAdapter, tvAdapter, carouselAdapter)
+
+        homeViewModel.getMovies()
+        homeViewModel.getTvs()
+        homeViewModel.getTrending()
+
         setHasOptionsMenu(true)
         return binding.root
     }

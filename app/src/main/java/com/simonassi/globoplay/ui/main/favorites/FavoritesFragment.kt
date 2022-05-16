@@ -10,8 +10,10 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.Observer
 import com.simonassi.globoplay.data.favorite.entity.Favorite
 import com.simonassi.globoplay.databinding.FragmentFavoritesBinding
+import com.simonassi.globoplay.databinding.NetworkErrorLayoutBinding
 import com.simonassi.globoplay.ui.main.home.MovieAdapter
 import com.simonassi.globoplay.ui.main.home.TvAdapter
+import com.simonassi.globoplay.utilities.Utils
 import com.simonassi.globoplay.viewmodels.FavoriteViewModel
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
@@ -24,13 +26,17 @@ class FavoritesFragment : Fragment(), LifecycleObserver {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        favoriteViewModel.getFavorites()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        if(context?.let { Utils.isNetworkAvailable(it) } != true){
+            val errorBinding = NetworkErrorLayoutBinding.inflate(inflater, container, false)
+            return errorBinding.root
+        }
 
         val binding: FragmentFavoritesBinding?
         binding = FragmentFavoritesBinding.inflate(inflater, container, false)
@@ -40,6 +46,8 @@ class FavoritesFragment : Fragment(), LifecycleObserver {
         binding.favoriteList.adapter = favoriteAdapter
 
         subscribeUi(favoriteAdapter)
+        favoriteViewModel.getFavorites()
+
         setHasOptionsMenu(true)
         return binding.root
     }

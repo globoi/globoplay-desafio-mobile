@@ -42,4 +42,13 @@ class TMDBRepository @Inject constructor(private val service: TMDBService) {
         }
     }
 
+    suspend fun getRelatedMovies(genreId: Long): List<Movie> {
+        return withContext(Dispatchers.Default){
+            val response = service.getRelatedMovies(genreId)
+            response.results
+        }
+    }
+
+
+
 }
