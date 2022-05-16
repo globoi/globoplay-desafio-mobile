@@ -16,6 +16,25 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/carousel_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                    app:spanCount="1"
+                    tools:context="com.simonassi.globoplay.ui.main.MainActivity"
+                    tools:listitem="@layout/list_item_carousel"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/layout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

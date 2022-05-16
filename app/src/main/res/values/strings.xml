@@ -20,5 +20,6 @@
     <string name="gender_detail">Gênero:</string>
     <string name="production_year_detail">Ano de produção:</string>
     <string name="director_details">Direção:</string>
+    <string name="view_more">Veja mais</string>
 
 </resources>

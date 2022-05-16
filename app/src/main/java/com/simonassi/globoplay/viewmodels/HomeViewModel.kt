@@ -19,6 +19,7 @@ class HomeViewModel @Inject constructor(
 
     val moviesLiveData = MutableLiveData<List<Movie>>(Generator.generateInitialMovies())
     val tvsLiveData = MutableLiveData<List<Tv>>(Generator.generateInitialTv())
+    val trendingLiveData = MutableLiveData<List<Movie>>()
 
     fun getMovies() {
         CoroutineScope(Dispatchers.Main).launch {
@@ -35,6 +36,16 @@ class HomeViewModel @Inject constructor(
                 repository.getTvs()
             }
             tvsLiveData.value = tvs
+        }
+    }
+
+    fun getTrending(){
+        CoroutineScope(Dispatchers.Main).launch {
+            val movies = withContext(Dispatchers.Default) {
+                repository.getTrendingMovies()
+            }
+            val homeMovies: MutableList<Movie> = movies.subList(0,4) as MutableList<Movie>
+            trendingLiveData.value = homeMovies
         }
     }
 }

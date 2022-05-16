@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
@@ -11,7 +10,6 @@
         <variable
             name="movieItem"
             type="com.simonassi.globoplay.data.movie.Movie" />
-
     </data>
 
     <androidx.cardview.widget.CardView
