@@ -20,4 +20,13 @@
         <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
         <item name="fullscreenTextColor">@color/light_blue_A200</item>
     </style>
+
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_bg</item>
+        <item name="colorPrimary">@color/page_background</item>
+        <item name="colorPrimaryDark">@color/page_background</item>
+        <item name="colorAccent">@color/page_background</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
 </resources>

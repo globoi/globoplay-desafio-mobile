@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/background_button_outline.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/background_carousel.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/background_highlight.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/background_splash.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/bottom_nav_icon_color_selector.xml" value="0.149" />
         <entry key="app/src/main/res/drawable/highlight_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.149" />
@@ -17,9 +18,11 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.123" />
         <entry key="app/src/main/res/drawable/ic_start.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/splash.xml" value="0.11" />
         <entry key="app/src/main/res/layout/activity_highlights.xml" value="0.236492919921875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2009597778320312" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.15208333333333332" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.24820599409033348" />
         <entry key="app/src/main/res/layout/custom_action_bar.xml" value="0.22314814814814815" />
         <entry key="app/src/main/res/layout/error_layout.xml" value="0.2560780843098958" />
         <entry key="app/src/main/res/layout/fragment_details.xml" value="0.3135345458984375" />
