@@ -18,14 +18,14 @@
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.123" />
         <entry key="app/src/main/res/drawable/ic_start.xml" value="0.11" />
         <entry key="app/src/main/res/layout/activity_highlights.xml" value="0.236492919921875" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19954986572265626" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2009597778320312" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.15208333333333332" />
         <entry key="app/src/main/res/layout/custom_action_bar.xml" value="0.22314814814814815" />
         <entry key="app/src/main/res/layout/error_layout.xml" value="0.2560780843098958" />
         <entry key="app/src/main/res/layout/fragment_details.xml" value="0.3135345458984375" />
         <entry key="app/src/main/res/layout/fragment_favorites.xml" value="0.246875" />
         <entry key="app/src/main/res/layout/fragment_highlights.xml" value="0.25555555555555554" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.18446472167968747" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2637890625" />
         <entry key="app/src/main/res/layout/fragment_more_content.xml" value="0.25555555555555554" />
         <entry key="app/src/main/res/layout/fragment_movie_details.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.246875" />
@@ -35,6 +35,7 @@
         <entry key="app/src/main/res/layout/list_item_movie.xml" value="0.5003143310546875" />
         <entry key="app/src/main/res/layout/list_item_tv.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/named_action_bar.xml" value="0.29599609375" />
+        <entry key="app/src/main/res/layout/network_error_layout.xml" value="0.25555555555555554" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.246875" />
       </map>
     </option>

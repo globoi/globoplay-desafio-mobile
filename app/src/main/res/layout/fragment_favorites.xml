@@ -3,32 +3,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/page_background">
+        android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/fav_tab_bar_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:background="@color/black"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/favorite_list"
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/header_background"
+                android:gravity="center"
+                android:text="@string/my_list"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/page_background">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="8dp"
-                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-                app:spanCount="3"
+                android:orientation="vertical">
 
-                tools:context="com.simonassi.globoplay.ui.main.MainActivity"
-                tools:listitem="@layout/list_item_favorite">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/favorite_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                    app:spanCount="3"
 
-            </androidx.recyclerview.widget.RecyclerView>
-        </LinearLayout>
-    </ScrollView>
+                    tools:context="com.simonassi.globoplay.ui.main.MainActivity"
+                    tools:listitem="@layout/list_item_favorite">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 
 </layout>

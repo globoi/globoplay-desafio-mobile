@@ -12,6 +12,8 @@
     <color name="primary_background">#000000</color>
     <color name="secondary_background">#090909</color>
     <color name="page_background">#1f1f1f</color>
+    <color name="page_background_translucent">#661F1F1F</color>
+    <color name="header_background">#000001</color>
     <color name="card_background">#171717</color>
     <color name="secondary_white">#99FFFFFF</color>
     <color name="transparent">#00000000</color>

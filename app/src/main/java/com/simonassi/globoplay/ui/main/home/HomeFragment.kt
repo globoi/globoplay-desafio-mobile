@@ -1,14 +1,13 @@
 package com.simonassi.globoplay.ui.main.home
 
 import android.os.Bundle
-import android.os.Handler
-import androidx.fragment.app.Fragment
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
-import com.jackandphantom.carouselrecyclerview.CarouselLayoutManager
 import com.simonassi.globoplay.databinding.FragmentHomeBinding
 import com.simonassi.globoplay.databinding.NetworkErrorLayoutBinding
 import com.simonassi.globoplay.utilities.Utils
@@ -18,6 +17,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), LifecycleObserver {
@@ -56,6 +56,7 @@ class HomeFragment : Fragment(), LifecycleObserver {
         binding.carouselRecyclerView.adapter = carouselAdapter
 
         subscribeUi(movieAdapter, tvAdapter, carouselAdapter)
+        setTabBarAnimation()
 
         homeViewModel.getMovies()
         homeViewModel.getTvs()
@@ -88,6 +89,22 @@ class HomeFragment : Fragment(), LifecycleObserver {
     private fun stopAutoScroll(){
         job?.cancel()
         job = null
+    }
+
+    private fun setTabBarAnimation(){
+        val mainScrollView = binding.homeScrollView
+        val tabBarLayout = binding.tabBarLayout
+        mainScrollView.viewTreeObserver.addOnScrollChangedListener {
+            val scrollY: Int = mainScrollView.scrollY // For ScrollView
+            tabBarLayout.background.alpha = getAlpha(scrollY, 600)
+        }
+    }
+
+    private fun getAlpha(position: Int, viewHeight: Int): Int {
+        if ((position > viewHeight) || (viewHeight <= 0)) {
+            return 255
+        }
+        return (position * 255) / viewHeight
     }
 
     private fun subscribeUi(movieAdapter: MovieAdapter, tvAdapter: TvAdapter, carouselAdapter: CarouselAdapter) {

@@ -12,6 +12,7 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fitsSystemWindows="false"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view"
         app:layout_constraintLeft_toLeftOf="parent"
