@@ -35,4 +35,11 @@ class TMDBRepository @Inject constructor(private val service: TMDBService) {
         }
     }
 
+    suspend fun getTrendingMovies(): List<Movie> {
+        return withContext(Dispatchers.Default){
+            val response = service.discoverTrendingMovies()
+            response.results
+        }
+    }
+
 }

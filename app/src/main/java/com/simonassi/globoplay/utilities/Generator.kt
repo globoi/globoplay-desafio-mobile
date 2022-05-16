@@ -9,7 +9,7 @@ class Generator {
         fun generateInitialMovies(): MutableList<Movie> {
             val list: MutableList<Movie> = mutableListOf()        // or, use `arrayListOf`
             for (i: Int in 0..5) {
-                list.add(Movie(-1,"", "", "", "", listOf(), "", ""))
+                list.add(Movie(-1,"", "", "", "", listOf(), listOf(), "",""))
             }
             return list
         }
@@ -17,7 +17,7 @@ class Generator {
         fun generateInitialTv(): MutableList<Tv> {
             val list: MutableList<Tv> = mutableListOf()        // or, use `arrayListOf`
             for (i: Int in 0..5) {
-                list.add(Tv(-1,"", "", "", listOf(), "", ""))
+                list.add(Tv(-1,"", "", "", listOf(), listOf(), "", "", ""))
             }
             return list
         }

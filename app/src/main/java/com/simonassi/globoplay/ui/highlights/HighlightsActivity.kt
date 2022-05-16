@@ -6,13 +6,16 @@ import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.google.android.material.tabs.TabLayoutMediator
 import com.simonassi.globoplay.BuildConfig
 import com.simonassi.globoplay.R
 import com.simonassi.globoplay.data.favorite.entity.Favorite
@@ -63,6 +66,13 @@ class HighlightsActivity : AppCompatActivity() {
                 highlighthsViewModel.getTvById(args.itemId)
             }
         }
+
+        binding.moreContentViewPager.adapter = TabAdapter(this)
+        TabLayoutMediator(binding.moreContentTabLayout, binding.moreContentViewPager){tab, position ->
+            val titles = listOf(R.string.suggestion_title, R.string.details_title)
+            tab.text = this.getString(titles[position])
+        }.attach()
+
         setupListeners()
     }
 
@@ -162,13 +172,12 @@ class HighlightsActivity : AppCompatActivity() {
         })
 
         binding.showContentButton.setOnClickListener(View.OnClickListener {
-            Log.d("TOuch", "aoba")
+            //TODO: Not Impl
         })
 
         binding.goBackButton.setOnClickListener(View.OnClickListener {
             finish()
         })
     }
-
 
 }

@@ -12,6 +12,7 @@
     <color name="primary_background">#000000</color>
     <color name="secondary_background">#090909</color>
     <color name="page_background">#1f1f1f</color>
+    <color name="card_background">#171717</color>
     <color name="secondary_white">#99FFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="light_blue_600">#FF039BE5</color>
@@ -19,5 +20,7 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+    <color name="text_gray">#505050</color>
+
 
 </resources>

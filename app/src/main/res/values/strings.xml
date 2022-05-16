@@ -12,8 +12,13 @@
     <string name="added_into_my_list">Adicionado</string>
 
     <string name="database_name">globoplay_db</string>
+    <string name="details_title">DETALHES</string>
+    <string name="suggestion_title">ASSISTA TAMBÉM</string>
 
-
-
+    <string name="details_title_fragment">Ficha técnica:</string>
+    <string name="original_title_detail">Título Original:</string>
+    <string name="gender_detail">Gênero:</string>
+    <string name="production_year_detail">Ano de produção:</string>
+    <string name="director_details">Direção:</string>
 
 </resources>
