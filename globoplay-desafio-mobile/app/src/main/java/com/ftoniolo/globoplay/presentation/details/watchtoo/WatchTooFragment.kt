@@ -13,6 +13,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ftoniolo.globoplay.databinding.FragmentWatchTooBinding
 import com.ftoniolo.globoplay.framework.imageLoader.ImageLoader
+import com.ftoniolo.globoplay.presentation.details.TabViewPagerArgs
 import com.ftoniolo.globoplay.presentation.home.HomeLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -26,8 +27,6 @@ class WatchTooFragment : Fragment {
     constructor(filmId: Long){
         this.filmId = filmId
     }
-
-    private val id = arguments?.getLong("filmId")
 
     private var _binding: FragmentWatchTooBinding? = null
     private val binding: FragmentWatchTooBinding get() = _binding!!
@@ -67,8 +66,8 @@ class WatchTooFragment : Fragment {
                 }
             }
         }
-        id?.let {
-            viewModel.showFilms(it)
+        id.let {
+            viewModel.showFilms(filmId!!)
         }
     }
 

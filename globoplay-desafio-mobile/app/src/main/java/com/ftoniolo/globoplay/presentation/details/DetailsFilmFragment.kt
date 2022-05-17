@@ -1,9 +1,12 @@
 package com.ftoniolo.globoplay.presentation.details
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -46,7 +49,29 @@ class DetailsFilmFragment : Fragment() {
         setView()
         setSharedElementTransitionOnEnter()
         setAndObserveFavoriteUiState(args.detailsFilmViewArgs)
+        setAndObserveTrailerUiState(args.detailsFilmViewArgs)
         setupTabViews()
+    }
+
+    private fun setAndObserveTrailerUiState(detailsFilmViewArgs: DetailsFilmViewArg) {
+        viewModel.trailer.run {
+            binding.buttonTrailer.setOnClickListener {
+                load(detailsFilmViewArgs.id)
+            }
+            state.observe(viewLifecycleOwner) { uiState ->
+                when(uiState) {
+                    is TrailerUiActionStateLiveData.UiState.Success -> {
+                        val intent = Intent( Intent.ACTION_VIEW, Uri.parse(uiState.trailerList[0].trailerUrl))
+                        intent.putExtra("force_fullscreen",true);
+                        startActivity(intent);
+                    }
+                    TrailerUiActionStateLiveData.UiState.Error -> {
+                        Toast.makeText(context, R.string.error_trailer_unavailable, Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+            }
+        }
     }
 
     private fun setView(){

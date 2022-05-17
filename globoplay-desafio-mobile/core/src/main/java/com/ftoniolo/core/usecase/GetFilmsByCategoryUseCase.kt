@@ -14,7 +14,7 @@ interface GetFilmsByCategoryUseCase {
 
     operator fun invoke(params: GetMoviesByCategoryParams): Flow<ResultStatus<HomeData>>
 
-    data class GetMoviesByCategoryParams(val genreId: Long)
+    data class GetMoviesByCategoryParams(val genreId: Unit = Unit)
 }
 
 @Suppress("MagicNumber")

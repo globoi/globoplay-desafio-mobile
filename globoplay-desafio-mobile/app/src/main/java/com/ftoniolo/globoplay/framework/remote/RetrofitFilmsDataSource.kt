@@ -2,9 +2,11 @@ package com.ftoniolo.globoplay.framework.remote
 
 import com.ftoniolo.core.data.repository.FilmsRemoteDataSource
 import com.ftoniolo.core.domain.model.Film
+import com.ftoniolo.core.domain.model.Trailer
 import com.ftoniolo.core.domain.model.WatchTooPaging
 import com.ftoniolo.globoplay.framework.network.TmdbApi
 import com.ftoniolo.globoplay.framework.network.response.film.toFilmModel
+import com.ftoniolo.globoplay.framework.network.response.trailer.toTrailer
 import com.ftoniolo.globoplay.framework.network.response.watchtoo.toWatchTooModel
 import javax.inject.Inject
 
@@ -34,5 +36,11 @@ class RetrofitFilmsDataSource @Inject constructor(
             totalPages = data.totalPages,
             films = films
         )
+    }
+
+    override suspend fun fetchTrailerById(filmId: Long): List<Trailer> {
+        return tmdbApi.getTrailerById(filmId).results.map {
+            it.toTrailer()
+        }
     }
 }

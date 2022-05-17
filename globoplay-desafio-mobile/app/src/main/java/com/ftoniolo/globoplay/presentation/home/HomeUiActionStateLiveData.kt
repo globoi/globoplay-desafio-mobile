@@ -22,7 +22,7 @@ class HomeUiActionStateLiveData (
             when (it){
                 is Action.Load -> {
                     getFilmsByCategoryUseCase.invoke(
-                        GetFilmsByCategoryUseCase.GetMoviesByCategoryParams(it.genreId)
+                        GetFilmsByCategoryUseCase.GetMoviesByCategoryParams()
                     ).watchStatus(
                         loading = {
                             emit(UiState.Loading)
@@ -68,7 +68,7 @@ class HomeUiActionStateLiveData (
     }
 
     fun load(){
-        action.value = Action.Load(ID)
+        action.value = Action.Load
     }
 
     private fun mapHomeData(homeParentList: MutableList<HomeParentVE>, list: List<Film>, @StringRes category: Int){
@@ -95,10 +95,6 @@ class HomeUiActionStateLiveData (
     }
 
     sealed class Action {
-        data class Load(val genreId: Long) : Action()
-    }
-
-    companion object{
-        private const val ID = 10752L
+        object Load : Action()
     }
 }

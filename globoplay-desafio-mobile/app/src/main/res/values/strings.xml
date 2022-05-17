@@ -5,6 +5,7 @@
     <string name="app_menu_favorites_add">Adicionado</string>
     <string name="error_loading_data">Erro ao carregar dados</string>
     <string name="error_add_favorite">Erro ao adicionar favoritos</string>
+    <string name="error_trailer_unavailable">"Trailer indisponível"</string>
     <string name="error_remove_favorite">Erro ao remover favoritos</string>
     <string name="try_again">Tente Novamente</string>
     <string name="error_loading_more_try_again">Erro ao tentar carregar próxima pagina</string>

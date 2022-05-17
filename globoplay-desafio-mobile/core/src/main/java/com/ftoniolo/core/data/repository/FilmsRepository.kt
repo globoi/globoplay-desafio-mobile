@@ -2,6 +2,7 @@ package com.ftoniolo.core.data.repository
 
 import androidx.paging.PagingSource
 import com.ftoniolo.core.domain.model.Film
+import com.ftoniolo.core.domain.model.Trailer
 import com.ftoniolo.core.domain.model.WatchToo
 
 interface FilmsRepository {
@@ -11,4 +12,6 @@ interface FilmsRepository {
     suspend fun getMoviesByCategory(genreId: Long): List<Film>
 
     fun getWatchToo(filmId: Long): PagingSource<Int, WatchToo>
+
+    suspend fun getTrailerById(filmId: Long): List<Trailer>
 }
