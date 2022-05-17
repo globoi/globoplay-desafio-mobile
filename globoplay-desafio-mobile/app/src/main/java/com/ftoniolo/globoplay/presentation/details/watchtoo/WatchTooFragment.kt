@@ -24,7 +24,7 @@ import javax.inject.Inject
 class WatchTooFragment : Fragment {
     private var filmId: Long? = null
     constructor() : super()
-    constructor(filmId: Long){
+    constructor(filmId: Long) {
         this.filmId = filmId
     }
 
@@ -66,8 +66,8 @@ class WatchTooFragment : Fragment {
                 }
             }
         }
-        id.let {
-            viewModel.showFilms(filmId!!)
+        filmId.let {
+            viewModel.showFilms(it!!)
         }
     }
 
