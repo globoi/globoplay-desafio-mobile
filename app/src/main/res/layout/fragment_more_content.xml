@@ -20,7 +20,7 @@
             app:spanCount="1"
 
             tools:context="com.simonassi.globoplay.ui.highlights.HighlightsActivity"
-            tools:listitem="@layout/list_item_more_content">
+            tools:listitem="@layout/list_item_card_movie">
 
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>

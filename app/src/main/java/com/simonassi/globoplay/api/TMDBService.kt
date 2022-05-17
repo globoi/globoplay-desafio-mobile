@@ -55,6 +55,13 @@ interface TMDBService {
         @Query("api_key") clientId: String = BuildConfig.TMDB_ACCESS_KEY
     ): MovieSearchResponse
 
+    @GET("search/movie")
+    suspend fun searchMoviesByKeyword(
+        @Query("query") keyword: String,
+        @Query("language") language: String = "pt-BR",
+        @Query("api_key") clientId: String = BuildConfig.TMDB_ACCESS_KEY
+    ): MovieSearchResponse
+
     companion object {
         private const val BASE_URL = BuildConfig.BASE_URL
 

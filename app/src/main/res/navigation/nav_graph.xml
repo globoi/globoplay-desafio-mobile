@@ -27,7 +27,11 @@
         android:id="@+id/search_pager_fragments"
         android:name="com.simonassi.globoplay.ui.main.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_search_pager_fragments_to_highlights_activity"
+            app:destination="@id/highlights_activity" />
+    </fragment>
     <activity
         android:id="@+id/highlights_activity"
         android:name="com.simonassi.globoplay.ui.highlights.HighlightsActivity"

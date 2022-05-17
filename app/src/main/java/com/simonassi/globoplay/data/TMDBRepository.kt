@@ -56,6 +56,12 @@ class TMDBRepository @Inject constructor(private val service: TMDBService) {
         }
     }
 
+    suspend fun searchMoviesByKeyword(key: String): List<Movie> {
+        return withContext(Dispatchers.Default){
+            val response = service.searchMoviesByKeyword(keyword = key)
+            response.results
+        }
+    }
 
 
 }

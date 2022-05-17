@@ -6,7 +6,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/page_background">
+        android:background="@color/page_background"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -14,45 +15,68 @@
             android:background="@color/header_background"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/search_tab_layout"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="255"
-                android:background="@color/black"
-                android:orientation="horizontal">
+                android:padding="5dp">
 
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="60dp"
+                <EditText
+                    android:id="@+id/search_text_input"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_search"
-                    app:tint="@color/secondary_white" />
+                    android:layout_marginEnd="100dp"
+                    android:background="@drawable/background_input"
+                    android:ems="10"
+                    android:hint="@string/search_hint"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="10dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/secondary_white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <Button
+                    android:id="@+id/search_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="100"
-                    android:background="@color/black"
-                    android:padding="10dp"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp">
+                    android:background="@drawable/background_button"
+                    android:backgroundTint="@color/page_background"
+                    android:text="@string/search_btn"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/search_text_input"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:rippleColor="@color/white" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/page_background"
-                        android:hint="@string/search_hint"
-                        android:shadowColor="@color/secondary_white"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/secondary_white" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTintMode="src_atop"
+                android:indeterminateTint="@color/secondary_white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_result_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+
+                tools:listitem="@layout/list_item_search_result" />
+        </LinearLayout>
+
     </LinearLayout>
 </layout>

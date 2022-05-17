@@ -5,56 +5,59 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.simonassi.globoplay.R
+import com.simonassi.globoplay.databinding.FragmentFavoritesBinding
+import com.simonassi.globoplay.databinding.FragmentSearchBinding
+import com.simonassi.globoplay.databinding.NetworkErrorLayoutBinding
+import com.simonassi.globoplay.ui.main.favorites.FavoriteAdapter
+import com.simonassi.globoplay.utilities.Utils
+import com.simonassi.globoplay.viewmodels.FavoriteViewModel
+import com.simonassi.globoplay.viewmodels.SearchViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val searchViewModel: SearchViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+    ): View {
+
+        if(context?.let { Utils.isNetworkAvailable(it) } != true){
+            val errorBinding = NetworkErrorLayoutBinding.inflate(inflater, container, false)
+            return errorBinding.root
+        }
+
+        val binding: FragmentSearchBinding?
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
+        context ?: return binding.root
+
+        val searchAdapter = SearchResultAdapter()
+        binding.searchResultRecyclerView.adapter = searchAdapter
+        val progressBar = binding.progressBar
+        progressBar.visibility = View.INVISIBLE
+        subscribeUi(searchAdapter, progressBar)
+
+        binding.searchBtn.setOnClickListener {
+            val key = binding.searchTextInput.text.toString()
+            if (key.isNotEmpty()) {
+                searchViewModel.getMovieByKeyword(key)
+                progressBar.visibility = View.VISIBLE
+            }
+        }
+
+        setHasOptionsMenu(true)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun subscribeUi(searchAdapter: SearchResultAdapter, progressBar: ProgressBar) {
+        searchViewModel.resultSearchLiveData.observe(viewLifecycleOwner, Observer { movies ->
+            searchAdapter.submitList(movies)
+            progressBar.visibility = View.INVISIBLE
+        })
     }
 }

@@ -24,5 +24,6 @@
     <string name="network_error_title">Erro de conexão</string>
     <string name="network_error_description">Por favor, verifique sua conexão e tente novamente.</string>
     <string name="search_hint">O que você quer assistir?</string>
+    <string name="search_btn">Buscar</string>
 
 </resources>
