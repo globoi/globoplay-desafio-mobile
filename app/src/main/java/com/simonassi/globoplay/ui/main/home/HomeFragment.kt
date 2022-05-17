@@ -1,7 +1,6 @@
 package com.simonassi.globoplay.ui.main.home
 
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +12,8 @@ import com.simonassi.globoplay.databinding.NetworkErrorLayoutBinding
 import com.simonassi.globoplay.utilities.Utils
 import com.simonassi.globoplay.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collectLatest
 
 
 @AndroidEntryPoint
@@ -26,19 +23,13 @@ class HomeFragment : Fragment(), LifecycleObserver {
     lateinit var binding: FragmentHomeBinding
     val scope = MainScope() // could also use an other scope such as viewModelScope if available
     var job: Job? = null
-    private val TRANSITION_TIME_MILISECONDS = 4000L
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        if(context?.let { Utils.isNetworkAvailable(it) } != true){
+        if (context?.let { Utils.isNetworkAvailable(it) } != true) {
             val errorBinding = NetworkErrorLayoutBinding.inflate(inflater, container, false)
             return errorBinding.root
         }
@@ -59,7 +50,7 @@ class HomeFragment : Fragment(), LifecycleObserver {
         setTabBarAnimation()
 
         homeViewModel.getMovies()
-        homeViewModel.getTvs()
+
         homeViewModel.getTrending()
 
         setHasOptionsMenu(true)
@@ -71,27 +62,29 @@ class HomeFragment : Fragment(), LifecycleObserver {
         super.onDestroyView()
     }
 
-    private fun setupAutoScroll(){
+    private fun setupAutoScroll() {
         val recyclerView = binding.carouselRecyclerView
         stopAutoScroll()
         job = scope.launch {
             var position = 0
-            while(true) {
-                delay(TRANSITION_TIME_MILISECONDS)
-                position = if(position < recyclerView.adapter!!.itemCount -1){
-                    position+1
-                }else{ 0 }
+            while (true) {
+                delay(TRANSITION_TIME_MILLISECONDS)
+                position = if (position < recyclerView.adapter!!.itemCount - 1) {
+                    position + 1
+                } else {
+                    0
+                }
                 recyclerView.adapter?.let { recyclerView.smoothScrollToPosition(position) }
             }
         }
     }
 
-    private fun stopAutoScroll(){
+    private fun stopAutoScroll() {
         job?.cancel()
         job = null
     }
 
-    private fun setTabBarAnimation(){
+    private fun setTabBarAnimation() {
         val mainScrollView = binding.homeScrollView
         val tabBarLayout = binding.tabBarLayout
         mainScrollView.viewTreeObserver.addOnScrollChangedListener {
@@ -107,18 +100,36 @@ class HomeFragment : Fragment(), LifecycleObserver {
         return (position * 255) / viewHeight
     }
 
-    private fun subscribeUi(movieAdapter: MovieAdapter, tvAdapter: TvAdapter, carouselAdapter: CarouselAdapter) {
-        homeViewModel.moviesLiveData.observe(viewLifecycleOwner, Observer { movies ->
-            movieAdapter.submitList(movies)
-        })
+    private fun subscribeUi(
+        movieAdapter: MovieAdapter,
+        tvAdapter: TvAdapter,
+        carouselAdapter: CarouselAdapter
+    ) {
 
-        homeViewModel.tvsLiveData.observe(viewLifecycleOwner, Observer { tvs ->
-            tvAdapter.submitList(tvs)
-        })
+        CoroutineScope(Dispatchers.Main).launch {
+            withContext(Dispatchers.Default) {
+                homeViewModel.getTvs().collectLatest {
+                    tvAdapter.submitData(it)
+                }
+            }
+        }
+
+        CoroutineScope(Dispatchers.Main).launch {
+            withContext(Dispatchers.Default) {
+                homeViewModel.getMovies().collectLatest {
+                    movieAdapter.submitData(it)
+                }
+            }
+        }
 
         homeViewModel.trendingLiveData.observe(viewLifecycleOwner, Observer { movies ->
             carouselAdapter.submitList(movies)
             setupAutoScroll()
         })
+    }
+
+    companion object {
+        private const val TRANSITION_TIME_MILLISECONDS = 4000L
+
     }
 }

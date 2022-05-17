@@ -1,19 +1,19 @@
 package com.simonassi.globoplay.ui.main.home
 
+import androidx.paging.PagingDataAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.ListAdapter
 import com.simonassi.globoplay.BuildConfig
 import com.simonassi.globoplay.data.tv.Tv
 import com.simonassi.globoplay.databinding.ListItemTvBinding
 import com.simonassi.globoplay.utilities.contants.ImageQualitySpec
 import com.simonassi.globoplay.utilities.contants.ItemType
 
-class TvAdapter : ListAdapter<Tv, RecyclerView.ViewHolder>(TvDiffCallback()) {
+class TvAdapter : PagingDataAdapter<Tv, RecyclerView.ViewHolder>(PagingTvDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return TvViewHolder(
             ListItemTvBinding.inflate(
@@ -26,7 +26,9 @@ class TvAdapter : ListAdapter<Tv, RecyclerView.ViewHolder>(TvDiffCallback()) {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val tv = getItem(position)
-        (holder as TvViewHolder).bind(tv)
+        if (tv != null) {
+            (holder as TvViewHolder).bind(tv)
+        }
     }
 
     class TvViewHolder(
@@ -60,7 +62,7 @@ class TvAdapter : ListAdapter<Tv, RecyclerView.ViewHolder>(TvDiffCallback()) {
     }
 }
 
-private class TvDiffCallback : DiffUtil.ItemCallback<Tv>() {
+private class PagingTvDiffCallback : DiffUtil.ItemCallback<Tv>() {
 
     override fun areItemsTheSame(oldItem: Tv, newItem: Tv): Boolean {
         return oldItem.id == newItem.id

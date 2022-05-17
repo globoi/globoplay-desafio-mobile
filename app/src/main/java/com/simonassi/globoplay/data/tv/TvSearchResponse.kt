@@ -5,5 +5,7 @@ import com.simonassi.globoplay.data.tv.Tv
 
 data class TvSearchResponse (
     @field:SerializedName("results") val results: List<Tv>,
-    @field:SerializedName("total_pages") val totalPages: Int
+    @field:SerializedName("total_pages") val totalPages: Int,
+    @field:SerializedName("page") val page: Int,
+
 )

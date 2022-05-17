@@ -16,6 +16,13 @@ class TMDBRepository @Inject constructor(private val service: TMDBService) {
         }
     }
 
+    suspend fun getMoviesWithPagination(query: String, page: Int, perPage: Int, sort: String): List<Movie> {
+        return withContext(Dispatchers.Default){
+            val response = service.discoverMovies()
+            response.results
+        }
+    }
+
     suspend fun getTvs(): List<Tv> {
         return withContext(Dispatchers.Default){
             val response = service.discoverTvs()
