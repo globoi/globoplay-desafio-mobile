@@ -1,19 +1,36 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
-    compileSdk 32
+    compileSdk rootProject.compileSdkVersion
+
+    dataBinding {
+        enabled = true
+    }
 
     defaultConfig {
         applicationId "com.simonassi.globoplay"
-        minSdk 26
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        minSdk rootProject.minSdkVersion
+        targetSdk rootProject.targetSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "TMDB_ACCESS_KEY", "\"" + getTMDBAccess() + "\"")
+        buildConfigField("String", "BASE_URL", "\"" + getBaseUrl() + "\"")
+        buildConfigField("String", "BUCKET_URL", "\"" + getBucketUrl() + "\"")
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
+            }
+        }
     }
 
     buildTypes {
@@ -29,21 +46,85 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation "androidx.core:core-ktx:$rootProject.ktx_version"
+    implementation "androidx.appcompat:appcompat:$rootProject.app_compat_version"
+    implementation "com.google.android.material:material:$rootProject.android_material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraint_layout_version"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.legacy_suport_v4_version"
+    testImplementation "junit:junit:$rootProject.junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso_core"
 
     //For bottom tab navigation
-    def nav_version = "2.4.2"
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.nav_version"
+
+    //For Retrofit - HTTP Requests
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+
+    //For RecyclerView Pagination
+    implementation "androidx.paging:paging-runtime:$rootProject.pagination_version"
+
+    // For Kotlin Coroutines - Suspended Functions
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+
+    //For dependency injection
+    kapt "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
+    implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
+
+    //For Architecture Components: ViewModel e LiveData
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifeCycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifeCycleVersion"
+
+    //For layouts dataBinding
+    kapt "com.android.databinding:compiler:$rootProject.databinding"
+
+    //For load images into imageView
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+
+    //For blur transformations
+    implementation "jp.wasabeef:glide-transformations:$rootProject.glideTransformations"
+
+    //For Room API - manage Local Databases
+    implementation "androidx.room:room-runtime:$rootProject.room_version"
+    implementation "androidx.room:room-ktx:$rootProject.room_version"
+    kapt "androidx.room:room-compiler:$rootProject.room_version"
+
+}
+
+kapt {
+    generateStubs = true
+}
+
+/**
+ * Get the api key defined inside gradle.properties file in root project
+ * @return api key
+ */
+def getTMDBAccess() {
+    return project.findProperty("tmdb_access_key")
+}
+
+/**
+ * Get the base url defined inside gradle.properties file in root project
+ * @return The Movie Database Base Url
+ */
+def getBaseUrl(){
+    return project.findProperty("base_url")
+}
+
+/**
+ * Get image repository defined inside gradle.properties file in root project
+ * @return The Movie Database Image Repository Url
+ */
+def getBucketUrl(){
+    return project.findProperty("bucket_url")
 }

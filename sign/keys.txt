@@ -1,0 +1,2 @@
+alias: globo
+password: 12345678

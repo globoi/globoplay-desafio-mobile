@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="tvItem"
+            type="com.simonassi.globoplay.data.tv.Tv" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="200dp"
+        android:layout_height="280dp"
+        android:layout_marginHorizontal="5dp"
+        android:onClick="@{clickListener}"
+        app:cardCornerRadius="20dp">
+
+        <ImageView
+            android:id="@+id/poster_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/menu_disabled"
+            android:contentDescription="@string/poster_image"
+            android:scaleType="centerCrop"
+            app:imageFromUrl="@{tvItem.cover}" />
+    </androidx.cardview.widget.CardView>
+
+</layout>

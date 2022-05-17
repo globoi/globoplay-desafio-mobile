@@ -1,9 +1,29 @@
 <resources>
     <string name="app_name">Globoplay</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_title">Início</string>
     <string name="search_title">Busca</string>
     <string name="favorites_title">Minha Lista</string>
+    <string name="poster_image">Filme poster</string>
+    <string name="movie_list_title">Cinema</string>
+    <string name="tv_novels_list_title">Novelas</string>
+    <string name="tv_episodes_title">Séries</string>
+    <string name="show_content">Assista</string>
+    <string name="my_list">Minha lista</string>
+    <string name="added_into_my_list">Adicionado</string>
+
+    <string name="database_name">globoplay_db</string>
+    <string name="details_title">DETALHES</string>
+    <string name="suggestion_title">ASSISTA TAMBÉM</string>
+
+    <string name="details_title_fragment">Ficha técnica:</string>
+    <string name="original_title_detail">Título Original:</string>
+    <string name="gender_detail">Gênero:</string>
+    <string name="production_year_detail">Ano de produção:</string>
+    <string name="director_details">Direção:</string>
+    <string name="view_more">Veja mais</string>
+    <string name="network_error_title">Erro de conexão</string>
+    <string name="network_error_description">Por favor, verifique sua conexão e tente novamente.</string>
+    <string name="search_hint">O que você quer assistir?</string>
+    <string name="search_btn">Buscar</string>
 
 </resources>
