@@ -35,7 +35,7 @@ class SplashScreenActivity : AppCompatActivity() {
         animation.addAnimation(fadeOut)
         animation.fillAfter = true
 
-        Timer("Navigate", false).schedule(1500) {
+        Timer("Navigate", false).schedule(1600) {
             val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION or
                     Intent.FLAG_ACTIVITY_CLEAR_TOP or
