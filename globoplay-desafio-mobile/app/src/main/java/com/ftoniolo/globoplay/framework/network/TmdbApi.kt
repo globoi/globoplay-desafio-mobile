@@ -2,6 +2,8 @@ package com.ftoniolo.globoplay.framework.network
 
 import com.ftoniolo.globoplay.framework.network.response.film.FilmResponse
 import com.ftoniolo.globoplay.framework.network.response.film.FilmsDataWrapperResponse
+import com.ftoniolo.globoplay.framework.network.response.trailer.TrailerDataWrapperResponse
+import com.ftoniolo.globoplay.framework.network.response.trailer.TrailerResponse
 import com.ftoniolo.globoplay.framework.network.response.watchtoo.WatchTooResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -27,4 +29,10 @@ interface TmdbApi {
         @QueryMap
         queries: Map<String, String>
     ):FilmsDataWrapperResponse<WatchTooResponse>
+
+    @GET("movie/{filmId}/videos")
+    suspend fun getTrailerById(
+        @Path("filmId")
+        filmId: Long
+    ): TrailerDataWrapperResponse
 }
