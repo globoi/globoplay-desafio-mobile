@@ -59,23 +59,25 @@
             android:orientation="vertical">
 
             <ProgressBar
-                android:id="@+id/progressBar"
+                android:id="@+id/progress_bar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:indeterminate="true"
-                android:indeterminateTintMode="src_atop"
-                android:indeterminateTint="@color/secondary_white" />
+                android:layout_height="5dp"
+                android:progressDrawable="@android:drawable/progress_horizontal" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/search_result_recycler_view"
+                android:id="@+id/result_search_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="8dp"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:spanCount="1"
 
-                tools:listitem="@layout/list_item_search_result" />
+                tools:context="com.simonassi.globoplay.ui.main.MainActivity"
+                tools:listitem="@layout/list_item_search_result"/>
+
         </LinearLayout>
 
     </LinearLayout>

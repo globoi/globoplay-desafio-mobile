@@ -21,7 +21,7 @@ class HomeFragment : Fragment(), LifecycleObserver {
 
     private val homeViewModel: HomeViewModel by viewModels()
     lateinit var binding: FragmentHomeBinding
-    val scope = MainScope() // could also use an other scope such as viewModelScope if available
+    private val scope = MainScope()
     var job: Job? = null
 
     override fun onCreateView(
@@ -37,6 +37,8 @@ class HomeFragment : Fragment(), LifecycleObserver {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
+        binding.homeProgress.visibility = View.VISIBLE
+
         val movieAdapter = MovieAdapter()
         binding.movieList.adapter = movieAdapter
 
@@ -48,8 +50,6 @@ class HomeFragment : Fragment(), LifecycleObserver {
 
         subscribeUi(movieAdapter, tvAdapter, carouselAdapter)
         setTabBarAnimation()
-
-        homeViewModel.getMovies()
 
         homeViewModel.getTrending()
 
@@ -125,11 +125,11 @@ class HomeFragment : Fragment(), LifecycleObserver {
         homeViewModel.trendingLiveData.observe(viewLifecycleOwner, Observer { movies ->
             carouselAdapter.submitList(movies)
             setupAutoScroll()
+            binding.homeProgress.visibility = View.INVISIBLE
         })
     }
 
     companion object {
         private const val TRANSITION_TIME_MILLISECONDS = 4000L
-
     }
 }

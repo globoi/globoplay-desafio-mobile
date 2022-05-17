@@ -92,7 +92,6 @@ class HighlightsActivity : AppCompatActivity() {
         title: String,
         overview: String,
         genre: Gender,
-        type: Int
     ) {
         Glide.with(binding.coverImageView.context)
             .load(coverPath)
@@ -130,7 +129,6 @@ class HighlightsActivity : AppCompatActivity() {
             movie.title,
             movie.overview,
             movie.currentGenders[0],
-            args.type
         )
     }
 
@@ -142,8 +140,7 @@ class HighlightsActivity : AppCompatActivity() {
             tv.backdropCover,
             tv.title,
             tv.overview,
-            tv.currentGenders[0],
-            args.type
+            tv.currentGenders[0]
         )
     }
 
@@ -188,7 +185,7 @@ class HighlightsActivity : AppCompatActivity() {
         })
 
         binding.showContentButton.setOnClickListener(View.OnClickListener {
-            //TODO: Not Impl
+            //TODO: Not implemented yet
         })
 
         binding.goBackButton.setOnClickListener(View.OnClickListener {

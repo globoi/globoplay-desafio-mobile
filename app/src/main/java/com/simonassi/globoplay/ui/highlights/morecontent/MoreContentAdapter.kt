@@ -8,9 +8,11 @@ import com.simonassi.globoplay.data.movie.Movie
 import androidx.recyclerview.widget.ListAdapter
 import com.simonassi.globoplay.BuildConfig
 import com.simonassi.globoplay.databinding.ListItemCardMovieBinding
+import com.simonassi.globoplay.ui.highlights.morecontent.MoreContentFragment
 import com.simonassi.globoplay.utilities.contants.ImageQualitySpec
 
 class MoreContentAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MoreContentDiffCallback()) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MoreContentViewHolder(
             ListItemCardMovieBinding
@@ -18,7 +20,7 @@ class MoreContentAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MoreConte
                     LayoutInflater.from(parent.context),
                     parent,
                     false
-                )
+                ),
         )
     }
 
@@ -30,22 +32,7 @@ class MoreContentAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MoreConte
     class MoreContentViewHolder(
         private val binding: ListItemCardMovieBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        init {
-            binding.setClickListener {
-                binding.moreContentItem.let { movie ->
-//                    navigateToHighLights(it, movie)
-                }
-            }
-        }
-
-//        private fun navigateToHighLights(view: View, movie: Movie) {
-//            val direction = HomeFragmentDirections.actionHomePagerFragmentToHighlightsActivity(
-//                movie.id,
-//                ItemType.MOVIE
-//            )
-//            view.findNavController().navigate(direction)
-//        }
-
+        init {}
         fun bind(item: Movie) {
             binding.apply {
                 item.cover = BuildConfig.BUCKET_URL + ImageQualitySpec.LOW_QUALITY + item.cover

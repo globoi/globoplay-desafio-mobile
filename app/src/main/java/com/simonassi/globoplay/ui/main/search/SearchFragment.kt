@@ -1,22 +1,19 @@
 package com.simonassi.globoplay.ui.main.search
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import com.simonassi.globoplay.R
-import com.simonassi.globoplay.databinding.FragmentFavoritesBinding
+import androidx.lifecycle.*
 import com.simonassi.globoplay.databinding.FragmentSearchBinding
 import com.simonassi.globoplay.databinding.NetworkErrorLayoutBinding
-import com.simonassi.globoplay.ui.main.favorites.FavoriteAdapter
 import com.simonassi.globoplay.utilities.Utils
-import com.simonassi.globoplay.viewmodels.FavoriteViewModel
 import com.simonassi.globoplay.viewmodels.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
@@ -37,7 +34,7 @@ class SearchFragment : Fragment() {
         context ?: return binding.root
 
         val searchAdapter = SearchResultAdapter()
-        binding.searchResultRecyclerView.adapter = searchAdapter
+        binding.resultSearchList.adapter = searchAdapter
         val progressBar = binding.progressBar
         progressBar.visibility = View.INVISIBLE
         subscribeUi(searchAdapter, progressBar)
@@ -55,9 +52,9 @@ class SearchFragment : Fragment() {
     }
 
     private fun subscribeUi(searchAdapter: SearchResultAdapter, progressBar: ProgressBar) {
-        searchViewModel.resultSearchLiveData.observe(viewLifecycleOwner, Observer { movies ->
-            searchAdapter.submitList(movies)
-            progressBar.visibility = View.INVISIBLE
-        })
+       searchViewModel.resultSearchLiveData.observe(viewLifecycleOwner, Observer { movies ->
+           searchAdapter.submitList(movies)
+           progressBar.visibility = View.INVISIBLE
+       })
     }
 }

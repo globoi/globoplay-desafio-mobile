@@ -7,6 +7,7 @@ import com.simonassi.globoplay.data.favorite.FavoriteRepository
 import com.simonassi.globoplay.data.favorite.entity.Favorite
 import com.simonassi.globoplay.data.movie.Movie
 import com.simonassi.globoplay.data.tv.Tv
+import com.simonassi.globoplay.utilities.Generator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
