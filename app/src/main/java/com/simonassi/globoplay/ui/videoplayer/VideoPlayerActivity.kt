@@ -2,13 +2,12 @@ package com.simonassi.globoplay.ui.videoplayer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.MediaController
 import android.widget.Toast
 import android.widget.VideoView
-import androidx.navigation.navArgs
 import com.simonassi.globoplay.R
 import com.simonassi.globoplay.databinding.ActivityVideoPlayerBinding
-import com.simonassi.globoplay.ui.highlights.HighlightsActivityArgs
 
 class VideoPlayerActivity : AppCompatActivity() {
 
@@ -22,8 +21,10 @@ class VideoPlayerActivity : AppCompatActivity() {
         setContentView(view)
 
         val videoUrl=intent.getStringExtra("video_url")
-
-
+        if(videoUrl.isNullOrEmpty()){
+            finish()
+        }
+        binding.videoLoadingProgressBar.visibility = View.VISIBLE
         videoView = binding.videoView
         if (mediaControls == null) {
             mediaControls = MediaController(this)
@@ -32,29 +33,22 @@ class VideoPlayerActivity : AppCompatActivity() {
 
         videoView!!.setMediaController(mediaControls)
         videoView!!.setVideoPath(videoUrl)
-
         videoView!!.requestFocus()
-
         videoView!!.start()
 
-
         videoView!!.setOnCompletionListener {
-            println("OK")
+            finish()
         }
 
         videoView!!.setOnPreparedListener {
-            println("OK")
+            binding.videoLoadingProgressBar.visibility = View.INVISIBLE
         }
-        
-
-
 
         videoView!!.setOnErrorListener { mp, what, extra ->
-            Toast.makeText(applicationContext, "An Error Occured " +
-                    "While Playing Video !!!", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, getString(R.string.video_error), Toast.LENGTH_LONG).show()
+            finish()
             false
         }
-
     }
 
 }

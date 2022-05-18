@@ -67,12 +67,14 @@ interface TMDBService {
     @GET("tv/{tv_id}/videos")
     suspend fun getTvVideoKey(
         @Path("tv_id") id: Long,
+        @Query("language") language: String = "pt-BR",
         @Query("api_key") clientId: String = BuildConfig.TMDB_ACCESS_KEY
     ): TvVideoResponse
 
     @GET("movie/{movie_id}/videos")
     suspend fun getMovieVideoKey(
         @Path("movie_id") id: Long,
+        @Query("language") language: String = "pt-BR",
         @Query("api_key") clientId: String = BuildConfig.TMDB_ACCESS_KEY
     ): MovieVideoResponse
 

@@ -45,10 +45,10 @@ class TMDBRepository @Inject constructor(private val service: TMDBService) {
         }
     }
 
-    suspend fun getTvVideoKey(tvId: Long): String {
+    suspend fun getTvVideoKey(tvId: Long): String? {
         return withContext(Dispatchers.Default){
             val response = service.getTvVideoKey(tvId)
-            if(PERMITTED_PROVIDERS.contains(response.results[0].site)){
+            if(response.results.isNotEmpty() && PERMITTED_PROVIDERS.contains(response.results[0].site)){
                 response.results[0].key
             }else{
                 ""
@@ -56,10 +56,10 @@ class TMDBRepository @Inject constructor(private val service: TMDBService) {
         }
     }
 
-    suspend fun getMovieVideoKey(movieId: Long): String {
+    suspend fun getMovieVideoKey(movieId: Long): String? {
         return withContext(Dispatchers.Default){
             val response = service.getMovieVideoKey(movieId)
-            if(PERMITTED_PROVIDERS.contains(response.results[0].site)){
+            if(response.results.isNotEmpty() && PERMITTED_PROVIDERS.contains(response.results[0].site)){
                 response.results[0].key
             }else{
                 ""

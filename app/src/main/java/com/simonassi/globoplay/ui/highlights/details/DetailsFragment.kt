@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import com.simonassi.globoplay.data.Gender
+import com.simonassi.globoplay.data.Genre
 import com.simonassi.globoplay.databinding.FragmentDetailsBinding
 import com.simonassi.globoplay.viewmodels.HighlightsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,19 +32,19 @@ class DetailsFragment : Fragment() {
 
     private fun subscribeUi() {
         highlighthsViewModel.movieSearchLiveData.observe(viewLifecycleOwner, Observer { movie ->
-            updateDetails(Details(movie.title, movie.currentGenders, movie.releaseDate.split("-")[0], ""))
+            updateDetails(Details(movie.title, movie.currentGenres, movie.releaseDate.split("-")[0], ""))
         })
 
         highlighthsViewModel.tvSearchLiveData.observe(viewLifecycleOwner, Observer { tv ->
-            updateDetails(Details(tv.title, tv.currentGenders, tv.releaseDate.split("-")[0], ""))
+            updateDetails(Details(tv.title, tv.currentGenres, tv.releaseDate.split("-")[0], ""))
         })
     }
 
     fun updateDetails(details: Details){
         binding.originalTitleValue.text = details.title
         var genderText = ""
-        details.gender.forEach { gender ->
-            genderText += if(details.gender.last() == gender){
+        details.genre.forEach { gender ->
+            genderText += if(details.genre.last() == gender){
                 gender.name + "."
             }else{
                 gender.name + ", "
@@ -61,9 +61,9 @@ class DetailsFragment : Fragment() {
     }
 
      class Details(
-        val title: String,
-        val gender: List<Gender>,
-        val productionYear: String,
-        val direction: String,
+         val title: String,
+         val genre: List<Genre>,
+         val productionYear: String,
+         val direction: String,
     )
 }
