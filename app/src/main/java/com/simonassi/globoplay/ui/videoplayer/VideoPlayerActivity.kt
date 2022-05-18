@@ -1,11 +1,11 @@
 package com.simonassi.globoplay.ui.videoplayer
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.MediaController
 import android.widget.Toast
 import android.widget.VideoView
+import androidx.appcompat.app.AppCompatActivity
 import com.simonassi.globoplay.R
 import com.simonassi.globoplay.databinding.ActivityVideoPlayerBinding
 
@@ -40,7 +40,15 @@ class VideoPlayerActivity : AppCompatActivity() {
             finish()
         }
 
-        videoView!!.setOnPreparedListener {
+        videoView!!.setOnPreparedListener { mp ->
+            val videoRatio: Float = mp.videoWidth.toFloat() / mp.videoHeight.toFloat()
+            val screenRatio = videoView!!.width / videoView!!.height.toFloat()
+            val scaleX = videoRatio / screenRatio
+            if (scaleX >= 1f) {
+                videoView!!.scaleX = scaleX
+            } else {
+                videoView!!.scaleY = 1f / scaleX
+            }
             binding.videoLoadingProgressBar.visibility = View.INVISIBLE
         }
 
