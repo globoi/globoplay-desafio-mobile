@@ -92,7 +92,7 @@ class HighlightsActivity : AppCompatActivity() {
         backgroundImagePath: String,
         title: String,
         overview: String,
-        genre: Genre,
+        genre: List<Genre>,
     ) {
         Glide.with(binding.coverImageView.context)
             .load(coverPath)
@@ -116,9 +116,11 @@ class HighlightsActivity : AppCompatActivity() {
 
         binding.titleTextView.text = title
         binding.overviewTextView.text = overview
-        binding.typeTextView.text = genre.name
+        if(genre.isNotEmpty()){
+            binding.typeTextView.text = genre[0].name
+            highlighthsViewModel.getRelatedMovies(genre[0].id)
+        }
 
-        highlighthsViewModel.getRelatedMovies(genre.id)
     }
 
     fun setupMovie(movie: Movie){
@@ -129,7 +131,7 @@ class HighlightsActivity : AppCompatActivity() {
             movie.backdropCover,
             movie.title,
             movie.overview,
-            movie.currentGenres[0],
+            movie.currentGenres,
         )
     }
 
@@ -141,7 +143,7 @@ class HighlightsActivity : AppCompatActivity() {
             tv.backdropCover,
             tv.title,
             tv.overview,
-            tv.currentGenres[0]
+            tv.currentGenres
         )
     }
 
