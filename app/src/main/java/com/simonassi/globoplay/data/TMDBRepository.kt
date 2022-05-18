@@ -1,8 +1,11 @@
 package com.simonassi.globoplay.data
 
+import android.content.Context
 import com.simonassi.globoplay.api.TMDBService
 import com.simonassi.globoplay.data.movie.Movie
 import com.simonassi.globoplay.data.tv.Tv
+import com.simonassi.globoplay.utilities.UrlExtractorCallback
+import com.simonassi.globoplay.utilities.WatchUrlExtractor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -42,5 +45,30 @@ class TMDBRepository @Inject constructor(private val service: TMDBService) {
         }
     }
 
+    suspend fun getTvVideoKey(tvId: Long): String {
+        return withContext(Dispatchers.Default){
+            val response = service.getTvVideoKey(tvId)
+            if(PERMITTED_PROVIDERS.contains(response.results[0].site)){
+                response.results[0].key
+            }else{
+                ""
+            }
+        }
+    }
+
+    suspend fun getMovieVideoKey(movieId: Long): String {
+        return withContext(Dispatchers.Default){
+            val response = service.getMovieVideoKey(movieId)
+            if(PERMITTED_PROVIDERS.contains(response.results[0].site)){
+                response.results[0].key
+            }else{
+                ""
+            }
+        }
+    }
+
+    companion object {
+        val PERMITTED_PROVIDERS = listOf("YouTube")
+    }
 
 }

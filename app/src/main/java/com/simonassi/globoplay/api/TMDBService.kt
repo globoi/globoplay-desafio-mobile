@@ -3,8 +3,10 @@ package com.simonassi.globoplay.api
 import com.simonassi.globoplay.BuildConfig
 import com.simonassi.globoplay.data.movie.Movie
 import com.simonassi.globoplay.data.movie.MovieSearchResponse
+import com.simonassi.globoplay.data.movie.MovieVideoResponse
 import com.simonassi.globoplay.data.tv.Tv
 import com.simonassi.globoplay.data.tv.TvSearchResponse
+import com.simonassi.globoplay.data.tv.TvVideoResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -61,6 +63,18 @@ interface TMDBService {
         @Query("language") language: String = "pt-BR",
         @Query("api_key") clientId: String = BuildConfig.TMDB_ACCESS_KEY
     ): MovieSearchResponse
+
+    @GET("tv/{tv_id}/videos")
+    suspend fun getTvVideoKey(
+        @Path("tv_id") id: Long,
+        @Query("api_key") clientId: String = BuildConfig.TMDB_ACCESS_KEY
+    ): TvVideoResponse
+
+    @GET("movie/{movie_id}/videos")
+    suspend fun getMovieVideoKey(
+        @Path("movie_id") id: Long,
+        @Query("api_key") clientId: String = BuildConfig.TMDB_ACCESS_KEY
+    ): MovieVideoResponse
 
     companion object {
         private const val BASE_URL = BuildConfig.BASE_URL

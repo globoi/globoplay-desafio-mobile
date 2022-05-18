@@ -1,5 +1,6 @@
 package com.simonassi.globoplay.viewmodels
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.simonassi.globoplay.data.*
@@ -7,6 +8,7 @@ import com.simonassi.globoplay.data.favorite.FavoriteRepository
 import com.simonassi.globoplay.data.favorite.entity.Favorite
 import com.simonassi.globoplay.data.movie.Movie
 import com.simonassi.globoplay.data.tv.Tv
+import com.simonassi.globoplay.utilities.WatchUrlExtractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,6 +26,7 @@ class HighlightsViewModel @Inject constructor(
     val tvSearchLiveData = MutableLiveData<Tv>()
     val favoriteSearchLiveData = MutableLiveData<Favorite?>()
     val relatedMovies = MutableLiveData<List<Movie>>()
+    val videoUrl = MutableLiveData<String>()
 
     fun getMovieById(id: Long) {
         CoroutineScope(Dispatchers.Main).launch {
@@ -76,6 +79,28 @@ class HighlightsViewModel @Inject constructor(
                 repository.getRelatedMovies(genreId)
             }
             relatedMovies.value = movies
+        }
+    }
+
+    fun getTvVideoLink(id: Long, appContext: Context){
+        CoroutineScope(Dispatchers.Main).launch {
+            val key = withContext(Dispatchers.Default) {
+                repository.getTvVideoKey(id)
+            }
+            WatchUrlExtractor.getLink(appContext, key) { newVideoUrl ->
+                videoUrl.value = newVideoUrl
+            }
+        }
+    }
+
+    fun getMovieVideoLink(id: Long, appContext: Context){
+        CoroutineScope(Dispatchers.Main).launch {
+            val key = withContext(Dispatchers.Default) {
+                repository.getMovieVideoKey(id)
+            }
+            WatchUrlExtractor.getLink(appContext, key) { newVideoUrl ->
+                videoUrl.value = newVideoUrl
+            }
         }
     }
 
