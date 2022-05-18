@@ -26,4 +26,7 @@
     <string name="search_hint">O que você quer assistir?</string>
     <string name="search_btn">Buscar</string>
 
+    <string name="video_error">Erro ao iniciar reprodução</string>
+    <string name="video_unavailable">Video não disponível para esse título</string>
+
 </resources>

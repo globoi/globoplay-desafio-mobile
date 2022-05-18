@@ -1,7 +1,7 @@
 package com.simonassi.globoplay.data.tv
 
 import com.google.gson.annotations.SerializedName
-import com.simonassi.globoplay.data.Gender
+import com.simonassi.globoplay.data.Genre
 
 /**
  * Data class that represents a movie from TMDB.
@@ -15,7 +15,7 @@ data class Tv(
     @SerializedName("overview") val overview: String,
     @SerializedName("original_name") val originalTitle: String,
     @SerializedName("genre_ids") val genders: List<String>,
-    @SerializedName("genres") val currentGenders: List<Gender>,
+    @SerializedName("genres") val currentGenres: List<Genre>,
     @SerializedName("poster_path") var cover: String,
     @SerializedName("backdrop_path") var backdropCover: String,
     @SerializedName("first_air_date") var releaseDate: String,

@@ -1,15 +1,14 @@
 package com.simonassi.globoplay.ui.highlights
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
@@ -18,12 +17,13 @@ import com.bumptech.glide.request.transition.Transition
 import com.google.android.material.tabs.TabLayoutMediator
 import com.simonassi.globoplay.BuildConfig
 import com.simonassi.globoplay.R
-import com.simonassi.globoplay.data.Gender
+import com.simonassi.globoplay.data.Genre
 import com.simonassi.globoplay.data.favorite.entity.Favorite
 import com.simonassi.globoplay.data.movie.Movie
 import com.simonassi.globoplay.data.tv.Tv
 import com.simonassi.globoplay.databinding.ActivityHighlightsBinding
 import com.simonassi.globoplay.databinding.NetworkErrorLayoutBinding
+import com.simonassi.globoplay.ui.videoplayer.VideoPlayerActivity
 import com.simonassi.globoplay.utilities.Utils
 import com.simonassi.globoplay.utilities.contants.ImageQualitySpec
 import com.simonassi.globoplay.utilities.contants.ItemType
@@ -84,6 +84,7 @@ class HighlightsActivity : AppCompatActivity() {
             tab.text = this.getString(titles[position])
         }.attach()
         setupListeners()
+        setupVideoObserver(view)
     }
 
     private fun setupInfos(
@@ -91,7 +92,7 @@ class HighlightsActivity : AppCompatActivity() {
         backgroundImagePath: String,
         title: String,
         overview: String,
-        genre: Gender,
+        genre: Genre,
     ) {
         Glide.with(binding.coverImageView.context)
             .load(coverPath)
@@ -128,7 +129,7 @@ class HighlightsActivity : AppCompatActivity() {
             movie.backdropCover,
             movie.title,
             movie.overview,
-            movie.currentGenders[0],
+            movie.currentGenres[0],
         )
     }
 
@@ -140,7 +141,7 @@ class HighlightsActivity : AppCompatActivity() {
             tv.backdropCover,
             tv.title,
             tv.overview,
-            tv.currentGenders[0]
+            tv.currentGenres[0]
         )
     }
 
@@ -185,11 +186,32 @@ class HighlightsActivity : AppCompatActivity() {
         })
 
         binding.showContentButton.setOnClickListener(View.OnClickListener {
-            //TODO: Not implemented yet
+            binding.progress.visibility = View.VISIBLE
+            when(args.type){
+                ItemType.MOVIE -> {
+                    highlighthsViewModel.getMovieVideoLink(args.itemId, baseContext)
+                }
+                else -> {
+                    highlighthsViewModel.getTvVideoLink(args.itemId, baseContext)
+                }
+            }
         })
 
         binding.goBackButton.setOnClickListener(View.OnClickListener {
             finish()
+        })
+    }
+
+    private fun setupVideoObserver(view: View){
+        highlighthsViewModel.videoUrl.observe(this, Observer { videoUrl ->
+            binding.progress.visibility = View.INVISIBLE
+            if(videoUrl.isNotEmpty()){
+                val intent = Intent(this, VideoPlayerActivity::class.java)
+                intent.putExtra("video_url", videoUrl)
+                startActivity(intent)
+            }else{
+                Toast.makeText(this, getString(R.string.video_unavailable), Toast.LENGTH_LONG).show()
+            }
         })
     }
 

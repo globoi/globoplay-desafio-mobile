@@ -99,6 +99,11 @@ dependencies {
     implementation "androidx.room:room-ktx:$rootProject.room_version"
     kapt "androidx.room:room-compiler:$rootProject.room_version"
 
+
+//    implementation 'com.github.vikashbhr:android-youtubeExtractor:master-SNAPSHOT'
+    implementation 'com.github.evgenyneu:js-evaluator-for-android:v5.0.0'
+
+
 }
 
 kapt {
