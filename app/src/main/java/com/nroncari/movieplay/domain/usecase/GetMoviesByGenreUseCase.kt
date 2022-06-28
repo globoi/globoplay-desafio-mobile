@@ -4,7 +4,7 @@ import com.nroncari.movieplay.domain.mapper.MovieToPresentationMapper
 import com.nroncari.movieplay.domain.repository.MovieRepository
 import com.nroncari.movieplay.presentation.model.MovieListItemPresentation
 
-class MovieUseCase(
+class GetMoviesByGenreUseCase(
     private val repository: MovieRepository
 ) {
 

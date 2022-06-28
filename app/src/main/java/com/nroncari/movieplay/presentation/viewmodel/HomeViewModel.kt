@@ -9,7 +9,7 @@ import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.NULL_VALUE_ERROR
 import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.REQUISITION_CODE
 import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.TIMEOUT_ERROR
 import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.UNEXPECTED_ERROR
-import com.nroncari.movieplay.domain.usecase.MovieUseCase
+import com.nroncari.movieplay.domain.usecase.GetMoviesByGenreUseCase
 import com.nroncari.movieplay.presentation.model.MovieListItemPresentation
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +20,7 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
 class HomeViewModel(
-    private val getMoviesByGenre: MovieUseCase,
+    private val getMoviesByGenre: GetMoviesByGenreUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 

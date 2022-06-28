@@ -3,6 +3,10 @@ plugins {
     id 'kotlin-android'
 }
 
+def theMovieDBPropertiesFile = rootProject.file("local.properties")
+def theMovieDBProperties = new Properties()
+theMovieDBProperties.load(new FileInputStream(theMovieDBPropertiesFile))
+
 android {
     compileSdkVersion 31
     buildToolsVersion "30.0.3"
@@ -15,6 +19,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "THEMOVIEDBAPI_KEY", theMovieDBProperties['THEMOVIEDBAPI_KEY'])
     }
 
     buildTypes {

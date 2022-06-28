@@ -1,7 +1,9 @@
 package com.nroncari.movieplay.data.datasource
 
+import com.nroncari.movieplay.data.mapper.MovieDetailToDomainMapper
 import com.nroncari.movieplay.data.mapper.MovieToDomainMapper
 import com.nroncari.movieplay.data.service.MovieService
+import com.nroncari.movieplay.domain.model.MovieDetailDomain
 import com.nroncari.movieplay.domain.model.MovieListItemDomain
 
 class MovieDataSourceImpl(
@@ -9,10 +11,15 @@ class MovieDataSourceImpl(
 ) : MovieDataSource {
 
     private val mapper = MovieToDomainMapper()
+    private val movieDetailMapper = MovieDetailToDomainMapper()
 
     override suspend fun getMoviesByGenre(page: Int, genre: Int): List<MovieListItemDomain> {
-        return service.getMoviesByGenre(1, 28).results.map { movieResponse ->
+        return service.getMoviesByGenre(page = page, genre = 28).results.map { movieResponse ->
             mapper.map(movieResponse)
         }
+    }
+
+    override suspend fun getMovieDetailBy(movieId: Int): MovieDetailDomain {
+        return movieDetailMapper.map(service.getMovieDetailBy(movieId = movieId))
     }
 }
