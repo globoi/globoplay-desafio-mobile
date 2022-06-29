@@ -8,6 +8,7 @@ class MovieToPresentationMapper : Mapper<MovieListItemDomain, MovieListItemPrese
 
     override fun map(source: MovieListItemDomain): MovieListItemPresentation {
         return MovieListItemPresentation(
+            id = source.id,
             originalTitle = source.originalTitle,
             title = source.title,
             posterPath = source.posterPath

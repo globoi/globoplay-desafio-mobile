@@ -4,15 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.map
 import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.CONNECT_EXCEPTION_ERROR
 import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.NULL_VALUE_ERROR
 import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.REQUISITION_CODE
 import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.TIMEOUT_ERROR
 import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.UNEXPECTED_ERROR
+import com.nroncari.movieplay.domain.mapper.MovieToPresentationMapper
 import com.nroncari.movieplay.domain.usecase.GetMoviesByGenreUseCase
 import com.nroncari.movieplay.presentation.model.MovieListItemPresentation
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.net.ConnectException
@@ -27,18 +31,13 @@ class HomeViewModel(
     private val _onRequisitionError = MutableLiveData<String?>()
     val onRequisitionError: LiveData<String?> get() = _onRequisitionError
 
-    private val _movies = MutableLiveData<List<MovieListItemPresentation>>()
-    val movies: LiveData<List<MovieListItemPresentation>> get() = _movies
+    private val _movies = MutableLiveData<PagingData<MovieListItemPresentation>>()
+    val movies: LiveData<PagingData<MovieListItemPresentation>> get() = _movies
 
-    fun getMoviesByGenre() {
+    init {
         viewModelScope.launch(dispatcher) {
-
-            kotlin.runCatching {
-                getMoviesByGenre(1, 28)
-            }.onSuccess { movies ->
-                _movies.postValue(movies)
-            }.onFailure { error ->
-                onError(error)
+            getMoviesByGenre.execute(28).collect { movies ->
+                _movies.postValue(movies.map { MovieToPresentationMapper().map(it) })
             }
         }
     }

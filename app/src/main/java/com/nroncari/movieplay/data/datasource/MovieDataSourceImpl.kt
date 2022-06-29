@@ -14,7 +14,7 @@ class MovieDataSourceImpl(
     private val movieDetailMapper = MovieDetailToDomainMapper()
 
     override suspend fun getMoviesByGenre(page: Int, genre: Int): List<MovieListItemDomain> {
-        return service.getMoviesByGenre(page = page, genre = 28).results.map { movieResponse ->
+        return service.getMoviesByGenre(page = page, genre = genre).results.map { movieResponse ->
             mapper.map(movieResponse)
         }
     }

@@ -7,11 +7,13 @@ import com.nroncari.movieplay.utils.Mapper
 class MovieToDomainMapper : Mapper<MovieListItemResponse, MovieListItemDomain> {
 
     override fun map(source: MovieListItemResponse): MovieListItemDomain {
+        requireNotNull(source.id)
         requireNotNull(source.originalTitle)
         requireNotNull(source.title)
         requireNotNull(source.posterPath)
 
         return MovieListItemDomain(
+            id = source.id,
             originalTitle = source.originalTitle,
             title = source.title,
             posterPath = source.posterPath

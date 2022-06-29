@@ -10,9 +10,6 @@ class GetMoviesByGenreUseCase(
 
     private val mapper = MovieToPresentationMapper()
 
-    suspend operator fun invoke(page: Int, genre: Int): List<MovieListItemPresentation> {
-        return repository.getMoviesByGenre(page, genre).map { movieDomain ->
-            mapper.map(movieDomain)
-        }
-    }
+    fun execute(genre: Int) =
+         repository.getPagingMovies()
 }

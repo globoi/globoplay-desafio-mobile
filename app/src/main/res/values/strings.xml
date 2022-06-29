@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">movieplay</string>
+    <string name="movie_wallpaper">Movie Wallpaper</string>
+    <string name="movie_title">Movie Title</string>
 </resources>
