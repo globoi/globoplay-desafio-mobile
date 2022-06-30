@@ -19,7 +19,7 @@ class MovieDataSourceImpl(
         }
     }
 
-    override suspend fun getMovieDetailBy(movieId: Int): MovieDetailDomain {
+    override suspend fun getMovieDetailBy(movieId: Long): MovieDetailDomain {
         return movieDetailMapper.map(service.getMovieDetailBy(movieId = movieId))
     }
 }

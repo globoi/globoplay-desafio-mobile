@@ -8,6 +8,26 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.nroncari.movieplay.presentation.ui.fragment.HomeFragment"
-        tools:layout="@layout/fragment_home"
-        android:label="HomeFragment" />
+        android:label="MoviePlay"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.nroncari.movieplay.presentation.ui.fragment.MovieDetailFragment"
+        android:label="MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail" >
+        <argument
+            android:name="movieId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/myListFragment"
+        tools:layout="@layout/fragment_my_list"
+        android:name="com.nroncari.movieplay.presentation.ui.fragment.MyListFragment"
+        android:label="MyListFragment" />
 </navigation>

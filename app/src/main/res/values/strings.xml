@@ -2,4 +2,21 @@
     <string name="app_name">movieplay</string>
     <string name="movie_wallpaper">Movie Wallpaper</string>
     <string name="movie_title">Movie Title</string>
+    <string name="animation_text_label">Animação</string>
+    <string name="action_text_label">Ação</string>
+    <string name="comedy_text_label">Comedia</string>
+    <string name="drama_text_label">Drama</string>
+    <string name="horror_text_label">Terror</string>
+    <string name="home_bottom_text">Início</string>
+    <string name="my_list_bottom_text">Minha Lista</string>
+    <string name="title_home_label">MoviePlay</string>
+    <string name="watch_label">Assista</string>
+    <string name="watch_too_label">Assista tambem</string>
+    <string name="details_label">Detalhes</string>
+    <string name="genre_label">Genero</string>
+    <string name="description_text_label">description</string>
+    <string name="back_button_icon">Back Button Icon</string>
+    <string name="play_button_icon">Play Button Icon</string>
+    <string name="favorite_button_icon">Favorite Button Icon</string>
+    <string name="background_picture">Background Picture</string>
 </resources>

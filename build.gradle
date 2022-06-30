@@ -33,6 +33,7 @@ buildscript {
         core_ktx_test_version           = '1.2.0'
         fragment_version                = '1.3.5'
         paging_version                  = '3.1.1'
+        safe_args                       = '2.2.0-rc02'
     }
 
     repositories {
@@ -42,6 +43,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$safe_args"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

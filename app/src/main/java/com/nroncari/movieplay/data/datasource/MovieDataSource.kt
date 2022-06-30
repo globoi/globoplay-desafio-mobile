@@ -7,5 +7,5 @@ interface MovieDataSource {
 
     suspend fun getMoviesByGenre(page: Int, genre: Int) : List<MovieListItemDomain>
 
-    suspend fun getMovieDetailBy(movieId: Int) : MovieDetailDomain
+    suspend fun getMovieDetailBy(movieId: Long) : MovieDetailDomain
 }

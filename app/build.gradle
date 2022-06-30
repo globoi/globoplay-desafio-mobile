@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 def theMovieDBPropertiesFile = rootProject.file("local.properties")
@@ -97,5 +98,11 @@ dependencies {
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
     testImplementation "androidx.arch.core:core-testing:$core_testing_version"
 
-    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    implementation "jp.wasabeef:glide-transformations:4.3.0"
+
+    implementation "com.github.bumptech.glide:glide:4.10.0"
+    annotationProcessor "com.github.bumptech.glide:compiler:4.10.0"
+    
+    implementation 'com.facebook.shimmer:shimmer:0.5.0@aar'
 }

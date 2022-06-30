@@ -21,8 +21,8 @@ interface MovieService {
 
     @GET("movie/{movie_id}")
     suspend fun getMovieDetailBy(
+        @Path("movie_id") movieId: Long,
         @Query("api_key") apiKey: String = BuildConfig.THEMOVIEDBAPI_KEY,
         @Query("language") language: String = LANGUAGE,
-        @Path("movie_id") movieId: Int
     ): MovieDetailResponse
 }

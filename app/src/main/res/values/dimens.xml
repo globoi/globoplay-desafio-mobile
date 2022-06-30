@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Text Dimen-->
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="headline1">80sp</dimen>
+    <dimen name="headline2">52sp</dimen>
+    <dimen name="headline3">40sp</dimen>
+    <dimen name="headline4">24sp</dimen>
+    <dimen name="headline5">22sp</dimen>
+    <dimen name="headline6">18sp</dimen>
+    <dimen name="subtitle1">16sp</dimen>
+    <dimen name="subtitle2">14sp</dimen>
+    <dimen name="body1">12sp</dimen>
+    <dimen name="body2">10sp</dimen>
+    <dimen name="caption">8sp</dimen>
+    <dimen name="button">12sp</dimen>
+    <dimen name="list_item_spacing">16dp</dimen>
+    <dimen name="list_item_spacing_half">8dp</dimen>
+</resources>

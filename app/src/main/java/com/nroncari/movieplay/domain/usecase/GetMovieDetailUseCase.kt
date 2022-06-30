@@ -10,7 +10,7 @@ class GetMovieDetailUseCase(
 
     private val mapper = MovieDetailToPresentationMapper()
 
-    suspend operator fun invoke(movieId: Int): MovieDetailPresentation {
+    suspend operator fun invoke(movieId: Long): MovieDetailPresentation {
         return mapper.map(repository.getMovieDetailBy(movieId))
     }
 }

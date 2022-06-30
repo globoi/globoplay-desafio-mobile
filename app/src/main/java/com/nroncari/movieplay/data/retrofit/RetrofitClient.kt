@@ -40,7 +40,5 @@ class RetrofitClient(
         build()
     }
 
-    private fun cacheSize(): Cache {
-        return Cache(application.cacheDir, CACHE_SIZE)
-    }
+    private fun cacheSize() = Cache(application.cacheDir, CACHE_SIZE)
 }

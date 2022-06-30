@@ -8,5 +8,6 @@ fun ImageView.loadWallpaper(
 ) {
     Picasso.get()
         .load("https://image.tmdb.org/t/p/original/$path")
+        .fit()
         .into(this)
 }

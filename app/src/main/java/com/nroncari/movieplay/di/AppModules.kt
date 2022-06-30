@@ -8,9 +8,9 @@ import com.nroncari.movieplay.data.retrofit.HttpClient
 import com.nroncari.movieplay.data.retrofit.RetrofitClient
 import com.nroncari.movieplay.data.service.MovieService
 import com.nroncari.movieplay.domain.repository.MovieRepository
-import com.nroncari.movieplay.domain.usecase.GetMovieDetailUseCase
-import com.nroncari.movieplay.domain.usecase.GetMoviesByGenreUseCase
+import com.nroncari.movieplay.domain.usecase.*
 import com.nroncari.movieplay.presentation.viewmodel.HomeViewModel
+import com.nroncari.movieplay.presentation.viewmodel.MovieDetailViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -22,8 +22,12 @@ val dataModules = module {
 }
 
 val domainModules = module {
-    factory { GetMoviesByGenreUseCase(repository = get()) }
+    factory { GetActionMoviesUseCase(repository = get()) }
     factory { GetMovieDetailUseCase(repository = get()) }
+    factory { GetHorrorMoviesUseCase(repository = get()) }
+    factory { GetAnimationMoviesUseCase(repository = get()) }
+    factory { GetComedyMoviesUseCase(repository = get()) }
+    factory { GetDramaMoviesUseCase(repository = get()) }
 }
 
 val networkModules = module {
@@ -33,5 +37,14 @@ val networkModules = module {
 }
 
 val presentationModules = module {
-    viewModel { HomeViewModel(getMoviesByGenre = get()) }
+    viewModel {
+        HomeViewModel(
+            getActionMovies = get(),
+            getAnimationMovies = get(),
+            getComedyMovies = get(),
+            getDramaMovies = get(),
+            getHorrorMovies = get()
+        )
+    }
+    viewModel { MovieDetailViewModel(getMovieDetailUseCase = get()) }
 }

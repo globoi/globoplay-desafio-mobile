@@ -10,22 +10,12 @@ class MovieDetailToPresentationMapper : Mapper<MovieDetailDomain, MovieDetailPre
 
         return MovieDetailPresentation(
             id = source.id,
-            budget = source.budget,
-            homepage = source.homepage,
-            imdbId = source.imdbId,
             originalTitle = source.originalTitle,
             overview = source.overview,
-            popularity = source.popularity,
             posterPath = source.posterPath,
             releaseDate = source.releaseDate,
-            revenue = source.revenue,
-            runtime = source.runtime,
-            status = source.status,
-            tagline = source.tagline,
             title = source.title,
-            video = source.video,
-            voteAverage = source.voteAverage,
-            voteCount = source.voteCount,
+            backdropPath = source.backdropPath
         )
     }
 }

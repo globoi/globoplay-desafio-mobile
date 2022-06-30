@@ -12,10 +12,12 @@ import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.REQUISITION_CODE
 import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.TIMEOUT_ERROR
 import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.UNEXPECTED_ERROR
 import com.nroncari.movieplay.domain.mapper.MovieToPresentationMapper
-import com.nroncari.movieplay.domain.usecase.GetMoviesByGenreUseCase
+import com.nroncari.movieplay.domain.model.MovieListItemDomain
+import com.nroncari.movieplay.domain.usecase.*
 import com.nroncari.movieplay.presentation.model.MovieListItemPresentation
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -24,35 +26,49 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
 class HomeViewModel(
-    private val getMoviesByGenre: GetMoviesByGenreUseCase,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val getActionMovies: GetActionMoviesUseCase,
+    private val getAnimationMovies: GetAnimationMoviesUseCase,
+    private val getComedyMovies: GetComedyMoviesUseCase,
+    private val getDramaMovies: GetDramaMoviesUseCase,
+    private val getHorrorMovies: GetHorrorMoviesUseCase,
+    dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 
     private val _onRequisitionError = MutableLiveData<String?>()
     val onRequisitionError: LiveData<String?> get() = _onRequisitionError
 
-    private val _movies = MutableLiveData<PagingData<MovieListItemPresentation>>()
-    val movies: LiveData<PagingData<MovieListItemPresentation>> get() = _movies
+    private val _actionMovies = MutableLiveData<PagingData<MovieListItemPresentation>>()
+    val actionMovies: LiveData<PagingData<MovieListItemPresentation>> get() = _actionMovies
+
+    private val _animationMovies = MutableLiveData<PagingData<MovieListItemPresentation>>()
+    val animationMovies: LiveData<PagingData<MovieListItemPresentation>> get() = _animationMovies
+
+    private val _comedyMovies = MutableLiveData<PagingData<MovieListItemPresentation>>()
+    val comedyMovies: LiveData<PagingData<MovieListItemPresentation>> get() = _comedyMovies
+
+    private val _dramaMovies = MutableLiveData<PagingData<MovieListItemPresentation>>()
+    val dramaMovies: LiveData<PagingData<MovieListItemPresentation>> get() = _dramaMovies
+
+    private val _horrorMovies = MutableLiveData<PagingData<MovieListItemPresentation>>()
+    val horrorMovies: LiveData<PagingData<MovieListItemPresentation>> get() = _horrorMovies
 
     init {
-        viewModelScope.launch(dispatcher) {
-            getMoviesByGenre.execute(28).collect { movies ->
-                _movies.postValue(movies.map { MovieToPresentationMapper().map(it) })
-            }
-        }
+        launchGetMovies(dispatcher, _actionMovies) { getActionMovies() }
+        launchGetMovies(dispatcher, _animationMovies) { getAnimationMovies() }
+        launchGetMovies(dispatcher, _comedyMovies) { getComedyMovies() }
+        launchGetMovies(dispatcher, _dramaMovies) { getDramaMovies() }
+        launchGetMovies(dispatcher, _horrorMovies) { getHorrorMovies() }
     }
 
-    private fun onError(error: Throwable) {
-        val messageError: String = when (error) {
-            is HttpException -> "$REQUISITION_CODE ${error.code()}, ${
-                error.response()!!.errorBody()!!.string()
-            }"
-            is UnknownHostException -> CONNECT_EXCEPTION_ERROR
-            is SocketTimeoutException -> TIMEOUT_ERROR
-            is ConnectException -> CONNECT_EXCEPTION_ERROR
-            is IllegalArgumentException -> NULL_VALUE_ERROR
-            else -> UNEXPECTED_ERROR
+    private fun launchGetMovies(
+        dispatcher: CoroutineDispatcher,
+        field: MutableLiveData<PagingData<MovieListItemPresentation>>,
+        function: () -> Flow<PagingData<MovieListItemDomain>>
+    ) {
+        viewModelScope.launch(dispatcher) {
+            function().collect { movies ->
+                field.postValue(movies.map { MovieToPresentationMapper().map(it) })
+            }
         }
-        _onRequisitionError.postValue(messageError)
     }
 }
