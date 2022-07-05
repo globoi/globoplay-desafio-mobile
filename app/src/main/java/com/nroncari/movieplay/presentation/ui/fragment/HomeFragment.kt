@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import com.nroncari.movieplay.databinding.FragmentHomeBinding
 import com.nroncari.movieplay.presentation.model.MovieListItemPresentation
@@ -17,7 +16,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
-    private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private val navController by lazy { NavHostFragment.findNavController(this) }
     private val viewModel: HomeViewModel by viewModel()
     private val actionMovieAdapter = MovieAdapter { goToMovieDetailFragment(it) }
@@ -31,6 +31,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -38,6 +39,11 @@ class HomeFragment : Fragment() {
         binding()
 
         listeners()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     private fun binding() {
@@ -49,6 +55,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun listeners() {
+        viewModel.getMovies()
         configAdapter(viewModel.actionMovies, actionMovieAdapter)
         configAdapter(viewModel.animationMovies, animationMovieAdapter)
         configAdapter(viewModel.comedyMovies, comedyMoveAdapter)

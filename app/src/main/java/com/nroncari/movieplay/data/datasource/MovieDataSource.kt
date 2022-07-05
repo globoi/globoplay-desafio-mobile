@@ -8,4 +8,6 @@ interface MovieDataSource {
     suspend fun getMoviesByGenre(page: Int, genre: Int) : List<MovieListItemDomain>
 
     suspend fun getMovieDetailBy(movieId: Long) : MovieDetailDomain
+
+    suspend fun getMovieRecommendationsBy(movieId: Long) : List<MovieListItemDomain>
 }

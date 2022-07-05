@@ -6,5 +6,5 @@ import com.nroncari.movieplay.domain.repository.MovieRepository
 class GetComedyMoviesUseCase(
     private val repository: MovieRepository
 ) {
-    operator fun invoke() = repository.getPagingMovies(COMEDY)
+    operator fun invoke() = repository.getPagingMoviesByGenre(COMEDY)
 }

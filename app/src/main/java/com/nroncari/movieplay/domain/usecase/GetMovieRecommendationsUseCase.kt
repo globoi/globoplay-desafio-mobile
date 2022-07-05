@@ -1,10 +1,9 @@
 package com.nroncari.movieplay.domain.usecase
 
-import com.nroncari.movieplay.data.datasource.Genre.DRAMA
 import com.nroncari.movieplay.domain.repository.MovieRepository
 
-class GetDramaMoviesUseCase(
+class GetMovieRecommendationsUseCase(
     private val repository: MovieRepository
 ) {
-    operator fun invoke() = repository.getPagingMoviesByGenre(DRAMA)
+    operator fun invoke(movieId: Long) = repository.getPagingMovieRecommendationsBy(movieId)
 }

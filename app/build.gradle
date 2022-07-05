@@ -105,4 +105,6 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:4.10.0"
     
     implementation 'com.facebook.shimmer:shimmer:0.5.0@aar'
+
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }

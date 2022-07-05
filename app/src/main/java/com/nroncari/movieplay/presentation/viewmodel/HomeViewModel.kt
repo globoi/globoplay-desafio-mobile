@@ -5,25 +5,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import androidx.paging.map
-import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.CONNECT_EXCEPTION_ERROR
-import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.NULL_VALUE_ERROR
-import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.REQUISITION_CODE
-import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.TIMEOUT_ERROR
-import com.nroncari.movieplay.data.retrofit.ErrorMessagesConst.UNEXPECTED_ERROR
 import com.nroncari.movieplay.domain.mapper.MovieToPresentationMapper
 import com.nroncari.movieplay.domain.model.MovieListItemDomain
 import com.nroncari.movieplay.domain.usecase.*
 import com.nroncari.movieplay.presentation.model.MovieListItemPresentation
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.net.ConnectException
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
 
 class HomeViewModel(
     private val getActionMovies: GetActionMoviesUseCase,
@@ -31,7 +24,7 @@ class HomeViewModel(
     private val getComedyMovies: GetComedyMoviesUseCase,
     private val getDramaMovies: GetDramaMoviesUseCase,
     private val getHorrorMovies: GetHorrorMoviesUseCase,
-    dispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 
     private val _onRequisitionError = MutableLiveData<String?>()
@@ -52,7 +45,7 @@ class HomeViewModel(
     private val _horrorMovies = MutableLiveData<PagingData<MovieListItemPresentation>>()
     val horrorMovies: LiveData<PagingData<MovieListItemPresentation>> get() = _horrorMovies
 
-    init {
+    fun getMovies() {
         launchGetMovies(dispatcher, _actionMovies) { getActionMovies() }
         launchGetMovies(dispatcher, _animationMovies) { getAnimationMovies() }
         launchGetMovies(dispatcher, _comedyMovies) { getComedyMovies() }
@@ -66,7 +59,7 @@ class HomeViewModel(
         function: () -> Flow<PagingData<MovieListItemDomain>>
     ) {
         viewModelScope.launch(dispatcher) {
-            function().collect { movies ->
+            function().cachedIn(viewModelScope).collect { movies ->
                 field.postValue(movies.map { MovieToPresentationMapper().map(it) })
             }
         }

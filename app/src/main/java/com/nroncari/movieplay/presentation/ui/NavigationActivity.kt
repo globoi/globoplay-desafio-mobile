@@ -2,16 +2,15 @@ package com.nroncari.movieplay.presentation.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nroncari.movieplay.R
-import com.nroncari.movieplay.databinding.FrameNavigationBinding
 
 class NavigationActivity : AppCompatActivity() {
 
     private val navController by lazy {
-        Navigation.findNavController(this, R.id.frame_navigation)
+        (supportFragmentManager.findFragmentById(R.id.frame_navigation) as NavHostFragment).navController
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,7 +7,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
 
-    fun getPagingMovies(genre: Int): Flow<PagingData<MovieListItemDomain>>
+    fun getPagingMoviesByGenre(genre: Int): Flow<PagingData<MovieListItemDomain>>
+
+    fun getPagingMovieRecommendationsBy(movieId: Long) : Flow<PagingData<MovieListItemDomain>>
 
     suspend fun getMovieDetailBy(movieId: Long): MovieDetailDomain
 }

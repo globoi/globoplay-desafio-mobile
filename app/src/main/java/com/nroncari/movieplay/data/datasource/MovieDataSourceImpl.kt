@@ -22,4 +22,10 @@ class MovieDataSourceImpl(
     override suspend fun getMovieDetailBy(movieId: Long): MovieDetailDomain {
         return movieDetailMapper.map(service.getMovieDetailBy(movieId = movieId))
     }
+
+    override suspend fun getMovieRecommendationsBy(movieId: Long): List<MovieListItemDomain> {
+        return service.getMovieRecommendationsBy(movieId).results.map { movies ->
+            mapper.map(movies)
+        }
+    }
 }

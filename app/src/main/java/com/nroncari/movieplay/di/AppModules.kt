@@ -2,7 +2,8 @@ package com.nroncari.movieplay.di
 
 import com.nroncari.movieplay.data.datasource.MovieDataSource
 import com.nroncari.movieplay.data.datasource.MovieDataSourceImpl
-import com.nroncari.movieplay.data.datasource.MoviePagingSource
+import com.nroncari.movieplay.data.datasource.MoviePagingSourceByGenre
+import com.nroncari.movieplay.data.datasource.MoviePagingSourceRecommendations
 import com.nroncari.movieplay.data.repository.MovieRepositoryImpl
 import com.nroncari.movieplay.data.retrofit.HttpClient
 import com.nroncari.movieplay.data.retrofit.RetrofitClient
@@ -17,8 +18,15 @@ import org.koin.dsl.module
 
 val dataModules = module {
     factory<MovieDataSource> { MovieDataSourceImpl(service = get()) }
-    factory<MoviePagingSource> { MoviePagingSource(service = get()) }
-    factory<MovieRepository> { MovieRepositoryImpl(dataSource = get(), moviePagingSource = get()) }
+    factory<MoviePagingSourceByGenre> { MoviePagingSourceByGenre(service = get()) }
+    factory<MoviePagingSourceRecommendations> { MoviePagingSourceRecommendations(service = get()) }
+    factory<MovieRepository> {
+        MovieRepositoryImpl(
+            dataSource = get(),
+            moviePagingSourceByGenre = get(),
+            moviePagingSourceRecommendations = get()
+        )
+    }
 }
 
 val domainModules = module {
@@ -28,6 +36,7 @@ val domainModules = module {
     factory { GetAnimationMoviesUseCase(repository = get()) }
     factory { GetComedyMoviesUseCase(repository = get()) }
     factory { GetDramaMoviesUseCase(repository = get()) }
+    factory { GetMovieRecommendationsUseCase(repository = get()) }
 }
 
 val networkModules = module {
@@ -46,5 +55,10 @@ val presentationModules = module {
             getHorrorMovies = get()
         )
     }
-    viewModel { MovieDetailViewModel(getMovieDetailUseCase = get()) }
+    viewModel {
+        MovieDetailViewModel(
+            getMovieDetailUseCase = get(),
+            recommendationsUseCase = get()
+        )
+    }
 }

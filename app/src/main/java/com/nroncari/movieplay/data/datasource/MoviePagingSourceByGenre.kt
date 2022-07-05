@@ -7,7 +7,7 @@ import com.nroncari.movieplay.data.mapper.MovieToDomainMapper
 import com.nroncari.movieplay.data.service.MovieService
 import com.nroncari.movieplay.domain.model.MovieListItemDomain
 
-class MoviePagingSource(
+class MoviePagingSourceByGenre(
     private val service: MovieService
 ) : PagingSource<Int, MovieListItemDomain>() {
 
@@ -44,7 +44,4 @@ object Genre {
     const val COMEDY = 35
     const val DRAMA = 18
     const val HORROR = 27
-    const val ROMANCE = 10749
-    const val WAR = 10752
-    const val MYSTERY = 9648
 }

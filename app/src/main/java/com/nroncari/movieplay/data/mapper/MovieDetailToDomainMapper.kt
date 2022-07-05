@@ -22,7 +22,8 @@ class MovieDetailToDomainMapper : Mapper<MovieDetailResponse, MovieDetailDomain>
             posterPath = source.posterPath,
             releaseDate = source.releaseDate,
             title = source.title,
-            backdropPath = source.backdropPath
+            backdropPath = source.backdropPath,
+            average = source.average
         )
     }
 }

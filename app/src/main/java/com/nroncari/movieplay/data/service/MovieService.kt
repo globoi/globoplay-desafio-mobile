@@ -25,4 +25,12 @@ interface MovieService {
         @Query("api_key") apiKey: String = BuildConfig.THEMOVIEDBAPI_KEY,
         @Query("language") language: String = LANGUAGE,
     ): MovieDetailResponse
+
+    @GET("movie/{movie_id}")
+    suspend fun getMovieRecommendationsBy(
+        @Path("movie_id") movieId: Long,
+        @Query("api_key") apiKey: String = BuildConfig.THEMOVIEDBAPI_KEY,
+        @Query("language") language: String = LANGUAGE,
+        @Query("page") page: Int = 1
+    ): BaseMovieListResponse<MovieListItemResponse>
 }

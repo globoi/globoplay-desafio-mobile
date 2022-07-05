@@ -1,7 +1,5 @@
 package com.nroncari.movieplay.domain.model
 
-import com.google.gson.annotations.SerializedName
-
 data class MovieDetailDomain(
     val id: Int? = 0,
     val originalTitle: String,
@@ -9,5 +7,6 @@ data class MovieDetailDomain(
     val posterPath: String,
     val releaseDate: String,
     val title: String,
-    var backdropPath: String
+    var backdropPath: String,
+    val average: Float = 0.0.toFloat()
 )
