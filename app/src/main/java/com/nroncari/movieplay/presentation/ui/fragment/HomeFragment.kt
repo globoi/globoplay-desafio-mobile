@@ -3,10 +3,14 @@ package com.nroncari.movieplay.presentation.ui.fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import com.nroncari.movieplay.databinding.FragmentHomeBinding
 import com.nroncari.movieplay.presentation.model.MovieListItemPresentation
@@ -14,6 +18,8 @@ import com.nroncari.movieplay.presentation.ui.adapter.MovieAdapter
 import com.nroncari.movieplay.presentation.viewmodel.HomeViewModel
 import com.nroncari.movieplay.presentation.viewmodel.StateAppComponentsViewModel
 import com.nroncari.movieplay.presentation.viewmodel.VisualComponents
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -52,6 +58,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun binding() {
+        binding.networkErrorAnimation.setAnimation("anim/network_error.json")
         binding.rvActionMovies.adapter = actionMovieAdapter
         binding.rvAnimationMovies.adapter = animationMovieAdapter
         binding.rvComedyMovies.adapter = comedyMoveAdapter
@@ -77,6 +84,16 @@ class HomeFragment : Fragment() {
     ) {
         genreMovies.observe(viewLifecycleOwner) {
             movieAdapter.submitData(lifecycle, it)
+            lifecycleScope.launch {
+                movieAdapter.loadStateFlow.collectLatest { loadStates ->
+                    when (loadStates.refresh) {
+                        is LoadState.Error -> {
+                            val errorMessage: String? = (loadStates.refresh as LoadState.Error).error.message
+                            initNetworkAnimationError(errorMessage!!)
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -90,5 +107,25 @@ class HomeFragment : Fragment() {
         val direction = HomeFragmentDirections
             .actionHomeFragmentToMovieDetailFragment(movieId)
         navController.navigate(direction)
+    }
+
+    private fun initNetworkAnimationError(messageError: String) {
+        with(binding.networkErrorAnimation) {
+            scaleX = 0.5f
+            scaleY = 0.5f
+            visibility = VISIBLE
+            playAnimation()
+        }
+        binding.errorMsgMovies.visibility = VISIBLE
+        binding.errorMsgMovies.text = messageError
+        hideFields()
+    }
+
+    private fun hideFields() {
+        binding.actionMsgMovies.visibility = INVISIBLE
+        binding.animationMsgMovies.visibility = INVISIBLE
+        binding.comedyMsgMovies.visibility = INVISIBLE
+        binding.dramaMsgMovies.visibility = INVISIBLE
+        binding.horrorMsgMovies.visibility = INVISIBLE
     }
 }

@@ -1,6 +1,5 @@
 package com.nroncari.movieplay.presentation.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,9 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.nroncari.movieplay.domain.mapper.MovieToPresentationMapper
-import com.nroncari.movieplay.domain.usecase.GetMovieDataVideoUseCase
-import com.nroncari.movieplay.domain.usecase.GetMovieDetailUseCase
-import com.nroncari.movieplay.domain.usecase.GetMovieRecommendationsUseCase
+import com.nroncari.movieplay.domain.usecase.*
 import com.nroncari.movieplay.presentation.model.MovieDataVideoPresentation
 import com.nroncari.movieplay.presentation.model.MovieDetailPresentation
 import com.nroncari.movieplay.presentation.model.MovieListItemPresentation
@@ -23,15 +20,22 @@ import kotlinx.coroutines.launch
 class MovieDetailViewModel(
     private val getMovieDetailUseCase: GetMovieDetailUseCase,
     private val getMovieDataVideoUseCase: GetMovieDataVideoUseCase,
+    private val getMovieDatabaseById: GetMovieDatabaseById,
     private val recommendationsUseCase: GetMovieRecommendationsUseCase,
+    private val insertMovieDBUseCase: InsertMovieDatabaseUseCase,
+    private val removeMovieDBUseCase: RemoveMovieDatabaseUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
+
 
     private val _onRequisitionError = MutableLiveData<String?>()
     val onRequisitionError: LiveData<String?> get() = _onRequisitionError
 
     private val _movie = MutableLiveData<MovieDetailPresentation>()
     val movie: LiveData<MovieDetailPresentation> get() = _movie
+
+    private val _isOnMyList = MutableLiveData<Boolean>()
+    val isOnMyList: LiveData<Boolean> get() = _isOnMyList
 
     private val _movieOriginalTitle = MutableLiveData<String?>()
     val movieOriginalTitle: LiveData<String?> get() = _movieOriginalTitle
@@ -64,6 +68,7 @@ class MovieDetailViewModel(
             }
         }
         getMoviesRecommended(movieId)
+        checkIfMovieIsOnMyList(movieId)
     }
 
     fun getMovieDataVideo(movieId: Long) {
@@ -79,11 +84,40 @@ class MovieDetailViewModel(
         }
     }
 
+
+    fun insertMovieDB(
+        inFailureCase: () -> Unit,
+    ) = insertMovieDBUseCase(movie.value!!, inFailureCase, inSuccessCase = {
+        _isOnMyList.postValue(true)
+    })
+
+    fun removeMovieDB(
+        inFailureCase: () -> Unit,
+    ) = removeMovieDBUseCase(movie.value!!, inFailureCase, inSuccessCase = {
+        _isOnMyList.postValue(false)
+    })
+
     private fun getMoviesRecommended(movieId: Long) {
         viewModelScope.launch(dispatcher) {
 
             recommendationsUseCase(movieId).cachedIn(viewModelScope).collect { movies ->
                 _listRecommendations.postValue(movies.map { MovieToPresentationMapper().map(it) })
+            }
+        }
+    }
+
+    private fun checkIfMovieIsOnMyList(movieId: Long) {
+        viewModelScope.launch(dispatcher) {
+
+            kotlin.runCatching {
+                getMovieDatabaseById(movieId)
+            }.onSuccess {
+                if (it != null)
+                    _isOnMyList.postValue(true)
+                else
+                    _isOnMyList.postValue(false)
+            }.onFailure {
+                _onRequisitionError.postValue(it.message)
             }
         }
     }

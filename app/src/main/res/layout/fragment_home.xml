@@ -7,6 +7,44 @@
     android:background="@color/colorPrimary"
     android:backgroundTint="@color/black">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/network_error_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:elevation="8dp"
+        android:scaleType="centerCrop"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/nestedScrollView"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/middle_guide_line_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <TextView
+        android:id="@+id/error_msg_movies"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:elevation="8dp"
+        android:fontFamily="@font/googlesans_medium"
+        android:maxLines="1"
+        android:visibility="invisible"
+        android:textAlignment="center"
+        android:text="@string/error_message"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/title_text_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/middle_guide_line_vertical" />
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"

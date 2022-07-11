@@ -1,6 +1,6 @@
 package com.nroncari.movieplay.domain.usecase
 
-import com.nroncari.movieplay.data.datasource.Genre.HORROR
+import com.nroncari.movieplay.data.remotedatasource.Genre.HORROR
 import com.nroncari.movieplay.domain.repository.MovieRepository
 
 class GetHorrorMoviesUseCase(

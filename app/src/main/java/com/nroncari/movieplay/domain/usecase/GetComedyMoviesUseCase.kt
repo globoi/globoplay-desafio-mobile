@@ -1,6 +1,6 @@
 package com.nroncari.movieplay.domain.usecase
 
-import com.nroncari.movieplay.data.datasource.Genre.COMEDY
+import com.nroncari.movieplay.data.remotedatasource.Genre.COMEDY
 import com.nroncari.movieplay.domain.repository.MovieRepository
 
 class GetComedyMoviesUseCase(

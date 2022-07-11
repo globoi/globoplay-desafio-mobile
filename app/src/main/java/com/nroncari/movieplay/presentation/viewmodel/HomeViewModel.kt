@@ -12,10 +12,10 @@ import com.nroncari.movieplay.domain.model.MovieListItemDomain
 import com.nroncari.movieplay.domain.usecase.*
 import com.nroncari.movieplay.presentation.model.MovieListItemPresentation
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -26,9 +26,6 @@ class HomeViewModel(
     private val getHorrorMovies: GetHorrorMoviesUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
-
-    private val _onRequisitionError = MutableLiveData<String?>()
-    val onRequisitionError: LiveData<String?> get() = _onRequisitionError
 
     private val _actionMovies = MutableLiveData<PagingData<MovieListItemPresentation>>()
     val actionMovies: LiveData<PagingData<MovieListItemPresentation>> get() = _actionMovies

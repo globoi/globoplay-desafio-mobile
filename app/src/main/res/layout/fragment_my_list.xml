@@ -3,15 +3,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Minha Lista"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/googlesans_bold"
+        android:maxLines="1"
+        android:text="@string/my_list_bottom_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/title_text_color"
+        app:layout_constraintBottom_toTopOf="@+id/rv_my_movies"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_my_movies"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:spanCount="3"
+        tools:listitem="@layout/item_movie_my_list" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/network_error_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:scaleType="centerCrop"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/middle_guide_line_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <TextView
+        android:id="@+id/error_msg_movies"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:elevation="8dp"
+        android:fontFamily="@font/googlesans_medium"
+        android:maxLines="1"
+        android:visibility="invisible"
+        android:textAlignment="center"
+        android:text="@string/error_message"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/description_text_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/middle_guide_line_vertical" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

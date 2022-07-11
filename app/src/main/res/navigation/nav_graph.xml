@@ -35,7 +35,11 @@
         android:id="@+id/myListFragment"
         tools:layout="@layout/fragment_my_list"
         android:name="com.nroncari.movieplay.presentation.ui.fragment.MyListFragment"
-        android:label="MyListFragment" />
+        android:label="MyListFragment" >
+        <action
+            android:id="@+id/action_myListFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
     <activity
         android:id="@+id/youtubePlayerActivity"
         tools:layout="@layout/activity_youtube_player"

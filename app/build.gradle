@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
 }
 
 def theMovieDBPropertiesFile = rootProject.file("local.properties")
@@ -58,6 +59,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
+
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
 
     implementation "io.insert-koin:koin-android:$koin_version"
@@ -103,10 +106,18 @@ dependencies {
 
     implementation "com.github.bumptech.glide:glide:4.10.0"
     annotationProcessor "com.github.bumptech.glide:compiler:4.10.0"
-    
+
     implementation 'com.facebook.shimmer:shimmer:0.5.0@aar'
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
 
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
+
+    def room_version = "2.3.0"
+    kapt "androidx.room:room-compiler:2.4.2"
+    implementation 'androidx.room:room-ktx:2.4.2'
+    implementation "androidx.room:room-runtime:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
+    testImplementation "androidx.room:room-testing:2.4.2"
+
 }

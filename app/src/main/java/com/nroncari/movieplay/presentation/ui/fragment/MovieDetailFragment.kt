@@ -14,7 +14,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
+import com.nroncari.movieplay.R
 import com.nroncari.movieplay.databinding.FragmentMovieDetailBinding
 import com.nroncari.movieplay.presentation.model.MovieDetailPresentation
 import com.nroncari.movieplay.presentation.ui.adapter.TabsAdapter
@@ -60,13 +62,36 @@ class MovieDetailFragment : Fragment() {
         viewModel.getMovieDetail(movieId)
         viewModel.getMovieDataVideo(movieId)
 
+        viewModel.isOnMyList.observe(viewLifecycleOwner) {
+            if (it) changeIconMyList("Adicionado", R.drawable.baseline_check_24)
+            else changeIconMyList("Minha Lista", R.drawable.baseline_star_24)
+        }
         viewModel.movie.observe(viewLifecycleOwner) { loadMovieFields(it) }
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
+        binding.insertMyListButton.setOnClickListener {
+            if (viewModel.isOnMyList.value == false)
+                viewModel.insertMovieDB(inFailureCase = {})
+            else viewModel.removeMovieDB(inFailureCase = {})
+        }
         binding.watch.setOnClickListener {
+            if (viewModel.dataMovieVideo.value == null)
+                showSnackBar("Vídeo não encontrado")
             viewModel.dataMovieVideo.value?.let { movieDataVideo ->
                 goToYouTubePlayerActivity(movieDataVideo.path)
             }
         }
+    }
+
+    private fun showSnackBar(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun changeIconMyList(buttonText: String, icon: Int) {
+        binding.insertMyListButton.text = buttonText
+        Glide.with(binding.myListIconImageView.context)
+            .load(icon)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(binding.myListIconImageView)
     }
 
     private fun goToYouTubePlayerActivity(path: String) {
@@ -100,7 +125,7 @@ class MovieDetailFragment : Fragment() {
     private fun initTabLayout(view: View) {
         val tabsAdapter = TabsAdapter(requireActivity())
         val viewPager by lazy {
-            view.findViewById<ViewPager2>(com.nroncari.movieplay.R.id.fragment_movie_detail_view_pager)
+            view.findViewById<ViewPager2>(R.id.fragment_movie_detail_view_pager)
         }
 
         viewPager.adapter = tabsAdapter

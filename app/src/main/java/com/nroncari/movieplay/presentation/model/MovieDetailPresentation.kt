@@ -8,5 +8,6 @@ class MovieDetailPresentation(
     val releaseDate: String,
     val title: String,
     var backdropPath: String,
-    val average: Float = 0.0.toFloat()
+    val average: Float = 0.0.toFloat(),
+    val isOnMyList: Boolean = false
 )

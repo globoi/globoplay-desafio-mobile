@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="5dp"
+    app:cardCornerRadius="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/item_my_list_thumbnail"
+            android:layout_width="115dp"
+            android:layout_height="170dp"
+            android:contentDescription="@string/movie_wallpaper"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.19999999" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_my_list_original_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/googlesans_medium"
+            android:maxLines="1"
+            android:text="Batman"
+            android:textAppearance="@style/TextAppearance.AppTheme.Subtitle2"
+            android:textColor="@color/description_text_color"
+            app:fontFamily="@font/googlesans_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_my_list_thumbnail"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_my_list_year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/googlesans_medium"
+            android:text="1998"
+            android:textAppearance="@style/TextAppearance.AppTheme.Subtitle2"
+            android:textColor="@color/description_text_color"
+            app:fontFamily="@font/googlesans_regular"
+            app:layout_constraintStart_toStartOf="@+id/text_my_list_original_title"
+            app:layout_constraintTop_toBottomOf="@+id/text_my_list_original_title" />
+
+        <RatingBar
+            android:id="@+id/fragment_movie_my_list_detail_rating_bar"
+            style="?android:ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_marginTop="8dp"
+            android:numStars="5"
+            android:rating="4.5"
+            app:layout_constraintStart_toStartOf="@+id/text_my_list_year"
+            app:layout_constraintTop_toBottomOf="@+id/text_my_list_year" />
+
+        <TextView
+            android:id="@+id/fragment_movie_detail_my_list_rating_numeric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/googlesans_bold"
+            android:text="4.5"
+            android:textAppearance="@style/TextAppearance.AppTheme.Subtitle2"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/fragment_movie_my_list_detail_rating_bar"
+            app:layout_constraintStart_toEndOf="@+id/fragment_movie_my_list_detail_rating_bar"
+            app:layout_constraintTop_toTopOf="@+id/fragment_movie_my_list_detail_rating_bar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

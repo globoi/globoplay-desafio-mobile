@@ -1,0 +1,51 @@
+package com.nroncari.movieplay.data.remotedatasource
+
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
+import com.nroncari.movieplay.data.mapper.MovieToDomainMapper
+import com.nroncari.movieplay.data.remotedatasource.service.MovieRemoteService
+import com.nroncari.movieplay.domain.model.MovieListItemDomain
+import retrofit2.HttpException
+import java.io.IOException
+
+class MoviePagingSourceByKeyword(
+    private val service: MovieRemoteService
+) : PagingSource<Int, MovieListItemDomain>() {
+
+    private val mapper = MovieToDomainMapper()
+    var keyword: String? = null
+    private val _keyword: String get() = keyword!!
+
+    override fun getRefreshKey(state: PagingState<Int, MovieListItemDomain>): Int? {
+        return state.anchorPosition
+    }
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieListItemDomain> {
+        return try {
+            loadResults(params, _keyword)
+        } catch (e: IOException) {
+            LoadResult.Error(e)
+        } catch (e: HttpException) {
+            LoadResult.Error(e)
+        }
+    }
+
+    private suspend fun loadResults(
+        params: LoadParams<Int>,
+        keyword: String
+    ): LoadResult.Page<Int, MovieListItemDomain> {
+        val currentPage = params.key ?: 1
+        val response = service.getMoviesByKeyword(keyword)
+
+        return LoadResult.Page(
+            data = response.results.filter { movieResponse ->
+                movieResponse.title != null
+                        && movieResponse.originalTitle != null
+                        && movieResponse.posterPath != null
+            }.map { mapper.map(it) },
+            prevKey = null,
+            nextKey = currentPage.takeIf { response.results.isNotEmpty() }?.inc()
+        )
+    }
+
+}

@@ -154,21 +154,21 @@
             app:tint="@color/colorPrimary" />
 
         <ImageView
-            android:id="@+id/favorite_icon_image_view"
+            android:id="@+id/my_list_icon_image_view"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:contentDescription="@string/favorite_button_icon"
             android:elevation="3dp"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatButton2"
-            app:layout_constraintStart_toStartOf="@+id/appCompatButton2"
-            app:layout_constraintTop_toTopOf="@+id/appCompatButton2"
+            app:layout_constraintBottom_toBottomOf="@+id/insert_my_list_button"
+            app:layout_constraintStart_toStartOf="@+id/insert_my_list_button"
+            app:layout_constraintTop_toTopOf="@+id/insert_my_list_button"
             app:srcCompat="@drawable/baseline_star_24"
             app:tint="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/appCompatButton2"
+            android:id="@+id/insert_my_list_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
