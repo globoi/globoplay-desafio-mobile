@@ -19,4 +19,6 @@
     <string name="play_button_icon">Play Button Icon</string>
     <string name="favorite_button_icon">Favorite Button Icon</string>
     <string name="background_picture">Background Picture</string>
+    <string name="search_icon">search Icon</string>
+    <string name="movie">Filme</string>
 </resources>

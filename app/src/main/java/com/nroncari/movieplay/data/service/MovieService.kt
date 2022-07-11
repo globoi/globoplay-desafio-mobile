@@ -4,7 +4,6 @@ import com.nroncari.movieplay.BuildConfig
 import com.nroncari.movieplay.data.model.BaseMovieListResponse
 import com.nroncari.movieplay.data.model.BaseMovieVideoListResponse
 import com.nroncari.movieplay.data.model.MovieDetailResponse
-import com.nroncari.movieplay.data.model.MovieListItemResponse
 import com.nroncari.movieplay.data.retrofit.RetrofitConst.LANGUAGE
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -41,4 +40,11 @@ interface MovieService {
         @Query("api_key") apiKey: String = BuildConfig.THEMOVIEDBAPI_KEY,
         @Query("language") language: String = LANGUAGE,
     ): BaseMovieVideoListResponse
+
+    @GET("search/movie")
+    suspend fun getMoviesByKeyword(
+        @Query("query") keyword: String,
+        @Query("api_key") clientId: String = BuildConfig.THEMOVIEDBAPI_KEY,
+        @Query("language") language: String = LANGUAGE,
+    ): BaseMovieListResponse
 }

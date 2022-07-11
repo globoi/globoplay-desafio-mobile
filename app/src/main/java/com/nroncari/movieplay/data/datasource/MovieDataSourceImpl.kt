@@ -37,4 +37,10 @@ class MovieDataSourceImpl(
             dataVideoMapper.map(dataVideo)
         }
     }
+
+    override suspend fun getMoviesByKeyword(keyword: String): List<MovieListItemDomain> {
+        return service.getMoviesByKeyword(keyword).results.map { movies ->
+            mapper.map(movies)
+        }
+    }
 }

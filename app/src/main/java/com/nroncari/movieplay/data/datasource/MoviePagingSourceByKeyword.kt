@@ -6,28 +6,28 @@ import com.nroncari.movieplay.data.mapper.MovieToDomainMapper
 import com.nroncari.movieplay.data.service.MovieService
 import com.nroncari.movieplay.domain.model.MovieListItemDomain
 
-class MoviePagingSourceRecommendations(
+class MoviePagingSourceByKeyword(
     private val service: MovieService
 ) : PagingSource<Int, MovieListItemDomain>() {
 
     private val mapper = MovieToDomainMapper()
-    var movieId: Long? = null
-    private val _movieId: Long get() = movieId!!
+    var keyword: String? = null
+    private val _keyword: String get() = keyword!!
 
     override fun getRefreshKey(state: PagingState<Int, MovieListItemDomain>): Int? {
         return state.anchorPosition
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieListItemDomain> {
-        return loadResults(params, _movieId)
+        return loadResults(params, _keyword)
     }
 
     private suspend fun loadResults(
         params: LoadParams<Int>,
-        movieId: Long
+        keyword: String
     ): LoadResult.Page<Int, MovieListItemDomain> {
         val currentPage = params.key ?: 1
-        val response = service.getMovieRecommendationsBy(movieId)
+        val response = service.getMoviesByKeyword(keyword)
 
         return LoadResult.Page(
             data = response.results.map { mapper.map(it) },

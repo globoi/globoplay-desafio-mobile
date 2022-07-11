@@ -13,4 +13,6 @@ interface MovieDataSource {
     suspend fun getMovieRecommendationsBy(movieId: Long) : List<MovieListItemDomain>
 
     suspend fun getMovieDataVideoSource(movieId: Long) : List<MovieDataVideoDomain>
+
+    suspend fun getMoviesByKeyword(keyword: String) : List<MovieListItemDomain>
 }

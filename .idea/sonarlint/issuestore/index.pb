@@ -1,6 +1,4 @@
 
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 h
 8app/src/main/java/com/nroncari/movieplay/utils/Mapper.kt,2/c/2cc807293ab88798b65b735bbc7f828a71774371
 É
@@ -11,8 +9,6 @@ o
 Xapp/src/main/java/com/nroncari/movieplay/presentation/model/MovieListItemPresentation.kt,8/e/8e3ef7ca845ac1b80aa09e41d8fcd1da0fdf2f35
 É
 Sapp/src/main/java/com/nroncari/movieplay/domain/mapper/MovieToPresentationMapper.kt,7/5/75c0e79446729522926c93845381c0be4d85b04c
-m
-=app/src/main/java/com/nroncari/movieplay/di/AppApplication.kt,6/e/6e2048371be07b755fd55634e0cb1f8c3683e5e0
 Å
 Qapp/src/main/java/com/nroncari/movieplay/domain/usecase/GetComedyMoviesUseCase.kt,7/b/7b1c11e331d10e00a87b6c47a9ba11f82c9abaf5
 Ä
@@ -29,22 +25,14 @@ Sapp/src/main/java/com/nroncari/movieplay/presentation/ui/fragment/MyListFragmen
 Yapp/src/main/java/com/nroncari/movieplay/presentation/ui/adapter/MovieListDiffCallback.kt,f/6/f6d037bfb18c09b4321fc91cbc02aed7b3b63f15
 
 Oapp/src/main/java/com/nroncari/movieplay/presentation/ui/adapter/TabsAdapter.kt,e/0/e060548d8c3986b1a51eae9d2297db17069ee38b
-Ä
-Papp/src/main/java/com/nroncari/movieplay/presentation/ui/adapter/MovieAdapter.kt,d/0/d025a17db7fcbb43e470844486b60a6a2731aec6
-Ñ
-Tapp/src/main/java/com/nroncari/movieplay/data/datasource/MoviePagingSourceByGenre.kt,4/1/410e67c846556cadc5fd2d8df730723c04271b66
 Å
 Qapp/src/main/java/com/nroncari/movieplay/domain/usecase/GetActionMoviesUseCase.kt,f/7/f7876f5d32ca7a7de590aca30cc2257684465b96
 Ñ
 Tapp/src/main/java/com/nroncari/movieplay/domain/usecase/GetAnimationMoviesUseCase.kt,9/3/93547b2907ed946094538bc2c4246b096791898a
 â
 Yapp/src/main/java/com/nroncari/movieplay/domain/usecase/GetMovieRecommendationsUseCase.kt,7/5/75a56f1f46f3e6c55b2eb73eca62fca21345ed59
-å
-\app/src/main/java/com/nroncari/movieplay/data/datasource/MoviePagingSourceRecommendations.kt,6/9/6911fa4591f988aa161423651921cfc98a42e24e
 x
 Happ/src/main/java/com/nroncari/movieplay/data/retrofit/RetrofitClient.kt,1/8/182e68741646974bfa021d6303804ec64643cb59
-{
-Kapp/src/main/java/com/nroncari/movieplay/data/mapper/MovieToDomainMapper.kt,1/3/132fd99b5d23402d7917a5c456e5ba3d424aa2a8
 |
 Lapp/src/main/java/com/nroncari/movieplay/domain/model/MovieListItemDomain.kt,6/4/642e63462aae4b48b8a48be62be28eeb293a485b
 â
@@ -57,24 +45,12 @@ Mapp/src/main/java/com/nroncari/movieplay/domain/model/MovieDataVideoDomain.kt,
 Qapp/src/main/java/com/nroncari/movieplay/domain/usecase/GetHorrorMoviesUseCase.kt,9/0/908d26e91aa65bf5f5dea3069f1dd9c893ea9a93
 Ä
 Papp/src/main/java/com/nroncari/movieplay/domain/usecase/GetMovieDetailUseCase.kt,5/6/566897e507442979c4773db575c058f4107ef1a9
-Ä
-Papp/src/main/java/com/nroncari/movieplay/presentation/viewmodel/HomeViewModel.kt,2/2/2278b3ce7ee4866d7e8226724a41e1a4d2c611c8
-}
-Mapp/src/main/java/com/nroncari/movieplay/domain/repository/MovieRepository.kt,0/1/01d96ebc205f712f48b8c305d0d08e433b5ecaf1
-
-Oapp/src/main/java/com/nroncari/movieplay/data/repository/MovieRepositoryImpl.kt,c/e/cefc34970d06ae12566e2ab75c6d054a5d601093
-u
-Eapp/src/main/java/com/nroncari/movieplay/data/service/MovieService.kt,4/1/410547e5b321391ce3256ab0a5b2711ee20a7b54
 |
 Lapp/src/main/java/com/nroncari/movieplay/data/model/BaseMovieListResponse.kt,6/a/6a839d0f3e850a4947ffb062f983b8759db3fbc3
 }
 Mapp/src/main/java/com/nroncari/movieplay/data/model/MovieDataVideoResponse.kt,f/0/f0c356d0a33c3ed4dbb7f3300c12eba52221f2b0
 Å
 Qapp/src/main/java/com/nroncari/movieplay/data/model/BaseMovieVideoListResponse.kt,5/5/554f3cefc70adfa5d8ebff56f29368a4f4d38ebb
-{
-Kapp/src/main/java/com/nroncari/movieplay/data/datasource/MovieDataSource.kt,2/f/2f1dd9a8c6d47c838c0ca1a3e77f40348d818507
-
-Oapp/src/main/java/com/nroncari/movieplay/data/datasource/MovieDataSourceImpl.kt,2/0/20b9e1e2a91472f6d66bab502a3aef8587051a15
 Ñ
 Tapp/src/main/java/com/nroncari/movieplay/data/mapper/MovieDataVideoToDomainMapper.kt,a/f/afd127b61087e7597d1d327101e0bce8d4ccac68
 É
@@ -95,7 +71,3 @@ Japp/src/main/java/com/nroncari/movieplay/data/model/MovieDetailResponse.kt,5/8
 Yapp/src/main/java/com/nroncari/movieplay/domain/mapper/MovieDetailToPresentationMapper.kt,c/5/c5e389fb0caebb56166f1f88437bc12060ff7c84
 z
 Japp/src/main/java/com/nroncari/movieplay/domain/model/MovieDetailDomain.kt,c/d/cdf53edddc88cdade8042486986b0c70b119c581
-ê
-`app/src/main/java/com/nroncari/movieplay/presentation/ui/fragment/ListRecommendationsFragment.kt,c/4/c445834d9a8fc4f538aaf8decee5ca4899610dd1
-Å
-Qapp/src/main/java/com/nroncari/movieplay/presentation/ui/fragment/HomeFragment.kt,1/9/19b2c54c40f2610ff527512e0d58a8d578c6f585

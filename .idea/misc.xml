@@ -12,11 +12,13 @@
         <entry key="app/src/main/res/drawable/baseline_play_arrow_24.xml" value="0.3921875" />
         <entry key="app/src/main/res/drawable/bottom_navigation_colors.xml" value="0.3921875" />
         <entry key="app/src/main/res/drawable/custom_ripple.xml" value="0.3921875" />
+        <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.242" />
         <entry key="app/src/main/res/layout/activity_youtube_player.xml" value="0.264945652173913" />
         <entry key="app/src/main/res/layout/fragment_details_movie.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.34190231362467866" />
         <entry key="app/src/main/res/layout/fragment_layout.xml" value="0.296195652173913" />
         <entry key="app/src/main/res/layout/fragment_movie_detail.xml" value="0.18696883852691218" />
+        <entry key="app/src/main/res/layout/fragment_movie_search.xml" value="0.33753148614609574" />
         <entry key="app/src/main/res/layout/fragment_my_list.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_recommended_movies.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_youtube_player.xml" value="0.264945652173913" />

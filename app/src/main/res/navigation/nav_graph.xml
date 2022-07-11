@@ -15,6 +15,9 @@
             app:destination="@id/movieDetailFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchMovieFragment"
+            app:destination="@id/searchMovieFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
@@ -42,4 +45,13 @@
             android:name="movieDataVideoPath"
             app:argType="string" />
     </activity>
+    <fragment
+        android:id="@+id/searchMovieFragment"
+        tools:layout="@layout/fragment_movie_search"
+        android:name="com.nroncari.movieplay.presentation.ui.fragment.SearchMovieFragment"
+        android:label="SearchMovieFragment" >
+        <action
+            android:id="@+id/action_searchMovieFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
 </navigation>

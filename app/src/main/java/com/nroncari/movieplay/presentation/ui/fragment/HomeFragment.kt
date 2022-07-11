@@ -66,6 +66,9 @@ class HomeFragment : Fragment() {
         configAdapter(viewModel.comedyMovies, comedyMoveAdapter)
         configAdapter(viewModel.dramaMovies, dramaMovieAdapter)
         configAdapter(viewModel.horrorMovies, horrorMovieAdapter)
+        binding.searchButton.setOnClickListener {
+            goToSearchMovieFragment()
+        }
     }
 
     private fun configAdapter(
@@ -75,6 +78,12 @@ class HomeFragment : Fragment() {
         genreMovies.observe(viewLifecycleOwner) {
             movieAdapter.submitData(lifecycle, it)
         }
+    }
+
+    private fun goToSearchMovieFragment() {
+        val direction = HomeFragmentDirections
+            .actionHomeFragmentToSearchMovieFragment()
+        navController.navigate(direction)
     }
 
     private fun goToMovieDetailFragment(movieId: Long) {

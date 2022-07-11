@@ -12,6 +12,8 @@ interface MovieRepository {
 
     fun getPagingMovieRecommendationsBy(movieId: Long) : Flow<PagingData<MovieListItemDomain>>
 
+    fun getPagingMovieByKeyword(keyword: String) : Flow<PagingData<MovieListItemDomain>>
+
     suspend fun getMovieDetailBy(movieId: Long): MovieDetailDomain
 
     suspend fun getMovieDataVideo(movieId: Long): List<MovieDataVideoDomain>

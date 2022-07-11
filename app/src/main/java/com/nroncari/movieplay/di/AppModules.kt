@@ -1,9 +1,6 @@
 package com.nroncari.movieplay.di
 
-import com.nroncari.movieplay.data.datasource.MovieDataSource
-import com.nroncari.movieplay.data.datasource.MovieDataSourceImpl
-import com.nroncari.movieplay.data.datasource.MoviePagingSourceByGenre
-import com.nroncari.movieplay.data.datasource.MoviePagingSourceRecommendations
+import com.nroncari.movieplay.data.datasource.*
 import com.nroncari.movieplay.data.repository.MovieRepositoryImpl
 import com.nroncari.movieplay.data.retrofit.HttpClient
 import com.nroncari.movieplay.data.retrofit.RetrofitClient
@@ -12,6 +9,7 @@ import com.nroncari.movieplay.domain.repository.MovieRepository
 import com.nroncari.movieplay.domain.usecase.*
 import com.nroncari.movieplay.presentation.viewmodel.HomeViewModel
 import com.nroncari.movieplay.presentation.viewmodel.MovieDetailViewModel
+import com.nroncari.movieplay.presentation.viewmodel.SearchViewModel
 import com.nroncari.movieplay.presentation.viewmodel.StateAppComponentsViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -21,11 +19,13 @@ val dataModules = module {
     factory<MovieDataSource> { MovieDataSourceImpl(service = get()) }
     factory<MoviePagingSourceByGenre> { MoviePagingSourceByGenre(service = get()) }
     factory<MoviePagingSourceRecommendations> { MoviePagingSourceRecommendations(service = get()) }
+    factory<MoviePagingSourceByKeyword> { MoviePagingSourceByKeyword(service = get()) }
     factory<MovieRepository> {
         MovieRepositoryImpl(
             dataSource = get(),
             moviePagingSourceByGenre = get(),
-            moviePagingSourceRecommendations = get()
+            moviePagingSourceRecommendations = get(),
+            moviePagingSourceByKeyword = get()
         )
     }
 }
@@ -39,6 +39,7 @@ val domainModules = module {
     factory { GetDramaMoviesUseCase(repository = get()) }
     factory { GetMovieDataVideoUseCase(repository = get()) }
     factory { GetMovieRecommendationsUseCase(repository = get()) }
+    factory { GetMoviesByKeywordUseCase(repository = get()) }
 }
 
 val networkModules = module {
@@ -64,5 +65,6 @@ val presentationModules = module {
             recommendationsUseCase = get(),
         )
     }
+    viewModel { SearchViewModel(useCase = get()) }
     viewModel { StateAppComponentsViewModel() }
 }
