@@ -12,6 +12,7 @@ import com.nroncari.movieplay.domain.repository.MovieRepository
 import com.nroncari.movieplay.domain.usecase.*
 import com.nroncari.movieplay.presentation.viewmodel.HomeViewModel
 import com.nroncari.movieplay.presentation.viewmodel.MovieDetailViewModel
+import com.nroncari.movieplay.presentation.viewmodel.StateAppComponentsViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -36,6 +37,7 @@ val domainModules = module {
     factory { GetAnimationMoviesUseCase(repository = get()) }
     factory { GetComedyMoviesUseCase(repository = get()) }
     factory { GetDramaMoviesUseCase(repository = get()) }
+    factory { GetMovieDataVideoUseCase(repository = get()) }
     factory { GetMovieRecommendationsUseCase(repository = get()) }
 }
 
@@ -58,7 +60,9 @@ val presentationModules = module {
     viewModel {
         MovieDetailViewModel(
             getMovieDetailUseCase = get(),
-            recommendationsUseCase = get()
+            getMovieDataVideoUseCase = get(),
+            recommendationsUseCase = get(),
         )
     }
+    viewModel { StateAppComponentsViewModel() }
 }

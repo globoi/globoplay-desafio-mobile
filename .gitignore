@@ -6,6 +6,7 @@
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
+/.idea/sonarlint/issuestore
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
@@ -13,3 +14,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+
+
+

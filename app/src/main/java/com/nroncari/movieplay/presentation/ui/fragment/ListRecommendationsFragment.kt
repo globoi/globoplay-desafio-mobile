@@ -42,6 +42,7 @@ class ListRecommendationsFragment : Fragment() {
         }
         adapter.onItemClickListener = { movieId ->
             viewModel.getMovieDetail(movieId)
+            viewModel.getMovieDataVideo(movieId)
         }
     }
 }

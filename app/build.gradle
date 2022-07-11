@@ -107,4 +107,6 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.5.0@aar'
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
 }

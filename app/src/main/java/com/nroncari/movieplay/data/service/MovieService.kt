@@ -2,6 +2,7 @@ package com.nroncari.movieplay.data.service
 
 import com.nroncari.movieplay.BuildConfig
 import com.nroncari.movieplay.data.model.BaseMovieListResponse
+import com.nroncari.movieplay.data.model.BaseMovieVideoListResponse
 import com.nroncari.movieplay.data.model.MovieDetailResponse
 import com.nroncari.movieplay.data.model.MovieListItemResponse
 import com.nroncari.movieplay.data.retrofit.RetrofitConst.LANGUAGE
@@ -17,7 +18,7 @@ interface MovieService {
         @Query("language") language: String = LANGUAGE,
         @Query("page") page: Int,
         @Query("with_genres") genre: Int
-    ): BaseMovieListResponse<MovieListItemResponse>
+    ): BaseMovieListResponse
 
     @GET("movie/{movie_id}")
     suspend fun getMovieDetailBy(
@@ -32,5 +33,12 @@ interface MovieService {
         @Query("api_key") apiKey: String = BuildConfig.THEMOVIEDBAPI_KEY,
         @Query("language") language: String = LANGUAGE,
         @Query("page") page: Int = 1
-    ): BaseMovieListResponse<MovieListItemResponse>
+    ): BaseMovieListResponse
+
+    @GET("movie/{movie_id}/videos")
+    suspend fun getMovieDataVideo(
+        @Path("movie_id") movieId: Long,
+        @Query("api_key") apiKey: String = BuildConfig.THEMOVIEDBAPI_KEY,
+        @Query("language") language: String = LANGUAGE,
+    ): BaseMovieVideoListResponse
 }

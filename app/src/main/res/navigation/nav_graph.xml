@@ -24,10 +24,22 @@
         <argument
             android:name="movieId"
             app:argType="long" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_youtubePlayerActivity"
+            app:destination="@id/youtubePlayerActivity" />
     </fragment>
     <fragment
         android:id="@+id/myListFragment"
         tools:layout="@layout/fragment_my_list"
         android:name="com.nroncari.movieplay.presentation.ui.fragment.MyListFragment"
         android:label="MyListFragment" />
+    <activity
+        android:id="@+id/youtubePlayerActivity"
+        tools:layout="@layout/activity_youtube_player"
+        android:name="com.nroncari.movieplay.presentation.ui.YoutubePlayerActivity"
+        android:label="YoutubePlayerActivity" >
+        <argument
+            android:name="movieDataVideoPath"
+            app:argType="string" />
+    </activity>
 </navigation>

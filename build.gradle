@@ -3,7 +3,7 @@ buildscript {
 
     ext {
         nav_version                     = '2.2.0-rc02'
-        kotlin_version                  = '1.4.30'
+        kotlin_version                  = '1.6.0'
         appcompat_version               = '1.1.0'
         core_ktx_version                = '1.2.0'
         core_testing_version            = '2.1.0'

@@ -16,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:contentDescription="@string/background_picture"
-            app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
+            app:layout_constraintBottom_toTopOf="@+id/watch"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/gradient_bg"
-            app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
+            app:layout_constraintBottom_toTopOf="@+id/watch"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -128,7 +128,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/appCompatButton"
+            android:id="@+id/watch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -147,9 +147,9 @@
             android:layout_weight="1"
             android:contentDescription="@string/play_button_icon"
             android:elevation="3dp"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatButton"
-            app:layout_constraintStart_toStartOf="@+id/appCompatButton"
-            app:layout_constraintTop_toTopOf="@+id/appCompatButton"
+            app:layout_constraintBottom_toBottomOf="@+id/watch"
+            app:layout_constraintStart_toStartOf="@+id/watch"
+            app:layout_constraintTop_toTopOf="@+id/watch"
             app:srcCompat="@android:drawable/ic_media_play"
             app:tint="@color/colorPrimary" />
 

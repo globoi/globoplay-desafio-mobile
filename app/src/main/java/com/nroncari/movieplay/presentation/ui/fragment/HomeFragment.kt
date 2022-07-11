@@ -12,12 +12,16 @@ import com.nroncari.movieplay.databinding.FragmentHomeBinding
 import com.nroncari.movieplay.presentation.model.MovieListItemPresentation
 import com.nroncari.movieplay.presentation.ui.adapter.MovieAdapter
 import com.nroncari.movieplay.presentation.viewmodel.HomeViewModel
+import com.nroncari.movieplay.presentation.viewmodel.StateAppComponentsViewModel
+import com.nroncari.movieplay.presentation.viewmodel.VisualComponents
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private val appComponentsViewModel: StateAppComponentsViewModel by sharedViewModel()
     private val navController by lazy { NavHostFragment.findNavController(this) }
     private val viewModel: HomeViewModel by viewModel()
     private val actionMovieAdapter = MovieAdapter { goToMovieDetailFragment(it) }
@@ -36,8 +40,9 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding()
+        appComponentsViewModel.havComponent = VisualComponents(true)
 
+        binding()
         listeners()
     }
 

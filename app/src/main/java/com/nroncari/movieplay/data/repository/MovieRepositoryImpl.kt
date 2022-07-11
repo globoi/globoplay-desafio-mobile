@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import com.nroncari.movieplay.data.datasource.MovieDataSource
 import com.nroncari.movieplay.data.datasource.MoviePagingSourceByGenre
 import com.nroncari.movieplay.data.datasource.MoviePagingSourceRecommendations
+import com.nroncari.movieplay.domain.model.MovieDataVideoDomain
 import com.nroncari.movieplay.domain.model.MovieDetailDomain
 import com.nroncari.movieplay.domain.model.MovieListItemDomain
 import com.nroncari.movieplay.domain.repository.MovieRepository
@@ -29,6 +30,10 @@ class MovieRepositoryImpl(
 
     override suspend fun getMovieDetailBy(movieId: Long): MovieDetailDomain {
         return dataSource.getMovieDetailBy(movieId)
+    }
+
+    override suspend fun getMovieDataVideo(movieId: Long): List<MovieDataVideoDomain> {
+        return dataSource.getMovieDataVideoSource(movieId)
     }
 
     private fun buildPage() = Pager(
