@@ -1,16 +1,10 @@
 
-É
-Sapp/src/main/java/com/nroncari/movieplay/data/retrofit/CachingControlInterceptor.kt,4/e/4ee6accff4d2aaf8d1541294a116a7f47f7a495c
-o
-?app/src/main/java/com/nroncari/movieplay/data/retrofit/Const.kt,a/b/ab87f881e6563343f6b91a2ea34015a4664408e7
 à
 Xapp/src/main/java/com/nroncari/movieplay/presentation/model/MovieListItemPresentation.kt,8/e/8e3ef7ca845ac1b80aa09e41d8fcd1da0fdf2f35
 Å
 Qapp/src/main/java/com/nroncari/movieplay/domain/usecase/GetComedyMoviesUseCase.kt,7/b/7b1c11e331d10e00a87b6c47a9ba11f82c9abaf5
 Ä
 Papp/src/main/java/com/nroncari/movieplay/domain/usecase/GetDramaMoviesUseCase.kt,f/a/fab366981f637550ec5031f3a0d4e2373ba97469
-t
-Dapp/src/main/java/com/nroncari/movieplay/data/retrofit/HttpClient.kt,6/f/6fed06474bb88232538dcfa748ee1066ab975c86
 ]
 -assets/icons/star/baseline-star_rate-18px.svg,a/0/a06e66e5bca8549b2cac69ef01e50a9ab7c38fd9
 â
@@ -35,27 +29,13 @@ Mapp/src/main/java/com/nroncari/movieplay/data/model/MovieDataVideoResponse.kt,
 Qapp/src/main/java/com/nroncari/movieplay/data/model/BaseMovieVideoListResponse.kt,5/5/554f3cefc70adfa5d8ebff56f29368a4f4d38ebb
 É
 Sapp/src/main/java/com/nroncari/movieplay/domain/usecase/GetMovieDataVideoUseCase.kt,c/6/c6e4c93a0c04529484ccc22d3ff1808d4f6a8f38
-P
- app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 Å
 Qapp/src/main/java/com/nroncari/movieplay/data/mapper/MovieDetailToDomainMapper.kt,d/f/dfefb503c5502f5b26cc45f03c854b9f66d8e18a
 â
 Yapp/src/main/java/com/nroncari/movieplay/domain/mapper/MovieDetailToPresentationMapper.kt,c/5/c5e389fb0caebb56166f1f88437bc12060ff7c84
 z
 Japp/src/main/java/com/nroncari/movieplay/domain/model/MovieDetailDomain.kt,c/d/cdf53edddc88cdade8042486986b0c70b119c581
-~
-Napp/src/main/java/com/nroncari/movieplay/presentation/ui/NavigationActivity.kt,d/1/d18e06b51a5c398876e848f8dd28e9dcf7954536
 Å
 Qapp/src/main/java/com/nroncari/movieplay/presentation/ui/YoutubePlayerActivity.kt,a/9/a91b7e8d224de37bf175eb5d7f5425030f3446a3
-u
-Eapp/src/main/java/com/nroncari/movieplay/data/service/MovieService.kt,4/1/410547e5b321391ce3256ab0a5b2711ee20a7b54
 Ñ
 Tapp/src/main/java/com/nroncari/movieplay/domain/usecase/GetMoviesByKeywordUseCase.kt,a/b/ab230cdf794a1d55959ea6ddf522d1efd071bbe8
-{
-Kapp/src/main/java/com/nroncari/movieplay/data/datasource/MovieDataSource.kt,2/f/2f1dd9a8c6d47c838c0ca1a3e77f40348d818507
-
-Oapp/src/main/java/com/nroncari/movieplay/data/datasource/MovieDataSourceImpl.kt,2/0/20b9e1e2a91472f6d66bab502a3aef8587051a15
-å
-\app/src/main/java/com/nroncari/movieplay/data/datasource/MoviePagingSourceRecommendations.kt,6/9/6911fa4591f988aa161423651921cfc98a42e24e
-Ñ
-Tapp/src/main/java/com/nroncari/movieplay/data/datasource/MoviePagingSourceByGenre.kt,4/1/410e67c846556cadc5fd2d8df730723c04271b66

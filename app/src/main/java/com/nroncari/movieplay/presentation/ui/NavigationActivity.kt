@@ -20,6 +20,7 @@ class NavigationActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Movieplay)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
