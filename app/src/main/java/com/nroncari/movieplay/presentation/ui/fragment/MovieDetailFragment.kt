@@ -63,8 +63,11 @@ class MovieDetailFragment : Fragment() {
         viewModel.getMovieDataVideo(movieId)
 
         viewModel.isOnMyList.observe(viewLifecycleOwner) {
-            if (it) changeIconMyList("Adicionado", R.drawable.baseline_check_24)
-            else changeIconMyList("Minha Lista", R.drawable.baseline_star_24)
+            if (it) changeIconMyList(getString(R.string.included), R.drawable.baseline_check_24)
+            else changeIconMyList(
+                getString(R.string.my_list_bottom_text),
+                R.drawable.baseline_star_24
+            )
         }
         viewModel.movie.observe(viewLifecycleOwner) { loadMovieFields(it) }
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
@@ -75,15 +78,16 @@ class MovieDetailFragment : Fragment() {
         }
         binding.watch.setOnClickListener {
             if (viewModel.dataMovieVideo.value == null)
-                showSnackBar("Vídeo não encontrado")
+                showSnackBar()
             viewModel.dataMovieVideo.value?.let { movieDataVideo ->
                 goToYouTubePlayerActivity(movieDataVideo.path)
             }
         }
     }
 
-    private fun showSnackBar(message: String) {
-        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+    private fun showSnackBar() {
+        Snackbar.make(binding.root, getString(R.string.video_not_found), Snackbar.LENGTH_SHORT)
+            .show()
     }
 
     private fun changeIconMyList(buttonText: String, icon: Int) {
@@ -105,11 +109,11 @@ class MovieDetailFragment : Fragment() {
         binding.movieDescription.text = "${movie.overview}\n"
         binding.movieDetailWallpaper.loadWallpaper(movie.posterPath)
 
-        val bgPicture = "https://image.tmdb.org/t/p/w300${movie.backdropPath}"
+        val bgPicture = "$PICTURE_BASE${movie.backdropPath}"
         Glide.with(this)
             .load(bgPicture)
-            .apply(RequestOptions.bitmapTransform(BlurTransformation(18, 3)))
-            .transition(DrawableTransitionOptions.withCrossFade(1500))
+            .apply(RequestOptions.bitmapTransform(BlurTransformation(RADIUS, SAMPLING)))
+            .transition(DrawableTransitionOptions.withCrossFade(DURATION))
             .into(object : CustomTarget<Drawable?>() {
                 override fun onResourceReady(
                     resource: Drawable,
@@ -131,8 +135,16 @@ class MovieDetailFragment : Fragment() {
         viewPager.adapter = tabsAdapter
         viewPager.isSaveEnabled = false
         TabLayoutMediator(binding.fragmentMovieDetailTabLayout, viewPager) { tab, position ->
-            val tabTitles = arrayOf("Assista também", "Detalhes")
+            val tabTitles =
+                arrayOf(getString(R.string.watch_too_label), getString(R.string.details))
             tab.text = tabTitles[position]
         }.attach()
+    }
+
+    companion object Const {
+        const val RADIUS = 18
+        const val SAMPLING = 3
+        const val DURATION = 1500
+        const val PICTURE_BASE = "https://image.tmdb.org/t/p/w300"
     }
 }

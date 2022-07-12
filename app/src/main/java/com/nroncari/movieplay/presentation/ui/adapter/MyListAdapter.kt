@@ -35,8 +35,12 @@ class MyListAdapter(
         private val movieWallPaper: ImageView by lazy { itemView.findViewById(R.id.item_my_list_thumbnail) }
         private val movieTitle: TextView by lazy { itemView.findViewById(R.id.text_my_list_original_title) }
         private val movieYear: TextView by lazy { itemView.findViewById(R.id.text_my_list_year) }
-        private val ratingBar: RatingBar by lazy { itemView.findViewById(R.id.fragment_movie_my_list_detail_rating_bar) }
-        private val ratingNum: TextView by lazy { itemView.findViewById(R.id.fragment_movie_detail_my_list_rating_numeric) }
+        private val ratingBar: RatingBar by lazy {
+            itemView.findViewById(R.id.fragment_movie_my_list_detail_rating_bar)
+        }
+        private val ratingNum: TextView by lazy {
+            itemView.findViewById(R.id.fragment_movie_detail_my_list_rating_numeric)
+        }
 
         fun bind(movie: MovieDetailPresentation) {
             this.movie = movie

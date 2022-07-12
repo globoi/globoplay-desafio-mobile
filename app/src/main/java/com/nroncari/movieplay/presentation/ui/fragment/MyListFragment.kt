@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.nroncari.movieplay.R
 import com.nroncari.movieplay.data.model.MovieDTO
 import com.nroncari.movieplay.databinding.FragmentMyListBinding
 import com.nroncari.movieplay.domain.mapper.MovieDTOToPresentationMapper
@@ -42,7 +43,7 @@ class MyListFragment : Fragment() {
         binding.networkErrorAnimation.setAnimation("anim/list_empty.json")
 
         viewModel.listAll().observe(viewLifecycleOwner) {
-            if (it.isEmpty()) initAnimationEmpty("Parece que ainda não adicionou nenhum filme")
+            if (it.isEmpty()) initAnimationEmpty()
             initAdapter(it)
         }
     }
@@ -61,14 +62,18 @@ class MyListFragment : Fragment() {
         findNavController().navigate(direction)
     }
 
-    private fun initAnimationEmpty(messageError: String) {
+    private fun initAnimationEmpty() {
         with(binding.networkErrorAnimation) {
-            scaleX = 0.5f
-            scaleY = 0.5f
+            scaleX = ANIMATION_SCALE
+            scaleY = ANIMATION_SCALE
             visibility = View.VISIBLE
             playAnimation()
         }
         binding.errorMsgMovies.visibility = View.VISIBLE
-        binding.errorMsgMovies.text = messageError
+        binding.errorMsgMovies.text = getString(R.string.message_list_empty)
+    }
+
+    companion object Const {
+        const val ANIMATION_SCALE = 0.5f
     }
 }

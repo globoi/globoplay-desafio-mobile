@@ -1,7 +1,6 @@
 package com.nroncari.movieplay.data.localdatasource
 
 import android.database.sqlite.SQLiteConstraintException
-import androidx.lifecycle.LiveData
 import com.nroncari.movieplay.data.localdatasource.dao.MovieDetailDAO
 import com.nroncari.movieplay.data.model.MovieDTO
 import kotlinx.coroutines.CoroutineScope

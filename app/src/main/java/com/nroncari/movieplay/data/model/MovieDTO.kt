@@ -14,5 +14,9 @@ data class MovieDTO(
     val releaseDate: String,
     val title: String,
     var backdropPath: String,
-    var average: Float = 0.0.toFloat()
-) : Serializable
+    var average: Float = 0.0.toFloat(),
+) : Serializable {
+    companion object {
+        private const val serialVersionUID: Long = 1234
+    }
+}

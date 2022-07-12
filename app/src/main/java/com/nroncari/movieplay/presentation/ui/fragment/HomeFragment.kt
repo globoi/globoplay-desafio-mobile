@@ -111,8 +111,8 @@ class HomeFragment : Fragment() {
 
     private fun initNetworkAnimationError(messageError: String) {
         with(binding.networkErrorAnimation) {
-            scaleX = 0.5f
-            scaleY = 0.5f
+            scaleX = ANIMATION_SCALE
+            scaleY = ANIMATION_SCALE
             visibility = VISIBLE
             playAnimation()
         }
@@ -127,5 +127,9 @@ class HomeFragment : Fragment() {
         binding.comedyMsgMovies.visibility = INVISIBLE
         binding.dramaMsgMovies.visibility = INVISIBLE
         binding.horrorMsgMovies.visibility = INVISIBLE
+    }
+
+    companion object Const {
+        const val ANIMATION_SCALE = 0.5f
     }
 }

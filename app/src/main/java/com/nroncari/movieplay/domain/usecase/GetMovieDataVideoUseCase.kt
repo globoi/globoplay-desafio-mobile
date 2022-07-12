@@ -1,11 +1,11 @@
 package com.nroncari.movieplay.domain.usecase
 
 import com.nroncari.movieplay.domain.mapper.MovieDataVideoToPresentationMapper
-import com.nroncari.movieplay.domain.repository.MovieRepository
+import com.nroncari.movieplay.domain.repository.MovieRemoteRepository
 import com.nroncari.movieplay.presentation.model.MovieDataVideoPresentation
 
 class GetMovieDataVideoUseCase(
-    private val repository: MovieRepository
+    private val repository: MovieRemoteRepository
 ) {
 
     val mapper = MovieDataVideoToPresentationMapper()

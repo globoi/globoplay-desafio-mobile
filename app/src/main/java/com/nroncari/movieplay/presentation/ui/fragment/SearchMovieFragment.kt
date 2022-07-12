@@ -55,7 +55,8 @@ class SearchMovieFragment : Fragment() {
                 adapter.loadStateFlow.collectLatest { loadStates ->
                     when (loadStates.refresh) {
                         is LoadState.Error -> {
-                            val errorMessage: String? = (loadStates.refresh as LoadState.Error).error.message
+                            val errorMessage: String? =
+                                (loadStates.refresh as LoadState.Error).error.message
                             initNetworkAnimationError(errorMessage!!)
                         }
                     }
@@ -72,12 +73,16 @@ class SearchMovieFragment : Fragment() {
 
     private fun initNetworkAnimationError(messageError: String) {
         with(binding.networkErrorAnimation) {
-            scaleX = 0.5f
-            scaleY = 0.5f
+            scaleX = ANIMATION_SCALE
+            scaleY = ANIMATION_SCALE
             visibility = View.VISIBLE
             playAnimation()
         }
         binding.errorMsgMovies.visibility = View.VISIBLE
         binding.errorMsgMovies.text = messageError
+    }
+
+    companion object Const {
+        const val ANIMATION_SCALE = 0.5f
     }
 }

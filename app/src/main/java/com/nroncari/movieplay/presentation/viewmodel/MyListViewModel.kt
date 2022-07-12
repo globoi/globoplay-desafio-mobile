@@ -6,5 +6,6 @@ import com.nroncari.movieplay.domain.usecase.ListAllMovieDatabaseUseCase
 class MyListViewModel(
     private val listAllUseCase: ListAllMovieDatabaseUseCase,
 ) : ViewModel() {
+
     fun listAll() = listAllUseCase()
 }

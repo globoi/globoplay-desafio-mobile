@@ -6,11 +6,13 @@ import com.nroncari.movieplay.data.localdatasource.MovieLocalDataSource
 import com.nroncari.movieplay.data.localdatasource.MovieLocalDataSourceImpl
 import com.nroncari.movieplay.data.localdatasource.dao.MovieDetailDAO
 import com.nroncari.movieplay.data.remotedatasource.*
-import com.nroncari.movieplay.data.remotedatasource.service.MovieRemoteService
-import com.nroncari.movieplay.data.repository.MovieRepositoryImpl
 import com.nroncari.movieplay.data.remotedatasource.retrofit.HttpClient
 import com.nroncari.movieplay.data.remotedatasource.retrofit.RetrofitClient
-import com.nroncari.movieplay.domain.repository.MovieRepository
+import com.nroncari.movieplay.data.remotedatasource.service.MovieRemoteService
+import com.nroncari.movieplay.data.repository.MovieLocalRepositoryImpl
+import com.nroncari.movieplay.data.repository.MovieRemoteRepositoryImpl
+import com.nroncari.movieplay.domain.repository.MovieLocalRepository
+import com.nroncari.movieplay.domain.repository.MovieRemoteRepository
 import com.nroncari.movieplay.domain.usecase.*
 import com.nroncari.movieplay.presentation.viewmodel.*
 import org.koin.android.ext.koin.androidContext
@@ -39,14 +41,16 @@ val dataModules = module {
     factory<MoviePagingSourceByGenre> { MoviePagingSourceByGenre(service = get()) }
     factory<MoviePagingSourceRecommendations> { MoviePagingSourceRecommendations(service = get()) }
     factory<MoviePagingSourceByKeyword> { MoviePagingSourceByKeyword(service = get()) }
-    factory<MovieRepository> {
-        MovieRepositoryImpl(
+    factory<MovieRemoteRepository> {
+        MovieRemoteRepositoryImpl(
             remoteDataSource = get(),
-            localDataSource = get(),
             moviePagingSourceByGenre = get(),
             moviePagingSourceRecommendations = get(),
             moviePagingSourceByKeyword = get(),
         )
+    }
+    factory<MovieLocalRepository> {
+        MovieLocalRepositoryImpl(dataSource = get())
     }
 }
 

@@ -22,4 +22,8 @@
     <string name="search_icon">search Icon</string>
     <string name="movie">Filme</string>
     <string name="error_message">Mensagem de erro</string>
+    <string name="message_list_empty">Parece que ainda não adicionou nenhum filme</string>
+    <string name="video_not_found">Vídeo não encontrado</string>
+    <string name="included">Adicionado</string>
+    <string name="details">Detalhes</string>
 </resources>

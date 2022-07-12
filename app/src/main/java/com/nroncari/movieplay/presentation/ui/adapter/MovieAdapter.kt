@@ -13,7 +13,7 @@ import com.nroncari.movieplay.utils.loadWallpaper
 class MovieAdapter(
     var onItemClickListener: (movieId: Long) -> Unit = {}
 ) :
-    PagingDataAdapter<MovieListItemPresentation, MovieAdapter.MovieViewHolder>(MovieComparator) {
+    PagingDataAdapter<MovieListItemPresentation, MovieAdapter.MovieViewHolder>(MovieListDiffCallback) {
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val item = getItem(position)!!

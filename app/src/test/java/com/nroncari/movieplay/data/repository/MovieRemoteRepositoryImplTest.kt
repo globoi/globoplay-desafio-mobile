@@ -4,7 +4,6 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.nroncari.movieplay.data.localdatasource.MovieLocalDataSource
-import com.nroncari.movieplay.data.model.MovieListItemResponse
 import com.nroncari.movieplay.data.remotedatasource.MoviePagingSourceByGenre
 import com.nroncari.movieplay.data.remotedatasource.MoviePagingSourceByKeyword
 import com.nroncari.movieplay.data.remotedatasource.MoviePagingSourceRecommendations
@@ -15,18 +14,16 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert
 import org.junit.Test
 
-class MovieRepositoryImplTest {
+class MovieRemoteRepositoryImplTest {
 
     private val remoteDataSource: MovieRemoteDataSource = mock()
-    private val localDataSource: MovieLocalDataSource = mock()
     private val moviePagingSourceByGenre: MoviePagingSourceByGenre = mock()
     private val moviePagingSourceRecommendations: MoviePagingSourceRecommendations = mock()
     private val moviePagingSourceByKeyword: MoviePagingSourceByKeyword = mock()
 
     private val repository by lazy {
-        MovieRepositoryImpl(
+        MovieRemoteRepositoryImpl(
             remoteDataSource,
-            localDataSource,
             moviePagingSourceByGenre,
             moviePagingSourceRecommendations,
             moviePagingSourceByKeyword
@@ -67,19 +64,5 @@ class MovieRepositoryImplTest {
         verify(remoteDataSource).getMovieDataVideoSource(42)
         Assert.assertEquals(3, result.size)
         Assert.assertTrue(result.first() is MovieDataVideoDomain)
-    }
-
-    @Test
-    fun `When get movie by id should return success`() = runBlockingTest {
-        // Given
-        whenever(localDataSource.returnById(42)).thenReturn(42)
-
-        // When
-        val result = repository.returnById(42)
-
-        // Then
-        verify(localDataSource).returnById(42)
-        Assert.assertEquals(42, result!!.toInt())
-        Assert.assertTrue(result is Long)
     }
 }

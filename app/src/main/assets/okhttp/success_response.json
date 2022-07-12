@@ -1,0 +1,406 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg",
+      "genre_ids": [
+        14,
+        28,
+        12
+      ],
+      "id": 453395,
+      "original_language": "en",
+      "original_title": "Doctor Strange in the Multiverse of Madness",
+      "overview": "Doutor Estranho, com a ajuda de aliados místicos antigos e novos, atravessa as perigosas realidades alternativas e alucinantes do Multiverso para enfrentar um novo adversário misterioso.",
+      "popularity": 5940.233,
+      "poster_path": "/boIgXXUhw5O3oVkhXsE6SJZkmYo.jpg",
+      "release_date": "2022-05-04",
+      "title": "Doutor Estranho no Multiverso da Loucura",
+      "video": false,
+      "vote_average": 7.5,
+      "vote_count": 4253
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/p1F51Lvj3sMopG948F5HsBbl43C.jpg",
+      "genre_ids": [
+        28,
+        12,
+        14
+      ],
+      "id": 616037,
+      "original_language": "en",
+      "original_title": "Thor: Love and Thunder",
+      "overview": "Thor parte em uma jornada diferente de tudo que já enfrentou – uma busca pela paz interior. Mas sua aposentadoria é interrompida por um assassino galáctico conhecido como Gorr, o Carniceiro de Deus, que busca a extinção dos deuses. Para combater a ameaça, Thor pede a ajuda do Rei Valquíria, Korg e da ex-namorada Jane Foster, que – para surpresa de Thor – inexplicavelmente empunha seu martelo mágico, Mjolnir, como o Poderoso Thor. Juntos, eles embarcam em uma angustiante aventura cósmica para descobrir o mistério da vingança do God Butcher e detê-lo antes que seja tarde demais.",
+      "popularity": 4925.978,
+      "poster_path": "/6OEBp0Gqv6DsOgi8diPUslT2kbA.jpg",
+      "release_date": "2022-07-06",
+      "title": "Thor: Amor e Trovão",
+      "video": false,
+      "vote_average": 7,
+      "vote_count": 574
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/wo3l9p0S7pcvwlzlndtKgq0peRJ.jpg",
+      "genre_ids": [
+        12,
+        28,
+        878
+      ],
+      "id": 507086,
+      "original_language": "en",
+      "original_title": "Jurassic World Dominion",
+      "overview": "Quatro anos após a destruição da Ilha Nublar, os dinossauros agora vivem – e caçam – ao lado de humanos em todo o mundo. Esse frágil equilíbrio remodelará o futuro e determinará, de uma vez por todas, se os seres humanos continuarão sendo os principais predadores em um planeta que agora compartilham com as criaturas mais temíveis da história.",
+      "popularity": 2651.177,
+      "poster_path": "/rvX8f3QuUkYtirO0hL9CoeXMzkv.jpg",
+      "release_date": "2022-06-01",
+      "title": "Jurassic World: Domínio",
+      "video": false,
+      "vote_average": 6.6,
+      "vote_count": 1070
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/egoyMDLqCxzjnSrWOz50uLlJWmD.jpg",
+      "genre_ids": [
+        28,
+        12,
+        10751,
+        35
+      ],
+      "id": 675353,
+      "original_language": "en",
+      "original_title": "Sonic the Hedgehog 2",
+      "overview": "Depois de se estabelecer em Green Hills, Sonic está pronto para mais liberdade e deixar sua marca como um herói, e Tom e Maddie concordam em deixá-lo em casa enquanto vão de férias. Mas, assim que eles se foram, Dr. Robotnik volta, desta vez com um novo parceiro, Knuckles, em busca de uma esmeralda que tem o poder de construir e destruir civilizações. Sonic se une a um novo companheiro, Tails, e juntos eles embarcam em uma jornada para encontrar a esmeralda antes que ela caia nas mãos erradas.",
+      "popularity": 2158.913,
+      "poster_path": "/zGmKHqvqsk2fOedmCVaaUUnBMqp.jpg",
+      "release_date": "2022-03-30",
+      "title": "Sonic 2: O Filme",
+      "video": false,
+      "vote_average": 7.7,
+      "vote_count": 2432
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/zGLHX92Gk96O1DJvLil7ObJTbaL.jpg",
+      "genre_ids": [
+        14,
+        12,
+        28
+      ],
+      "id": 338953,
+      "original_language": "en",
+      "original_title": "Fantastic Beasts: The Secrets of Dumbledore",
+      "overview": "O professor Alvo Dumbledore sabe que o poderoso mago das trevas Gellert Grindelwald está se movimentando para assumir o controle do mundo mágico. Incapaz de detê-lo sozinho, ele pede ao magizoologista Newt Scamander para liderar uma intrépida equipe de bruxos, bruxas e um corajoso padeiro trouxa em uma missão perigosa, em que eles encontram velhos e novos animais fantásticos e entram em conflito com a crescente legião de seguidores de Grindelwald. Mas com tantas ameaças, quanto tempo poderá Dumbledore permanecer à margem do embate?",
+      "popularity": 2041.714,
+      "poster_path": "/gopGghuMtmdMviBcl9G0JfVB2RZ.jpg",
+      "release_date": "2022-04-06",
+      "title": "Animais Fantásticos: Os Segredos de Dumbledore",
+      "video": false,
+      "vote_average": 6.8,
+      "vote_count": 2205
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/1Ds7xy7ILo8u2WWxdnkJth1jQVT.jpg",
+      "genre_ids": [
+        28,
+        12,
+        35
+      ],
+      "id": 752623,
+      "original_language": "en",
+      "original_title": "The Lost City",
+      "overview": "Uma romancista reclusa acredita que nada seria pior que fazer a turnê do seu livro mais recente com o modelo que ilustra a capa. Tudo muda quando a autora e o modelo sofrem uma tentativa de sequestro, e, com isso, são levados para uma surpreendente aventura na selva.",
+      "popularity": 1762.07,
+      "poster_path": "/vsX9gj7t56ZlMYKNYccskeW5adT.jpg",
+      "release_date": "2022-03-24",
+      "title": "Cidade Perdida",
+      "video": false,
+      "vote_average": 6.8,
+      "vote_count": 1467
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/gG9fTyDL03fiKnOpf2tr01sncnt.jpg",
+      "genre_ids": [
+        28,
+        878,
+        14
+      ],
+      "id": 526896,
+      "original_language": "en",
+      "original_title": "Morbius",
+      "overview": "Gravemente doente com um raro distúrbio sanguíneo e determinado a salvar outros sofrendo o mesmo destino, o Dr. Morbius tenta uma aposta desesperada. O que primeiramente parece ser um sucesso radical, libera uma escuridão dentro dele e transforma esse médico em um caçador.",
+      "popularity": 1746.991,
+      "poster_path": "/6JjfSchsU6daXk2AKX8EEBjO3Fm.jpg",
+      "release_date": "2022-03-30",
+      "title": "Morbius",
+      "video": false,
+      "vote_average": 6.4,
+      "vote_count": 2013
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/ocUp7DJBIc8VJgLEw1prcyK1dYv.jpg",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "id": 634649,
+      "original_language": "en",
+      "original_title": "Spider-Man: No Way Home",
+      "overview": "Peter Parker é desmascarado e não consegue mais separar sua vida normal dos grandes riscos de ser um super-herói. Quando ele pede ajuda ao Doutor Estranho, os riscos se tornam ainda mais perigosos, e o forçam a descobrir o que realmente significa ser o Homem-Aranha...",
+      "popularity": 1939.954,
+      "poster_path": "/fVzXp3NwovUlLe7fvoRynCmBPNc.jpg",
+      "release_date": "2021-12-15",
+      "title": "Homem-Aranha: Sem Volta Para Casa",
+      "video": false,
+      "vote_average": 8.1,
+      "vote_count": 14048
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/vjnLXptqdxnpNJer5fWgj2OIGhL.jpg",
+      "genre_ids": [
+        28,
+        53,
+        80
+      ],
+      "id": 818397,
+      "original_language": "en",
+      "original_title": "Memory",
+      "overview": "Em Assassino Sem Rastro, Alex Lewis é um assassino experiente com reputação de precisão discreta. Preso em um dilema moral, Alex se recusa a concluir um trabalho que viola seu código de ética e deve rapidamente caçar e matar as pessoas que o contrataram antes que eles e o agente do FBI Vincent Serra o encontrem primeiro. Alex tinha o objetivo de se vingar, mas, com uma memória que começa a vacilar, ele é forçado a questionar todas as suas ações, se perdendo na linha entre o certo e o errado.",
+      "popularity": 1457.405,
+      "poster_path": "/emj0dVlz5zSnvOfMZJA2zrWyW6Z.jpg",
+      "release_date": "2022-04-28",
+      "title": "Assassino Sem Rastro",
+      "video": false,
+      "vote_average": 7.3,
+      "vote_count": 485
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/jVGHRpSgtE2MQLJhC5q4lXmPNQW.jpg",
+      "genre_ids": [
+        27,
+        53,
+        28
+      ],
+      "id": 960258,
+      "original_language": "en",
+      "original_title": "Shark Bait",
+      "overview": "Um grupo de jovens que está passando as férias no México. Depois de uma noite de muita curtição, os amigos furtam dois jetskis e os levam para o alto-mar, mas eles acabam batendo em um acidente terrível. Depois que um dos jetskis afunda, o grupo se encontra a mais de três quilômetros da costa, com um jetski quebrado e um amigo gravemente ferido. Sem poder nada de volta para terra firme e com predadores circulando nas agitadas águas abaixo, o verdadeiro terror começa.",
+      "popularity": 1341.888,
+      "poster_path": "/mVVU9zC8snNHlcqYONY2HOsh9ob.jpg",
+      "release_date": "2022-05-13",
+      "title": "Tubarão: Presas Humanas",
+      "video": false,
+      "vote_average": 6.8,
+      "vote_count": 71
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/fqw8nJLPRgKRyFSDC0xBsC06NGC.jpg",
+      "genre_ids": [
+        28,
+        12,
+        14
+      ],
+      "id": 639933,
+      "original_language": "en",
+      "original_title": "The Northman",
+      "overview": "Baseado na obra de Shakespeare, Hamlet, e na lenda viking de Amelth. No ano de 914, o príncipe Amleth (Alexander Skarsgård) testemunha o brutal assassinato de seu pai, Horvendill (Ethan Hawke) por seu tio, Fjölnir (Claes Bang). O menino foge mas jura que voltará para vingar seu pai, salvar sua mãe e matar seu tio. Vinte anos depois conhece uma vidente que o lembra que é chegada a hora de cumprir sua promessa.",
+      "popularity": 1314.18,
+      "poster_path": "/vJfLNvOMK1Ek7OvpKgBDSqH2kN1.jpg",
+      "release_date": "2022-04-07",
+      "title": "O Homem do Norte",
+      "video": false,
+      "vote_average": 7.2,
+      "vote_count": 1812
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/wcJ0H0jDF9U5NFNq8VFcBcqZ6B5.jpg",
+      "genre_ids": [
+        80,
+        28
+      ],
+      "id": 893297,
+      "original_language": "en",
+      "original_title": "American Sicario",
+      "overview": "Um gângster americano Erik Vasquez planeja se tornar o principal chefe do submundo mexicano, apenas para se ver fazendo inimigos tanto de poderosos cartéis quanto de seus próprios aliados, mesmo quando seu casamento com a grávida Gloria se deteriora diante de seus olhos.",
+      "popularity": 1296.79,
+      "poster_path": "/nQRPSUmHGLrFRPK6v3BI1frAM1O.jpg",
+      "release_date": "2021-12-10",
+      "title": "American Sicario",
+      "video": false,
+      "vote_average": 5.9,
+      "vote_count": 48
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/3oTeRLZQ16HGmVXAvEnVh90PhS6.jpg",
+      "genre_ids": [
+        28,
+        35,
+        53
+      ],
+      "id": 667739,
+      "original_language": "en",
+      "original_title": "The Man from Toronto",
+      "overview": "Um caso de identidade trocada obriga um homem desastrado a se unir a um famoso assassino na esperança de continuar vivo.",
+      "popularity": 1521.559,
+      "poster_path": "/A7WtrzlvLAhdmXObY9aZCRhtAMs.jpg",
+      "release_date": "2022-06-24",
+      "title": "O Homem de Toronto",
+      "video": false,
+      "vote_average": 6.2,
+      "vote_count": 306
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/v7hdWmLh6VLgZQgkbHDxAa17M47.jpg",
+      "genre_ids": [
+        28,
+        80,
+        53
+      ],
+      "id": 852592,
+      "original_language": "es",
+      "original_title": "Centauro",
+      "overview": "Para pagar a dívida da mãe de seu filho, um piloto de moto passa a transportar drogas para um cartel, arriscando suas chances no esporte e a própria vida.",
+      "popularity": 1489.125,
+      "poster_path": "/wOx97MJOxEoR38aoya3lopyrlYC.jpg",
+      "release_date": "2022-06-15",
+      "title": "Centauro",
+      "video": false,
+      "vote_average": 6.6,
+      "vote_count": 62
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/o31kGDH9GbAZjVLwPYno8XvQGV2.jpg",
+      "genre_ids": [
+        28,
+        53
+      ],
+      "id": 777831,
+      "original_language": "en",
+      "original_title": "9 Bullets",
+      "overview": "Uma ex-dançarina burlesca que virou autora (Lena Headey) descobre uma segunda chance de vida e redenção quando arrisca tudo para resgatar seu jovem vizinho depois que ele testemunha o assassinato de seus pais. Agora fugindo do chefe do crime local (Sam Worthington), que por acaso é seu ex de longa data, ela faz uma tentativa desesperada de colocar o menino em segurança.",
+      "popularity": 1153.007,
+      "poster_path": "/dkZAsGX4xXsy6rhTnvi5EdbB0Qx.jpg",
+      "release_date": "2022-04-14",
+      "title": "Em Fuga",
+      "video": false,
+      "vote_average": 6,
+      "vote_count": 33
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/5vVA0vUVMfCzIl4woB32f2qklog.jpg",
+      "genre_ids": [
+        28,
+        53
+      ],
+      "id": 628878,
+      "original_language": "en",
+      "original_title": "Panama",
+      "overview": "Um ex-fuzileiro naval é contratado por um empreiteiro de defesa para viajar ao Panamá para concluir um acordo de armas. No processo, ele se envolve com a invasão do Panamá pelos EUA e aprende uma importante lição sobre a verdadeira natureza do poder político.",
+      "popularity": 1155.898,
+      "poster_path": "/u9DzgsmssidygWuORgYzhi317vj.jpg",
+      "release_date": "2022-03-17",
+      "title": "Panamá",
+      "video": false,
+      "vote_average": 6.1,
+      "vote_count": 59
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/aEGiJJP91HsKVTEPy1HhmN0wRLm.jpg",
+      "genre_ids": [
+        28,
+        12
+      ],
+      "id": 335787,
+      "original_language": "en",
+      "original_title": "Uncharted",
+      "overview": "Nathan Drake e seu parceiro canastrão Victor \"Sully\" Sullivan embarcam em uma perigosa busca para encontrar o maior tesouro jamais encontrado. Enquanto isso, eles também rastreiam pistas que podem levar ao irmão perdido de Nathan.",
+      "popularity": 1158.474,
+      "poster_path": "/qNAPgepJ4NHNA74ThVsxQEOUceJ.jpg",
+      "release_date": "2022-02-10",
+      "title": "Uncharted: Fora do Mapa",
+      "video": false,
+      "vote_average": 7.2,
+      "vote_count": 2686
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/uR0FopHrAjDlG5q6PZB07a1JOva.jpg",
+      "genre_ids": [
+        16,
+        878,
+        28
+      ],
+      "id": 610150,
+      "original_language": "ja",
+      "original_title": "ドラゴンボール超：スーパーヒーロー",
+      "overview": "Com suas capas balançando, Gamma 1 e Gamma 2 podem ser vistos fazendo algumas poses incríveis! Além disso, há alguns novos personagens originais que teremos que esperar para descobrir mais, não importa o quão difícil possa ser! Vestindo seu uniforme e tomando o centro do palco está Gohan, que parece estar se preparando para a luta de uma vida ao lado de Piccolo, Goku, Vegeta e Pan! (sinopse temporária)",
+      "popularity": 1416.397,
+      "poster_path": "/FiqBRypTDyHzqcxdbpPb3ddFep.jpg",
+      "release_date": "2022-06-11",
+      "title": "Dragon Ball Super: Super Hero",
+      "video": false,
+      "vote_average": 8,
+      "vote_count": 66
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/m0YjB4VfghKey8Ppsmz8qCd0v1m.jpg",
+      "genre_ids": [
+        28,
+        35,
+        80
+      ],
+      "id": 648579,
+      "original_language": "en",
+      "original_title": "The Unbearable Weight of Massive Talent",
+      "overview": "A versão fictícia de Nicolas Cage aceita uma oferta de US＄1 milhão para participar do aniversário de um super fã perigoso, Javi Gutierrez. As coisas tomam um rumo inesperado quando Nick Cage é recrutado por uma agente da CIA e forçado a viver de acordo com sua própria lenda, canalizando seus personagens mais icônicos e amados na tela para salvar a si mesmo e seus entes queridos.",
+      "popularity": 1039.616,
+      "poster_path": "/l814mpV0kU3TH3HfZpgKM62zRan.jpg",
+      "release_date": "2022-04-20",
+      "title": "O Peso do Talento",
+      "video": false,
+      "vote_average": 7.1,
+      "vote_count": 456
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/tqUD26YGjKmFqOJAgbNBah1gX0N.jpg",
+      "genre_ids": [
+        16,
+        878,
+        12,
+        28,
+        10751
+      ],
+      "id": 718789,
+      "original_language": "en",
+      "original_title": "Lightyear",
+      "overview": "A aventura de ação e ficção científica apresenta a história de origem definitiva de Buzz Lightyear - o herói que inspirou o brinquedo - apresentando o lendário Space Ranger que conquistaria gerações de fãs.",
+      "popularity": 987.727,
+      "poster_path": "/wc3cGQUF4P2Jetawf7YqzaWQsNc.jpg",
+      "release_date": "2022-06-15",
+      "title": "Lightyear",
+      "video": false,
+      "vote_average": 7,
+      "vote_count": 444
+    }
+  ],
+  "total_pages": 1656,
+  "total_results": 33120
+}
