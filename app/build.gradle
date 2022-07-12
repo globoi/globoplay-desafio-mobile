@@ -102,22 +102,19 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$core_testing_version"
 
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-    implementation "jp.wasabeef:glide-transformations:4.3.0"
+    implementation "jp.wasabeef:glide-transformations:$glide_transformation"
 
-    implementation "com.github.bumptech.glide:glide:4.10.0"
-    annotationProcessor "com.github.bumptech.glide:compiler:4.10.0"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
-    implementation 'com.facebook.shimmer:shimmer:0.5.0@aar'
+    implementation "androidx.viewpager2:viewpager2:$view_pager_version"
 
-    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation "com.pierfrancescosoffritti.androidyoutubeplayer:core:$yt_player_version"
 
-    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
-
-    def room_version = "2.3.0"
-    kapt "androidx.room:room-compiler:2.4.2"
-    implementation 'androidx.room:room-ktx:2.4.2'
-    implementation "androidx.room:room-runtime:2.4.2"
-    kapt "androidx.room:room-compiler:2.4.2"
-    testImplementation "androidx.room:room-testing:2.4.2"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
 
 }

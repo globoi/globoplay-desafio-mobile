@@ -21,16 +21,10 @@ Mapp/src/main/java/com/nroncari/movieplay/domain/model/MovieDataVideoDomain.kt,
 Qapp/src/main/java/com/nroncari/movieplay/domain/usecase/GetHorrorMoviesUseCase.kt,9/0/908d26e91aa65bf5f5dea3069f1dd9c893ea9a93
 Ä
 Papp/src/main/java/com/nroncari/movieplay/domain/usecase/GetMovieDetailUseCase.kt,5/6/566897e507442979c4773db575c058f4107ef1a9
-|
-Lapp/src/main/java/com/nroncari/movieplay/data/model/BaseMovieListResponse.kt,6/a/6a839d0f3e850a4947ffb062f983b8759db3fbc3
-}
-Mapp/src/main/java/com/nroncari/movieplay/data/model/MovieDataVideoResponse.kt,f/0/f0c356d0a33c3ed4dbb7f3300c12eba52221f2b0
 Å
 Qapp/src/main/java/com/nroncari/movieplay/data/model/BaseMovieVideoListResponse.kt,5/5/554f3cefc70adfa5d8ebff56f29368a4f4d38ebb
 É
 Sapp/src/main/java/com/nroncari/movieplay/domain/usecase/GetMovieDataVideoUseCase.kt,c/6/c6e4c93a0c04529484ccc22d3ff1808d4f6a8f38
-Å
-Qapp/src/main/java/com/nroncari/movieplay/data/mapper/MovieDetailToDomainMapper.kt,d/f/dfefb503c5502f5b26cc45f03c854b9f66d8e18a
 â
 Yapp/src/main/java/com/nroncari/movieplay/domain/mapper/MovieDetailToPresentationMapper.kt,c/5/c5e389fb0caebb56166f1f88437bc12060ff7c84
 z
