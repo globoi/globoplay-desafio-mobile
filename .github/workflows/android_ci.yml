@@ -18,6 +18,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Access APOD_API_KEY
+        env:
+          THEMOVIEDBAPI_KEY: $
+        run: echo THEMOVIEDBAPI_KEY=\"$THEMOVIEDBAPI_KEY\" > ./local.properties
       - name: Make gradlew executable
         run: chmod +x ./gradlew
       - name: Build with Gradle

@@ -1,8 +1,6 @@
 
 ]
 -assets/icons/star/baseline-star_rate-18px.svg,a/0/a06e66e5bca8549b2cac69ef01e50a9ab7c38fd9
-P
- app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 ç
@@ -55,8 +53,6 @@ Sapp/src/test/java/com/nroncari/movieplay/domain/usecase/GetMovieDatabaseByIdTes
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 å
 \app/src/androidTest/java/com/nroncari/movieplay/presentation/ui/fragment/HomeFragmentTest.kt,7/4/7486d0ba9d60411b385d2e5bcf0f7e2e4b1236bc
-P
- .github/workflows/android_ci.yml,e/1/e15c98561abd4fab3987ea78d10073deeb75d4eb
 É
 Sapp/src/main/java/com/nroncari/movieplay/data/localdatasource/dao/MovieDetailDAO.kt,d/5/d5e56b982f0755a912e30ebfcc0edc25652663d9
 É
