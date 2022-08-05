@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/ic_baseline_live_tv_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_globoplay_logo.xml" value="0.1315" />
+        <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3055" />
+        <entry key="app/src/main/res/drawable/poster_placeholder.xml" value="0.27" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_movie_detail.xml" value="0.2417910447761194" />
+        <entry key="app/src/main/res/layout/activity_single_movie.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_assistatambem.xml" value="0.28888888888888886" />
+        <entry key="app/src/main/res/layout/fragment_detalhes.xml" value="0.14160401002506265" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_lista.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_movie.xml" value="0.28888888888888886" />
+        <entry key="app/src/main/res/layout/media_item.xml" value="0.25213675213675213" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.353125" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2655" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
