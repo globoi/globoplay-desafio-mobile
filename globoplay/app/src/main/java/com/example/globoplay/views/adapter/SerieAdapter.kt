@@ -10,6 +10,7 @@ import com.example.globoplay.domain.PopularTVSeries
 import com.squareup.picasso.Picasso
 
 class SerieAdapter(private val series:List<PopularTVSeries>, private val listener: ClickItemSerieDetails): RecyclerView.Adapter<SerieAdapter.SerieViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SerieViewHolder {
         val itemList = MediaItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return SerieViewHolder(itemList, listener)
@@ -21,10 +22,11 @@ class SerieAdapter(private val series:List<PopularTVSeries>, private val listene
 
     override fun getItemCount(): Int  = series.size
 
-    inner class SerieViewHolder(val itemBinding: MediaItemBinding, private val listener:ClickItemSerieDetails):RecyclerView.ViewHolder(itemBinding.root){init {
-        itemBinding.root.setOnClickListener {
-            listener.onItemCLickListener(series[position])
+    inner class SerieViewHolder(val itemBinding: MediaItemBinding, private val listener:ClickItemSerieDetails):RecyclerView.ViewHolder(itemBinding.root){
+        init {
+            itemBinding.root.setOnClickListener {
+                listener.onItemCLickListener(series[position])
+            }
         }
-    }
     }
 }

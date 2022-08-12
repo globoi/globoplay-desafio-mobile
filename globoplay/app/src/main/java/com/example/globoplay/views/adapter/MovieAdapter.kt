@@ -16,7 +16,6 @@ class MovieAdapter(private val movies:List<PopularMovie>, private val listener: 
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         Picasso.get().load("https://image.tmdb.org/t/p/w500" + movies[position].posterPath).into(holder.itemBinding.moviePoster)
-
     }
 
     override fun getItemCount(): Int  = movies.size

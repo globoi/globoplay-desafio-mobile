@@ -38,7 +38,7 @@ class InicioFragment : Fragment(R.layout.fragment_home),ClickItemMovieDetails,Cl
         _binding = FragmentHomeBinding.inflate(layoutInflater)
 
         movieViewModel.popularMovies.observe(viewLifecycleOwner) { popularMovies ->
-            val layoutManager = LinearLayoutManager(context,LinearLayout.HORIZONTAL,false)
+            val layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL,false)
             recyclerViewMovies = view.findViewById(R.id.recyclerView_Cinema)
             recyclerViewMovies.layoutManager = layoutManager
             recyclerViewMovies.setHasFixedSize(true)
@@ -47,7 +47,7 @@ class InicioFragment : Fragment(R.layout.fragment_home),ClickItemMovieDetails,Cl
         }
 
         seriesViewModel.popularSeries.observe(viewLifecycleOwner){ popularSeries ->
-            val layoutManager = LinearLayoutManager(context,LinearLayout.HORIZONTAL,false)
+            val layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL,false)
             recyclerViewSeries = view.findViewById(R.id.recyclerView_Series)
             recyclerViewSeries.layoutManager = layoutManager
             recyclerViewSeries.setHasFixedSize(true)
@@ -56,7 +56,7 @@ class InicioFragment : Fragment(R.layout.fragment_home),ClickItemMovieDetails,Cl
         }
 
         seriesViewModel.popularSeries.observe(viewLifecycleOwner){ popularSeries ->
-            val layoutManager = LinearLayoutManager(context,LinearLayout.HORIZONTAL,false)
+            val layoutManager = LinearLayoutManager(context,RecyclerView.HORIZONTAL,false)
             recyclerViewSeries = view.findViewById(R.id.recyclerView_Novelas)
             recyclerViewSeries.layoutManager = layoutManager
             recyclerViewSeries.setHasFixedSize(true)

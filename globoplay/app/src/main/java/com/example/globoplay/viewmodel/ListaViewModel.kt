@@ -3,11 +3,22 @@ package com.example.globoplay.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.globoplay.database.daos.MyListDao
+import com.example.globoplay.database.models.MyList
+import com.example.globoplay.database.repository.MediaRepository
 
-class ListaViewModel : ViewModel() {
+class ListaViewModel(private val mediasFav:MediaRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "Minha lista"
+    val _mediaList: LiveData<List<MyList>> = mediasFav.medias
+
+    val mediaList: LiveData<List<MyList>>
+        get() = _mediaList
+
+    suspend fun save(media: MyList){
+        mediasFav.insert(media)
     }
-    val text: LiveData<String> = _text
+
+    fun delete(media: String){
+        mediasFav.delete(media)
+    }
 }

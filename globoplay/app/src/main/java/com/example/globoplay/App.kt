@@ -18,8 +18,12 @@ class App:Application(){
                 apiMovieModule,
                 apiSeriesModule,
                 viewModelMovieModule,
-                viewModelSerieModule
+                viewModelSerieModule,
+                daoModule,
+                repositoryModule,
+                viewModelListaModule
             )
+
         }
     }
 }

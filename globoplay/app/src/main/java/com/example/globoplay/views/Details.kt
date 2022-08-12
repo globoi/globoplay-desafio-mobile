@@ -14,8 +14,7 @@ class Details(private val cast:String) : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentDetalhesBinding.inflate(layoutInflater)
-        binding.texto.text = binding.texto.text.toString() + cast
+        binding.texto.text = binding.texto.text.toString().plus( cast)
         return binding.root
     }
-
 }

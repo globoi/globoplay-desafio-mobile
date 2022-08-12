@@ -28,10 +28,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AssistaTambem : Fragment(), ClickItemMovieDetails, ClickItemSerieDetails {
     private lateinit var binding:FragmentAssistatambemBinding
+
     private lateinit var adapterMovie:MovieAdapter
     private lateinit var adapterSerie: SerieAdapter
+
     private lateinit var recyclerViewSeries:RecyclerView
     private lateinit var recyclerViewMovies: RecyclerView
+
+
     private val movieViewModel: MovieViewModel by viewModel()
     private val seriesViewModel: TVSeriesViewModel by viewModel()
 
@@ -39,7 +43,7 @@ class AssistaTambem : Fragment(), ClickItemMovieDetails, ClickItemSerieDetails {
 
         binding = FragmentAssistatambemBinding.inflate(layoutInflater)
         movieViewModel.popularMovies.observe(viewLifecycleOwner) { popularMovies ->
-            val layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL,false)
+            val layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL,false)
             recyclerViewMovies = binding.recyclerViewAssistaTambemSerie
             recyclerViewMovies.layoutManager = layoutManager
             recyclerViewMovies.setHasFixedSize(true)
@@ -49,7 +53,7 @@ class AssistaTambem : Fragment(), ClickItemMovieDetails, ClickItemSerieDetails {
 
 
         seriesViewModel.popularSeries.observe(viewLifecycleOwner){ popularSeries ->
-            val layoutManager = LinearLayoutManager(context,LinearLayout.HORIZONTAL,false)
+            val layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL,false)
             recyclerViewSeries = binding.recyclerViewAssistaTambem
             recyclerViewSeries.layoutManager = layoutManager
             recyclerViewSeries.setHasFixedSize(true)
