@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 NavHost(
                     navController = navController,
-                    startDestination = "splash"
+                    startDestination = Screen.Splash.route
                 ) {
                     composable(Screen.Splash.route) { SplashScreen(navController) }
                     composable(Screen.Movies.route) { MoviesScreen(navController) }
