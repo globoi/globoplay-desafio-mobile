@@ -1,4 +1,4 @@
-package com.nunkison.globoplaymobilechallenge.ui.movies
+package com.nunkison.globoplaymobilechallenge.ui.movies.data
 
 val movieCoversMock = arrayListOf(
     MovieCover(

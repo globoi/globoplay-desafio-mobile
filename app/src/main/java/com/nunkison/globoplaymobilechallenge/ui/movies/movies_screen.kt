@@ -18,6 +18,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -33,11 +34,19 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.nunkison.globoplaymobilechallenge.R
+import com.nunkison.globoplaymobilechallenge.ui.movies.data.MoviesViewModel
+import com.nunkison.globoplaymobilechallenge.ui.movies.data.moviesScreenData
 import com.nunkison.globoplaymobilechallenge.ui.theme.GloboplayMobileChallengeTheme
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MoviesScreen(navController: NavHostController) {
+    val vm = koinViewModel<MoviesViewModel>()
+    when (val state = vm.uiState.collectAsState().value){
+        is MoviesViewModel.UiState.Success -> MoviesLayout(data = state.data)
+        is MoviesViewModel.UiState.Error -> ErrorLayout(data = state.message)
+    }
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -50,7 +59,6 @@ fun MoviesScreen(navController: NavHostController) {
                         colors = TopAppBarDefaults.mediumTopAppBarColors(
                             containerColor = Color.Black,
                         ),
-
                         title = {
                             Image(
                                 painter = painterResource(id = R.drawable.logo_globoplay_white),
@@ -67,49 +75,8 @@ fun MoviesScreen(navController: NavHostController) {
                         .fillMaxSize()
                         .padding(innerPadding)
                 ) {
-                    LazyColumn {
-                        itemsIndexed(moviesScreenData) {index, moviesGroup ->
-                            Text(
-                                modifier = Modifier
-                                    .padding(
-                                        top = if (index == 0) 40.dp else 24.dp,
-                                        bottom = 16.dp,
-                                        start = 16.dp,
-                                    ),
-                                text = moviesGroup.category,
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 18.sp
-                            )
-                            LazyRow {
-                                itemsIndexed(moviesGroup.movieCovers) { index, item ->
-                                    Box(
-                                        modifier = Modifier
-                                            .width(if (index == 0 || index == moviesGroup.movieCovers.size - 1) 158.dp else 150.dp)
-                                            .padding(
-                                                start = if (index == 0) 16.dp else 8.dp,
-                                                end = if (index == moviesGroup.movieCovers.size - 1) 16.dp else 8.dp
-                                            )
-                                    ) {
-                                        AsyncImage(
-                                            modifier = Modifier
-                                                .width(150.dp),
-                                            model = ImageRequest.Builder(LocalContext.current)
-                                                .data(item.cover)
-                                                .crossfade(true)
-                                                .build(),
-                                            contentDescription = item.name,
-                                            contentScale = ContentScale.FillWidth,
-
-                                            )
-                                    }
-                                }
-                            }
-                            Box(modifier = Modifier.height(30.dp))
-                        }
-                    }
-
+                    
                 }
-
             },
         )
     }

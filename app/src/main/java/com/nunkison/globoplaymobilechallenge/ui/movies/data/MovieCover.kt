@@ -1,4 +1,4 @@
-package com.nunkison.globoplaymobilechallenge.ui.movies
+package com.nunkison.globoplaymobilechallenge.ui.movies.data
 
 data class MovieCover(
     val id: String,
