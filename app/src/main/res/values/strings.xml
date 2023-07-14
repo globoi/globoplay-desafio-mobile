@@ -4,5 +4,6 @@
     <string name="movie_detail_screen_title">Filme</string>
     <string name="movies_screen_title">Filmes</string>
     <string name="favorites_screen_title">Favoritos</string>
+    <string name="generic_error">Ocorreu um erro. Tente novamente mais tarde.</string>
 
 </resources>
