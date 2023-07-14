@@ -28,7 +28,7 @@ fun SplashLayout(
         Box(
             modifier = Modifier
                 .align(alignment = Alignment.CenterHorizontally)
-                .padding(32.dp)
+                .padding(40.dp)
         ) {
             Image(
                 painter = painterResource(id = logo),
