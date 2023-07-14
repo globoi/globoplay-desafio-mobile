@@ -33,7 +33,7 @@ val movieCoversMock = arrayListOf(
     ),
 )
 
-val moviesScreenData = arrayListOf(
+val moviesDataMock = arrayListOf(
     MoviesGroup(
         category = "Novelas",
         movieCovers = movieCoversMock.shuffled()

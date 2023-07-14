@@ -1,5 +1,6 @@
 package com.nunkison.globoplaymobilechallenge.ui.movies
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,7 +21,10 @@ import coil.request.ImageRequest
 import com.nunkison.globoplaymobilechallenge.ui.movies.data.MoviesGroup
 
 @Composable
-fun MoviesLayout(data: List<MoviesGroup>) {
+fun MoviesLayout(
+    data: List<MoviesGroup>,
+    onMovieClick: (id: String) -> Unit
+) {
     LazyColumn {
         itemsIndexed(data) { index, moviesGroup ->
             Text(
@@ -43,6 +47,9 @@ fun MoviesLayout(data: List<MoviesGroup>) {
                                 start = if (index == 0) 16.dp else 8.dp,
                                 end = if (index == moviesGroup.movieCovers.size - 1) 16.dp else 8.dp
                             )
+                            .clickable(onClick = {
+                                onMovieClick(item.id)
+                            })
                     ) {
                         AsyncImage(
                             modifier = Modifier
