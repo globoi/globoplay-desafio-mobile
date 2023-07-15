@@ -1,4 +1,5 @@
 <resources>
+    <string name="base_url">https://api.themoviedb.org/3/</string>
     <string name="app_name">Globoplay Mobile Challenge</string>
     <string name="splash_screen_title">Splash</string>
     <string name="movie_detail_screen_title">Filme</string>

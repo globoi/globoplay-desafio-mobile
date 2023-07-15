@@ -7,6 +7,9 @@ android {
     namespace 'com.nunkison.globoplaymobilechallenge'
     compileSdk 33
 
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
     defaultConfig {
         applicationId "com.nunkison.globoplaymobilechallenge"
         minSdk 24
@@ -21,9 +24,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            resValue("string", "api_key", localProperties['api.key'])
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            resValue("string", "api_key", localProperties['api.key'])
         }
     }
     compileOptions {
@@ -44,6 +51,8 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+
+
 }
 
 dependencies {
