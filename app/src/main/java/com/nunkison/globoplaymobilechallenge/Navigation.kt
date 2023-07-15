@@ -30,7 +30,7 @@ fun Navigation(navController: NavHostController) {
             FavoritesScreen(navController)
         }
         composable(Screen.MovieDetail.route) {
-            MovieDetailScreen(navController)
+            MovieDetailScreen()
         }
     }
 }

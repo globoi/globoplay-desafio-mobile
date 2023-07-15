@@ -9,13 +9,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.nunkison.globoplaymobilechallenge.ui.Screen
 import com.nunkison.globoplaymobilechallenge.ui.theme.GloboplayMobileChallengeTheme
 
 @Composable
-fun MovieDetailScreen(navController: NavHostController) {
+fun MovieDetailScreen() {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -25,7 +22,7 @@ fun MovieDetailScreen(navController: NavHostController) {
                 text = "MovieDetailScreen",
             )
             Button(onClick = {
-                navController.navigate(Screen.Splash.route)
+//                navController.navigate(Screen.Splash.route)
             }) {
                 Text(
                     text = "Next",
@@ -39,6 +36,6 @@ fun MovieDetailScreen(navController: NavHostController) {
 @Composable
 fun MovieDetailScreenPreview() {
     GloboplayMobileChallengeTheme {
-        MovieDetailScreen(rememberNavController())
+        MovieDetailScreen()
     }
 }
