@@ -1,4 +1,4 @@
-package com.nunkison.globoplaymobilechallenge.domain
+package com.nunkison.globoplaymobilechallenge.project.api
 
 class DiscoverMovieResponse(
     val results: List<DiscoverMovie>

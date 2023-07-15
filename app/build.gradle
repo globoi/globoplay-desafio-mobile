@@ -60,6 +60,7 @@ dependencies {
     def retrofit_version = '2.9.0'
     def exoplayer_version = '2.19.0'
     def mockk_version = '1.13.5'
+    def koin_android_version = '3.4.2'
 
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation platform('org.jetbrains.kotlin:kotlin-bom:1.8.0')
@@ -79,7 +80,8 @@ dependencies {
     implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
     implementation "com.google.android.exoplayer:exoplayer-dash:$exoplayer_version"
     implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
-    implementation 'io.insert-koin:koin-androidx-compose:3.4.2'
+    implementation "io.insert-koin:koin-android:$koin_android_version"
+    implementation "io.insert-koin:koin-androidx-compose:$koin_android_version"
     implementation 'io.coil-kt:coil-compose:2.4.0'
 
     testImplementation 'junit:junit:4.13.2'

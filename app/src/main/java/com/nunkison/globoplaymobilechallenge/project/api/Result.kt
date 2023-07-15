@@ -1,4 +1,4 @@
-package com.nunkison.globoplaymobilechallenge.domain
+package com.nunkison.globoplaymobilechallenge.project.api
 
 sealed class Result<out R> {
     data class Success<out T>(val data: T?) : Result<T?>()
