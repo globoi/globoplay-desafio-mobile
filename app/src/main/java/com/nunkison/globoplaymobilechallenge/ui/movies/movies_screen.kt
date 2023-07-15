@@ -23,7 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.nunkison.globoplaymobilechallenge.R
 import com.nunkison.globoplaymobilechallenge.ui.ErrorLayout
-import com.nunkison.globoplaymobilechallenge.ui.movies.MoviesViewModel.UiState.*
+import com.nunkison.globoplaymobilechallenge.ui.movies.MoviesViewModelImpl.UiState.*
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -31,7 +31,7 @@ import org.koin.androidx.compose.koinViewModel
 fun MoviesScreen(
     whenRequestingMovieDetails: (id: String) -> Unit
 ) {
-    val vm = koinViewModel<MoviesViewModel>()
+    val vm = koinViewModel<MoviesViewModelImpl>()
 
     Surface(
         modifier = Modifier.fillMaxSize(),
