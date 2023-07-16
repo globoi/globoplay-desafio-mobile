@@ -1,7 +1,9 @@
 package com.nunkison.globoplaymobilechallenge
 
+import com.nunkison.globoplaymobilechallenge.project.api.TmdbService
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesRepository
 import com.nunkison.globoplaymobilechallenge.repo.MoviesRepositoryImpl
+import com.nunkison.globoplaymobilechallenge.ui.movie_detail.MovieDetailViewModelImpl
 import com.nunkison.globoplaymobilechallenge.ui.movies.MoviesViewModelImpl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -14,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val androidModule = module {
 
-    single<Retrofit> {
+    single<TmdbService> {
         Retrofit.Builder()
             .baseUrl(androidContext().getString(R.string.base_url))
             .addConverterFactory(GsonConverterFactory.create())
@@ -27,7 +29,7 @@ val androidModule = module {
                         chain.proceed(newRequest)
                     }
                 ).build()
-            ).build()
+            ).build().create(TmdbService::class.java)
     }
 
     factory<MoviesRepository> {
@@ -35,4 +37,6 @@ val androidModule = module {
     }
 
     viewModel { MoviesViewModelImpl(get()) }
+
+    viewModel { MovieDetailViewModelImpl(get()) }
 }

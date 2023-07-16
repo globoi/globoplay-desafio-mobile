@@ -60,8 +60,7 @@ fun MoviesLayout(
                                 .build(),
                             contentDescription = item.name,
                             contentScale = ContentScale.FillWidth,
-
-                            )
+                        )
                     }
                 }
             }

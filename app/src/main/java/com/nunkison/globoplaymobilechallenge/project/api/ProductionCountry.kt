@@ -1,5 +1,5 @@
 package com.nunkison.globoplaymobilechallenge.project.api
 
-class GenreListResponse(
-    val genres: List<Genre>
+data class ProductionCountry(
+    val iso_3166_1: String
 )

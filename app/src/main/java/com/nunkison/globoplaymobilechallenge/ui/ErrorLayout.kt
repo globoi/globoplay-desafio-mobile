@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 fun ErrorLayout(message: String) {
     Text(
         text = message,
-        textAlign = TextAlign.Center, // make text center horizontal
+        textAlign = TextAlign.Center,
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
