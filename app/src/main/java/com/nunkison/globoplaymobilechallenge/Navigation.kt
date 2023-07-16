@@ -18,7 +18,10 @@ fun Navigation(navController: NavHostController) {
     ) {
         composable(Screen.Splash.route) {
             SplashScreen(onTimeout = {
-                navController.navigate(Screen.Movies.route)
+//                navController.navigate(Screen.Movies.route)
+                navController.navigate(
+                    Screen.MovieDetail.with("28")
+                )
             })
         }
         composable(Screen.Movies.route) {
@@ -41,6 +44,8 @@ fun Navigation(navController: NavHostController) {
                         navController.navigate(
                             Screen.MovieDetail.with(it)
                         )
+                    }, whenRequestBack = {
+                        navController.popBackStack()
                     }
                 )
             }

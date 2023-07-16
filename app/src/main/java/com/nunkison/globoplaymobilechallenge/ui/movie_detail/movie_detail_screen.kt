@@ -8,8 +8,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -20,6 +24,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -38,59 +43,60 @@ import org.koin.core.parameter.parametersOf
 @Composable
 fun MovieDetailScreen(
     movieId: String,
-    whenRequestingMovieDetails: (id: String) -> Unit
+    whenRequestingMovieDetails: (id: String) -> Unit,
+    whenRequestBack: () -> Unit
 ) {
-    val vm: MovieDetailViewModel = koinViewModel<MovieDetailViewModelImpl>{
+    val vm: MovieDetailViewModel = koinViewModel<MovieDetailViewModelImpl> {
         parametersOf(movieId)
     }
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
+        Box(
+            modifier = Modifier.fillMaxSize()
         ) {
-            Box(
-                modifier = Modifier.fillMaxSize()
-            ) {
-                if (vm.loadingState.collectAsState().value){
-                    LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
-                }
-                when (val state = vm.uiState.collectAsState().value){
-                    is Success -> {
-                        state.data?.let {
-                            MovieDetailLayout(
-                                data = state.data,
-                                onMovieClick = whenRequestingMovieDetails
-                            )
-                        }
-                    }
-                    is Error -> ErrorLayout(message = state.message)
-                }
-                CenterAlignedTopAppBar(
-                    modifier = Modifier.background(Color.Transparent),
-                    colors = TopAppBarDefaults.mediumTopAppBarColors(
-                        containerColor = Color.Transparent,
-                    ),
-                    title = {
-                        Image(
-                            painter = painterResource(id = R.drawable.logo_globoplay_white),
-                            contentDescription = stringResource(id = R.string.app_name),
-                            modifier = Modifier.height(100.dp)
-                        )
-                    },
-                )
+            if (vm.loadingState.collectAsState().value) {
+                LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
             }
+            when (val state = vm.uiState.collectAsState().value) {
+                is Success -> {
+                    state.data?.let {
+                        MovieDetailLayout(
+                            data = state.data,
+                            onMovieClick = whenRequestingMovieDetails
+                        )
+                    }
+                }
 
+                is Error -> ErrorLayout(message = state.message)
+            }
+            CenterAlignedTopAppBar(
+                modifier = Modifier.background(Color.Transparent),
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = Color.Transparent,
+                ),
+                title = {},
+                navigationIcon = {
+                    IconButton(onClick = {
+                        whenRequestBack()
+                    }) {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = "Navigation icon",
+                            tint = Color.White
+                        )
+                    }
+                }
+            )
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun MovieDetailScreenPreview() {
+fun MovieDetailScreenPreview1() {
     GloboplayMobileChallengeTheme {
-        MovieDetailScreen("",{} )
+        MovieDetailScreen("", {}, {})
     }
 }
