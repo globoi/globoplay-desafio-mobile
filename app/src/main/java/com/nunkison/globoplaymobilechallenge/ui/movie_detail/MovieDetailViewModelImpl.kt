@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModelImpl(
+    id: String,
     private val repo: MoviesRepository
 ) : ViewModel(), MovieDetailViewModel {
     private val _loadingState = MutableStateFlow(true)
@@ -21,11 +22,15 @@ class MovieDetailViewModelImpl(
     private val _uiState: MutableStateFlow<UiState> = MutableStateFlow(UiState.Success(null))
     override val uiState: StateFlow<UiState> = _uiState
 
+    init {
+        loadMovie(id)
+    }
+
     override fun loadMovie(id: String) {
         viewModelScope.launch(IO) {
             try {
                 _uiState.value = UiState.Success(
-                    repo.getMovie("28")
+                    repo.getMovie(id)
                 )
             } catch (e: Exception) {
                 _uiState.value = UiState.Error(

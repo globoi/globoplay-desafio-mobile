@@ -16,6 +16,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,19 +30,23 @@ import com.nunkison.globoplaymobilechallenge.project.structure.MovieDetailViewMo
 import com.nunkison.globoplaymobilechallenge.project.structure.MovieDetailViewModel.UiState.*
 import com.nunkison.globoplaymobilechallenge.ui.ErrorLayout
 import com.nunkison.globoplaymobilechallenge.ui.theme.GloboplayMobileChallengeTheme
+import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieDetailScreen(
+    movieId: String,
     whenRequestingMovieDetails: (id: String) -> Unit
 ) {
+    val vm: MovieDetailViewModel = koinViewModel<MovieDetailViewModelImpl>{
+        parametersOf(movieId)
+    }
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
-        val vm: MovieDetailViewModel = koinViewModel<MovieDetailViewModelImpl>()
-
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
@@ -86,6 +91,6 @@ fun MovieDetailScreen(
 @Composable
 fun MovieDetailScreenPreview() {
     GloboplayMobileChallengeTheme {
-        MovieDetailScreen({})
+        MovieDetailScreen("",{} )
     }
 }

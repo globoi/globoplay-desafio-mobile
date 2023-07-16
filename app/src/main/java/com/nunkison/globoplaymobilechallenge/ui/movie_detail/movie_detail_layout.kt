@@ -27,6 +27,6 @@ fun MovieDetailLayout(
     data: MovieDetailData,
     onMovieClick: (id: String) -> Unit
 ) {
-
+    Text(data.name)
 
 }

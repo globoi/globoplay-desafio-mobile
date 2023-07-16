@@ -33,10 +33,21 @@ val androidModule = module {
     }
 
     factory<MoviesRepository> {
-        MoviesRepositoryImpl(get())
+        MoviesRepositoryImpl(
+            service = get()
+        )
     }
 
-    viewModel { MoviesViewModelImpl(get()) }
+    viewModel {
+        MoviesViewModelImpl(
+            repo = get()
+        )
+    }
 
-    viewModel { MovieDetailViewModelImpl(get()) }
+    viewModel {params ->
+        MovieDetailViewModelImpl(
+            repo = get(),
+            id = params.get()
+        )
+    }
 }

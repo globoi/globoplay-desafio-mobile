@@ -22,15 +22,28 @@ fun Navigation(navController: NavHostController) {
             })
         }
         composable(Screen.Movies.route) {
-            MoviesScreen(whenRequestingMovieDetails = {
-                navController.navigate(Screen.MovieDetail.route)
-            })
+            MoviesScreen(
+                whenRequestingMovieDetails = {
+                    navController.navigate(
+                        Screen.MovieDetail.with(it)
+                    )
+                }
+            )
         }
         composable(Screen.Favorites.route) {
             FavoritesScreen(navController)
         }
-        composable(Screen.MovieDetail.route) {
-            MovieDetailScreen({})
+        composable(Screen.MovieDetail.route) { backStackEntry ->
+            backStackEntry.arguments?.getString("id")?.let { id ->
+                MovieDetailScreen(
+                    movieId = id,
+                    whenRequestingMovieDetails = {
+                        navController.navigate(
+                            Screen.MovieDetail.with(it)
+                        )
+                    }
+                )
+            }
         }
     }
 }
