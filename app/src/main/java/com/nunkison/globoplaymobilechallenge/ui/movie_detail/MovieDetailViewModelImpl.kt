@@ -10,6 +10,7 @@ import com.nunkison.globoplaymobilechallenge.stringResource
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModelImpl(
@@ -29,19 +30,31 @@ class MovieDetailViewModelImpl(
     override fun loadMovie(id: String) {
         viewModelScope.launch(IO) {
             try {
-                _uiState.value = UiState.Success(
-                    repo.getMovie(id)
+                _uiState.emit(
+                    UiState.Success(
+                        repo.getMovie(id)
+                    )
                 )
             } catch (e: Exception) {
-                _uiState.value = UiState.Error(
-                    e.message ?: stringResource(R.string.generic_error)
+                _uiState.emit(
+                    UiState.Error(
+                        e.message ?: stringResource(R.string.generic_error)
+                    )
                 )
             }
             _loadingState.value = false
         }
     }
 
-
-
-
+    override fun setTabIndex(index: Int) {
+        _uiState.update {
+            if (it is UiState.Success) {
+                UiState.Success(
+                    it.data?.copy(tabSelected = index)
+                )
+            } else {
+                it
+            }
+        }
+    }
 }

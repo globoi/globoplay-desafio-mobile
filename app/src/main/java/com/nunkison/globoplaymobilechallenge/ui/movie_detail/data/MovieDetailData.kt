@@ -13,4 +13,5 @@ data class MovieDetailData(
     val producer: String,
     val youtubeKey: String,
     val relatedMovies: List<MovieCover>,
+    val tabSelected: Int,
 )

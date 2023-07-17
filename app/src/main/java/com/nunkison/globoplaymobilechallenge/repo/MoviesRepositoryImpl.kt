@@ -38,7 +38,8 @@ class MoviesRepositoryImpl(
             country = productionCountriesToCommaString(it.production_countries),
             producer = productionCompaniesToCommaString(it.production_companies),
             youtubeKey = getYoutubeKey(it.id) ?: "",
-            relatedMovies = getRelatedMovies(it.genres)
+            relatedMovies = getRelatedMovies(it.genres),
+            tabSelected = 0,
         )
     }
 

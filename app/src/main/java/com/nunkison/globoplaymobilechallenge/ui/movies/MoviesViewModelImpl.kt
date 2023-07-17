@@ -5,12 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.nunkison.globoplaymobilechallenge.R
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesRepository
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesViewModel
+import com.nunkison.globoplaymobilechallenge.project.structure.MoviesViewModel.UiState
 import com.nunkison.globoplaymobilechallenge.stringResource
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import com.nunkison.globoplaymobilechallenge.project.structure.MoviesViewModel.*
 
 class MoviesViewModelImpl(
     private val repo: MoviesRepository
@@ -30,12 +30,16 @@ class MoviesViewModelImpl(
     override fun loadMovies() {
         viewModelScope.launch(IO) {
             try {
-                _uiState.value = UiState.Success(
-                    repo.getMovies()
+                _uiState.emit(
+                    UiState.Success(
+                        repo.getMovies()
+                    )
                 )
             } catch (e: Exception) {
-                _uiState.value = UiState.Error(
-                    e.message ?: stringResource(R.string.generic_error)
+                _uiState.emit(
+                    UiState.Error(
+                        e.message ?: stringResource(R.string.generic_error)
+                    )
                 )
             }
             _loadingState.value = false
