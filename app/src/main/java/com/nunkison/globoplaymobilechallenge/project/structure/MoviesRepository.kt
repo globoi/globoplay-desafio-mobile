@@ -10,6 +10,7 @@ interface MoviesRepository {
     suspend fun getMovie(id: String): MovieDetailData?
     suspend fun getRelatedMovies(genres: List<Genre>): List<MovieCover>
     suspend fun getYoutubeKey(id: String): String?
-    suspend fun addFavorite(id: String)
-    suspend fun removeFavorite(id: String)
+    suspend fun addFavorite(movieCover: MovieCover)
+    suspend fun removeFavorite(movieCover: MovieCover)
+    suspend fun getCurrentFavorites(): List<MoviesGroup>
 }

@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -34,6 +36,8 @@ fun MoviesScreen(
     whenRequestingMovieDetails: (id: String) -> Unit
 ) {
     val vm: MoviesViewModel = koinViewModel<MoviesViewModelImpl>()
+    val state = vm.uiState.collectAsState().value
+    val favoritesFilterEnable = state is Success && state.successState.favoriteFilterEnable
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -53,6 +57,23 @@ fun MoviesScreen(
                                 modifier = Modifier.height(100.dp)
                             )
                         },
+                        actions = {
+                            IconButton(onClick = {
+                                vm.toogleFilterByFavorites()
+                            }) {
+                                Icon(
+                                    painter = if (favoritesFilterEnable) {
+                                        painterResource(R.drawable.baseline_star_24)
+                                    } else {
+                                        painterResource(R.drawable.baseline_star_border_24)
+                                    },
+                                    contentDescription = stringResource(
+                                        id = R.string.favorites_filter
+                                    ),
+                                    tint = Color.White
+                                )
+                            }
+                        }
                     )
                 }
             },
@@ -62,14 +83,15 @@ fun MoviesScreen(
                         .fillMaxSize()
                         .padding(innerPadding)
                 ) {
-                    when (val state = vm.uiState.collectAsState().value){
+                    when (state) {
                         is Success -> MoviesLayout(
-                            data = state.data,
+                            data = state.successState.data,
                             onMovieClick = whenRequestingMovieDetails
                         )
+
                         is Error -> ErrorLayout(message = state.message)
                     }
-                    if (vm.loadingState.collectAsState().value){
+                    if (vm.loadingState.collectAsState().value) {
                         LinearProgressIndicator(
                             modifier = Modifier.fillMaxWidth()
                         )

@@ -7,6 +7,7 @@ import com.nunkison.globoplaymobilechallenge.project.structure.MovieDetailViewMo
 import com.nunkison.globoplaymobilechallenge.project.structure.MovieDetailViewModel.UiState
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesRepository
 import com.nunkison.globoplaymobilechallenge.stringResource
+import com.nunkison.globoplaymobilechallenge.ui.movies.data.MovieCover
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -53,9 +54,21 @@ class MovieDetailViewModelImpl(
                 (uiState.value as UiState.Success).let {
                     it.data?.let { mdd ->
                         if (mdd.isFavorite) {
-                            repo.removeFavorite(it.data.id)
+                            repo.removeFavorite(
+                                MovieCover(
+                                    id = it.data.id,
+                                    name = it.data.name,
+                                    it.data.coverPath
+                                )
+                            )
                         } else {
-                            repo.addFavorite(it.data.id)
+                            repo.addFavorite(
+                                MovieCover(
+                                    id = it.data.id,
+                                    name = it.data.name,
+                                    it.data.coverPath
+                                )
+                            )
                         }
                         _uiState.update { currentUiState ->
                             if (currentUiState is UiState.Success) {

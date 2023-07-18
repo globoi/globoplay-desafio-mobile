@@ -3,6 +3,7 @@ package com.nunkison.globoplaymobilechallenge.repo
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.nunkison.globoplaymobilechallenge.R
 import com.nunkison.globoplaymobilechallenge.getYear
 import com.nunkison.globoplaymobilechallenge.project.api.DiscoverMovieResponse
 import com.nunkison.globoplaymobilechallenge.project.api.Genre
@@ -10,6 +11,7 @@ import com.nunkison.globoplaymobilechallenge.project.api.ProductionCompany
 import com.nunkison.globoplaymobilechallenge.project.api.ProductionCountry
 import com.nunkison.globoplaymobilechallenge.project.api.TmdbService
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesRepository
+import com.nunkison.globoplaymobilechallenge.stringResource
 import com.nunkison.globoplaymobilechallenge.thumbImage
 import com.nunkison.globoplaymobilechallenge.ui.movie_detail.data.MovieDetailData
 import com.nunkison.globoplaymobilechallenge.ui.movies.data.MovieCover
@@ -65,30 +67,40 @@ class MoviesRepositoryImpl(
             it.site == "YouTube"
         }?.key
 
-    override suspend fun addFavorite(id: String) {
+    override suspend fun addFavorite(movieCover: MovieCover) {
         editFavorites {
-            it.add(id)
+            it.add(movieCover)
         }
     }
 
-    override suspend fun removeFavorite(id: String) {
+    override suspend fun removeFavorite(movieCover: MovieCover) {
         editFavorites {
-            it.remove(id)
+            it.remove(movieCover)
         }
     }
 
-    private fun getCurrentFavorites() = Gson().fromJson<LinkedHashSet<String>>(
-        prefs.getString(FAVORITES_SHARED_PREF_KEY, "[]"),
-        object : TypeToken<LinkedHashSet<String>>() {}.type
+    override suspend fun getCurrentFavorites() = arrayListOf(
+        MoviesGroup(
+            category = stringResource(R.string.favorites),
+            movieCovers = ArrayList(
+                getFavoritesOnSharedPrefs()
+            )
+        )
     )
 
-    private fun isFavorite(id: String) = getCurrentFavorites().contains(id)
+    private fun getFavoritesOnSharedPrefs() = (Gson().fromJson<LinkedHashSet<MovieCover>>(
+        prefs.getString(FAVORITES_SHARED_PREF_KEY, "[]"),
+        object : TypeToken<LinkedHashSet<MovieCover>>() {}.type
+    ) ?: linkedSetOf()
+            )
 
-    private fun editFavorites(edit: (favorites: MutableSet<String>) -> Unit) {
+    private fun isFavorite(id: String) = getFavoritesOnSharedPrefs().any { it.id == id }
+
+    private fun editFavorites(edit: (favorites: MutableSet<MovieCover>) -> Unit) {
         prefs.edit().putString(
             FAVORITES_SHARED_PREF_KEY,
             Gson().toJson(
-                getCurrentFavorites().toMutableSet().also {
+                getFavoritesOnSharedPrefs().toMutableSet().also {
                     edit(it)
                 }
             )

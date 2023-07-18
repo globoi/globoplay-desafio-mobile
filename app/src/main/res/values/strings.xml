@@ -22,5 +22,7 @@
     <string name="revenue">Receita</string>
     <string name="runtime">Duração</string>
     <string name="vote_avarage">Avaliação da Crítica</string>
+    <string name="favorites">Favoritos</string>
+    <string name="favorites_filter">Filtro de Favoritos</string>
 
 </resources>
