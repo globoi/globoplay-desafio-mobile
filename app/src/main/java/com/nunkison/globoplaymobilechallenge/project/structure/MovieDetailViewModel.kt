@@ -7,6 +7,7 @@ interface MovieDetailViewModel {
     val loadingState: StateFlow<Boolean>
     val uiState: StateFlow<UiState>
     fun loadMovie(id: String)
+    fun toogleFavorite()
 
     sealed class UiState {
         data class Success(

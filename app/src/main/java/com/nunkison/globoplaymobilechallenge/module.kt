@@ -1,5 +1,6 @@
 package com.nunkison.globoplaymobilechallenge
 
+import android.content.Context
 import com.nunkison.globoplaymobilechallenge.project.api.TmdbService
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesRepository
 import com.nunkison.globoplaymobilechallenge.repo.MoviesRepositoryImpl
@@ -24,7 +25,10 @@ val androidModule = module {
                 OkHttpClient.Builder().addInterceptor(
                     Interceptor { chain ->
                         val newRequest: Request = chain.request().newBuilder()
-                            .addHeader("Authorization", "Bearer ${androidContext().getString(R.string.api_key)}")
+                            .addHeader(
+                                "Authorization",
+                                "Bearer ${androidContext().getString(R.string.api_key)}"
+                            )
                             .build()
                         chain.proceed(newRequest)
                     }
@@ -32,9 +36,17 @@ val androidModule = module {
             ).build().create(TmdbService::class.java)
     }
 
+    single {
+        androidContext().getSharedPreferences(
+            androidContext().getString(R.string.app_name),
+            Context.MODE_PRIVATE
+        )
+    }
+
     factory<MoviesRepository> {
         MoviesRepositoryImpl(
-            service = get()
+            service = get(),
+            prefs = get()
         )
     }
 

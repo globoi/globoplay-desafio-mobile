@@ -18,11 +18,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import com.nunkison.globoplaymobilechallenge.project.structure.MovieDetailViewModel
 import com.nunkison.globoplaymobilechallenge.project.structure.MovieDetailViewModel.UiState.*
 import com.nunkison.globoplaymobilechallenge.ui.ErrorLayout
-import com.nunkison.globoplaymobilechallenge.ui.theme.GloboplayMobileChallengeTheme
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 
@@ -54,6 +52,9 @@ fun MovieDetailScreen(
                             data = state.data,
                             onMovieClick = whenRequestingMovieDetails,
                             onWatchClick = whenRequestingPlayYoutubeVideo,
+                            onFavoriteClick = {
+                                vm.toogleFavorite()
+                            }
                         )
                     }
                 }
@@ -78,13 +79,5 @@ fun MovieDetailScreen(
                 }
             )
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun MovieDetailScreenPreview1() {
-    GloboplayMobileChallengeTheme {
-        MovieDetailScreen("", {}, {}, {})
     }
 }

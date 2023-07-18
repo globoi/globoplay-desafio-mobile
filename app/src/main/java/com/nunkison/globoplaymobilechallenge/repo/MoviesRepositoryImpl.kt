@@ -1,7 +1,9 @@
 package com.nunkison.globoplaymobilechallenge.repo
 
+import android.content.SharedPreferences
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.nunkison.globoplaymobilechallenge.getYear
-import com.nunkison.globoplaymobilechallenge.iconImage
 import com.nunkison.globoplaymobilechallenge.project.api.DiscoverMovieResponse
 import com.nunkison.globoplaymobilechallenge.project.api.Genre
 import com.nunkison.globoplaymobilechallenge.project.api.ProductionCompany
@@ -15,6 +17,7 @@ import com.nunkison.globoplaymobilechallenge.ui.movies.data.MoviesGroup
 
 class MoviesRepositoryImpl(
     private val service: TmdbService,
+    private val prefs: SharedPreferences
 ) : MoviesRepository {
 
     override suspend fun getMovies(): List<MoviesGroup> =
@@ -29,11 +32,12 @@ class MoviesRepositoryImpl(
 
     override suspend fun getMovie(id: String) = service.movie(id).body()?.let {
         MovieDetailData(
+            id = it.id,
             name = it.original_title,
             coverPath = thumbImage(it.poster_path),
             category = genreToCommaString(it.genres),
             description = it.overview,
-            isFavorite = false,
+            isFavorite = isFavorite(id),
             year = getYear(it.release_date),
             country = productionCountriesToCommaString(it.production_countries),
             producer = productionCompaniesToCommaString(it.production_companies),
@@ -61,13 +65,43 @@ class MoviesRepositoryImpl(
             it.site == "YouTube"
         }?.key
 
+    override suspend fun addFavorite(id: String) {
+        editFavorites {
+            it.add(id)
+        }
+    }
+
+    override suspend fun removeFavorite(id: String) {
+        editFavorites {
+            it.remove(id)
+        }
+    }
+
+    private fun getCurrentFavorites() = Gson().fromJson<LinkedHashSet<String>>(
+        prefs.getString(FAVORITES_SHARED_PREF_KEY, "[]"),
+        object : TypeToken<LinkedHashSet<String>>() {}.type
+    )
+
+    private fun isFavorite(id: String) = getCurrentFavorites().contains(id)
+
+    private fun editFavorites(edit: (favorites: MutableSet<String>) -> Unit) {
+        prefs.edit().putString(
+            FAVORITES_SHARED_PREF_KEY,
+            Gson().toJson(
+                getCurrentFavorites().toMutableSet().also {
+                    edit(it)
+                }
+            )
+        ).apply()
+    }
+
     private fun mapToMovieCover(
         results: List<DiscoverMovieResponse.DiscoverMovie>?
     ) = results?.mapTo(arrayListOf()) { dm ->
         MovieCover(
             id = dm.id,
             name = dm.title,
-            cover = iconImage(dm.poster_path)
+            cover = thumbImage(dm.poster_path)
         )
     } ?: arrayListOf()
 
@@ -86,6 +120,9 @@ class MoviesRepositoryImpl(
             it.name
         }.joinToString(", ")
 
+    companion object {
+        const val FAVORITES_SHARED_PREF_KEY = "FAVORITES_SHARED_PREF_KEY"
+    }
 }
 
 

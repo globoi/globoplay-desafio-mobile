@@ -16,6 +16,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Button
@@ -37,23 +38,28 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.nunkison.globoplaymobilechallenge.R
+import com.nunkison.globoplaymobilechallenge.originalImage
+import com.nunkison.globoplaymobilechallenge.toCurrency
 import com.nunkison.globoplaymobilechallenge.ui.movie_detail.data.MovieDetailData
-import java.text.NumberFormat
-import java.util.Locale
 
 @Composable
 fun MovieDetailLayout(
     data: MovieDetailData,
     onMovieClick: (id: String) -> Unit,
     onWatchClick: (youtubeKey: String) -> Unit,
+    onFavoriteClick: () -> Unit,
 ) {
     val selectedTabIndex = remember { mutableStateOf(0) }
+    val showDialog = remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -114,7 +120,10 @@ fun MovieDetailLayout(
                 ) {
                     AsyncImage(
                         modifier = Modifier
-                            .width(150.dp),
+                            .width(150.dp)
+                            .clickable {
+                                showDialog.value = true
+                            },
                         model = ImageRequest.Builder(LocalContext.current)
                             .data(data.coverPath)
                             .crossfade(true)
@@ -185,17 +194,23 @@ fun MovieDetailLayout(
                     modifier = Modifier.weight(1f),
                     border = BorderStroke(1.dp, Color.LightGray),
                     shape = RoundedCornerShape(10),
-                    onClick = { /*TODO*/ }
+                    onClick = {
+                        onFavoriteClick()
+                    }
                 ) {
                     Icon(
                         modifier = Modifier.padding(horizontal = 4.dp),
-                        imageVector = Icons.Filled.Star,
-                        contentDescription = "Minha Lista",
+                        imageVector = if (data.isFavorite) Icons.Filled.Check else Icons.Filled.Star,
+                        contentDescription = if (data.isFavorite) stringResource(R.string.unfavorite) else stringResource(
+                            R.string.favorite
+                        ),
                         tint = Color.White
                     )
                     Text(
                         modifier = Modifier.padding(horizontal = 4.dp),
-                        text = "Minha Lista",
+                        text = if (data.isFavorite) stringResource(R.string.added) else stringResource(
+                            R.string.my_list
+                        ),
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
                     )
@@ -214,7 +229,10 @@ fun MovieDetailLayout(
             },
             divider = {}
         ) {
-            listOf("ASSISTA TAMBÉM", "DETALHES").forEachIndexed { index, title ->
+            listOf(
+                stringResource(R.string.similar).uppercase(),
+                stringResource(R.string.details).uppercase()
+            ).forEachIndexed { index, title ->
                 Tab(
                     content = {
                         Box(
@@ -281,27 +299,53 @@ fun MovieDetailLayout(
                     modifier = Modifier.padding(16.dp)
                 ) {
                     Text(
-                        text = "Ficha Técnica",
+                        text = stringResource(R.string.datasheet),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(vertical = 16.dp)
                     )
-                    Text("Ano de Produção: ${data.year}")
-                    Text("País: ${data.country}")
-                    Text("Produtora: ${data.producer}")
+                    Text("${stringResource(R.string.year_production)}: ${data.year}")
+                    Text("${stringResource(R.string.country)}: ${data.country}")
+                    Text("${stringResource(R.string.producer)}: ${data.producer}")
                     Text(
-                        "Orçamento: ${
-                            NumberFormat.getCurrencyInstance(Locale.ENGLISH).format(data.budget)
+                        "${stringResource(R.string.budget)}: ${
+                            data.revenue.toCurrency("$")
                         }"
                     )
                     Text(
-                        "Receita: ${
-                            NumberFormat.getCurrencyInstance(Locale.ENGLISH).format(data.revenue)
+                        "${stringResource(R.string.revenue)}: ${
+                            data.revenue.toCurrency("$")
                         }"
                     )
-                    Text("Duração: ${data.runtime} minutos")
-                    Text("Avaliação da Crítica: ${data.vote_average}")
+                    Text("${stringResource(R.string.runtime)}: ${data.runtime} minutos")
+                    Text("${stringResource(R.string.vote_avarage)}: ${data.vote_average}")
                 }
             }
         }
+    }
+    if (showDialog.value) {
+        Box(
+            modifier = Modifier
+                .background(color = Color.Black)
+                .alpha(0.25f)
+                .fillMaxSize()
+        )
+        Dialog(
+            onDismissRequest = { showDialog.value = false },
+            content = {
+                AsyncImage(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clickable {
+                            showDialog.value = false
+                        },
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(originalImage(data.coverPath))
+                        .crossfade(true)
+                        .build(),
+                    contentDescription = data.name,
+                    contentScale = ContentScale.FillWidth,
+                )
+            }
+        )
     }
 }

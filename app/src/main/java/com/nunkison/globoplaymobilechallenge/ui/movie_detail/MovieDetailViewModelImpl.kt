@@ -10,6 +10,7 @@ import com.nunkison.globoplaymobilechallenge.stringResource
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModelImpl(
@@ -40,8 +41,41 @@ class MovieDetailViewModelImpl(
                         e.message ?: stringResource(R.string.generic_error)
                     )
                 )
+                e.printStackTrace()
             }
-            _loadingState.value = false
+            _loadingState.emit(false)
+        }
+    }
+
+    override fun toogleFavorite() {
+        viewModelScope.launch(IO) {
+            try {
+                (uiState.value as UiState.Success).let {
+                    it.data?.let { mdd ->
+                        if (mdd.isFavorite) {
+                            repo.removeFavorite(it.data.id)
+                        } else {
+                            repo.addFavorite(it.data.id)
+                        }
+                        _uiState.update { currentUiState ->
+                            if (currentUiState is UiState.Success) {
+                                UiState.Success(
+                                    currentUiState.data?.copy(isFavorite = !mdd.isFavorite)
+                                )
+                            } else {
+                                currentUiState
+                            }
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                _uiState.emit(
+                    UiState.Error(
+                        e.message ?: stringResource(R.string.generic_error)
+                    )
+                )
+                e.printStackTrace()
+            }
         }
     }
 }

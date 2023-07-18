@@ -2,12 +2,25 @@
     <string name="base_url">https://api.themoviedb.org/3/</string>
     <string name="base_original_image_url">https://image.tmdb.org/t/p/original</string>
     <string name="base_thumb_image_url">https://image.tmdb.org/t/p/w154</string>
-    <string name="base_icon_image_url">https://image.tmdb.org/t/p/w45</string>
     <string name="app_name">Globoplay Mobile Challenge</string>
     <string name="splash_screen_title">Splash</string>
     <string name="movie_detail_screen_title">Filme</string>
     <string name="movies_screen_title">Filmes</string>
     <string name="favorites_screen_title">Favoritos</string>
     <string name="generic_error">Ocorreu um erro. Tente novamente mais tarde.</string>
+    <string name="unfavorite">Desfavoritar</string>
+    <string name="favorite">Favorito</string>
+    <string name="added">Adicionado</string>
+    <string name="my_list">Minha Lista</string>
+    <string name="similar">Semelhantes</string>
+    <string name="details">Detalhes</string>
+    <string name="datasheet">Ficha Técnica</string>
+    <string name="year_production">Ano de Produção</string>
+    <string name="country">País</string>
+    <string name="producer">Produtor</string>
+    <string name="budget">Orçamento</string>
+    <string name="revenue">Receita</string>
+    <string name="runtime">Duração</string>
+    <string name="vote_avarage">Avaliação da Crítica</string>
 
 </resources>

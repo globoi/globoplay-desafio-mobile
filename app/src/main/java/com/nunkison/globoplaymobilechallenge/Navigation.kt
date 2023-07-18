@@ -22,10 +22,7 @@ fun Navigation(context: Context, navController: NavHostController) {
     ) {
         composable(Screen.Splash.route) {
             SplashScreen(onTimeout = {
-//                navController.navigate(Screen.Movies.route)
-                navController.navigate(
-                    Screen.MovieDetail.with("28")
-                )
+                navController.navigate(Screen.Movies.route)
             })
         }
         composable(Screen.Movies.route) {
