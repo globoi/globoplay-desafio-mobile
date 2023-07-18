@@ -1,7 +1,10 @@
 package com.nunkison.globoplaymobilechallenge
 
+import android.content.Context
+import com.nunkison.globoplaymobilechallenge.project.api.TmdbService
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesRepository
 import com.nunkison.globoplaymobilechallenge.repo.MoviesRepositoryImpl
+import com.nunkison.globoplaymobilechallenge.ui.movie_detail.MovieDetailViewModelImpl
 import com.nunkison.globoplaymobilechallenge.ui.movies.MoviesViewModelImpl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -14,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val androidModule = module {
 
-    single<Retrofit> {
+    single<TmdbService> {
         Retrofit.Builder()
             .baseUrl(androidContext().getString(R.string.base_url))
             .addConverterFactory(GsonConverterFactory.create())
@@ -22,17 +25,41 @@ val androidModule = module {
                 OkHttpClient.Builder().addInterceptor(
                     Interceptor { chain ->
                         val newRequest: Request = chain.request().newBuilder()
-                            .addHeader("Authorization", "Bearer ${androidContext().getString(R.string.api_key)}")
+                            .addHeader(
+                                "Authorization",
+                                "Bearer ${androidContext().getString(R.string.api_key)}"
+                            )
                             .build()
                         chain.proceed(newRequest)
                     }
                 ).build()
-            ).build()
+            ).build().create(TmdbService::class.java)
+    }
+
+    single {
+        androidContext().getSharedPreferences(
+            androidContext().getString(R.string.app_name),
+            Context.MODE_PRIVATE
+        )
     }
 
     factory<MoviesRepository> {
-        MoviesRepositoryImpl(get())
+        MoviesRepositoryImpl(
+            service = get(),
+            prefs = get()
+        )
     }
 
-    viewModel { MoviesViewModelImpl(get()) }
+    viewModel {
+        MoviesViewModelImpl(
+            repo = get()
+        )
+    }
+
+    viewModel {params ->
+        MovieDetailViewModelImpl(
+            repo = get(),
+            id = params.get()
+        )
+    }
 }

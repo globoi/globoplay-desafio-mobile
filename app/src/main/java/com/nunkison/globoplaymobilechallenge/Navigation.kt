@@ -1,5 +1,8 @@
 package com.nunkison.globoplaymobilechallenge
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -10,8 +13,9 @@ import com.nunkison.globoplaymobilechallenge.ui.movie_detail.MovieDetailScreen
 import com.nunkison.globoplaymobilechallenge.ui.movies.MoviesScreen
 import com.nunkison.globoplaymobilechallenge.ui.splash.SplashScreen
 
+
 @Composable
-fun Navigation(navController: NavHostController) {
+fun Navigation(context: Context, navController: NavHostController) {
     NavHost(
         navController = navController,
         startDestination = Screen.Splash.route
@@ -22,15 +26,35 @@ fun Navigation(navController: NavHostController) {
             })
         }
         composable(Screen.Movies.route) {
-            MoviesScreen(whenRequestingMovieDetails = {
-                navController.navigate(Screen.MovieDetail.route)
-            })
+            MoviesScreen(
+                whenRequestingMovieDetails = {
+                    navController.navigate(
+                        Screen.MovieDetail.with(it)
+                    )
+                }
+            )
         }
         composable(Screen.Favorites.route) {
             FavoritesScreen(navController)
         }
-        composable(Screen.MovieDetail.route) {
-            MovieDetailScreen(navController)
+        composable(Screen.MovieDetail.route) { backStackEntry ->
+            backStackEntry.arguments?.getString("id")?.let { id ->
+                MovieDetailScreen(
+                    movieId = id,
+                    whenRequestingMovieDetails = {
+                        navController.navigate(
+                            Screen.MovieDetail.with(it)
+                        )
+                    }, whenRequestBack = {
+                        navController.popBackStack()
+                    }, {
+                        val videoId = "Fee5vbFLYM4"
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:$it"))
+                        intent.putExtra("VIDEO_ID", videoId)
+                        context.startActivity(intent)
+                    }
+                )
+            }
         }
     }
 }
