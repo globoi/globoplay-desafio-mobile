@@ -2,6 +2,7 @@ package com.nunkison.globoplaymobilechallenge.ui.movie_detail
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,9 +28,11 @@ import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -41,24 +44,28 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.nunkison.globoplaymobilechallenge.ui.movie_detail.data.MovieDetailData
+import java.text.NumberFormat
+import java.util.Locale
 
 @Composable
 fun MovieDetailLayout(
     data: MovieDetailData,
-    onTabSelected: (index: Int) -> Unit,
     onMovieClick: (id: String) -> Unit,
+    onWatchClick: (youtubeKey: String) -> Unit,
 ) {
+    val selectedTabIndex = remember { mutableStateOf(0) }
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
+            .padding(bottom = 56.dp)
     ) {
         Box {
             AsyncImage(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)
-                    .blur(19.dp),
+                    .alpha(0.25f),
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(data.coverPath)
                     .crossfade(true)
@@ -157,7 +164,9 @@ fun MovieDetailLayout(
                     modifier = Modifier.weight(1f),
                     colors = ButtonDefaults.buttonColors(containerColor = Color.White),
                     shape = RoundedCornerShape(10),
-                    onClick = { /*TODO*/ }
+                    onClick = {
+                        onWatchClick(data.youtubeKey)
+                    }
                 ) {
                     Icon(
                         modifier = Modifier.padding(horizontal = 4.dp),
@@ -194,12 +203,12 @@ fun MovieDetailLayout(
 
             }
         }
-        TabRow(selectedTabIndex = data.tabSelected,
+        TabRow(selectedTabIndex = selectedTabIndex.value,
             indicator = { tabPositions ->
                 TabRowDefaults.Indicator(
                     color = Color.White,
                     modifier = Modifier.tabIndicatorOffset(
-                        currentTabPosition = tabPositions[data.tabSelected],
+                        currentTabPosition = tabPositions[selectedTabIndex.value],
                     ),
                 )
             },
@@ -217,25 +226,81 @@ fun MovieDetailLayout(
                             Text(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = title,
-                                color = if (data.tabSelected == index) Color.White else Color.DarkGray,
+                                color = if (selectedTabIndex.value == index) Color.White else Color.DarkGray,
                                 textAlign = TextAlign.Center
                             )
                         }
                     },
-                    selected = data.tabSelected == index,
-                    onClick = { onTabSelected(index) },
+                    selected = selectedTabIndex.value == index,
+                    onClick = {
+                        selectedTabIndex.value = index
+                    },
                     selectedContentColor = Color.Black,
                     unselectedContentColor = Color.Black,
                 )
             }
         }
-        when (data.tabSelected) {
-            0 -> Box {
-                Text("Assista tambem lista")
+        when (selectedTabIndex.value) {
+            0 -> Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        horizontal = 16.dp,
+                        vertical = 8.dp
+                    )
+            ) {
+                data.relatedMovies.chunked(4).map {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        it.map { mv ->
+                            AsyncImage(
+                                modifier = Modifier
+                                    .width(75.dp)
+                                    .clickable {
+                                        onMovieClick(mv.id)
+                                    },
+                                model = ImageRequest.Builder(LocalContext.current)
+                                    .data(mv.cover)
+                                    .crossfade(true)
+                                    .build(),
+                                contentDescription = data.name,
+                                contentScale = ContentScale.FillWidth,
+                            )
+                        }
+
+                    }
+                }
             }
 
             1 -> Box {
-                Text("Detalhes lista")
+                Column(
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    Text(
+                        text = "Ficha Técnica",
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(vertical = 16.dp)
+                    )
+                    Text("Ano de Produção: ${data.year}")
+                    Text("País: ${data.country}")
+                    Text("Produtora: ${data.producer}")
+                    Text(
+                        "Orçamento: ${
+                            NumberFormat.getCurrencyInstance(Locale.ENGLISH).format(data.budget)
+                        }"
+                    )
+                    Text(
+                        "Receita: ${
+                            NumberFormat.getCurrencyInstance(Locale.ENGLISH).format(data.revenue)
+                        }"
+                    )
+                    Text("Duração: ${data.runtime} minutos")
+                    Text("Avaliação da Crítica: ${data.vote_average}")
+                }
             }
         }
     }

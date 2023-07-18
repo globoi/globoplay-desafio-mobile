@@ -8,7 +8,9 @@ class MovieResponse(
     val poster_path: String,
     val production_countries: List<ProductionCountry>,
     val release_date: String,
-    val production_companies: List<ProductionCompany>
-) {
-
-}
+    val production_companies: List<ProductionCompany>,
+    val revenue: Int,
+    val runtime: Int,
+    val vote_average: Double,
+    val budget: Int
+)

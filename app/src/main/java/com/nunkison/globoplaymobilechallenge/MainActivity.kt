@@ -13,7 +13,10 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             GloboplayMobileChallengeTheme {
-                Navigation(navController = rememberNavController())
+                Navigation(
+                    context = this@MainActivity,
+                    navController = rememberNavController()
+                )
             }
         }
     }

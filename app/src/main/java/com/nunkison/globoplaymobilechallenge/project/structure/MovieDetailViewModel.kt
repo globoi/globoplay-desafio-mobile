@@ -7,10 +7,12 @@ interface MovieDetailViewModel {
     val loadingState: StateFlow<Boolean>
     val uiState: StateFlow<UiState>
     fun loadMovie(id: String)
-    fun setTabIndex(index: Int)
 
     sealed class UiState {
-        data class Success(val data: MovieDetailData?) : UiState()
+        data class Success(
+            val data: MovieDetailData?
+        ) : UiState()
+
         data class Error(val message: String) : UiState()
     }
 }

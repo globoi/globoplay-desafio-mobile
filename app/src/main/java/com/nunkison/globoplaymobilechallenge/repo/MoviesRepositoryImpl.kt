@@ -1,7 +1,7 @@
 package com.nunkison.globoplaymobilechallenge.repo
 
 import com.nunkison.globoplaymobilechallenge.getYear
-import com.nunkison.globoplaymobilechallenge.originalImage
+import com.nunkison.globoplaymobilechallenge.iconImage
 import com.nunkison.globoplaymobilechallenge.project.api.DiscoverMovieResponse
 import com.nunkison.globoplaymobilechallenge.project.api.Genre
 import com.nunkison.globoplaymobilechallenge.project.api.ProductionCompany
@@ -30,7 +30,7 @@ class MoviesRepositoryImpl(
     override suspend fun getMovie(id: String) = service.movie(id).body()?.let {
         MovieDetailData(
             name = it.original_title,
-            coverPath = originalImage(it.poster_path),
+            coverPath = thumbImage(it.poster_path),
             category = genreToCommaString(it.genres),
             description = it.overview,
             isFavorite = false,
@@ -39,7 +39,10 @@ class MoviesRepositoryImpl(
             producer = productionCompaniesToCommaString(it.production_companies),
             youtubeKey = getYoutubeKey(it.id) ?: "",
             relatedMovies = getRelatedMovies(it.genres),
-            tabSelected = 0,
+            revenue = it.revenue,
+            vote_average = it.vote_average,
+            runtime = it.runtime,
+            budget = it.budget
         )
     }
 
@@ -64,7 +67,7 @@ class MoviesRepositoryImpl(
         MovieCover(
             id = dm.id,
             name = dm.title,
-            cover = thumbImage(dm.poster_path)
+            cover = iconImage(dm.poster_path)
         )
     } ?: arrayListOf()
 
@@ -75,7 +78,7 @@ class MoviesRepositoryImpl(
 
     private fun productionCountriesToCommaString(genres: List<ProductionCountry>) =
         genres.mapTo(arrayListOf()) {
-            it.iso_3166_1
+            it.name
         }.joinToString(", ")
 
     private fun productionCompaniesToCommaString(companies: List<ProductionCompany>) =

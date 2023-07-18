@@ -26,7 +26,6 @@ import com.nunkison.globoplaymobilechallenge.project.structure.MoviesViewModel
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesViewModel.*
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesViewModel.UiState.*
 import com.nunkison.globoplaymobilechallenge.ui.ErrorLayout
-
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -71,7 +70,9 @@ fun MoviesScreen(
                         is Error -> ErrorLayout(message = state.message)
                     }
                     if (vm.loadingState.collectAsState().value){
-                        LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                        LinearProgressIndicator(
+                            modifier = Modifier.fillMaxWidth()
+                        )
                     }
                 }
             },

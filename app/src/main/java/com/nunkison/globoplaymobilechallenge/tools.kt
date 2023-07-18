@@ -8,6 +8,8 @@ import java.util.Locale
 
 fun stringResource(@StringRes id: Int) = App.instance.getString(id)
 
+fun iconImage(imgPath: String) = "${stringResource(R.string.base_icon_image_url)}${imgPath}"
+
 fun thumbImage(imgPath: String) = "${stringResource(R.string.base_thumb_image_url)}${imgPath}"
 
 fun originalImage(imgPath: String) = "${stringResource(R.string.base_original_image_url)}${imgPath}"
@@ -19,6 +21,4 @@ fun getYear(date: String) = Calendar.getInstance().apply {
         Date()
     }
 }.get(Calendar.YEAR).toString()
-
-
 

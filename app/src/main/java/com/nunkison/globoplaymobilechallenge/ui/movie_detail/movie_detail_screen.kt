@@ -31,7 +31,8 @@ import org.koin.core.parameter.parametersOf
 fun MovieDetailScreen(
     movieId: String,
     whenRequestingMovieDetails: (id: String) -> Unit,
-    whenRequestBack: () -> Unit
+    whenRequestBack: () -> Unit,
+    whenRequestingPlayYoutubeVideo: (youtubeKey: String) -> Unit,
 ) {
     val vm: MovieDetailViewModel = koinViewModel<MovieDetailViewModelImpl> {
         parametersOf(movieId)
@@ -51,10 +52,8 @@ fun MovieDetailScreen(
                     state.data?.let {
                         MovieDetailLayout(
                             data = state.data,
-                            onTabSelected = {
-                                vm.setTabIndex(it)
-                            },
                             onMovieClick = whenRequestingMovieDetails,
+                            onWatchClick = whenRequestingPlayYoutubeVideo,
                         )
                     }
                 }
@@ -86,6 +85,6 @@ fun MovieDetailScreen(
 @Composable
 fun MovieDetailScreenPreview1() {
     GloboplayMobileChallengeTheme {
-        MovieDetailScreen("", {}, {})
+        MovieDetailScreen("", {}, {}, {})
     }
 }
