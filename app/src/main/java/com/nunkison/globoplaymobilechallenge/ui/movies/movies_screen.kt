@@ -39,6 +39,7 @@ import com.nunkison.globoplaymobilechallenge.project.structure.MoviesViewModel.U
 import com.nunkison.globoplaymobilechallenge.tryRequestFocus
 import com.nunkison.globoplaymobilechallenge.ui.components.EmptyLayout
 import com.nunkison.globoplaymobilechallenge.ui.components.ErrorLayout
+
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
