@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_app"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.app.fakegloboplay.features.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myListFragment"
+        android:name="com.app.fakegloboplay.features.mylist.screen.MyListFragment"
+        android:label="fragment_my_list"
+        tools:layout="@layout/fragment_my_list" >
+        <action
+            android:id="@+id/action_myListFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/errorFragment"
+        android:name="com.app.fakegloboplay.features.error.ErrorFragment"
+        android:label="fragment_error"
+        tools:layout="@layout/fragment_error" />
+    <fragment
+        android:id="@+id/detailMovieFragment"
+        android:name="com.app.fakegloboplay.features.detailmovie.screen.DetailMovieFragment"
+        android:label="fragment_datail_movie"
+        tools:layout="@layout/fragment_datail_movie" >
+        <argument
+            android:name="movie"
+            app:argType="com.app.fakegloboplay.network.response.Movie"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_detailMovieFragment_to_errorFragment"
+            app:destination="@id/errorFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

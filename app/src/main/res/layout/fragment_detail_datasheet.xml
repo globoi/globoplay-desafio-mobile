@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_1D1D1D"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/dimin_16dp"
+    android:paddingEnd="@dimen/dimin_16dp"
+    tools:context=".features.detailmovie.screen.DetailDatasheetFragment">
+
+    <!-- Loadging   -->
+    <ProgressBar
+        android:id="@+id/loading_datasheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/app_progress_bar"
+        android:paddingTop="@dimen/dimin_32dp"
+        android:visibility="visible" />
+
+    <!--  Messager Error   -->
+    <LinearLayout
+        android:id="@+id/error_content_datasheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dimin_32dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/erro_image_datasheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_wifi_off_96" />
+
+        <TextView
+            android:id="@+id/txt_messager_datasheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/str_erro"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_retry_datasheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:layout_marginTop="@dimen/dimin_16dp"
+            android:background="@android:color/transparent"
+            android:text="@string/str_retry"
+            android:textAllCaps="false"
+            android:textColor="@color/color_FF4D00"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/content_datasheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dimin_32dp"
+            android:paddingBottom="@dimen/dimin_32dp">
+
+            <TextView
+                android:id="@+id/title_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ficha técnica"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <!-- Título Original: -->
+            <TextView
+                android:id="@+id/txt_original_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimin_24dp"
+                android:text="@string/str_original_name"
+                android:textColor="@color/color_797979"
+                android:textSize="16sp" />
+
+            <!-- Gênero -->
+            <TextView
+                android:id="@+id/txt_genres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimin_4dp"
+                android:text="@string/str_genre"
+                android:textColor="@color/color_797979"
+                android:textSize="16sp" />
+
+            <!-- Episódios -->
+            <TextView
+                android:id="@+id/txt_episode_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimin_4dp"
+                android:text="@string/str_episode"
+                android:textColor="@color/color_797979"
+                android:textSize="16sp" />
+
+            <!-- Ano de produção-->
+            <TextView
+                android:id="@+id/txt_first_air_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimin_4dp"
+                android:text="@string/str_air_date"
+                android:textColor="@color/color_797979"
+                android:textSize="16sp" />
+
+            <!-- País-->
+            <TextView
+                android:id="@+id/txt_origin_country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimin_4dp"
+                android:text="@string/str_origin_country"
+                android:textColor="@color/color_797979"
+                android:textSize="16sp" />
+
+            <!-- Direção -->
+            <TextView
+                android:id="@+id/txt_directing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimin_4dp"
+                android:text="@string/str_directing"
+                android:textColor="@color/color_797979"
+                android:textSize="16sp" />
+
+            <!-- Elenco -->
+            <TextView
+                android:id="@+id/txt_cast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimin_4dp"
+                android:text="@string/str_cast"
+                android:textColor="@color/color_797979"
+                android:textSize="16sp" />
+
+            <!-- Dispível até -->
+            <TextView
+                android:id="@+id/txt_last_air_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimin_4dp"
+                android:text="@string/str_last_air_date"
+                android:textColor="@color/color_797979"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

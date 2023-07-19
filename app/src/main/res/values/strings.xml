@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Fake Globo Play</string>
+
+    <string name="mnu_start">Início</string>
+    <string name="mnu_my_list">Minha lista</string>
+
+    <string name="title_start_one">Novelas</string>
+    <string name="title_start_two">Séries</string>
+    <string name="title_start_three">Cinema</string>
+
+    <string name="str_erro">Ops, Algo deu errado.\nVerifique a sua conexão de internet.</string>
+    <string name="str_not_found">"Não encontrado"</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_my_favorite">Minha lista</string>
+    <string name="str_tab_assista_tambem">ASSISTA TAMBÉM</string>
+    <string name="str_tab_detalhes">DETALHES</string>
+
+    <string name="str_original_name"><b>Título Original:</b> %s</string>
+    <string name="str_genre"><b>Gênero:</b> %s</string>
+    <string name="str_episode"><b>Episódios:</b> %s</string>
+    <string name="str_air_date"><b>Ano de produção:</b> %s</string>
+    <string name="str_origin_country"><b>País:</b> %s</string>
+    <string name="str_directing"><b>Direção:</b> %s</string>
+    <string name="str_cast"><b>Elenco:</b> %s</string>
+    <string name="str_last_air_date"><b>Dispível até:</b> %s</string>
+    <string name="str_retry">Tentar novamente</string>
+</resources>

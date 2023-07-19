@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_1D1D1D"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imgTop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimin_75dp"
+        android:background="@color/black"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/dimin_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_globoplay_home" />
+
+    <com.app.fakegloboplay.features.commons.customview.ImageLoaderView
+        android:id="@+id/img_avatar"
+        android:layout_width="@dimen/dimin_42dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgTop">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/dimin_8dp"
+            android:paddingTop="@dimen/dimin_24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimin_8dp"
+                android:layout_marginBottom="@dimen/dimin_16dp"
+                android:text="@string/title_start_one"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerView"
+                android:name="com.app.fakegloboplay.features.home.HomeTvSeriesFragment"
+                android:layout_width="match_parent"
+                android:layout_height="182dp"
+                android:layout_marginBottom="@dimen/dimin_24dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimin_8dp"
+                android:layout_marginBottom="@dimen/dimin_16dp"
+                android:text="@string/title_start_two"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerView1"
+                android:name="com.app.fakegloboplay.features.home.HomeTvSeriesFragment"
+                android:layout_width="match_parent"
+                android:layout_height="182dp"
+                android:layout_marginBottom="@dimen/dimin_24dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimin_8dp"
+                android:layout_marginBottom="@dimen/dimin_16dp"
+                android:text="@string/title_start_three"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerView2"
+                android:name="com.app.fakegloboplay.features.home.HomeMoviesFragment"
+                android:layout_width="match_parent"
+                android:layout_height="182dp"
+                android:layout_marginBottom="@dimen/dimin_24dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
