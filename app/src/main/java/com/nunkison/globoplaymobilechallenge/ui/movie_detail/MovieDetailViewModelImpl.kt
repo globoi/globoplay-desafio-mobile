@@ -39,7 +39,8 @@ class MovieDetailViewModelImpl(
             } catch (e: Exception) {
                 _uiState.emit(
                     UiState.Error(
-                        e.message ?: stringResource(R.string.generic_error)
+                        exception = e,
+                        message = e.message ?: stringResource(R.string.generic_error)
                     )
                 )
                 e.printStackTrace()
@@ -84,7 +85,8 @@ class MovieDetailViewModelImpl(
             } catch (e: Exception) {
                 _uiState.emit(
                     UiState.Error(
-                        e.message ?: stringResource(R.string.generic_error)
+                        exception = e,
+                        message = e.message ?: stringResource(R.string.generic_error)
                     )
                 )
                 e.printStackTrace()

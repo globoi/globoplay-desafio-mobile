@@ -9,7 +9,7 @@ interface TmdbService {
     @GET("discover/movie")
     suspend fun discoverMovie(
         @Query("with_genres") withGenres: String
-    ): Response<DiscoverMovieResponse?>
+    ): Response<MovieListResponse?>
 
     @GET("genre/movie/list")
     suspend fun genreList(): Response<GenreListResponse?>
@@ -23,4 +23,11 @@ interface TmdbService {
     suspend fun movieVideos(
         @Path("id") id: String
     ): Response<MovieVideos?>
+
+    @GET("search/movie")
+    suspend fun searchMovie(
+        @Query("query") query: String
+    ): Response<MovieListResponse?>
+
+
 }

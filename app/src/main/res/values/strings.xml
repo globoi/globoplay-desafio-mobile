@@ -24,5 +24,10 @@
     <string name="vote_avarage">Avaliação da Crítica</string>
     <string name="favorites">Favoritos</string>
     <string name="favorites_filter">Filtro de Favoritos</string>
+    <string name="no_internet_error">Por favor, verifique sua conexão com a internet e tente novamente.</string>
+    <string name="try_again">Tentar novamente</string>
+    <string name="search">Pesquisa</string>
+    <string name="search_for">Pesquisa por</string>
+    <string name="content_not_found">Nenhum filme encontrado com base neste critério.</string>
 
 </resources>

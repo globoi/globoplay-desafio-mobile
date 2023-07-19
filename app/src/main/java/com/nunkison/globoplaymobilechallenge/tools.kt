@@ -1,6 +1,7 @@
 package com.nunkison.globoplaymobilechallenge
 
 import androidx.annotation.StringRes
+import androidx.compose.ui.focus.FocusRequester
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.text.SimpleDateFormat
@@ -10,9 +11,19 @@ import java.util.Locale
 
 fun stringResource(@StringRes id: Int) = App.instance.getString(id)
 
-fun thumbImage(imgPath: String) = "${stringResource(R.string.base_thumb_image_url)}${imgPath}"
+fun thumbImage(imgPath: String?): String? {
+    imgPath?.let {
+        return "${stringResource(R.string.base_thumb_image_url)}${it}"
+    }
+    return null
+}
 
-fun originalImage(imgPath: String) = "${stringResource(R.string.base_original_image_url)}${imgPath}"
+fun originalImage(imgPath: String?): String? {
+    imgPath?.let {
+        return "${stringResource(R.string.base_original_image_url)}${it}"
+    }
+    return null
+}
 
 fun getYear(date: String) = Calendar.getInstance().apply {
     time = try {
@@ -28,5 +39,12 @@ fun Int.toCurrency(symbol: String): String {
     symbols.currencySymbol = symbol
     format.decimalFormatSymbols = symbols
     return format.format(this)
+}
+
+fun FocusRequester.tryRequestFocus() {
+    try {
+        requestFocus()
+    } catch (ignore: Exception) {
+    }
 }
 

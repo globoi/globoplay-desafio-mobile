@@ -5,8 +5,8 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.nunkison.globoplaymobilechallenge.R
 import com.nunkison.globoplaymobilechallenge.getYear
-import com.nunkison.globoplaymobilechallenge.project.api.DiscoverMovieResponse
 import com.nunkison.globoplaymobilechallenge.project.api.Genre
+import com.nunkison.globoplaymobilechallenge.project.api.MovieListResponse
 import com.nunkison.globoplaymobilechallenge.project.api.ProductionCompany
 import com.nunkison.globoplaymobilechallenge.project.api.ProductionCountry
 import com.nunkison.globoplaymobilechallenge.project.api.TmdbService
@@ -22,7 +22,7 @@ class MoviesRepositoryImpl(
     private val prefs: SharedPreferences
 ) : MoviesRepository {
 
-    override suspend fun getMovies(): List<MoviesGroup> =
+    override suspend fun getDiscoverMovies(): List<MoviesGroup> =
         service.genreList().body()?.genres?.mapTo(arrayListOf()) {
             MoviesGroup(
                 category = it.name,
@@ -88,6 +88,15 @@ class MoviesRepositoryImpl(
         )
     )
 
+    override suspend fun searchVideos(query: String) = arrayListOf(
+        MoviesGroup(
+            category = "${stringResource(R.string.search_for)}: $query",
+            movieCovers = mapToMovieCover(
+                service.searchMovie(query).body()?.results
+            ),
+        )
+    )
+
     private fun getFavoritesOnSharedPrefs() = (Gson().fromJson<LinkedHashSet<MovieCover>>(
         prefs.getString(FAVORITES_SHARED_PREF_KEY, "[]"),
         object : TypeToken<LinkedHashSet<MovieCover>>() {}.type
@@ -108,13 +117,15 @@ class MoviesRepositoryImpl(
     }
 
     private fun mapToMovieCover(
-        results: List<DiscoverMovieResponse.DiscoverMovie>?
+        results: List<MovieListResponse.DiscoverMovie>?
     ) = results?.mapTo(arrayListOf()) { dm ->
         MovieCover(
             id = dm.id,
             name = dm.title,
             cover = thumbImage(dm.poster_path)
         )
+    }?.filter {
+        it.cover != null
     } ?: arrayListOf()
 
     private fun genreToCommaString(genres: List<Genre>) =

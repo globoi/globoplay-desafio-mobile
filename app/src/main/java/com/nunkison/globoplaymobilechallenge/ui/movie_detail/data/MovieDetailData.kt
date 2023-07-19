@@ -5,7 +5,7 @@ import com.nunkison.globoplaymobilechallenge.ui.movies.data.MovieCover
 data class MovieDetailData(
     val id: String,
     val name: String,
-    val coverPath: String,
+    val coverPath: String?,
     val category: String,
     val description: String,
     val isFavorite: Boolean,

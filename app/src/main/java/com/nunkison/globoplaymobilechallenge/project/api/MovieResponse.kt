@@ -5,7 +5,7 @@ class MovieResponse(
     val genres: List<Genre>,
     val original_title: String,
     val overview: String,
-    val poster_path: String,
+    val poster_path: String?,
     val production_countries: List<ProductionCountry>,
     val release_date: String,
     val production_companies: List<ProductionCompany>,

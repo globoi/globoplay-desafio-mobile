@@ -7,12 +7,20 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.nunkison.globoplaymobilechallenge.ui.Screen
 import com.nunkison.globoplaymobilechallenge.ui.favorites.FavoritesScreen
 import com.nunkison.globoplaymobilechallenge.ui.movie_detail.MovieDetailScreen
 import com.nunkison.globoplaymobilechallenge.ui.movies.MoviesScreen
 import com.nunkison.globoplaymobilechallenge.ui.splash.SplashScreen
 
+sealed class Screen(val route: String) {
+    object Splash : Screen("splash")
+    object MovieDetail : Screen("movie/{id}") {
+        fun with(movieId: String) = route.replace("{id}", movieId)
+    }
+
+    object Movies : Screen("movies")
+    object Favorites : Screen("favorites")
+}
 
 @Composable
 fun Navigation(context: Context, navController: NavHostController) {

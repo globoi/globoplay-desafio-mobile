@@ -18,11 +18,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import com.nunkison.globoplaymobilechallenge.R
 import com.nunkison.globoplaymobilechallenge.project.structure.MovieDetailViewModel
 import com.nunkison.globoplaymobilechallenge.project.structure.MovieDetailViewModel.UiState.*
-import com.nunkison.globoplaymobilechallenge.ui.ErrorLayout
+import com.nunkison.globoplaymobilechallenge.ui.components.ErrorLayout
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
+import java.net.UnknownHostException
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -58,7 +61,15 @@ fun MovieDetailScreen(
                         )
                     }
                 }
-                is Error -> ErrorLayout(message = state.message)
+
+                is Error -> ErrorLayout(
+                    message = when (state.exception) {
+                        is UnknownHostException -> stringResource(id = R.string.no_internet_error)
+                        else -> state.message
+                    }, onRetry = {
+                        vm.loadMovie(id = movieId)
+                    }
+                )
             }
             CenterAlignedTopAppBar(
                 modifier = Modifier.background(Color.Transparent),
