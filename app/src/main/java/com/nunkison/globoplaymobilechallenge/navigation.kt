@@ -30,7 +30,11 @@ fun Navigation(context: Context, navController: NavHostController) {
     ) {
         composable(Screen.Splash.route) {
             SplashScreen(onTimeout = {
-                navController.navigate(Screen.Movies.route)
+                navController.navigate(Screen.Movies.route) {
+                    popUpTo(Screen.Splash.route) {
+                        inclusive = true
+                    }
+                }
             })
         }
         composable(Screen.Movies.route) {
