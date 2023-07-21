@@ -23,4 +23,24 @@ class MoviesViewModelTest {
             moviesViewModel.loadMovies()
             coVerify { moviesRepositoryMock.getDiscoverMovies() }
         }
+
+    @Test
+    fun `when the preference filter is enabled, the getCurrentFavorites() should be called`() =
+        runBlocking {
+            coEvery { moviesRepositoryMock.getCurrentFavorites() } returns arrayListOf(moviesGroup)
+            val moviesViewModel: MoviesViewModel = MoviesViewModelImpl(moviesRepositoryMock)
+            moviesViewModel.toogleFilterByFavorites()
+            moviesViewModel.loadMovies()
+            coVerify { moviesRepositoryMock.getCurrentFavorites() }
+        }
+
+    @Test
+    fun `when something is fetched, it should be called searchVideos() in the repository`() =
+        runBlocking {
+            coEvery { moviesRepositoryMock.getCurrentFavorites() } returns arrayListOf(moviesGroup)
+            val moviesViewModel: MoviesViewModel = MoviesViewModelImpl(moviesRepositoryMock)
+            moviesViewModel.searchQuery.value = "test"
+            moviesViewModel.loadMovies()
+            coVerify { moviesRepositoryMock.searchVideos("test") }
+        }
 }
