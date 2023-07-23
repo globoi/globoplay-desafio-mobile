@@ -1,7 +1,6 @@
 package com.nunkison.globoplaymobilechallenge
 
 import androidx.annotation.StringRes
-import androidx.compose.ui.focus.FocusRequester
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.text.SimpleDateFormat
@@ -39,12 +38,5 @@ fun Int.toCurrency(symbol: String): String {
     symbols.currencySymbol = symbol
     format.decimalFormatSymbols = symbols
     return format.format(this)
-}
-
-fun FocusRequester.tryRequestFocus() {
-    try {
-        requestFocus()
-    } catch (ignore: Exception) {
-    }
 }
 

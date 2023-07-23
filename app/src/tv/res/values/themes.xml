@@ -1,0 +1,4 @@
+<resources>
+
+    <style name="FlavorTheme" parent="@style/Theme.Leanback" />
+</resources>
