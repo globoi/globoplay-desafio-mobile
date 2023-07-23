@@ -1,4 +1,4 @@
-package com.nunkison.globoplaymobilechallenge.ui
+package com.nunkison.globoplaymobilechallenge
 
 object MovieList {
     val MOVIE_CATEGORY = arrayOf(

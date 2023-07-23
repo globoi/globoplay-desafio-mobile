@@ -1,4 +1,4 @@
-package com.nunkison.globoplaymobilechallenge.ui
+package com.nunkison.globoplaymobilechallenge
 
 import android.os.Bundle
 import android.os.Handler
@@ -11,7 +11,8 @@ import android.widget.FrameLayout
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.nunkison.globoplaymobilechallenge.R
+import com.nunkison.globoplaymobilechallenge.ui.ErrorFragment
+import com.nunkison.globoplaymobilechallenge.ui.MainFragment
 
 /**
  * BrowseErrorActivity shows how to use ErrorFragment.

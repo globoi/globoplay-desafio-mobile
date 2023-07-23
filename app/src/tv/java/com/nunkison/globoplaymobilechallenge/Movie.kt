@@ -1,4 +1,4 @@
-package com.nunkison.globoplaymobilechallenge.ui
+package com.nunkison.globoplaymobilechallenge
 
 import java.io.Serializable
 

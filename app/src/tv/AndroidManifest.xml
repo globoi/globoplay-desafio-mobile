@@ -28,13 +28,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.DetailsActivity"
+            android:name=".DetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.PlaybackActivity"
+            android:name=".PlaybackActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.BrowseErrorActivity"
+            android:name=".BrowseErrorActivity"
             android:exported="false" />
     </application>
 

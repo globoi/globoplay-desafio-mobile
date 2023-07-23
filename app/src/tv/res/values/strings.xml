@@ -1,10 +1,10 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">Starshine TV</string>
-    <string name="browse_title">Videos by Your Company</string>
-    <string name="related_movies">Related Videos</string>
+
+    <string name="browse_title">Globoplay</string>
+    <string name="related_movies">Videos Relacionados</string>
     <string name="grid_view">Grid View</string>
     <string name="error_fragment">Error Fragment</string>
-    <string name="personal_settings">Personal Settings</string>
+    <string name="personal_settings">Configurações</string>
     <string name="watch_trailer_1">Watch trailer</string>
     <string name="watch_trailer_2">FREE</string>
     <string name="rent_1">Rent By Day</string>
@@ -14,15 +14,15 @@
     <string name="movie">Movie</string>
 
     <!-- Error messages -->
-    <string name="error_fragment_message">An error occurred</string>
+    <string name="error_fragment_message">Um erro ocorreu</string>
     <string name="dismiss_error">Dismiss</string>
-    <string name="track_selection_title">Select tracks</string>
+    <string name="track_selection_title">Selecione faixas</string>
 
-    <string name="unexpected_intent_action">Unexpected intent action: <xliff:g id="action">%1$s</xliff:g></string>
+    <string name="unexpected_intent_action">Intenção inesperada: <xliff:g id="action">%1$s</xliff:g></string>
 
     <string name="error_cleartext_not_permitted">Cleartext HTTP traffic not permitted. See https://developer.android.com/guide/topics/media/issues/cleartext-not-permitted</string>
 
-    <string name="error_generic">Playback failed</string>
+    <string name="error_generic">Erro desconhecido</string>
 
     <string name="error_drm_unsupported_before_api_18">DRM content not supported on API levels below 18</string>
 

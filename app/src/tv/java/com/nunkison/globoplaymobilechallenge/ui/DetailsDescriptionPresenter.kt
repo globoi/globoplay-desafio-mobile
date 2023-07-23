@@ -1,7 +1,7 @@
 package com.nunkison.globoplaymobilechallenge.ui
 
 import androidx.leanback.widget.AbstractDetailsDescriptionPresenter
-import com.nunkison.globoplaymobilechallenge.ui.Movie
+import com.nunkison.globoplaymobilechallenge.Movie
 
 class DetailsDescriptionPresenter : AbstractDetailsDescriptionPresenter() {
 

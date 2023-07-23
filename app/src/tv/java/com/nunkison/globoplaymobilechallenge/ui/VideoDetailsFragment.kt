@@ -3,8 +3,12 @@ package com.nunkison.globoplaymobilechallenge.ui
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.os.Bundle
 import android.graphics.drawable.Drawable
+import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContextCompat
 import androidx.leanback.app.DetailsSupportFragment
 import androidx.leanback.app.DetailsSupportFragmentBackgroundController
 import androidx.leanback.widget.Action
@@ -22,17 +26,15 @@ import androidx.leanback.widget.OnItemViewClickedListener
 import androidx.leanback.widget.Presenter
 import androidx.leanback.widget.Row
 import androidx.leanback.widget.RowPresenter
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.content.ContextCompat
-import android.util.Log
-import android.widget.Toast
-
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
+import com.nunkison.globoplaymobilechallenge.DetailsActivity
 import com.nunkison.globoplaymobilechallenge.MainActivity
+import com.nunkison.globoplaymobilechallenge.Movie
+import com.nunkison.globoplaymobilechallenge.MovieList
+import com.nunkison.globoplaymobilechallenge.PlaybackActivity
 import com.nunkison.globoplaymobilechallenge.R
-
 import java.util.Collections
 
 /**

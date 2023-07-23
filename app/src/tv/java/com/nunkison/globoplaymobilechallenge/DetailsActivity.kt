@@ -1,8 +1,7 @@
-package com.nunkison.globoplaymobilechallenge.ui
+package com.nunkison.globoplaymobilechallenge
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
-import com.nunkison.globoplaymobilechallenge.R
 import com.nunkison.globoplaymobilechallenge.ui.VideoDetailsFragment
 
 /**
