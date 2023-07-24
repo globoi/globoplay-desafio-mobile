@@ -6,3 +6,5 @@ fun FocusRequester.tryRequestFocus() {
     } catch (ignore: Exception) {
     }
 }
+
+fun stringResource(@StringRes id: Int) = MobileApp.instance.getString(id)

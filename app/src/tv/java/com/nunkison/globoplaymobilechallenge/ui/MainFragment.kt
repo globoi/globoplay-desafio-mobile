@@ -27,14 +27,16 @@ import androidx.leanback.widget.Presenter
 import androidx.leanback.widget.Row
 import androidx.leanback.widget.RowPresenter
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.nunkison.globoplaymobilechallenge.BrowseErrorActivity
 import com.nunkison.globoplaymobilechallenge.DetailsActivity
 import com.nunkison.globoplaymobilechallenge.Movie
-import com.nunkison.globoplaymobilechallenge.MovieList
 import com.nunkison.globoplaymobilechallenge.R
-import java.util.Collections
+import com.nunkison.globoplaymobilechallenge.toMovie
+import com.nunkison.globoplaymobilechallenge.ui.movies.data.MoviesGroup
+import jp.wasabeef.glide.transformations.BlurTransformation
 import java.util.Timer
 import java.util.TimerTask
 
@@ -50,6 +52,7 @@ class MainFragment : BrowseSupportFragment() {
     private var mBackgroundTimer: Timer? = null
     private var mBackgroundUri: String? = null
 
+    var onFragmentReady: (() -> Unit)? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         Log.i(TAG, "onCreate")
@@ -59,9 +62,9 @@ class MainFragment : BrowseSupportFragment() {
 
         setupUIElements()
 
-        loadRows()
-
         setupEventListeners()
+
+        onFragmentReady?.invoke()
     }
 
     override fun onDestroy() {
@@ -92,22 +95,25 @@ class MainFragment : BrowseSupportFragment() {
         searchAffordanceColor = ContextCompat.getColor(requireActivity(), R.color.search_opaque)
     }
 
-    private fun loadRows() {
-        val list = MovieList.list
+    fun loadRows(groups: List<MoviesGroup>) {
 
         val rowsAdapter = ArrayObjectAdapter(ListRowPresenter())
         val cardPresenter = CardPresenter()
 
-        for (i in 0 until NUM_ROWS) {
-            if (i != 0) {
-                Collections.shuffle(list)
-            }
-            val listRowAdapter = ArrayObjectAdapter(cardPresenter)
-            for (j in 0 until NUM_COLS) {
-                listRowAdapter.add(list[j % 5])
-            }
-            val header = HeaderItem(i.toLong(), MovieList.MOVIE_CATEGORY[i])
-            rowsAdapter.add(ListRow(header, listRowAdapter))
+        groups.mapIndexed { index, group ->
+            rowsAdapter.add(
+                ListRow(
+                    HeaderItem(
+                        index.toLong(),
+                        group.category
+                    ),
+                    ArrayObjectAdapter(cardPresenter).apply {
+                        group.movieCovers.map {
+                            add(it.toMovie())
+                        }
+                    }
+                )
+            )
         }
 
         val gridHeader = HeaderItem(NUM_ROWS.toLong(), "PREFERENCES")
@@ -176,21 +182,24 @@ class MainFragment : BrowseSupportFragment() {
     }
 
     private fun updateBackground(uri: String?) {
-        val width = mMetrics.widthPixels
-        val height = mMetrics.heightPixels
         Glide.with(requireActivity())
             .load(uri)
-            .centerCrop()
+            .transform(
+                CenterCrop(),
+                BlurTransformation(15)
+            )
             .error(mDefaultBackground)
-            .into<SimpleTarget<Drawable>>(
-                object : SimpleTarget<Drawable>(width, height) {
-                    override fun onResourceReady(
-                        drawable: Drawable,
-                        transition: Transition<in Drawable>?
-                    ) {
-                        mBackgroundManager.drawable = drawable
-                    }
-                })
+            .into(object : CustomTarget<Drawable>() {
+                override fun onResourceReady(
+                    resource: Drawable,
+                    transition: Transition<in Drawable>?
+                ) {
+                    mBackgroundManager.drawable = resource
+                }
+
+                override fun onLoadCleared(placeholder: Drawable?) {}
+
+            })
         mBackgroundTimer?.cancel()
     }
 

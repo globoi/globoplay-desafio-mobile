@@ -27,15 +27,17 @@ import androidx.leanback.widget.Presenter
 import androidx.leanback.widget.Row
 import androidx.leanback.widget.RowPresenter
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.nunkison.globoplaymobilechallenge.DetailsActivity
-import com.nunkison.globoplaymobilechallenge.MainActivity
 import com.nunkison.globoplaymobilechallenge.Movie
-import com.nunkison.globoplaymobilechallenge.MovieList
 import com.nunkison.globoplaymobilechallenge.PlaybackActivity
 import com.nunkison.globoplaymobilechallenge.R
-import java.util.Collections
+import com.nunkison.globoplaymobilechallenge.TVMainActivity
+import com.nunkison.globoplaymobilechallenge.toMovie
+import com.nunkison.globoplaymobilechallenge.ui.movies.data.MovieCover
+import jp.wasabeef.glide.transformations.BlurTransformation
 
 /**
  * A wrapper fragment for leanback details screens.
@@ -49,25 +51,32 @@ class VideoDetailsFragment : DetailsSupportFragment() {
     private lateinit var mPresenterSelector: ClassPresenterSelector
     private lateinit var mAdapter: ArrayObjectAdapter
 
+    var onFragmentReady: (() -> Unit)? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate DetailsFragment")
         super.onCreate(savedInstanceState)
 
         mDetailsBackground = DetailsSupportFragmentBackgroundController(this)
 
-        mSelectedMovie =
-            requireActivity().intent.getSerializableExtra(DetailsActivity.MOVIE) as Movie
+        setupMovie(activity?.intent?.getSerializableExtra(DetailsActivity.MOVIE) as Movie)
+
+        onFragmentReady?.invoke()
+    }
+
+    fun setupMovie(movie: Movie) {
+        mSelectedMovie = movie
         if (mSelectedMovie != null) {
             mPresenterSelector = ClassPresenterSelector()
             mAdapter = ArrayObjectAdapter(mPresenterSelector)
             setupDetailsOverviewRow()
             setupDetailsOverviewRowPresenter()
-            setupRelatedMovieListRow()
+
             adapter = mAdapter
             initializeBackground(mSelectedMovie)
             onItemViewClickedListener = ItemViewClickedListener()
         } else {
-            val intent = Intent(requireActivity(), MainActivity::class.java)
+            val intent = Intent(requireActivity(), TVMainActivity::class.java)
             startActivity(intent)
         }
     }
@@ -76,17 +85,23 @@ class VideoDetailsFragment : DetailsSupportFragment() {
         mDetailsBackground.enableParallax()
         Glide.with(requireActivity())
             .asBitmap()
-            .centerCrop()
+            .transform(
+                CenterCrop(),
+                BlurTransformation(15)
+            )
             .error(R.drawable.default_background)
             .load(movie?.backgroundImageUrl)
-            .into<SimpleTarget<Bitmap>>(object : SimpleTarget<Bitmap>() {
+            .into(object : CustomTarget<Bitmap>() {
                 override fun onResourceReady(
-                    bitmap: Bitmap,
+                    resource: Bitmap,
                     transition: Transition<in Bitmap>?
                 ) {
-                    mDetailsBackground.coverBitmap = bitmap
+                    mDetailsBackground.coverBitmap = resource
                     mAdapter.notifyArrayItemRangeChanged(0, mAdapter.size())
                 }
+
+                override fun onLoadCleared(placeholder: Drawable?) {}
+
             })
     }
 
@@ -101,15 +116,17 @@ class VideoDetailsFragment : DetailsSupportFragment() {
             .load(mSelectedMovie?.cardImageUrl)
             .centerCrop()
             .error(R.drawable.default_background)
-            .into<SimpleTarget<Drawable>>(object : SimpleTarget<Drawable>(width, height) {
+            .into(object : CustomTarget<Drawable>() {
                 override fun onResourceReady(
-                    drawable: Drawable,
+                    resource: Drawable,
                     transition: Transition<in Drawable>?
                 ) {
-                    Log.d(TAG, "details overview card image url ready: " + drawable)
-                    row.imageDrawable = drawable
+                    row.imageDrawable = resource
                     mAdapter.notifyArrayItemRangeChanged(0, mAdapter.size())
                 }
+
+                override fun onLoadCleared(placeholder: Drawable?) {}
+
             })
 
         val actionAdapter = ArrayObjectAdapter()
@@ -166,16 +183,19 @@ class VideoDetailsFragment : DetailsSupportFragment() {
         mPresenterSelector.addClassPresenter(DetailsOverviewRow::class.java, detailsPresenter)
     }
 
-    private fun setupRelatedMovieListRow() {
+    fun setupRelatedMovieListRow(movieCovers: List<MovieCover>) {
         val subcategories = arrayOf(getString(R.string.related_movies))
-        val list = MovieList.list
-
-        Collections.shuffle(list)
-        val listRowAdapter = ArrayObjectAdapter(CardPresenter())
-        for (j in 0 until NUM_COLS) {
-            listRowAdapter.add(list[j % 5])
+        val list = movieCovers.mapTo(arrayListOf()) {
+            it.toMovie()
         }
 
+        list.shuffle()
+        val listRowAdapter = ArrayObjectAdapter(CardPresenter())
+        if (list.isNotEmpty()) {
+            for (j in 0 until NUM_COLS) {
+                listRowAdapter.add(list[j % 5])
+            }
+        }
         val header = HeaderItem(0, subcategories[0])
         mAdapter.add(ListRow(header, listRowAdapter))
         mPresenterSelector.addClassPresenter(ListRow::class.java, ListRowPresenter())
@@ -218,7 +238,7 @@ class VideoDetailsFragment : DetailsSupportFragment() {
         private val ACTION_BUY = 3L
 
         private val DETAIL_THUMB_WIDTH = 274
-        private val DETAIL_THUMB_HEIGHT = 274
+        private val DETAIL_THUMB_HEIGHT = 487
 
         private val NUM_COLS = 10
     }

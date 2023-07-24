@@ -4,8 +4,8 @@ import android.content.Context
 import com.nunkison.globoplaymobilechallenge.project.api.TmdbService
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesRepository
 import com.nunkison.globoplaymobilechallenge.repo.MoviesRepositoryImpl
-import com.nunkison.globoplaymobilechallenge.ui.movie_detail.MovieDetailViewModelImpl
-import com.nunkison.globoplaymobilechallenge.ui.movies.MoviesViewModelImpl
+import com.nunkison.globoplaymobilechallenge.viewmodel.MovieDetailViewModelImpl
+import com.nunkison.globoplaymobilechallenge.viewmodel.MoviesViewModelImpl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -15,7 +15,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-val androidModule = module {
+val androidTvModule = module {
 
     single<TmdbService> {
         Retrofit.Builder()
@@ -56,7 +56,7 @@ val androidModule = module {
         )
     }
 
-    viewModel {params ->
+    viewModel { params ->
         MovieDetailViewModelImpl(
             repo = get(),
             id = params.get()

@@ -1,4 +1,4 @@
-package com.nunkison.globoplaymobilechallenge.ui.movies
+package com.nunkison.globoplaymobilechallenge.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

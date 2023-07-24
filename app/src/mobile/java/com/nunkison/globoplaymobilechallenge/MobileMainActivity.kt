@@ -7,14 +7,14 @@ import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
 import com.nunkison.globoplaymobilechallenge.ui.theme.GloboplayMobileChallengeTheme
 
-class MainActivity : ComponentActivity() {
+class MobileMainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             GloboplayMobileChallengeTheme {
                 Navigation(
-                    context = this@MainActivity,
+                    context = this@MobileMainActivity,
                     navController = rememberNavController()
                 )
             }

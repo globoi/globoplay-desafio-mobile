@@ -9,6 +9,7 @@ import androidx.leanback.media.PlaybackTransportControlGlue
 import androidx.leanback.widget.PlaybackControlsRow
 import com.nunkison.globoplaymobilechallenge.DetailsActivity
 import com.nunkison.globoplaymobilechallenge.Movie
+import com.nunkison.globoplaymobilechallenge.anyVideoUrl
 
 /** Handles video playback with media controls. */
 class PlaybackVideoFragment : VideoSupportFragment() {
@@ -31,7 +32,7 @@ class PlaybackVideoFragment : VideoSupportFragment() {
         mTransportControlGlue.subtitle = description
         mTransportControlGlue.playWhenPrepared()
 
-        playerAdapter.setDataSource(Uri.parse(videoUrl))
+        playerAdapter.setDataSource(Uri.parse(anyVideoUrl.random()))
     }
 
     override fun onPause() {
