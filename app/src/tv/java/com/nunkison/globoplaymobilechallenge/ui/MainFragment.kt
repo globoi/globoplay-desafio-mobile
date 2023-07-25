@@ -12,13 +12,11 @@ import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import androidx.leanback.app.BackgroundManager
 import androidx.leanback.app.BrowseSupportFragment
 import androidx.leanback.widget.ArrayObjectAdapter
 import androidx.leanback.widget.HeaderItem
-import androidx.leanback.widget.ImageCardView
 import androidx.leanback.widget.ListRow
 import androidx.leanback.widget.ListRowPresenter
 import androidx.leanback.widget.OnItemViewClickedListener
@@ -87,7 +85,7 @@ class MainFragment : BrowseSupportFragment() {
         title = getString(R.string.browse_title)
         // over title
         headersState = BrowseSupportFragment.HEADERS_ENABLED
-        isHeadersTransitionOnBackEnabled = true
+//        isHeadersTransitionOnBackEnabled = true
 
         // set fastLane (or headers) background color
         brandColor = ContextCompat.getColor(requireActivity(), R.color.fastlane_background)
@@ -151,13 +149,13 @@ class MainFragment : BrowseSupportFragment() {
                 val intent = Intent(requireActivity(), DetailsActivity::class.java)
                 intent.putExtra(DetailsActivity.MOVIE, item)
 
-                val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    requireActivity(),
-                    (itemViewHolder.view as ImageCardView).mainImageView,
-                    DetailsActivity.SHARED_ELEMENT_NAME
-                )
-                    .toBundle()
-                startActivity(intent, bundle)
+//                val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                    requireActivity(),
+//                    (itemViewHolder.view as ImageCardView).mainImageView,
+//                    DetailsActivity.SHARED_ELEMENT_NAME
+//                )
+//                    .toBundle()
+                startActivity(intent)
             } else if (item is String) {
                 if (item.contains(getString(R.string.error_fragment))) {
                     val intent = Intent(requireActivity(), BrowseErrorActivity::class.java)

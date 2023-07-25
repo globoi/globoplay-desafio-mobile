@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import androidx.leanback.app.DetailsSupportFragment
 import androidx.leanback.app.DetailsSupportFragmentBackgroundController
@@ -18,7 +17,6 @@ import androidx.leanback.widget.DetailsOverviewRow
 import androidx.leanback.widget.FullWidthDetailsOverviewRowPresenter
 import androidx.leanback.widget.FullWidthDetailsOverviewSharedElementHelper
 import androidx.leanback.widget.HeaderItem
-import androidx.leanback.widget.ImageCardView
 import androidx.leanback.widget.ListRow
 import androidx.leanback.widget.ListRowPresenter
 import androidx.leanback.widget.OnActionClickedListener
@@ -64,7 +62,7 @@ class VideoDetailsFragment : DetailsSupportFragment() {
         onFragmentReady?.invoke()
     }
 
-    fun setupMovie(movie: Movie) {
+    private fun setupMovie(movie: Movie) {
         mSelectedMovie = movie
         if (mSelectedMovie != null) {
             mPresenterSelector = ClassPresenterSelector()
@@ -79,6 +77,19 @@ class VideoDetailsFragment : DetailsSupportFragment() {
             val intent = Intent(requireActivity(), TVMainActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    fun updateMovie(movie: Movie) {
+        mAdapter.clear()
+        mSelectedMovie = movie
+        mPresenterSelector = ClassPresenterSelector()
+        mAdapter = ArrayObjectAdapter(mPresenterSelector)
+        setupDetailsOverviewRow()
+        setupDetailsOverviewRowPresenter()
+
+        adapter = mAdapter
+        initializeBackground(mSelectedMovie)
+        onItemViewClickedListener = ItemViewClickedListener()
     }
 
     private fun initializeBackground(movie: Movie?) {
@@ -158,18 +169,15 @@ class VideoDetailsFragment : DetailsSupportFragment() {
     }
 
     private fun setupDetailsOverviewRowPresenter() {
-        // Set detail background.
         val detailsPresenter = FullWidthDetailsOverviewRowPresenter(DetailsDescriptionPresenter())
         detailsPresenter.backgroundColor =
             ContextCompat.getColor(requireActivity(), R.color.selected_background)
-
-        // Hook up transition element.
         val sharedElementHelper = FullWidthDetailsOverviewSharedElementHelper()
-        sharedElementHelper.setSharedElementEnterTransition(
-            activity, DetailsActivity.SHARED_ELEMENT_NAME
-        )
-        detailsPresenter.setListener(sharedElementHelper)
-        detailsPresenter.isParticipatingEntranceTransition = true
+//        sharedElementHelper.setSharedElementEnterTransition(
+//            activity, DetailsActivity.SHARED_ELEMENT_NAME
+//        )
+//        detailsPresenter.setListener(sharedElementHelper)
+//        detailsPresenter.isParticipatingEntranceTransition = true
 
         detailsPresenter.onActionClickedListener = OnActionClickedListener { action ->
             if (action.id == ACTION_WATCH_TRAILER) {
@@ -218,14 +226,14 @@ class VideoDetailsFragment : DetailsSupportFragment() {
                 val intent = Intent(requireActivity(), DetailsActivity::class.java)
                 intent.putExtra(resources.getString(R.string.movie), mSelectedMovie)
 
-                val bundle =
-                    ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        requireActivity(),
-                        (itemViewHolder?.view as ImageCardView).mainImageView,
-                        DetailsActivity.SHARED_ELEMENT_NAME
-                    )
-                        .toBundle()
-                startActivity(intent, bundle)
+//                val bundle =
+//                    ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                        requireActivity(),
+//                        (itemViewHolder?.view as ImageCardView).mainImageView,
+//                        DetailsActivity.SHARED_ELEMENT_NAME
+//                    )
+//                        .toBundle()
+                startActivity(intent)
             }
         }
     }

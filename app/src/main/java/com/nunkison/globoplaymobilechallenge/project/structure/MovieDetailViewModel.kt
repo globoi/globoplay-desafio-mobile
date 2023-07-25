@@ -1,6 +1,5 @@
 package com.nunkison.globoplaymobilechallenge.project.structure
 
-import com.nunkison.globoplaymobilechallenge.ui.movie_detail.data.MovieDetailData
 import kotlinx.coroutines.flow.StateFlow
 
 interface MovieDetailViewModel {

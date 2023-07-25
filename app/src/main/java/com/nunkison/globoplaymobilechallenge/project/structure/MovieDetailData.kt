@@ -1,4 +1,4 @@
-package com.nunkison.globoplaymobilechallenge.ui.movie_detail.data
+package com.nunkison.globoplaymobilechallenge.project.structure
 
 import com.nunkison.globoplaymobilechallenge.ui.movies.data.MovieCover
 

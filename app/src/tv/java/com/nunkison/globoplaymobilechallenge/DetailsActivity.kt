@@ -37,6 +37,7 @@ class DetailsActivity : FragmentActivity() {
                         when (it) {
                             is MovieDetailViewModel.UiState.Success -> {
                                 it.data?.let { mdd ->
+                                    fragment.updateMovie(mdd.toMovie())
                                     fragment.setupRelatedMovieListRow(
                                         mdd.relatedMovies
                                     )

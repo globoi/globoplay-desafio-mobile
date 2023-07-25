@@ -10,10 +10,10 @@ import com.nunkison.globoplaymobilechallenge.project.api.MovieListResponse
 import com.nunkison.globoplaymobilechallenge.project.api.ProductionCompany
 import com.nunkison.globoplaymobilechallenge.project.api.ProductionCountry
 import com.nunkison.globoplaymobilechallenge.project.api.TmdbService
+import com.nunkison.globoplaymobilechallenge.project.structure.MovieDetailData
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesRepository
 import com.nunkison.globoplaymobilechallenge.stringResource
 import com.nunkison.globoplaymobilechallenge.thumbImage
-import com.nunkison.globoplaymobilechallenge.ui.movie_detail.data.MovieDetailData
 import com.nunkison.globoplaymobilechallenge.ui.movies.data.MovieCover
 import com.nunkison.globoplaymobilechallenge.ui.movies.data.MoviesGroup
 
