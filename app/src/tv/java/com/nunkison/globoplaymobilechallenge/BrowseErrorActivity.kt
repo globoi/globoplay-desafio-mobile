@@ -14,9 +14,6 @@ import androidx.fragment.app.FragmentActivity
 import com.nunkison.globoplaymobilechallenge.ui.ErrorFragment
 import com.nunkison.globoplaymobilechallenge.ui.MainFragment
 
-/**
- * BrowseErrorActivity shows how to use ErrorFragment.
- */
 class BrowseErrorActivity : FragmentActivity() {
 
     private lateinit var mErrorFragment: ErrorFragment

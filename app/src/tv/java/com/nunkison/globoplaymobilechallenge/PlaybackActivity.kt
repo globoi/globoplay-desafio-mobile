@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import com.nunkison.globoplaymobilechallenge.ui.PlaybackVideoFragment
 
-/** Loads [PlaybackVideoFragment]. */
 class PlaybackActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

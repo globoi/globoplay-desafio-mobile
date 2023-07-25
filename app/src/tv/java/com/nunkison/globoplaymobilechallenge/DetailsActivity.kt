@@ -13,9 +13,6 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.core.parameter.parametersOf
 
-/**
- * Details activity class that loads [VideoDetailsFragment] class.
- */
 class DetailsActivity : FragmentActivity() {
 
     private lateinit var vm: MovieDetailViewModel

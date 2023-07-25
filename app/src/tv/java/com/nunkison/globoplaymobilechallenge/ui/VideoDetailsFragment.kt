@@ -15,7 +15,6 @@ import androidx.leanback.widget.ArrayObjectAdapter
 import androidx.leanback.widget.ClassPresenterSelector
 import androidx.leanback.widget.DetailsOverviewRow
 import androidx.leanback.widget.FullWidthDetailsOverviewRowPresenter
-import androidx.leanback.widget.FullWidthDetailsOverviewSharedElementHelper
 import androidx.leanback.widget.HeaderItem
 import androidx.leanback.widget.ListRow
 import androidx.leanback.widget.ListRowPresenter
@@ -37,10 +36,6 @@ import com.nunkison.globoplaymobilechallenge.toMovie
 import com.nunkison.globoplaymobilechallenge.ui.movies.data.MovieCover
 import jp.wasabeef.glide.transformations.BlurTransformation
 
-/**
- * A wrapper fragment for leanback details screens.
- * It shows a detailed view of video and its metadata plus related videos.
- */
 class VideoDetailsFragment : DetailsSupportFragment() {
 
     private var mSelectedMovie: Movie? = null
@@ -170,14 +165,10 @@ class VideoDetailsFragment : DetailsSupportFragment() {
 
     private fun setupDetailsOverviewRowPresenter() {
         val detailsPresenter = FullWidthDetailsOverviewRowPresenter(DetailsDescriptionPresenter())
-        detailsPresenter.backgroundColor =
-            ContextCompat.getColor(requireActivity(), R.color.selected_background)
-        val sharedElementHelper = FullWidthDetailsOverviewSharedElementHelper()
-//        sharedElementHelper.setSharedElementEnterTransition(
-//            activity, DetailsActivity.SHARED_ELEMENT_NAME
-//        )
-//        detailsPresenter.setListener(sharedElementHelper)
-//        detailsPresenter.isParticipatingEntranceTransition = true
+        detailsPresenter.backgroundColor = ContextCompat.getColor(
+            requireActivity(),
+            R.color.selected_background
+        )
 
         detailsPresenter.onActionClickedListener = OnActionClickedListener { action ->
             if (action.id == ACTION_WATCH_TRAILER) {
@@ -225,14 +216,6 @@ class VideoDetailsFragment : DetailsSupportFragment() {
                 Log.d(TAG, "Item: " + item.toString())
                 val intent = Intent(requireActivity(), DetailsActivity::class.java)
                 intent.putExtra(resources.getString(R.string.movie), mSelectedMovie)
-
-//                val bundle =
-//                    ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                        requireActivity(),
-//                        (itemViewHolder?.view as ImageCardView).mainImageView,
-//                        DetailsActivity.SHARED_ELEMENT_NAME
-//                    )
-//                        .toBundle()
                 startActivity(intent)
             }
         }

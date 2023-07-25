@@ -11,7 +11,6 @@ import com.nunkison.globoplaymobilechallenge.DetailsActivity
 import com.nunkison.globoplaymobilechallenge.Movie
 import com.nunkison.globoplaymobilechallenge.anyVideoUrl
 
-/** Handles video playback with media controls. */
 class PlaybackVideoFragment : VideoSupportFragment() {
 
     private lateinit var mTransportControlGlue: PlaybackTransportControlGlue<MediaPlayerAdapter>

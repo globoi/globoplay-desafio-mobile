@@ -38,9 +38,6 @@ import jp.wasabeef.glide.transformations.BlurTransformation
 import java.util.Timer
 import java.util.TimerTask
 
-/**
- * Loads a grid of cards with movies to browse.
- */
 class MainFragment : BrowseSupportFragment() {
 
     private val mHandler = Handler(Looper.myLooper()!!)
@@ -83,13 +80,9 @@ class MainFragment : BrowseSupportFragment() {
 
     private fun setupUIElements() {
         title = getString(R.string.browse_title)
-        // over title
-        headersState = BrowseSupportFragment.HEADERS_ENABLED
-//        isHeadersTransitionOnBackEnabled = true
 
-        // set fastLane (or headers) background color
+        headersState = BrowseSupportFragment.HEADERS_ENABLED
         brandColor = ContextCompat.getColor(requireActivity(), R.color.fastlane_background)
-        // set search icon color
         searchAffordanceColor = ContextCompat.getColor(requireActivity(), R.color.search_opaque)
     }
 
@@ -148,13 +141,6 @@ class MainFragment : BrowseSupportFragment() {
                 Log.d(TAG, "Item: " + item.toString())
                 val intent = Intent(requireActivity(), DetailsActivity::class.java)
                 intent.putExtra(DetailsActivity.MOVIE, item)
-
-//                val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                    requireActivity(),
-//                    (itemViewHolder.view as ImageCardView).mainImageView,
-//                    DetailsActivity.SHARED_ELEMENT_NAME
-//                )
-//                    .toBundle()
                 startActivity(intent)
             } else if (item is String) {
                 if (item.contains(getString(R.string.error_fragment))) {
