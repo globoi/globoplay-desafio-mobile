@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Globoplay_logo_2020.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

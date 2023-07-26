@@ -1,0 +1,467 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6F0D2EC22A7189C000877326 /* DesafioGloboplayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D2EC12A7189C000877326 /* DesafioGloboplayApp.swift */; };
+		6F0D2EC42A7189C000877326 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D2EC32A7189C000877326 /* Home.swift */; };
+		6F0D2EC62A7189C300877326 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F0D2EC52A7189C300877326 /* Assets.xcassets */; };
+		6F0D2EC92A7189C300877326 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F0D2EC82A7189C300877326 /* Preview Assets.xcassets */; };
+		6F0D2ED32A718A5600877326 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D2ED22A718A5600877326 /* SplashView.swift */; };
+		6F0D2ED62A718D0400877326 /* AssetsNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D2ED52A718D0400877326 /* AssetsNames.swift */; };
+		6F0D2EDA2A718E6B00877326 /* MyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D2ED92A718E6B00877326 /* MyList.swift */; };
+		6F0D2EDF2A71908100877326 /* AuthenticationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D2EDE2A71908100877326 /* AuthenticationConstants.swift */; };
+		6F0D2EE22A71912700877326 /* NetworkTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D2EE12A71912700877326 /* NetworkTester.swift */; };
+		6F0D2EE42A71913800877326 /* APIURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D2EE32A71913800877326 /* APIURLs.swift */; };
+		6F0D2EE82A71971F00877326 /* APIResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D2EE72A71971F00877326 /* APIResults.swift */; };
+		6F0D2EEB2A71998400877326 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D2EEA2A71998400877326 /* HomeViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6F0D2EBE2A7189C000877326 /* DesafioGloboplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioGloboplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F0D2EC12A7189C000877326 /* DesafioGloboplayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesafioGloboplayApp.swift; sourceTree = "<group>"; };
+		6F0D2EC32A7189C000877326 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		6F0D2EC52A7189C300877326 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6F0D2EC82A7189C300877326 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6F0D2ED22A718A5600877326 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		6F0D2ED52A718D0400877326 /* AssetsNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsNames.swift; sourceTree = "<group>"; };
+		6F0D2ED92A718E6B00877326 /* MyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyList.swift; sourceTree = "<group>"; };
+		6F0D2EDB2A718EC400877326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6F0D2EDE2A71908100877326 /* AuthenticationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationConstants.swift; sourceTree = "<group>"; };
+		6F0D2EE12A71912700877326 /* NetworkTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTester.swift; sourceTree = "<group>"; };
+		6F0D2EE32A71913800877326 /* APIURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLs.swift; sourceTree = "<group>"; };
+		6F0D2EE72A71971F00877326 /* APIResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResults.swift; sourceTree = "<group>"; };
+		6F0D2EEA2A71998400877326 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6F0D2EBB2A7189C000877326 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6F0D2EB52A7189C000877326 = {
+			isa = PBXGroup;
+			children = (
+				6F0D2EC02A7189C000877326 /* DesafioGloboplay */,
+				6F0D2EBF2A7189C000877326 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6F0D2EBF2A7189C000877326 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6F0D2EBE2A7189C000877326 /* DesafioGloboplay.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6F0D2EC02A7189C000877326 /* DesafioGloboplay */ = {
+			isa = PBXGroup;
+			children = (
+				6F0D2EDB2A718EC400877326 /* Info.plist */,
+				6F0D2EE02A71911A00877326 /* Network */,
+				6F0D2EDD2A718F4400877326 /* Models */,
+				6F0D2ED42A718CEF00877326 /* Constants */,
+				6F0D2ECF2A7189D200877326 /* Screens */,
+				6F0D2EC12A7189C000877326 /* DesafioGloboplayApp.swift */,
+				6F0D2EC52A7189C300877326 /* Assets.xcassets */,
+				6F0D2EC72A7189C300877326 /* Preview Content */,
+			);
+			path = DesafioGloboplay;
+			sourceTree = "<group>";
+		};
+		6F0D2EC72A7189C300877326 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6F0D2EC82A7189C300877326 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6F0D2ECF2A7189D200877326 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				6F0D2ED82A718E5900877326 /* Details */,
+				6F0D2ED72A718E4C00877326 /* MyList */,
+				6F0D2ED12A718A4800877326 /* Splash */,
+				6F0D2ED02A718A1000877326 /* Home */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		6F0D2ED02A718A1000877326 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6F0D2EE92A71997800877326 /* ViewModel */,
+				6F0D2EC32A7189C000877326 /* Home.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		6F0D2ED12A718A4800877326 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				6F0D2ED22A718A5600877326 /* SplashView.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		6F0D2ED42A718CEF00877326 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				6F0D2ED52A718D0400877326 /* AssetsNames.swift */,
+				6F0D2EDE2A71908100877326 /* AuthenticationConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		6F0D2ED72A718E4C00877326 /* MyList */ = {
+			isa = PBXGroup;
+			children = (
+				6F0D2EDC2A718F2E00877326 /* ViewModel */,
+				6F0D2ED92A718E6B00877326 /* MyList.swift */,
+			);
+			path = MyList;
+			sourceTree = "<group>";
+		};
+		6F0D2ED82A718E5900877326 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		6F0D2EDC2A718F2E00877326 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6F0D2EDD2A718F4400877326 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6F0D2EE72A71971F00877326 /* APIResults.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6F0D2EE02A71911A00877326 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				6F0D2EE12A71912700877326 /* NetworkTester.swift */,
+				6F0D2EE32A71913800877326 /* APIURLs.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		6F0D2EE92A71997800877326 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6F0D2EEA2A71998400877326 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6F0D2EBD2A7189C000877326 /* DesafioGloboplay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F0D2ECC2A7189C300877326 /* Build configuration list for PBXNativeTarget "DesafioGloboplay" */;
+			buildPhases = (
+				6F0D2EBA2A7189C000877326 /* Sources */,
+				6F0D2EBB2A7189C000877326 /* Frameworks */,
+				6F0D2EBC2A7189C000877326 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DesafioGloboplay;
+			productName = DesafioGloboplay;
+			productReference = 6F0D2EBE2A7189C000877326 /* DesafioGloboplay.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6F0D2EB62A7189C000877326 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					6F0D2EBD2A7189C000877326 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 6F0D2EB92A7189C000877326 /* Build configuration list for PBXProject "DesafioGloboplay" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6F0D2EB52A7189C000877326;
+			productRefGroup = 6F0D2EBF2A7189C000877326 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6F0D2EBD2A7189C000877326 /* DesafioGloboplay */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6F0D2EBC2A7189C000877326 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F0D2EC92A7189C300877326 /* Preview Assets.xcassets in Resources */,
+				6F0D2EC62A7189C300877326 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6F0D2EBA2A7189C000877326 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F0D2EE42A71913800877326 /* APIURLs.swift in Sources */,
+				6F0D2EC42A7189C000877326 /* Home.swift in Sources */,
+				6F0D2EC22A7189C000877326 /* DesafioGloboplayApp.swift in Sources */,
+				6F0D2EEB2A71998400877326 /* HomeViewModel.swift in Sources */,
+				6F0D2EE22A71912700877326 /* NetworkTester.swift in Sources */,
+				6F0D2ED32A718A5600877326 /* SplashView.swift in Sources */,
+				6F0D2EE82A71971F00877326 /* APIResults.swift in Sources */,
+				6F0D2ED62A718D0400877326 /* AssetsNames.swift in Sources */,
+				6F0D2EDA2A718E6B00877326 /* MyList.swift in Sources */,
+				6F0D2EDF2A71908100877326 /* AuthenticationConstants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6F0D2ECA2A7189C300877326 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6F0D2ECB2A7189C300877326 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6F0D2ECD2A7189C300877326 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DesafioGloboplay/Preview Content\"";
+				DEVELOPMENT_TEAM = 84N6Z39N8P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DesafioGloboplay/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thalles.teste.DesafioGloboplay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6F0D2ECE2A7189C300877326 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DesafioGloboplay/Preview Content\"";
+				DEVELOPMENT_TEAM = 84N6Z39N8P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DesafioGloboplay/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thalles.teste.DesafioGloboplay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6F0D2EB92A7189C000877326 /* Build configuration list for PBXProject "DesafioGloboplay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F0D2ECA2A7189C300877326 /* Debug */,
+				6F0D2ECB2A7189C300877326 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F0D2ECC2A7189C300877326 /* Build configuration list for PBXNativeTarget "DesafioGloboplay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F0D2ECD2A7189C300877326 /* Debug */,
+				6F0D2ECE2A7189C300877326 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6F0D2EB62A7189C000877326 /* Project object */;
+}

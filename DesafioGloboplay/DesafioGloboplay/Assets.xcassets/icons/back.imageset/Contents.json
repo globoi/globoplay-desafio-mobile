@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "baseline-arrow_back-24px.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
