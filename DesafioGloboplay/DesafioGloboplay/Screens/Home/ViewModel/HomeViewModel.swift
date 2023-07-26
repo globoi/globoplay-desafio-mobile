@@ -21,7 +21,37 @@ class HomeViewModel: ObservableObject{
     
     
     func getMovieList(){
-        
+        do{
+            perform(request: try APIURLs.getMovies.request()) { movies in
+                self.movieList = movies
+            }
+        }
+        catch {
+            errorProcedure()
+        }
+    }
+    
+    
+    
+    
+    func getTVShowsList(){
+        do{
+            perform(request: try APIURLs.getTVShows.request()) { shows in
+                self.tvShowsList = shows
+            }
+        }
+        catch {
+            errorProcedure()
+        }
+    }
+    
+    private func errorProcedure(){
+        self.showError = true
+        self.isLoading = false
+        if let completion = self.completion {completion()}
+    }
+    
+    private func perform(request: URLRequest, successCompletion: @escaping (APIResults) -> Void){
         isLoading = true
         
         guard NetworkTester().isConnected() else {
@@ -30,52 +60,38 @@ class HomeViewModel: ObservableObject{
             return
         }
         
-        do {
-            try URLSession.shared.dataTask(with: APIURLs.getMovies.request()) { data, response, error in
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            
+            if (error != nil) {
+                print("Error")
+                print(error as Any)
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                print("Response:")
+                print(httpResponse)
+            }
+            
+            if let dataUnwrapped = data {
                 
-                
-                if (error != nil) {
-                    print("Error")
-                    print(error as Any)
-                  } else {
-                    let httpResponse = response as? HTTPURLResponse
-                      print("Response:")
-                    print(httpResponse)
-                  }
-                
-                if let dataUnwrapped = data {
-                    
-                    if let movies = try? JSONDecoder().decode(APIResults.self, from: dataUnwrapped) {
-                        DispatchQueue.main.async {
-                            self.showError = false
-                            self.movieList = movies
-                            self.isLoading = false
-                            if let completion = self.completion {completion()}
-                        }
-                        print("Filmes: ")
-                        dump(movies)
-                    } else {
-                        print("JSON Inválido")
-                        DispatchQueue.main.async {
-                            self.showError = true
-                            self.isLoading = false
-                            if let completion = self.completion {completion()}
-                        }
+                if let result = try? JSONDecoder().decode(APIResults.self, from: dataUnwrapped) {
+                    DispatchQueue.main.async {
+                        self.showError = false
+                        successCompletion(result)
+                        self.isLoading = false
+                        if let completion = self.completion {completion()}
+                    }
+                    print("Resposta: ")
+                    dump(result)
+                } else {
+                    print("JSON Inválido")
+                    DispatchQueue.main.async {
+                        self.errorProcedure()
                     }
                 }
-                
-            }.resume()
-        } catch {
-            self.showError = true
-            self.isLoading = false
-            if let completion = self.completion {completion()}
-        }
-        
-    }
-    
-    
-    func getTVShowsList(){
-        
+            }
+            
+        }.resume()
         
         
     }

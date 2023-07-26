@@ -13,33 +13,20 @@ struct Home: View {
     
     var body: some View {
         NavigationView{
-            
-            VStack{
-                ScrollView(.horizontal){
-                    HStack{
-                        if let movieList = viewModel.movieList?.results{
-                            ForEach(movieList, id: \.id){movie in
-                                AsyncImage(url: URL.init(string: "\(posterURL)\(movie.posterPath ?? "")")){image in
-                                    image.resizable().aspectRatio(contentMode: .fit)
-                                } placeholder: {
-                                    ProgressView()
-                                }.frame(width: 150, height: 300)
-                            }
-                        }else{
-                            Text("Erro ao carregar lista")
-                        }
-                    }
-                }.padding(20)
+            VStack(alignment: .leading){
+                //https://api.themoviedb.org/3/trending/all/day
+                //Fimes, séries e artistas populares
+                Text("Nos Cinemas").font(.system(size: 24, weight: .bold))
+                HorizontalList(results: viewModel.movieList?.results)
+                Text("Na TV").font(.system(size: 24, weight: .bold))
+                HorizontalList(results: viewModel.tvShowsList?.results)
             }.toolbar(content: {
-                ToolbarItem(placement: .principal) {
-                    VStack{
-                        Image(assets.images.logo.rawValue, bundle: .main).resizable().aspectRatio(contentMode: .fit)
-                    }.padding(10)
-                }
-            })
+                HomeToolbar()
+            }).padding(20)
             
         }.onAppear(perform: {
             viewModel.getMovieList()
+            viewModel.getTVShowsList()
         })
     }
 }
