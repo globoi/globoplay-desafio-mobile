@@ -48,8 +48,8 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.nunkison.globoplaymobilechallenge.R
 import com.nunkison.globoplaymobilechallenge.originalImage
+import com.nunkison.globoplaymobilechallenge.project.structure.MovieDetailData
 import com.nunkison.globoplaymobilechallenge.toCurrency
-import com.nunkison.globoplaymobilechallenge.ui.movie_detail.data.MovieDetailData
 
 @Composable
 fun MovieDetailLayout(

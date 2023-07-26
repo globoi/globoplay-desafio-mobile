@@ -36,14 +36,15 @@ import com.nunkison.globoplaymobilechallenge.R
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesViewModel
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesViewModel.*
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesViewModel.UiState.*
+import com.nunkison.globoplaymobilechallenge.tryRequestFocus
 
 import com.nunkison.globoplaymobilechallenge.ui.components.EmptyLayout
 import com.nunkison.globoplaymobilechallenge.ui.components.ErrorLayout
+import com.nunkison.globoplaymobilechallenge.viewmodel.MoviesViewModelImpl
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
-import tryRequestFocus
 import java.net.UnknownHostException
 
 @OptIn(ExperimentalMaterial3Api::class)

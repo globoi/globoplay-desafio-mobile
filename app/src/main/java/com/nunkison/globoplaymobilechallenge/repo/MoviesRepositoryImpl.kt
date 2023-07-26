@@ -1,5 +1,6 @@
 package com.nunkison.globoplaymobilechallenge.repo
 
+
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

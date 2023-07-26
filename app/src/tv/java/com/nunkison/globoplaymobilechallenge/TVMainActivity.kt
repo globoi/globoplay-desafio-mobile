@@ -35,6 +35,7 @@ class TVMainActivity : FragmentActivity() {
                                 startActivity(intent)
                             }
                         }
+
                     }
                 }
             }

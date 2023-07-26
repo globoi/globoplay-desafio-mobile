@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+
 class MovieDetailViewModelImpl(
     id: String,
     private val repo: MoviesRepository

@@ -7,3 +7,16 @@
     tools:context=".TVMainActivity"
     tools:deviceIds="tv"
     tools:ignore="MergeRootFrame" />
+
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/main_browse_fragment_container"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:visibility="invisible"/>-->
+
+    <!--    <ProgressBar-->
+    <!--        android:id="@+id/progressBar"-->
+    <!--        android:layout_width="150dp"-->
+    <!--        android:layout_height="150dp" />-->
+
+    <!--</FrameLayout>-->

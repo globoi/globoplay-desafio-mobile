@@ -4,8 +4,8 @@ import android.content.Context
 import com.nunkison.globoplaymobilechallenge.project.api.TmdbService
 import com.nunkison.globoplaymobilechallenge.project.structure.MoviesRepository
 import com.nunkison.globoplaymobilechallenge.repo.MoviesRepositoryImpl
-import com.nunkison.globoplaymobilechallenge.ui.movie_detail.MovieDetailViewModelImpl
-import com.nunkison.globoplaymobilechallenge.ui.movies.MoviesViewModelImpl
+import com.nunkison.globoplaymobilechallenge.viewmodel.MovieDetailViewModelImpl
+import com.nunkison.globoplaymobilechallenge.viewmodel.MoviesViewModelImpl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request

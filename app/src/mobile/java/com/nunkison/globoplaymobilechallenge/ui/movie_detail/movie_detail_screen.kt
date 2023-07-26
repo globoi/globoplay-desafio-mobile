@@ -23,6 +23,7 @@ import com.nunkison.globoplaymobilechallenge.R
 import com.nunkison.globoplaymobilechallenge.project.structure.MovieDetailViewModel
 import com.nunkison.globoplaymobilechallenge.project.structure.MovieDetailViewModel.UiState.*
 import com.nunkison.globoplaymobilechallenge.ui.components.ErrorLayout
+import com.nunkison.globoplaymobilechallenge.viewmodel.MovieDetailViewModelImpl
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 import java.net.UnknownHostException

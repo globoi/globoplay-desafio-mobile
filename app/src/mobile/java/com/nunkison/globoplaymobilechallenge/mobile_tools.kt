@@ -1,3 +1,6 @@
+package com.nunkison.globoplaymobilechallenge
+
+import androidx.annotation.StringRes
 import androidx.compose.ui.focus.FocusRequester
 
 fun FocusRequester.tryRequestFocus() {
