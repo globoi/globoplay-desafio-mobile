@@ -51,8 +51,9 @@ class VideoDetailsFragment : DetailsSupportFragment() {
         super.onCreate(savedInstanceState)
 
         mDetailsBackground = DetailsSupportFragmentBackgroundController(this)
+        mSelectedMovie = activity?.intent?.getSerializableExtra(DetailsActivity.MOVIE) as Movie
+        mSelectedMovie?.let { setupMovie(it) }
 
-        setupMovie(activity?.intent?.getSerializableExtra(DetailsActivity.MOVIE) as Movie)
 
         onFragmentReady?.invoke()
     }
@@ -215,6 +216,7 @@ class VideoDetailsFragment : DetailsSupportFragment() {
             if (item is Movie) {
                 Log.d(TAG, "Item: " + item.toString())
                 val intent = Intent(requireActivity(), DetailsActivity::class.java)
+                mSelectedMovie = item
                 intent.putExtra(resources.getString(R.string.movie), mSelectedMovie)
                 startActivity(intent)
             }

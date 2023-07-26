@@ -28,10 +28,11 @@ class TVMainActivity : FragmentActivity() {
                             is MoviesViewModel.UiState.Success -> {
                                 mainFragment.loadRows(it.successState.data)
                             }
-
                             else -> {
-                                val intent =
-                                    Intent(this@TVMainActivity, BrowseErrorActivity::class.java)
+                                val intent = Intent(
+                                    this@TVMainActivity,
+                                    BrowseErrorActivity::class.java
+                                )
                                 startActivity(intent)
                             }
                         }
