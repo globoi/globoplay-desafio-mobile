@@ -67,7 +67,7 @@ fun MoviesScreen(
                     CenterAlignedTopAppBar(
                         modifier = Modifier.background(Color.Black),
                         colors = TopAppBarDefaults.mediumTopAppBarColors(
-                            containerClolor = Color.Black,
+                            containerColor = Color.Black,
                         ),
                         title = {
                             if (vm.searchModeEnable.collectAsState().value) {
