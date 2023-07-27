@@ -17,6 +17,8 @@ struct Details: View {
     
     @State var isDetailsSelected: Bool = false
     
+    @StateObject var detailsTabViewModel = DetailsTabViewModel()
+    
     var item: Result
     
     func getURL() -> URL?{
@@ -51,7 +53,7 @@ struct Details: View {
                     }.fixedSize(horizontal: true, vertical: true)
                     
                     if isDetailsSelected{
-                        DetailsTabView(item: item)
+                        DetailsTabView(viewModel: detailsTabViewModel, item: item)
                     }else{
                         SeeMoreTabView()
                     }
@@ -65,9 +67,23 @@ struct Details: View {
                         .blur(radius: 10.0)
                         .overlay(LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black]), startPoint: .top, endPoint: .center))
                 }
-            )
+            ).onAppear(perform: {
+                self.requestDetailData()
+            })
             
             
+        }
+    }
+    
+    func requestDetailData(){
+        guard let id = item.id else {return}
+        
+        if item.getMediaType() == .movie{
+            detailsTabViewModel.getMovieDetails(id)
+            detailsTabViewModel.getMovieCredits(id)
+        }else{
+            detailsTabViewModel.getTVShowDetails(id)
+            detailsTabViewModel.getTVShowCredits(id)
         }
     }
     

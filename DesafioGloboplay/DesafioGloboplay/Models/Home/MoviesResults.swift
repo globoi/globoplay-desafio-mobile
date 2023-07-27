@@ -49,4 +49,8 @@ struct MovieResult: Codable, Result {
     func getTitle() -> String? {
         return title
     }
+    
+    func getMediaType() -> MediaType {
+        return .movie
+    }
 }

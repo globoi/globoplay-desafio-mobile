@@ -3,4 +3,118 @@
    uuid = "1B444E5A-12F3-4E0A-AAFC-0D3E89C1B846"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B548959-6564-4AE7-B8F1-3A54B880850A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DesafioGloboplay/Screens/Details/ViewModel/DetailsTabViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "getCasting()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "842FD567-ABA3-4FAE-9A17-9E8210C3A98A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DesafioGloboplay/Screens/Details/ViewModel/DetailsTabViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "getTVShowCredits(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "842FD567-ABA3-4FAE-9A17-9E8210C3A98A - 7a2ac3465701b367"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DesafioGloboplay.DetailsTabViewModel.getTVShowCredits(Swift.Int) -&gt; ()"
+                  moduleName = "DesafioGloboplay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thallesaraujo/Developer/Desafio%20Globoplay/globoplay-desafio-mobile/DesafioGloboplay/DesafioGloboplay/Screens/Details/ViewModel/DetailsTabViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "842FD567-ABA3-4FAE-9A17-9E8210C3A98A - 4693882b939c8213"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (DesafioGloboplay.Credits) -&gt; () in DesafioGloboplay.DetailsTabViewModel.getTVShowCredits(Swift.Int) -&gt; ()"
+                  moduleName = "DesafioGloboplay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thallesaraujo/Developer/Desafio%20Globoplay/globoplay-desafio-mobile/DesafioGloboplay/DesafioGloboplay/Screens/Details/ViewModel/DetailsTabViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C95B85FC-1084-47A3-B025-7A03B8360B78"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DesafioGloboplay/Screens/Details/ViewModel/DetailsTabViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "getMovieCredits(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C95B85FC-1084-47A3-B025-7A03B8360B78 - ac251280864a82c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DesafioGloboplay.DetailsTabViewModel.getMovieCredits(Swift.Int) -&gt; ()"
+                  moduleName = "DesafioGloboplay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thallesaraujo/Developer/Desafio%20Globoplay/globoplay-desafio-mobile/DesafioGloboplay/DesafioGloboplay/Screens/Details/ViewModel/DetailsTabViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "C95B85FC-1084-47A3-B025-7A03B8360B78 - a33ebef5a6345ee3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (DesafioGloboplay.Credits) -&gt; () in DesafioGloboplay.DetailsTabViewModel.getMovieCredits(Swift.Int) -&gt; ()"
+                  moduleName = "DesafioGloboplay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thallesaraujo/Developer/Desafio%20Globoplay/globoplay-desafio-mobile/DesafioGloboplay/DesafioGloboplay/Screens/Details/ViewModel/DetailsTabViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

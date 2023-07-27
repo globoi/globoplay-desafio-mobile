@@ -9,38 +9,37 @@ import SwiftUI
 
 struct DetailsTabView: View {
     
-    //https://api.themoviedb.org/3/movie/{movie_id}
-    //Detalhes do filme
-    
-    //https://api.themoviedb.org/3/movie/{movie_id}/credits
-    //Elenco do filme
-    
-    //https://api.themoviedb.org/3/tv/{series_id}
-    //detalhes da série
-    
-    //https://api.themoviedb.org/3/tv/{series_id}/credits
-    //elenco da série
-    
+    @ObservedObject var viewModel: DetailsTabViewModel
     
     var item: Result
     
     var body: some View {
-        VStack(alignment: .leading){
-            Text("Ficha Técnica").font(.system(size: 22, weight: .bold))
-            Spacer()
-            Text("Título original: \(item.getTitle() ?? String())")
-            Text("Gênero: <<>>") //Request p/detalhes
-            Text("Episódios: <<>>") //Mesma request p/ detalhes
-            Text("Ano de produção: <<>>>>")//TODO: pegar ano
-            Text("País: <<>>")
-            Text("Elenco: <<>>") //Request p/elenco
-            Text("Disponível até: <<>>") //last-air-date
-            
-            
+        ScrollView{
+            VStack(alignment: .leading){
+                Text("Ficha Técnica").font(.system(size: 22, weight: .bold))
+                Spacer()
+                Text("Título original: \(item.getTitle() ?? String())")
+                Text("Gênero: \(self.getGenres() ?? "")") //Request p/detalhes
+                if item.getMediaType() == .tvShow{
+                    Text("Episódios: <<>>") //Mesma request p/ detalhes
+                }
+                Text("Ano de produção: <<>>>>")//TODO: pegar ano
+                Text("País: <<>>")
+                Text("Elenco: \(viewModel.getCasting() ?? "")") //Request p/elenco
+                if item.getMediaType() == .tvShow{
+                    Text("Disponível até: <<>>") //last-air-date
+                }
+            }
         }
     }
+    
+    func getGenres() -> String?{
+        if item.getMediaType() == .movie{
+            return viewModel.getMovieGenres()
+        }else{
+            return viewModel.getTVShowGenres()
+        }
+    }
+    
 }
 
-#Preview {
-    DetailsTabView(item: movieMock)
-}
