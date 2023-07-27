@@ -1,9 +1,8 @@
-// MARK: - Movies
-struct APIResults: Codable {
-    let dates: Dates?
-    let page: Int?
-    let results: [Result]?
-    let totalPages, totalResults: Int?
+struct MoviesResults: Codable {
+    var dates: Dates?
+    var page: Int?
+    var results: [MovieResult]?
+    var totalPages, totalResults: Double?
 
     enum CodingKeys: String, CodingKey {
         case dates, page, results
@@ -14,22 +13,23 @@ struct APIResults: Codable {
 
 // MARK: - Dates
 struct Dates: Codable {
-    let maximum, minimum: String?
+    var maximum, minimum: String?
 }
 
 // MARK: - Result
-struct Result: Codable {
-    let adult: Bool?
-    let backdropPath: String?
-    let genreIDS: [Int]?
-    let id: Int?
-    let originalLanguage: String?
-    let originalTitle, overview: String?
-    let popularity: Double?
-    let posterPath, releaseDate, title: String?
-    let video: Bool?
-    let voteAverage: Double?
-    let voteCount: Int?
+struct MovieResult: Codable, Result {
+    var posterPath: String?
+    var adult: Bool?
+    var backdropPath: String?
+    var genreIDS: [Int]?
+    var id: Int?
+    var originalLanguage: String?
+    var originalTitle, overview: String?
+    var popularity: Double?
+    var releaseDate, title: String?
+    var video: Bool?
+    var voteAverage: Double?
+    var voteCount: Int?
 
     enum CodingKeys: String, CodingKey {
         case adult
@@ -44,5 +44,9 @@ struct Result: Codable {
         case title, video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+    }
+    
+    func getTitle() -> String? {
+        return title
     }
 }

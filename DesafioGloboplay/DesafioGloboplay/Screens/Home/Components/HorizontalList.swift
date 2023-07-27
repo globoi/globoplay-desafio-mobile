@@ -10,6 +10,7 @@ import SwiftUI
 struct HorizontalList: View {
     
     var results: [Result]?
+    var goToDetailsClosure: (Result) -> Void
     
     var body: some View {
         ScrollView(.horizontal){
@@ -20,7 +21,9 @@ struct HorizontalList: View {
                             image.resizable().aspectRatio(contentMode: .fit)
                         } placeholder: {
                             ProgressView()
-                        }.frame(width: 150, height: 300)
+                        }.frame(width: 150, height: 300).onTapGesture {
+                            goToDetailsClosure(result)
+                        }
                     }
                 }else{
                     Text("Erro ao carregar lista")

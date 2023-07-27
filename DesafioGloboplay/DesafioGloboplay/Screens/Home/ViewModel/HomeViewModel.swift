@@ -10,8 +10,8 @@ import SwiftUI
 
 class HomeViewModel: ObservableObject{
     
-    @Published var movieList: APIResults?
-    @Published var tvShowsList: APIResults?
+    @Published var movieList: MoviesResults?
+    @Published var tvShowsList: TVShowsResults?
     
     @Published var showError: Bool = false
     
@@ -22,7 +22,7 @@ class HomeViewModel: ObservableObject{
     
     func getMovieList(){
         do{
-            perform(request: try APIURLs.getMovies.request()) { movies in
+            perform(MoviesResults.self, request: try APIURLs.getMovies.request()) { movies in
                 self.movieList = movies
             }
         }
@@ -32,11 +32,9 @@ class HomeViewModel: ObservableObject{
     }
     
     
-    
-    
     func getTVShowsList(){
         do{
-            perform(request: try APIURLs.getTVShows.request()) { shows in
+            perform(TVShowsResults.self, request: try APIURLs.getTVShows.request()) { shows in
                 self.tvShowsList = shows
             }
         }
@@ -51,7 +49,7 @@ class HomeViewModel: ObservableObject{
         if let completion = self.completion {completion()}
     }
     
-    private func perform(request: URLRequest, successCompletion: @escaping (APIResults) -> Void){
+    private func perform<T:Decodable>(_ type: T.Type, request: URLRequest, successCompletion: @escaping (T) -> Void){
         isLoading = true
         
         guard NetworkTester().isConnected() else {
@@ -74,7 +72,7 @@ class HomeViewModel: ObservableObject{
             
             if let dataUnwrapped = data {
                 
-                if let result = try? JSONDecoder().decode(APIResults.self, from: dataUnwrapped) {
+                if let result = try? JSONDecoder().decode(type.self, from: dataUnwrapped) {
                     DispatchQueue.main.async {
                         self.showError = false
                         successCompletion(result)

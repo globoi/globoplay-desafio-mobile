@@ -9,38 +9,70 @@ import SwiftUI
 
 struct Details: View {
     
-    //TODO: Transformar imagem e gradiente em background
+    //TODO: Fazer pra série de TV
+    
+    //TODO: para aba veja também, usar essa request: https://api.themoviedb.org/3/discover/movie?with_genres=%2212%2C10751%2C14%22
+    //Mais detalhes nessa documentação: https://developer.themoviedb.org/reference/discover-movie
+    //Separar como query parameters de acordo com as regras da API
+    
+    @State var isDetailsSelected: Bool = false
     
     var item: Result
     
+    func getURL() -> URL?{
+        return URL.init(string: "\(posterURL)\(item.posterPath ?? "")")
+    }
+    
     var body: some View {
         NavigationView{
-            ZStack{
+            
+            VStack(spacing: 16){
                 
-                if let url = URL.init(string: "\(posterURL)\(item.posterPath ?? "")"){
-                    AsyncImage(url: url){image in
-                        image.image?.resizable().aspectRatio(contentMode: .fill).blur(radius: 10.0).edgesIgnoringSafeArea(.top)
-                    }
-                    
-                    LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black]), startPoint: .top, endPoint: .center)
-                    
-                    VStack{
-                        AsyncImage(url: url){image in
-                            image.image?.resizable().aspectRatio(contentMode: .fit).frame(width: 150, height: 200)
-                        }
-                        
-                        Text(item.title ?? "").font(.system(size: 28, weight: .bold))
-                        Text("Gênero")
-                        Text(item.overview ?? "").font(.system(size: 14, weight: .bold))
-                    }.padding(20)
+                AsyncImage(url: getURL()){image in
+                    image.image?.resizable().aspectRatio(contentMode: .fit).frame(width: 150, height: 200)
                 }
                 
+                Text(item.getTitle() ?? "").font(.system(size: 28, weight: .bold))
+                Text("Tipo (Filme/Série)")
                 
-            }
+                VStack(alignment: .leading, spacing: 16, content: {
+                    Text(item.overview ?? "").font(.system(size: 14, weight: .bold))
+                    
+                    HStack(spacing: 24){
+                        
+                        CustomTabButton(title: "Assista Também", selected: !isDetailsSelected) {
+                            $isDetailsSelected.wrappedValue = false
+                        }
+                        
+                        CustomTabButton(title: "Detalhes", selected: isDetailsSelected) {
+                            $isDetailsSelected.wrappedValue = true
+                        }
+                        
+                    }.fixedSize(horizontal: true, vertical: true)
+                    
+                    if isDetailsSelected{
+                        DetailsTabView(item: item)
+                    }else{
+                        SeeMoreTabView()
+                    }
+                })
+                Spacer()
+            }.padding(16).background(
+                AsyncImage(url: getURL()){image in
+                    image.image?.resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .edgesIgnoringSafeArea(.top)
+                        .blur(radius: 10.0)
+                        .overlay(LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black]), startPoint: .top, endPoint: .center))
+                }
+            )
+            
+            
         }
     }
+    
 }
 
 #Preview {
-    Details(item: itemMock)
+    Details(item: movieMock)
 }
