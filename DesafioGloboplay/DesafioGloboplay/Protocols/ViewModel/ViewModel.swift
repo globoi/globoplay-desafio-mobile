@@ -10,7 +10,7 @@ import SwiftUI
 
 class ViewModel{
     
-    @Published var isLoading: Bool = false
+    @Published var isLoading: Bool = true
     @Published var showError: Bool = false
     var completion: (() -> Void)?  = {}
     

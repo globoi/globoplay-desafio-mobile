@@ -32,6 +32,7 @@
 		6F2779DA2A72C48B001CD46B /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2779D92A72C48B001CD46B /* Credits.swift */; };
 		6F2779DD2A72C5F5001CD46B /* TVShowDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2779DC2A72C5F5001CD46B /* TVShowDetails.swift */; };
 		6F2779E12A72C826001CD46B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2779E02A72C826001CD46B /* ViewModel.swift */; };
+		6F2779E82A72F7E2001CD46B /* UINavigationController+MinimalBackAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2779E72A72F7E2001CD46B /* UINavigationController+MinimalBackAppearance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		6F2779D92A72C48B001CD46B /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		6F2779DC2A72C5F5001CD46B /* TVShowDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetails.swift; sourceTree = "<group>"; };
 		6F2779E02A72C826001CD46B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		6F2779E72A72F7E2001CD46B /* UINavigationController+MinimalBackAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+MinimalBackAppearance.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 		6F2779E22A72D377001CD46B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6F2779E72A72F7E2001CD46B /* UINavigationController+MinimalBackAppearance.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				6F0D2EFF2A71F70500877326 /* CustomTabButton.swift in Sources */,
 				6F0D2EC42A7189C000877326 /* Home.swift in Sources */,
 				6F0D2EC22A7189C000877326 /* DesafioGloboplayApp.swift in Sources */,
+				6F2779E82A72F7E2001CD46B /* UINavigationController+MinimalBackAppearance.swift in Sources */,
 				6F0D2EF52A71B69400877326 /* ItemMock.swift in Sources */,
 				6F0D2EEB2A71998400877326 /* HomeViewModel.swift in Sources */,
 				6F0D2EE22A71912700877326 /* NetworkTester.swift in Sources */,

@@ -33,7 +33,7 @@ struct Home: View {
                 
             }.toolbar(content: {
                 HomeToolbar()
-            }).padding(20)
+            }).padding(20).navigationBarTitleDisplayMode(.inline)
             
         }.onAppear(perform: {
             viewModel.getMovieList()

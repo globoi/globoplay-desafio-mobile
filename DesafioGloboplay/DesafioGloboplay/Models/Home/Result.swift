@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum MediaType{
-    case movie
-    case tvShow
+enum MediaType: String{
+    case movie = "Filme"
+    case tvShow = "Série"
 }
 
 protocol Result{

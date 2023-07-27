@@ -14,23 +14,23 @@ struct DetailsTabView: View {
     var item: Result
     
     var body: some View {
-        ScrollView{
-            VStack(alignment: .leading){
-                Text("Ficha Técnica").font(.system(size: 22, weight: .bold))
-                Spacer()
-                Text("Título original: \(item.getTitle() ?? String())")
-                Text("Gênero: \(self.getGenres() ?? "")") //Request p/detalhes
-                if item.getMediaType() == .tvShow{
-                    Text("Episódios: <<>>") //Mesma request p/ detalhes
-                }
-                Text("Ano de produção: <<>>>>")//TODO: pegar ano
-                Text("País: <<>>")
-                Text("Elenco: \(viewModel.getCasting() ?? "")") //Request p/elenco
-                if item.getMediaType() == .tvShow{
-                    Text("Disponível até: <<>>") //last-air-date
-                }
+        
+        VStack(alignment: .leading, spacing: 8){
+            Text("Ficha Técnica").font(.system(size: 22, weight: .bold))
+            Spacer()
+            Text("**Título original:** \(item.getTitle() ?? String())").foregroundStyle(.secondary)
+            Text("**Gênero:** \(self.getGenres() ?? String())").foregroundStyle(.secondary)
+            if item.getMediaType() == .tvShow{
+                Text("**Episódios:** \(viewModel.tvShowDetails?.numberOfEpisodes ?? 0)").foregroundStyle(.secondary)
+            }
+            Text("**Ano de produção:** \(getYearOfProduction() ?? String())").foregroundStyle(.secondary)
+            Text("**País:** \(getCountry() ?? String())").foregroundStyle(.secondary)
+            Text("**Elenco:** \(viewModel.getCasting() ?? String())").foregroundStyle(.secondary)
+            if item.getMediaType() == .tvShow{
+                Text("**Disponível até:** \(viewModel.getTVShowAvailability())").foregroundStyle(.secondary)
             }
         }
+        
     }
     
     func getGenres() -> String?{
@@ -38,6 +38,22 @@ struct DetailsTabView: View {
             return viewModel.getMovieGenres()
         }else{
             return viewModel.getTVShowGenres()
+        }
+    }
+    
+    func getCountry() -> String?{
+        if item.getMediaType() == .movie{
+            return viewModel.getMovieCountries()
+        }else{
+            return viewModel.getTVShowsCountries()
+        }
+    }
+    
+    func getYearOfProduction() -> String?{
+        if item.getMediaType() == .movie{
+            return viewModel.getYear(fromDate: viewModel.movieDetails?.releaseDate)
+        }else{
+            return viewModel.getYear(fromDate: viewModel.tvShowDetails?.firstAirDate)
         }
     }
     
