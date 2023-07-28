@@ -7,17 +7,8 @@
 
 import Foundation
 
-//https://api.themoviedb.org/3/movie/{movie_id}
-//Detalhes do filme
+//https://api.themoviedb.org/3/movie/{movie_id}/similar
 
-//https://api.themoviedb.org/3/movie/{movie_id}/credits
-//Elenco do filme
-
-//https://api.themoviedb.org/3/tv/{series_id}
-//detalhes da série
-
-//https://api.themoviedb.org/3/tv/{series_id}/credits
-//elenco da série
 
 let baseURL = "https://api.themoviedb.org/3"
 let posterURL = "https://image.tmdb.org/t/p/original"
@@ -38,6 +29,9 @@ enum APIURLs{
     case creditsMovie(Int)
     case creditsTvShow(Int)
     
+    case similarMovies(Int)
+    case similarTVShows(Int)
+    
     func request() throws -> URLRequest {
         switch self {
         case .getMovies:
@@ -52,6 +46,10 @@ enum APIURLs{
             return createRequest(withURL: "\(baseURL)/movie/\(movieId)/credits")
         case let .creditsTvShow(tvShowId):
             return createRequest(withURL: "\(baseURL)/tv/\(tvShowId)/credits")
+        case let .similarMovies(movieId):
+            return createRequest(withURL: "\(baseURL)/movie/\(movieId)/similar")
+        case let .similarTVShows(tvShowId):
+            return createRequest(withURL: "\(baseURL)/tv/\(tvShowId)/similar")
         }
     }
     

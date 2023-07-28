@@ -9,17 +9,15 @@ import SwiftUI
 
 struct Details: View {
     
-    //TODO: Fazer pra série de TV
-    
-    //TODO: para aba veja também, usar essa request: https://api.themoviedb.org/3/discover/movie?with_genres=%2212%2C10751%2C14%22
-    //Mais detalhes nessa documentação: https://developer.themoviedb.org/reference/discover-movie
-    //Separar como query parameters de acordo com as regras da API
-    
     //TODO: Quebrar essa view em mais componentes
     
     @State var isDetailsSelected: Bool = false
     
     @StateObject var detailsTabViewModel = DetailsTabViewModel()
+    @StateObject var recommendationsTabViewModel = RecommendationsTabViewModel()
+    
+    @State var didTapRecommendation: Bool = false
+    @State var choosedRecomendation: Result = movieMock
     
     var item: Result
     
@@ -63,12 +61,14 @@ struct Details: View {
                             if isDetailsSelected{
                                 DetailsTabView(viewModel: detailsTabViewModel, item: item).padding(16)
                             }else{
-                                SeeMoreTabView().padding(16)
+                                RecommendationsTabView(item: item, viewModel: recommendationsTabViewModel, didTapRecommendation: self.goToRecommendation(_:)).padding(16)
                             }
                         }.background(.black.opacity(0.4))
                         
                     })
                     Spacer()
+                    
+                    NavigationLink(destination: Details(item: choosedRecomendation), isActive: $didTapRecommendation) {}
                 }
                 
             }.background(
@@ -84,6 +84,7 @@ struct Details: View {
             
         }.onAppear(perform: {
             self.requestDetailData()
+            self.requestRecommendationData()
         })
         
         
@@ -99,6 +100,21 @@ struct Details: View {
             detailsTabViewModel.getTVShowDetails(id)
             detailsTabViewModel.getTVShowCredits(id)
         }
+    }
+    
+    func requestRecommendationData(){
+        guard let id = item.id else {return}
+        
+        if item.getMediaType() == .movie{
+            recommendationsTabViewModel.getSuggestedMovies(id)
+        }else{
+            recommendationsTabViewModel.getSuggestedTVShows(id)
+        }
+    }
+    
+    func goToRecommendation(_ item: Result){
+        self.choosedRecomendation = item
+        self.$didTapRecommendation.wrappedValue = true
     }
     
 }
