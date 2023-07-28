@@ -11,7 +11,7 @@ import Foundation
 struct MovieDetails: Codable {
     var adult: Bool?
     var backdropPath: String?
-    var belongsToCollection: JSONNull?
+    var belongsToCollection: BelongsToCollection?
     var budget: Int?
     var genres: [Genre]?
     var homepage: String?
@@ -54,6 +54,18 @@ struct MovieDetails: Codable {
 struct Genre: Codable {
     var id: Int?
     var name: String?
+}
+
+// MARK: - BelongsToCollection
+struct BelongsToCollection: Codable {
+    var id: Int?
+    var name, posterPath, backdropPath: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case posterPath = "poster_path"
+        case backdropPath = "backdrop_path"
+    }
 }
 
 // MARK: - ProductionCompany
