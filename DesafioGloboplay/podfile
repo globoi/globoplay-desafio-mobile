@@ -1,0 +1,16 @@
+platform :ios, '15.0'
+use_frameworks!
+
+def common_pods
+#    pod 'SwiftLint'
+    pod 'RealmSwift'
+end
+
+target 'DesafioGloboplay' do
+    common_pods
+end
+#TODO: Testes
+# target 'DesafioGloboplayTests' do
+#     common_pods
+#     pod 'OHHTTPStubs/Swift'
+# end

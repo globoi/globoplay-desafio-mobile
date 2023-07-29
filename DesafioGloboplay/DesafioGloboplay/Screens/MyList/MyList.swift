@@ -6,11 +6,26 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct MyList: View {
     
+    @ObservedResults(MyListResult.self) var myList
+    
+    var didTapRecommendation: (Result) -> Void = {_ in }
+    
+    var columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        LazyVGrid(columns: columns){
+            ForEach(myList, id: \.id){result in
+                PosterCell(result: result, goToDetailsClosure: didTapRecommendation)
+            }
+        }
     }
 }
 

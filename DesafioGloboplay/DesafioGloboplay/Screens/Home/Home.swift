@@ -39,6 +39,7 @@ struct Home: View {
             viewModel.getMovieList()
             viewModel.getTVShowsList()
         })
+        
     }
     
     func goToDetails(_ item: Result){

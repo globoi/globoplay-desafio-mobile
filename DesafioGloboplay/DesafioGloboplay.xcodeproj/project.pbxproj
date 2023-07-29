@@ -33,11 +33,16 @@
 		6F2779DD2A72C5F5001CD46B /* TVShowDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2779DC2A72C5F5001CD46B /* TVShowDetails.swift */; };
 		6F2779E12A72C826001CD46B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2779E02A72C826001CD46B /* ViewModel.swift */; };
 		6F2779E82A72F7E2001CD46B /* UINavigationController+MinimalBackAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2779E72A72F7E2001CD46B /* UINavigationController+MinimalBackAppearance.swift */; };
+		6F7CD5B02A75A1EC007AA57D /* HidableTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 6F7CD5AF2A75A1EC007AA57D /* HidableTabView */; };
+		6FCEB4F02A75640F000AE255 /* MyListResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCEB4EF2A75640F000AE255 /* MyListResult.swift */; };
 		6FF0E7C32A734226007A45DC /* RecommendationsTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0E7C22A734226007A45DC /* RecommendationsTabViewModel.swift */; };
 		6FF0E7C72A734568007A45DC /* PosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0E7C62A734568007A45DC /* PosterCell.swift */; };
+		DC7D2510D6DEB965BAFD1B0B /* Pods_DesafioGloboplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651910284A088D71BE1FB796 /* Pods_DesafioGloboplay.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2125D9681299B75376DE70FB /* Pods-DesafioGloboplay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioGloboplay.release.xcconfig"; path = "Target Support Files/Pods-DesafioGloboplay/Pods-DesafioGloboplay.release.xcconfig"; sourceTree = "<group>"; };
+		651910284A088D71BE1FB796 /* Pods_DesafioGloboplay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DesafioGloboplay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F0D2EBE2A7189C000877326 /* DesafioGloboplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioGloboplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F0D2EC12A7189C000877326 /* DesafioGloboplayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesafioGloboplayApp.swift; sourceTree = "<group>"; };
 		6F0D2EC32A7189C000877326 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -66,8 +71,10 @@
 		6F2779DC2A72C5F5001CD46B /* TVShowDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetails.swift; sourceTree = "<group>"; };
 		6F2779E02A72C826001CD46B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		6F2779E72A72F7E2001CD46B /* UINavigationController+MinimalBackAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+MinimalBackAppearance.swift"; sourceTree = "<group>"; };
+		6FCEB4EF2A75640F000AE255 /* MyListResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListResult.swift; sourceTree = "<group>"; };
 		6FF0E7C22A734226007A45DC /* RecommendationsTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsTabViewModel.swift; sourceTree = "<group>"; };
 		6FF0E7C62A734568007A45DC /* PosterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCell.swift; sourceTree = "<group>"; };
+		E9A2AC64B47C3352FE8452C1 /* Pods-DesafioGloboplay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioGloboplay.debug.xcconfig"; path = "Target Support Files/Pods-DesafioGloboplay/Pods-DesafioGloboplay.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC7D2510D6DEB965BAFD1B0B /* Pods_DesafioGloboplay.framework in Frameworks */,
+				6F7CD5B02A75A1EC007AA57D /* HidableTabView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +95,8 @@
 			children = (
 				6F0D2EC02A7189C000877326 /* DesafioGloboplay */,
 				6F0D2EBF2A7189C000877326 /* Products */,
+				B397C19913D1E51C11098B0E /* Pods */,
+				F9081A2012ED9A728F142A5E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,7 +113,7 @@
 			children = (
 				6F2779E22A72D377001CD46B /* Helpers */,
 				6F2779DE2A72C811001CD46B /* Protocols */,
-				6F0D2EF32A71B68000877326 /* MockObjectsForPreview */,
+				6F0D2EF32A71B68000877326 /* Mocks */,
 				6F0D2EDB2A718EC400877326 /* Info.plist */,
 				6F0D2EE02A71911A00877326 /* Network */,
 				6F0D2EDD2A718F4400877326 /* Models */,
@@ -181,6 +192,7 @@
 		6F0D2EDD2A718F4400877326 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6FCEB4EE2A7563F6000AE255 /* MyList */,
 				6F2779D62A72C244001CD46B /* Details */,
 				6F2779D52A72C23B001CD46B /* Home */,
 			);
@@ -214,12 +226,12 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		6F0D2EF32A71B68000877326 /* MockObjectsForPreview */ = {
+		6F0D2EF32A71B68000877326 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
 				6F0D2EF42A71B69400877326 /* ItemMock.swift */,
 			);
-			path = MockObjectsForPreview;
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		6F0D2EF62A71EFC900877326 /* Components */ = {
@@ -285,6 +297,31 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		6FCEB4EE2A7563F6000AE255 /* MyList */ = {
+			isa = PBXGroup;
+			children = (
+				6FCEB4EF2A75640F000AE255 /* MyListResult.swift */,
+			);
+			path = MyList;
+			sourceTree = "<group>";
+		};
+		B397C19913D1E51C11098B0E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E9A2AC64B47C3352FE8452C1 /* Pods-DesafioGloboplay.debug.xcconfig */,
+				2125D9681299B75376DE70FB /* Pods-DesafioGloboplay.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F9081A2012ED9A728F142A5E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				651910284A088D71BE1FB796 /* Pods_DesafioGloboplay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -292,15 +329,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F0D2ECC2A7189C300877326 /* Build configuration list for PBXNativeTarget "DesafioGloboplay" */;
 			buildPhases = (
+				9AD70C996FABB31859484D4C /* [CP] Check Pods Manifest.lock */,
 				6F0D2EBA2A7189C000877326 /* Sources */,
 				6F0D2EBB2A7189C000877326 /* Frameworks */,
 				6F0D2EBC2A7189C000877326 /* Resources */,
+				41A50521F9C776659AE075BE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = DesafioGloboplay;
+			packageProductDependencies = (
+				6F7CD5AF2A75A1EC007AA57D /* HidableTabView */,
+			);
 			productName = DesafioGloboplay;
 			productReference = 6F0D2EBE2A7189C000877326 /* DesafioGloboplay.app */;
 			productType = "com.apple.product-type.application";
@@ -329,6 +371,9 @@
 				Base,
 			);
 			mainGroup = 6F0D2EB52A7189C000877326;
+			packageReferences = (
+				6F7CD5AE2A75A1EC007AA57D /* XCRemoteSwiftPackageReference "HidableTabView-SwiftUI" */,
+			);
 			productRefGroup = 6F0D2EBF2A7189C000877326 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -350,6 +395,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		41A50521F9C776659AE075BE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DesafioGloboplay/Pods-DesafioGloboplay-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DesafioGloboplay/Pods-DesafioGloboplay-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DesafioGloboplay/Pods-DesafioGloboplay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9AD70C996FABB31859484D4C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DesafioGloboplay-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6F0D2EBA2A7189C000877326 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -358,6 +445,7 @@
 				6F0D2EF02A71B23C00877326 /* HomeToolbar.swift in Sources */,
 				6F0D2F032A7203C100877326 /* TVShowsResults.swift in Sources */,
 				6FF0E7C32A734226007A45DC /* RecommendationsTabViewModel.swift in Sources */,
+				6FCEB4F02A75640F000AE255 /* MyListResult.swift in Sources */,
 				6F0D2F052A72085F00877326 /* Result.swift in Sources */,
 				6F2779DA2A72C48B001CD46B /* Credits.swift in Sources */,
 				6F2779D82A72C373001CD46B /* MovieDetails.swift in Sources */,
@@ -508,14 +596,16 @@
 		};
 		6F0D2ECD2A7189C300877326 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9A2AC64B47C3352FE8452C1 /* Pods-DesafioGloboplay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DesafioGloboplay/Preview Content\"";
-				DEVELOPMENT_TEAM = 84N6Z39N8P;
+				DEVELOPMENT_TEAM = TQ452L5YSH;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DesafioGloboplay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -538,14 +628,16 @@
 		};
 		6F0D2ECE2A7189C300877326 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2125D9681299B75376DE70FB /* Pods-DesafioGloboplay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DesafioGloboplay/Preview Content\"";
-				DEVELOPMENT_TEAM = 84N6Z39N8P;
+				DEVELOPMENT_TEAM = TQ452L5YSH;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DesafioGloboplay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -588,6 +680,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6F7CD5AE2A75A1EC007AA57D /* XCRemoteSwiftPackageReference "HidableTabView-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliMert/HidableTabView-SwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6F7CD5AF2A75A1EC007AA57D /* HidableTabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F7CD5AE2A75A1EC007AA57D /* XCRemoteSwiftPackageReference "HidableTabView-SwiftUI" */;
+			productName = HidableTabView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6F0D2EB62A7189C000877326 /* Project object */;
 }

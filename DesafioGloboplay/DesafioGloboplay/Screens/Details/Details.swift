@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import RealmSwift
+import HidableTabView
 
 struct Details: View {
     
@@ -13,11 +15,17 @@ struct Details: View {
     
     @State var isDetailsSelected: Bool = false
     
+    //Possível solução pro excesso de chamadas:
+    // - Passar o item pra cada viewModel
+    // - Fazer chamadas que hoje estão no onAppear no init do VM
+    
     @StateObject var detailsTabViewModel = DetailsTabViewModel()
     @StateObject var recommendationsTabViewModel = RecommendationsTabViewModel()
     
     @State var didTapRecommendation: Bool = false
     @State var choosedRecomendation: Result = movieMock
+    
+    @ObservedResults(MyListResult.self) var myList
     
     var item: Result
     
@@ -45,6 +53,13 @@ struct Details: View {
                     VStack(alignment: .leading, spacing: 16, content: {
                         Text(item.overview ?? "").font(.system(size: 14, weight: .bold)).padding(16)
                         
+                        
+                        HStack{
+                            Button(action: {$myList.append(item.asMyListResult())}, label: {
+                                Text("Minha lista")
+                            })
+                        }
+                        
                         VStack(alignment: .leading){
                             HStack(spacing: 24){
                                 
@@ -67,8 +82,6 @@ struct Details: View {
                         
                     })
                     Spacer()
-                    
-                    NavigationLink(destination: Details(item: choosedRecomendation), isActive: $didTapRecommendation) {}
                 }
                 
             }.background(
@@ -85,7 +98,15 @@ struct Details: View {
         }.onAppear(perform: {
             self.requestDetailData()
             self.requestRecommendationData()
+            UITabBar.hideTabBar()
+        }).onDisappear(perform: {
+            UITabBar.showTabBar()
+        }).sheet(isPresented: $didTapRecommendation, onDismiss: {
+            UITabBar.hideTabBar()
+        }, content: {
+            Details(item: choosedRecomendation)
         })
+        
         
         
     }

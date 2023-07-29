@@ -11,7 +11,10 @@ import SwiftUI
 struct DesafioGloboplayApp: App {
     var body: some Scene {
         WindowGroup {
-            Home()
+            TabView{
+                Home().tabItem {Label("Início", systemImage: "house")}
+                MyList().tabItem{Label("Minha Lista", systemImage: "star")}
+            }
         }
     }
 }
