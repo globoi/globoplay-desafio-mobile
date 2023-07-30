@@ -12,6 +12,8 @@ class ViewModel{
     
     @Published var isLoading: Bool = true
     @Published var showError: Bool = false
+    @Published var isNetworkError: Bool = false
+    @Published var errorString: String = ""
     var completion: (() -> Void)?  = {}
     
     
@@ -22,6 +24,7 @@ class ViewModel{
         guard NetworkTester().isConnected() else {
             self.isLoading = false
             self.showError = true
+            self.isNetworkError = true
             return
         }
         
@@ -30,6 +33,9 @@ class ViewModel{
             if (error != nil) {
                 print("Error")
                 print(error as Any)
+                if let errorDescription = error?.localizedDescription{
+                    self.errorString = errorDescription
+                }
             } else {
                 let httpResponse = response as? HTTPURLResponse
                 print("Response:")
@@ -43,6 +49,7 @@ class ViewModel{
                         self.showError = false
                         successCompletion(result)
                         self.isLoading = false
+                        self.isNetworkError = false
                         if let completion = self.completion {completion()}
                     }
                     print("Resposta: ")
@@ -51,6 +58,7 @@ class ViewModel{
                     print("JSON Inválido")
                     DispatchQueue.main.async {
                         self.errorProcedure()
+                        self.errorString = "Ocorreu um erro. Tente novamente."
                     }
                 }
             }
@@ -63,6 +71,7 @@ class ViewModel{
     internal func errorProcedure(){
         self.showError = true
         self.isLoading = false
+        self.isNetworkError = false
         if let completion = self.completion {completion()}
     }
 }

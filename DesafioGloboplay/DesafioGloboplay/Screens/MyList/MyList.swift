@@ -17,24 +17,33 @@ struct MyList: View {
     @State var choosedRecomendation: Result?
     
     var body: some View {
-        VStack(alignment: .leading){
-            Heading(text: "Minha Lista")
-            ScrollView{
-                LazyVGrid(columns: defaultGridColumns){
-                    ForEach(myList, id: \.id){result in
-                        PosterCell(result: result, goToDetailsClosure: {item in
-                            choosedRecomendation = item
-                            $didTapRecommendation.wrappedValue = true
-                        })
+        NavigationView{
+            VStack(alignment: .leading){
+                if myList.isEmpty{
+                    EmptyView()
+                }else{
+                    
+                    ScrollView{
+                        LazyVGrid(columns: defaultGridColumns){
+                            ForEach(myList, id: \.id){result in
+                                PosterCell(result: result, goToDetailsClosure: {item in
+                                    choosedRecomendation = item
+                                    $didTapRecommendation.wrappedValue = true
+                                })
+                            }
+                        }
                     }
                 }
-            }
-        }.padding().sheet(isPresented: $didTapRecommendation){
-            if let recommendation = $choosedRecomendation.wrappedValue{
-                NavigationView{
-                    Details(item: recommendation)
+            }.padding().sheet(isPresented: $didTapRecommendation){
+                if let recommendation = $choosedRecomendation.wrappedValue{
+                    NavigationView{
+                        Details(item: recommendation)
+                    }
                 }
-            }
+                
+            }.toolbar(content: {
+                ToolbarItem(placement: .navigation, content: {Heading(text: "Minha Lista")})
+            })
         }
     }
 }

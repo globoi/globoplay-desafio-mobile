@@ -24,7 +24,12 @@ struct RecommendationsTabView: View {
                 }
             }
         }else{
-            Text("Ocorreu um erro")
+            if viewModel.isLoading{
+                Text("Carregando...")
+            }
+            if viewModel.showError{
+                ErrorView(viewModel: viewModel)
+            }
         }
         
     }
