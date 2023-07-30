@@ -20,11 +20,11 @@ struct Home: View {
             VStack(alignment: .leading){
                 //https://api.themoviedb.org/3/trending/all/day
                 //Fimes, séries e artistas populares
-                Text("Nos Cinemas").font(.system(size: 24, weight: .bold))
+                Heading(text: "Nos Cinemas")
                 HorizontalList(results: viewModel.movieList?.results) { result in
                     goToDetails(result)
                 }
-                Text("Na TV").font(.system(size: 24, weight: .bold))
+                Heading(text:"Na TV")
                 HorizontalList(results: viewModel.tvShowsList?.results){ result in
                     goToDetails(result)
                 }

@@ -46,7 +46,6 @@ struct Details: View {
                         ProgressView().scaleEffect(2.5).progressViewStyle(.circular).tint(.accentColor).padding(40).background(.regularMaterial, in: RoundedRectangle(cornerRadius: 8, style: .continuous))
                     }
                     
-                    
                     Text(item.getTitle() ?? "").font(.system(size: 28, weight: .bold))
                     Text("\(item.getMediaType().rawValue)")
                     
@@ -55,9 +54,16 @@ struct Details: View {
                         
                         
                         HStack{
-                            Button(action: {$myList.append(item.asMyListResult())}, label: {
-                                Text("Minha lista")
+                            
+                            SecondaryButton(title: getButtonText(), iconName: getButtonIcon(), action: {
+                                if isInMyList(){
+                                    removeItem()
+                                }else{
+                                    $myList.append(item.asMyListResult())
+                                }
                             })
+                            
+                            
                         }
                         
                         VStack(alignment: .leading){
@@ -104,7 +110,7 @@ struct Details: View {
         }).sheet(isPresented: $didTapRecommendation, onDismiss: {
             UITabBar.hideTabBar()
         }, content: {
-            Details(item: choosedRecomendation)
+            Details(item: choosedRecomendation).padding()
         })
         
         
@@ -136,6 +142,34 @@ struct Details: View {
     func goToRecommendation(_ item: Result){
         self.choosedRecomendation = item
         self.$didTapRecommendation.wrappedValue = true
+    }
+    
+    func isInMyList() -> Bool{
+        return myList.contains(where: {$0.id == item.id})
+    }
+    
+    func getButtonText() -> String{
+        if isInMyList(){
+           return "Adicionado"
+        }
+        return "Minha Lista"
+    }
+    
+    func getButtonIcon() -> String{
+        if isInMyList(){
+            return "checkmark"
+        }
+        return "star"
+    }
+    
+    func removeItem(){
+        do{
+            try Realm().write({
+                try Realm().delete(Realm().object(ofType: MyListResult.self, forPrimaryKey: item.id)!)
+            })
+        }catch{
+            print(error)
+        }
     }
     
 }

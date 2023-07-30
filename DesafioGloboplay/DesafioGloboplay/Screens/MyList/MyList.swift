@@ -12,18 +12,28 @@ struct MyList: View {
     
     @ObservedResults(MyListResult.self) var myList
     
-    var didTapRecommendation: (Result) -> Void = {_ in }
+    @State var didTapRecommendation: Bool = false
     
-    var columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
+    @State var choosedRecomendation: Result?
     
     var body: some View {
-        LazyVGrid(columns: columns){
-            ForEach(myList, id: \.id){result in
-                PosterCell(result: result, goToDetailsClosure: didTapRecommendation)
+        VStack(alignment: .leading){
+            Heading(text: "Minha Lista")
+            ScrollView{
+                LazyVGrid(columns: defaultGridColumns){
+                    ForEach(myList, id: \.id){result in
+                        PosterCell(result: result, goToDetailsClosure: {item in
+                            choosedRecomendation = item
+                            $didTapRecommendation.wrappedValue = true
+                        })
+                    }
+                }
+            }
+        }.padding().sheet(isPresented: $didTapRecommendation){
+            if let recommendation = $choosedRecomendation.wrappedValue{
+                NavigationView{
+                    Details(item: recommendation)
+                }
             }
         }
     }

@@ -25,11 +25,11 @@ protocol Result{
 extension Result{
     
     func asMyListResult() -> MyListResult{
-        
         let result = MyListResult()
         result.posterPath = self.posterPath
         result.overview = self.overview
         result.id = self.id
+        result.title = self.getTitle()
         result.mediaType = self.getMediaType().rawValue
         
         return result
