@@ -42,7 +42,7 @@ struct MyList: View {
                 }
                 
             }.toolbar(content: {
-                ToolbarItem(placement: .navigation, content: {Heading(text: "Minha Lista")})
+                ToolbarItem(placement: .navigation, content: {Heading(text: screenTexts.myList.myListTitle.rawValue)})
             })
         }
     }

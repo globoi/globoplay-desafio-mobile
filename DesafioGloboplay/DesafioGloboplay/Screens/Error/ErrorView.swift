@@ -20,14 +20,14 @@ struct ErrorView: View {
     
     private func getIcon() -> String{
         if viewModel.isNetworkError{
-            return "wifi"
+            return assets.icons.error.wifi.rawValue
         }
-        return "multiply.square"
+        return assets.icons.error.generic.rawValue
     }
     
     private func getText() -> String{
         if viewModel.isNetworkError{
-            return networkErrorText
+            return screenTexts.errors.networkErrorText.rawValue
         }
         return viewModel.errorString
     }

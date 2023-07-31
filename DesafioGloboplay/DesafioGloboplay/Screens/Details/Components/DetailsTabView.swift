@@ -13,21 +13,25 @@ struct DetailsTabView: View {
     
     var item: Result
     
+    var detailsText = screenTexts.detailsTab.self
+    
     var body: some View {
         
         VStack(alignment: .leading, spacing: 8){
-            Text("Ficha Técnica").font(.system(size: 22, weight: .bold))
+            Text(detailsText.title.rawValue).font(.system(size: 22, weight: .bold))
             Spacer()
-            Text("**Título original:** \(item.getTitle() ?? String())").foregroundStyle(.secondary)
-            Text("**Gênero:** \(self.getGenres() ?? String())").foregroundStyle(.secondary)
+            
+            DetailsTabLine(title: detailsText.originalTitle.rawValue, value: item.getTitle())
+            DetailsTabLine(title: detailsText.gender.rawValue, value: self.getGenres())
             if item.getMediaType() == .tvShow{
-                Text("**Episódios:** \(viewModel.tvShowDetails?.numberOfEpisodes ?? 0)").foregroundStyle(.secondary)
+                DetailsTabLine(title: detailsText.episodes.rawValue, value: "\(viewModel.tvShowDetails?.numberOfEpisodes ?? 0)")
             }
-            Text("**Ano de produção:** \(getYearOfProduction() ?? String())").foregroundStyle(.secondary)
-            Text("**País:** \(getCountry() ?? String())").foregroundStyle(.secondary)
-            Text("**Elenco:** \(viewModel.getCasting() ?? String())").foregroundStyle(.secondary)
+            
+            DetailsTabLine(title: detailsText.yearOfProduction.rawValue, value: getYearOfProduction())
+            DetailsTabLine(title: detailsText.country.rawValue, value: getCountry())
+            DetailsTabLine(title: detailsText.cast.rawValue, value: viewModel.getCasting())
             if item.getMediaType() == .tvShow{
-                Text("**Disponível até:** \(viewModel.getTVShowAvailability())").foregroundStyle(.secondary)
+                DetailsTabLine(title: detailsText.availability.rawValue, value: viewModel.getTVShowAvailability())
             }
         }
         

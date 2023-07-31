@@ -11,26 +11,32 @@ struct RecommendationsTabView: View {
     
     var item: Result
     
-    var viewModel: RecommendationsTabViewModel
+    @ObservedObject var viewModel: RecommendationsTabViewModel
     
-    var didTapRecommendation: (Result) -> Void
+    @Binding var goToRecommendation: Bool
     
     var body: some View {
         
-        if let results = getResults(){
-            LazyVGrid(columns: defaultGridColumns){
-                ForEach(results, id: \.id){result in
-                    PosterCell(result: result, goToDetailsClosure: didTapRecommendation)
+        if viewModel.isLoading{
+            Text(screenTexts.general.loading.rawValue)
+        }else{
+            
+            if let results = getResults(){
+                LazyVGrid(columns: defaultGridColumns){
+                    ForEach(results, id: \.id){result in
+                        PosterCell(result: result, goToDetailsClosure: {result in
+                            self.viewModel.choosedRecommendation = result
+                            self.goToRecommendation = true
+                        })
+                    }
                 }
             }
-        }else{
-            if viewModel.isLoading{
-                Text("Carregando...")
-            }
-            if viewModel.showError{
-                ErrorView(viewModel: viewModel)
-            }
         }
+        
+        if viewModel.showError{
+            ErrorView(viewModel: viewModel)
+        }
+        
         
     }
     

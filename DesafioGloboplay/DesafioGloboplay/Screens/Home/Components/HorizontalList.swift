@@ -20,7 +20,7 @@ struct HorizontalList: View {
                         PosterCell(result: result, goToDetailsClosure: goToDetailsClosure)
                     }
                 }else{
-                    Text("Erro ao carregar lista")
+                    Text(screenTexts.errors.listLoadingError.rawValue)
                 }
             }
         }

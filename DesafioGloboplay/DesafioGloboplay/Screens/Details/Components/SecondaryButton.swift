@@ -25,7 +25,3 @@ struct SecondaryButton: View {
         )
     }
 }
-
-#Preview {
-    SecondaryButton(title: "Olá mundo", iconName: "house", action: {})
-}

@@ -43,6 +43,10 @@
 		6FCEB4F02A75640F000AE255 /* MyListResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCEB4EF2A75640F000AE255 /* MyListResult.swift */; };
 		6FF0E7C32A734226007A45DC /* RecommendationsTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0E7C22A734226007A45DC /* RecommendationsTabViewModel.swift */; };
 		6FF0E7C72A734568007A45DC /* PosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0E7C62A734568007A45DC /* PosterCell.swift */; };
+		6FF7135F2A780A0D002F0DCF /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF7135E2A780A0D002F0DCF /* RealmManager.swift */; };
+		6FF713612A780E10002F0DCF /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF713602A780E10002F0DCF /* BackgroundView.swift */; };
+		6FF713632A780F12002F0DCF /* TabStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF713622A780F12002F0DCF /* TabStrip.swift */; };
+		6FF713652A7830B9002F0DCF /* DetailsTabLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF713642A7830B9002F0DCF /* DetailsTabLine.swift */; };
 		DC7D2510D6DEB965BAFD1B0B /* Pods_DesafioGloboplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651910284A088D71BE1FB796 /* Pods_DesafioGloboplay.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +90,10 @@
 		6FCEB4EF2A75640F000AE255 /* MyListResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListResult.swift; sourceTree = "<group>"; };
 		6FF0E7C22A734226007A45DC /* RecommendationsTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsTabViewModel.swift; sourceTree = "<group>"; };
 		6FF0E7C62A734568007A45DC /* PosterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCell.swift; sourceTree = "<group>"; };
+		6FF7135E2A780A0D002F0DCF /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		6FF713602A780E10002F0DCF /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		6FF713622A780F12002F0DCF /* TabStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabStrip.swift; sourceTree = "<group>"; };
+		6FF713642A7830B9002F0DCF /* DetailsTabLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTabLine.swift; sourceTree = "<group>"; };
 		E9A2AC64B47C3352FE8452C1 /* Pods-DesafioGloboplay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioGloboplay.debug.xcconfig"; path = "Target Support Files/Pods-DesafioGloboplay/Pods-DesafioGloboplay.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +199,7 @@
 		6F0D2ED82A718E5900877326 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				6FF7135D2A780A00002F0DCF /* Manager */,
 				6F2779D22A72C1E2001CD46B /* ViewModel */,
 				6F0D2EF62A71EFC900877326 /* Components */,
 				6F0D2EF12A71B63200877326 /* Details.swift */,
@@ -258,6 +267,9 @@
 				6F0D2EFC2A71F5B800877326 /* RecommendationsTabView.swift */,
 				6F0D2EFE2A71F70500877326 /* CustomTabButton.swift */,
 				6F9F76F72A76C5A300C1F84D /* SecondaryButton.swift */,
+				6FF713602A780E10002F0DCF /* BackgroundView.swift */,
+				6FF713622A780F12002F0DCF /* TabStrip.swift */,
+				6FF713642A7830B9002F0DCF /* DetailsTabLine.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -337,6 +349,14 @@
 				6FCEB4EF2A75640F000AE255 /* MyListResult.swift */,
 			);
 			path = MyList;
+			sourceTree = "<group>";
+		};
+		6FF7135D2A780A00002F0DCF /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				6FF7135E2A780A0D002F0DCF /* RealmManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		B397C19913D1E51C11098B0E /* Pods */ = {
@@ -482,14 +502,17 @@
 				6FCEB4F02A75640F000AE255 /* MyListResult.swift in Sources */,
 				6F0D2F052A72085F00877326 /* Result.swift in Sources */,
 				6F25F9772A76D18700D1D8F6 /* ErrorView.swift in Sources */,
+				6FF713632A780F12002F0DCF /* TabStrip.swift in Sources */,
 				6F2779DA2A72C48B001CD46B /* Credits.swift in Sources */,
 				6F2779D82A72C373001CD46B /* MovieDetails.swift in Sources */,
 				6F2779E12A72C826001CD46B /* ViewModel.swift in Sources */,
 				6F0D2EFD2A71F5B800877326 /* RecommendationsTabView.swift in Sources */,
+				6FF713612A780E10002F0DCF /* BackgroundView.swift in Sources */,
 				6F0D2EE42A71913800877326 /* APIURLs.swift in Sources */,
 				6F0D2EFF2A71F70500877326 /* CustomTabButton.swift in Sources */,
 				6F0D2EC42A7189C000877326 /* Home.swift in Sources */,
 				6F25F97C2A76D60C00D1D8F6 /* EmptyView.swift in Sources */,
+				6FF713652A7830B9002F0DCF /* DetailsTabLine.swift in Sources */,
 				6F0D2EC22A7189C000877326 /* DesafioGloboplayApp.swift in Sources */,
 				6F2779E82A72F7E2001CD46B /* UINavigationController+MinimalBackAppearance.swift in Sources */,
 				6F0D2EF52A71B69400877326 /* ItemMock.swift in Sources */,
@@ -499,6 +522,7 @@
 				6F0D2EE22A71912700877326 /* NetworkTester.swift in Sources */,
 				6F2779D42A72C1F6001CD46B /* DetailsTabViewModel.swift in Sources */,
 				6F0D2EE82A71971F00877326 /* MoviesResults.swift in Sources */,
+				6FF7135F2A780A0D002F0DCF /* RealmManager.swift in Sources */,
 				6FF0E7C72A734568007A45DC /* PosterCell.swift in Sources */,
 				6F0D2EF82A71EFE000877326 /* DetailsTabView.swift in Sources */,
 				6F0D2EF22A71B63200877326 /* Details.swift in Sources */,

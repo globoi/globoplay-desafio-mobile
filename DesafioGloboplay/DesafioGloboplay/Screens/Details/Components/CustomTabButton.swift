@@ -20,12 +20,12 @@ struct CustomTabButton: View {
             if selected{
                 VStack{
                     Text(title.uppercased()).font(.system(size: 18, weight: .bold)).tint(.white)
-                    Rectangle().frame(width: .infinity, height: 3).tint(.white)
+                    Rectangle().frame(height: 3).tint(.white)
                 }
             }else{
                 VStack{
                     Text(title.uppercased()).font(.system(size: 18)).tint(Color.gray)
-                    Rectangle().frame(width: 100, height: 3).tint(.clear)
+                    Rectangle().frame(height: 3).tint(.clear)
                 }
             }
         })

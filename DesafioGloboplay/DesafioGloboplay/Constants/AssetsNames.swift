@@ -13,4 +13,25 @@ enum assets{
         case logo = "globoplay_logo_wikipedia"
     }
     
+    enum icons{
+        enum details: String{
+            case myListInitial = "star"
+            case myListItemAlreadyAdded = "checkmark"
+        }
+        
+        enum tabIcons: String{
+            case home = "house"
+            case myList = "star"
+        }
+        
+        enum myList: String{
+            case emptyListIcon = "list.star"
+        }
+        
+        enum error: String{
+            case generic = "multiply.square"
+            case wifi = "wifi"
+        }
+    }
+    
 }

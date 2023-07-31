@@ -10,8 +10,8 @@ import SwiftUI
 struct EmptyView: View {
     var body: some View {
         VStack(spacing: 24){
-            Image(systemName: "list.star").font(.system(size: 100))
-            Text(myListIsEmpty)
+            Image(systemName: assets.icons.myList.emptyListIcon.rawValue).font(.system(size: 100))
+            Text(screenTexts.myList.myListIsEmpty.rawValue)
         }.padding()
     }
 }

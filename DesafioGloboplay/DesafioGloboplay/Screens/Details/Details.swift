@@ -11,22 +11,16 @@ import HidableTabView
 
 struct Details: View {
     
-    //TODO: Quebrar essa view em mais componentes
-    
     @State var isDetailsSelected: Bool = false
-    
-    //Possível solução pro excesso de chamadas:
-    // - Passar o item pra cada viewModel
-    // - Fazer chamadas que hoje estão no onAppear no init do VM
     
     @StateObject var detailsTabViewModel = DetailsTabViewModel()
     @StateObject var recommendationsTabViewModel = RecommendationsTabViewModel()
     
     @State var didTapRecommendation: Bool = false
-    @State var choosedRecomendation: Result = movieMock
     
     @ObservedResults(MyListResult.self) var myList
     
+    let manager = RealmManager()
     var item: Result
     
     func getURL() -> URL?{
@@ -39,7 +33,7 @@ struct Details: View {
             
             ScrollView{
                 
-                VStack{
+                VStack(spacing: 16){
                     AsyncImage(url: getURL()){image in
                         image.resizable().aspectRatio(contentMode: .fit).frame(width: 150, height: 200)
                     } placeholder:{
@@ -50,54 +44,27 @@ struct Details: View {
                     Text("\(item.getMediaType().rawValue)")
                     
                     VStack(alignment: .leading, spacing: 16, content: {
-                        Text(item.overview ?? "").font(.system(size: 14, weight: .bold)).padding(16)
+                        Text(item.overview ?? "").font(.system(size: 14, weight: .bold))
                         
                         
                         HStack{
                             
                             SecondaryButton(title: getButtonText(), iconName: getButtonIcon(), action: {
-                                if isInMyList(){
-                                    removeItem()
-                                }else{
-                                    $myList.append(item.asMyListResult())
-                                }
+                                manager.addItem(item.asMyListResult())
                             })
-                            
-                            
                         }
                         
-                        VStack(alignment: .leading){
-                            HStack(spacing: 24){
-                                
-                                CustomTabButton(title: "Assista Também", selected: !isDetailsSelected) {
-                                    $isDetailsSelected.wrappedValue = false
-                                }
-                                
-                                CustomTabButton(title: "Detalhes", selected: isDetailsSelected) {
-                                    $isDetailsSelected.wrappedValue = true
-                                }
-                                
-                            }.fixedSize(horizontal: true, vertical: true).padding(16)
-                            
-                            if isDetailsSelected{
-                                DetailsTabView(viewModel: detailsTabViewModel, item: item).padding(16)
-                            }else{
-                                RecommendationsTabView(item: item, viewModel: recommendationsTabViewModel, didTapRecommendation: self.goToRecommendation(_:)).padding(16)
-                            }
-                        }.background(.black.opacity(0.4))
+                        TabStrip(titles: [screenTexts.details.recommendationsTabTitle.rawValue, screenTexts.details.detailsTabTitle.rawValue], associatedViews: [
+                            AnyView(RecommendationsTabView(item: item, viewModel: recommendationsTabViewModel, goToRecommendation: $didTapRecommendation)),
+                            AnyView(DetailsTabView(viewModel: detailsTabViewModel, item: item))
+                        ])
                         
                     })
                     Spacer()
-                }
+                }.padding(16)
                 
             }.background(
-                AsyncImage(url: getURL()){image in
-                    image.image?.resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .edgesIgnoringSafeArea(.top)
-                        .blur(radius: 10.0)
-                        .overlay(LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black]), startPoint: .top, endPoint: .center))
-                }
+                BackgroundView(imageURL: getURL())
                 
             )
             
@@ -110,11 +77,8 @@ struct Details: View {
         }).sheet(isPresented: $didTapRecommendation, onDismiss: {
             UITabBar.hideTabBar()
         }, content: {
-            Details(item: choosedRecomendation).padding()
+            Details(item: self.recommendationsTabViewModel.choosedRecommendation)
         })
-        
-        
-        
     }
     
     func requestDetailData(){
@@ -139,37 +103,16 @@ struct Details: View {
         }
     }
     
-    func goToRecommendation(_ item: Result){
-        self.choosedRecomendation = item
-        self.$didTapRecommendation.wrappedValue = true
-    }
-    
-    func isInMyList() -> Bool{
-        return myList.contains(where: {$0.id == item.id})
-    }
-    
     func getButtonText() -> String{
-        if isInMyList(){
-           return "Adicionado"
-        }
-        return "Minha Lista"
+        return manager.contains(id: item.id) ?
+        screenTexts.details.itemAddedToList.rawValue :
+        screenTexts.details.myListButtonInitialState.rawValue
     }
     
     func getButtonIcon() -> String{
-        if isInMyList(){
-            return "checkmark"
-        }
-        return "star"
-    }
-    
-    func removeItem(){
-        do{
-            try Realm().write({
-                try Realm().delete(Realm().object(ofType: MyListResult.self, forPrimaryKey: item.id)!)
-            })
-        }catch{
-            print(error)
-        }
+        return manager.contains(id: item.id) ?
+        assets.icons.details.myListItemAlreadyAdded.rawValue :
+        assets.icons.details.myListInitial.rawValue
     }
     
 }

@@ -12,8 +12,8 @@ struct DesafioGloboplayApp: App {
     var body: some Scene {
         WindowGroup {
             TabView{
-                Home().tabItem {Label("Início", systemImage: "house")}
-                MyList().tabItem{Label("Minha Lista", systemImage: "star")}
+                Home().tabItem {Label(screenTexts.homeTabs.home.rawValue, systemImage: assets.icons.tabIcons.home.rawValue)}
+                MyList().tabItem{Label(screenTexts.homeTabs.myList.rawValue, systemImage: assets.icons.tabIcons.myList.rawValue)}
             }
         }
     }

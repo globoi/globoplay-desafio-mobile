@@ -13,6 +13,8 @@ class RecommendationsTabViewModel: ViewModel, ObservableObject{
     @Published var suggestedMovies: MoviesResults?
     @Published var suggestedTVShows: TVShowsResults?
     
+    @Published var choosedRecommendation: Result = movieMock
+    
     func getSuggestedMovies(_ id: Int){
         do{
             perform(MoviesResults.self, request: try APIURLs.similarMovies(id).request()) { suggestions in
