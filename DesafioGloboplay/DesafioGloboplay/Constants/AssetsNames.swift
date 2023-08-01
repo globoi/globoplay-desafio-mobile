@@ -17,6 +17,7 @@ enum assets{
         enum details: String{
             case myListInitial = "star"
             case myListItemAlreadyAdded = "checkmark"
+            case watchTrailer = "play.fill"
         }
         
         enum tabIcons: String{

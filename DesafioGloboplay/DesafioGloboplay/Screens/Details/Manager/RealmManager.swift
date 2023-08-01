@@ -26,18 +26,8 @@ class RealmManager{
         return getObject(id: id) != nil
     }
     
-    func addItem(_ item: MyListResult){
-        
-        do{
-            try Realm().write {
-                if !contains(id: item.id){
-                    try Realm().add(item)
-                }
-            }
-        }catch{
-            print(error)
-        }
-        
+    func addItem(_ item: MyListResult, onList list: ObservedResults<MyListResult>){
+        list.append(item.asMyListResult())
     }
     
     private func getObject(id: Int?) -> MyListResult?{

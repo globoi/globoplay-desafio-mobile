@@ -20,7 +20,7 @@ struct MyList: View {
         NavigationView{
             VStack(alignment: .leading){
                 if myList.isEmpty{
-                    EmptyView()
+                    EmptyListView()
                 }else{
                     
                     ScrollView{

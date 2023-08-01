@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EmptyView: View {
+struct EmptyListView: View {
     var body: some View {
         VStack(spacing: 24){
             Image(systemName: assets.icons.myList.emptyListIcon.rawValue).font(.system(size: 100))
@@ -17,5 +17,5 @@ struct EmptyView: View {
 }
 
 #Preview {
-    EmptyView()
+    EmptyListView()
 }

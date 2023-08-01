@@ -28,6 +28,8 @@ enum screenTexts{
     enum details: String{
         case itemAddedToList = "Adicionado"
         case myListButtonInitialState = "Minha Lista"
+        
+        case watchTrailerButton = "Assista"
 
         case recommendationsTabTitle = "Assista Também"
         case detailsTabTitle = "Detalhes"
@@ -43,7 +45,6 @@ enum screenTexts{
     }
     
     enum detailsTab: String{
-        
         case title = "Ficha Técnica"
         case originalTitle = "Título original: "
         case gender = "Gênero: "
@@ -52,7 +53,10 @@ enum screenTexts{
         case country = "País: "
         case cast = "Elenco: "
         case availability = "Disponível até: "
-        
+    }
+    
+    enum trailerView: String{
+        case trailerError = "Não foi possível carregar o vídeo."
     }
     
 }

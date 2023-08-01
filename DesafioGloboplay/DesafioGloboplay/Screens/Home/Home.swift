@@ -17,35 +17,36 @@ struct Home: View {
     
     var body: some View {
         NavigationView{
-            if $viewModel.showError.wrappedValue{
-                ErrorView(viewModel: viewModel)
-            }else{
-                VStack(alignment: .leading){
-                    //https://api.themoviedb.org/3/trending/all/day
-                    //Fimes, séries e artistas populares
-                    Heading(text: "Nos Cinemas")
-                    HorizontalList(results: viewModel.movieList?.results) { result in
-                        goToDetails(result)
-                    }
-                    Heading(text:"Na TV")
-                    HorizontalList(results: viewModel.tvShowsList?.results){ result in
-                        goToDetails(result)
-                    }
-                    
-                    NavigationLink(destination: Details(item: selectedItem), isActive: $goToDetails) {}
-                    
-                }.toolbar(content: {
-                    HomeToolbar()
-                }).padding(20).navigationBarTitleDisplayMode(.inline)
-            }
+            VStack{
+                if $viewModel.showError.wrappedValue{
+                    ErrorView(viewModel: viewModel)
+                }else{
+                    VStack(alignment: .leading){
+                        //https://api.themoviedb.org/3/trending/all/day
+                        //Fimes, séries e artistas populares
+                        Heading(text: "Nos Cinemas")
+                        HorizontalList(results: viewModel.movieList?.results) { result in
+                            goToDetails(result)
+                        }
+                        Heading(text:"Na TV")
+                        HorizontalList(results: viewModel.tvShowsList?.results){ result in
+                            goToDetails(result)
+                        }
+                        
+                        NavigationLink(destination: Details(item: selectedItem), isActive: $goToDetails) {}
+                    }.padding(20)
+                }
+                
+            }.toolbar(content: {
+                HomeToolbar()
+            }).navigationBarTitleDisplayMode(.inline)
             
         }.onAppear(perform: {
             viewModel.getMovieList()
             viewModel.getTVShowsList()
         })
-            
-        
     }
+        
     
     func goToDetails(_ item: Result){
         self.$selectedItem.wrappedValue = item

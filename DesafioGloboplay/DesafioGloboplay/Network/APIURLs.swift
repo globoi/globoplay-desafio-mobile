@@ -12,6 +12,7 @@ import Foundation
 
 let baseURL = "https://api.themoviedb.org/3"
 let posterURL = "https://image.tmdb.org/t/p/original"
+let youtubeURL = "https://www.youtube.com/watch?v="
 
 let headers = [
   "accept": "application/json",
@@ -32,6 +33,9 @@ enum APIURLs{
     case similarMovies(Int)
     case similarTVShows(Int)
     
+    case getMovieVideos(Int)
+    case getTVShowVideos(Int)
+    
     func request() throws -> URLRequest {
         switch self {
         case .getMovies:
@@ -50,6 +54,10 @@ enum APIURLs{
             return createRequest(withURL: "\(baseURL)/movie/\(movieId)/similar")
         case let .similarTVShows(tvShowId):
             return createRequest(withURL: "\(baseURL)/tv/\(tvShowId)/similar")
+        case let .getMovieVideos(movieId):
+            return createRequest(withURL: "\(baseURL)/movie/\(movieId)/videos")
+        case let .getTVShowVideos(tvShowId):
+            return createRequest(withURL: "\(baseURL)/tv/\(tvShowId)/videos")
         }
     }
     

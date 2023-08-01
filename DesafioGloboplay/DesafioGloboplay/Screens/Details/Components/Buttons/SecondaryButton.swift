@@ -18,9 +18,9 @@ struct SecondaryButton: View {
             HStack{
                 Image(systemName: iconName)
                 Text(title.uppercased()).padding(2)
-            }.padding()
+            }.frame(maxWidth: .infinity).padding()
         }).background(
-            RoundedRectangle(cornerRadius: 0)
+            RoundedRectangle(cornerRadius: 5.0)
                 .stroke(lineWidth: 2).tint(.accent)
         )
     }

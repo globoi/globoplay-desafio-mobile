@@ -15,8 +15,10 @@ struct Details: View {
     
     @StateObject var detailsTabViewModel = DetailsTabViewModel()
     @StateObject var recommendationsTabViewModel = RecommendationsTabViewModel()
+    @StateObject var trailerViewModel = TrailerViewModel()
     
     @State var didTapRecommendation: Bool = false
+    @State var showTrailerView: Bool = false
     
     @ObservedResults(MyListResult.self) var myList
     
@@ -47,11 +49,21 @@ struct Details: View {
                         Text(item.overview ?? "").font(.system(size: 14, weight: .bold))
                         
                         
-                        HStack{
+                        HStack(spacing: 16){
+                            
+                            PrimaryButton(title: screenTexts.details.watchTrailerButton.rawValue, iconName: assets.icons.details.watchTrailer.rawValue, action: {
+                                withAnimation {
+                                    $showTrailerView.wrappedValue.toggle()
+                                }
+                            })
                             
                             SecondaryButton(title: getButtonText(), iconName: getButtonIcon(), action: {
-                                manager.addItem(item.asMyListResult())
+                                manager.addItem(item.asMyListResult(), onList: $myList)
                             })
+                        }
+                        
+                        if $showTrailerView.wrappedValue, let key = trailerViewModel.trailer?.key{
+                            TrailerView(videoId: key).frame(minWidth: 300, minHeight: 200)
                         }
                         
                         TabStrip(titles: [screenTexts.details.recommendationsTabTitle.rawValue, screenTexts.details.detailsTabTitle.rawValue], associatedViews: [
@@ -71,6 +83,7 @@ struct Details: View {
         }.onAppear(perform: {
             self.requestDetailData()
             self.requestRecommendationData()
+            self.trailerViewModel.loadTrailer(id: item.id ?? 0)
             UITabBar.hideTabBar()
         }).onDisappear(perform: {
             UITabBar.showTabBar()
