@@ -14,10 +14,10 @@
             filePath = "DesafioGloboplay/Screens/Details/Details.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "requestDetailData()"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "CA108983-8B7C-444B-A616-4F2306A591AB - 6cf37fe86c559f1d"
@@ -62,10 +62,10 @@
             filePath = "DesafioGloboplay/Screens/Details/Details.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "Details"
+            landmarkType = "14">
             <Locations>
                <Location
                   uuid = "2B124D4E-4E5C-4B87-A7A3-A71252343BD0 - 6ef743c0db73052e"

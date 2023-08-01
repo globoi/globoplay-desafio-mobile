@@ -51,11 +51,13 @@ struct Details: View {
                         
                         HStack(spacing: 16){
                             
-                            PrimaryButton(title: screenTexts.details.watchTrailerButton.rawValue, iconName: assets.icons.details.watchTrailer.rawValue, action: {
-                                withAnimation {
-                                    $showTrailerView.wrappedValue.toggle()
-                                }
-                            })
+                            if item.getMediaType() == .movie{
+                                PrimaryButton(title: screenTexts.details.watchTrailerButton.rawValue, iconName: assets.icons.details.watchTrailer.rawValue, action: {
+                                    withAnimation {
+                                        $showTrailerView.wrappedValue.toggle()
+                                    }
+                                })
+                            }
                             
                             SecondaryButton(title: getButtonText(), iconName: getButtonIcon(), action: {
                                 manager.addItem(item.asMyListResult(), onList: $myList)
