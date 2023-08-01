@@ -10,11 +10,7 @@ class TrailerViewModel: ViewModel, ObservableObject{
     
     @Published var trailer: TrailerResult?
     
-    func loadTrailer(id: Int, type: MediaType = .movie){
-            getTrailerResult(movieId: id)
-    }
-    
-    fileprivate func getTrailerResult(movieId: Int){
+    func getTrailerResult(movieId: Int){
         do{
             perform(TrailerResults.self, request: try APIURLs.getMovieVideos(movieId).request()) { videos in
                 self.trailer = videos.results?.first(where: {$0.type == .trailer})

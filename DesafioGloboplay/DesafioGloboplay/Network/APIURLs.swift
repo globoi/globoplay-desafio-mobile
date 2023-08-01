@@ -34,10 +34,6 @@ enum APIURLs{
     case similarTVShows(Int)
     
     case getMovieVideos(Int)
-    
-    //Request vem vazia. IDs testados no TMDB não retornam videos
-    case getTVShowVideos(Int)
-    
     func request() throws -> URLRequest {
         switch self {
         case .getMovies:
@@ -58,8 +54,6 @@ enum APIURLs{
             return createRequest(withURL: "\(baseURL)/tv/\(tvShowId)/similar")
         case let .getMovieVideos(movieId):
             return createRequest(withURL: "\(baseURL)/movie/\(movieId)/videos")
-        case let .getTVShowVideos(tvShowId):
-            return createRequest(withURL: "\(baseURL)/tv/\(tvShowId)/videos")
         }
     }
     

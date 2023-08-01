@@ -85,7 +85,7 @@ struct Details: View {
         }.onAppear(perform: {
             self.requestDetailData()
             self.requestRecommendationData()
-            self.trailerViewModel.loadTrailer(id: item.id ?? 0)
+            self.trailerViewModel.getTrailerResult(movieId: item.id ?? 0)
             UITabBar.hideTabBar()
         }).onDisappear(perform: {
             UITabBar.showTabBar()
