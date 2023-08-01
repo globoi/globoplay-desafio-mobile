@@ -1,4 +1,17 @@
 PODS:
+  - OHHTTPStubs/Core (9.1.0)
+  - OHHTTPStubs/Default (9.1.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (9.1.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (9.1.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (9.1.0)
+  - OHHTTPStubs/Swift (9.1.0):
+    - OHHTTPStubs/Default
   - Realm (10.41.1):
     - Realm/Headers (= 10.41.1)
   - Realm/Headers (10.41.1)
@@ -6,17 +19,20 @@ PODS:
     - Realm (= 10.41.1)
 
 DEPENDENCIES:
+  - OHHTTPStubs/Swift
   - RealmSwift
 
 SPEC REPOS:
   trunk:
+    - OHHTTPStubs
     - Realm
     - RealmSwift
 
 SPEC CHECKSUMS:
+  OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   Realm: 0cb0b0b24f9303543a1f0dc17de8dec2d5bbf3f0
   RealmSwift: 00627521cd456626f4cb2f7a7b18e1b07f2812a9
 
-PODFILE CHECKSUM: cc0085e6128e28954916036bba2c877d4be69d3e
+PODFILE CHECKSUM: 75566feac99d7c1ae68b64316ea41d44f6cacb07
 
 COCOAPODS: 1.11.3
