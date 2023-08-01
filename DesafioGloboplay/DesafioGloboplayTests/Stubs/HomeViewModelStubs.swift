@@ -12,9 +12,8 @@ import Foundation
 class HomeViewModelStubs{
     
     static func mockMovieResponse(){
-        //isAbsoluteURLString("https://api.themoviedb.org/3/movie/now_playing")
         
-        stub(condition: isAbsoluteURLString("https://api.themoviedb.org/3/movie/now_playing")) { request in
+        stub(condition: isAbsoluteURLString(moviesURL)) { request in
             
             let stubPath = OHPathForFile("Movies.json", HomeViewModelStubs.self)
             
@@ -27,7 +26,7 @@ class HomeViewModelStubs{
     
     static func mockTVShowsResponse(){
         
-        stub(condition: isAbsoluteURLString("https://api.themoviedb.org/3/tv/airing_today")) { request in
+        stub(condition: isAbsoluteURLString(tvShowsURL)) { request in
             
             let stubPath = OHPathForFile("TVShows.json", HomeViewModelStubs.self)
             

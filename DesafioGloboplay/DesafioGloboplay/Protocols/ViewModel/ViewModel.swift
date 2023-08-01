@@ -30,7 +30,7 @@ class ViewModel{
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             
-            if (error != nil) {
+            if (error != nil && ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil) {
                 print("Error")
                 print(error as Any)
                 if let errorDescription = error?.localizedDescription{

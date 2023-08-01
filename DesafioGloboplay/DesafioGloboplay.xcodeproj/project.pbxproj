@@ -41,9 +41,9 @@
 		6F2779E82A72F7E2001CD46B /* UINavigationController+MinimalBackAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2779E72A72F7E2001CD46B /* UINavigationController+MinimalBackAppearance.swift */; };
 		6F63C52E2A796CB200E0AE4E /* TVShows.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F63C52C2A796CB200E0AE4E /* TVShows.json */; };
 		6F63C52F2A796CB200E0AE4E /* Movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F63C52D2A796CB200E0AE4E /* Movies.json */; };
+		6F63C5312A79930A00E0AE4E /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F63C5302A79930A00E0AE4E /* URLs.swift */; };
 		6F7CD5B02A75A1EC007AA57D /* HidableTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 6F7CD5AF2A75A1EC007AA57D /* HidableTabView */; };
 		6F9F76F82A76C5A300C1F84D /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9F76F72A76C5A300C1F84D /* SecondaryButton.swift */; };
-		6FB8223A2A795EF90014FE6B /* DesafioGloboplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB822392A795EF90014FE6B /* DesafioGloboplayTests.swift */; };
 		6FB822442A795FA90014FE6B /* DefaultHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB822432A795FA90014FE6B /* DefaultHeaders.swift */; };
 		6FB822482A7960D90014FE6B /* HomeViewModelStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB822472A7960D90014FE6B /* HomeViewModelStubs.swift */; };
 		6FB8224B2A7962190014FE6B /* MovieListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB8224A2A7962190014FE6B /* MovieListTests.swift */; };
@@ -113,9 +113,9 @@
 		6F2779E72A72F7E2001CD46B /* UINavigationController+MinimalBackAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+MinimalBackAppearance.swift"; sourceTree = "<group>"; };
 		6F63C52C2A796CB200E0AE4E /* TVShows.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TVShows.json; sourceTree = "<group>"; };
 		6F63C52D2A796CB200E0AE4E /* Movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Movies.json; sourceTree = "<group>"; };
+		6F63C5302A79930A00E0AE4E /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		6F9F76F72A76C5A300C1F84D /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		6FB822372A795EF90014FE6B /* DesafioGloboplayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesafioGloboplayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FB822392A795EF90014FE6B /* DesafioGloboplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesafioGloboplayTests.swift; sourceTree = "<group>"; };
 		6FB822432A795FA90014FE6B /* DefaultHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHeaders.swift; sourceTree = "<group>"; };
 		6FB822472A7960D90014FE6B /* HomeViewModelStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelStubs.swift; sourceTree = "<group>"; };
 		6FB8224A2A7962190014FE6B /* MovieListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTests.swift; sourceTree = "<group>"; };
@@ -396,7 +396,6 @@
 			children = (
 				6FB822492A79620B0014FE6B /* HomeTests */,
 				6FB822402A795F740014FE6B /* Stubs */,
-				6FB822392A795EF90014FE6B /* DesafioGloboplayTests.swift */,
 			);
 			path = DesafioGloboplayTests;
 			sourceTree = "<group>";
@@ -424,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				6FB822432A795FA90014FE6B /* DefaultHeaders.swift */,
+				6F63C5302A79930A00E0AE4E /* URLs.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -746,8 +746,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F63C5312A79930A00E0AE4E /* URLs.swift in Sources */,
 				6FB822442A795FA90014FE6B /* DefaultHeaders.swift in Sources */,
-				6FB8223A2A795EF90014FE6B /* DesafioGloboplayTests.swift in Sources */,
 				6FB8224B2A7962190014FE6B /* MovieListTests.swift in Sources */,
 				6FB822482A7960D90014FE6B /* HomeViewModelStubs.swift in Sources */,
 			);

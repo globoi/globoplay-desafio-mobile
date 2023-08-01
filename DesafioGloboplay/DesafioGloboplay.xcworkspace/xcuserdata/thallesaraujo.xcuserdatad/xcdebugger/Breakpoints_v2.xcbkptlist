@@ -126,8 +126,8 @@
             filePath = "DesafioGloboplayTests/Stubs/HomeViewModelStubs.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "mockMovieResponse()"
             landmarkType = "7">
          </BreakpointContent>
@@ -152,7 +152,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "BE465D6C-261B-43C1-AA3C-7E2F9803B722"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DesafioGloboplay/Protocols/ViewModel/ViewModel.swift"
@@ -209,6 +209,22 @@
             startingLineNumber = "37"
             endingLineNumber = "37"
             landmarkName = "perform(_:request:successCompletion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A63B4F55-4F3F-4B3C-8C87-D8C075C70354"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DesafioGloboplayTests/HomeTests/MovieListTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "testMovieList()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
