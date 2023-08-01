@@ -18,7 +18,7 @@ struct PrimaryButton: View {
             HStack{
                 Image(systemName: iconName).foregroundStyle(.black)
                 Text(title.uppercased()).padding(2).foregroundColor(.black)
-            }.frame(maxWidth: .infinity).padding()
+            }.frame(maxWidth: .infinity, maxHeight: .infinity).padding()
         }).background(
             RoundedRectangle(cornerRadius: 5.0)
                 .tint(.accent)
