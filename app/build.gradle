@@ -53,4 +53,9 @@ dependencies {
 
     //Splash
     implementation "androidx.core:core-splashscreen:1.0.1"
+
+    //Koin
+    implementation "io.insert-koin:koin-core:$rootProject.koinVersion"
+    implementation "io.insert-koin:koin-android:$rootProject.koinVersion"
+    testImplementation "io.insert-koin:koin-test:$rootProject.koinVersion"
 }
