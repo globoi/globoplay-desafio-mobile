@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Globoplay"
 include ':app'
+include ':data'
+include ':domain'
