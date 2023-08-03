@@ -7,19 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.reisdeveloper.globoplay.ui.home.HomeFragment"
+        android:name="com.reisdeveloper.globoplay.ui.features.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.reisdeveloper.globoplay.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.reisdeveloper.globoplay.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_favorite_movies"
+        android:name="com.reisdeveloper.globoplay.ui.features.mylist.MyListFragment"
+        android:label="@string/title_my_list"
+        tools:layout="@layout/fragment_my_list" />
 </navigation>

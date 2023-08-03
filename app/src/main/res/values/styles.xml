@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Bottom Navigation -->
+    <style name="Theme.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemBackground">?attr/colorPrimary</item>
+        <item name="elevation">0dp</item>
+    </style>
+</resources>
