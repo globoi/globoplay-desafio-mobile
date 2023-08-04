@@ -1,0 +1,62 @@
+[versions]
+ktxVersion = "1.10.1"
+appcompactVersion = "1.6.1"
+materialVersion = "1.9.0"
+constraintVersion = "2.1.4"
+lifecycleVersion = "2.6.0"
+coroutineVersion = "1.6.1"
+hiltVersion = "2.44"
+retrofitVersion = "2.9.0"
+gsonVersion = "2.9.0"
+logginVersion = "4.2.1"
+okHttpVersion = "4.9.3"
+navigationVersion = "2.5.3"
+shimmerVersion = "0.5.0"
+
+#Test
+junitVersion = "4.13.2"
+jAndroidxVersion = "1.1.5"
+androidxEspressoCoreVersion = "3.5.1"
+archVersion = "2.2.0"
+
+[libraries]
+kotlin = {module = "androidx.core:core-ktx" , version.ref = "ktxVersion"}
+coroutine-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref= "coroutineVersion"}
+coroutine-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref= "coroutineVersion"}
+hilt-android = { module = "com.google.dagger:hilt-android",version.ref="hiltVersion"}
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref="hiltVersion"}
+androidx-compact = { module = "androidx.appcompat:appcompat", version.ref="appcompactVersion"}
+androidx-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref="lifecycleVersion"}
+androidx-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx" , version.ref="lifecycleVersion"}
+androidx-runtimektx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref="lifecycleVersion"}
+androidx-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate" , version.ref="lifecycleVersion"}
+#androidx-lifecycle-compiler = { module= "androidx.lifecycle:lifecycle-compile", version.ref = "lifecycleVersion"}
+google-material = {module = "com.google.android.material:material", version.ref = "materialVersion"}
+constraint-layout = {module= "androidx.constraintlayout:constraintlayout", version.ref="constraintVersion"}
+retrofit = { module = "com.squareup.retrofit2:retrofit",version.ref="retrofitVersion"}
+gson = {module = "com.squareup.retrofit2:converter-gson", version.ref="gsonVersion"}
+okhttp = {module = "com.squareup.okhttp3:okhttp", version.ref = "okHttpVersion"}
+loggin-interceptor = {module = "com.squareup.okhttp3:logging-interceptor", version.ref = "logginVersion"}
+navigation-ktx = { module = "androidx.navigation:navigation-fragment-ktx" , version.ref= "navigationVersion" }
+navigation-ktx-ui = { module= "androidx.navigation:navigation-ui-ktx", version.ref= "navigationVersion"}
+navigation-dynamic-feature = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigationVersion"}
+shimmer = { module = "com.facebook.shimmer:shimmer" , version.ref = "shimmerVersion"}
+
+#navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref= "navigationVersion"}
+#Tests libs
+junit = {module = "junit:junit", version.ref = "junitVersion"}
+androidxTest = {module="androidx.test.ext:junit",version.ref= "jAndroidxVersion"}
+androidxEspresso = {module = "androidx.test.espresso:espresso-core",version.ref="androidxEspressoCoreVersion"}
+androidxArchCore = { module = "androidx.arch.core:core-testing" , version.ref="archVersion"}
+androidNavigationTest = { module = "androidx.navigation:navigation-testing", version.ref="navigationVersion"}
+
+[bundles]
+test = ["junit","androidxArchCore"]
+viewmodel = ["androidx.viewmodel","androidx.livedata","androidx.runtimektx", "androidx.viewmodel.savedstate"]
+navigation = ["navigation-ktx","navigation-ktx-ui", "navigation-dynamic-feature"]
+ui-util = ["shimmer"]
+coroutine = ["coroutine-core","coroutine-android"]
+network = ["retrofit","gson","okhttp","loggin-interceptor"]
+androidTest = ["androidxTest","androidxEspresso","androidNavigationTest"]
+
+[plugins]

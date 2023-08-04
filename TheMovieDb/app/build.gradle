@@ -1,0 +1,67 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
+android {
+    namespace 'br.com.themoviedb'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "br.com.themoviedb"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'BASE_URL', localProperties['baseUrl']
+        buildConfigField 'String', 'API_KEY', localProperties['apiKey']
+    }
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
+}
+
+dependencies {
+
+    implementation libs.kotlin
+    implementation libs.androidx.compact
+    implementation libs.bundles.ui.util
+    implementation libs.google.material
+    implementation libs.constraint.layout
+    implementation libs.bundles.coroutine
+    implementation libs.bundles.viewmodel
+    implementation libs.bundles.navigation
+    implementation libs.hilt.android
+    kapt libs.hilt.compiler
+
+    testImplementation libs.bundles.test
+    androidTestImplementation libs.bundles.androidTest
+}
+
+kapt {
+    correctErrorTypes true
+}

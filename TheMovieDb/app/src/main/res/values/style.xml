@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Title.Large" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center|start</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textColor">@color/primary_text_color</item>
+    </style>
+
+    <style name="Title.Medium" parent="Title.Large">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="Title.Small" parent="Title.Large">
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:layout_marginTop">@dimen/normal_margin_size</item>
+    </style>
+
+</resources>
