@@ -30,5 +30,19 @@
         android:name="com.reisdeveloper.globoplay.ui.features.movie.main.MovieDetailsFragment"
         android:label="@string/title_my_list"
         tools:layout="@layout/fragment_movie_details" >
+        <action
+            android:id="@+id/action_navigation_movie_details_to_navigation_movie_player"
+            app:destination="@id/navigation_movie_player"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_movie_player"
+        android:name="com.reisdeveloper.globoplay.ui.features.movie.player.PlayerMovieFragment"
+        android:label="@string/title_my_list"
+        tools:layout="@layout/fragment_player" >
     </fragment>
 </navigation>

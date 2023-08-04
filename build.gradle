@@ -8,6 +8,7 @@ buildscript {
         okhttpLoggingInterceptorVersion = '4.11.0'
         glide = "4.15.1"
         shimmer = "0.5.0"
+        youtubePlayer = "12.1.0"
     }
 }
 plugins {

@@ -4,6 +4,7 @@ import com.reisdeveloper.data.api.MovieApi
 import com.reisdeveloper.data.dataModel.Favorite
 import com.reisdeveloper.data.dataModel.MovieDetails
 import com.reisdeveloper.data.dataModel.MovieList
+import com.reisdeveloper.data.dataModel.MovieVideos
 
 interface ListsRepository {
     suspend fun getMyLists(accountId: String): MovieList
@@ -11,6 +12,7 @@ interface ListsRepository {
     suspend fun getSimilarMovies(movieId: String): MovieList
     suspend fun getMovieDetails(movieId: String): MovieDetails
     suspend fun favoriteMovie(accountId: String, favorite: Favorite)
+    suspend fun getMovieVideos(movieId: String): MovieVideos
 }
 
 class ListsRepositoryImpl(
@@ -35,6 +37,10 @@ class ListsRepositoryImpl(
 
     override suspend fun favoriteMovie(accountId: String, favorite: Favorite) {
         movieApi.favoriteMovie(accountId, favorite)
+    }
+
+    override suspend fun getMovieVideos(movieId: String): MovieVideos {
+        return movieApi.getMovieVideos(movieId)
     }
 
 }

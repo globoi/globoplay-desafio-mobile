@@ -3,6 +3,7 @@ package com.reisdeveloper.globoplay.ui.features.movie.main
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
@@ -14,6 +15,7 @@ import com.reisdeveloper.globoplay.base.BASE_IMAGE_URL
 import com.reisdeveloper.globoplay.base.BaseFragment
 import com.reisdeveloper.globoplay.databinding.FragmentMovieDetailsBinding
 import com.reisdeveloper.globoplay.ui.features.movie.adapter.MovieDetailsAdapter
+import com.reisdeveloper.globoplay.ui.features.movie.player.PlayerMovieFragment
 import com.reisdeveloper.globoplay.ui.uiModel.FavoriteMovieUiModel
 import jp.wasabeef.glide.transformations.BlurTransformation
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -97,7 +99,12 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding, MovieDeta
 
     private fun viewClicks() {
         binding.btnMovieDetailsPlay.setOnClickListener {
-
+            findNavController().navigate(
+                R.id.action_navigation_movie_details_to_navigation_movie_player,
+                Bundle().apply {
+                    putString(PlayerMovieFragment.EXTRA_MOVIE_ID, movieExtra?.id.toString())
+                }
+            )
         }
 
         binding.btnMovieDetailsFavorite.setOnClickListener {

@@ -3,6 +3,7 @@ package com.reisdeveloper.data.api
 import com.reisdeveloper.data.dataModel.Favorite
 import com.reisdeveloper.data.dataModel.MovieDetails
 import com.reisdeveloper.data.dataModel.MovieList
+import com.reisdeveloper.data.dataModel.MovieVideos
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -36,5 +37,10 @@ interface MovieApi {
         @Path("account_id") accountId: String,
         @Body favorite: Favorite
     ): MovieList
+
+    @GET("3/movie/{movie_id}/videos")
+    suspend fun getMovieVideos(
+        @Path("movie_id") movieId: String
+    ): MovieVideos
 
 }

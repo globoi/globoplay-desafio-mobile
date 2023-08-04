@@ -66,4 +66,7 @@ dependencies {
 
     //Shimmer layout
     implementation "com.facebook.shimmer:shimmer:$rootProject.shimmer"
+
+    //Youtube player
+    implementation "com.pierfrancescosoffritti.androidyoutubeplayer:core:$rootProject.youtubePlayer"
 }

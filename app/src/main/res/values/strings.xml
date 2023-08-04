@@ -16,4 +16,5 @@
     <string name="released"><b>Released:</b>  %s</string>
     <string name="country"><b>Country:</b>  %s</string>
     <string name="direction"><b>Direction:</b>  %s</string>
+    <string name="there_was_an_error_loading_videos">There was an error loading the videos</string>
 </resources>
