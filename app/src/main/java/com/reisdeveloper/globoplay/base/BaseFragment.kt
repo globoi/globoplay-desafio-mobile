@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
+import com.reisdeveloper.globoplay.ui.components.ShimmerLoadingView
 
 abstract class BaseFragment<T : ViewBinding, VM : BaseViewModel>(
     private val inflateMethod: (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -34,6 +35,18 @@ abstract class BaseFragment<T : ViewBinding, VM : BaseViewModel>(
     fun showError(error: String) {
         view?.let {
             Snackbar.make(it, error, Snackbar.LENGTH_LONG).show()
+        }
+    }
+
+    fun shimmerLoading(
+        viewGroup: ViewGroup,
+        loadLayout: Int,
+        loading: Boolean
+    ) {
+        if (loading) {
+            ShimmerLoadingView.show(viewGroup, loadLayout)
+        } else {
+            ShimmerLoadingView.hide(viewGroup)
         }
     }
 

@@ -15,5 +15,20 @@
         android:id="@+id/navigation_favorite_movies"
         android:name="com.reisdeveloper.globoplay.ui.features.mylist.MyListFragment"
         android:label="@string/title_my_list"
-        tools:layout="@layout/fragment_my_list" />
+        tools:layout="@layout/fragment_my_list" >
+        <action
+            android:id="@+id/action_navigation_favorite_movies_to_navigation_movie_details"
+            app:destination="@id/navigation_movie_details"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_movie_details"
+        android:name="com.reisdeveloper.globoplay.ui.features.movie.main.MovieDetailsFragment"
+        android:label="@string/title_my_list"
+        tools:layout="@layout/fragment_movie_details" >
+    </fragment>
 </navigation>

@@ -1,5 +1,9 @@
 package com.reisdeveloper.globoplay.ui.uiModel
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class FavoriteMovieUiModel(
     val adult: Boolean,
     val backdropPath: String,
@@ -15,4 +19,4 @@ data class FavoriteMovieUiModel(
     val video: Boolean,
     val voteAverage: Double,
     val voteCount: Int
-)
+) : Parcelable

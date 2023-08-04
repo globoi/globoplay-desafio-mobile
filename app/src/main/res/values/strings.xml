@@ -4,4 +4,16 @@
     <string name="title_my_list">My List</string>
     <string name="my_list">My list</string>
     <string name="image_movie">Image movie</string>
+    <string name="play">Play</string>
+    <string name="watch_too">Watch too</string>
+    <string name="details">Details</string>
+    <string name="specification">Specification</string>
+
+    <!-- movie specifications -->
+    <string name="original_title"><b>Original title:</b>  %s</string>
+    <string name="genre"><b>Genre:</b>  %s</string>
+    <string name="episodes"><b>Episodes:</b>  %s</string>
+    <string name="released"><b>Released:</b>  %s</string>
+    <string name="country"><b>Country:</b>  %s</string>
+    <string name="direction"><b>Direction:</b>  %s</string>
 </resources>

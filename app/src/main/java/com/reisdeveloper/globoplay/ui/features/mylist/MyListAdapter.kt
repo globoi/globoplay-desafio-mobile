@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.reisdeveloper.globoplay.R
 import com.reisdeveloper.globoplay.base.BASE_IMAGE_URL
 import com.reisdeveloper.globoplay.databinding.ItemMyListBinding
 import com.reisdeveloper.globoplay.ui.uiModel.FavoriteMovieUiModel
@@ -56,8 +57,8 @@ class MyListAdapter(
         fun bind(item: FavoriteMovieUiModel) {
             Glide.with(binding.root.context)
                 .load("${BASE_IMAGE_URL}${item.posterPath}")
-                // TODO incluir image holder
-                //.error(R.drawable.ic_person)
+                .placeholder(R.drawable.bg_holder)
+                .error(R.drawable.bg_holder)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(binding.imgItemMyList)
         }

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -61,6 +62,7 @@ dependencies {
 
     //Glide
     implementation "com.github.bumptech.glide:glide:$rootProject.glide"
+    implementation 'jp.wasabeef:glide-transformations:4.3.0'
 
     //Shimmer layout
     implementation "com.facebook.shimmer:shimmer:$rootProject.shimmer"
