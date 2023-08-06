@@ -52,8 +52,8 @@ interface MovieApi {
 
     @GET("3/movie/{movie_id}")
     suspend fun getMovieDetails(
-        @Query("language") language: String? = "pt-BR",
-        @Path("movie_id") movieId: String
+        @Path("movie_id") movieId: String,
+        @Query("language") language: String? = "pt-BR"
     ): MovieDetails
 
     @POST("3/account/{account_id}/favorite")

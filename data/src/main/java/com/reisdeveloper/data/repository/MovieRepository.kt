@@ -51,7 +51,7 @@ class ListsRepositoryImpl(
     }
 
     override suspend fun getMovieDetails(language: String?, movieId: String): MovieDetails {
-        return movieApi.getMovieDetails(language, movieId)
+        return movieApi.getMovieDetails(movieId, language)
     }
 
     override suspend fun favoriteMovie(accountId: String, favorite: Favorite) {

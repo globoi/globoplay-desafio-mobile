@@ -4,10 +4,13 @@
     <string name="title_my_list">My List</string>
     <string name="my_list">My list</string>
     <string name="image_movie">Image movie</string>
-    <string name="play">Play</string>
-    <string name="watch_too">Watch too</string>
-    <string name="details">Details</string>
-    <string name="specification">Specification</string>
+
+    <!-- home -->
+    <string name="now_playing">Now Playing</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top rated</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="globoplay">globoplay</string>
 
     <!-- movie specifications -->
     <string name="original_title"><b>Original title:</b>  %s</string>
@@ -16,10 +19,14 @@
     <string name="released"><b>Released:</b>  %s</string>
     <string name="country"><b>Country:</b>  %s</string>
     <string name="direction"><b>Direction:</b>  %s</string>
+    <string name="budget"><b>Budget:</b>  %s</string>
+    <string name="watch_too">Watch too</string>
+    <string name="details">Details</string>
+    <string name="play">Play</string>
+    <string name="specification">Specification</string>
+
+    <!-- error messages -->
     <string name="there_was_an_error_loading_videos">There was an error loading the videos</string>
-    <string name="now_playing">Now Playing</string>
-    <string name="popular">Popular</string>
-    <string name="top_rated">Top rated</string>
-    <string name="upcoming">Upcoming</string>
-    <string name="globoplay">globoplay</string>
+    <string name="there_was_an_error_loading_video_details">There was an error loading video details</string>
+    <string name="movie_image">Movie image cover</string>
 </resources>

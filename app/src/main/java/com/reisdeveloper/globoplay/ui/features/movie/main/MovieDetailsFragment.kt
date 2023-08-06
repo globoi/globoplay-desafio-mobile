@@ -42,10 +42,14 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding, MovieDeta
 
         viewClicks()
 
-        //TODO não está funcionando. Descobrir o motivo
         binding.viewPager.adapter = MovieDetailsAdapter(this, movieExtra?.id.toString())
 
         TabLayoutMediator(binding.tabMovieDetails, binding.viewPager) { _, _ -> }.attach()
+
+        TabLayoutMediator(binding.tabMovieDetails, binding.viewPager) { tab, position ->
+            tab.text = if (position == 0) getString(R.string.watch_too) else
+                getString(R.string.details)
+        }.attach()
 
         binding.tabMovieDetails.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 
