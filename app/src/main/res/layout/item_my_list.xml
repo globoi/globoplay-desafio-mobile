@@ -6,9 +6,12 @@
 
     <ImageView
         android:id="@+id/imgItemMyList"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="250dp"
-        android:layout_margin="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:minWidth="150dp"
+        android:backgroundTint="@color/light_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

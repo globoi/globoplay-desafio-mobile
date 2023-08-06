@@ -1,9 +1,9 @@
 package com.reisdeveloper.globoplay.mapper
 
 import com.reisdeveloper.data.dataModel.Movie
-import com.reisdeveloper.globoplay.ui.uiModel.FavoriteMovieUiModel
+import com.reisdeveloper.globoplay.ui.uiModel.MovieUiModel
 
-fun Movie.toUiModel() = FavoriteMovieUiModel(
+fun Movie.toUiModel() = MovieUiModel(
     adult,
     backdropPath,
     genreIds,

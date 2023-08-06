@@ -1,10 +1,10 @@
 package com.reisdeveloper.globoplay.ui.uiModel
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class FavoriteMovieUiModel(
+data class MovieUiModel(
     val adult: Boolean,
     val backdropPath: String,
     val genreIds: List<Int>,

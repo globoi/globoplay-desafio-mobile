@@ -9,10 +9,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.reisdeveloper.data.dataModel.Movie
 import com.reisdeveloper.globoplay.R
 import com.reisdeveloper.globoplay.base.BaseFragment
 import com.reisdeveloper.globoplay.databinding.FragmentHomeBinding
+import com.reisdeveloper.globoplay.ui.features.movie.main.MovieDetailsFragment
+import com.reisdeveloper.globoplay.ui.uiModel.MovieUiModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,7 +26,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     private var popularMoviesAdapter = MovieListAdapter(
         object : MovieListAdapter.Listener {
-            override fun onClickItem(item: Movie) {
+            override fun onClickItem(item: MovieUiModel) {
                 openMovieDetails(item)
             }
         }
@@ -33,7 +34,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     private var topRatedMoviesAdapter = MovieListAdapter(
         object : MovieListAdapter.Listener {
-            override fun onClickItem(item: Movie) {
+            override fun onClickItem(item: MovieUiModel) {
                 openMovieDetails(item)
             }
         }
@@ -41,7 +42,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     private var nowPlayingMoviesAdapter = MovieListAdapter(
         object : MovieListAdapter.Listener {
-            override fun onClickItem(item: Movie) {
+            override fun onClickItem(item: MovieUiModel) {
                 openMovieDetails(item)
             }
         }
@@ -49,7 +50,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     private var upcomingMoviesAdapter = MovieListAdapter(
         object : MovieListAdapter.Listener {
-            override fun onClickItem(item: Movie) {
+            override fun onClickItem(item: MovieUiModel) {
                 openMovieDetails(item)
             }
         }
@@ -63,30 +64,34 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         setupObserver()
 
         viewModel.getPopularMovies()
-        //viewModel.getNowPlayingMovies()
+        viewModel.getNowPlayingMovies()
         viewModel.getTopRatedMovies()
         viewModel.getUpcomingMovies()
     }
 
     private fun setupAdapters() {
         binding.rvNowPlaying.adapter = nowPlayingMoviesAdapter
-        binding.rvNowPlaying.layoutManager = LinearLayoutManager(binding.rvNowPlaying.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvNowPlaying.layoutManager =
+            LinearLayoutManager(binding.rvNowPlaying.context, LinearLayoutManager.HORIZONTAL, false)
 
         binding.rvPopular.adapter = popularMoviesAdapter
-        binding.rvPopular.layoutManager = LinearLayoutManager(binding.rvPopular.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvPopular.layoutManager =
+            LinearLayoutManager(binding.rvPopular.context, LinearLayoutManager.HORIZONTAL, false)
 
         binding.rvTopRated.adapter = topRatedMoviesAdapter
-        binding.rvTopRated.layoutManager = LinearLayoutManager(binding.rvTopRated.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvTopRated.layoutManager =
+            LinearLayoutManager(binding.rvTopRated.context, LinearLayoutManager.HORIZONTAL, false)
 
         binding.rvUpcoming.adapter = upcomingMoviesAdapter
-        binding.rvUpcoming.layoutManager = LinearLayoutManager(binding.rvUpcoming.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvUpcoming.layoutManager =
+            LinearLayoutManager(binding.rvUpcoming.context, LinearLayoutManager.HORIZONTAL, false)
     }
 
-    private fun openMovieDetails(item: Movie) {
+    private fun openMovieDetails(item: MovieUiModel) {
         findNavController().navigate(
             R.id.action_goto_movie_details,
             Bundle().apply {
-                //putString(UserFragment.EXTRA_USER_NAME, item.login)
+                putParcelable(MovieDetailsFragment.EXTRA_MOVIE, item)
             }
         )
     }
@@ -115,8 +120,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 nowPlayingMoviesAdapter.loadStateFlow.collect {
-                    binding.prepProgressNowPlaying.isVisible = it.source.prepend is LoadState.Loading
-                    binding.appendProgressNowPlaying.isVisible = it.source.append is LoadState.Loading
+                    binding.prepProgressNowPlaying.isVisible =
+                        it.source.prepend is LoadState.Loading
+                    binding.appendProgressNowPlaying.isVisible =
+                        it.source.append is LoadState.Loading
+                }
+
+                popularMoviesAdapter.loadStateFlow.collect {
+                    binding.prepProgressNowPlaying.isVisible =
+                        it.source.prepend is LoadState.Loading
+                    binding.appendProgressNowPlaying.isVisible =
+                        it.source.append is LoadState.Loading
+                }
+
+                topRatedMoviesAdapter.loadStateFlow.collect {
+                    binding.prepProgressNowPlaying.isVisible =
+                        it.source.prepend is LoadState.Loading
+                    binding.appendProgressNowPlaying.isVisible =
+                        it.source.append is LoadState.Loading
+                }
+
+                upcomingMoviesAdapter.loadStateFlow.collect {
+                    binding.prepProgressNowPlaying.isVisible =
+                        it.source.prepend is LoadState.Loading
+                    binding.appendProgressNowPlaying.isVisible =
+                        it.source.append is LoadState.Loading
                 }
             }
         }

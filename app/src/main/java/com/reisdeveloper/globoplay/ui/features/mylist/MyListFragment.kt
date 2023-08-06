@@ -11,7 +11,7 @@ import com.reisdeveloper.globoplay.base.BaseFragment
 import com.reisdeveloper.globoplay.databinding.FragmentMyListBinding
 import com.reisdeveloper.globoplay.ui.components.ShimmerLoadingView
 import com.reisdeveloper.globoplay.ui.features.movie.main.MovieDetailsFragment.Companion.EXTRA_MOVIE
-import com.reisdeveloper.globoplay.ui.uiModel.FavoriteMovieUiModel
+import com.reisdeveloper.globoplay.ui.uiModel.MovieUiModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,7 +23,7 @@ class MyListFragment : BaseFragment<FragmentMyListBinding, MyListViewModel>(
     override val viewModel: MyListViewModel by viewModel()
 
     private val myListAdapter = MyListAdapter(object : MyListAdapter.Listener {
-        override fun onItemClick(movie: FavoriteMovieUiModel) {
+        override fun onItemClick(movie: MovieUiModel) {
             findNavController().navigate(
                 R.id.action_navigation_favorite_movies_to_navigation_movie_details,
                 Bundle().apply {

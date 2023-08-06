@@ -3,7 +3,7 @@ package com.reisdeveloper.globoplay.ui.features.mylist
 import com.reisdeveloper.domain.usecases.GetFavoriteMoviesUseCase
 import com.reisdeveloper.globoplay.base.BaseViewModel
 import com.reisdeveloper.globoplay.mapper.toUiModel
-import com.reisdeveloper.globoplay.ui.uiModel.FavoriteMovieUiModel
+import com.reisdeveloper.globoplay.ui.uiModel.MovieUiModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 
@@ -32,7 +32,7 @@ class MyListViewModel(
 
     sealed class Screen {
         data class Loading(val loading: Boolean) : Screen()
-        data class FavoriteMovies(val movies: List<FavoriteMovieUiModel>) : Screen()
+        data class FavoriteMovies(val movies: List<MovieUiModel>) : Screen()
         object Error : Screen()
     }
 }

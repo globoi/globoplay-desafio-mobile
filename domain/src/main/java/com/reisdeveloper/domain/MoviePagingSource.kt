@@ -4,7 +4,6 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.reisdeveloper.data.dataModel.Movie
 import com.reisdeveloper.data.repository.MovieRepository
-import kotlin.math.max
 
 class MoviePagingSource(
     private val movieRepository: MovieRepository,
@@ -13,8 +12,6 @@ class MoviePagingSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         val pageIndex = params.key ?: STARTING_KEY
-
-        val range = pageIndex.until(pageIndex + params.loadSize)
         return try {
             val response = when (movieListType) {
                 MovieListType.NOW_PLAYING ->
@@ -32,15 +29,8 @@ class MoviePagingSource(
 
             LoadResult.Page(
                 data = response.results,
-                prevKey = when (pageIndex) {
-                    STARTING_KEY -> null
-                    else -> when (val prevKey =
-                        ensureValidKey(key = range.first - params.loadSize)) {
-                        STARTING_KEY -> null
-                        else -> prevKey
-                    }
-                },
-                nextKey = range.last + 1
+                prevKey = if (pageIndex == STARTING_KEY) null else STARTING_KEY - 1,
+                nextKey = if (response.results.isEmpty()) null else pageIndex + 1
             )
         } catch (exception: Throwable) {
             return LoadResult.Error(exception)
@@ -53,9 +43,6 @@ class MoviePagingSource(
                 ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
         }
     }
-
-    private fun ensureValidKey(key: Int) = max(STARTING_KEY, key)
-
 
     companion object {
         const val STARTING_KEY = 1

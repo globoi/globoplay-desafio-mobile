@@ -16,7 +16,7 @@ import com.reisdeveloper.globoplay.base.BaseFragment
 import com.reisdeveloper.globoplay.databinding.FragmentMovieDetailsBinding
 import com.reisdeveloper.globoplay.ui.features.movie.adapter.MovieDetailsAdapter
 import com.reisdeveloper.globoplay.ui.features.movie.player.PlayerMovieFragment
-import com.reisdeveloper.globoplay.ui.uiModel.FavoriteMovieUiModel
+import com.reisdeveloper.globoplay.ui.uiModel.MovieUiModel
 import jp.wasabeef.glide.transformations.BlurTransformation
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,7 +27,7 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding, MovieDeta
 
     private val movieExtra by lazy {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            arguments?.getParcelable(EXTRA_MOVIE, FavoriteMovieUiModel::class.java)
+            arguments?.getParcelable(EXTRA_MOVIE, MovieUiModel::class.java)
         } else {
             arguments?.getParcelable(EXTRA_MOVIE)
         }
