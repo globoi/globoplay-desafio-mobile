@@ -9,6 +9,7 @@ buildscript {
         glide = "4.15.1"
         shimmer = "0.5.0"
         youtubePlayer = "12.1.0"
+        paging = "3.2.0"
     }
 }
 plugins {

@@ -8,10 +8,33 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface MovieApi {
+    @GET("3/movie/now_playing")
+    suspend fun getNowPlaying(
+        @Query("language") language: String? = "pt-BR",
+        @Query("page") page: Int
+    ): MovieList
 
-    //Todo alterar response
+    @GET("3/movie/popular")
+    suspend fun getPopularMovies(
+        @Query("language") language: String? = "pt-BR",
+        @Query("page") page: Int
+    ): MovieList
+
+    @GET("3/movie/top_rated")
+    suspend fun getTopRatedMovies(
+        @Query("language") language: String? = "pt-BR",
+        @Query("page") page: Int
+    ): MovieList
+
+    @GET("3/movie/upcoming")
+    suspend fun getUpcomingMovies(
+        @Query("language") language: String? = "pt-BR",
+        @Query("page") page: Int
+    ): MovieList
+
     @GET("3/account/{account_id}/lists")
     suspend fun getMyLists(
         @Path("account_id") accountId: String
@@ -29,6 +52,7 @@ interface MovieApi {
 
     @GET("3/movie/{movie_id}")
     suspend fun getMovieDetails(
+        @Query("language") language: String? = "pt-BR",
         @Path("movie_id") movieId: String
     ): MovieDetails
 
@@ -41,6 +65,12 @@ interface MovieApi {
     @GET("3/movie/{movie_id}/videos")
     suspend fun getMovieVideos(
         @Path("movie_id") movieId: String
+    ): MovieVideos
+
+    @GET("3/search/movie")
+    suspend fun searchMovies(
+        @Query("language") language: String? = "pt-BR",
+        @Query("query") query: String
     ): MovieVideos
 
 }

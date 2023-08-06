@@ -1,42 +1,124 @@
 package com.reisdeveloper.globoplay.ui.features.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.reisdeveloper.data.dataModel.Movie
+import com.reisdeveloper.globoplay.R
+import com.reisdeveloper.globoplay.base.BaseFragment
 import com.reisdeveloper.globoplay.databinding.FragmentHomeBinding
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
+    FragmentHomeBinding::inflate
+) {
 
-    private var _binding: FragmentHomeBinding? = null
+    override val viewModel: HomeViewModel by viewModel()
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    private var popularMoviesAdapter = MovieListAdapter(
+        object : MovieListAdapter.Listener {
+            override fun onClickItem(item: Movie) {
+                openMovieDetails(item)
+            }
         }
-        return root
+    )
+
+    private var topRatedMoviesAdapter = MovieListAdapter(
+        object : MovieListAdapter.Listener {
+            override fun onClickItem(item: Movie) {
+                openMovieDetails(item)
+            }
+        }
+    )
+
+    private var nowPlayingMoviesAdapter = MovieListAdapter(
+        object : MovieListAdapter.Listener {
+            override fun onClickItem(item: Movie) {
+                openMovieDetails(item)
+            }
+        }
+    )
+
+    private var upcomingMoviesAdapter = MovieListAdapter(
+        object : MovieListAdapter.Listener {
+            override fun onClickItem(item: Movie) {
+                openMovieDetails(item)
+            }
+        }
+    )
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupAdapters()
+
+        setupObserver()
+
+        viewModel.getPopularMovies()
+        //viewModel.getNowPlayingMovies()
+        viewModel.getTopRatedMovies()
+        viewModel.getUpcomingMovies()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun setupAdapters() {
+        binding.rvNowPlaying.adapter = nowPlayingMoviesAdapter
+        binding.rvNowPlaying.layoutManager = LinearLayoutManager(binding.rvNowPlaying.context, LinearLayoutManager.HORIZONTAL, false)
+
+        binding.rvPopular.adapter = popularMoviesAdapter
+        binding.rvPopular.layoutManager = LinearLayoutManager(binding.rvPopular.context, LinearLayoutManager.HORIZONTAL, false)
+
+        binding.rvTopRated.adapter = topRatedMoviesAdapter
+        binding.rvTopRated.layoutManager = LinearLayoutManager(binding.rvTopRated.context, LinearLayoutManager.HORIZONTAL, false)
+
+        binding.rvUpcoming.adapter = upcomingMoviesAdapter
+        binding.rvUpcoming.layoutManager = LinearLayoutManager(binding.rvUpcoming.context, LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun openMovieDetails(item: Movie) {
+        findNavController().navigate(
+            R.id.action_goto_movie_details,
+            Bundle().apply {
+                //putString(UserFragment.EXTRA_USER_NAME, item.login)
+            }
+        )
+    }
+
+    private fun setupObserver() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.getNowPlayingMovies().collectLatest {
+                    nowPlayingMoviesAdapter.submitData(it)
+                }
+
+                viewModel.getPopularMovies().collectLatest {
+                    popularMoviesAdapter.submitData(it)
+                }
+
+                viewModel.getTopRatedMovies().collectLatest {
+                    topRatedMoviesAdapter.submitData(it)
+                }
+
+                viewModel.getUpcomingMovies().collectLatest {
+                    upcomingMoviesAdapter.submitData(it)
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                nowPlayingMoviesAdapter.loadStateFlow.collect {
+                    binding.prepProgressNowPlaying.isVisible = it.source.prepend is LoadState.Loading
+                    binding.appendProgressNowPlaying.isVisible = it.source.append is LoadState.Loading
+                }
+            }
+        }
     }
 }

@@ -45,4 +45,13 @@
         android:label="@string/title_my_list"
         tools:layout="@layout/fragment_player" >
     </fragment>
+
+    <action
+        android:id="@+id/action_goto_movie_details"
+        app:destination="@id/navigation_movie_details"
+        app:enterAnim="@anim/slide_in"
+        app:exitAnim="@anim/slide_out"
+        app:popEnterAnim="@anim/slide_in_pop"
+        app:popExitAnim="@anim/slide_out_pop"/>
+
 </navigation>

@@ -1,13 +1,30 @@
 package com.reisdeveloper.globoplay.ui.features.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
+import com.reisdeveloper.domain.usecases.GetNowPlayingMoviesUseCase
+import com.reisdeveloper.domain.usecases.GetPopularMoviesUseCase
+import com.reisdeveloper.domain.usecases.GetTopRatedMoviesUseCase
+import com.reisdeveloper.domain.usecases.GetUpcomingMoviesUseCase
+import com.reisdeveloper.globoplay.base.BaseViewModel
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(
+    private val getNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCase,
+    private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
+    private val getTopRatedMoviesUseCase: GetTopRatedMoviesUseCase,
+    private val getUpcomingMoviesUseCase: GetUpcomingMoviesUseCase
+) : BaseViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getNowPlayingMovies() =
+        getNowPlayingMoviesUseCase.execute().cachedIn(viewModelScope)
+
+    fun getPopularMovies() =
+        getPopularMoviesUseCase.execute().cachedIn(viewModelScope)
+
+    fun getTopRatedMovies() =
+        getTopRatedMoviesUseCase.execute().cachedIn(viewModelScope)
+
+    fun getUpcomingMovies() =
+        getUpcomingMoviesUseCase.execute().cachedIn(viewModelScope)
+
 }

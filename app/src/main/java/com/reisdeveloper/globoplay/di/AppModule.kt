@@ -1,5 +1,6 @@
 package com.reisdeveloper.globoplay.di
 
+import com.reisdeveloper.globoplay.ui.features.home.HomeViewModel
 import com.reisdeveloper.globoplay.ui.features.movie.details.MovieMoreDetailsViewModel
 import com.reisdeveloper.globoplay.ui.features.movie.watchtoo.WatchViewModel
 import com.reisdeveloper.globoplay.ui.features.movie.main.MovieDetailsViewModel
@@ -14,4 +15,5 @@ val appModule = module {
     viewModel { WatchViewModel(get()) }
     viewModel { MovieMoreDetailsViewModel(get()) }
     viewModel { PlayerMovieViewModel(get()) }
+    viewModel { HomeViewModel(get(), get(), get(), get()) }
 }

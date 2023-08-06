@@ -35,4 +35,8 @@ dependencies {
 
     //Koin
     implementation "io.insert-koin:koin-android:$rootProject.koinVersion"
+
+    //Paging
+    implementation "androidx.paging:paging-common-ktx:$rootProject.paging"
+    implementation "androidx.paging:paging-runtime-ktx:$rootProject.paging"
 }

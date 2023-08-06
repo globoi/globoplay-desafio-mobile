@@ -2,12 +2,12 @@ package com.reisdeveloper.data.di
 
 import com.reisdeveloper.data.api.MovieApi
 import com.reisdeveloper.data.api.RetrofitInstance
-import com.reisdeveloper.data.repository.ListsRepository
+import com.reisdeveloper.data.repository.MovieRepository
 import com.reisdeveloper.data.repository.ListsRepositoryImpl
 import org.koin.dsl.module
 
 val dataModule = module {
     single<MovieApi> { RetrofitInstance.create() }
 
-    single<ListsRepository> { ListsRepositoryImpl(get()) }
+    single<MovieRepository> { ListsRepositoryImpl(get()) }
 }

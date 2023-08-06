@@ -1,13 +1,13 @@
 package com.reisdeveloper.domain.usecases
 
 import com.reisdeveloper.data.dataModel.MovieDetails
-import com.reisdeveloper.data.repository.ListsRepository
+import com.reisdeveloper.data.repository.MovieRepository
 
 class GetMovieDetailsUseCase(
-    private val userRepository: ListsRepository
+    private val userRepository: MovieRepository
 ) : AbstractUseCase<String, MovieDetails>() {
 
     override suspend fun execute(param: String): MovieDetails {
-        return userRepository.getMovieDetails(param)
+        return userRepository.getMovieDetails(null, param)
     }
 }
