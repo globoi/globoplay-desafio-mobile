@@ -1,11 +1,10 @@
 package com.reisdeveloper.globoplay.ui.features.movie.details
 
-import android.content.Context
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -69,17 +68,13 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding, MovieDeta
                     }
 
                     is MovieDetailsViewModel.Screen.Loading -> {
-
+                        binding.progressFavorite.isVisible = state.loading
+                        binding.btnMovieDetailsFavorite.isVisible = !state.loading
                     }
 
                     is MovieDetailsViewModel.Screen.FavoriteMovie -> {
-                        favorite = !state.favorite
-                        binding.btnMovieDetailsFavorite.setCompoundDrawablesWithIntrinsicBounds(
-                            getFavoriteIcon(binding.btnMovieDetailsFavorite.context),
-                            null,
-                            null,
-                            null
-                        )
+                        favorite = state.favorite
+                        binding.btnMovieDetailsFavorite.setIconResource(getFavoriteIcon())
                     }
                 }
             }
@@ -106,20 +101,15 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding, MovieDeta
 
             txtMovieDetailsTitle.text = movieExtra?.title
             txtMovieDetailsDescription.text = movieExtra?.overview
-            btnMovieDetailsFavorite.setCompoundDrawablesWithIntrinsicBounds(
-                getFavoriteIcon(btnMovieDetailsFavorite.context),
-                null,
-                null,
-                null
-            )
+            btnMovieDetailsFavorite.setIconResource(getFavoriteIcon())
         }
     }
 
-    private fun getFavoriteIcon(context: Context): Drawable? {
+    private fun getFavoriteIcon(): Int {
         return if (favorite) {
-            ContextCompat.getDrawable(context, R.drawable.ic_check_24)
+            R.drawable.ic_check_24
         } else {
-            ContextCompat.getDrawable(context, R.drawable.ic_star_rate_24dp)
+            R.drawable.ic_star_rate_24dp
         }
     }
 

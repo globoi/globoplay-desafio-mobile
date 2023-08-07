@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Globoplay</string>
+    <string name="title_home">Início</string>
+    <string name="title_my_list">Minha Lista</string>
+    <string name="my_list">Minha lista</string>
+    <string name="image_movie">Imagem do filme</string>
+
+    <!-- home -->
+    <string name="now_playing">Em exibição</string>
+    <string name="popular">Populares</string>
+    <string name="top_rated">Mais bem avaliados</string>
+    <string name="upcoming">Próximos</string>
+    <string name="globoplay">globoplay</string>
+
+    <!-- movie specifications -->
+    <string name="original_title"><b>Título original:</b> %s</string>
+    <string name="genre"><b>Gênero:</b> %s</string>
+    <string name="episodes"><b>Episódios:</b> %s</string>
+    <string name="released"><b>Lançamento:</b> %s</string>
+    <string name="country"><b>País:</b> %s</string>
+    <string name="direction"><b>Direção:</b> %s</string>
+    <string name="budget"><b>Orçamento:</b> %s</string>
+    <string name="watch_too">Assistir também</string>
+    <string name="details">Detalhes</string>
+    <string name="play">Reproduzir</string>
+    <string name="specification">Especificações</string>
+
+    <!-- error messages -->
+    <string name="there_was_an_error_loading_videos">Houve um erro ao carregar os vídeos</string>
+    <string name="there_was_an_error_loading_video_details">Houve um erro ao carregar os detalhes do vídeo</string>
+    <string name="movie_image">Capa do filme</string>
+    <string name="there_was_an_error_loading_similar_movies">Houve um erro ao carregar os filmes similares</string>
+    <string name="there_was_an_error_when_favorite_the_movie">Houve um erro ao favoritar o filme. Por favor, tente novamente.</string>
+    <string name="there_was_an_error_to_serach_movies">Houve um erro ao pesquisar filmes.</string>
+</resources>
