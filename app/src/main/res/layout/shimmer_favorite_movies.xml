@@ -8,11 +8,11 @@
     <View
         android:id="@+id/shimmerTopVideo1"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="24dp"
-        android:layout_marginHorizontal="8dp"
+        android:layout_marginStart="8dp"
         android:background="@drawable/bg_list_view"
-        android:backgroundTint="@android:color/darker_gray"
+        android:backgroundTint="@color/splash_background"
         app:layout_constraintEnd_toStartOf="@+id/shimmerTopVideo2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,11 +21,11 @@
     <View
         android:id="@+id/shimmerTopVideo2"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="24dp"
-        android:layout_marginHorizontal="8dp"
+        android:layout_marginStart="8dp"
         android:background="@drawable/bg_list_view"
-        android:backgroundTint="@android:color/darker_gray"
+        android:backgroundTint="@color/splash_background"
         app:layout_constraintEnd_toStartOf="@+id/shimmerTopVideo3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/shimmerTopVideo1"
@@ -34,11 +34,11 @@
     <View
         android:id="@+id/shimmerTopVideo3"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="24dp"
         android:layout_marginHorizontal="8dp"
         android:background="@drawable/bg_list_view"
-        android:backgroundTint="@android:color/darker_gray"
+        android:backgroundTint="@color/splash_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/shimmerTopVideo2"
@@ -47,10 +47,10 @@
     <View
         android:id="@+id/shimmerTopVideo4"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/bg_list_view"
-        android:backgroundTint="@android:color/darker_gray"
+        android:backgroundTint="@color/splash_background"
         app:layout_constraintStart_toStartOf="@+id/shimmerTopVideo1"
         app:layout_constraintEnd_toEndOf="@id/shimmerTopVideo1"
         app:layout_constraintTop_toBottomOf="@id/shimmerTopVideo1" />
@@ -58,10 +58,10 @@
     <View
         android:id="@+id/shimmerTopVideo5"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/bg_list_view"
-        android:backgroundTint="@android:color/darker_gray"
+        android:backgroundTint="@color/splash_background"
         app:layout_constraintStart_toStartOf="@id/shimmerTopVideo2"
         app:layout_constraintEnd_toEndOf="@id/shimmerTopVideo2"
         app:layout_constraintTop_toBottomOf="@id/shimmerTopVideo2" />
@@ -69,10 +69,10 @@
     <View
         android:id="@+id/shimmerTopVideo6"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/bg_list_view"
-        android:backgroundTint="@android:color/darker_gray"
+        android:backgroundTint="@color/splash_background"
         app:layout_constraintStart_toStartOf="@id/shimmerTopVideo3"
         app:layout_constraintEnd_toEndOf="@id/shimmerTopVideo3"
         app:layout_constraintTop_toBottomOf="@id/shimmerTopVideo3" />
@@ -80,10 +80,10 @@
     <View
         android:id="@+id/shimmerTopVideo7"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/bg_list_view"
-        android:backgroundTint="@android:color/darker_gray"
+        android:backgroundTint="@color/splash_background"
         app:layout_constraintStart_toStartOf="@+id/shimmerTopVideo4"
         app:layout_constraintEnd_toEndOf="@id/shimmerTopVideo4"
         app:layout_constraintTop_toBottomOf="@id/shimmerTopVideo4" />
@@ -91,10 +91,10 @@
     <View
         android:id="@+id/shimmerTopVideo8"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/bg_list_view"
-        android:backgroundTint="@android:color/darker_gray"
+        android:backgroundTint="@color/splash_background"
         app:layout_constraintStart_toStartOf="@id/shimmerTopVideo5"
         app:layout_constraintEnd_toEndOf="@id/shimmerTopVideo5"
         app:layout_constraintTop_toBottomOf="@id/shimmerTopVideo5" />
@@ -102,10 +102,10 @@
     <View
         android:id="@+id/shimmerTopVideo9"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/bg_list_view"
-        android:backgroundTint="@android:color/darker_gray"
+        android:backgroundTint="@color/splash_background"
         app:layout_constraintStart_toStartOf="@id/shimmerTopVideo6"
         app:layout_constraintEnd_toEndOf="@id/shimmerTopVideo6"
         app:layout_constraintTop_toBottomOf="@id/shimmerTopVideo6" />

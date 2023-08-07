@@ -18,6 +18,7 @@ interface MovieRepository {
     suspend fun getMovieDetails(language: String?, movieId: String): MovieDetails
     suspend fun favoriteMovie(favorite: Favorite)
     suspend fun getMovieVideos(movieId: String): MovieVideos
+    suspend fun searchMovies(query: String): MovieList
 }
 
 class ListsRepositoryImpl(
@@ -61,6 +62,10 @@ class ListsRepositoryImpl(
 
     override suspend fun getMovieVideos(movieId: String): MovieVideos {
         return movieApi.getMovieVideos(movieId)
+    }
+
+    override suspend fun searchMovies(query: String): MovieList {
+        return movieApi.searchMovies(null, query)
     }
 
 }

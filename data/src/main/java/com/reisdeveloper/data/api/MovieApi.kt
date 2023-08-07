@@ -72,6 +72,6 @@ interface MovieApi {
     suspend fun searchMovies(
         @Query("language") language: String? = "pt-BR",
         @Query("query") query: String
-    ): MovieVideos
+    ): MovieList
 
 }

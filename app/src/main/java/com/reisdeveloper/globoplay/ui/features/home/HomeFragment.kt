@@ -2,18 +2,23 @@ package com.reisdeveloper.globoplay.ui.features.home
 
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.reisdeveloper.globoplay.R
 import com.reisdeveloper.globoplay.base.BaseFragment
 import com.reisdeveloper.globoplay.databinding.FragmentHomeBinding
 import com.reisdeveloper.globoplay.extensions.safeNavigate
 import com.reisdeveloper.globoplay.ui.features.movie.details.MovieDetailsFragment
+import com.reisdeveloper.globoplay.ui.features.mylist.MyListAdapter
 import com.reisdeveloper.globoplay.ui.uiModel.MovieUiModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -24,6 +29,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 ) {
 
     override val viewModel: HomeViewModel by viewModel()
+
+    private lateinit var sheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     private var popularMoviesAdapter = MovieListAdapter(
         object : MovieListAdapter.Listener {
@@ -57,6 +64,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         }
     )
 
+    private val searchListAdapter = MyListAdapter(object : MyListAdapter.Listener {
+        override fun onItemClick(movie: MovieUiModel) {
+            openMovieDetails(movie)
+        }
+    })
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -64,10 +77,40 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
         setupObserver()
 
+        setupSearchView()
+
+        setupSearchResults()
+
         viewModel.getPopularMovies()
         viewModel.getNowPlayingMovies()
         viewModel.getTopRatedMovies()
         viewModel.getUpcomingMovies()
+    }
+
+    private fun setupSearchView() {
+        binding.searchHome.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    viewModel.searchMovies(query)
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+    }
+
+    private fun setupSearchResults() {
+        sheetBehavior = BottomSheetBehavior.from(binding.includeMovieList.movieList)
+        sheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        sheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {}
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+        })
     }
 
     private fun setupAdapters() {
@@ -86,15 +129,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         binding.rvUpcoming.adapter = upcomingMoviesAdapter
         binding.rvUpcoming.layoutManager =
             LinearLayoutManager(binding.rvUpcoming.context, LinearLayoutManager.HORIZONTAL, false)
-    }
 
-    private fun openMovieDetails(item: MovieUiModel) {
-        findNavController().safeNavigate(
-            R.id.action_goto_movie_details,
-            Bundle().apply {
-                putParcelable(MovieDetailsFragment.EXTRA_MOVIE, item)
-            }
-        )
+        with(binding.includeMovieList.rvMyList) {
+            adapter = searchListAdapter
+            layoutManager = GridLayoutManager(this.context, 3)
+            setHasFixedSize(false)
+            isNestedScrollingEnabled = false
+        }
     }
 
     private fun setupObserver() {
@@ -149,5 +190,35 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
                 }
             }
         }
+
+        lifecycleScope.launch {
+            viewModel.screen.collectLatest { state ->
+                when (state) {
+                    is HomeViewModel.Screen.Error -> {
+
+                    }
+                    is HomeViewModel.Screen.Loading -> {
+                        /*onLoading(
+                            binding.contentMyList,
+                            R.layout.shimmer_favorite_movies,
+                            state.loading
+                        )*/
+                    }
+                    is HomeViewModel.Screen.SearchedMovies -> {
+                        searchListAdapter.setItems(state.movies)
+                        sheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                    }
+                }
+            }
+        }
+    }
+
+    private fun openMovieDetails(item: MovieUiModel) {
+        findNavController().safeNavigate(
+            R.id.action_goto_movie_details,
+            Bundle().apply {
+                putParcelable(MovieDetailsFragment.EXTRA_MOVIE, item)
+            }
+        )
     }
 }

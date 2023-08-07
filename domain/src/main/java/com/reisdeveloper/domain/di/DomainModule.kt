@@ -10,6 +10,7 @@ import com.reisdeveloper.domain.usecases.GetPopularMoviesUseCase
 import com.reisdeveloper.domain.usecases.GetSimilarMoviesUseCase
 import com.reisdeveloper.domain.usecases.GetTopRatedMoviesUseCase
 import com.reisdeveloper.domain.usecases.GetUpcomingMoviesUseCase
+import com.reisdeveloper.domain.usecases.SearchMoviesUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -23,4 +24,5 @@ val domainModule = module {
     single { GetNowPlayingMoviesUseCase(get()) }
     single { GetTopRatedMoviesUseCase(get()) }
     single { GetUpcomingMoviesUseCase(get()) }
+    single { SearchMoviesUseCase(get()) }
 }

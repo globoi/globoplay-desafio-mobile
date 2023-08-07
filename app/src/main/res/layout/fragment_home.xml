@@ -7,7 +7,7 @@
     tools:context=".ui.features.home.HomeFragment">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtHomeTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black"
@@ -21,12 +21,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_search_rounded"
+        android:inputType="text|textNoSuggestions"
+        android:textColor="@color/splash_background"
+        android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
+        app:closeIcon="@drawable/ic_close"
+        app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/txtHomeTitle"
+        app:queryBackground="@android:color/transparent"
+        app:searchIcon="@drawable/ic_search_24"
+        app:submitBackground="@android:color/transparent"
+        app:voiceIcon="@drawable/ic_mic_none_24" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchHome">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/text_home"
@@ -61,8 +84,8 @@
                 android:clipToPadding="false"
                 android:contentDescription="@string/my_list"
                 android:orientation="horizontal"
-                android:paddingHorizontal="16dp"
                 android:overScrollMode="never"
+                android:paddingHorizontal="16dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toStartOf="@id/appendProgressNowPlaying"
                 app:layout_constraintStart_toStartOf="parent"
@@ -101,10 +124,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/inter_medium_500"
                 android:text="@string/popular"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/inter_medium_500"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvNowPlaying" />
@@ -132,10 +155,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/inter_medium_500"
                 android:text="@string/top_rated"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/inter_medium_500"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvPopular" />
@@ -162,10 +185,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/inter_medium_500"
                 android:text="@string/upcoming"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/inter_medium_500"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvTopRated" />
@@ -189,5 +212,20 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchHome">
+
+        <include
+            android:id="@+id/includeMovieList"
+            layout="@layout/include_movie_list" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

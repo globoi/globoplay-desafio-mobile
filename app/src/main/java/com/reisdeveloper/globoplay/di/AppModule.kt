@@ -15,5 +15,5 @@ val appModule = module {
     viewModel { WatchViewModel(get()) }
     viewModel { MovieMoreDetailsViewModel(get()) }
     viewModel { PlayerMovieViewModel(get()) }
-    viewModel { HomeViewModel(get(), get(), get(), get()) }
+    viewModel { HomeViewModel(get(), get(), get(), get(), get()) }
 }
