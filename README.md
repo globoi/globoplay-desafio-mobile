@@ -57,7 +57,7 @@ Arquitetura pensada visando a facilidade na manutenção futura e escalabilidade
 * Testes unitários `OK - porém necessário aumentar a cobertura de testes`;
 * Testes instrumentados `NOT OK - pelo tempo`;
 * Testes funcionais `NOT OK`;
-* Pipeline Automatizado `NOT OK`;
+* Pipeline Automatizado `NOT OK - precisaria de mais tempo para acertar o erro das secrets do github`;
 * Player de vídeo `OK`;
 
 ## ToDo's

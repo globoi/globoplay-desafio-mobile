@@ -32,6 +32,12 @@ jobs:
 
       - name: Build and Generate APK
         run: ./gradlew assembleDebug
+        env:
+          API_ACCESS_TOKEN: ${{ secrets.API_ACCESS_TOKEN }}
+          ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
+
+      - name: Build and Generate APK
+        run: ./gradlew assembleDebug
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v2
