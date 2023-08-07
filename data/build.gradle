@@ -9,6 +9,7 @@ android {
     
     namespace 'com.reisdeveloper.data'
     compileSdk 33
+    compileSdkVersion 33
 
     defaultConfig {
         minSdk 24
