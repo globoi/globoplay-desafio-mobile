@@ -4,20 +4,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.SearchView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.isVisible
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.reisdeveloper.domain.MovieListType
 import com.reisdeveloper.globoplay.R
 import com.reisdeveloper.globoplay.base.BaseFragment
 import com.reisdeveloper.globoplay.databinding.FragmentHomeBinding
 import com.reisdeveloper.globoplay.extensions.safeNavigate
 import com.reisdeveloper.globoplay.ui.features.movie.details.MovieDetailsFragment
+import com.reisdeveloper.globoplay.ui.features.movie.moreMovies.MoreMoviesListFragment.Companion.EXTRA_MOVIE_TYPE
 import com.reisdeveloper.globoplay.ui.features.mylist.MyListAdapter
 import com.reisdeveloper.globoplay.ui.uiModel.MovieUiModel
 import kotlinx.coroutines.flow.collectLatest
@@ -32,34 +30,34 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     private lateinit var sheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
-    private var popularMoviesAdapter = MovieListAdapter(
-        object : MovieListAdapter.Listener {
-            override fun onClickItem(item: MovieUiModel) {
-                openMovieDetails(item)
+    private var nowPlayingMoviesAdapter = HomeMovieListAdapter(
+        object : HomeMovieListAdapter.Listener {
+            override fun onItemClick(movie: MovieUiModel) {
+                openMovieDetails(movie)
             }
         }
     )
 
-    private var topRatedMoviesAdapter = MovieListAdapter(
-        object : MovieListAdapter.Listener {
-            override fun onClickItem(item: MovieUiModel) {
-                openMovieDetails(item)
+    private var popularMoviesAdapter = HomeMovieListAdapter(
+        object : HomeMovieListAdapter.Listener {
+            override fun onItemClick(movie: MovieUiModel) {
+                openMovieDetails(movie)
             }
         }
     )
 
-    private var nowPlayingMoviesAdapter = MovieListAdapter(
-        object : MovieListAdapter.Listener {
-            override fun onClickItem(item: MovieUiModel) {
-                openMovieDetails(item)
+    private var topRatedMoviesAdapter = HomeMovieListAdapter(
+        object : HomeMovieListAdapter.Listener {
+            override fun onItemClick(movie: MovieUiModel) {
+                openMovieDetails(movie)
             }
         }
     )
 
-    private var upcomingMoviesAdapter = MovieListAdapter(
-        object : MovieListAdapter.Listener {
-            override fun onClickItem(item: MovieUiModel) {
-                openMovieDetails(item)
+    private var upcomingMoviesAdapter = HomeMovieListAdapter(
+        object : HomeMovieListAdapter.Listener {
+            override fun onItemClick(movie: MovieUiModel) {
+                openMovieDetails(movie)
             }
         }
     )
@@ -73,6 +71,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupClickMore()
+
         setupAdapters()
 
         setupObserver()
@@ -81,10 +81,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
         setupSearchResults()
 
-        viewModel.getPopularMovies()
         viewModel.getNowPlayingMovies()
+        viewModel.getPopularMovies()
         viewModel.getTopRatedMovies()
         viewModel.getUpcomingMovies()
+    }
+
+    private fun setupClickMore() {
+        binding.txtHomeNowPlayingMore.setOnClickListener { openMoreMovies(MovieListType.NOW_PLAYING) }
+        binding.txtHomePopularMore.setOnClickListener { openMoreMovies(MovieListType.POPULAR) }
+        binding.txtTopRatedMore.setOnClickListener { openMoreMovies(MovieListType.TOP_RATED) }
+        binding.txtUpcomingMore.setOnClickListener { openMoreMovies(MovieListType.UPCOMING) }
+    }
+
+    private fun openMoreMovies(movieListType: MovieListType) {
+        findNavController().safeNavigate(
+            R.id.action_navigation_home_to_navigation_more_movies,
+            Bundle().apply {
+                putSerializable(EXTRA_MOVIE_TYPE, movieListType)
+            }
+        )
     }
 
     private fun setupSearchView() {
@@ -140,65 +156,34 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     private fun setupObserver() {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getNowPlayingMovies().collectLatest {
-                    nowPlayingMoviesAdapter.submitData(it)
-                }
-
-                viewModel.getPopularMovies().collectLatest {
-                    popularMoviesAdapter.submitData(it)
-                }
-
-                viewModel.getTopRatedMovies().collectLatest {
-                    topRatedMoviesAdapter.submitData(it)
-                }
-
-                viewModel.getUpcomingMovies().collectLatest {
-                    upcomingMoviesAdapter.submitData(it)
-                }
-            }
-        }
-
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                nowPlayingMoviesAdapter.loadStateFlow.collect {
-                    binding.prepProgressNowPlaying.isVisible =
-                        it.source.prepend is LoadState.Loading
-                    binding.appendProgressNowPlaying.isVisible =
-                        it.source.append is LoadState.Loading
-                }
-
-                popularMoviesAdapter.loadStateFlow.collect {
-                    binding.prepProgressNowPlaying.isVisible =
-                        it.source.prepend is LoadState.Loading
-                    binding.appendProgressNowPlaying.isVisible =
-                        it.source.append is LoadState.Loading
-                }
-
-                topRatedMoviesAdapter.loadStateFlow.collect {
-                    binding.prepProgressNowPlaying.isVisible =
-                        it.source.prepend is LoadState.Loading
-                    binding.appendProgressNowPlaying.isVisible =
-                        it.source.append is LoadState.Loading
-                }
-
-                upcomingMoviesAdapter.loadStateFlow.collect {
-                    binding.prepProgressNowPlaying.isVisible =
-                        it.source.prepend is LoadState.Loading
-                    binding.appendProgressNowPlaying.isVisible =
-                        it.source.append is LoadState.Loading
-                }
-            }
-        }
-
-        lifecycleScope.launch {
             viewModel.screen.collectLatest { state ->
                 when (state) {
                     is HomeViewModel.Screen.Error -> {
                         sheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
                         showError(getString(R.string.there_was_an_error_to_serach_movies))
                     }
-                    is HomeViewModel.Screen.Loading -> {
+                    is HomeViewModel.Screen.LoadingNowPlaying -> shimmerLoading(
+                            binding.contentNowPlaying,
+                            R.layout.shimmer_home_movie_list,
+                            state.loading
+                        )
+                    is HomeViewModel.Screen.LoadingPopular -> shimmerLoading(
+                            binding.contentPopular,
+                            R.layout.shimmer_home_movie_list,
+                            state.loading
+                        )
+                    is HomeViewModel.Screen.LoadingTopRated -> shimmerLoading(
+                            binding.contentTopRated,
+                            R.layout.shimmer_home_movie_list,
+                            state.loading
+                        )
+                    is HomeViewModel.Screen.LoadingUpcoming -> shimmerLoading(
+                        binding.contentUpcoming,
+                        R.layout.shimmer_home_movie_list,
+                        state.loading
+                    )
+
+                    is HomeViewModel.Screen.LoadingSearch -> {
                         sheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
                         shimmerLoading(
                             binding.includeMovieList.movieList,
@@ -209,6 +194,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
                     is HomeViewModel.Screen.SearchedMovies -> {
                         searchListAdapter.setItems(state.movies)
                     }
+
+                    is HomeViewModel.Screen.NowPlayingList -> {
+                        nowPlayingMoviesAdapter.setItems(state.movies)
+                    }
+                    is HomeViewModel.Screen.PopularList -> {
+                        popularMoviesAdapter.setItems(state.movies)
+                    }
+
+                    is HomeViewModel.Screen.TopRatedList -> {
+                        topRatedMoviesAdapter.setItems(state.movies)
+                    }
+                    is HomeViewModel.Screen.UpcomingList -> {
+                        upcomingMoviesAdapter.setItems(state.movies)
+                    }
+
                 }
             }
         }

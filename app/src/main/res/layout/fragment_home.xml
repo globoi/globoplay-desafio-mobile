@@ -77,47 +77,44 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNowPlaying"
+            <TextView
+                android:id="@+id/txtHomeNowPlayingMore"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:clipToPadding="false"
-                android:contentDescription="@string/my_list"
-                android:orientation="horizontal"
-                android:overScrollMode="never"
-                android:paddingHorizontal="16dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintEnd_toStartOf="@id/appendProgressNowPlaying"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtHomeNowPlaying"
-                tools:ignore="UnusedAttribute"
-                tools:listitem="@layout/item_my_list" />
-
-            <com.google.android.material.progressindicator.CircularProgressIndicator
-                android:id="@+id/prepProgressNowPlaying"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="52dp"
-                android:indeterminate="true"
-                app:indicatorColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@id/txtHomePopular"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtHomeNowPlaying" />
-
-            <com.google.android.material.progressindicator.CircularProgressIndicator
-                android:id="@+id/appendProgressNowPlaying"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="52dp"
                 android:layout_marginEnd="16dp"
-                android:indeterminate="true"
-                app:indicatorColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/txtHomePopular"
+                android:fontFamily="@font/inter_medium_500"
+                android:text="@string/more"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txtHomeNowPlaying"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtHomeNowPlaying" />
+                app:layout_constraintTop_toTopOf="@+id/txtHomeNowPlaying" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contentNowPlaying"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtHomeNowPlaying">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvNowPlaying"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:clipToPadding="false"
+                    android:contentDescription="@string/my_list"
+                    android:orientation="horizontal"
+                    android:overScrollMode="never"
+                    android:paddingHorizontal="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="UnusedAttribute"
+                    tools:listitem="@layout/item_my_list" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/txtHomePopular"
@@ -131,24 +128,45 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvNowPlaying" />
+                app:layout_constraintTop_toBottomOf="@id/contentNowPlaying" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvPopular"
+            <TextView
+                android:id="@+id/txtHomePopularMore"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:clipToPadding="true"
-                android:contentDescription="@string/my_list"
-                android:orientation="horizontal"
-                android:paddingHorizontal="24dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/inter_medium_500"
+                android:text="@string/more"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/txtHomePopular"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toTopOf="@id/txtHomePopular" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contentPopular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtHomePopular"
-                tools:ignore="UnusedAttribute"
-                tools:listitem="@layout/item_my_list" />
+                app:layout_constraintTop_toBottomOf="@+id/txtHomePopular">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPopular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:clipToPadding="false"
+                    android:contentDescription="@string/my_list"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="UnusedAttribute"
+                    tools:listitem="@layout/item_my_list" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/txtTopRated"
@@ -162,23 +180,45 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvPopular" />
+                app:layout_constraintTop_toBottomOf="@id/contentPopular" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTopRated"
+            <TextView
+                android:id="@+id/txtTopRatedMore"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:clipToPadding="true"
-                android:contentDescription="@string/my_list"
-                android:orientation="horizontal"
-                android:paddingHorizontal="24dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/inter_medium_500"
+                android:text="@string/more"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/txtTopRated"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txtTopRated" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contentTopRated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtTopRated"
-                tools:ignore="UnusedAttribute"
-                tools:listitem="@layout/item_my_list" />
+                app:layout_constraintTop_toBottomOf="@+id/txtTopRated">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTopRated"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:clipToPadding="false"
+                    android:contentDescription="@string/my_list"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="UnusedAttribute"
+                    tools:listitem="@layout/item_my_list" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/txtUpcoming"
@@ -192,23 +232,45 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvTopRated" />
+                app:layout_constraintTop_toBottomOf="@id/contentTopRated" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvUpcoming"
+            <TextView
+                android:id="@+id/txtUpcomingMore"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:clipToPadding="true"
-                android:contentDescription="@string/my_list"
-                android:orientation="horizontal"
-                android:paddingHorizontal="24dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/inter_medium_500"
+                android:text="@string/more"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/txtUpcoming"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txtUpcoming" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contentUpcoming"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtUpcoming"
-                tools:ignore="UnusedAttribute"
-                tools:listitem="@layout/item_my_list" />
+                app:layout_constraintTop_toBottomOf="@+id/txtUpcoming">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvUpcoming"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:clipToPadding="false"
+                    android:contentDescription="@string/my_list"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="UnusedAttribute"
+                    tools:listitem="@layout/item_my_list" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

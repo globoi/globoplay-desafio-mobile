@@ -6,27 +6,28 @@ import com.reisdeveloper.data.dataModel.Movie
 import com.reisdeveloper.data.repository.MovieRepository
 import java.io.IOException
 
-class MoviePagingSource(
+class MoviePagingSource2(
     private val movieRepository: MovieRepository,
-    private val movieListType: MovieListType
+    private val movieListType: Int
 ) : PagingSource<Int, Movie>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         val pageIndex = params.key ?: STARTING_KEY
         return try {
             val response = when (movieListType) {
-                MovieListType.NOW_PLAYING ->
+                MovieListType.NOW_PLAYING.ordinal ->
                     movieRepository.getNowPlaying(DEFAULT_LANGUAGE, pageIndex)
 
-                MovieListType.POPULAR ->
+                MovieListType.POPULAR.ordinal ->
                     movieRepository.getPopularMovies(DEFAULT_LANGUAGE, pageIndex)
 
-                MovieListType.TOP_RATED ->
+                MovieListType.TOP_RATED.ordinal ->
                     movieRepository.getTopRatedMovies(DEFAULT_LANGUAGE, pageIndex)
 
-                MovieListType.UPCOMING ->
+                MovieListType.UPCOMING.ordinal ->
                     movieRepository.getUpcomingMovies(DEFAULT_LANGUAGE, pageIndex)
 
+                else -> {movieRepository.getNowPlaying(DEFAULT_LANGUAGE, pageIndex)}
             }
 
             LoadResult.Page(

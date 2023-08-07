@@ -4,6 +4,8 @@ import com.reisdeveloper.domain.usecases.FavoriteMovieUseCase
 import com.reisdeveloper.domain.usecases.GetFavoriteMoviesUseCase
 import com.reisdeveloper.domain.usecases.GetListUseCase
 import com.reisdeveloper.domain.usecases.GetMovieDetailsUseCase
+import com.reisdeveloper.domain.usecases.GetMovieListPagingUseCase
+import com.reisdeveloper.domain.usecases.GetMovieListUseCase
 import com.reisdeveloper.domain.usecases.GetMovieVideosUseCase
 import com.reisdeveloper.domain.usecases.GetNowPlayingMoviesUseCase
 import com.reisdeveloper.domain.usecases.GetPopularMoviesUseCase
@@ -25,4 +27,6 @@ val domainModule = module {
     single { GetTopRatedMoviesUseCase(get()) }
     single { GetUpcomingMoviesUseCase(get()) }
     single { SearchMoviesUseCase(get()) }
+    single { GetMovieListUseCase(get()) }
+    single { GetMovieListPagingUseCase(get()) }
 }

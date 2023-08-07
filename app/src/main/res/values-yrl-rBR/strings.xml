@@ -33,4 +33,5 @@
     <string name="there_was_an_error_loading_similar_movies">Houve um erro ao carregar os filmes similares</string>
     <string name="there_was_an_error_when_favorite_the_movie">Houve um erro ao favoritar o filme. Por favor, tente novamente.</string>
     <string name="there_was_an_error_to_serach_movies">Houve um erro ao pesquisar filmes.</string>
+    <string name="more">Ver mais</string>
 </resources>

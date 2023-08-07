@@ -32,4 +32,5 @@
     <string name="there_was_an_error_loading_similar_movies">There was an error loading the similar movies</string>
     <string name="there_was_an_error_when_favorite_the_movie">There was an error when favorite the movie. Please try again.</string>
     <string name="there_was_an_error_to_serach_movies">There was an error ro search movies.</string>
+    <string name="more">See more</string>
 </resources>
