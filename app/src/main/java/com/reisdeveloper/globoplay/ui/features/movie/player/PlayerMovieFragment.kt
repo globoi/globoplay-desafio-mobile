@@ -45,7 +45,7 @@ class PlayerMovieFragment : BaseFragment<FragmentPlayerBinding, PlayerMovieViewM
 
                     is PlayerMovieViewModel.Screen.GetMovieVideos -> {
                         youtubePlayer?.loadVideo(
-                            state.movies.results.filter { it.site == "YouTube" }.random().key,
+                            state.movies.results.filter { it.site == YOUTUBE }.random().key,
                             0f
                         )
                         youtubePlayer?.play()
@@ -106,5 +106,6 @@ class PlayerMovieFragment : BaseFragment<FragmentPlayerBinding, PlayerMovieViewM
 
     companion object {
         const val EXTRA_MOVIE_ID = "EXTRA_MOVIE_ID"
+        const val YOUTUBE = "YouTube"
     }
 }
