@@ -11,6 +11,8 @@ buildscript {
         youtubePlayer = "12.1.0"
         paging = "3.2.0"
         turbine = "0.13.0"
+        junit = "4.13.2"
+        coroutineTests = "1.6.4"
     }
 }
 plugins {

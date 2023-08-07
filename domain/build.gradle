@@ -42,4 +42,7 @@ dependencies {
 
     //Turbine for testing the flows
     testImplementation "app.cash.turbine:turbine:$rootProject.turbine"
+    testImplementation "junit:junit:$rootProject.junit"
+
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutineTests"
 }
