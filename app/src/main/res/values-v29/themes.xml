@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.ListenerAccuracy" parent="Theme.Globoplay">
+        <!-- Transparent system bars for edge-to-edge. -->
+        <item name="android:navigationBarColor">?attr/colorPrimary</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+    </style>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/imgItemMyList"
+    android:layout_width="wrap_content"
+    android:layout_height="250dp"
+    android:layout_marginEnd="8dp"
+    android:src="@drawable/bg_holder"
+    android:backgroundTint="@color/light_gray"
+    android:contentDescription="@string/image_movie"/>

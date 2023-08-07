@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.reisdeveloper.globoplay.ui.features.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_more_movies"
+            app:destination="@id/navigation_more_movies"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_favorite_movies"
+        android:name="com.reisdeveloper.globoplay.ui.features.mylist.MyListFragment"
+        android:label="@string/title_my_list"
+        tools:layout="@layout/fragment_my_list" >
+        <action
+            android:id="@+id/action_navigation_favorite_movies_to_navigation_movie_details"
+            app:destination="@id/navigation_movie_details"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_movie_details"
+        android:name="com.reisdeveloper.globoplay.ui.features.movie.details.MovieDetailsFragment"
+        android:label="@string/title_my_list"
+        tools:layout="@layout/fragment_movie_details" >
+        <action
+            android:id="@+id/action_navigation_movie_details_to_navigation_movie_player"
+            app:destination="@id/navigation_movie_player"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_movie_player"
+        android:name="com.reisdeveloper.globoplay.ui.features.movie.player.PlayerMovieFragment"
+        android:label="@string/title_my_list"
+        tools:layout="@layout/fragment_player" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_more_movies"
+        android:name="com.reisdeveloper.globoplay.ui.features.movie.moreMovies.MoreMoviesListFragment"
+        android:label="@string/title_my_list"
+        tools:layout="@layout/fragment_my_list" >
+    </fragment>
+
+    <action
+        android:id="@+id/action_goto_movie_details"
+        app:destination="@id/navigation_movie_details"
+        app:enterAnim="@anim/slide_in"
+        app:exitAnim="@anim/slide_out"
+        app:popEnterAnim="@anim/slide_in_pop"
+        app:popExitAnim="@anim/slide_out_pop"/>
+
+</navigation>

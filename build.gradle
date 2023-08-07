@@ -1,0 +1,22 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        kotlin_version = '1.8.0'
+        koinVersion = '3.4.0'
+        junitVersion = '4.13.2'
+        retrofitVersion = '2.9.0'
+        okhttpLoggingInterceptorVersion = '4.11.0'
+        glide = "4.15.1"
+        shimmer = "0.5.0"
+        youtubePlayer = "12.1.0"
+        paging = "3.2.0"
+        turbine = "0.13.0"
+        junit = "4.13.2"
+        coroutineTests = "1.6.4"
+    }
+}
+plugins {
+    id 'com.android.application' version '8.0.2' apply false
+    id 'com.android.library' version '8.0.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
+}
