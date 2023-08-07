@@ -1,6 +1,7 @@
 package com.reisdeveloper.globoplay.base
 
 import androidx.lifecycle.ViewModel
+import com.reisdeveloper.domain.Error
 import com.reisdeveloper.domain.OnCompletionBaseViewModel
 import com.reisdeveloper.domain.OnErrorBaseViewModel
 import com.reisdeveloper.domain.OnLoadingBaseViewModel
@@ -50,6 +51,7 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope {
         onCompletionBaseViewModel?.invoke()
     }.catch {
         onLoadingBaseViewModel?.invoke(false)
+        onError?.invoke(Error.UnknownException(it))
     }.launchIn(CoroutineScope(coroutineContext))
 
 }

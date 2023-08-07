@@ -1,4 +1,4 @@
-package com.reisdeveloper.globoplay.util
+package com.reisdeveloper.globoplay.extensions
 
 import android.os.Build
 import androidx.annotation.RequiresApi

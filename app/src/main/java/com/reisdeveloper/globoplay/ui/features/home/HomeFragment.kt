@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.reisdeveloper.globoplay.R
 import com.reisdeveloper.globoplay.base.BaseFragment
 import com.reisdeveloper.globoplay.databinding.FragmentHomeBinding
-import com.reisdeveloper.globoplay.ui.features.movie.main.MovieDetailsFragment
+import com.reisdeveloper.globoplay.extensions.safeNavigate
+import com.reisdeveloper.globoplay.ui.features.movie.details.MovieDetailsFragment
 import com.reisdeveloper.globoplay.ui.uiModel.MovieUiModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -88,7 +89,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     }
 
     private fun openMovieDetails(item: MovieUiModel) {
-        findNavController().navigate(
+        findNavController().safeNavigate(
             R.id.action_goto_movie_details,
             Bundle().apply {
                 putParcelable(MovieDetailsFragment.EXTRA_MOVIE, item)

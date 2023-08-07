@@ -1,5 +1,6 @@
 package com.reisdeveloper.data.repository
 
+import com.reisdeveloper.data.BuildConfig
 import com.reisdeveloper.data.api.MovieApi
 import com.reisdeveloper.data.dataModel.Favorite
 import com.reisdeveloper.data.dataModel.MovieDetails
@@ -11,11 +12,11 @@ interface MovieRepository {
     suspend fun getPopularMovies(language: String?, page: Int): MovieList
     suspend fun getTopRatedMovies(language: String?, page: Int): MovieList
     suspend fun getUpcomingMovies(language: String?, page: Int): MovieList
-    suspend fun getMyLists(accountId: String): MovieList
-    suspend fun getFavoriteMovies(accountId: String): MovieList
-    suspend fun getSimilarMovies(movieId: String): MovieList
+    suspend fun getMyLists(): MovieList
+    suspend fun getFavoriteMovies(): MovieList
+    suspend fun getSimilarMovies(movieId: String, language: String? = null): MovieList
     suspend fun getMovieDetails(language: String?, movieId: String): MovieDetails
-    suspend fun favoriteMovie(accountId: String, favorite: Favorite)
+    suspend fun favoriteMovie(favorite: Favorite)
     suspend fun getMovieVideos(movieId: String): MovieVideos
 }
 
@@ -38,24 +39,24 @@ class ListsRepositoryImpl(
         return movieApi.getUpcomingMovies(language, page)
     }
 
-    override suspend fun getMyLists(accountId: String): MovieList {
-        return movieApi.getMyLists(accountId)
+    override suspend fun getMyLists(): MovieList {
+        return movieApi.getMyLists(BuildConfig.ACCOUNT_ID)
     }
 
-    override suspend fun getFavoriteMovies(accountId: String): MovieList {
-        return movieApi.getFavoriteMovies(accountId)
+    override suspend fun getFavoriteMovies(): MovieList {
+        return movieApi.getFavoriteMovies(BuildConfig.ACCOUNT_ID)
     }
 
-    override suspend fun getSimilarMovies(movieId: String): MovieList {
-        return movieApi.getSimilarMovies(movieId)
+    override suspend fun getSimilarMovies(movieId: String, language: String?): MovieList {
+        return movieApi.getSimilarMovies(movieId, language)
     }
 
     override suspend fun getMovieDetails(language: String?, movieId: String): MovieDetails {
         return movieApi.getMovieDetails(movieId, language)
     }
 
-    override suspend fun favoriteMovie(accountId: String, favorite: Favorite) {
-        movieApi.favoriteMovie(accountId, favorite)
+    override suspend fun favoriteMovie(favorite: Favorite) {
+        movieApi.favoriteMovie(BuildConfig.ACCOUNT_ID, favorite)
     }
 
     override suspend fun getMovieVideos(movieId: String): MovieVideos {

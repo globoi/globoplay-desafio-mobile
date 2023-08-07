@@ -1,9 +1,9 @@
 package com.reisdeveloper.globoplay.di
 
 import com.reisdeveloper.globoplay.ui.features.home.HomeViewModel
-import com.reisdeveloper.globoplay.ui.features.movie.details.MovieMoreDetailsViewModel
+import com.reisdeveloper.globoplay.ui.features.movie.moreDetails.MovieMoreDetailsViewModel
 import com.reisdeveloper.globoplay.ui.features.movie.watchtoo.WatchViewModel
-import com.reisdeveloper.globoplay.ui.features.movie.main.MovieDetailsViewModel
+import com.reisdeveloper.globoplay.ui.features.movie.details.MovieDetailsViewModel
 import com.reisdeveloper.globoplay.ui.features.movie.player.PlayerMovieViewModel
 import com.reisdeveloper.globoplay.ui.features.mylist.MyListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel

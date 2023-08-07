@@ -14,8 +14,8 @@ class MyListViewModel(
     private val _screen = MutableSharedFlow<Screen>()
     val screen: SharedFlow<Screen> = _screen
 
-    fun getUserList(accountId: String) {
-        getFavoriteMoviesUseCase(accountId).singleExec(
+    fun getUserList() {
+        getFavoriteMoviesUseCase(Unit).singleExec(
             onLoadingBaseViewModel = {
                 _screen.emit(Screen.Loading(it))
             },

@@ -5,9 +5,9 @@ import com.reisdeveloper.data.repository.MovieRepository
 
 class GetFavoriteMoviesUseCase(
     private val userRepository: MovieRepository
-) : AbstractUseCase<String, MovieList>() {
+) : AbstractUseCase<Unit, MovieList>() {
 
-    override suspend fun execute(param: String): MovieList {
-        return userRepository.getFavoriteMovies(param)
+    override suspend fun execute(param: Unit): MovieList {
+        return userRepository.getFavoriteMovies()
     }
 }

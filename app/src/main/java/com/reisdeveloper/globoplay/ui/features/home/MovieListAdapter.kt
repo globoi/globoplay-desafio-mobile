@@ -7,14 +7,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.reisdeveloper.globoplay.R
 import com.reisdeveloper.globoplay.base.BASE_IMAGE_URL
-import com.reisdeveloper.globoplay.databinding.ItemMyListBinding
+import com.reisdeveloper.globoplay.databinding.ItemMovieBinding
 import com.reisdeveloper.globoplay.ui.uiModel.MovieUiModel
-import com.reisdeveloper.globoplay.util.toPx
+import com.reisdeveloper.globoplay.extensions.toPx
 
 class MovieListAdapter(
     private val listener: Listener
@@ -22,7 +21,7 @@ class MovieListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
         MovieViewHolder(
-            ItemMyListBinding.inflate(
+            ItemMovieBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false,
@@ -54,7 +53,7 @@ class MovieListAdapter(
     }
 
     class MovieViewHolder(
-        private val binding: ItemMyListBinding
+        private val binding: ItemMovieBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(movie: MovieUiModel) {
@@ -65,7 +64,6 @@ class MovieListAdapter(
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .apply(
                     RequestOptions().transform(
-                        CenterCrop(),
                         RoundedCorners(12.toPx(binding.root.context))
                     )
                 )

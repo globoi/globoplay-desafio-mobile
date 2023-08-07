@@ -23,9 +23,13 @@ class WatchViewModel(
                 _screen.emit(Screen.Error)
             },
             onSuccessBaseViewModel = { favoriteMovies ->
-                _screen.emit(Screen.WatchToo(favoriteMovies.results.map {
-                    it.toUiModel()
-                }))
+                _screen.emit(
+                    Screen.WatchToo(
+                        favoriteMovies.results.map {
+                            it.toUiModel()
+                        }
+                    )
+                )
             }
         )
     }

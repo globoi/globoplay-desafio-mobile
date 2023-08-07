@@ -4,10 +4,12 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.reisdeveloper.data.dataModel.Movie
 import com.reisdeveloper.data.repository.MovieRepository
+import java.io.IOException
 
 class MoviePagingSource(
     private val movieRepository: MovieRepository,
-    private val movieListType: MovieListType
+    private val movieListType: MovieListType,
+    private val movieId: String? = null
 ) : PagingSource<Int, Movie>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
@@ -25,6 +27,9 @@ class MoviePagingSource(
 
                 MovieListType.UPCOMING ->
                     movieRepository.getUpcomingMovies(DEFAULT_LANGUAGE, pageIndex)
+
+                MovieListType.SIMILAR ->
+                    movieRepository.getSimilarMovies(movieId ?: "", DEFAULT_LANGUAGE)
             }
 
             LoadResult.Page(
@@ -32,7 +37,7 @@ class MoviePagingSource(
                 prevKey = if (pageIndex == STARTING_KEY) null else STARTING_KEY - 1,
                 nextKey = if (response.results.isEmpty()) null else pageIndex + 1
             )
-        } catch (exception: Throwable) {
+        } catch (exception: IOException) {
             return LoadResult.Error(exception)
         }
     }

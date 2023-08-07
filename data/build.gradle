@@ -21,6 +21,7 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "API_ACCESS_TOKEN", "\"" + localProperties['API_ACCESS_TOKEN'] + "\"")
+            buildConfigField("String", "ACCOUNT_ID", "\"" + localProperties['ACCOUNT_ID'] + "\"")
         }
 
         release {

@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/navigation_movie_details"
-        android:name="com.reisdeveloper.globoplay.ui.features.movie.main.MovieDetailsFragment"
+        android:name="com.reisdeveloper.globoplay.ui.features.movie.details.MovieDetailsFragment"
         android:label="@string/title_my_list"
         tools:layout="@layout/fragment_movie_details" >
         <action

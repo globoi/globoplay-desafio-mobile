@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.reisdeveloper.globoplay.R
 import com.reisdeveloper.globoplay.base.BaseFragment
 import com.reisdeveloper.globoplay.databinding.FragmentMyListBinding
+import com.reisdeveloper.globoplay.extensions.safeNavigate
 import com.reisdeveloper.globoplay.ui.components.ShimmerLoadingView
-import com.reisdeveloper.globoplay.ui.features.movie.main.MovieDetailsFragment.Companion.EXTRA_MOVIE
+import com.reisdeveloper.globoplay.ui.features.movie.details.MovieDetailsFragment.Companion.EXTRA_FAVORITE
+import com.reisdeveloper.globoplay.ui.features.movie.details.MovieDetailsFragment.Companion.EXTRA_MOVIE
 import com.reisdeveloper.globoplay.ui.uiModel.MovieUiModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -24,10 +26,11 @@ class MyListFragment : BaseFragment<FragmentMyListBinding, MyListViewModel>(
 
     private val myListAdapter = MyListAdapter(object : MyListAdapter.Listener {
         override fun onItemClick(movie: MovieUiModel) {
-            findNavController().navigate(
+            findNavController().safeNavigate(
                 R.id.action_navigation_favorite_movies_to_navigation_movie_details,
                 Bundle().apply {
                     putParcelable(EXTRA_MOVIE, movie)
+                    putBoolean(EXTRA_FAVORITE, true)
                 }
             )
         }
@@ -40,8 +43,7 @@ class MyListFragment : BaseFragment<FragmentMyListBinding, MyListViewModel>(
 
         setupAdapter()
 
-        //TODO implementar uma forma de pegar esse account id
-        viewModel.getUserList("20244782")
+        viewModel.getUserList()
     }
 
     private fun setupObserver() {

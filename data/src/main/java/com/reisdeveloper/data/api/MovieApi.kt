@@ -47,7 +47,8 @@ interface MovieApi {
 
     @GET("3/movie/{movie_id}/similar")
     suspend fun getSimilarMovies(
-        @Path("movie_id") movieId: String
+        @Path("movie_id") movieId: String,
+        @Query("language") language: String? = "pt-BR"
     ): MovieList
 
     @GET("3/movie/{movie_id}")

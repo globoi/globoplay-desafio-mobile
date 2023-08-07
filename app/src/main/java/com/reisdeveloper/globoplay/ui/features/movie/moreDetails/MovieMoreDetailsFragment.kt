@@ -1,4 +1,4 @@
-package com.reisdeveloper.globoplay.ui.features.movie.details
+package com.reisdeveloper.globoplay.ui.features.movie.moreDetails
 
 import android.os.Bundle
 import android.view.View
@@ -8,9 +8,9 @@ import com.reisdeveloper.data.dataModel.MovieDetails
 import com.reisdeveloper.globoplay.R
 import com.reisdeveloper.globoplay.base.BaseFragment
 import com.reisdeveloper.globoplay.databinding.FragmentMovieMoreDetailsBinding
-import com.reisdeveloper.globoplay.util.DATE_FORMAT_DD_MM_YYYY
-import com.reisdeveloper.globoplay.util.YYYY_MM_DD
-import com.reisdeveloper.globoplay.util.toDateTimeString
+import com.reisdeveloper.globoplay.extensions.DATE_FORMAT_DD_MM_YYYY
+import com.reisdeveloper.globoplay.extensions.YYYY_MM_DD
+import com.reisdeveloper.globoplay.extensions.toDateTimeString
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel

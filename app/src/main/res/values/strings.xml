@@ -29,4 +29,6 @@
     <string name="there_was_an_error_loading_videos">There was an error loading the videos</string>
     <string name="there_was_an_error_loading_video_details">There was an error loading video details</string>
     <string name="movie_image">Movie image cover</string>
+    <string name="there_was_an_error_loading_similar_movies">There was an error loading the similar movies</string>
+    <string name="there_was_an_error_when_favorite_the_movie">There was an error when favorite the movie. Please try again.</string>
 </resources>

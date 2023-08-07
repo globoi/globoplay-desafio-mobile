@@ -8,6 +8,6 @@ class GetSimilarMoviesUseCase(
 ) : AbstractUseCase<String, MovieList>() {
 
     override suspend fun execute(param: String): MovieList {
-        return userRepository.getSimilarMovies(param)
+        return userRepository.getSimilarMovies(movieId = param)
     }
 }
