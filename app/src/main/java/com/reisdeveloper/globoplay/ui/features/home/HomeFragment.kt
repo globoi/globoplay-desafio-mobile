@@ -195,18 +195,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
             viewModel.screen.collectLatest { state ->
                 when (state) {
                     is HomeViewModel.Screen.Error -> {
-
+                        sheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+                        showError(getString(R.string.there_was_an_error_to_serach_movies))
                     }
                     is HomeViewModel.Screen.Loading -> {
-                        /*onLoading(
-                            binding.contentMyList,
+                        sheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                        shimmerLoading(
+                            binding.includeMovieList.movieList,
                             R.layout.shimmer_favorite_movies,
                             state.loading
-                        )*/
+                        )
                     }
                     is HomeViewModel.Screen.SearchedMovies -> {
                         searchListAdapter.setItems(state.movies)
-                        sheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
                     }
                 }
             }
