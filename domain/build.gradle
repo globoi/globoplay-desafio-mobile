@@ -39,4 +39,7 @@ dependencies {
     //Paging
     implementation "androidx.paging:paging-common-ktx:$rootProject.paging"
     implementation "androidx.paging:paging-runtime-ktx:$rootProject.paging"
+
+    //Turbine for testing the flows
+    testImplementation "app.cash.turbine:turbine:$rootProject.turbine"
 }

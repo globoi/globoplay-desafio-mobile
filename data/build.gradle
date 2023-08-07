@@ -48,4 +48,9 @@ dependencies {
 
     //Koin
     implementation "io.insert-koin:koin-android:$rootProject.koinVersion"
+
+    //Tests
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+    testImplementation 'junit:junit:4.12'
 }
