@@ -21,7 +21,7 @@ ACCOUNT_ID=<account_id>
 
 Arquitetura pensada visando a facilidade na manutenção futura e escalabilidade. App modularizado, evitando a hiper dependência das camadas do aplicativo. Seguindo o padrão Clean Architecture + MVVM, recomendado por [`Developer Android`](https://developer.android.com/jetpack/guide?hl=pt-br). Segue abaixo o esquema de pastas:
 
-![`Esquema de pastas`](https://github.com/reis756/globoplay-desafio-mobile/blob/main/path_schemme.png)
+![`Esquema de pastas`](https://github.com/reis756/globoplay-desafio-mobile/blob/master/app/path_schemme.png)
 
 ## Bibliotecas e APIs
 
