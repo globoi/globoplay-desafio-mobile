@@ -7,6 +7,7 @@ plugins {
 android {
     namespace 'com.reisdeveloper.globoplay'
     compileSdk 33
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.reisdeveloper.globoplay"

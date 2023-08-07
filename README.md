@@ -2,7 +2,7 @@
 
 Um aplicativo sobre filmes, usando a API do TheMovieDB.
 
-* Acesse o video demonstração no [YouTube](https://youtu.be/z18xPDuEERU)
+* Acesse o video demonstração no [YouTube](https://youtu.be/yxAuCCXpqo4)
 
 ## Passos para implementação
 
@@ -21,7 +21,7 @@ ACCOUNT_ID=<account_id>
 
 Arquitetura pensada visando a facilidade na manutenção futura e escalabilidade. App modularizado, evitando a hiper dependência das camadas do aplicativo. Seguindo o padrão Clean Architecture + MVVM, recomendado por [`Developer Android`](https://developer.android.com/jetpack/guide?hl=pt-br). Segue abaixo o esquema de pastas:
 
-![`Esquema de pastas`](https://github.com/reis756/globoplay-desafio-mobile/blob/main/path_schemme.png)
+![`Esquema de pastas`](https://github.com/reis756/globoplay-desafio-mobile/blob/master/app/path_schemme.png)
 
 ## Bibliotecas e APIs
 
@@ -50,14 +50,15 @@ Arquitetura pensada visando a facilidade na manutenção futura e escalabilidade
 
 ## Requisitos Plus
 
-* Filtros `NOT OK`;
+* Filtros `NOT OK - por falta de entendimento da API`;
 * Busca `OK`;
 * Paginação `OK`;
 * Animações `OK`;
 * Testes unitários `OK - porém necessário aumentar a cobertura de testes`;
-* Testes instrumentados `NOT OK`;
+* Testes instrumentados `NOT OK - pelo tempo`;
 * Testes funcionais `NOT OK`;
-* Pipeline Automatizado `NOT OK`;
+* Pipeline Automatizado `NOT OK - precisaria de mais tempo para acertar o erro das secrets do github`;
+* Player de vídeo `OK`;
 
 ## ToDo's
 
