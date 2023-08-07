@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="txt_globoplay">GloboPlay</string>
+
+<!--    menu text bottom navigation-->
+    <string name="txt_homem_fragment">Home</string>
+    <string name="txt_search_fragment">Buscar</string>
+    <string name="txt_favority_fragment">Favoritos</string>
+</resources>

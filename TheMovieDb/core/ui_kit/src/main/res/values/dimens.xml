@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="size_32">32dp</dimen>
+    <dimen name="size_20">20dp</dimen>
+    <dimen name="size_16">16dp</dimen>
+    <dimen name="size_12">12dp</dimen>
+    <dimen name="size_8">8dp</dimen>
+    <dimen name="size_4">4dp</dimen>
+
+
+    <dimen name="text_24">24sp</dimen>
+    <dimen name="text_20">20sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="text_12">12sp</dimen>
+
+    <dimen name="corner_large">@dimen/size_16</dimen>
+    <dimen name="corner">@dimen/size_8</dimen>
+    <dimen name="corner_small">@dimen/size_4</dimen>
+    <dimen name="page_horizontal_padding">@dimen/size_20</dimen>
+
+    <dimen name="poster_width">100dp</dimen>
+    <dimen name="showcase_width1">160dp</dimen>
+    <dimen name="showcase_width2">180dp</dimen>
+    <dimen name="showcase_width3">200dp</dimen>
+
+    <dimen name="poster_height">140dp</dimen>
+    <dimen name="showcase_height1">200dp</dimen>
+    <dimen name="showcase_height2">250dp</dimen>
+    <dimen name="showcase_height3">300dp</dimen>
+    <dimen name="showcase_height4">380dp</dimen>
+
+    <dimen name="trend_fragment_height">450dp</dimen>
+    <dimen name="common_fragment_height">400dp</dimen>
+    <dimen name="upcoming_fragment_height">350dp</dimen>
+
+
+    <dimen name="margin_vertical_scroll_view">55dp</dimen>
+
+    <!--    New dimens-->
+    <dimen name="normal_text_size">12sp</dimen>
+    <dimen name="medium_text_size">14sp</dimen>
+    <dimen name="large_text_size">16sp</dimen>
+
+
+    <!--    images  -->
+    <dimen name="large_poster_height">250dp</dimen>
+
+    <dimen name="small_card_width">120dp</dimen>
+    <dimen name="small_card_height">144dp</dimen>
+
+    <dimen name="normal_card_width">140dp</dimen>
+    <dimen name="normal_card_height">188dp</dimen>
+
+    <dimen name="search_gallery_width">130dp</dimen>
+
+    <dimen name="search_card_height">180dp</dimen>
+
+    <dimen name="small_person_card_width">80dp</dimen>
+    <dimen name="small_person_card_height">100dp</dimen>
+
+    <dimen name="normal_person_card_width">120dp</dimen>
+    <dimen name="normal_person_card_height">180dp</dimen>
+
+    <dimen name="genre_card_height">200dp</dimen>
+
+    <dimen name="gallery_card_width">264dp</dimen>
+    <dimen name="gallery_card_height">150dp</dimen>
+    <dimen name="card_radius_size">@dimen/normal_margin_size</dimen>
+    <dimen name="dialog_image_width">360dp</dimen>
+    <dimen name="dialog_image_height">540dp</dimen>
+
+    <dimen name="movie_details_image_height">400dp</dimen>
+
+
+    <dimen name="small_size">4dp</dimen>
+    <dimen name="normal_size">8dp</dimen>
+    <dimen name="medium_size">16dp</dimen>
+    <dimen name="large_size">24dp</dimen>
+    <dimen name="x_large_size">32dp</dimen>
+    <dimen name="x_x_large_size">64dp</dimen>
+    <dimen name="x_x_x_large_size">120dp</dimen>
+
+    <dimen name="small_margin_size">@dimen/small_size</dimen>
+    <dimen name="normal_margin_size">@dimen/normal_size</dimen>
+    <dimen name="medium_margin_size">@dimen/medium_size</dimen>
+    <dimen name="large_margin_size">@dimen/large_size</dimen>
+    <dimen name="x_large_margin_size">@dimen/x_large_size</dimen>
+    <dimen name="x_x_large_margin_size">@dimen/x_x_large_size</dimen>
+
+    <dimen name="small_padding_size">@dimen/small_size</dimen>
+    <dimen name="normal_padding_size">@dimen/normal_size</dimen>
+    <dimen name="medium_padding_size">@dimen/medium_size</dimen>
+    <dimen name="large_padding_size">@dimen/large_size</dimen>
+    <dimen name="x_large_padding_size">@dimen/x_large_size</dimen>
+    <dimen name="x_x_large_padding_size">@dimen/x_x_large_size</dimen>
+
+    <dimen name="small_play_button_size">40dp</dimen>
+
+    <dimen name="small_button_size">@dimen/medium_size</dimen>
+    <dimen name="small_circular_button_size">32dp</dimen>
+    <dimen name="normal_circular_button_size">40dp</dimen>
+    <dimen name="normal_button_size">48dp</dimen>
+
+    <dimen name="space_medium">16dp</dimen>
+
+
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.TheMovieDb" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary_color</item>
+        <item name="colorSecondaryVariant">@color/primary_color</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/secondary_color</item>
+
+        <!-- Customize your appSettings here. -->
+        <item name="windowActionBar">true</item>
+        <item name="android:windowContentTransitions">true</item>
+
+    </style>
+    <style name="Theme.Toolbar" parent="Theme.TheMovieDb">
+        <item name="android:background">@color/colorOnSurface</item>
+        <item name="colorControlNormal">@color/colorBackground</item>
+    </style>
+</resources>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="deep_link_trending" translatable="false">movieapp://trending/</string>
+</resources>

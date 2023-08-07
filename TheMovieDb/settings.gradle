@@ -14,3 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "TheMovieDb"
 include ':app'
+include ':core:network'
+include ':features:trending'
+include ':core:common'
+include ':core:local'
+include ':core:ui_kit'

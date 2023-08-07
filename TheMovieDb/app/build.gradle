@@ -1,9 +1,9 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    alias libs.plugins.android.application
+    alias libs.plugins.android.kotlin
+    alias libs.plugins.android.navigationargs
+    alias libs.plugins.android.hilt
     id 'kotlin-kapt'
-    id 'com.google.dagger.hilt.android'
-    id 'androidx.navigation.safeargs.kotlin'
 }
 def localProperties = new Properties()
 localProperties.load(new FileInputStream(rootProject.file("local.properties")))
@@ -57,7 +57,8 @@ dependencies {
     implementation libs.bundles.navigation
     implementation libs.hilt.android
     kapt libs.hilt.compiler
-
+    implementation project(':features:trending')
+    implementation project(':core:ui_kit')
     testImplementation libs.bundles.test
     androidTestImplementation libs.bundles.androidTest
 }

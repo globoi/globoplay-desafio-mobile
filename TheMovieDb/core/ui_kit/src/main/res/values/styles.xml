@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Title.Large" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center|start</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textColor">@color/primary_text_color</item>
+    </style>
+
+    <style name="Title.Medium" parent="Title.Large">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="Title.Small" parent="Title.Large">
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:layout_marginTop">@dimen/normal_margin_size</item>
+    </style>
+
+
+    <style name="PlayButton.Small" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">@dimen/small_play_button_size</item>
+        <item name="android:layout_height">@dimen/small_play_button_size</item>
+        <!--        <item name="android:background">@drawable/play_button</item>-->
+        <!--        <item name="android:src">@drawable/ic_play</item>-->
+    </style>
+
+    <style name="PlayButton.Normal" parent="PlayButton.Small">
+        <item name="android:layout_width">@dimen/normal_button_size</item>
+        <item name="android:layout_height">@dimen/normal_button_size</item>
+        <!--        <item name="android:src">@drawable/ic_normal_play</item>-->
+    </style>
+
+    <style name="Label.Normal" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:textColor">@android:color/white</item>
+
+    </style>
+
+    <style name="Label.Normal.NoEllipsize" parent="Label.Normal">
+        <item name="android:ellipsize">none</item>
+        <item name="android:maxLines"/>
+    </style>
+
+    <style name="TextRating" parent="Label.Normal">
+        <item name="android:drawableEnd">@drawable/ic_star</item>
+        <item name="android:drawablePadding">@dimen/small_padding_size</item>
+    </style>
+
+
+    <style name="Card.Small" parent="CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/small_card_height</item>
+    </style>
+
+    <style name="Card.Normal" parent="Card.Small">
+        <item name="android:layout_height">@dimen/normal_card_height</item>
+        <item name="android:layout_width">@dimen/normal_card_height</item>
+    </style>
+
+    <style name="GalleryCard">
+        <item name="android:layout_width">@dimen/gallery_card_width</item>
+        <item name="android:layout_height">@dimen/gallery_card_height</item>
+        <item name="android:layout_marginTop">@dimen/medium_margin_size</item>
+        <item name="android:layout_marginBottom">@dimen/normal_margin_size</item>
+        <item name="android:layout_marginHorizontal">@dimen/normal_margin_size</item>
+        <item name="android:clickable">true</item>
+        <item name="roundPercent">0.11</item>
+        <item name="layout_constraintDimensionRatio">9:16</item>
+    </style>
+
+
+    <style name="MovieRecyclerOfDetails">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingHorizontal">@dimen/normal_padding_size</item>
+        <item name="layoutManager">androidx.recyclerview.widget.LinearLayoutManager</item>
+        <!--        <item name="layout_constraintTop_toBottomOf">@+id/textViewHeader</item>-->
+    </style>
+
+    <style name="GalleryRecyclerOfDetails" parent="MovieRecyclerOfDetails" />
+
+    <style name="PersonRecyclerOfMovieDetails" parent="MovieRecyclerOfDetails" />
+
+    <style name="GridRecycler" parent="MovieRecyclerOfDetails">
+        <item name="android:layout_height">0dp</item>
+        <item name="layoutManager">androidx.recyclerview.widget.GridLayoutManager</item>
+        <item name="android:orientation">vertical</item>
+        <item name="spanCount">3</item>
+    </style>
+
+    <style name="ImageButton.Circular" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">@dimen/normal_circular_button_size</item>
+        <item name="android:layout_height">@dimen/normal_circular_button_size</item>
+        <!--        <item name="android:background">@drawable/rounded_clickable</item>-->
+        <item name="android:layout_marginHorizontal">@dimen/medium_margin_size</item>
+        <item name="android:layout_marginTop">@dimen/medium_margin_size</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+
+    <style name="ImageButton.Circular.Small" parent="ImageButton.Circular">
+        <item name="android:layout_width">@dimen/small_circular_button_size</item>
+        <item name="android:layout_height">@dimen/small_circular_button_size</item>
+    </style>
+
+</resources>
