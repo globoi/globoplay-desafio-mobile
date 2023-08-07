@@ -2,7 +2,7 @@
 
 Um aplicativo sobre filmes, usando a API do TheMovieDB.
 
-* Acesse o video demonstração no [YouTube](https://youtu.be/z18xPDuEERU)
+* Acesse o video demonstração no [YouTube](https://youtu.be/yxAuCCXpqo4)
 
 ## Passos para implementação
 
@@ -50,14 +50,15 @@ Arquitetura pensada visando a facilidade na manutenção futura e escalabilidade
 
 ## Requisitos Plus
 
-* Filtros `NOT OK`;
+* Filtros `NOT OK - por falta de entendimento da API`;
 * Busca `OK`;
 * Paginação `OK`;
 * Animações `OK`;
 * Testes unitários `OK - porém necessário aumentar a cobertura de testes`;
-* Testes instrumentados `NOT OK`;
+* Testes instrumentados `NOT OK - pelo tempo`;
 * Testes funcionais `NOT OK`;
 * Pipeline Automatizado `NOT OK`;
+* Player de vídeo `OK`;
 
 ## ToDo's
 
