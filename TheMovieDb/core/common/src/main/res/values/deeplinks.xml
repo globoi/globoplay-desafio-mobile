@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="deep_link_trending" translatable="false">movieapp://trending/</string>
+    <string name="deep_link_favorite" translatable="false">movieapp://favorite/</string>
+
+    <string name="deep_link_details_movie" translatable="false">movieapp://move/{Idmovie}</string>
+    <string name="argument_movie_id" translatable="false">Idmovie</string>
+
 </resources>

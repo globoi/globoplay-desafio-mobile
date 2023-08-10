@@ -29,10 +29,27 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+    experimentalProperties["android.experimental.self-instrumenting"] = true
+
 }
 
 dependencies {
+    implementation libs.androidx.compact
+    implementation libs.bundles.ui.util
+    implementation libs.google.material
+    implementation libs.bundles.navigation
 
+    implementation libs.androidx.cardview
+    implementation libs.glide
+    implementation libs.constraint.layout
+    implementation libs.bundles.coroutine
+    implementation libs.bundles.network
+
+    implementation libs.bundles.viewmodel
     implementation libs.kotlin
     implementation libs.hilt.android
 

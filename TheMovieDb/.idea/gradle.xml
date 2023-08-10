@@ -17,7 +17,8 @@
             <option value="$PROJECT_DIR$/core/network" />
             <option value="$PROJECT_DIR$/core/ui_kit" />
             <option value="$PROJECT_DIR$/features" />
-            <option value="$PROJECT_DIR$/features/trending" />
+            <option value="$PROJECT_DIR$/features/details_movie" />
+            <option value="$PROJECT_DIR$/features/movies" />
           </set>
         </option>
       </GradleProjectSettings>

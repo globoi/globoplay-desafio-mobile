@@ -1,0 +1,69 @@
+plugins {
+    alias libs.plugins.android.library
+    alias libs.plugins.android.kotlin
+    alias libs.plugins.android.navigationargs
+    alias libs.plugins.android.hilt
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'br.com.favorites'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
+}
+
+dependencies {
+
+
+    implementation libs.kotlin
+    implementation libs.androidx.compact
+    implementation libs.bundles.ui.util
+    implementation libs.google.material
+    implementation libs.androidx.cardview
+    implementation libs.glide
+    implementation libs.constraint.layout
+    implementation libs.bundles.coroutine
+    implementation libs.bundles.viewmodel
+    implementation libs.bundles.navigation
+    implementation libs.bundles.ui.util
+    implementation libs.hilt.android
+    implementation libs.androidx.paging
+    implementation libs.androidx.room.ktx
+    implementation libs.androidx.room.paging
+    implementation libs.bundles.network
+    kapt libs.hilt.compiler
+
+    implementation project(':core:network')
+    implementation project(':core:local')
+    implementation project(':core:common')
+    implementation project(':core:ui_kit')
+
+    testImplementation libs.bundles.test
+    androidTestImplementation libs.bundles.androidTest
+}

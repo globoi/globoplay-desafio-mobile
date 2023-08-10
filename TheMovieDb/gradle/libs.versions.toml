@@ -9,10 +9,21 @@ hiltVersion = "2.44"
 retrofitVersion = "2.9.0"
 gsonVersion = "2.9.0"
 logginVersion = "4.2.1"
+loggingInterceptor = "4.10.0"
 okHttpVersion = "4.9.3"
 navigationVersion = "2.5.3"
 shimmerVersion = "0.5.0"
+room = "2.5.1"
+paging = "3.1.1"
+cardview = "1.0.0"
+glideVersion = "4.15.1"
+swiperefreshlayout = "1.1.0"
 
+#Plugins
+androidApplication = "8.0.2"
+androidKotlin = "1.8.20"
+androidHilt= "2.44"
+androidNavigationSafeArgs = "2.5.3"
 #Test
 junitVersion = "4.13.2"
 jAndroidxVersion = "1.1.5"
@@ -30,17 +41,26 @@ androidx-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", ve
 androidx-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx" , version.ref="lifecycleVersion"}
 androidx-runtimektx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref="lifecycleVersion"}
 androidx-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate" , version.ref="lifecycleVersion"}
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
+
+androidx-paging = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
+androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+
 #androidx-lifecycle-compiler = { module= "androidx.lifecycle:lifecycle-compile", version.ref = "lifecycleVersion"}
-google-material = {module = "com.google.android.material:material", version.ref = "materialVersion"}
+google-material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 constraint-layout = {module= "androidx.constraintlayout:constraintlayout", version.ref="constraintVersion"}
 retrofit = { module = "com.squareup.retrofit2:retrofit",version.ref="retrofitVersion"}
 gson = {module = "com.squareup.retrofit2:converter-gson", version.ref="gsonVersion"}
 okhttp = {module = "com.squareup.okhttp3:okhttp", version.ref = "okHttpVersion"}
-loggin-interceptor = {module = "com.squareup.okhttp3:logging-interceptor", version.ref = "logginVersion"}
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
 navigation-ktx = { module = "androidx.navigation:navigation-fragment-ktx" , version.ref= "navigationVersion" }
 navigation-ktx-ui = { module= "androidx.navigation:navigation-ui-ktx", version.ref= "navigationVersion"}
 navigation-dynamic-feature = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigationVersion"}
 shimmer = { module = "com.facebook.shimmer:shimmer" , version.ref = "shimmerVersion"}
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideVersion" }
 
 #navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref= "navigationVersion"}
 #Tests libs
@@ -54,9 +74,15 @@ androidNavigationTest = { module = "androidx.navigation:navigation-testing", ver
 test = ["junit","androidxArchCore"]
 viewmodel = ["androidx.viewmodel","androidx.livedata","androidx.runtimektx", "androidx.viewmodel.savedstate"]
 navigation = ["navigation-ktx","navigation-ktx-ui", "navigation-dynamic-feature"]
-ui-util = ["shimmer"]
+ui-util = ["shimmer","androidx-swiperefreshlayout"]
 coroutine = ["coroutine-core","coroutine-android"]
-network = ["retrofit","gson","okhttp","loggin-interceptor"]
+network = ["retrofit","gson","logging-interceptor"]
 androidTest = ["androidxTest","androidxEspresso","androidNavigationTest"]
 
 [plugins]
+android-application = { id = "com.android.application" , version.ref = "androidApplication"}
+android-library = { id = "com.android.library" , version.ref = "androidApplication"}
+android-kotlin = { id = "org.jetbrains.kotlin.android" , version.ref= "androidKotlin"}
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "androidKotlin"}
+android-hilt = { id = "com.google.dagger.hilt.android" , version.ref = "androidHilt"}
+android-navigationargs = { id = "androidx.navigation.safeargs", version.ref="androidNavigationSafeArgs"}

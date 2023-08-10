@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="120dp"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:layout_marginBottom="@dimen/normal_margin_size"
+    android:layout_marginTop="@dimen/medium_margin_size"
+    android:layout_marginHorizontal="@dimen/normal_margin_size"
+   >
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/img_movie"
+        style="@style/Card.Small"
+        app:roundPercent="0.11"
+        tools:src="@color/design_default_color_error"
+        tools:ignore="MissingConstraints"
+        />
+
+
+    <TextView
+        android:id="@+id/txt_title"
+        style="@style/Title.Small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_movie"
+        tools:textColor="@color/black"
+        tools:text="The Wrath of Becky dsadasdasdasdasasfds fdfsdf" />
+
+    <TextView
+        android:id="@+id/txt_release_date"
+        style="@style/Label.Normal"
+        android:layout_marginTop="@dimen/normal_margin_size"
+        app:layout_constraintStart_toStartOf="@+id/txt_title"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title"
+        tools:textColor="@color/black"
+        tools:text="31 May 2023" />
+
+    <TextView
+        android:id="@+id/txt_vote_average"
+        style="@style/TextRating"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_release_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_release_date"
+        tools:textColor="@color/black"
+        tools:text="6.2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

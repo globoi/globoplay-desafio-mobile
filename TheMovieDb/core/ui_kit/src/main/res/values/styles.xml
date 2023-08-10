@@ -103,7 +103,7 @@
     <style name="ImageButton.Circular" parent="Widget.AppCompat.ImageButton">
         <item name="android:layout_width">@dimen/normal_circular_button_size</item>
         <item name="android:layout_height">@dimen/normal_circular_button_size</item>
-        <!--        <item name="android:background">@drawable/rounded_clickable</item>-->
+                <item name="android:background">@drawable/rounded_clickable</item>
         <item name="android:layout_marginHorizontal">@dimen/medium_margin_size</item>
         <item name="android:layout_marginTop">@dimen/medium_margin_size</item>
         <item name="layout_constraintTop_toTopOf">parent</item>

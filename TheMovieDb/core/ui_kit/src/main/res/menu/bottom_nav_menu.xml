@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/trendingMoviesFragment"
+        android:id="@+id/trending_nav"
         android:icon="@drawable/home_icon"
         android:title="@string/txt_homem_fragment" />
 
 <!--    <item-->
-<!--        android:id="@+id/searchFragment"-->
+<!--        android:id="@+id/favoritesFragment"-->
 <!--        android:icon="@drawable/search_icon"-->
 <!--        android:title="@string/txt_search_fragment" />-->
 
-<!--    <item-->
-<!--        android:id="@+id/favoriteFragment"-->
-<!--        android:icon="@drawable/fave_icon"-->
-<!--        android:title="@string/txt_favority_fragment" />-->
+    <item
+        android:id="@+id/favorite_nav"
+        android:icon="@drawable/fave_icon"
+        android:title="@string/txt_favority_fragment" />
 
 
 

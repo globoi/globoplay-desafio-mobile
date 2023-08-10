@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".presentation.DetailsMovieFragment">
+
+
+        <ImageView
+            android:id="@+id/imageViewMovie"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movie_details_image_height"
+            android:layout_gravity="center"
+            android:contentDescription=""
+            app:layout_constraintDimensionRatio="9:16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VectorDrawableCompat"
+            tools:src="@drawable/home_icon" />
+
+        <View
+            android:id="@+id/view2_person_details"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/gradient_overlay"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewMovie"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewMovie"
+            app:layout_constraintStart_toStartOf="@+id/imageViewMovie"
+            app:layout_constraintTop_toTopOf="@+id/imageViewMovie" />
+
+
+
+        <ImageButton
+            android:id="@+id/imageButtonUnFaveItem"
+            style="@style/ImageButton.Circular"
+            android:src="@drawable/ic_large_fave"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButtonFaveItem"
+            style="@style/ImageButton.Circular"
+            android:src="@drawable/ic_bold_fave"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/primary_color"
+
+            />
+
+        <TextView
+            android:id="@+id/txt_titulo"
+            style="@style/Title.Large"
+            android:layout_width="wrap_content"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewMovie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageViewMovie"
+            app:layout_constraintVertical_bias="0.88"
+            tools:text="Spider Man"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txt_subtitle"
+            style="@style/Label.Normal.NoEllipsize"
+            android:layout_width="0dp"
+            android:gravity="start|center"
+            app:layout_constraintEnd_toEndOf="@+id/txt_titulo"
+            app:layout_constraintStart_toStartOf="@+id/txt_titulo"
+            app:layout_constraintTop_toBottomOf="@+id/txt_titulo"
+            tools:text="Action"
+            tools:textColor="@color/black" />
+
+
+        <TextView
+            android:id="@+id/txt_tagline"
+            style="@style/Label.Normal"
+            app:layout_constraintStart_toStartOf="@+id/txt_subtitle"
+
+            app:layout_constraintTop_toBottomOf="@+id/txt_subtitle"
+            tools:text="Runtime: 1h 30m"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/textViewStory"
+            style="@style/Title.Large"
+            android:layout_marginStart="16dp"
+            android:text="Story"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_tagline"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txt_details"
+            style="@style/Label.Normal"
+            android:layout_width="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="start|center"
+
+            android:maxLines="3"
+            android:text="After barely surviving his grievous wounds from his mission in Dhaka, Bangladesh, Tyler Rake is back, and his team is ready to take on their next mission. After barely surviving his grievous wounds from his mission in Dhaka, Bangladesh, Tyler Rake is back, and his team is ready to take on their next mission."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewStory"
+            tools:text="After barely surviving his grievous wounds from his mission in Dhaka, Bangladesh, Tyler Rake is back, and his team is ready to take on their next mission. After barely surviving his grievous wounds from his mission in Dhaka, Bangladesh, Tyler Rake is back, and his team is ready to take on their next mission."
+            tools:textColor="@color/black" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

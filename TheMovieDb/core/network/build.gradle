@@ -20,6 +20,8 @@ android {
 
         buildConfigField 'String', 'BASE_URL', localProperties['baseUrl']
         buildConfigField 'String', 'API_KEY', localProperties['apiKey']
+        buildConfigField 'String', 'ACCESS_TOKEN_AUTH', localProperties['accesstokenAuth']
+        buildConfigField 'int', 'ACCOUNT_NUMBER', localProperties['accountNumber']
         buildConfigField 'String', 'BASE_URL_IMAGE', localProperties['baseUrlImage']
 
     }
