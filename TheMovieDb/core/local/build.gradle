@@ -39,6 +39,8 @@ dependencies {
     implementation libs.androidx.room.ktx
     implementation libs.androidx.room.paging
     implementation libs.coroutine.android
+    implementation libs.bundles.network
+
     kapt libs.hilt.compiler
     kapt libs.room.compiler
     testImplementation libs.bundles.test

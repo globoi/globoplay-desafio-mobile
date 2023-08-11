@@ -4,6 +4,9 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
+import br.com.favorites.data.repository.datasource.FavoritiesLocalDataSource
+import br.com.favorites.data.repository.datasource.FavoritiesRemoteDataSource
+import br.com.favorites.domain.mappers.FavoritiesMoviesDtoToEntityMapper
 import br.com.local.model.favorite.FavoritiesMovieEntity
 import br.com.local.model.favorite.FavoritiesMoviesRemoteKeyEntity
 import br.com.network.BuildConfig
@@ -13,9 +16,9 @@ const val BASE_VALUE = 10
 
 @OptIn(ExperimentalPagingApi::class)
 class FavoritiesRemoteMediator @Inject constructor(
-    private val favoritiesRemoteDataSource: br.com.favorites.data.repository.datasource.FavoritiesRemoteDataSource,
-    private val favoritiesLocalDataSource: br.com.favorites.data.repository.datasource.FavoritiesLocalDataSource,
-    private val remoteToLocalMapper: br.com.favorites.domain.mappers.FavoritiesMoviesDtoToEntityMapper,
+    private val favoritiesRemoteDataSource: FavoritiesRemoteDataSource,
+    private val favoritiesLocalDataSource: FavoritiesLocalDataSource,
+    private val remoteToLocalMapper: FavoritiesMoviesDtoToEntityMapper,
 ) : RemoteMediator<Int, FavoritiesMovieEntity>() {
     override suspend fun load(
         loadType: LoadType,

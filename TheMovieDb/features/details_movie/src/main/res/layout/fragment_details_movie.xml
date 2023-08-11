@@ -40,15 +40,15 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <ImageButton
-            android:id="@+id/imageButtonFaveItem"
-            style="@style/ImageButton.Circular"
-            android:src="@drawable/ic_bold_fave"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:tint="@color/primary_color"
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButtonFaveItem"-->
+<!--            style="@style/ImageButton.Circular"-->
+<!--            android:src="@drawable/ic_bold_fave"-->
+<!--            android:visibility="gone"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:tint="@color/primary_color"-->
 
-            />
+<!--            />-->
 
         <TextView
             android:id="@+id/txt_titulo"

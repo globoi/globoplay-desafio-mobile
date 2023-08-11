@@ -13,12 +13,19 @@ import javax.inject.Inject
 class FavoritiesLocalDataSourceImpl @Inject constructor(
     private val favoritiesMovies: FavoritiesMoviesDao,
     private val favoritiesMoviesRemoteKeys: FavoritiesMovieRemoteKeysDao
-) : br.com.favorites.data.repository.datasource.FavoritiesLocalDataSource {
+) : FavoritiesLocalDataSource {
     override fun getPagingSourceFromDb(): PagingSource<Int, FavoritiesMovieEntity> = favoritiesMovies.getPagingSource()
 
     override suspend fun insertAllMoviesToDb(list: List<FavoritiesMovieEntity>) {
        favoritiesMovies.upsertAll(list)
     }
+
+    override suspend fun addMovie(movie: FavoritiesMovieEntity)  = favoritiesMovies.addMovie(movie)
+    override suspend fun removeMovie(movieId: Int) {
+        favoritiesMovies.removeMovie(movieId)
+    }
+
+    override suspend fun getMovie(movieId: Int): FavoritiesMovieEntity = favoritiesMovies.getMovie(movieId)
 
     override suspend fun clearAllMoviesFromDb() {
         favoritiesMovies.clearAll()
@@ -30,7 +37,6 @@ class FavoritiesLocalDataSourceImpl @Inject constructor(
         movies: List<FavoritiesMovieEntity>
     ) {
         favoritiesMovies.deleteAndInsertTransactionForPaging(loadType, page, movies, favoritiesMoviesRemoteKeys)
-
     }
 
     override suspend fun insertAllRemoteKeysToDb(list: List<FavoritiesMoviesRemoteKeyEntity>) {

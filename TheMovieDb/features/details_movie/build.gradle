@@ -62,7 +62,7 @@ dependencies {
     implementation project(':core:local')
     implementation project(':core:common')
     implementation project(':core:ui_kit')
-
+    implementation project(':features:favorites')
     testImplementation libs.bundles.test
     androidTestImplementation libs.bundles.androidTest
 }

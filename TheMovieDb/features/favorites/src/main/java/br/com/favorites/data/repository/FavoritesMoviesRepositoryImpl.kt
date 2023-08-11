@@ -6,10 +6,17 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import br.com.common.domain.model.Movie
+import br.com.favorites.data.repository.datasource.FavoritiesLocalDataSource
+import br.com.favorites.data.repository.datasource.FavoritiesRemoteDataSource
 import br.com.favorites.data.repository.mediator.FavoritiesRemoteMediator
+import br.com.favorites.domain.mappers.FavoritesMovieToEntityMapper
 import br.com.favorites.domain.mappers.FavoritesMoviesEntityToDomain
 import br.com.favorites.domain.mappers.FavoritiesMoviesDtoToEntityMapper
+import br.com.favorites.domain.model.AddOrRemoveFavorite
 import br.com.favorites.domain.repository.FavoritesMoviesRepository
+import br.com.local.dao.movie_details.MovieDetailsDao
+import br.com.local.model.MovieEntity
+import br.com.local.model.favorite.FavoritiesMovieEntity
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -20,10 +27,12 @@ private const val INITIAL_LOAD_SIZE = 40
 private const val PREFETCH_DISTANCE = 6
 
 class FavoritesMoviesRepositoryImpl @Inject constructor(
-    private val favoritesRemoteDataSource: br.com.favorites.data.repository.datasource.FavoritiesRemoteDataSource,
-    private val favoritesLocalDataSource: br.com.favorites.data.repository.datasource.FavoritiesLocalDataSource,
-    private val remoteToLocalMapper : FavoritesMoviesEntityToDomain,
-    private val localMapper: FavoritiesMoviesDtoToEntityMapper,
+    private val favoritesRemoteDataSource: FavoritiesRemoteDataSource,
+    private val favoritesLocalDataSource: FavoritiesLocalDataSource,
+    private val moviesDao: MovieDetailsDao,
+    private val movieEntityToDomainMapper : FavoritesMoviesEntityToDomain,
+    private val movieDtoToEntityMapper: FavoritiesMoviesDtoToEntityMapper,
+    private val movieToEntityMapper: FavoritesMovieToEntityMapper
 
     ) : FavoritesMoviesRepository {
 
@@ -34,14 +43,21 @@ class FavoritesMoviesRepositoryImpl @Inject constructor(
             prefetchDistance = PREFETCH_DISTANCE,
             initialLoadSize = INITIAL_LOAD_SIZE,
         ),
-        remoteMediator = FavoritiesRemoteMediator(favoritesRemoteDataSource, favoritesLocalDataSource, localMapper),
+        remoteMediator = FavoritiesRemoteMediator(favoritesRemoteDataSource, favoritesLocalDataSource, movieDtoToEntityMapper),
         pagingSourceFactory = { favoritesLocalDataSource.getPagingSourceFromDb() }
     ).flow.map { pagingData->
         pagingData.map {
-            remoteToLocalMapper.map(it)
+            movieEntityToDomainMapper.map(it)
         }
     }
 
     override suspend fun checkIsMovieSaved(movieId: Int): Flow<Boolean> = favoritesLocalDataSource.checkIsMovieSaved(movieId)
+    override suspend fun addMovieFavorite(idMovie: AddOrRemoveFavorite) {
+
+    }
+
+    override suspend fun removeMovieFavorite(idMovie: Int) {
+      // favoritesLocalDataSource.removeMovie(idMovie)
+    }
 
 }

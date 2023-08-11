@@ -15,7 +15,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavoritesViewModel
-@Inject constructor(private val getFavoritesMoviesUseCase: GetFavoritesMoviesUseCase)
+@Inject constructor(
+    private val getFavoritesMoviesUseCase: GetFavoritesMoviesUseCase,
+    )
     : ViewModel() {
 
         private val _uiState = MutableStateFlow<br.com.favorites.presentation.FavoritesUiState>(

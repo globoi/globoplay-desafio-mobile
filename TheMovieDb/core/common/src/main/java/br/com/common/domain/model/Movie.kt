@@ -5,7 +5,7 @@ data class Movie(
     val backdropPath: String?,
     val firstAirDate: String?,
     val genreIds: List<Int>? = null,
-    val id: Int?,
+    val id: Int,
     val mediaType: String?,
     val name: String?,
     val originCountry: List<String>? = null,

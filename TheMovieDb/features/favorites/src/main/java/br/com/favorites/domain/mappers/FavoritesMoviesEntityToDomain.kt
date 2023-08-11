@@ -1,5 +1,6 @@
 package br.com.favorites.domain.mappers
 
+import android.util.Log
 import br.com.common.domain.model.Movie
 import br.com.common.util.Mapper
 import br.com.local.model.favorite.FavoritiesMovieEntity

@@ -13,6 +13,11 @@ interface FavoritiesLocalDataSource {
 
     suspend fun insertAllMoviesToDb(list: List<FavoritiesMovieEntity>)
 
+    suspend fun addMovie(movie: FavoritiesMovieEntity): Long
+
+    suspend fun removeMovie(movieId: Int)
+    suspend fun getMovie(movieId: Int) : FavoritiesMovieEntity
+
     suspend fun clearAllMoviesFromDb()
 
     suspend fun refreshDataForPaging(loadType: LoadType, page: Int,

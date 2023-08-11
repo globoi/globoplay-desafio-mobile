@@ -11,7 +11,12 @@ import br.com.favorites.data.repository.FavoritesMoviesRepositoryImpl
 import br.com.favorites.domain.mappers.FavoritesMoviesEntityToDomain
 import br.com.favorites.domain.mappers.FavoritiesMoviesDtoToEntityMapper
 import br.com.common.domain.model.Movie
+import br.com.favorites.data.remote.dto.AddOrRemoveFavoriteDto
+import br.com.favorites.domain.mappers.FavoriteAddOrRemoveToDtoMapper
+import br.com.favorites.domain.mappers.FavoritesMovieToEntityMapper
+import br.com.favorites.domain.model.AddOrRemoveFavorite
 import br.com.favorites.domain.repository.FavoritesMoviesRepository
+import br.com.local.model.movie_details.MovieDetailsEntity
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -25,29 +30,41 @@ interface FavoritesModule {
     @ViewModelScoped
     @Binds
     fun bindFavoritesRepository(
-        repositoryImpl: br.com.favorites.data.repository.FavoritesMoviesRepositoryImpl
+        repositoryImpl: FavoritesMoviesRepositoryImpl
     ) : FavoritesMoviesRepository
 
     @ViewModelScoped
     @Binds
     fun bindFavoritesRemoteDataSource(
-        impl: br.com.favorites.data.repository.datasourceimpl.FavoritiesRemoteDataSourceImpl
+        impl: FavoritiesRemoteDataSourceImpl
     ) : br.com.favorites.data.repository.datasource.FavoritiesRemoteDataSource
 
     @ViewModelScoped
     @Binds
     fun bindFavoritesLocalDataSource(
-        impl: br.com.favorites.data.repository.datasourceimpl.FavoritiesLocalDataSourceImpl
-    ) : br.com.favorites.data.repository.datasource.FavoritiesLocalDataSource
+        impl: FavoritiesLocalDataSourceImpl
+    ) : FavoritiesLocalDataSource
 
     @ViewModelScoped
     @Binds
-    fun bindLocalMapper(impl: br.com.favorites.domain.mappers.FavoritesMoviesEntityToDomain)
+    fun bindLocalMapper(impl: FavoritesMoviesEntityToDomain)
     : Mapper<FavoritiesMovieEntity, Movie>
 
     @ViewModelScoped
     @Binds
     fun bindRemoteToLOcalMapper(
-        impl: br.com.favorites.domain.mappers.FavoritiesMoviesDtoToEntityMapper
+        impl: FavoritiesMoviesDtoToEntityMapper
     ) : Mapper<MoviesDto, FavoritiesMovieEntity>
+
+    @ViewModelScoped
+    @Binds
+    fun bindRemoteToEntityMapper(
+        impl: FavoritesMovieToEntityMapper
+    ) : Mapper<MovieDetailsEntity, FavoritiesMovieEntity>
+
+    @ViewModelScoped
+    @Binds
+    fun bindRemoteToDtoMapper(
+        impl: FavoriteAddOrRemoveToDtoMapper
+    ) : Mapper<AddOrRemoveFavorite, AddOrRemoveFavoriteDto>
 }

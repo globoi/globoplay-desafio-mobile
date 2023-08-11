@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import br.com.common.Extensions.collectLatestLifecycleFlow
-import br.com.details_movie.R
+import br.com.ui_kit.R as uiKitR
 import br.com.common.R as commonR
 import br.com.details_movie.databinding.FragmentDetailsMovieBinding
 import br.com.details_movie.domain.model.Movie
@@ -39,6 +40,7 @@ class DetailsMovieFragment : Fragment() {
 
         idMovie?.let {
             viewModel.getMovie(it)
+            viewModel.checkIfMovieIsSaved(it)
         }
         subscribeObservers()
     }
@@ -51,6 +53,14 @@ class DetailsMovieFragment : Fragment() {
                 }
             }
         }
+
+        viewModel.isMovieSaved.observe(viewLifecycleOwner) {
+                if(it) {
+                    val color = ContextCompat.getColorStateList(requireContext(), uiKitR.color.primary_color)
+                    binding.imageButtonUnFaveItem.setImageResource(uiKitR.drawable.ic_bold_fave)
+                    binding.imageButtonUnFaveItem.imageTintList = color
+                }
+        }
     }
 
     private fun updateUi(movie: Movie) {
@@ -60,6 +70,16 @@ class DetailsMovieFragment : Fragment() {
             txtSubtitle.text = movie.subtitle
             txtTagline.text = movie.tagline
             txtDetails.text = movie.description
+
+            imageButtonUnFaveItem.setOnClickListener {
+                if(viewModel.isMovieSaved.value != true){
+                    viewModel.addMovieFavorite(movie)
+                    viewModel.checkIfMovieIsSaved(movie.id)
+                } else {
+                    viewModel.removeFavorite(movie)
+                    viewModel.checkIfMovieIsSaved(movie.id)
+                }
+            }
         }
 
     }
