@@ -13,7 +13,6 @@ data class TrendingMovieEntity(
     val id: Int,
     @Embedded
     val movie: MovieEntity,
-
     @ColumnInfo(name = "order")
     val order: Int = 0
 )

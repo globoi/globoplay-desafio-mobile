@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import br.com.common.Extensions.collectLatestLifecycleFlow
+import br.com.common.Extensions.toast
 import br.com.ui_kit.R as uiKitR
 import br.com.common.R as commonR
 import br.com.details_movie.databinding.FragmentDetailsMovieBinding
@@ -54,6 +55,23 @@ class DetailsMovieFragment : Fragment() {
             }
         }
 
+        collectLatestLifecycleFlow(viewModel.uiStateAddFavorite) { state ->
+
+            when(state) {
+                is UiState.Loading -> {
+                    setLoadingFavorite()
+                }
+
+                is UiState.Error -> {
+                    state.message?.let { setIsErrorFavorite(it) }
+                }
+                is  UiState.Success -> {
+                    setIsFavorite()
+                }
+                else -> {}
+            }
+        }
+
         viewModel.isMovieSaved.observe(viewLifecycleOwner) {
                 if(it) {
                     val color = ContextCompat.getColorStateList(requireContext(), uiKitR.color.primary_color)
@@ -72,7 +90,7 @@ class DetailsMovieFragment : Fragment() {
             txtDetails.text = movie.description
 
             imageButtonUnFaveItem.setOnClickListener {
-                if(viewModel.isMovieSaved.value != true){
+                if(viewModel.isMovieSaved.value != true)    {
                     viewModel.addMovieFavorite(movie)
                     viewModel.checkIfMovieIsSaved(movie.id)
                 } else {
@@ -84,4 +102,29 @@ class DetailsMovieFragment : Fragment() {
 
     }
 
+    private fun setLoadingFavorite() {
+        binding.imageButtonUnFaveItem.visibility = View.GONE
+        binding.progressLoading.visibility = View.VISIBLE
+
+    }
+
+    private fun setIsFavorite() {
+        binding.imageButtonUnFaveItem.visibility = View.VISIBLE
+        binding.progressLoading.visibility = View.GONE
+
+        if(viewModel.isMovieSaved.value == true) {
+            val color = ContextCompat.getColorStateList(requireContext(), uiKitR.color.primary_color)
+            binding.imageButtonUnFaveItem.setImageResource(uiKitR.drawable.ic_bold_fave)
+            binding.imageButtonUnFaveItem.imageTintList = color
+        } else {
+            binding.imageButtonUnFaveItem.setImageResource(uiKitR.drawable.ic_large_fave)
+            binding.imageButtonUnFaveItem.imageTintList = null
+        }
+    }
+
+    private fun setIsErrorFavorite(message: String) {
+        binding.imageButtonUnFaveItem.visibility = View.VISIBLE
+        binding.progressLoading.visibility = View.GONE
+        toast(message)
+    }
 }

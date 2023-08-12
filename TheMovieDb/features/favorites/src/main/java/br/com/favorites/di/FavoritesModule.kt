@@ -3,18 +3,20 @@ package br.com.favorites.di
 import br.com.common.util.Mapper
 import br.com.local.model.favorite.FavoritiesMovieEntity
 import br.com.common.data.dto.MoviesDto
+import br.com.common.domain.model.Movie
 import br.com.favorites.data.repository.datasource.FavoritiesLocalDataSource
-import br.com.favorites.data.repository.datasource.FavoritiesRemoteDataSource
 import br.com.favorites.data.repository.datasourceimpl.FavoritiesLocalDataSourceImpl
 import br.com.favorites.data.repository.datasourceimpl.FavoritiesRemoteDataSourceImpl
 import br.com.favorites.data.repository.FavoritesMoviesRepositoryImpl
-import br.com.favorites.domain.mappers.FavoritesMoviesEntityToDomain
 import br.com.favorites.domain.mappers.FavoritiesMoviesDtoToEntityMapper
-import br.com.common.domain.model.Movie
 import br.com.favorites.data.remote.dto.AddOrRemoveFavoriteDto
+import br.com.favorites.data.remote.dto.ResultAddFavoriteDto
+import br.com.favorites.domain.mappers.FavoriteAddOrRemoveDtoToDomainMapper
 import br.com.favorites.domain.mappers.FavoriteAddOrRemoveToDtoMapper
 import br.com.favorites.domain.mappers.FavoritesMovieToEntityMapper
+import br.com.favorites.domain.mappers.FavoritesMoviesEntityToDomain
 import br.com.favorites.domain.model.AddOrRemoveFavorite
+import br.com.favorites.domain.model.ResultAddFavorite
 import br.com.favorites.domain.repository.FavoritesMoviesRepository
 import br.com.local.model.movie_details.MovieDetailsEntity
 import dagger.Binds
@@ -67,4 +69,10 @@ interface FavoritesModule {
     fun bindRemoteToDtoMapper(
         impl: FavoriteAddOrRemoveToDtoMapper
     ) : Mapper<AddOrRemoveFavorite, AddOrRemoveFavoriteDto>
+
+    @ViewModelScoped
+    @Binds
+    fun bindRemoteResultAddToDtoMapper(
+        impl: FavoriteAddOrRemoveDtoToDomainMapper
+    ) : Mapper<ResultAddFavoriteDto, ResultAddFavorite>
 }
