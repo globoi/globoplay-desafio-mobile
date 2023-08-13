@@ -17,9 +17,6 @@ import br.com.favorites.domain.mappers.FavoritiesMoviesDtoToEntityMapper
 import br.com.favorites.domain.model.AddOrRemoveFavorite
 import br.com.favorites.domain.model.ResultAddFavorite
 import br.com.favorites.domain.repository.FavoritesMoviesRepository
-import br.com.local.dao.movie_details.MovieDetailsDao
-import br.com.local.model.MovieEntity
-import br.com.local.model.favorite.FavoritiesMovieEntity
 import br.com.network.BuildConfig
 import br.com.network.NetworkException
 import br.com.network.Resource
@@ -38,6 +35,7 @@ class FavoritesMoviesRepositoryImpl @Inject constructor(
     private val favoritesLocalDataSource: FavoritiesLocalDataSource,
     private val movieEntityToDomainMapper : FavoritesMoviesEntityToDomain,
     private val movieDtoToEntityMapper: FavoritiesMoviesDtoToEntityMapper,
+    private val movieDetailsEntityTofavoriteEntityMapper:  FavoritesMovieToEntityMapper,
     private val movieAddFavorites: FavoriteAddOrRemoveToDtoMapper,
     private val movieResultAddFavorite: FavoriteAddOrRemoveDtoToDomainMapper
 
@@ -61,14 +59,27 @@ class FavoritesMoviesRepositoryImpl @Inject constructor(
     override suspend fun checkIsMovieSaved(movieId: Int): Flow<Boolean> = favoritesLocalDataSource.checkIsMovieSaved(movieId)
     override suspend fun addMovieFavorite(movie: AddOrRemoveFavorite) : Flow<Resource<ResultAddFavorite>> = flow{
         emit(Resource.Loading)
-        favoritesRemoteDataSource.addFavorite(   authorization = BuildConfig.ACCESS_TOKEN_AUTH,
-                            account = BuildConfig.ACCOUNT_NUMBER,
-                            movie = movieAddFavorites.map(movie)
-                            ).onSuccess {
+        favoritesRemoteDataSource.addFavorite(
+            account = BuildConfig.ACCOUNT_NUMBER,
+            movie = movieAddFavorites.map(movie)
+        ).onSuccess {
+
+                                insertMovieFavoriteLocal(movie)
                                 emit(Resource.Success(movieResultAddFavorite.map(it)))
         }.onFailure {
             val exception = it as NetworkException
             emit(Resource.Error(exception))
+        }
+    }
+
+    private suspend fun insertMovieFavoriteLocal(optionalFavorite: AddOrRemoveFavorite) {
+        if(optionalFavorite.favorite) {
+            val detailsEntity = favoritesLocalDataSource.getMovieDetail(optionalFavorite.mediaId)
+            favoritesLocalDataSource.addMovie(
+                movieDetailsEntityTofavoriteEntityMapper.map(detailsEntity)
+            )
+        } else {
+            favoritesLocalDataSource.removeMovie(optionalFavorite.mediaId)
         }
     }
 

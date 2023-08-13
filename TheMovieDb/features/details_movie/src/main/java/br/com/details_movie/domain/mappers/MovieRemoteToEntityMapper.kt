@@ -10,7 +10,7 @@ class MovieRemoteToEntityMapper @Inject constructor() : Mapper<MovieDetailsDto, 
 
     override suspend fun map(from: MovieDetailsDto): MovieDetailsEntity = MovieDetailsEntity(
         id = from.id,
-        description = from.overview,
+        overview = from.overview,
         tagline = from.tagline,
         posterPath = from.posterPath,
         releaseDate = from.releaseDate,

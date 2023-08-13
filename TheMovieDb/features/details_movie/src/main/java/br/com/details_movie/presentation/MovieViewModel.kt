@@ -1,12 +1,10 @@
 package br.com.details_movie.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import br.com.details_movie.domain.model.Movie
+import br.com.details_movie.domain.model.MovieDetails
 import br.com.details_movie.domain.usecase.GetMovieUseCase
 import br.com.favorites.domain.model.AddOrRemoveFavorite
 import br.com.favorites.domain.model.ResultAddFavorite
@@ -68,12 +66,12 @@ class MovieViewModel @Inject constructor(
         }
     }
 
-    fun addMovieFavorite(movie: Movie) {
+    fun addMovieFavorite(movieId: Int, addOrRemove: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
 
             addFavoriteMovie (AddOrRemoveFavorite(
-                favorite = true,
-                mediaId = movie.id,
+                favorite = !addOrRemove,
+                mediaId = movieId,
                 mediaType = "movie"
             )).collect{
                 when(it) {
@@ -85,11 +83,11 @@ class MovieViewModel @Inject constructor(
         }
     }
 
-    fun removeFavorite(movie: Movie) {
+    fun removeFavorite(movieDetails: MovieDetails) {
         viewModelScope.launch(Dispatchers.IO) {
             addFavoriteMovie (AddOrRemoveFavorite(
                 favorite = false,
-                mediaId = movie.id,
+                mediaId = movieDetails.id,
                 mediaType = "movie"
             )).collect{
 //                Log.d("SALVO","SALVO COM: "+it.statusMessage)

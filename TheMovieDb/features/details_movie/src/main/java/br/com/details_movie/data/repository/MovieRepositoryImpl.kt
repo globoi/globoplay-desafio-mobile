@@ -4,7 +4,7 @@ import br.com.details_movie.data.repository.datasource.MovieLocalDataSource
 import br.com.details_movie.data.repository.datasource.MovieRemoteDataSource
 import br.com.details_movie.domain.mappers.MovieRemoteToEntityMapper
 import br.com.details_movie.domain.mappers.MovieToDomainMapper
-import br.com.details_movie.domain.model.Movie
+import br.com.details_movie.domain.model.MovieDetails
 import br.com.details_movie.domain.repository.MovieRepository
 import br.com.network.NetworkException
 import br.com.network.Resource
@@ -20,7 +20,7 @@ class MovieRepositoryImpl @Inject constructor(
     private val localMapper: MovieToDomainMapper,
 ) : MovieRepository {
 
-    override fun getMovie(movieId: Int): Flow<Resource<Movie>> = flow {
+    override fun getMovie(movieId: Int): Flow<Resource<MovieDetails>> = flow {
 
             emit(Resource.Loading)
 
@@ -35,12 +35,12 @@ class MovieRepositoryImpl @Inject constructor(
         emitAll(getMovieDataFlowFromRemote(movieId))
     }
 
-    private suspend fun getMovieFromDb(movieId: Int) : Movie? = localDataSource.getMovie(movieId)?.let { movieEntity->
+    private suspend fun getMovieFromDb(movieId: Int) : MovieDetails? = localDataSource.getMovie(movieId)?.let { movieEntity->
         localMapper.map(movieEntity)
     }
 
     private suspend fun  getMovieDataFlowFromRemote(movieid:Int, emitError: Boolean = true)
-    :Flow<Resource<Movie>>
+    :Flow<Resource<MovieDetails>>
     = flow {
         remoteDataSource.getMovie(movieid).onSuccess { movieDto->
             val movieEntity = remoteToLocalMapper.map(movieDto)

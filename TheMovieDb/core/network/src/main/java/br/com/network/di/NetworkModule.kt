@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 private const val CONTENT_TYPE = "application/json"
-private const val QUERY_NAME_API_KEY = "api_key"
+private const val QUERY_NAME_API_KEY = "Authorization"
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -38,11 +38,16 @@ object NetworkModule {
     @Provides
     fun provideInterceptor(): Interceptor = Interceptor { chain ->
         val originalRequest = chain.request()
-        val url = originalRequest.url.newBuilder().addQueryParameter(
-            QUERY_NAME_API_KEY,
-            BuildConfig.API_KEY,
-        ).build()
-        chain.proceed(originalRequest.newBuilder().url(url).build())
+        val url = originalRequest.newBuilder()
+            .addHeader(
+                QUERY_NAME_API_KEY, BuildConfig.ACCESS_TOKEN_AUTH
+            )
+            .build()
+//        val url = originalRequest.url.newBuilder().addQueryParameter(
+//            QUERY_NAME_API_KEY,
+//            BuildConfig.ACCESS_TOKEN_AUTH,
+//        ).build()
+        chain.proceed(url)
     }
 
     @Singleton

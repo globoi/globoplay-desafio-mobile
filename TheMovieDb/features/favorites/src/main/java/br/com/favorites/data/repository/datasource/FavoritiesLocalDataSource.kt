@@ -4,6 +4,7 @@ import androidx.paging.LoadType
 import androidx.paging.PagingSource
 import br.com.local.model.favorite.FavoritiesMovieEntity
 import br.com.local.model.favorite.FavoritiesMoviesRemoteKeyEntity
+import br.com.local.model.movie_details.MovieDetailsEntity
 import kotlinx.coroutines.flow.Flow
 
 interface FavoritiesLocalDataSource {
@@ -15,8 +16,11 @@ interface FavoritiesLocalDataSource {
 
     suspend fun addMovie(movie: FavoritiesMovieEntity): Long
 
+
     suspend fun removeMovie(movieId: Int)
+
     suspend fun getMovie(movieId: Int) : FavoritiesMovieEntity
+    suspend fun getMovieDetail(movieId: Int) : MovieDetailsEntity
 
     suspend fun clearAllMoviesFromDb()
 

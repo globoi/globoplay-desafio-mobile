@@ -13,13 +13,13 @@ class FavoritiesRemoteDataSourceImpl @Inject constructor(
     private val service: FavoriteApiService
 ) : FavoritiesRemoteDataSource {
     override suspend fun getFavorities(authorization : String, page: Int, account: Int):
-            Result<ResultMoviesDto> = service.getMoviesFavorities( authorization = authorization,
+            Result<ResultMoviesDto> = service.getMoviesFavorities(
         account = account,
         page = page)
 
-    override suspend fun addFavorite(authorization: String,
+    override suspend fun addFavorite(
         account: Int,
         movie: AddOrRemoveFavoriteDto
-    ): Result<ResultAddFavoriteDto>  = service.addMovieFavorite(authorization,account,movie)
+    ): Result<ResultAddFavoriteDto>  = service.addMovieFavorite(account,movie)
 
 }

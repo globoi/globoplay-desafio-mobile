@@ -12,13 +12,11 @@ import retrofit2.http.Query
 
 interface FavoriteApiService {
     @GET("/3/account/{account}/favorite/movies")
-    suspend fun getMoviesFavorities(@Header("Authorization") authorization: String,
-                                    @Path("account") account: Int,
+    suspend fun getMoviesFavorities(@Path("account") account: Int,
                                     @Query("page") page: Int) : Result<ResultMoviesDto>
 
     @POST("/3/account/{account}/favorite")
-    suspend fun addMovieFavorite(@Header("Authorization") authorization: String,
-                                    @Path("account") account: Int,
+    suspend fun addMovieFavorite(@Path("account") account: Int,
                                   @Body movie: AddOrRemoveFavoriteDto)
     : Result<ResultAddFavoriteDto>
 

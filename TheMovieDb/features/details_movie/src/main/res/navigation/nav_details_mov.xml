@@ -9,6 +9,7 @@
         android:id="@+id/detailsMovieFragment"
         android:name="br.com.details_movie.presentation.DetailsMovieFragment"
         android:label="@string/txt_header_details_movie"
+        app:popUpToInclusive="false"
         tools:layout="@layout/fragment_details_movie" >
         <argument
             android:name="Idmovie"

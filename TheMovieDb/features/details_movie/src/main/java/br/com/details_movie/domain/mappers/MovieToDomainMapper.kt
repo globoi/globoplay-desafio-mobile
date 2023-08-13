@@ -1,7 +1,7 @@
 package br.com.details_movie.domain.mappers
 
 import br.com.common.util.Mapper
-import br.com.details_movie.domain.model.Movie
+import br.com.details_movie.domain.model.MovieDetails
 import br.com.local.model.movie_details.MovieDetailsEntity
 import br.com.network.BuildConfig
 import java.text.SimpleDateFormat
@@ -13,9 +13,9 @@ private const val FORMAT_DATE_MOVIE_RELEASE_FORMATTER = "yyyy"
 private const val SEPARATOR_SUBTITLE = " | "
 private const val CHAR_STAR = '★'
 
-class MovieToDomainMapper @Inject constructor() : Mapper<MovieDetailsEntity, Movie> {
+class MovieToDomainMapper @Inject constructor() : Mapper<MovieDetailsEntity, MovieDetails> {
 
-    override suspend fun map(from: MovieDetailsEntity): Movie {
+    override suspend fun map(from: MovieDetailsEntity): MovieDetails {
 
         val parser = SimpleDateFormat(FORMAT_DATE_MOVIE_RELEASE_PARSER, Locale.ENGLISH)
         val formatter = SimpleDateFormat(FORMAT_DATE_MOVIE_RELEASE_FORMATTER, Locale.ENGLISH)
@@ -24,11 +24,11 @@ class MovieToDomainMapper @Inject constructor() : Mapper<MovieDetailsEntity, Mov
                 formatter.format(it)
             }
         }.orEmpty()
-        return Movie(
+        return MovieDetails(
             id = from.id,
-            description = from.description.orEmpty(),
+            overview = from.overview.orEmpty(),
             tagline = from.tagline.orEmpty(),
-            posterUrl = BuildConfig.BASE_URL_IMAGE + from.posterPath,
+            posterPath = BuildConfig.BASE_URL_IMAGE + from.posterPath,
             title = from.title.orEmpty(),
             subtitle = listOfNotNull(
                 releaseDate,

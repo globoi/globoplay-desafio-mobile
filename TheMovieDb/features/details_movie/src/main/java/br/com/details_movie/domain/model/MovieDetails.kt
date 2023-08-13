@@ -1,10 +1,10 @@
 package br.com.details_movie.domain.model
 
-data class Movie(
+data class MovieDetails(
     val id: Int,
-    val description: String,
+    val overview: String,
     val tagline: String,
-    val posterUrl: String,
+    val posterPath: String,
     val title: String,
     val subtitle: String,
 )

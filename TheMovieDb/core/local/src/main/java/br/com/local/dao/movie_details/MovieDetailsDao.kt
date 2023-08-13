@@ -9,9 +9,9 @@ interface MovieDetailsDao {
     @Upsert
     suspend fun upsert(entity: MovieDetailsEntity)
 
-    @Query("DELETE FROM movies")
+    @Query("DELETE FROM movies_details")
     suspend fun clearAll()
 
-    @Query("SELECT * FROM movies WHERE id = :movieId")
-    suspend fun getMovie(movieId: Int): MovieDetailsEntity?
+    @Query("SELECT * FROM movies_details WHERE id = :movieId")
+    suspend fun getMovie(movieId: Int): MovieDetailsEntity
 }

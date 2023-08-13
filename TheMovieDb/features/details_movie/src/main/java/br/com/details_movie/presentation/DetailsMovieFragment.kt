@@ -9,11 +9,14 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import br.com.common.Extensions.collectLatestLifecycleFlow
+import br.com.common.Extensions.hide
+import br.com.common.Extensions.setFaveImageAndColor
+import br.com.common.Extensions.show
 import br.com.common.Extensions.toast
 import br.com.ui_kit.R as uiKitR
 import br.com.common.R as commonR
 import br.com.details_movie.databinding.FragmentDetailsMovieBinding
-import br.com.details_movie.domain.model.Movie
+import br.com.details_movie.domain.model.MovieDetails
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,9 +24,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailsMovieFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsMovieBinding
-    private val args: DetailsMovieFragmentArgs by navArgs()
-    val viewModel: MovieViewModel by viewModels()
-
+    private val viewModel: MovieViewModel by viewModels()
+    private var idMovie : Int? = 0
 
 
 
@@ -37,7 +39,7 @@ class DetailsMovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val idMovie = arguments?.getInt(getString(commonR.string.argument_movie_id), -1)
+        idMovie = arguments?.getInt(getString(commonR.string.argument_movie_id), -1)
 
         idMovie?.let {
             viewModel.getMovie(it)
@@ -49,7 +51,7 @@ class DetailsMovieFragment : Fragment() {
     private fun subscribeObservers() {
         collectLatestLifecycleFlow(viewModel.uiState) { uiState ->
             if (uiState is MovieUiState.Success) {
-                uiState.movie?.let { movie ->
+                uiState.movieDetails?.let { movie ->
                     updateUi(movie)
                 }
             }
@@ -61,41 +63,32 @@ class DetailsMovieFragment : Fragment() {
                 is UiState.Loading -> {
                     setLoadingFavorite()
                 }
-
+                is  UiState.Success -> {
+                    viewModel.checkIfMovieIsSaved(idMovie!!)
+                }
                 is UiState.Error -> {
                     state.message?.let { setIsErrorFavorite(it) }
-                }
-                is  UiState.Success -> {
-                    setIsFavorite()
                 }
                 else -> {}
             }
         }
 
         viewModel.isMovieSaved.observe(viewLifecycleOwner) {
-                if(it) {
-                    val color = ContextCompat.getColorStateList(requireContext(), uiKitR.color.primary_color)
-                    binding.imageButtonUnFaveItem.setImageResource(uiKitR.drawable.ic_bold_fave)
-                    binding.imageButtonUnFaveItem.imageTintList = color
-                }
+            setIsFavorite()
         }
     }
 
-    private fun updateUi(movie: Movie) {
+    private fun updateUi(movieDetails: MovieDetails) {
         with(binding) {
-            txtTitulo.text = movie.title
-            Glide.with(requireContext()).load(movie.posterUrl).centerCrop().into(imageViewMovie)
-            txtSubtitle.text = movie.subtitle
-            txtTagline.text = movie.tagline
-            txtDetails.text = movie.description
+            txtTitulo.text = movieDetails.title
+            Glide.with(requireContext()).load(movieDetails.posterPath).centerCrop().into(imageViewMovie)
+            txtSubtitle.text = movieDetails.subtitle
+            txtTagline.text = movieDetails.tagline
+            txtDetails.text = movieDetails.overview
 
             imageButtonUnFaveItem.setOnClickListener {
-                if(viewModel.isMovieSaved.value != true)    {
-                    viewModel.addMovieFavorite(movie)
-                    viewModel.checkIfMovieIsSaved(movie.id)
-                } else {
-                    viewModel.removeFavorite(movie)
-                    viewModel.checkIfMovieIsSaved(movie.id)
+                viewModel.isMovieSaved.value?.let { isAddOrRemove ->
+                    viewModel.addMovieFavorite(movieDetails.id, isAddOrRemove)
                 }
             }
         }
@@ -103,28 +96,36 @@ class DetailsMovieFragment : Fragment() {
     }
 
     private fun setLoadingFavorite() {
-        binding.imageButtonUnFaveItem.visibility = View.GONE
-        binding.progressLoading.visibility = View.VISIBLE
+        binding.imageButtonUnFaveItem.hide()
+        binding.progressLoading.show()
 
     }
 
+    private fun setIconFavorite() {
+        binding.imageButtonUnFaveItem.setFaveImageAndColor(
+            uiKitR.drawable.ic_bold_fave, uiKitR.color.primary_color)
+    }
+
+    private fun setNotIconFavorite() {
+
+        binding.imageButtonUnFaveItem.setFaveImageAndColor(
+            uiKitR.drawable.ic_large_fave,null)
+    }
+
     private fun setIsFavorite() {
-        binding.imageButtonUnFaveItem.visibility = View.VISIBLE
-        binding.progressLoading.visibility = View.GONE
+        binding.imageButtonUnFaveItem.show()
+        binding.progressLoading.hide()
 
         if(viewModel.isMovieSaved.value == true) {
-            val color = ContextCompat.getColorStateList(requireContext(), uiKitR.color.primary_color)
-            binding.imageButtonUnFaveItem.setImageResource(uiKitR.drawable.ic_bold_fave)
-            binding.imageButtonUnFaveItem.imageTintList = color
+           setIconFavorite()
         } else {
-            binding.imageButtonUnFaveItem.setImageResource(uiKitR.drawable.ic_large_fave)
-            binding.imageButtonUnFaveItem.imageTintList = null
+            setNotIconFavorite()
         }
     }
 
     private fun setIsErrorFavorite(message: String) {
-        binding.imageButtonUnFaveItem.visibility = View.VISIBLE
-        binding.progressLoading.visibility = View.GONE
+        binding.imageButtonUnFaveItem.show()
+        binding.progressLoading.hide()
         toast(message)
     }
 }

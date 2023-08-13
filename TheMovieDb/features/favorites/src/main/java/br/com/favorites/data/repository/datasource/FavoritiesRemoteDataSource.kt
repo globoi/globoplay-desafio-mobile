@@ -6,5 +6,5 @@ import br.com.favorites.data.remote.dto.ResultAddFavoriteDto
 
 interface FavoritiesRemoteDataSource {
     suspend fun getFavorities(authorization: String, page: Int,account: Int) : Result<ResultMoviesDto>
-    suspend fun addFavorite(authorization: String,account: Int, movie: AddOrRemoveFavoriteDto) : Result<ResultAddFavoriteDto>
+    suspend fun addFavorite(account: Int, movie: AddOrRemoveFavoriteDto) : Result<ResultAddFavoriteDto>
 }

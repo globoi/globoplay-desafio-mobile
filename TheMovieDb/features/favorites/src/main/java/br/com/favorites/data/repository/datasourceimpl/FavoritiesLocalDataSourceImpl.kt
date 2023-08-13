@@ -7,11 +7,14 @@ import br.com.local.dao.favorities.FavoritiesMoviesDao
 import br.com.local.model.favorite.FavoritiesMovieEntity
 import br.com.local.model.favorite.FavoritiesMoviesRemoteKeyEntity
 import br.com.favorites.data.repository.datasource.FavoritiesLocalDataSource
+import br.com.local.dao.movie_details.MovieDetailsDao
+import br.com.local.model.movie_details.MovieDetailsEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class FavoritiesLocalDataSourceImpl @Inject constructor(
     private val favoritiesMovies: FavoritiesMoviesDao,
+    private val movieDetails: MovieDetailsDao,
     private val favoritiesMoviesRemoteKeys: FavoritiesMovieRemoteKeysDao
 ) : FavoritiesLocalDataSource {
     override fun getPagingSourceFromDb(): PagingSource<Int, FavoritiesMovieEntity> = favoritiesMovies.getPagingSource()
@@ -26,6 +29,8 @@ class FavoritiesLocalDataSourceImpl @Inject constructor(
     }
 
     override suspend fun getMovie(movieId: Int): FavoritiesMovieEntity = favoritiesMovies.getMovie(movieId)
+
+    override suspend fun getMovieDetail(movieId: Int): MovieDetailsEntity = movieDetails.getMovie(movieId)
 
     override suspend fun clearAllMoviesFromDb() {
         favoritiesMovies.clearAll()
