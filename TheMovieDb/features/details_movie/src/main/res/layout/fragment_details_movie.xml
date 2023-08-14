@@ -13,7 +13,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/movie_details_image_height"
             android:layout_gravity="center"
-            android:contentDescription=""
             app:layout_constraintDimensionRatio="9:16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,10 +75,10 @@
         <TextView
             android:id="@+id/txt_subtitle"
             style="@style/Label.Normal.NoEllipsize"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:gravity="start|center"
-            app:layout_constraintEnd_toEndOf="@+id/txt_titulo"
-            app:layout_constraintStart_toStartOf="@+id/txt_titulo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_titulo"
             tools:text="Action"
             tools:textColor="@color/black" />
@@ -88,8 +87,9 @@
         <TextView
             android:id="@+id/txt_tagline"
             style="@style/Label.Normal"
-            app:layout_constraintStart_toStartOf="@+id/txt_subtitle"
 
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_subtitle"
             tools:text="Runtime: 1h 30m"
             tools:textColor="@color/black" />

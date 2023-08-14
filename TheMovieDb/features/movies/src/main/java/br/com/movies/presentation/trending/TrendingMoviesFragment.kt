@@ -16,8 +16,11 @@ import br.com.ui_kit.R as uiKit
 
 import br.com.movies.databinding.FragmentTrendingMoviesBinding
 import br.com.common.Extensions.SpacingItemDecoration
+import br.com.common.Extensions.ToolbarUtil
 import br.com.common.Extensions.collectLatestLifecycleFlow
+import br.com.common.Extensions.hide
 import br.com.common.Extensions.navigateToMovie
+import br.com.common.Extensions.show
 import br.com.common.Extensions.toast
 import br.com.ui_kit.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -63,14 +66,19 @@ class TrendingMoviesFragment : Fragment() {
             binding.layoutRecyclerviewTrending.swipeRefreshTrending.isRefreshing = it.refresh is LoadState.Loading
 
             when (it.refresh) {
-                is LoadState.Loading -> {}
+                is LoadState.Loading -> {
+                    loadingShimmer(true)
+                }
                 is LoadState.Error -> {
+                    loadingShimmer(false)
                     val message = it.refresh as LoadState.Error
                     message.error.message?.let { message ->
                         toast(message)
                     }
                 }
-                is LoadState.NotLoading -> {}
+                is LoadState.NotLoading -> {
+                    loadingShimmer(false)
+                }
             }
         }
     }
@@ -79,6 +87,7 @@ class TrendingMoviesFragment : Fragment() {
         adapter.onItemClicked = ::openMovieDetail
         binding.layoutRecyclerviewTrending.swipeRefreshTrending.setOnRefreshListener{
             adapter.refresh()
+            loadingShimmer(true)
         }
         binding.layoutRecyclerviewTrending.recyclerviewTrendingMovies.addItemDecoration(
             SpacingItemDecoration(resources.getDimensionPixelSize(R.dimen.space_medium), true)
@@ -87,18 +96,26 @@ class TrendingMoviesFragment : Fragment() {
     }
 
     private fun initToolbar() {
+        ToolbarUtil.initToolbar(binding.fragmentTrendingToolbar.toolbar,
+            uiKit.menu.toolbar_main_menu,
+            getString(uiKit.string.txt_globoplay)
+        )
+    }
 
+    private fun loadingShimmer(visible: Boolean) {
 
-        with(binding.fragmentTrendingToolbar.toolbar) {
-            inflateMenu(uiKit.menu.toolbar_main_menu)
-            title = getString(uiKit.string.txt_globoplay)
+        if(visible) {
+            binding.shimmerViewContainer.startShimmer()
+            binding.shimmerViewContainer.show()
+            binding.layoutRecyclerviewTrending.conteinerMovies.hide()
+        } else {
+            binding.shimmerViewContainer.stopShimmer()
+            binding.shimmerViewContainer.hide()
+            binding.layoutRecyclerviewTrending.conteinerMovies.show()
         }
     }
 
-
-
     private fun openMovieDetail(movieId: Int) {
-
         findNavController().navigateToMovie(this,movieId)
     }
 }

@@ -6,6 +6,7 @@
     android:layout_height="?attr/actionBarSize"
     android:theme="@style/Theme.Toolbar"
     app:subtitleCentered="true"
+    android:layout_marginBottom="@dimen/size_16"
     app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Large"
     app:titleTextColor="@color/white"
     app:titleCentered="true"

@@ -9,12 +9,16 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import br.com.common.Extensions.SpacingItemDecoration
+import br.com.common.Extensions.ToolbarUtil
 import br.com.common.Extensions.collectLatestLifecycleFlow
+import br.com.common.Extensions.hide
 import br.com.common.Extensions.navigateToMovie
+import br.com.common.Extensions.show
 import br.com.common.Extensions.toast
 import br.com.favorites.databinding.FragmentFavoritesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import br.com.ui_kit.R as uiKit
 
 
 @AndroidEntryPoint
@@ -37,6 +41,7 @@ private val favoritesViewmodel: FavoritesViewModel by viewModels ()
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         subscribeObservers()
+        initToolbar()
     }
 
     private fun subscribeObservers() {
@@ -52,8 +57,10 @@ private val favoritesViewmodel: FavoritesViewModel by viewModels ()
 
             when (it.refresh) {
                 is LoadState.Loading -> {
+                    loadingShimmer(true)
                 }
                 is LoadState.Error -> {
+                    loadingShimmer(false)
                     val message = it.refresh as LoadState.Error
                     message.error.message?.let { message ->
                         toast(message)
@@ -61,7 +68,7 @@ private val favoritesViewmodel: FavoritesViewModel by viewModels ()
 
                 }
                 is LoadState.NotLoading -> {
-
+                        loadingShimmer(false)
                 }
             }
             }
@@ -74,6 +81,7 @@ private val favoritesViewmodel: FavoritesViewModel by viewModels ()
 
         binding.favoritesSwipeRefreshLayout.setOnRefreshListener {
             adapter.refresh()
+            loadingShimmer(true)
         }
         binding.recyclerviewFavorites.addItemDecoration(
             SpacingItemDecoration(resources.getDimensionPixelSize(br.com.ui_kit.R.dimen.space_medium), true)
@@ -81,9 +89,27 @@ private val favoritesViewmodel: FavoritesViewModel by viewModels ()
         binding.recyclerviewFavorites.adapter = adapter
     }
 
+    private fun loadingShimmer(visible: Boolean) {
+
+        if(visible) {
+            binding.shimmerView.startShimmer()
+            binding.shimmerView.show()
+            binding.recyclerviewFavorites.hide()
+        } else {
+            binding.shimmerView.stopShimmer()
+            binding.shimmerView.hide()
+            binding.recyclerviewFavorites.show()
+        }
+    }
+
+    private fun initToolbar() {
+        ToolbarUtil.initToolbar(binding.fragmentTrendingToolbar.toolbar,
+            uiKit.menu.toolbar_main_menu,
+            getString(uiKit.string.txt_favority_fragment)
+            )
+    }
 
     private fun openMovieDetail(movieId: Int) {
-
         findNavController().navigateToMovie(this,movieId)
     }
 }

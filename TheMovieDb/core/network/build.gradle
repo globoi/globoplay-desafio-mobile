@@ -18,11 +18,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        buildConfigField 'String', 'BASE_URL', localProperties['baseUrl']
-        buildConfigField 'String', 'API_KEY', localProperties['apiKey']
         buildConfigField 'String', 'ACCESS_TOKEN_AUTH', localProperties['accesstokenAuth']
         buildConfigField 'int', 'ACCOUNT_NUMBER', localProperties['accountNumber']
-        buildConfigField 'String', 'BASE_URL_IMAGE', localProperties['baseUrlImage']
 
     }
 
@@ -49,6 +46,7 @@ dependencies {
     implementation libs.kotlin
     implementation libs.hilt.android
     implementation libs.bundles.network
+    implementation project(':core:common')
     kapt libs.hilt.compiler
 
     testImplementation libs.bundles.test

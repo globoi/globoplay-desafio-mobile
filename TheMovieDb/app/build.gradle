@@ -21,7 +21,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField 'String', 'BASE_URL', localProperties['baseUrl']
-        buildConfigField 'String', 'API_KEY', localProperties['apiKey']
     }
 
     buildTypes {
@@ -56,6 +55,7 @@ dependencies {
     implementation libs.bundles.viewmodel
     implementation libs.bundles.navigation
     implementation libs.hilt.android
+    testImplementation project(path: ':core:network')
     kapt libs.hilt.compiler
     implementation project(':features:movies')
     implementation project(':features:details_movie')

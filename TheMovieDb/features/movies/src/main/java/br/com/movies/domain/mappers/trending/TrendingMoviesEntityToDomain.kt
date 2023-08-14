@@ -3,6 +3,8 @@ package br.com.movies.domain.mappers.trending
 import br.com.common.util.Mapper
 import br.com.local.model.trending.TrendingMovieEntity
 import br.com.common.domain.model.Movie
+import br.com.common.util.BASE_URL
+import br.com.common.util.BASE_URL_IMAGE
 import br.com.network.BuildConfig
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -32,7 +34,7 @@ class TrendingMoviesEntityToDomain @Inject constructor() :
             originalTitle  = movie.originalTitle,
             overview  = movie.overview,
             popularity  = movie.popularity,
-            posterPath  = BuildConfig.BASE_URL_IMAGE+ movie.posterPath,
+            posterPath  = BASE_URL_IMAGE+ movie.posterPath,
             releaseDate  =  runCatching {
                 parser.parse(movie.releaseDate.orEmpty())
             }.getOrNull()?.let { releaseDate ->

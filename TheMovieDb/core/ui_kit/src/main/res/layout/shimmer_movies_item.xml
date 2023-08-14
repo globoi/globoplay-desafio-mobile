@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="@dimen/small_card_width"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/normal_margin_size"
+        android:layout_marginTop="@dimen/medium_margin_size"
+        android:layout_marginBottom="@dimen/normal_margin_size"
+        android:background="@color/secondary_color"
+        app:layout_constraintDimensionRatio="9:16">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/imageViewMovie"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/small_card_height"
+            android:background="@color/shimmer_color"
+            app:roundPercent="0.11" />
+
+        <View
+            android:id="@+id/view3_person_details"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/medium_size"
+            android:layout_marginTop="@dimen/normal_margin_size"
+            android:background="@color/shimmer_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewMovie" />
+
+        <View
+            android:id="@+id/textViewDate"
+            android:layout_width="@dimen/x_x_large_size"
+            android:layout_height="@dimen/medium_size"
+            android:layout_marginTop="@dimen/normal_margin_size"
+            android:background="@color/shimmer_color"
+            app:layout_constraintStart_toStartOf="@+id/view3_person_details"
+            app:layout_constraintTop_toBottomOf="@+id/view3_person_details" />
+
+        <TextView
+            android:id="@+id/textViewRating"
+            android:layout_width="@dimen/large_size"
+            android:layout_height="@dimen/medium_size"
+            android:background="@color/shimmer_color"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewDate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

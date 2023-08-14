@@ -1,5 +1,6 @@
 package br.com.details_movie.domain.mappers
 
+import br.com.common.util.BASE_URL_IMAGE
 import br.com.common.util.Mapper
 import br.com.details_movie.domain.model.MovieDetails
 import br.com.local.model.movie_details.MovieDetailsEntity
@@ -28,11 +29,11 @@ class MovieToDomainMapper @Inject constructor() : Mapper<MovieDetailsEntity, Mov
             id = from.id,
             overview = from.overview.orEmpty(),
             tagline = from.tagline.orEmpty(),
-            posterPath = BuildConfig.BASE_URL_IMAGE + from.posterPath,
+            posterPath = BASE_URL_IMAGE + from.posterPath,
             title = from.title.orEmpty(),
             subtitle = listOfNotNull(
                 releaseDate,
-                from.genre,
+                from.genre.joinToString(separator = " | ") {  it.name },
                 from.voteAverage?.let { voteAverage ->
                     String.format(Locale.ENGLISH, "%.1f", voteAverage).plus(CHAR_STAR)
                 }

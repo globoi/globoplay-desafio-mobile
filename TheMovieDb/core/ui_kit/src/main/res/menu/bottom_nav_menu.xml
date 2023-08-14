@@ -5,11 +5,6 @@
         android:icon="@drawable/home_icon"
         android:title="@string/txt_homem_fragment" />
 
-<!--    <item-->
-<!--        android:id="@+id/favoritesFragment"-->
-<!--        android:icon="@drawable/search_icon"-->
-<!--        android:title="@string/txt_search_fragment" />-->
-
     <item
         android:id="@+id/favorite_nav"
         android:icon="@drawable/fave_icon"

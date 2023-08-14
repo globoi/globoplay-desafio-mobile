@@ -1,17 +1,13 @@
 package br.com.network.di
 
-import android.content.Context
-import android.util.Config.DEBUG
-import br.com.network.ApiKeyInterceptor
+import br.com.common.util.BASE_URL
 import br.com.network.BuildConfig
-import br.com.network.BuildConfig.BASE_URL
 import br.com.network.ResultCallAdapterFactory
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -43,10 +39,6 @@ object NetworkModule {
                 QUERY_NAME_API_KEY, BuildConfig.ACCESS_TOKEN_AUTH
             )
             .build()
-//        val url = originalRequest.url.newBuilder().addQueryParameter(
-//            QUERY_NAME_API_KEY,
-//            BuildConfig.ACCESS_TOKEN_AUTH,
-//        ).build()
         chain.proceed(url)
     }
 

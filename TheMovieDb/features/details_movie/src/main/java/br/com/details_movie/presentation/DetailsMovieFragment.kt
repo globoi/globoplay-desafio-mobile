@@ -25,7 +25,6 @@ class DetailsMovieFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsMovieBinding
     private val viewModel: MovieViewModel by viewModels()
-    private var idMovie : Int? = 0
 
 
 
@@ -39,7 +38,7 @@ class DetailsMovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        idMovie = arguments?.getInt(getString(commonR.string.argument_movie_id), -1)
+       val idMovie = arguments?.getInt(getString(commonR.string.argument_movie_id), -1)
 
         idMovie?.let {
             viewModel.getMovie(it)
@@ -51,9 +50,7 @@ class DetailsMovieFragment : Fragment() {
     private fun subscribeObservers() {
         collectLatestLifecycleFlow(viewModel.uiState) { uiState ->
             if (uiState is MovieUiState.Success) {
-                uiState.movieDetails?.let { movie ->
-                    updateUi(movie)
-                }
+                updateUi(uiState.movieDetails)
             }
         }
 
@@ -64,7 +61,7 @@ class DetailsMovieFragment : Fragment() {
                     setLoadingFavorite()
                 }
                 is  UiState.Success -> {
-                    viewModel.checkIfMovieIsSaved(idMovie!!)
+                    viewModel.movieDetails?.id?.let { viewModel.checkIfMovieIsSaved(it) }
                 }
                 is UiState.Error -> {
                     state.message?.let { setIsErrorFavorite(it) }
@@ -76,6 +73,7 @@ class DetailsMovieFragment : Fragment() {
         viewModel.isMovieSaved.observe(viewLifecycleOwner) {
             setIsFavorite()
         }
+
     }
 
     private fun updateUi(movieDetails: MovieDetails) {

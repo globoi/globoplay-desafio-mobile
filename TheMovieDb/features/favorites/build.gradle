@@ -65,5 +65,8 @@ dependencies {
     implementation project(':core:ui_kit')
 
     testImplementation libs.bundles.test
+    testImplementation "org.mockito:mockito-core:3.12.4"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+
     androidTestImplementation libs.bundles.androidTest
 }

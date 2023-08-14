@@ -2,6 +2,7 @@ package br.com.favorites.domain.mappers
 
 import android.util.Log
 import br.com.common.domain.model.Movie
+import br.com.common.util.BASE_URL_IMAGE
 import br.com.common.util.Mapper
 import br.com.local.model.favorite.FavoritiesMovieEntity
 import br.com.network.BuildConfig
@@ -34,7 +35,7 @@ class FavoritesMoviesEntityToDomain @Inject constructor() :
             originalTitle  = movieEntity.originalTitle,
             overview  = movieEntity.overview,
             popularity  = movieEntity.popularity,
-            posterPath  = BuildConfig.BASE_URL_IMAGE+ movieEntity.posterPath,
+            posterPath  = BASE_URL_IMAGE+ movieEntity.posterPath,
             releaseDate  =  runCatching {
                 parser.parse(movieEntity.releaseDate.orEmpty())
             }.getOrNull()?.let { releaseDate ->
