@@ -2,8 +2,9 @@ plugins {
     alias libs.plugins.android.library
     alias libs.plugins.android.kotlin
     alias libs.plugins.android.navigationargs
-    alias libs.plugins.android.hilt
+//    alias libs.plugins.android.hilt
     id 'kotlin-kapt'
+    id 'themovie.android.hilt'
 }
 android {
     namespace 'br.com.local'
@@ -35,13 +36,13 @@ android {
 dependencies {
 
     implementation libs.kotlin
-    implementation libs.hilt.android
+//    implementation libs.hilt.android
     implementation libs.androidx.room.ktx
     implementation libs.androidx.room.paging
     implementation libs.coroutine.android
     implementation libs.bundles.network
 
-    kapt libs.hilt.compiler
+//    kapt libs.hilt.compiler
     kapt libs.room.compiler
     testImplementation libs.bundles.test
     androidTestImplementation libs.bundles.androidTest

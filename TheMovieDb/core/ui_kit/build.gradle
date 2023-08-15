@@ -2,8 +2,10 @@ plugins {
     alias libs.plugins.android.library
     alias libs.plugins.android.kotlin
     alias libs.plugins.android.navigationargs
-    alias libs.plugins.android.hilt
+//    alias libs.plugins.android.hilt
     id 'kotlin-kapt'
+    id 'themovie.android.hilt'
+
 }
 
 android {
@@ -47,11 +49,11 @@ dependencies {
     implementation libs.bundles.coroutine
     implementation libs.bundles.viewmodel
     implementation libs.bundles.navigation
-    implementation libs.hilt.android
+//    implementation libs.hilt.android
     implementation libs.androidx.paging
     implementation libs.androidx.room.ktx
     implementation libs.androidx.room.paging
-    kapt libs.hilt.compiler
+//    kapt libs.hilt.compiler
 
 
     testImplementation libs.bundles.test
