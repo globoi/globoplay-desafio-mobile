@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.GloboplayDesafioMobile" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="SplashScreenTheme" parent="Theme.GloboplayDesafioMobile" >
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+</resources>
