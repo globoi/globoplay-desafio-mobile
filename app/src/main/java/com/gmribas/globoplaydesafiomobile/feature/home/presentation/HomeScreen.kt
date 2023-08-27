@@ -1,22 +1,17 @@
 package com.gmribas.globoplaydesafiomobile.feature.home.presentation
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,13 +23,11 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.gmribas.globoplaydesafiomobile.R
 import com.gmribas.globoplaydesafiomobile.core.domain.ObserveLifecycle
-import com.gmribas.globoplaydesafiomobile.core.presentation.UiState
-import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.CircularLoadingCenter
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.CustomTopAppBar
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.HorizontalCarousel
-import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.PosterItem
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.TextTitle
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.Movie
+import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.SoapOpera
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -45,9 +38,11 @@ fun HomeScreen(
 ) {
     viewModel.ObserveLifecycle(LocalLifecycleOwner.current.lifecycle)
 
-    val discoveryMoviesState = viewModel.viewState.collectAsStateWithLifecycle()
+//    val discoveryMoviesState = viewModel.viewState.collectAsStateWithLifecycle()
 
     val discoveryMoviesItems: LazyPagingItems<Movie> = viewModel.discoverMoviesFlow.collectAsLazyPagingItems()
+
+    val discoverySoapOperasItems: LazyPagingItems<SoapOpera> = viewModel.discoverSoapOperasFlow.collectAsLazyPagingItems()
 
     Scaffold(
         modifier = Modifier
@@ -57,6 +52,25 @@ fun HomeScreen(
     ) { scaffoldPadding ->
 
         LazyColumn(contentPadding = scaffoldPadding) {
+
+            item {
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 8.dp)) {
+                    TextTitle(text = stringResource(id = R.string.soap_operas))
+                }
+            }
+
+            item {
+                HorizontalCarousel(pagingItems = discoverySoapOperasItems) { soapOperaId ->
+
+                }
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(8.dp))
+            }
+
             item {
                 Row(modifier = Modifier
                     .fillMaxWidth()
