@@ -27,4 +27,11 @@ interface ApiService {
         @Query("with_genres") withGenres: Int = SOAP_OPERA_GENRE,
         @Query("with_origin_country") withOriginCountry: String = BRAZIL_ORIGIN_COUNTRY
     ): PageDTO<SoapOperaDTO>
+
+    @GET("tv/top_rated")
+    suspend fun getTopRatedTvShows(
+        @Query("api_key") apiKey: String = BuildConfig.API_KEY,
+        @Query("page") page: Int,
+        @Query("language") language: String = "pt-br"
+    ): PageDTO<SoapOperaDTO>
 }

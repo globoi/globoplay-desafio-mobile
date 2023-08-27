@@ -8,4 +8,6 @@ object Constants {
     const val POSTER_THUMBNAIL_ORIGINAL_PATH = "https://image.tmdb.org/t/p/original"
     const val SOAP_OPERA_GENRE = 10766
     const val BRAZIL_ORIGIN_COUNTRY = "BR"
+    const val CAROUSEL_AUTO_SCROLL_TIMER: Long = 3500L
+    const val CAROUSEL_HOME_TOTAL_ITEMS_TO_SHOW = 15
 }

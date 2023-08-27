@@ -2,7 +2,7 @@ package com.gmribas.globoplaydesafiomobile.feature.home.domain.model
 
 data class Movie(
     val adult: Boolean,
-    val backdropPath: String,
+    val backdropPath: String?,
     val genreIDS: List<Long>,
     override val id: Int,
     val originalLanguage: String,
@@ -15,6 +15,7 @@ data class Movie(
     val video: Boolean,
     val voteAverage: Double,
     val voteCount: Long
-): PosterItem {
+): PosterItemInterface {
     override val poster: String = posterPath
+    override val backdrop: String? = backdropPath
 }

@@ -6,20 +6,23 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.PosterItem
+import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.PosterItemInterface
 import kotlinx.coroutines.flow.flow
 
 
 @Composable
-fun <T : PosterItem> HorizontalCarousel(pagingItems: LazyPagingItems<T>, onClick: (id: Int) -> Unit) {
+fun <T : PosterItemInterface> HorizontalCarousel(modifier: Modifier = Modifier, pagingItems: LazyPagingItems<T>, onClick: (id: Int) -> Unit) {
     Box(modifier = Modifier
         .fillMaxWidth()
-        .height(160.dp)) {
+        .height(160.dp)
+        .then(modifier)
+    ) {
 
         if (pagingItems.itemCount == 0) {
             CircularLoadingCenter()
@@ -38,19 +41,16 @@ fun <T : PosterItem> HorizontalCarousel(pagingItems: LazyPagingItems<T>, onClick
 @Preview
 @Composable
 fun HorizontalCarouselPreview() {
-    val flow = flow<PagingData<PosterItem>> {
-        val obj = object : PosterItem {
-            override val id: Int
-                get() = 1
-            override val title: String
-                get() = "Title"
-            override val poster: String
-                get() = "Poster"
-
+    val flow = flow<PagingData<PosterItemInterface>> {
+        val obj = object : PosterItemInterface {
+            override val id: Int = 1
+            override val title: String = "Title"
+            override val poster: String = "Poster"
+            override val backdrop: String = ""
         }
 
         emit(PagingData.from(listOf(obj)))
     }.collectAsLazyPagingItems()
 
-    HorizontalCarousel(flow) {}
+    HorizontalCarousel(pagingItems = flow) {}
 }

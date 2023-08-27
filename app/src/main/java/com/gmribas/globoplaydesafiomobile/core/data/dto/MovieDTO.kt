@@ -7,7 +7,7 @@ data class MovieDTO(
     val adult: Boolean,
 
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
 
     @SerializedName("genre_ids")
     val genreIDS: List<Long>,

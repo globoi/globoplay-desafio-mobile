@@ -29,7 +29,7 @@ fun CustomTopAppBar() {
             )
         },
         modifier = Modifier.fillMaxWidth(),
-        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
+        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = MaterialTheme.colorScheme.primary)
     )
 }
 

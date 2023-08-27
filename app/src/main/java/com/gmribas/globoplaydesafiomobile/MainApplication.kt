@@ -5,7 +5,7 @@ import com.gmribas.globoplaydesafiomobile.core.data.di.repositoryModule
 import com.gmribas.globoplaydesafiomobile.core.data.di.sourceModule
 import com.gmribas.globoplaydesafiomobile.core.di.networkModule
 import com.gmribas.globoplaydesafiomobile.core.domain.di.useCaseModule
-import com.gmribas.globoplaydesafiomobile.core.presentation.di.presentationModule
+import com.gmribas.globoplaydesafiomobile.core.presentation.di.uiMapperModule
 import com.gmribas.globoplaydesafiomobile.core.presentation.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -26,7 +26,7 @@ class MainApplication: Application() {
                 sourceModule,
                 repositoryModule,
                 useCaseModule,
-                presentationModule,
+                uiMapperModule,
                 viewModelModule
             )
 
