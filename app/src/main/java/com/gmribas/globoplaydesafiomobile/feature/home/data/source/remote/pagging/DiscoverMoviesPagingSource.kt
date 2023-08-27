@@ -20,16 +20,11 @@ class DiscoverMoviesPagingSource(
         val pageIndex = params.key ?: PAGE_INITIAL_VALUE
 
         return try {
-            val response = apiService.discoverMovies()
+            val response = apiService.discoverMovies(page = pageIndex)
 
             val responseMapped = response.results.map { it.toDomain() }
 
-            val nextKey =
-                if (response.results.isEmpty() || (response.results.size / PAGE_SIZE) == PAGE_INITIAL_VALUE) {
-                    null
-                } else {
-                    pageIndex + (response.results.size / PAGE_SIZE)
-                }
+            val nextKey = if (response.results.isEmpty()) null else pageIndex + 1
 
             LoadResult.Page(
                 data = responseMapped,

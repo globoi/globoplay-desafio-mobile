@@ -1,4 +1,4 @@
-package com.gmribas.globoplaydesafiomobile.core.presentation
+package com.gmribas.globoplaydesafiomobile.core.domain
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect

@@ -1,7 +1,12 @@
 package com.gmribas.globoplaydesafiomobile
 
 import android.app.Application
+import com.gmribas.globoplaydesafiomobile.core.data.di.repositoryModule
+import com.gmribas.globoplaydesafiomobile.core.data.di.sourceModule
 import com.gmribas.globoplaydesafiomobile.core.di.networkModule
+import com.gmribas.globoplaydesafiomobile.core.domain.di.useCaseModule
+import com.gmribas.globoplaydesafiomobile.core.presentation.di.presentationModule
+import com.gmribas.globoplaydesafiomobile.core.presentation.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -18,12 +23,11 @@ class MainApplication: Application() {
         startKoin {
             val modules = listOf(
                 networkModule,
-//                sourceModule,
-//                repositoryMapperModule,
-//                repositoryModule,
-//                useCaseModule,
-//                viewModelModule,
-//                mapperModule
+                sourceModule,
+                repositoryModule,
+                useCaseModule,
+                presentationModule,
+                viewModelModule
             )
 
             modules(modules)

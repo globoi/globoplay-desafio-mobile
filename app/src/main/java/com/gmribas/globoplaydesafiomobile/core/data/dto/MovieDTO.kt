@@ -12,7 +12,7 @@ data class MovieDTO(
     @SerializedName("genre_ids")
     val genreIDS: List<Long>,
 
-    val id: Long,
+    val id: Int,
 
     @SerializedName("original_language")
     val originalLanguage: String,

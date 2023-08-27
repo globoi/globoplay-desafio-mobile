@@ -9,5 +9,5 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("discover/movie")
-    suspend fun discoverMovies(@Query("API_KEY") apiKey: String = BuildConfig.API_KEY, @Query("page") page: Int = 1): PageDTO<MovieDTO>
+    suspend fun discoverMovies(@Query("api_key") apiKey: String = BuildConfig.API_KEY, @Query("page") page: Int, @Query("language") language: String = "pt-br"): PageDTO<MovieDTO>
 }

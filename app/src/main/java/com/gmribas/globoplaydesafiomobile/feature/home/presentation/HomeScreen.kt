@@ -1,28 +1,38 @@
 package com.gmribas.globoplaydesafiomobile.feature.home.presentation
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.material3.Divider
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.gmribas.globoplaydesafiomobile.R
-import com.gmribas.globoplaydesafiomobile.core.presentation.ObserveLifecycle
+import com.gmribas.globoplaydesafiomobile.core.domain.ObserveLifecycle
 import com.gmribas.globoplaydesafiomobile.core.presentation.UiState
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.CircularLoadingCenter
-import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.DialogLoadingError
+import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.CustomTopAppBar
+import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.HorizontalCarousel
+import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.PosterItem
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.TextTitle
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.Movie
 import org.koin.androidx.compose.koinViewModel
@@ -40,47 +50,32 @@ fun HomeScreen(
     val discoveryMoviesItems: LazyPagingItems<Movie> = viewModel.discoverMoviesFlow.collectAsLazyPagingItems()
 
     Scaffold(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize(),
+        topBar = { CustomTopAppBar() },
+        containerColor = MaterialTheme.colorScheme.primaryContainer
     ) { scaffoldPadding ->
 
         LazyColumn(contentPadding = scaffoldPadding) {
             item {
-                Row(modifier = Modifier.fillMaxWidth()) {
-                    TextTitle(text = stringResource(id = R.string.soap_operas))
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 8.dp)) {
+                    TextTitle(text = stringResource(id = R.string.cinema))
                 }
             }
 
             item {
-                Divider(modifier = Modifier.padding(vertical = 8.dp))
-            }
+                HorizontalCarousel(pagingItems = discoveryMoviesItems) { movieId ->
 
-
-            item {
-                when (discoveryMoviesState.value) {
-                    is UiState.Loading -> {
-                        CircularLoadingCenter()
-                    }
-                    is UiState.Error -> DialogLoadingError(
-                        errorPlace = stringResource(id = R.string.load_soap_operas_error),
-                        errorMessage = (discoveryMoviesState.value as UiState.Error).error
-                    ) {
-                        viewModel.dismissErrorDialog()
-                    }
-
-                    is UiState.Default -> {}
-                    else -> {}
-                }
-
-                LazyRow {
-                    items(count = discoveryMoviesItems.itemCount) { index ->
-                        discoveryMoviesItems[index]?.let { movie ->
-                            HomeMovieItem(id = movie.id, title = movie.originalTitle, poster = movie.posterPath) {
-
-                            }
-                        }
-                    }
                 }
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun HomeScreenPreview() {
+    HomeScreen(rememberNavController())
 }

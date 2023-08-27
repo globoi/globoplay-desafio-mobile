@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Globoplay Desafio Mobile</string>
     <string name="soap_operas">Novelas</string>
+    <string name="cinema">Cinema</string>
     <string name="load_soap_operas_error">as novelas</string>
     <string name="dialog_error_title">Erro</string>
     <string name="dialog_error_message">Não foi possível carregar o conteúdo 1%s devido à 2%s</string>

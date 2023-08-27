@@ -8,11 +8,8 @@ import com.gmribas.globoplaydesafiomobile.core.presentation.UiState
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.Movie
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.DiscoverMoviesUseCase
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.mapper.MovieUIMapper
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.emptyFlow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
@@ -25,7 +22,9 @@ class HomeScreenViewModel(
         MutableStateFlow(UiState.Default)
     }
 
-    private var _discoverMoviesFlow: Flow<PagingData<Movie>> = emptyFlow()
+    private val _discoverMoviesFlow: MutableStateFlow<PagingData<Movie>> by lazy {
+        MutableStateFlow(PagingData.empty())
+    }
 
     val discoverMoviesFlow = _discoverMoviesFlow
     override fun onResume(owner: LifecycleOwner) {
@@ -42,7 +41,7 @@ class HomeScreenViewModel(
                     _discoverMoviesState.value = state
 
                     if (state is UiState.Success) {
-                        _discoverMoviesFlow = flow { state.data }
+                        _discoverMoviesFlow.value = state.data
                     }
                 }
         }
