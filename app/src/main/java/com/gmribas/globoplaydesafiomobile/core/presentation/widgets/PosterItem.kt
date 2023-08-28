@@ -14,8 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberAsyncImagePainter
-import com.gmribas.globoplaydesafiomobile.core.constants.Constants.POSTER_THUMBNAIL_ORIGINAL_PATH
+import com.gmribas.globoplaydesafiomobile.core.asyncPainter
 
 @Composable
 fun PosterItem(id: Int, title: String, poster: String, onClick: (id: Int) -> Unit) {
@@ -31,7 +30,7 @@ fun PosterItem(id: Int, title: String, poster: String, onClick: (id: Int) -> Uni
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center) {
             Image(
-                painter = rememberAsyncImagePainter(POSTER_THUMBNAIL_ORIGINAL_PATH.plus(poster)),
+                painter = asyncPainter(poster),
                 contentDescription = title,
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.FillBounds

@@ -15,7 +15,7 @@ data class SoapOpera (
     val voteAverage: Double,
     val voteCount: Long
 ): PosterItemInterface {
-    override val title: String = name
+    override val title: String = originalName
     override val poster: String = posterPath ?: ""
     override val backdrop: String? = backdropPath
 }

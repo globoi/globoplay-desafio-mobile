@@ -4,9 +4,11 @@ import com.gmribas.globoplaydesafiomobile.BuildConfig
 import com.gmribas.globoplaydesafiomobile.core.constants.Constants.BRAZIL_ORIGIN_COUNTRY
 import com.gmribas.globoplaydesafiomobile.core.constants.Constants.SOAP_OPERA_GENRE
 import com.gmribas.globoplaydesafiomobile.core.data.dto.MovieDTO
+import com.gmribas.globoplaydesafiomobile.core.data.dto.MovieDetailsDTO
 import com.gmribas.globoplaydesafiomobile.core.data.dto.PageDTO
 import com.gmribas.globoplaydesafiomobile.core.data.dto.SoapOperaDTO
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -18,6 +20,14 @@ interface ApiService {
         @Query("language") language: String = "pt-br"
 
     ): PageDTO<MovieDTO>
+
+    @GET("movie/{movieId}")
+    suspend fun getMovieDetails(
+        @Path("movieId") movieId: Int,
+        @Query("api_key") apiKey: String = BuildConfig.API_KEY,
+        @Query("language") language: String = "pt-br"
+
+    ): MovieDetailsDTO
 
     @GET("discover/tv")
     suspend fun discoverSoapOperas(

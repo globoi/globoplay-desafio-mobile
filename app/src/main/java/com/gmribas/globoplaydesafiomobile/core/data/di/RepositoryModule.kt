@@ -1,5 +1,7 @@
 package com.gmribas.globoplaydesafiomobile.core.data.di
 
+import com.gmribas.globoplaydesafiomobile.feature.details.data.repository.GetMovieDetailsRepositoryImpl
+import com.gmribas.globoplaydesafiomobile.feature.details.domain.repository.GetMovieDetailsRepository
 import com.gmribas.globoplaydesafiomobile.feature.home.data.repository.DiscoverMoviesRepositoryImpl
 import com.gmribas.globoplaydesafiomobile.feature.home.data.repository.DiscoverSoapOperasRepositoryImpl
 import com.gmribas.globoplaydesafiomobile.feature.home.data.repository.GetTopRatedTvShowsRepositoryImpl
@@ -15,4 +17,6 @@ val repositoryModule = module {
     single<DiscoverSoapOperasRepository> { DiscoverSoapOperasRepositoryImpl(get()) }
 
     single<GetTopRatedTvShowsRepository> { GetTopRatedTvShowsRepositoryImpl(get()) }
+
+    single<GetMovieDetailsRepository> { GetMovieDetailsRepositoryImpl(get()) }
 }
