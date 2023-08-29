@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.main.MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundGray"
+        tools:context=".presentation.ui.main.MainActivity">
+
+        <include
+            layout="@layout/toolbar"
+            android:id="@+id/toolbar" />
+
+        <com.mazer.globoplayapp.presentation.custom_view.CarouselView
+            android:id="@+id/carouselViewPopular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:title="@string/carousel_genre_popular" />
+
+        <com.mazer.globoplayapp.presentation.custom_view.CarouselView
+            android:id="@+id/carouselViewTopRated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carouselViewPopular"
+            app:title="@string/carousel_genre_top_rated" />
+
+        <com.mazer.globoplayapp.presentation.custom_view.CarouselView
+            android:id="@+id/carouselViewUpcoming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carouselViewTopRated"
+            app:title="@string/carousel_genre_upcoming" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

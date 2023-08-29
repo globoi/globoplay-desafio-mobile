@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">GloboplayApp</string>
+    <string name="toolbar_name">globoplay</string>
+    <string name="carousel_genre_popular">Populares</string>
+    <string name="carousel_genre_top_rated">Recomendados</string>
+    <string name="carousel_genre_upcoming">Lançamentos</string>
+    <string name="frament_home">Início</string>
+    <string name="frament_my_list">Minha lista</string>
+    <string name="btn_play">Assista</string>
+    <string name="btn_favorite_inactive">Minha lista</string>
+    <string name="btn_favorite_active">Adicionado</string>
+    <string name="tab_movie_recommendation">Assista Também</string>
+    <string name="tab_movie_details">Detalhes</string>
+
+    <!-- Details Fragment -->
+    <string name="details_label_title">Ficha técnica</string>
+    <string name="label_title"><![CDATA[<b>Título Original:</b> %s]]></string>
+    <string name="label_genre"><![CDATA[<b>Gênero:</b> %s]]></string>
+    <string name="label_episodes"><![CDATA[<b>Episódios:</b> %s]]></string>
+    <string name="label_created_at"><![CDATA[<b>Ano de produção:</b> %s]]></string>
+    <string name="label_country"><![CDATA[<b>País:</b> %s]]></string>
+    <string name="label_directed_by"><![CDATA[<b>Direção:</b> %s]]></string>
+    <string name="label_crew"><![CDATA[<b>Elenco:</b> %s]]></string>
+    <string name="label_availabe_until"><![CDATA[<b>Disponível até:</b> %s]]></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
