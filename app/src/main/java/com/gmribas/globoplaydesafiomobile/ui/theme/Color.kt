@@ -11,3 +11,4 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val appBackground = Color(0xFF1D1D1D)
+val topAppBarBackground = Color(0x1A1D1D1D)

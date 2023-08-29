@@ -17,4 +17,5 @@ data class MovieDetails(
     val status: String,
     val title: String,
     val video: Boolean,
+    val spokenLanguages: List<Language>
 )

@@ -1,73 +1,312 @@
 package com.gmribas.globoplaydesafiomobile.feature.details.presentation
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.gmribas.globoplaydesafiomobile.R
 import com.gmribas.globoplaydesafiomobile.core.asyncPainter
 import com.gmribas.globoplaydesafiomobile.core.domain.ObserveLifecycle
 import com.gmribas.globoplaydesafiomobile.core.presentation.UiState
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.CircularLoadingCenter
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.DialogLoadingError
+import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.IconAndTextButton
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.PosterItem
+import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.TextTitle
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.model.MovieDetails
+import com.gmribas.globoplaydesafiomobile.ui.theme.appBackground
+import com.gmribas.globoplaydesafiomobile.ui.theme.topAppBarBackground
 import org.koin.androidx.compose.koinViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailsScreen(
     navController: NavHostController,
     viewModel: DetailsScreenViewModel = koinViewModel()
-    ) {
+) {
 
     viewModel.ObserveLifecycle(LocalLifecycleOwner.current.lifecycle)
 
     val state = viewModel.viewState.collectAsStateWithLifecycle()
 
-    Column {
-        TopAppBar(
-            title = {},
-            navigationIcon = { Icons.Filled.ArrowBack },
-            modifier = Modifier.fillMaxWidth(),
-            colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color.Transparent)
-        )
+    val tabIndexState = viewModel.tabIndex.collectAsStateWithLifecycle()
 
+    Column {
         when (state.value) {
             UiState.Default -> {}
             is UiState.Error -> DialogLoadingError(errorPlace = "", errorMessage = "") {
 
             }
+
             UiState.Loading -> CircularLoadingCenter()
-            is UiState.Success -> BuildDetailsBody(movie = (state.value as UiState.Success).data)
+            is UiState.Success -> BuildDetailsBody(
+                navController = navController,
+                viewModel = viewModel,
+                movie = (state.value as UiState.Success).data,
+                tabIndex = tabIndexState.value
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun BuildDetailsBody(
+    navController: NavHostController,
+    viewModel: DetailsScreenViewModel,
+    movie: MovieDetails,
+    tabIndex: Int
+) {
+    val gradient = Brush.verticalGradient(listOf(topAppBarBackground, Color.Black))
+
+    Box {
+        Image(
+            painter = asyncPainter(movie.backdropPath),
+            contentDescription = movie.originalTitle,
+            modifier = Modifier
+                .blur(radius = 20.dp)
+                .fillMaxWidth()
+                .height(500.dp),
+            contentScale = ContentScale.FillBounds
+        )
+
+        Box(
+            modifier = Modifier
+                .background(gradient)
+                .fillMaxSize()
+        )
+
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            TopAppBar(
+                title = {},
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth(),
+                colors = TopAppBarDefaults.smallTopAppBarColors(
+                    containerColor = topAppBarBackground,
+                    navigationIconContentColor = Color.White
+                )
+            )
+
+            PosterItem(
+                id = movie.id,
+                title = movie.originalTitle,
+                poster = movie.posterPath,
+                onClick = {})
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            TextTitle(text = movie.title)
+
+            Spacer(modifier = Modifier.height(36.dp))
+
+            TextTitle(
+                modifier = Modifier
+                    .padding(start = 16.dp, end = 16.dp)
+                    .align(Alignment.CenterHorizontally),
+                text = movie.overview,
+                fontSize = 14,
+                fontWeight = FontWeight.Normal.weight
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                IconAndTextButton(
+                    icon = Icons.Filled.PlayArrow,
+                    backgroundColor = Color.White,
+                    text = stringResource(id = R.string.details_screen_play),
+                    textColor = Color.Black
+                ) {
+
+                }
+
+                Spacer(modifier = Modifier.width(24.dp))
+
+                IconAndTextButton(
+                    icon = Icons.Filled.Star,
+                    backgroundColor = Color.Transparent,
+                    backgroundStroke = true,
+                    text = stringResource(id = R.string.details_screen_my_list),
+                    textColor = Color.White
+                ) {
+
+                }
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            BuildTabRow(viewModel, tabIndex)
+
+            BuildPager(tabIndex, movie)
         }
     }
 }
 
 @Composable
-private fun BuildDetailsBody(movie: MovieDetails) {
-    Image(
-        painter = asyncPainter(movie.posterPath),
-        contentDescription = movie.originalTitle,
-        modifier = Modifier.blur(radius = 15.dp)
-    )
+fun BuildTabRow(viewModel: DetailsScreenViewModel, tabIndex: Int) {
+    val tabs = listOf(R.string.details_screen_watch_tab, R.string.details_screen_details_tab)
 
-    PosterItem(id = movie.id, title = movie.originalTitle, poster = movie.posterPath, onClick = {})
+    TabRow(
+        selectedTabIndex = tabIndex,
+        modifier = Modifier.background(MaterialTheme.colorScheme.primary),
+        indicator = { tabPositions ->
+            Box(
+                modifier = Modifier
+                    .tabIndicatorOffset(tabPositions[tabIndex])
+                    .height(4.dp)
+                    .background(color = MaterialTheme.colorScheme.secondary)
+                    .padding(start = 4.dp, end = 4.dp)
+            )
+        }
+    ) {
+        tabs.forEachIndexed { index, title ->
+            Tab(
+                text = {
+                    TextTitle(
+                        text = stringResource(id = title),
+                        fontSize = 14,
+                        fontWeight = FontWeight.Normal.weight
+                    )
+                },
+                selected = tabIndex == index,
+                onClick = { viewModel.updateTabIndex(index) },
+                selectedContentColor = MaterialTheme.colorScheme.secondary
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun BuildPager(tabIndex: Int, movie: MovieDetails) {
+    val pagerState = rememberPagerState()
+
+    LaunchedEffect(tabIndex) {
+        pagerState.animateScrollToPage(tabIndex)
+    }
+
+    HorizontalPager(
+        pageCount = 2,
+        pageContent = { tabSelected ->
+            when (tabSelected) {
+                0 -> {}
+                1 -> BuildMovieDetailsPage(movie = movie)
+            }
+        },
+        state = pagerState,
+        modifier = Modifier
+            .padding(start = 16.dp, end = 16.dp)
+    )
+}
+
+@Composable
+fun BuildMovieDetailsPage(movie: MovieDetails) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 24.dp)
+    ) {
+        TextTitle(
+            text = stringResource(id = R.string.details_screen_details_page_title),
+            fontSize = 16
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        BuildMovieDetailsRow(
+            R.string.details_screen_details_page_original_title,
+            movie.originalTitle
+        )
+
+        Spacer(modifier = Modifier.height(4.dp))
+
+        val adultRes = if (movie.adult) R.string.yes else R.string.no
+        BuildMovieDetailsRow(
+            R.string.details_screen_details_page_adult_content,
+            stringResource(id = adultRes)
+        )
+
+        Spacer(modifier = Modifier.height(4.dp))
+
+        val languages = movie.spokenLanguages.map { it.name }.joinToString(separator = ", ")
+        BuildMovieDetailsRow(R.string.details_screen_details_page_languages, languages)
+
+        Spacer(modifier = Modifier.height(4.dp))
+    }
+}
+
+@Composable
+fun BuildMovieDetailsRow(titleRes: Int, attribute: String) {
+    Row(modifier = Modifier.fillMaxWidth()) {
+        TextTitle(
+            text = stringResource(id = titleRes),
+            fontSize = 15,
+            color = Color.LightGray,
+            fontWeight = FontWeight.Medium.weight
+        )
+        Spacer(modifier = Modifier.width(4.dp))
+        TextTitle(
+            text = attribute,
+            fontSize = 15,
+            color = Color.LightGray,
+            fontWeight = FontWeight.Light.weight
+        )
+    }
 }
 
 @Preview
 @Composable
 fun DetailsScreenPreview() {
+    DetailsScreen(rememberNavController())
 }

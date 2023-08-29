@@ -1,6 +1,8 @@
 package com.gmribas.globoplaydesafiomobile.feature.details.data.source
 
+import com.gmribas.globoplaydesafiomobile.core.data.dto.LanguageDTO
 import com.gmribas.globoplaydesafiomobile.core.data.dto.MovieDetailsDTO
+import com.gmribas.globoplaydesafiomobile.feature.details.domain.model.Language
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.model.MovieDetails
 
 fun MovieDetailsDTO.toDomain(): MovieDetails {
@@ -20,6 +22,12 @@ fun MovieDetailsDTO.toDomain(): MovieDetails {
         runtime,
         status,
         title,
-        video
+        video,
+        spokenLanguages.map { it.toDomain() }
     )
+}
+
+
+fun LanguageDTO.toDomain(): Language {
+    return Language(englishName, iso639_1, name)
 }

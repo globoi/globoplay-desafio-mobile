@@ -50,7 +50,7 @@ fun <T : PosterItemInterface> HorizontalCarousel(modifier: Modifier = Modifier, 
         LazyRow {
             items(count = pagingItems.itemCount) { index ->
                 pagingItems[index]?.let { movie ->
-                    PosterItem(id = movie.id, title = movie.title, poster = movie.poster, onClick)
+                    PosterItem(id = movie.id, title = movie.title, poster = movie.poster, onClick = onClick)
                 }
             }
             if (pagingItems.loadState.append is LoadState.Error) {

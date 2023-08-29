@@ -8,6 +8,8 @@ import com.gmribas.globoplaydesafiomobile.core.presentation.UiState
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.model.MovieDetails
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.GetMovieDetailsUseCase
 import com.gmribas.globoplaydesafiomobile.feature.details.presentation.mapper.MovieDetailsUIMapper
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -23,6 +25,10 @@ class DetailsScreenViewModel(
 //    }
 //
 //    val movieDetails: State<UiState<MovieDetails>> = _movieDetails
+
+    private val _tabIndex: MutableStateFlow<Int> = MutableStateFlow(0)
+
+    val tabIndex: StateFlow<Int> = _tabIndex
 
     override fun onCreate(owner: LifecycleOwner) {
         submitState(UiState.Loading)
@@ -41,5 +47,9 @@ class DetailsScreenViewModel(
                     submitState(it)
                 }
         }
+    }
+
+    fun updateTabIndex(index: Int) {
+        _tabIndex.value = index
     }
 }
