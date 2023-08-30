@@ -1,9 +1,9 @@
 package com.gmribas.globoplaydesafiomobile.core.data.dto
 
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.SoapOpera
+import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
 import com.google.gson.annotations.SerializedName
 
-data class SoapOperaDTO(
+data class TvShowDTO(
     @SerializedName("backdrop_path")
     val backdropPath: String?,
 
@@ -38,8 +38,8 @@ data class SoapOperaDTO(
     @SerializedName("vote_count")
     val voteCount: Long
 ) {
-    fun toDomain(): SoapOpera {
-        return SoapOpera(
+    fun toDomain(): TvShow {
+        return TvShow(
             backdropPath,
             firstAirDate,
             genreIDS,

@@ -4,7 +4,7 @@ import androidx.paging.PagingData
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
 import kotlinx.coroutines.flow.Flow
 
-interface GetTopRatedTvShowsRepository {
+interface DiscoverTvShowsRepository {
 
-    suspend fun getTopRatedTvShows(): Flow<PagingData<TvShow>>
+    suspend fun discoverTvShows(): Flow<PagingData<TvShow>>
 }

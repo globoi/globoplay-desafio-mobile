@@ -7,12 +7,12 @@ import com.gmribas.globoplaydesafiomobile.core.data.network.ApiService
 import com.gmribas.globoplaydesafiomobile.core.exception.UseCaseException
 import com.gmribas.globoplaydesafiomobile.feature.home.data.source.GetTopRatedTvShowsSource
 import com.gmribas.globoplaydesafiomobile.feature.home.data.source.remote.pagging.GetTopRatedTvShowsPagingSource
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.SoapOpera
+import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
 import kotlinx.coroutines.flow.Flow
 
 class GetTopRatedTvShowsSourceRemoteImpl(private val apiService: ApiService): GetTopRatedTvShowsSource {
 
-    override suspend fun getTopRatedTvShows(): Flow<PagingData<SoapOpera>> {
+    override suspend fun getTopRatedTvShows(): Flow<PagingData<TvShow>> {
         return try {
             Pager(
                 config = PagingConfig(

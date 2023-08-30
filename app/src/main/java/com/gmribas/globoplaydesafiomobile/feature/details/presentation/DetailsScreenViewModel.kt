@@ -13,8 +13,8 @@ import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.GetSimi
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.GetSimilarTvShowsUseCase
 import com.gmribas.globoplaydesafiomobile.feature.details.presentation.mapper.MovieDetailsUIMapper
 import com.gmribas.globoplaydesafiomobile.feature.details.presentation.mapper.MoviePagedUIMapper
-import com.gmribas.globoplaydesafiomobile.feature.details.presentation.mapper.SoapOperaUIMapper
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.SoapOpera
+import com.gmribas.globoplaydesafiomobile.feature.details.presentation.mapper.TvShowUIMapper
+import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -28,7 +28,7 @@ class DetailsScreenViewModel(
     private val getSimilarTvShowsUseCase: GetSimilarTvShowsUseCase,
     private val movieDetailsUIMapper: MovieDetailsUIMapper,
     private val movieUIMapper: MoviePagedUIMapper,
-    private val soapOperaUIMapper: SoapOperaUIMapper,
+    private val tvShowUIMapper: TvShowUIMapper,
     ): BaseViewModel<MovieDetails>() {
 
     private val _similarMoviesFlow: MutableStateFlow<PagingData<Movie>> by lazy {
@@ -37,11 +37,11 @@ class DetailsScreenViewModel(
 
     val similarMoviesFlow: StateFlow<PagingData<Movie>> = _similarMoviesFlow
 
-    private val _similarTvShowsFlow: MutableStateFlow<PagingData<SoapOpera>> by lazy {
+    private val _similarTvShowsFlow: MutableStateFlow<PagingData<TvShow>> by lazy {
         MutableStateFlow(PagingData.empty())
     }
 
-    val similarTvShowsFlow: StateFlow<PagingData<SoapOpera>> = _similarTvShowsFlow
+    val similarTvShowsFlow: StateFlow<PagingData<TvShow>> = _similarTvShowsFlow
 
     private val _tabIndex: MutableStateFlow<Int> = MutableStateFlow(0)
 
@@ -91,7 +91,7 @@ class DetailsScreenViewModel(
         viewModelScope.launch {
             getSimilarTvShowsUseCase
                 .execute(GetSimilarTvShowsUseCase.Request(id))
-                .map { soapOperaUIMapper.convert(it) }
+                .map { tvShowUIMapper.convert(it) }
                 .collectLatest { uiState ->
                     if (uiState is UiState.Success) {
                         _similarTvShowsFlow.value = uiState.data

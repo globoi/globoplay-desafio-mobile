@@ -2,7 +2,7 @@ package com.gmribas.globoplaydesafiomobile.feature.home.domain.model
 
 import com.gmribas.globoplaydesafiomobile.core.domain.model.PosterItemInterface
 
-data class SoapOpera (
+data class TvShow (
     val backdropPath: String?,
     val firstAirDate: String,
     val genreIDS: List<Long>,

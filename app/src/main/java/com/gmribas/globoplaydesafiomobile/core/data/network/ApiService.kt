@@ -6,7 +6,7 @@ import com.gmribas.globoplaydesafiomobile.core.constants.Constants.SOAP_OPERA_GE
 import com.gmribas.globoplaydesafiomobile.core.data.dto.MovieDTO
 import com.gmribas.globoplaydesafiomobile.core.data.dto.MovieDetailsDTO
 import com.gmribas.globoplaydesafiomobile.core.data.dto.PageDTO
-import com.gmribas.globoplaydesafiomobile.core.data.dto.SoapOperaDTO
+import com.gmribas.globoplaydesafiomobile.core.data.dto.TvShowDTO
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -39,20 +39,20 @@ interface ApiService {
     ): PageDTO<MovieDTO>
 
     @GET("discover/tv")
-    suspend fun discoverSoapOperas(
+    suspend fun discoverTvShows(
         @Query("api_key") apiKey: String = BuildConfig.API_KEY,
         @Query("page") page: Int,
         @Query("language") language: String = "pt-br",
         @Query("with_genres") withGenres: Int = SOAP_OPERA_GENRE,
         @Query("with_origin_country") withOriginCountry: String = BRAZIL_ORIGIN_COUNTRY
-    ): PageDTO<SoapOperaDTO>
+    ): PageDTO<TvShowDTO>
 
     @GET("tv/top_rated")
     suspend fun getTopRatedTvShows(
         @Query("api_key") apiKey: String = BuildConfig.API_KEY,
         @Query("page") page: Int,
         @Query("language") language: String = "pt-br"
-    ): PageDTO<SoapOperaDTO>
+    ): PageDTO<TvShowDTO>
 
     @GET("movie/{id}/similar")
     suspend fun getSimilarTvShows(
@@ -61,5 +61,5 @@ interface ApiService {
         @Query("api_key") apiKey: String = BuildConfig.API_KEY,
         @Query("language") language: String = "pt-br"
 
-    ): PageDTO<SoapOperaDTO>
+    ): PageDTO<TvShowDTO>
 }

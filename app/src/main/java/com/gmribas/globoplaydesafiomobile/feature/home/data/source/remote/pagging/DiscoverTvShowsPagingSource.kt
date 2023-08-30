@@ -6,19 +6,19 @@ import com.gmribas.globoplaydesafiomobile.core.constants.Constants.DECREMENT_VAL
 import com.gmribas.globoplaydesafiomobile.core.constants.Constants.INCREMENT_VALUE
 import com.gmribas.globoplaydesafiomobile.core.constants.Constants.PAGE_INITIAL_VALUE
 import com.gmribas.globoplaydesafiomobile.core.data.network.ApiService
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.SoapOpera
+import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
 import retrofit2.HttpException
 import java.io.IOException
 
-class DiscoverSoapOperasPagingSource(
+class DiscoverTvShowsPagingSource(
     private val apiService: ApiService,
-): PagingSource<Int, SoapOpera>() {
+): PagingSource<Int, TvShow>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SoapOpera> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TvShow> {
         val pageIndex = params.key ?: PAGE_INITIAL_VALUE
 
         return try {
-            val response = apiService.discoverSoapOperas(page = pageIndex)
+            val response = apiService.discoverTvShows(page = pageIndex)
 
             val responseMapped = response.results.map { it.toDomain() }
 
@@ -36,7 +36,7 @@ class DiscoverSoapOperasPagingSource(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, SoapOpera>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, TvShow>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey?.plus(INCREMENT_VALUE)
                 ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(DECREMENT_VALUE)

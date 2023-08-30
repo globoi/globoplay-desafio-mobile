@@ -33,7 +33,7 @@ import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.HorizontalAn
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.HorizontalCarousel
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.TextTitle
 import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.SoapOpera
+import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.bottombar.BottomNavItem
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.bottombar.BottomNavigation
 import org.koin.androidx.compose.koinViewModel
@@ -49,9 +49,9 @@ fun HomeScreen(
 
 //    val discoveryMoviesState = viewModel.viewState.collectAsStateWithLifecycle()
 
-    val topRatedTvShows: LazyPagingItems<SoapOpera> = viewModel.topRatedTvShowsFlow.collectAsLazyPagingItems()
+    val topRatedTvShows: LazyPagingItems<TvShow> = viewModel.topRatedTvShowsFlow.collectAsLazyPagingItems()
 
-    val discoverySoapOperasItems: LazyPagingItems<SoapOpera> = viewModel.discoverSoapOperasFlow.collectAsLazyPagingItems()
+    val discoverySoapOperasItems: LazyPagingItems<TvShow> = viewModel.discoverSoapOperasFlow.collectAsLazyPagingItems()
 
     val discoveryMoviesItems: LazyPagingItems<Movie> = viewModel.discoverMoviesFlow.collectAsLazyPagingItems()
 

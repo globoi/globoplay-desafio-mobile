@@ -7,12 +7,12 @@ import com.gmribas.globoplaydesafiomobile.core.data.network.ApiService
 import com.gmribas.globoplaydesafiomobile.core.exception.UseCaseException
 import com.gmribas.globoplaydesafiomobile.feature.details.data.source.GetSimilarTvShowsSource
 import com.gmribas.globoplaydesafiomobile.feature.details.data.source.remote.paging.GetSimilarTvShowsPagingSource
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.SoapOpera
+import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
 import kotlinx.coroutines.flow.Flow
 
 class GetSimilarTvShowsRemoteImpl(private val service: ApiService): GetSimilarTvShowsSource {
 
-    override suspend fun getSimilarSoapOperas(id: Int): Flow<PagingData<SoapOpera>> {
+    override suspend fun getSimilarSoapOperas(id: Int): Flow<PagingData<TvShow>> {
         return try {
             Pager(
                 config = PagingConfig(
