@@ -78,8 +78,8 @@ fun HomeScreen(
                 HorizontalAnimatedCarousel(
                     list = topRatedTvShows,
                     totalItemsToShow = CAROUSEL_HOME_TOTAL_ITEMS_TO_SHOW
-                ) { topRatedTVId ->
-                    navController.navigate(Screens.Details.route + "/${topRatedTVId}/${true}")
+                ) { topRated ->
+                    navController.navigate(Screens.Details.route + "/${topRated.id}/${true}")
                 }
             }
 

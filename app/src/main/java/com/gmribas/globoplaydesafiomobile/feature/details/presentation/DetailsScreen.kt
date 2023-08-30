@@ -103,7 +103,8 @@ fun DetailsScreen(
                 viewModel = viewModel,
                 details = (detailsState.value as UiState.Success).data,
                 tabIndex = tabIndexState.value,
-                similarItems = similarItems
+                similarItems = similarItems,
+                isTvShow = isTvShow.value
             )
         }
     }
@@ -116,7 +117,8 @@ private fun BuildDetailsBody(
     viewModel: DetailsScreenViewModel,
     details: DetailsInterface,
     tabIndex: Int,
-    similarItems: LazyPagingItems<SimilarInterface>
+    similarItems: LazyPagingItems<SimilarInterface>,
+    isTvShow: Boolean
 ) {
     val gradient = Brush.verticalGradient(listOf(topAppBarBackground, Color.Black))
 
@@ -208,7 +210,7 @@ private fun BuildDetailsBody(
 
             BuildTabRow(viewModel, tabIndex)
 
-            BuildPager(navController, tabIndex, details, similarItems)
+            BuildPager(navController, tabIndex, details, similarItems, isTvShow)
         }
     }
 }
@@ -249,7 +251,7 @@ fun BuildTabRow(viewModel: DetailsScreenViewModel, tabIndex: Int) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun BuildPager(navController: NavHostController, tabIndex: Int, details: DetailsInterface, similarItems: LazyPagingItems<SimilarInterface>) {
+fun BuildPager(navController: NavHostController, tabIndex: Int, details: DetailsInterface, similarItems: LazyPagingItems<SimilarInterface>, isTvShow: Boolean) {
     val pagerState = rememberPagerState()
 
     LaunchedEffect(tabIndex) {
@@ -260,8 +262,8 @@ fun BuildPager(navController: NavHostController, tabIndex: Int, details: Details
         pageCount = 2,
         pageContent = { tabSelected ->
             when (tabSelected) {
-                0 -> VerticalGrid(list = similarItems) { movieId ->
-                    navController.navigate(Screens.Details.route + "/${movieId}")
+                0 -> VerticalGrid(list = similarItems) { id ->
+                    navController.navigate(Screens.Details.route + "/${id}/${isTvShow}")
                 }
                 1 -> BuildDetailsPage(details = details)
             }
