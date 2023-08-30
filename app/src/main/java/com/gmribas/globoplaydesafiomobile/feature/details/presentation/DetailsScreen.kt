@@ -59,6 +59,7 @@ import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.PosterItem
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.TextTitle
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.VerticalGrid
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.model.MovieDetails
+import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.SoapOpera
 import com.gmribas.globoplaydesafiomobile.ui.theme.topAppBarBackground
 import org.koin.androidx.compose.koinViewModel
 
@@ -73,6 +74,8 @@ fun DetailsScreen(
     val state = viewModel.viewState.collectAsStateWithLifecycle()
 
     val similarMovieItems: LazyPagingItems<Movie> = viewModel.similarMoviesFlow.collectAsLazyPagingItems()
+
+    val similarTvShowItems: LazyPagingItems<SoapOpera> = viewModel.similarTvShowsFlow.collectAsLazyPagingItems()
 
     val tabIndexState = viewModel.tabIndex.collectAsStateWithLifecycle()
 

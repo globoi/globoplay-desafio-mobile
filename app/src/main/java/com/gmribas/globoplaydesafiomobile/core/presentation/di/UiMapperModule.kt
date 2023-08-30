@@ -18,4 +18,6 @@ val uiMapperModule = module {
     single { MovieDetailsUIMapper() }
 
     single { MoviePagedUIMapper() }
+
+    single { com.gmribas.globoplaydesafiomobile.feature.details.presentation.mapper.SoapOperaUIMapper() }
 }

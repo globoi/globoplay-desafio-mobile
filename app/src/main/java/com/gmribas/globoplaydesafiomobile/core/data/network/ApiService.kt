@@ -53,4 +53,13 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("language") language: String = "pt-br"
     ): PageDTO<SoapOperaDTO>
+
+    @GET("movie/{id}/similar")
+    suspend fun getSimilarTvShows(
+        @Path("id") id: Int,
+        @Query("page") page: Int,
+        @Query("api_key") apiKey: String = BuildConfig.API_KEY,
+        @Query("language") language: String = "pt-br"
+
+    ): PageDTO<SoapOperaDTO>
 }

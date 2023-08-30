@@ -98,8 +98,8 @@ fun HomeScreen(
             item {
                 HorizontalCarousel(
                     modifier = Modifier.padding(start = 8.dp),
-                    pagingItems = discoverySoapOperasItems) { soapOperaId ->
-
+                    pagingItems = discoverySoapOperasItems) { id ->
+                    navController.navigate(Screens.Details.route + "/${id}/${true}")
                 }
             }
 
@@ -120,7 +120,7 @@ fun HomeScreen(
                     modifier = Modifier.padding(start = 8.dp),
                     pagingItems = discoveryMoviesItems
                 ) { movieId ->
-                    navController.navigate(Screens.Details.route + "/${movieId}")
+                    navController.navigate(Screens.Details.route + "/${movieId}/${false}")
                 }
             }
         }

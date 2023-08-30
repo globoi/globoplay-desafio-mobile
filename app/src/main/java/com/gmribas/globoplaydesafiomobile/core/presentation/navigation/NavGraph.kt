@@ -22,8 +22,11 @@ fun NavGraph(navController: NavHostController = rememberNavController()) {
         }
 
         composable(
-            Screens.Details.route + "/{id}",
-            arguments = listOf(navArgument("id") { type = NavType.IntType })
+            Screens.Details.route + "/{id}/{isTvShow}",
+            arguments = listOf(
+                navArgument("id") { type = NavType.IntType },
+                navArgument("isTvShow") { type = NavType.BoolType }
+            )
         ) {
             DetailsScreen(navController)
         }

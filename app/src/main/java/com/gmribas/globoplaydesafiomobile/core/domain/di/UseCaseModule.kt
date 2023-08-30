@@ -2,6 +2,7 @@ package com.gmribas.globoplaydesafiomobile.core.domain.di
 
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.GetMovieDetailsUseCase
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.GetSimilarMoviesUseCase
+import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.GetSimilarTvShowsUseCase
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.DiscoverMoviesUseCase
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.DiscoverSoapOperasUseCase
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.GetTopRatedTvShowsUseCase
@@ -18,4 +19,6 @@ val useCaseModule = module {
     single { GetMovieDetailsUseCase(get()) }
 
     single { GetSimilarMoviesUseCase(get()) }
+
+    single { GetSimilarTvShowsUseCase(get()) }
 }
