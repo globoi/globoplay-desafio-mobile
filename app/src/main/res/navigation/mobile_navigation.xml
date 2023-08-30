@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.mazer.globoplayapp.presentation.ui.main.home.HomeFragment"
+        android:name="com.mazer.globoplayapp.presentation.ui.main.mylist.MyListFragment"
         android:label="@string/frament_my_list"
         tools:layout="@layout/fragment_my_list" />
 

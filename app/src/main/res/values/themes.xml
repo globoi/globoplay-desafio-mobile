@@ -34,6 +34,16 @@
         <item name="android:layout_marginTop">8dp</item>
     </style>
 
+    <style name="BottomNavigationViewInactiveText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:drawablePadding">8dp</item>
+    </style>
+
+    <style name="BottomNavigationViewActiveText" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:drawablePadding">8dp</item>
+    </style>
+
 
 
 </resources>
