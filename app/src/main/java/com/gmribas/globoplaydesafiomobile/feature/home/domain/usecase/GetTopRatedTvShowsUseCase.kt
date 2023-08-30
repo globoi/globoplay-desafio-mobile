@@ -3,7 +3,7 @@ package com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.gmribas.globoplaydesafiomobile.core.domain.CommonUseCase
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
+import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShow
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.repository.GetTopRatedTvShowsRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow

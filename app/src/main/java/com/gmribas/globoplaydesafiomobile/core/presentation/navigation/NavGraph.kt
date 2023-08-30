@@ -25,7 +25,10 @@ fun NavGraph(navController: NavHostController = rememberNavController()) {
             Screens.Details.route + "/{id}/{isTvShow}",
             arguments = listOf(
                 navArgument("id") { type = NavType.IntType },
-                navArgument("isTvShow") { type = NavType.BoolType }
+                navArgument("isTvShow") {
+                    type = NavType.BoolType
+                    defaultValue = false
+                }
             )
         ) {
             DetailsScreen(navController)

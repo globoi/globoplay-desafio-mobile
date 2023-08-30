@@ -6,7 +6,7 @@ import androidx.paging.PagingData
 import com.gmribas.globoplaydesafiomobile.core.presentation.BaseViewModel
 import com.gmribas.globoplaydesafiomobile.core.presentation.UiState
 import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
+import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShow
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.DiscoverMoviesUseCase
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.DiscoverTvShowsUseCase
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.GetTopRatedTvShowsUseCase

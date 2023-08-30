@@ -33,7 +33,7 @@ import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.HorizontalAn
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.HorizontalCarousel
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.TextTitle
 import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
+import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShow
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.bottombar.BottomNavItem
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.bottombar.BottomNavigation
 import org.koin.androidx.compose.koinViewModel
@@ -79,7 +79,7 @@ fun HomeScreen(
                     list = topRatedTvShows,
                     totalItemsToShow = CAROUSEL_HOME_TOTAL_ITEMS_TO_SHOW
                 ) { topRatedTVId ->
-
+                    navController.navigate(Screens.Details.route + "/${topRatedTVId}/${true}")
                 }
             }
 

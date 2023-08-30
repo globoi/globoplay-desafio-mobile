@@ -1,6 +1,6 @@
 package com.gmribas.globoplaydesafiomobile.core.data.dto
 
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
+import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShow
 import com.google.gson.annotations.SerializedName
 
 data class TvShowDTO(

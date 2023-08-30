@@ -30,6 +30,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
@@ -49,7 +50,8 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.gmribas.globoplaydesafiomobile.R
 import com.gmribas.globoplaydesafiomobile.core.asyncPainter
 import com.gmribas.globoplaydesafiomobile.core.domain.ObserveLifecycle
-import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
+import com.gmribas.globoplaydesafiomobile.core.domain.model.DetailsInterface
+import com.gmribas.globoplaydesafiomobile.core.domain.model.SimilarInterface
 import com.gmribas.globoplaydesafiomobile.core.presentation.UiState
 import com.gmribas.globoplaydesafiomobile.core.presentation.navigation.Screens
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.CircularLoadingCenter
@@ -58,8 +60,6 @@ import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.IconAndTextB
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.PosterItem
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.TextTitle
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.VerticalGrid
-import com.gmribas.globoplaydesafiomobile.feature.details.domain.model.MovieDetails
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
 import com.gmribas.globoplaydesafiomobile.ui.theme.topAppBarBackground
 import org.koin.androidx.compose.koinViewModel
 
@@ -71,16 +71,26 @@ fun DetailsScreen(
 
     viewModel.ObserveLifecycle(LocalLifecycleOwner.current.lifecycle)
 
-    val state = viewModel.viewState.collectAsStateWithLifecycle()
+    val isTvShow = viewModel.isTvShow.collectAsStateWithLifecycle()
 
-    val similarMovieItems: LazyPagingItems<Movie> = viewModel.similarMoviesFlow.collectAsLazyPagingItems()
+    val detailsState: State<UiState<DetailsInterface>> = if (isTvShow.value) {
+        viewModel.tvShowsDetailsFlow.collectAsStateWithLifecycle()
+    } else {
+        viewModel.viewState.collectAsStateWithLifecycle()
+    }
 
-    val similarTvShowItems: LazyPagingItems<TvShow> = viewModel.similarTvShowsFlow.collectAsLazyPagingItems()
+    val similarItems: LazyPagingItems<SimilarInterface>  = if (isTvShow.value) {
+        @Suppress("UNCHECKED_CAST")
+        viewModel.similarTvShowsFlow.collectAsLazyPagingItems() as LazyPagingItems<SimilarInterface>
+    } else {
+        @Suppress("UNCHECKED_CAST")
+        viewModel.similarMoviesFlow.collectAsLazyPagingItems() as LazyPagingItems<SimilarInterface>
+    }
 
     val tabIndexState = viewModel.tabIndex.collectAsStateWithLifecycle()
 
     Column {
-        when (state.value) {
+        when (detailsState.value) {
             UiState.Default -> {}
             is UiState.Error -> DialogLoadingError(
                 errorPlace = stringResource(id = R.string.details_screen_error_message1),
@@ -91,9 +101,9 @@ fun DetailsScreen(
             is UiState.Success -> BuildDetailsBody(
                 navController = navController,
                 viewModel = viewModel,
-                movie = (state.value as UiState.Success).data,
+                details = (detailsState.value as UiState.Success).data,
                 tabIndex = tabIndexState.value,
-                similarMovieItems = similarMovieItems
+                similarItems = similarItems
             )
         }
     }
@@ -104,16 +114,16 @@ fun DetailsScreen(
 private fun BuildDetailsBody(
     navController: NavHostController,
     viewModel: DetailsScreenViewModel,
-    movie: MovieDetails,
+    details: DetailsInterface,
     tabIndex: Int,
-    similarMovieItems: LazyPagingItems<Movie>
+    similarItems: LazyPagingItems<SimilarInterface>
 ) {
     val gradient = Brush.verticalGradient(listOf(topAppBarBackground, Color.Black))
 
     Box {
         Image(
-            painter = asyncPainter(movie.backdropPath),
-            contentDescription = movie.originalTitle,
+            painter = asyncPainter(details.backdrop ?: ""),
+            contentDescription = details.originalTitle,
             modifier = Modifier
                 .blur(radius = 20.dp)
                 .fillMaxWidth()
@@ -138,8 +148,7 @@ private fun BuildDetailsBody(
                         Icon(Icons.Filled.ArrowBack, contentDescription = null)
                     }
                 },
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 colors = TopAppBarDefaults.smallTopAppBarColors(
                     containerColor = topAppBarBackground,
                     navigationIconContentColor = Color.White
@@ -147,14 +156,14 @@ private fun BuildDetailsBody(
             )
 
             PosterItem(
-                id = movie.id,
-                title = movie.originalTitle,
-                poster = movie.posterPath,
+                id = details.id,
+                title = details.originalTitle,
+                poster = details.poster,
                 onClick = {})
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            TextTitle(text = movie.title)
+            TextTitle(text = details.title)
 
             Spacer(modifier = Modifier.height(36.dp))
 
@@ -162,7 +171,7 @@ private fun BuildDetailsBody(
                 modifier = Modifier
                     .padding(start = 16.dp, end = 16.dp)
                     .align(Alignment.CenterHorizontally),
-                text = movie.overview,
+                text = details.overview,
                 fontSize = 14,
                 fontWeight = FontWeight.Normal.weight
             )
@@ -199,7 +208,7 @@ private fun BuildDetailsBody(
 
             BuildTabRow(viewModel, tabIndex)
 
-            BuildPager(navController, tabIndex, movie, similarMovieItems)
+            BuildPager(navController, tabIndex, details, similarItems)
         }
     }
 }
@@ -240,7 +249,7 @@ fun BuildTabRow(viewModel: DetailsScreenViewModel, tabIndex: Int) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun BuildPager(navController: NavHostController, tabIndex: Int, movie: MovieDetails, similarMovieItems: LazyPagingItems<Movie>) {
+fun BuildPager(navController: NavHostController, tabIndex: Int, details: DetailsInterface, similarItems: LazyPagingItems<SimilarInterface>) {
     val pagerState = rememberPagerState()
 
     LaunchedEffect(tabIndex) {
@@ -251,10 +260,10 @@ fun BuildPager(navController: NavHostController, tabIndex: Int, movie: MovieDeta
         pageCount = 2,
         pageContent = { tabSelected ->
             when (tabSelected) {
-                0 -> VerticalGrid(list = similarMovieItems) { movieId ->
+                0 -> VerticalGrid(list = similarItems) { movieId ->
                     navController.navigate(Screens.Details.route + "/${movieId}")
                 }
-                1 -> BuildMovieDetailsPage(movie = movie)
+                1 -> BuildDetailsPage(details = details)
             }
         },
         state = pagerState,
@@ -264,7 +273,7 @@ fun BuildPager(navController: NavHostController, tabIndex: Int, movie: MovieDeta
 }
 
 @Composable
-fun BuildMovieDetailsPage(movie: MovieDetails) {
+fun BuildDetailsPage(details: DetailsInterface) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -279,12 +288,12 @@ fun BuildMovieDetailsPage(movie: MovieDetails) {
 
         BuildMovieDetailsRow(
             R.string.details_screen_details_page_original_title,
-            movie.originalTitle
+            details.originalTitle
         )
 
         Spacer(modifier = Modifier.height(4.dp))
 
-        val adultRes = if (movie.adult) R.string.yes else R.string.no
+        val adultRes = if (details.adult) R.string.yes else R.string.no
         BuildMovieDetailsRow(
             R.string.details_screen_details_page_adult_content,
             stringResource(id = adultRes)
@@ -292,7 +301,7 @@ fun BuildMovieDetailsPage(movie: MovieDetails) {
 
         Spacer(modifier = Modifier.height(4.dp))
 
-        val languages = movie.spokenLanguages.map { it.name }.joinToString(separator = ", ")
+        val languages = details.spokenLanguages.map { it.name }.joinToString(separator = ", ")
         BuildMovieDetailsRow(R.string.details_screen_details_page_languages, languages)
 
         Spacer(modifier = Modifier.height(4.dp))

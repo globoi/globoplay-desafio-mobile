@@ -7,7 +7,7 @@ import com.gmribas.globoplaydesafiomobile.core.data.network.ApiService
 import com.gmribas.globoplaydesafiomobile.core.exception.UseCaseException
 import com.gmribas.globoplaydesafiomobile.feature.home.data.source.DiscoverTvShowSource
 import com.gmribas.globoplaydesafiomobile.feature.home.data.source.remote.pagging.DiscoverTvShowsPagingSource
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
+import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShow
 import kotlinx.coroutines.flow.Flow
 
 class DiscoverTvShowSourceRemoteImpl(private val apiService: ApiService): DiscoverTvShowSource {

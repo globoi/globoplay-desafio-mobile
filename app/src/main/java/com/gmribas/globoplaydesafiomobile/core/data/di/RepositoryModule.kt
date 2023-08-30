@@ -7,7 +7,9 @@ import com.gmribas.globoplaydesafiomobile.feature.home.data.repository.DiscoverM
 import com.gmribas.globoplaydesafiomobile.feature.home.data.repository.DiscoverTvShowsRepositoryImpl
 import com.gmribas.globoplaydesafiomobile.feature.details.data.repository.GetSimilarMoviesRepositoryImpl
 import com.gmribas.globoplaydesafiomobile.feature.details.data.repository.GetSimilarTvShowsRepositoryImpl
+import com.gmribas.globoplaydesafiomobile.feature.details.data.repository.GetTvShowDetailsRepositoryImpl
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.repository.GetSimilarTvShowsRepository
+import com.gmribas.globoplaydesafiomobile.feature.details.domain.repository.GetTvShowDetailsRepository
 import com.gmribas.globoplaydesafiomobile.feature.home.data.repository.GetTopRatedTvShowsRepositoryImpl
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.repository.DiscoverMoviesRepository
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.repository.DiscoverTvShowsRepository
@@ -27,4 +29,6 @@ val repositoryModule = module {
     single<GetSimilarMoviesRepository> { GetSimilarMoviesRepositoryImpl(get()) }
 
     single<GetSimilarTvShowsRepository> { GetSimilarTvShowsRepositoryImpl(get()) }
+
+    single<GetTvShowDetailsRepository> { GetTvShowDetailsRepositoryImpl(get()) }
 }

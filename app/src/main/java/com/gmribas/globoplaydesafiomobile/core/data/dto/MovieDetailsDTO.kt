@@ -69,11 +69,6 @@ data class CollectionDTO (
     val backdropPath: String
 )
 
-data class GenreDTO (
-    val id: Long,
-    val name: String
-)
-
 data class ProductionCompanyDTO(
     val id: Long,
 
@@ -84,21 +79,4 @@ data class ProductionCompanyDTO(
 
     @SerializedName("origin_country")
     val originCountry: String
-)
-
-data class ProductionCountryDTO (
-    @SerializedName("iso_3166_1")
-    val iso3166_1: String,
-
-    val name: String
-)
-
-data class LanguageDTO (
-    @SerializedName("english_name")
-    val englishName: String,
-
-    @SerializedName("iso_639_1")
-    val iso639_1: String,
-
-    val name: String
 )

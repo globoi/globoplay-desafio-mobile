@@ -3,8 +3,6 @@ package com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase
 import androidx.paging.PagingData
 import com.gmribas.globoplaydesafiomobile.core.domain.CommonUseCase
 import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
-import com.gmribas.globoplaydesafiomobile.feature.details.domain.model.MovieDetails
-import com.gmribas.globoplaydesafiomobile.feature.details.domain.repository.GetMovieDetailsRepository
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.repository.GetSimilarMoviesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

@@ -15,7 +15,7 @@ data class Movie(
     val video: Boolean,
     val voteAverage: Double,
     val voteCount: Long
-): PosterItemInterface {
+): PosterItemInterface, SimilarInterface {
     override val poster: String? = posterPath
     override val backdrop: String? = backdropPath
 }

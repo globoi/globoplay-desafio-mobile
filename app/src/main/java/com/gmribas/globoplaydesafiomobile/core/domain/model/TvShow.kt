@@ -1,6 +1,4 @@
-package com.gmribas.globoplaydesafiomobile.feature.home.domain.model
-
-import com.gmribas.globoplaydesafiomobile.core.domain.model.PosterItemInterface
+package com.gmribas.globoplaydesafiomobile.core.domain.model
 
 data class TvShow (
     val backdropPath: String?,
@@ -16,7 +14,7 @@ data class TvShow (
     val posterPath: String?,
     val voteAverage: Double,
     val voteCount: Long
-): PosterItemInterface {
+): PosterItemInterface, SimilarInterface {
     override val title: String = originalName
     override val poster: String? = posterPath
     override val backdrop: String? = backdropPath

@@ -6,7 +6,7 @@ import com.gmribas.globoplaydesafiomobile.core.constants.Constants.DECREMENT_VAL
 import com.gmribas.globoplaydesafiomobile.core.constants.Constants.INCREMENT_VALUE
 import com.gmribas.globoplaydesafiomobile.core.constants.Constants.PAGE_INITIAL_VALUE
 import com.gmribas.globoplaydesafiomobile.core.data.network.ApiService
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.TvShow
+import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShow
 import retrofit2.HttpException
 import java.io.IOException
 

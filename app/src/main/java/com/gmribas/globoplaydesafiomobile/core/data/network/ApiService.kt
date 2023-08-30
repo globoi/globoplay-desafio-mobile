@@ -7,6 +7,7 @@ import com.gmribas.globoplaydesafiomobile.core.data.dto.MovieDTO
 import com.gmribas.globoplaydesafiomobile.core.data.dto.MovieDetailsDTO
 import com.gmribas.globoplaydesafiomobile.core.data.dto.PageDTO
 import com.gmribas.globoplaydesafiomobile.core.data.dto.TvShowDTO
+import com.gmribas.globoplaydesafiomobile.core.data.dto.TvShowDetailsDTO
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -54,7 +55,7 @@ interface ApiService {
         @Query("language") language: String = "pt-br"
     ): PageDTO<TvShowDTO>
 
-    @GET("movie/{id}/similar")
+    @GET("tv/{id}/similar")
     suspend fun getSimilarTvShows(
         @Path("id") id: Int,
         @Query("page") page: Int,
@@ -62,4 +63,12 @@ interface ApiService {
         @Query("language") language: String = "pt-br"
 
     ): PageDTO<TvShowDTO>
+
+    @GET("tv/{id}")
+    suspend fun getTvShowDetails(
+        @Path("id") id: Int,
+        @Query("api_key") apiKey: String = BuildConfig.API_KEY,
+        @Query("language") language: String = "pt-br"
+
+    ): TvShowDetailsDTO
 }

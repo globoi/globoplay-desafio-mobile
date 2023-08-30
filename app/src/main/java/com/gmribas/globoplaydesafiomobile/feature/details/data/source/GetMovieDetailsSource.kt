@@ -1,6 +1,6 @@
 package com.gmribas.globoplaydesafiomobile.feature.details.data.source
 
-import com.gmribas.globoplaydesafiomobile.feature.details.domain.model.MovieDetails
+import com.gmribas.globoplaydesafiomobile.core.domain.model.MovieDetails
 import kotlinx.coroutines.flow.Flow
 
 interface GetMovieDetailsSource {
