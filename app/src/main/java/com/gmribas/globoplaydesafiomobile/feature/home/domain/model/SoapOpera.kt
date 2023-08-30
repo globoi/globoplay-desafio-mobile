@@ -1,5 +1,7 @@
 package com.gmribas.globoplaydesafiomobile.feature.home.domain.model
 
+import com.gmribas.globoplaydesafiomobile.core.domain.model.PosterItemInterface
+
 data class SoapOpera (
     val backdropPath: String?,
     val firstAirDate: String,
@@ -16,6 +18,6 @@ data class SoapOpera (
     val voteCount: Long
 ): PosterItemInterface {
     override val title: String = originalName
-    override val poster: String = posterPath ?: ""
+    override val poster: String? = posterPath
     override val backdrop: String? = backdropPath
 }

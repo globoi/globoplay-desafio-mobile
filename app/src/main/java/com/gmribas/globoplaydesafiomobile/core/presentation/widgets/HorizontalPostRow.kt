@@ -14,14 +14,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.PosterItemInterface
+import com.gmribas.globoplaydesafiomobile.core.domain.model.PosterItemInterface
 import kotlinx.coroutines.flow.flow
 
 
@@ -77,12 +76,12 @@ fun HorizontalCarouselPreview() {
         val obj = object : PosterItemInterface {
             override val id: Int = 1
             override val title: String = "Title"
-            override val poster: String = "Poster"
-            override val backdrop: String = ""
+            override val poster: String = "/jw0tYFCbzjBN8SIhvRC2kdh7pzh.jpg"
+            override val backdrop: String = "/tsUlDhS8jeaK6x65ZrEtvrkPVx4.jpg"
         }
 
         emit(PagingData.from(listOf(obj, obj, obj)))
     }.collectAsLazyPagingItems()
 
-    HorizontalCarousel<PosterItemInterface>(pagingItems = flow) {}
+    HorizontalCarousel(pagingItems = flow) {}
 }

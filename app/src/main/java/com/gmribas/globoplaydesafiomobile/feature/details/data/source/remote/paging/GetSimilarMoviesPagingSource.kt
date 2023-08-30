@@ -1,4 +1,4 @@
-package com.gmribas.globoplaydesafiomobile.feature.home.data.source.remote.pagging
+package com.gmribas.globoplaydesafiomobile.feature.details.data.source.remote.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -8,18 +8,20 @@ import com.gmribas.globoplaydesafiomobile.core.constants.Constants.PAGE_INITIAL_
 import com.gmribas.globoplaydesafiomobile.core.data.dto.toDomain
 import com.gmribas.globoplaydesafiomobile.core.data.network.ApiService
 import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
+import com.gmribas.globoplaydesafiomobile.feature.details.data.source.toDomain
 import retrofit2.HttpException
 import java.io.IOException
 
-class DiscoverMoviesPagingSource(
+class GetSimilarMoviesPagingSource(
     private val apiService: ApiService,
+    private val movieId: Int,
 ): PagingSource<Int, Movie>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         val pageIndex = params.key ?: PAGE_INITIAL_VALUE
 
         return try {
-            val response = apiService.discoverMovies(page = pageIndex)
+            val response = apiService.getSimilarMovies(movieId =  movieId, page = pageIndex)
 
             val responseMapped = response.results.map { it.toDomain() }
 

@@ -34,7 +34,7 @@ import androidx.paging.compose.LazyPagingItems
 import coil.compose.rememberAsyncImagePainter
 import com.gmribas.globoplaydesafiomobile.R
 import com.gmribas.globoplaydesafiomobile.core.constants.Constants
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.PosterItemInterface
+import com.gmribas.globoplaydesafiomobile.core.domain.model.PosterItemInterface
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -45,7 +45,7 @@ import kotlinx.coroutines.launch
  */
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun <T: PosterItemInterface >HorizontalAnimatedCarousel(
+fun <T: PosterItemInterface>HorizontalAnimatedCarousel(
     list: LazyPagingItems<T>,
     totalItemsToShow: Int = 10,
     autoScrollDuration: Long = Constants.CAROUSEL_AUTO_SCROLL_TIMER,

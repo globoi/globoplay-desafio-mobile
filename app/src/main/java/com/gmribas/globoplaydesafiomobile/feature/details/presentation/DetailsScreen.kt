@@ -19,7 +19,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -45,17 +44,21 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.gmribas.globoplaydesafiomobile.R
 import com.gmribas.globoplaydesafiomobile.core.asyncPainter
 import com.gmribas.globoplaydesafiomobile.core.domain.ObserveLifecycle
+import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
 import com.gmribas.globoplaydesafiomobile.core.presentation.UiState
+import com.gmribas.globoplaydesafiomobile.core.presentation.navigation.Screens
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.CircularLoadingCenter
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.DialogLoadingError
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.IconAndTextButton
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.PosterItem
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.TextTitle
+import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.VerticalGrid
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.model.MovieDetails
-import com.gmribas.globoplaydesafiomobile.ui.theme.appBackground
 import com.gmribas.globoplaydesafiomobile.ui.theme.topAppBarBackground
 import org.koin.androidx.compose.koinViewModel
 
@@ -69,13 +72,16 @@ fun DetailsScreen(
 
     val state = viewModel.viewState.collectAsStateWithLifecycle()
 
+    val similarMovieItems: LazyPagingItems<Movie> = viewModel.similarMoviesFlow.collectAsLazyPagingItems()
+
     val tabIndexState = viewModel.tabIndex.collectAsStateWithLifecycle()
 
     Column {
         when (state.value) {
             UiState.Default -> {}
-            is UiState.Error -> DialogLoadingError(errorPlace = "", errorMessage = "") {
-
+            is UiState.Error -> DialogLoadingError(
+                errorPlace = stringResource(id = R.string.details_screen_error_message1),
+                errorMessage = stringResource(id = R.string.details_screen_error_message2)) {
             }
 
             UiState.Loading -> CircularLoadingCenter()
@@ -83,7 +89,8 @@ fun DetailsScreen(
                 navController = navController,
                 viewModel = viewModel,
                 movie = (state.value as UiState.Success).data,
-                tabIndex = tabIndexState.value
+                tabIndex = tabIndexState.value,
+                similarMovieItems = similarMovieItems
             )
         }
     }
@@ -95,7 +102,8 @@ private fun BuildDetailsBody(
     navController: NavHostController,
     viewModel: DetailsScreenViewModel,
     movie: MovieDetails,
-    tabIndex: Int
+    tabIndex: Int,
+    similarMovieItems: LazyPagingItems<Movie>
 ) {
     val gradient = Brush.verticalGradient(listOf(topAppBarBackground, Color.Black))
 
@@ -188,7 +196,7 @@ private fun BuildDetailsBody(
 
             BuildTabRow(viewModel, tabIndex)
 
-            BuildPager(tabIndex, movie)
+            BuildPager(navController, tabIndex, movie, similarMovieItems)
         }
     }
 }
@@ -229,7 +237,7 @@ fun BuildTabRow(viewModel: DetailsScreenViewModel, tabIndex: Int) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun BuildPager(tabIndex: Int, movie: MovieDetails) {
+fun BuildPager(navController: NavHostController, tabIndex: Int, movie: MovieDetails, similarMovieItems: LazyPagingItems<Movie>) {
     val pagerState = rememberPagerState()
 
     LaunchedEffect(tabIndex) {
@@ -240,7 +248,9 @@ fun BuildPager(tabIndex: Int, movie: MovieDetails) {
         pageCount = 2,
         pageContent = { tabSelected ->
             when (tabSelected) {
-                0 -> {}
+                0 -> VerticalGrid(list = similarMovieItems) { movieId ->
+                    navController.navigate(Screens.Details.route + "/${movieId}")
+                }
                 1 -> BuildMovieDetailsPage(movie = movie)
             }
         },

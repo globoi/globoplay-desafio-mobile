@@ -4,7 +4,7 @@
     <string name="cinema">Cinema</string>
     <string name="load_soap_operas_error">as novelas</string>
     <string name="dialog_error_title">Erro</string>
-    <string name="dialog_error_message">Não foi possível carregar o conteúdo 1%s devido à 2%s</string>
+    <string name="dialog_error_message">Não foi possível carregar o conteúdo %1$s devido à %2$s</string>
     <string name="ok">ok</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
@@ -18,4 +18,6 @@
     <string name="details_screen_details_page_original_title">Título original:</string>
     <string name="details_screen_details_page_adult_content">Conteúdo adulto:</string>
     <string name="details_screen_details_page_languages">Idiomas:</string>
+    <string name="details_screen_error_message1">do item</string>
+    <string name="details_screen_error_message2">problema na rede</string>
 </resources>

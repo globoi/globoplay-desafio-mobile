@@ -29,6 +29,15 @@ interface ApiService {
 
     ): MovieDetailsDTO
 
+    @GET("movie/{movieId}/similar")
+    suspend fun getSimilarMovies(
+        @Path("movieId") movieId: Int,
+        @Query("page") page: Int,
+        @Query("api_key") apiKey: String = BuildConfig.API_KEY,
+        @Query("language") language: String = "pt-br"
+
+    ): PageDTO<MovieDTO>
+
     @GET("discover/tv")
     suspend fun discoverSoapOperas(
         @Query("api_key") apiKey: String = BuildConfig.API_KEY,

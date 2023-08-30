@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.gmribas.globoplaydesafiomobile.core.presentation.BaseViewModel
 import com.gmribas.globoplaydesafiomobile.core.presentation.UiState
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.Movie
+import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.SoapOpera
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.DiscoverMoviesUseCase
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.DiscoverSoapOperasUseCase
@@ -14,9 +14,7 @@ import com.gmribas.globoplaydesafiomobile.feature.home.presentation.mapper.Movie
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.mapper.SoapOperaUIMapper
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.mapper.TopRatedTvShowUIMapper
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 

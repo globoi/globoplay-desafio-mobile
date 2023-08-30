@@ -32,7 +32,7 @@ import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.CustomTopApp
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.HorizontalAnimatedCarousel
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.HorizontalCarousel
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.TextTitle
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.Movie
+import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.SoapOpera
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.bottombar.BottomNavItem
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.bottombar.BottomNavigation

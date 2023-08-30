@@ -1,6 +1,6 @@
 package com.gmribas.globoplaydesafiomobile.core.data.dto
 
-import com.gmribas.globoplaydesafiomobile.feature.home.domain.model.Movie
+import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
 import com.google.gson.annotations.SerializedName
 
 data class MovieDTO(
@@ -24,7 +24,7 @@ data class MovieDTO(
     val popularity: Double,
 
     @SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String?,
 
     @SerializedName("release_date")
     val releaseDate: String,
