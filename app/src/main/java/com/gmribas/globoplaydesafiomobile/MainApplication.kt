@@ -1,6 +1,7 @@
 package com.gmribas.globoplaydesafiomobile
 
 import android.app.Application
+import com.gmribas.globoplaydesafiomobile.core.data.database.databaseModule
 import com.gmribas.globoplaydesafiomobile.core.data.di.repositoryModule
 import com.gmribas.globoplaydesafiomobile.core.data.di.sourceModule
 import com.gmribas.globoplaydesafiomobile.core.di.networkModule
@@ -23,6 +24,7 @@ class MainApplication: Application() {
         startKoin {
             val modules = listOf(
                 networkModule,
+                databaseModule,
                 sourceModule,
                 repositoryModule,
                 useCaseModule,

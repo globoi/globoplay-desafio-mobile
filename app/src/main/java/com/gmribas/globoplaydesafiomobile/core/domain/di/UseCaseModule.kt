@@ -7,6 +7,10 @@ import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.GetTvSh
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.DiscoverMoviesUseCase
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.DiscoverTvShowsUseCase
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.GetTopRatedTvShowsUseCase
+import com.gmribas.globoplaydesafiomobile.feature.mylist.domain.usecase.GetAllSavedMediaUseCase
+import com.gmribas.globoplaydesafiomobile.feature.mylist.domain.usecase.RemoveMediaUseCase
+import com.gmribas.globoplaydesafiomobile.feature.mylist.domain.usecase.SaveMovieUseCase
+import com.gmribas.globoplaydesafiomobile.feature.mylist.domain.usecase.SaveTvShowUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
@@ -24,4 +28,12 @@ val useCaseModule = module {
     single { GetSimilarTvShowsUseCase(get()) }
 
     single { GetTvShowDetailsUseCase(get()) }
+
+    single { GetAllSavedMediaUseCase(get()) }
+
+    single { RemoveMediaUseCase(get()) }
+
+    single { SaveTvShowUseCase(get()) }
+
+    single { SaveMovieUseCase(get()) }
 }

@@ -6,6 +6,7 @@ import com.gmribas.globoplaydesafiomobile.feature.details.presentation.mapper.Tv
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.mapper.MovieUIMapper
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.mapper.TvShowUIMapper
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.mapper.TopRatedTvShowUIMapper
+import com.gmribas.globoplaydesafiomobile.feature.mylist.presentation.mapper.MediaListUIMapper
 import org.koin.dsl.module
 
 val uiMapperModule = module {
@@ -23,4 +24,6 @@ val uiMapperModule = module {
     single { TvShowDetailsUIMapper() }
 
     single { com.gmribas.globoplaydesafiomobile.feature.details.presentation.mapper.TvShowUIMapper() }
+
+    single { MediaListUIMapper() }
 }

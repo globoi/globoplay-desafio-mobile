@@ -24,7 +24,8 @@ data class TvShowDetails (
     val tagline: String,
     val type: String,
     val voteAverage: Double,
-    val voteCount: Long
+    val voteCount: Long,
+    override val isTvShow: Boolean = true
 ): DetailsInterface {
     override val originalTitle: String = originalName
     override val title: String = name

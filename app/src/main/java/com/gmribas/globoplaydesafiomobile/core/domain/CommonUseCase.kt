@@ -13,6 +13,7 @@ abstract class CommonUseCase<RQ: CommonUseCase.Request, RP : CommonUseCase.Respo
     suspend fun execute(request: RQ) = process(request)
         .map {
             it.hashCode()
+            @Suppress("USELESS_CAST")
             ResultUseCase.Success(it) as ResultUseCase<RP>
         }
         .flowOn(Dispatchers.IO)

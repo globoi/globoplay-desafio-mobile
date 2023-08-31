@@ -20,4 +20,6 @@
     <string name="details_screen_details_page_languages">Idiomas:</string>
     <string name="details_screen_error_message1">do item</string>
     <string name="details_screen_error_message2">problema na rede</string>
+    <string name="details_screen_empty_list_similar">Não há items similares</string>
+    <string name="my_list_screen_empty_list">Não existem favoritos ainda</string>
 </resources>

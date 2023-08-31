@@ -27,13 +27,13 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.gmribas.globoplaydesafiomobile.R
 import com.gmribas.globoplaydesafiomobile.core.constants.Constants.CAROUSEL_HOME_TOTAL_ITEMS_TO_SHOW
 import com.gmribas.globoplaydesafiomobile.core.domain.ObserveLifecycle
+import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
+import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShow
 import com.gmribas.globoplaydesafiomobile.core.presentation.navigation.Screens
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.CustomTopAppBar
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.HorizontalAnimatedCarousel
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.HorizontalCarousel
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.TextTitle
-import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
-import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShow
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.bottombar.BottomNavItem
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.bottombar.BottomNavigation
 import org.koin.androidx.compose.koinViewModel
@@ -47,23 +47,29 @@ fun HomeScreen(
 ) {
     viewModel.ObserveLifecycle(LocalLifecycleOwner.current.lifecycle)
 
-//    val discoveryMoviesState = viewModel.viewState.collectAsStateWithLifecycle()
+    val topRatedTvShows: LazyPagingItems<TvShow> =
+        viewModel.topRatedTvShowsFlow.collectAsLazyPagingItems()
 
-    val topRatedTvShows: LazyPagingItems<TvShow> = viewModel.topRatedTvShowsFlow.collectAsLazyPagingItems()
+    val discoverySoapOperasItems: LazyPagingItems<TvShow> =
+        viewModel.discoverSoapOperasFlow.collectAsLazyPagingItems()
 
-    val discoverySoapOperasItems: LazyPagingItems<TvShow> = viewModel.discoverSoapOperasFlow.collectAsLazyPagingItems()
-
-    val discoveryMoviesItems: LazyPagingItems<Movie> = viewModel.discoverMoviesFlow.collectAsLazyPagingItems()
+    val discoveryMoviesItems: LazyPagingItems<Movie> =
+        viewModel.discoverMoviesFlow.collectAsLazyPagingItems()
 
     var selectedScreen by remember { mutableStateOf<BottomNavItem>(BottomNavItem.Home) }
+
+    val homeScreenRoute = BottomNavItem.Home.screenRoute.route
 
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
         topBar = { CustomTopAppBar() },
         bottomBar = {
-            BottomNavigation(selectedScreen) {
-                selectedScreen = it
+            BottomNavigation(selectedScreen) { clickedBottomNavItem ->
+                if (clickedBottomNavItem.screenRoute.route != homeScreenRoute) {
+                    selectedScreen = clickedBottomNavItem
+                    navController.navigate(selectedScreen.screenRoute.route)
+                }
             }
         },
         containerColor = MaterialTheme.colorScheme.primaryContainer
@@ -88,9 +94,11 @@ fun HomeScreen(
             }
 
             item {
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 8.dp)) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 8.dp)
+                ) {
                     TextTitle(text = stringResource(id = R.string.soap_operas))
                 }
             }
@@ -98,8 +106,9 @@ fun HomeScreen(
             item {
                 HorizontalCarousel(
                     modifier = Modifier.padding(start = 8.dp),
-                    pagingItems = discoverySoapOperasItems) { id ->
-                    navController.navigate(Screens.Details.route + "/${id}/${true}")
+                    pagingItems = discoverySoapOperasItems
+                ) { id, isTvShow ->
+                    navController.navigate(Screens.Details.route + "/${id}/${isTvShow}")
                 }
             }
 
@@ -108,9 +117,11 @@ fun HomeScreen(
             }
 
             item {
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 8.dp)) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 8.dp)
+                ) {
                     TextTitle(text = stringResource(id = R.string.cinema))
                 }
             }
@@ -119,8 +130,8 @@ fun HomeScreen(
                 HorizontalCarousel(
                     modifier = Modifier.padding(start = 8.dp),
                     pagingItems = discoveryMoviesItems
-                ) { movieId ->
-                    navController.navigate(Screens.Details.route + "/${movieId}/${false}")
+                ) { movieId, isTvShow ->
+                    navController.navigate(Screens.Details.route + "/${movieId}/${isTvShow}")
                 }
             }
         }

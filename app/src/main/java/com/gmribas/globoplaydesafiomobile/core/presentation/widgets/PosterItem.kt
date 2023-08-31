@@ -20,13 +20,13 @@ import androidx.compose.ui.unit.dp
 import com.gmribas.globoplaydesafiomobile.core.asyncPainter
 
 @Composable
-fun PosterItem(modifier: Modifier = Modifier, id: Int, title: String, poster: String?, onClick: (id: Int) -> Unit) {
+fun PosterItem(modifier: Modifier = Modifier, id: Int, title: String, isTvShow: Boolean, poster: String?, onClick: (id: Int, isTvShow: Boolean) -> Unit) {
     Card(
         modifier = Modifier
             .padding(bottom = 5.dp, top = 5.dp, start = 5.dp, end = 5.dp)
             .width(110.dp)
             .height(160.dp)
-            .clickable{ onClick(id) }
+            .clickable{ onClick(id, isTvShow) }
             .then(modifier),
         shape = RoundedCornerShape(5.dp)
     ) {
@@ -51,5 +51,7 @@ fun PosterItem(modifier: Modifier = Modifier, id: Int, title: String, poster: St
 @Preview
 @Composable
 fun PosterItemPreview() {
-    PosterItem(id = 1, title = "", poster = "") {}
+    PosterItem(id = 1, title = "Title", poster = "/jw0tYFCbzjBN8SIhvRC2kdh7pzh.jpg", isTvShow = false) { _, _ ->
+
+    }
 }

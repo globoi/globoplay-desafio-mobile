@@ -79,7 +79,7 @@ fun DetailsScreen(
         viewModel.viewState.collectAsStateWithLifecycle()
     }
 
-    val similarItems: LazyPagingItems<SimilarInterface>  = if (isTvShow.value) {
+    val similarItems: LazyPagingItems<SimilarInterface> = if (isTvShow.value) {
         @Suppress("UNCHECKED_CAST")
         viewModel.similarTvShowsFlow.collectAsLazyPagingItems() as LazyPagingItems<SimilarInterface>
     } else {
@@ -94,7 +94,8 @@ fun DetailsScreen(
             UiState.Default -> {}
             is UiState.Error -> DialogLoadingError(
                 errorPlace = stringResource(id = R.string.details_screen_error_message1),
-                errorMessage = stringResource(id = R.string.details_screen_error_message2)) {
+                errorMessage = stringResource(id = R.string.details_screen_error_message2)
+            ) {
             }
 
             UiState.Loading -> CircularLoadingCenter()
@@ -103,8 +104,7 @@ fun DetailsScreen(
                 viewModel = viewModel,
                 details = (detailsState.value as UiState.Success).data,
                 tabIndex = tabIndexState.value,
-                similarItems = similarItems,
-                isTvShow = isTvShow.value
+                similarItems = similarItems
             )
         }
     }
@@ -118,7 +118,6 @@ private fun BuildDetailsBody(
     details: DetailsInterface,
     tabIndex: Int,
     similarItems: LazyPagingItems<SimilarInterface>,
-    isTvShow: Boolean
 ) {
     val gradient = Brush.verticalGradient(listOf(topAppBarBackground, Color.Black))
 
@@ -161,7 +160,8 @@ private fun BuildDetailsBody(
                 id = details.id,
                 title = details.originalTitle,
                 poster = details.poster,
-                onClick = {})
+                isTvShow = details.isTvShow,
+                onClick = { _, _ -> })
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -210,7 +210,7 @@ private fun BuildDetailsBody(
 
             BuildTabRow(viewModel, tabIndex)
 
-            BuildPager(navController, tabIndex, details, similarItems, isTvShow)
+            BuildPager(navController, tabIndex, details, similarItems)
         }
     }
 }
@@ -251,7 +251,12 @@ fun BuildTabRow(viewModel: DetailsScreenViewModel, tabIndex: Int) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun BuildPager(navController: NavHostController, tabIndex: Int, details: DetailsInterface, similarItems: LazyPagingItems<SimilarInterface>, isTvShow: Boolean) {
+fun BuildPager(
+    navController: NavHostController,
+    tabIndex: Int,
+    details: DetailsInterface,
+    similarItems: LazyPagingItems<SimilarInterface>
+) {
     val pagerState = rememberPagerState()
 
     LaunchedEffect(tabIndex) {
@@ -262,9 +267,13 @@ fun BuildPager(navController: NavHostController, tabIndex: Int, details: Details
         pageCount = 2,
         pageContent = { tabSelected ->
             when (tabSelected) {
-                0 -> VerticalGrid(list = similarItems) { id ->
+                0 -> VerticalGrid(
+                    list = similarItems,
+                    emptyListMessage = R.string.details_screen_empty_list_similar
+                ) { id, isTvShow ->
                     navController.navigate(Screens.Details.route + "/${id}/${isTvShow}")
                 }
+
                 1 -> BuildDetailsPage(details = details)
             }
         },

@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.gmribas.globoplaydesafiomobile.feature.details.presentation.DetailsScreen
 import com.gmribas.globoplaydesafiomobile.feature.home.presentation.HomeScreen
+import com.gmribas.globoplaydesafiomobile.feature.mylist.presentation.MyListScreen
 
 @Composable
 fun NavGraph(navController: NavHostController = rememberNavController()) {
@@ -18,7 +19,7 @@ fun NavGraph(navController: NavHostController = rememberNavController()) {
     )
     {
         composable(Screens.Home.route) {
-            HomeScreen(navController)
+            HomeScreen(navController = navController)
         }
 
         composable(
@@ -32,6 +33,10 @@ fun NavGraph(navController: NavHostController = rememberNavController()) {
             )
         ) {
             DetailsScreen(navController)
+        }
+
+        composable(Screens.MyList.route) {
+            MyListScreen(navController = navController)
         }
     }
 }

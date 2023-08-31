@@ -17,7 +17,8 @@ data class MovieDetails(
     val status: String,
     override val title: String,
     val video: Boolean,
-    override val spokenLanguages: List<Language>
+    override val spokenLanguages: List<Language>,
+    override val isTvShow: Boolean = false
 ): DetailsInterface {
     override val poster: String? = posterPath
     override val backdrop: String? = backdropPath

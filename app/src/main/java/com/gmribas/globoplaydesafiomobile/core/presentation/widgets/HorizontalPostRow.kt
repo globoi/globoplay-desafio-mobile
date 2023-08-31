@@ -25,7 +25,7 @@ import kotlinx.coroutines.flow.flow
 
 
 @Composable
-fun <T : PosterItemInterface> HorizontalCarousel(modifier: Modifier = Modifier, pagingItems: LazyPagingItems<T>, onClick: (id: Int) -> Unit) {
+fun <T : PosterItemInterface> HorizontalCarousel(modifier: Modifier = Modifier, pagingItems: LazyPagingItems<T>, onClick: (id: Int, isTvShow: Boolean) -> Unit) {
     Box(modifier = Modifier
         .fillMaxWidth()
         .height(160.dp)
@@ -49,7 +49,7 @@ fun <T : PosterItemInterface> HorizontalCarousel(modifier: Modifier = Modifier, 
         LazyRow {
             items(count = pagingItems.itemCount) { index ->
                 pagingItems[index]?.let { movie ->
-                    PosterItem(id = movie.id, title = movie.title, poster = movie.poster, onClick = onClick)
+                    PosterItem(id = movie.id, title = movie.title, poster = movie.poster, isTvShow = movie.isTvShow, onClick = onClick)
                 }
             }
             if (pagingItems.loadState.append is LoadState.Error) {
@@ -78,10 +78,13 @@ fun HorizontalCarouselPreview() {
             override val title: String = "Title"
             override val poster: String = "/jw0tYFCbzjBN8SIhvRC2kdh7pzh.jpg"
             override val backdrop: String = "/tsUlDhS8jeaK6x65ZrEtvrkPVx4.jpg"
+            override val isTvShow: Boolean = false
         }
 
         emit(PagingData.from(listOf(obj, obj, obj)))
     }.collectAsLazyPagingItems()
 
-    HorizontalCarousel(pagingItems = flow) {}
+    HorizontalCarousel(pagingItems = flow) { _, _ ->
+
+    }
 }
