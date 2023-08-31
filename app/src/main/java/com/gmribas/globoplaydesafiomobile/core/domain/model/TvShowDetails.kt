@@ -1,8 +1,10 @@
 package com.gmribas.globoplaydesafiomobile.core.domain.model
 
-data class TvShowDetails (
+import com.gmribas.globoplaydesafiomobile.core.data.database.entity.MediaDetailsEntity
+
+data class TvShowDetails(
     override val adult: Boolean,
-    val backdropPath: String,
+    val backdropPath: String?,
     val episodeRunTime: List<Any?>,
     val firstAirDate: String,
     val homepage: String,
@@ -26,9 +28,22 @@ data class TvShowDetails (
     val voteAverage: Double,
     val voteCount: Long,
     override val isTvShow: Boolean = true
-): DetailsInterface {
+) : DetailsInterface, PosterItemInterface {
     override val originalTitle: String = originalName
     override val title: String = name
-    override val poster: String? = posterPath
+    override val poster: String = posterPath
     override val backdrop: String? = backdropPath
+
+    fun toMediaEntity(): MediaDetailsEntity {
+        return MediaDetailsEntity(
+            id = id,
+            title = title,
+            isTvShow = isTvShow,
+            poster = poster,
+            backdrop = backdrop,
+            adult = adult,
+            originalTitle = originalTitle,
+            overview = overview
+        )
+    }
 }

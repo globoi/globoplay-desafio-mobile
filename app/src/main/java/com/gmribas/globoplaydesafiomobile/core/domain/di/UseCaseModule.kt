@@ -1,5 +1,6 @@
 package com.gmribas.globoplaydesafiomobile.core.domain.di
 
+import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.FindMediaByIdUseCase
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.GetMovieDetailsUseCase
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.GetSimilarMoviesUseCase
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.GetSimilarTvShowsUseCase
@@ -8,9 +9,9 @@ import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.DiscoverMo
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.DiscoverTvShowsUseCase
 import com.gmribas.globoplaydesafiomobile.feature.home.domain.usecase.GetTopRatedTvShowsUseCase
 import com.gmribas.globoplaydesafiomobile.feature.mylist.domain.usecase.GetAllSavedMediaUseCase
-import com.gmribas.globoplaydesafiomobile.feature.mylist.domain.usecase.RemoveMediaUseCase
-import com.gmribas.globoplaydesafiomobile.feature.mylist.domain.usecase.SaveMovieUseCase
-import com.gmribas.globoplaydesafiomobile.feature.mylist.domain.usecase.SaveTvShowUseCase
+import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.RemoveMediaUseCase
+import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.SaveMovieUseCase
+import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.SaveTvShowUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
@@ -36,4 +37,6 @@ val useCaseModule = module {
     single { SaveTvShowUseCase(get()) }
 
     single { SaveMovieUseCase(get()) }
+
+    single { FindMediaByIdUseCase(get()) }
 }

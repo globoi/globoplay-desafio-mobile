@@ -1,17 +1,19 @@
 package com.gmribas.globoplaydesafiomobile.feature.mylist.data.source
 
-import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
-import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShow
-import com.gmribas.globoplaydesafiomobile.feature.mylist.domain.model.Media
+import com.gmribas.globoplaydesafiomobile.core.domain.model.MediaDetails
+import com.gmribas.globoplaydesafiomobile.core.domain.model.MovieDetails
+import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShowDetails
 import kotlinx.coroutines.flow.Flow
 
 interface MediaSource {
 
-    suspend fun getAllMediaSaved(): Flow<List<Media>>
+    suspend fun getAllMediaSaved(): Flow<List<MediaDetails>>
 
-    suspend fun saveMovie(movie: Movie): Flow<Long>
+    suspend fun findById(id: Int): Flow<MediaDetails?>
 
-    suspend fun saveTvShow(show: TvShow): Flow<Long>
+    suspend fun saveMovie(movie: MovieDetails): Flow<Long>
+
+    suspend fun saveTvShow(show: TvShowDetails): Flow<Long>
 
     suspend fun remove(id: Int): Flow<Int>
 }

@@ -1,7 +1,5 @@
 package com.gmribas.globoplaydesafiomobile.core.domain.model
 
-import com.gmribas.globoplaydesafiomobile.feature.mylist.domain.model.Media
-
 data class Movie(
     val adult: Boolean,
     val backdropPath: String?,
@@ -22,7 +20,5 @@ data class Movie(
     override val poster: String? = posterPath
     override val backdrop: String? = backdropPath
 
-    fun toMedia(): Media {
-        return Media(id, title, false, poster, backdrop)
-    }
+
 }

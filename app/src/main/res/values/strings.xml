@@ -12,6 +12,7 @@
     <string name="home_bottom_bar_my_list_label">Minha lista</string>
     <string name="details_screen_play">Assista</string>
     <string name="details_screen_my_list">Minha lista</string>
+    <string name="details_screen_added_to_my_list">Adicionado</string>
     <string name="details_screen_watch_tab">ASSISTA TAMBÉM</string>
     <string name="details_screen_details_tab">DETALHES</string>
     <string name="details_screen_details_page_title">Ficha técnica</string>

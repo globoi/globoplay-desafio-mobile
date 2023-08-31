@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.gmribas.globoplaydesafiomobile.core.data.database.dao.MediaDAO
-import com.gmribas.globoplaydesafiomobile.core.data.database.entity.MediaEntity
+import com.gmribas.globoplaydesafiomobile.core.data.database.entity.MediaDetailsEntity
 
-@Database(entities = [(MediaEntity::class)], version = 1, exportSchema = false)
+@Database(entities = [(MediaDetailsEntity::class)], version = 1, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun mediaDAO(): MediaDAO

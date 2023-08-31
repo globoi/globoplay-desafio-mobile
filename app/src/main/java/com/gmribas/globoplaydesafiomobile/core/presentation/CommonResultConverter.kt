@@ -2,7 +2,7 @@ package com.gmribas.globoplaydesafiomobile.core.presentation
 
 import com.gmribas.globoplaydesafiomobile.core.domain.ResultUseCase
 
-abstract class CommonResultConverter<T : Any, R : Any> {
+abstract class CommonResultConverter<T : Any, R : Any?> {
 
     fun convert(result: ResultUseCase<T>): UiState<R> {
         return when (result) {

@@ -7,7 +7,7 @@ import com.gmribas.globoplaydesafiomobile.feature.details.data.source.GetTvShowD
 import com.gmribas.globoplaydesafiomobile.feature.details.data.source.remote.GetMovieDetailsSourceRemoteImpl
 import com.gmribas.globoplaydesafiomobile.feature.details.data.source.remote.GetSimilarMoviesRemoteImpl
 import com.gmribas.globoplaydesafiomobile.feature.details.data.source.remote.GetSimilarTvShowsRemoteImpl
-import com.gmribas.globoplaydesafiomobile.feature.details.data.source.remote.GetTvShowSourceRemoteImpl
+import com.gmribas.globoplaydesafiomobile.feature.details.data.source.remote.GetTvShowDetailsSourceRemoteImpl
 import com.gmribas.globoplaydesafiomobile.feature.home.data.source.DiscoverMoviesSource
 import com.gmribas.globoplaydesafiomobile.feature.home.data.source.DiscoverTvShowSource
 import com.gmribas.globoplaydesafiomobile.feature.home.data.source.GetTopRatedTvShowsSource
@@ -32,7 +32,7 @@ val sourceModule = module {
 
     single<GetSimilarTvShowsSource> { GetSimilarTvShowsRemoteImpl(get()) }
 
-    single<GetTvShowDetailsSource> { GetTvShowSourceRemoteImpl(get()) }
+    single<GetTvShowDetailsSource> { GetTvShowDetailsSourceRemoteImpl(get()) }
 
     single<MediaSource> { MediaLocalSource(get()) }
 }

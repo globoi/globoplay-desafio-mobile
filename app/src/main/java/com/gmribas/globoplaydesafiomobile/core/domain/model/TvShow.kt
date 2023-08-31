@@ -1,7 +1,5 @@
 package com.gmribas.globoplaydesafiomobile.core.domain.model
 
-import com.gmribas.globoplaydesafiomobile.feature.mylist.domain.model.Media
-
 data class TvShow (
     val backdropPath: String?,
     val firstAirDate: String,
@@ -21,7 +19,4 @@ data class TvShow (
     override val title: String = originalName
     override val poster: String? = posterPath
     override val backdrop: String? = backdropPath
-    fun toMedia(): Media {
-        return Media(id, title, true, poster, backdrop)
-    }
 }

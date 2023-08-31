@@ -1,7 +1,5 @@
 package com.gmribas.globoplaydesafiomobile.core.data.dto
 
-import com.gmribas.globoplaydesafiomobile.core.domain.model.Language
-import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShow
 import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShowDetails
 import com.gmribas.globoplaydesafiomobile.feature.details.data.source.toDomain
 import com.google.gson.annotations.SerializedName
@@ -10,7 +8,7 @@ data class TvShowDetailsDTO(
     val adult: Boolean,
 
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
 
     @SerializedName("created_by")
     val createdBy: List<CreatedBy>,

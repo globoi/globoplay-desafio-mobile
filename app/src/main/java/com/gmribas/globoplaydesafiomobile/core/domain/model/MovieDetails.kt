@@ -1,5 +1,7 @@
 package com.gmribas.globoplaydesafiomobile.core.domain.model
 
+import com.gmribas.globoplaydesafiomobile.core.data.database.entity.MediaDetailsEntity
+
 data class MovieDetails(
     override val adult: Boolean,
     val backdropPath: String,
@@ -19,7 +21,20 @@ data class MovieDetails(
     val video: Boolean,
     override val spokenLanguages: List<Language>,
     override val isTvShow: Boolean = false
-): DetailsInterface {
+) : DetailsInterface, PosterItemInterface {
     override val poster: String? = posterPath
     override val backdrop: String? = backdropPath
+
+    fun toMediaEntity(): MediaDetailsEntity {
+        return MediaDetailsEntity(
+            id = id,
+            title = title,
+            isTvShow = isTvShow,
+            poster = poster,
+            backdrop = backdrop,
+            adult = adult,
+            originalTitle = originalTitle,
+            overview = overview
+        )
+    }
 }

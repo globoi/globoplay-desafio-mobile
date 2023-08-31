@@ -1,6 +1,5 @@
 package com.gmribas.globoplaydesafiomobile.feature.mylist.presentation
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -16,11 +15,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.gmribas.globoplaydesafiomobile.R
+import com.gmribas.globoplaydesafiomobile.core.domain.ObserveLifecycle
 import com.gmribas.globoplaydesafiomobile.core.domain.model.PosterItemInterface
 import com.gmribas.globoplaydesafiomobile.core.presentation.UiState
 import com.gmribas.globoplaydesafiomobile.core.presentation.navigation.Screens
@@ -35,15 +36,17 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun MyListScreen(navController: NavController, viewModel: MyListViewModel = koinViewModel()) {
 
-    val mediaListSate = viewModel.mediaList.collectAsState()
+    viewModel.ObserveLifecycle(LocalLifecycleOwner.current.lifecycle)
+
+    val mediaListSate = viewModel.mediaDetailsList.collectAsState()
 
     val flow = flow {
 
-        val toEmitValue = when (mediaListSate.value) {
+        val toEmitValue: PagingData<PosterItemInterface> = when (mediaListSate.value) {
             is UiState.Default -> PagingData.empty()
             is UiState.Error -> throw IllegalStateException((mediaListSate.value as UiState.Error).error)
             is UiState.Loading -> PagingData.empty()
-            is UiState.Success -> PagingData.from<PosterItemInterface>((mediaListSate.value as UiState.Success).data)
+            is UiState.Success -> PagingData.from((mediaListSate.value as UiState.Success).data)
         }
 
         emit(toEmitValue)

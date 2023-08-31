@@ -17,6 +17,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -31,6 +32,9 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
@@ -51,6 +55,7 @@ import com.gmribas.globoplaydesafiomobile.R
 import com.gmribas.globoplaydesafiomobile.core.asyncPainter
 import com.gmribas.globoplaydesafiomobile.core.domain.ObserveLifecycle
 import com.gmribas.globoplaydesafiomobile.core.domain.model.DetailsInterface
+import com.gmribas.globoplaydesafiomobile.core.domain.model.MediaDetails
 import com.gmribas.globoplaydesafiomobile.core.domain.model.SimilarInterface
 import com.gmribas.globoplaydesafiomobile.core.presentation.UiState
 import com.gmribas.globoplaydesafiomobile.core.presentation.navigation.Screens
@@ -89,13 +94,31 @@ fun DetailsScreen(
 
     val tabIndexState = viewModel.tabIndex.collectAsStateWithLifecycle()
 
+    val myListMediaState = viewModel.myListMedia.collectAsStateWithLifecycle()
+
+    val openDetailsStateDialog by  remember { mutableStateOf(mutableStateOf(false))  }
+
+//    val saveMediaState = viewModel.saveMediaFlow.collectAsStateWithLifecycle()
+//
+//    val removeMediaState = viewModel.removeMediaFlow.collectAsStateWithLifecycle()
+//
+//    updateAddToMyListButton(viewModel, saveMediaState)
+//
+//    updateAddToMyListButton(viewModel, removeMediaState)
+
     Column {
         when (detailsState.value) {
             UiState.Default -> {}
-            is UiState.Error -> DialogLoadingError(
-                errorPlace = stringResource(id = R.string.details_screen_error_message1),
-                errorMessage = stringResource(id = R.string.details_screen_error_message2)
-            ) {
+            is UiState.Error -> {
+                openDetailsStateDialog.value = true
+
+                DialogLoadingError(
+                    errorPlace = stringResource(id = R.string.details_screen_error_message1),
+                    errorMessage = stringResource(id = R.string.details_screen_error_message2),
+                    showDialogStateState = openDetailsStateDialog
+                ) {
+                    navController.popBackStack()
+                }
             }
 
             UiState.Loading -> CircularLoadingCenter()
@@ -104,7 +127,8 @@ fun DetailsScreen(
                 viewModel = viewModel,
                 details = (detailsState.value as UiState.Success).data,
                 tabIndex = tabIndexState.value,
-                similarItems = similarItems
+                similarItems = similarItems,
+                myListMediaState = myListMediaState
             )
         }
     }
@@ -118,6 +142,7 @@ private fun BuildDetailsBody(
     details: DetailsInterface,
     tabIndex: Int,
     similarItems: LazyPagingItems<SimilarInterface>,
+    myListMediaState: State<UiState<MediaDetails?>>
 ) {
     val gradient = Brush.verticalGradient(listOf(topAppBarBackground, Color.Black))
 
@@ -195,14 +220,26 @@ private fun BuildDetailsBody(
 
                 Spacer(modifier = Modifier.width(24.dp))
 
+                val defaultPair = Pair(R.string.details_screen_my_list, Icons.Filled.Star)
+                val (addToMyListLabel, addToMyListIcon) = when (myListMediaState.value) {
+                    is UiState.Success -> {
+                        if ((myListMediaState.value as UiState.Success).data != null) {
+                            Pair(R.string.details_screen_added_to_my_list, Icons.Filled.Check)
+                        } else {
+                            defaultPair
+                        }
+                    }
+                    else -> defaultPair
+                }
+
                 IconAndTextButton(
-                    icon = Icons.Filled.Star,
+                    icon = addToMyListIcon,
                     backgroundColor = Color.Transparent,
                     backgroundStroke = true,
-                    text = stringResource(id = R.string.details_screen_my_list),
+                    text = stringResource(id = addToMyListLabel),
                     textColor = Color.White
                 ) {
-
+                    saveOrRemoveMedia(viewModel, myListMediaState, details)
                 }
             }
 
@@ -335,6 +372,30 @@ fun BuildMovieDetailsRow(titleRes: Int, attribute: String) {
             color = Color.LightGray,
             fontWeight = FontWeight.Light.weight
         )
+    }
+}
+//
+//private fun updateAddToMyListButton(viewModel: DetailsScreenViewModel, state: State<UiState<Number>>) {
+//    when (state.value) {
+//        is UiState.Success -> {
+//            if ((state.value as UiState.Success).data.toInt() > 0) {
+//                viewModel.updateFavoriteStatus()
+//            }
+//        }
+//        else -> {}
+//    }
+//}
+
+private fun saveOrRemoveMedia(viewModel: DetailsScreenViewModel, state: State<UiState<MediaDetails?>>, details: DetailsInterface) {
+    when (state.value) {
+        is UiState.Success -> {
+            if ((state.value as UiState.Success).data != null) {
+                viewModel.removeMedia(details.id)
+            } else {
+                viewModel.saveMedia(details)
+            }
+        }
+        else -> {}
     }
 }
 
