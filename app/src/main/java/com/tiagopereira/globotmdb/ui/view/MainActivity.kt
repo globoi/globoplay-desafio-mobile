@@ -2,6 +2,7 @@ package com.tiagopereira.globotmdb.ui.view
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -17,6 +18,7 @@ import com.tiagopereira.globotmdb.application.MyApplication
 import com.tiagopereira.globotmdb.databinding.ActivityMainBinding
 import com.tiagopereira.globotmdb.ui.adapter.MovieAdapter
 import com.tiagopereira.globotmdb.ui.adapter.MovieLoadStateAdapter
+import com.tiagopereira.globotmdb.utils.Constants.Companion.ID_MOVIE
 import com.tiagopereira.globotmdb.utils.Constants.Companion.NOW_PLAYING
 import com.tiagopereira.globotmdb.utils.Constants.Companion.POPULAR
 import com.tiagopereira.globotmdb.utils.Constants.Companion.TOP_RATED
@@ -212,7 +214,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         mAdapter = MovieAdapter {
-            //goToDetailsMovieDetails(it.id)
+            goToDetailsMovieDetails(it.id)
         }
 
         binding.rcvMovies.apply {
@@ -236,5 +238,11 @@ class MainActivity : AppCompatActivity() {
                 getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
         }
+    }
+
+    private fun goToDetailsMovieDetails(id: Int) {
+        val intent = Intent(this, DetailsMovieActivity::class.java)
+        intent.putExtra(ID_MOVIE, id)
+        startActivity(intent)
     }
 }

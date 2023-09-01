@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -73,6 +74,19 @@ dependencies {
 
     // Coil
     implementation("io.coil-kt:coil:2.4.0")
+
+    // PhotoView
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
+    // Room
+    val roomVersion = "2.5.2"
+    implementation ("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+
+    // To use Kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:$roomVersion")
+
+    implementation("androidx.room:room-ktx:$roomVersion")
 
     // Test
     testImplementation("junit:junit:4.13.2")
