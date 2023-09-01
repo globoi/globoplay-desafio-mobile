@@ -22,4 +22,6 @@
     <color name="iconColor700">#002B5B</color>
 
     <color name="iconColor">#2B4865</color>
+
+    <color name="background">#AEBDCA</color>
 </resources>

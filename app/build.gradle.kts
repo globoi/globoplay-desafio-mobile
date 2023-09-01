@@ -41,6 +41,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    viewBinding {
+        enable = true
+    }
 }
 
 dependencies {
@@ -52,6 +55,24 @@ dependencies {
 
     // Splashscreen
     implementation("androidx.core:core-splashscreen:1.0.1")
+
+    // Constraintlayout
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    // CardView
+    implementation("androidx.cardview:cardview:1.0.0")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.google.code.gson:gson:2.9.1")
+
+    // Paging
+    implementation("androidx.paging:paging-runtime-ktx:3.2.0")
+
+    // Coil
+    implementation("io.coil-kt:coil:2.4.0")
 
     // Test
     testImplementation("junit:junit:4.13.2")

@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">Globo TMDB</string>
+    <string name="img_movie_back">Banner</string>
+    <string name="img_movie_front">Banner frontal</string>
+    <string name="filters">Filtros</string>
+    <string name="search">Busca</string>
+    <string name="home">Início</string>
+    <string name="star">Favoritos</string>
+    <string name="popular">Popular</string>
+    <string name="not_network">Instabilidade temporária.</string>
+    <string name="now_playing">Nos cinemas</string>
+    <string name="top_rated">Mais votados</string>
+    <string name="upcoming">Em breve</string>
+    <string name="error_load">Erro ao carregar os resultados</string>
+    <string name="not_favorites">Nenhum filme nos favoritos</string>
+    <string name="error_trailer">Erro ao carregar o trailer</string>
+    <string name="retry">Tente novamente</string>
+    <string name="close">Fechar</string>
+    <string name="favorites">Favoritos</string>
+    <string name="see_more">Veja mais</string>
+    <string name="details">Detalhes</string>
+    <string name="trailer_info">Nome do trailer</string>
+    <string name="info">Info do Filme:</string>
+    <string name="release_date">Lançamento: </string>
+    <string name="rating">Nota: </string>
+    <string name="runtime">Duração: </string>
+    <string name="budget">Orçamento: </string>
+    <string name="revenue">Arrecadação: </string>
+    <string name="overview">Descrição: </string>
+    <string name="see_trailer">Trailer</string>
+    <string name="runtime_minutes">%1$s minutos</string>
 </resources>
