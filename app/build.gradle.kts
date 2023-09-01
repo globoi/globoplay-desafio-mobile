@@ -50,6 +50,8 @@ dependencies {
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.activity:activity-ktx:1.7.2")
 
+    // Splashscreen
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
     // Test
     testImplementation("junit:junit:4.13.2")
