@@ -18,5 +18,8 @@
 
     <color name="txtColorOne">#E8DFCA</color>
     <color name="txtColorTitle">#F5EFE6</color>
+
+    <color name="iconColor700">#002B5B</color>
+
     <color name="iconColor">#2B4865</color>
 </resources>
