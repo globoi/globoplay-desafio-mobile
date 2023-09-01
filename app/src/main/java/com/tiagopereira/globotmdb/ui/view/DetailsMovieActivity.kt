@@ -16,6 +16,7 @@ import com.tiagopereira.globotmdb.application.MyApplication
 import com.tiagopereira.globotmdb.databinding.ActivityMovieDetailsBinding
 import com.tiagopereira.globotmdb.utils.Constants.Companion.BASE_URL_IMG
 import com.tiagopereira.globotmdb.utils.Constants.Companion.ID_MOVIE
+import com.tiagopereira.globotmdb.utils.Constants.Companion.NAME_MOVIE
 import com.tiagopereira.globotmdb.utils.convertDateBr
 import com.tiagopereira.globotmdb.utils.formatUs
 import com.tiagopereira.globotmdb.viewmodel.DetailsMovieViewModel
@@ -146,9 +147,9 @@ class DetailsMovieActivity : AppCompatActivity() {
     }
 
     private fun goToTrailer(id: Int, name: String) {
-//        val intent = Intent(this, VideoActivity::class.java)
-//        intent.putExtra(ID_MOVIE, id)
-//        intent.putExtra(NAME_MOVIE, name)
-//        startActivity(intent)
+        val intent = Intent(this, VideoActivity::class.java)
+        intent.putExtra(ID_MOVIE, id)
+        intent.putExtra(NAME_MOVIE, name)
+        startActivity(intent)
     }
 }

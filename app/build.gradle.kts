@@ -88,6 +88,9 @@ dependencies {
 
     implementation("androidx.room:room-ktx:$roomVersion")
 
+    // YouTube
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
+
     // Test
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
