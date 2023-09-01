@@ -108,23 +108,23 @@ class DetailsScreenViewModel(
 
     private var mediaId = -1
 
+    override fun onCreate(owner: LifecycleOwner) {
+        mediaId = savedStateHandle.get<Int>("id") ?: -1
+        _isTvShow.value = savedStateHandle.get<Boolean>("isTvShow") ?: false
+    }
+
     override fun onResume(owner: LifecycleOwner) {
-        val id = savedStateHandle.get<Int>("id")
-        val isTvShow = savedStateHandle.get<Boolean>("isTvShow") ?: false
-
-        this._isTvShow.value = isTvShow
-
-        id?.let {
+        if (mediaId != -1) {
             submitState(UiState.Loading)
 
-            isTheMediaInMyList(id)
+            isTheMediaInMyList(mediaId)
 
-            if (isTvShow) {
-                getTvShowDetails(id)
-                getSimilarTvShows(id)
+            if (_isTvShow.value) {
+                getTvShowDetails(mediaId)
+                getSimilarTvShows(mediaId)
             } else {
-                getMovieDetails(id)
-                getSimilarMovies(id)
+                getMovieDetails(mediaId)
+                getSimilarMovies(mediaId)
             }
         }
     }
@@ -212,6 +212,7 @@ class DetailsScreenViewModel(
                 .map { saveTvShowUIMapper.convert(it) }
                 .collectLatest { uiState ->
                     _saveMediaFlow.value = uiState
+                    updateFavoriteStatus()
                 }
         }
     }
@@ -223,10 +224,9 @@ class DetailsScreenViewModel(
                 .map { saveMovieUIMapper.convert(it) }
                 .collectLatest { uiState ->
                     _saveMediaFlow.value = uiState
+                    updateFavoriteStatus()
                 }
         }
-
-        updateFavoriteStatus()
     }
 
     fun removeMedia(id: Int) {
@@ -236,9 +236,8 @@ class DetailsScreenViewModel(
                 .map { removeMediaUIMapper.convert(it) }
                 .collectLatest { uiState ->
                     _removeMediaFlow.value = uiState
+                    updateFavoriteStatus()
                 }
         }
-
-        updateFavoriteStatus()
     }
 }

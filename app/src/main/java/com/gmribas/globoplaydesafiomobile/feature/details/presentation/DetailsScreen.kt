@@ -35,11 +35,13 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
@@ -96,7 +98,7 @@ fun DetailsScreen(
 
     val myListMediaState = viewModel.myListMedia.collectAsStateWithLifecycle()
 
-    val openDetailsStateDialog by  remember { mutableStateOf(mutableStateOf(false))  }
+    val openDetailsStateDialog by remember { mutableStateOf(mutableStateOf(false)) }
 
 //    val saveMediaState = viewModel.saveMediaFlow.collectAsStateWithLifecycle()
 //
@@ -221,7 +223,7 @@ private fun BuildDetailsBody(
                 Spacer(modifier = Modifier.width(24.dp))
 
                 val defaultPair = Pair(R.string.details_screen_my_list, Icons.Filled.Star)
-                val (addToMyListLabel, addToMyListIcon) = when (myListMediaState.value) {
+                val (label, icon) = when (myListMediaState.value) {
                     is UiState.Success -> {
                         if ((myListMediaState.value as UiState.Success).data != null) {
                             Pair(R.string.details_screen_added_to_my_list, Icons.Filled.Check)
@@ -229,14 +231,15 @@ private fun BuildDetailsBody(
                             defaultPair
                         }
                     }
+
                     else -> defaultPair
                 }
 
                 IconAndTextButton(
-                    icon = addToMyListIcon,
+                    icon = icon,
                     backgroundColor = Color.Transparent,
                     backgroundStroke = true,
-                    text = stringResource(id = addToMyListLabel),
+                    text = stringResource(id = label),
                     textColor = Color.White
                 ) {
                     saveOrRemoveMedia(viewModel, myListMediaState, details)
@@ -374,19 +377,12 @@ fun BuildMovieDetailsRow(titleRes: Int, attribute: String) {
         )
     }
 }
-//
-//private fun updateAddToMyListButton(viewModel: DetailsScreenViewModel, state: State<UiState<Number>>) {
-//    when (state.value) {
-//        is UiState.Success -> {
-//            if ((state.value as UiState.Success).data.toInt() > 0) {
-//                viewModel.updateFavoriteStatus()
-//            }
-//        }
-//        else -> {}
-//    }
-//}
 
-private fun saveOrRemoveMedia(viewModel: DetailsScreenViewModel, state: State<UiState<MediaDetails?>>, details: DetailsInterface) {
+private fun saveOrRemoveMedia(
+    viewModel: DetailsScreenViewModel,
+    state: State<UiState<MediaDetails?>>,
+    details: DetailsInterface
+) {
     when (state.value) {
         is UiState.Success -> {
             if ((state.value as UiState.Success).data != null) {
@@ -395,6 +391,7 @@ private fun saveOrRemoveMedia(viewModel: DetailsScreenViewModel, state: State<Ui
                 viewModel.saveMedia(details)
             }
         }
+
         else -> {}
     }
 }
