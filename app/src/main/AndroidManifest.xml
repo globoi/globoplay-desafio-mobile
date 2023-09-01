@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.view.DetailsMovieActivity" android:exported="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".ui.view.FavoriteMoviesActivity" android:exported="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.view.VideoActivity" android:screenOrientation="landscape" android:exported="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
