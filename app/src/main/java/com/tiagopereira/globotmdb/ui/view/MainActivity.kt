@@ -205,7 +205,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.menu_star -> {
-                    //goToFavorites()
+                    goToFavorites()
                 }
             }
             false
@@ -243,6 +243,11 @@ class MainActivity : AppCompatActivity() {
     private fun goToDetailsMovieDetails(id: Int) {
         val intent = Intent(this, DetailsMovieActivity::class.java)
         intent.putExtra(ID_MOVIE, id)
+        startActivity(intent)
+    }
+
+    private fun goToFavorites() {
+        val intent = Intent(this, FavoriteMoviesActivity::class.java)
         startActivity(intent)
     }
 }
