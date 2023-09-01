@@ -17,7 +17,7 @@ data class MovieDetailsDTO (
     val id: Int,
 
     @SerializedName("imdb_id")
-    val imdbID: String,
+    val imdbID: String?,
 
     @SerializedName("original_language")
     val originalLanguage: String,

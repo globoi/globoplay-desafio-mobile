@@ -78,7 +78,9 @@ fun MyListScreen(navController: NavController, viewModel: MyListViewModel = koin
         containerColor = MaterialTheme.colorScheme.primaryContainer
     ) { padding ->
         VerticalGrid(
-            modifier = Modifier.padding(padding).fillMaxSize(),
+            modifier = Modifier
+                .padding(padding)
+                .fillMaxSize(),
             list = flow,
             emptyListMessage = R.string.my_list_screen_empty_list
         ) { id, isTvShow ->

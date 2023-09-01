@@ -109,11 +109,11 @@ class DetailsScreenViewModel(
     private var mediaId = -1
 
     override fun onCreate(owner: LifecycleOwner) {
+        if (mediaId != -1) return // already loaded
+
         mediaId = savedStateHandle.get<Int>("id") ?: -1
         _isTvShow.value = savedStateHandle.get<Boolean>("isTvShow") ?: false
-    }
 
-    override fun onResume(owner: LifecycleOwner) {
         if (mediaId != -1) {
             submitState(UiState.Loading)
 
@@ -170,7 +170,7 @@ class DetailsScreenViewModel(
     private fun getSimilarMovies(movieId: Int) {
         viewModelScope.launch {
             getSimilarMoviesUseCase
-                .execute(GetSimilarMoviesUseCase.Request(movieId))
+                .execute(GetSimilarMoviesUseCase.Request(viewModelScope, movieId))
                 .map { movieUIMapper.convert(it) }
                 .collectLatest { uiState ->
                     if (uiState is UiState.Success) {
@@ -183,7 +183,7 @@ class DetailsScreenViewModel(
     private fun getSimilarTvShows(id: Int) {
         viewModelScope.launch {
             getSimilarTvShowsUseCase
-                .execute(GetSimilarTvShowsUseCase.Request(id))
+                .execute(GetSimilarTvShowsUseCase.Request(viewModelScope, id))
                 .map { tvShowUIMapper.convert(it) }
                 .collectLatest { uiState ->
                     if (uiState is UiState.Success) {

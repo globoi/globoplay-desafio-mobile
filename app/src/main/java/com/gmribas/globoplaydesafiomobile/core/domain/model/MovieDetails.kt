@@ -7,7 +7,7 @@ data class MovieDetails(
     val backdropPath: String,
     val homepage: String,
     override val id: Int,
-    val imdbID: String,
+    val imdbID: String?,
     val originalLanguage: String,
     override val originalTitle: String,
     override val overview: String,

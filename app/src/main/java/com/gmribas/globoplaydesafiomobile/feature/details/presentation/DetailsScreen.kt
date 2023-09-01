@@ -100,14 +100,6 @@ fun DetailsScreen(
 
     val openDetailsStateDialog by remember { mutableStateOf(mutableStateOf(false)) }
 
-//    val saveMediaState = viewModel.saveMediaFlow.collectAsStateWithLifecycle()
-//
-//    val removeMediaState = viewModel.removeMediaFlow.collectAsStateWithLifecycle()
-//
-//    updateAddToMyListButton(viewModel, saveMediaState)
-//
-//    updateAddToMyListButton(viewModel, removeMediaState)
-
     Column {
         when (detailsState.value) {
             UiState.Default -> {}
