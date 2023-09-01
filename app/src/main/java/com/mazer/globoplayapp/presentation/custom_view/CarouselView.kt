@@ -5,8 +5,10 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mazer.globoplayapp.R
 import com.mazer.globoplayapp.databinding.LayoutCarouselBinding
+import com.mazer.globoplayapp.presentation.adapter.CarouselMoviesAdapter
 
 /**
  * Custom View que contém um texto para o Título/Genro e uma lista de posteres de filmes
@@ -27,12 +29,23 @@ class CarouselView @JvmOverloads constructor(
             binding = LayoutCarouselBinding.inflate(LayoutInflater.from(context), this, true)
             typedArray = context.obtainStyledAttributes(attrs, R.styleable.CarouselView)
 
+            setupLayoutRecyclerView()
+
             val title = typedArray.getString(R.styleable.CarouselView_title)
             binding.tvCarouselTitle.text = title
         } catch (e: Exception) {
             throw Exception()
         }
         requestLayout()
+    }
+
+    private fun setupLayoutRecyclerView() {
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvMoviesList.layoutManager = layoutManager
+    }
+
+    fun setAdapter(adapter: CarouselMoviesAdapter) {
+        binding.rvMoviesList.adapter = adapter
     }
 
 }

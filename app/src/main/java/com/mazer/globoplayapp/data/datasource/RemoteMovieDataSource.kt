@@ -2,6 +2,7 @@ package com.mazer.globoplayapp.data.datasource
 
 import com.mazer.globoplayapp.BuildConfig
 import com.mazer.globoplayapp.data.remote.ApiService
+import com.mazer.globoplayapp.domain.entities.Genre
 import com.mazer.globoplayapp.domain.entities.Movie
 
 class RemoteMovieDataSource(private val apiService: ApiService): MovieDataSource  {
@@ -30,6 +31,15 @@ class RemoteMovieDataSource(private val apiService: ApiService): MovieDataSource
 
     override suspend fun getUpcomingFromRemote(): List<Movie> {
         val response = apiService.getUpcomingMovies(API_KEY)
+        if (response.isSuccessful) {
+            return response.body()?.results ?: emptyList()
+        } else {
+            throw Exception("Erro ao comunicar com o servidor, tente novamente mais tarde!")
+        }
+    }
+
+    override suspend fun getGenreList(): List<Genre> {
+        val response = apiService.getGenreList(API_KEY)
         if (response.isSuccessful) {
             return response.body()?.results ?: emptyList()
         } else {

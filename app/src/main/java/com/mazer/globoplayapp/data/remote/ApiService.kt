@@ -1,5 +1,6 @@
 package com.mazer.globoplayapp.data.remote
 
+import com.mazer.globoplayapp.data.remote.responses.GenreResponse
 import com.mazer.globoplayapp.data.remote.responses.MovieResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -15,4 +16,7 @@ interface ApiService {
 
     @GET("movie/upcoming")
     suspend fun getUpcomingMovies(@Query("api_key") apiKey: String): Response<MovieResponse>
+
+    @GET("genre/movie/list")
+    suspend fun getGenreList(@Query("api_key") apiKey: String): Response<GenreResponse>
 }

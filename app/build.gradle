@@ -20,12 +20,14 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "THEMOVIEDB_API_KEY", THEMOVIEDB_API_KEY)
+            buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
             debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
             buildConfigField("String", "THEMOVIEDB_API_KEY", THEMOVIEDB_API_KEY)
+            buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -58,5 +60,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     implementation "io.insert-koin:koin-android:3.4.3"
     testImplementation "io.insert-koin:koin-test-junit4:3.4.3"
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    implementation 'jp.wasabeef:glide-transformations:4.3.0'
 
 }

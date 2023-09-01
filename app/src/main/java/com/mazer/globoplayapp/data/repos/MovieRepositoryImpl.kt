@@ -1,6 +1,7 @@
 package com.mazer.globoplayapp.data.repos
 
 import com.mazer.globoplayapp.data.datasource.MovieDataSource
+import com.mazer.globoplayapp.domain.entities.Genre
 import com.mazer.globoplayapp.domain.entities.Movie
 
 class MovieRepositoryImpl(private val movieDataSource: MovieDataSource) : MovieRepository {
@@ -15,6 +16,10 @@ class MovieRepositoryImpl(private val movieDataSource: MovieDataSource) : MovieR
 
     override suspend fun getUpcomingMovies(): List<Movie> {
         return movieDataSource.getUpcomingFromRemote()
+    }
+
+    override suspend fun getGenreList(): List<Genre> {
+        return movieDataSource.getGenreList()
     }
 
 }
