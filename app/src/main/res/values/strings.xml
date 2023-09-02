@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Globoplay Desafio Mobile</string>
+    <string name="soap_operas">Novelas</string>
+    <string name="cinema">Cinema</string>
+    <string name="load_soap_operas_error">as novelas</string>
+    <string name="dialog_error_title">Erro</string>
+    <string name="dialog_error_message">Não foi possível carregar o conteúdo %1$s devido à %2$s</string>
+    <string name="ok">ok</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="home_bottom_bar_home_label">Início</string>
+    <string name="home_bottom_bar_my_list_label">Minha lista</string>
+    <string name="details_screen_play">Trailer</string>
+    <string name="details_screen_my_list">Minha lista</string>
+    <string name="details_screen_added_to_my_list">Adicionado</string>
+    <string name="details_screen_watch_tab">ASSISTA TAMBÉM</string>
+    <string name="details_screen_details_tab">DETALHES</string>
+    <string name="details_screen_details_page_title">Ficha técnica</string>
+    <string name="details_screen_details_page_original_title">Título original:</string>
+    <string name="details_screen_details_page_adult_content">Conteúdo adulto:</string>
+    <string name="details_screen_details_page_languages">Idiomas:</string>
+    <string name="details_screen_error_message1">do item</string>
+    <string name="details_screen_error_message2">problema na rede</string>
+    <string name="details_screen_empty_list_similar">Não há items similares</string>
+    <string name="my_list_screen_empty_list">Não existem favoritos ainda</string>
+    <string name="app_player_empty_video_key">Não foi possível reproduzir o vídeo</string>
+</resources>
