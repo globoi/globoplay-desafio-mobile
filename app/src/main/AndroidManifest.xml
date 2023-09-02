@@ -30,6 +30,11 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.GloboplayDesafioMobile"/>
+
+        <activity
+            android:name=".feature.player.AppPlayer"
+            android:theme="@style/Theme.GloboplayDesafioMobilePlayer"
+            android:screenOrientation="sensorLandscape"/>
     </application>
 
 </manifest>

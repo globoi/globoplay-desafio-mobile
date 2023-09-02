@@ -27,7 +27,8 @@ data class TvShowDetails(
     val type: String,
     val voteAverage: Double,
     val voteCount: Long,
-    override val isTvShow: Boolean = true
+    override val isTvShow: Boolean = true,
+    override val videoList: List<Video>?
 ) : DetailsInterface, PosterItemInterface {
     override val originalTitle: String = originalName
     override val title: String = name

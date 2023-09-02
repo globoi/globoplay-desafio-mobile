@@ -10,4 +10,8 @@ object Constants {
     const val BRAZIL_ORIGIN_COUNTRY = "BR"
     const val CAROUSEL_AUTO_SCROLL_TIMER: Long = 3500L
     const val CAROUSEL_HOME_TOTAL_ITEMS_TO_SHOW = 15
+    const val VIDEO_TYPE_TRAILER = "Trailer"
+    const val VIDEO_ORIGIN_YOUTUBE = "YouTube"
+    const val VIDEO_KEY = "key"
+    const val YOUTUBE_VIDEO_URL = "https://www.youtube.com/watch?v=%s"
 }

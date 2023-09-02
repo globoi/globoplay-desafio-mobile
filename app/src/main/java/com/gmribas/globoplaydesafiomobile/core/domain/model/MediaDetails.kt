@@ -9,5 +9,6 @@ class MediaDetails(
     override val adult: Boolean,
     override val originalTitle: String,
     override val overview: String,
-    override val spokenLanguages: List<Language>
+    override val spokenLanguages: List<Language>,
+    override val videoList: List<Video>?
 ) : PosterItemInterface, DetailsInterface

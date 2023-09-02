@@ -55,7 +55,9 @@ data class MovieDetailsDTO (
     val voteAverage: Double,
 
     @SerializedName("vote_count")
-    val voteCount: Long
+    val voteCount: Long,
+
+    val videos: VideosContainerDTO?
 )
 
 data class CollectionDTO (

@@ -81,7 +81,9 @@ data class TvShowDetailsDTO(
     val voteAverage: Double,
 
     @SerializedName("vote_count")
-    val voteCount: Long
+    val voteCount: Long,
+
+    val videos: VideosContainerDTO?
 ) {
     fun toDomain(): TvShowDetails {
         return TvShowDetails(
@@ -108,7 +110,9 @@ data class TvShowDetailsDTO(
             tagline,
             type,
             voteAverage,
-            voteCount
+            voteCount,
+            true,
+            videoList = videos?.toDomain()
         )
     }
 }

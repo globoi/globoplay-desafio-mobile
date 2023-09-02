@@ -32,7 +32,8 @@ data class MediaDetailsEntity(
             adult = adult,
             originalTitle = originalTitle,
             overview = overview,
-            spokenLanguages = emptyList()
+            spokenLanguages = emptyList(),
+            videoList = null
         )
     }
 }

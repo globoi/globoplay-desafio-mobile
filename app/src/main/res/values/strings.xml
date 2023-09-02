@@ -10,7 +10,7 @@
     <string name="no">Não</string>
     <string name="home_bottom_bar_home_label">Início</string>
     <string name="home_bottom_bar_my_list_label">Minha lista</string>
-    <string name="details_screen_play">Assista</string>
+    <string name="details_screen_play">Trailer</string>
     <string name="details_screen_my_list">Minha lista</string>
     <string name="details_screen_added_to_my_list">Adicionado</string>
     <string name="details_screen_watch_tab">ASSISTA TAMBÉM</string>
@@ -23,4 +23,5 @@
     <string name="details_screen_error_message2">problema na rede</string>
     <string name="details_screen_empty_list_similar">Não há items similares</string>
     <string name="my_list_screen_empty_list">Não existem favoritos ainda</string>
+    <string name="app_player_empty_video_key">Não foi possível reproduzir o vídeo</string>
 </resources>

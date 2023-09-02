@@ -4,6 +4,7 @@ import android.app.Application
 import com.gmribas.globoplaydesafiomobile.core.data.database.databaseModule
 import com.gmribas.globoplaydesafiomobile.core.data.di.repositoryModule
 import com.gmribas.globoplaydesafiomobile.core.data.di.sourceModule
+import com.gmribas.globoplaydesafiomobile.core.di.appModule
 import com.gmribas.globoplaydesafiomobile.core.di.networkModule
 import com.gmribas.globoplaydesafiomobile.core.domain.di.useCaseModule
 import com.gmribas.globoplaydesafiomobile.core.presentation.di.uiMapperModule
@@ -23,6 +24,7 @@ class MainApplication: Application() {
     private fun initKoin() {
         startKoin {
             val modules = listOf(
+                appModule,
                 networkModule,
                 databaseModule,
                 sourceModule,

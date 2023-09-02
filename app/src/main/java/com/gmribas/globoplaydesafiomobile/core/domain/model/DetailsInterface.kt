@@ -5,4 +5,5 @@ interface DetailsInterface : PosterItemInterface {
     val originalTitle: String
     val overview: String
     val spokenLanguages: List<Language>
+    val videoList: List<Video>?
 }

@@ -23,7 +23,8 @@ fun MovieDetailsDTO.toDomain(): MovieDetails {
         status,
         title,
         video,
-        spokenLanguages.map { it.toDomain() }
+        spokenLanguages.map { it.toDomain() },
+        videoList = videos?.toDomain()
     )
 }
 

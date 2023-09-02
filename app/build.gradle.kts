@@ -53,7 +53,11 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
+
 kotlin {
     jvmToolchain(11)
 }
@@ -90,6 +94,7 @@ dependencies {
     implementation ("androidx.room:room-ktx:$roomVersion")
     annotationProcessor ("androidx.room:room-compiler:$roomVersion")
     ksp ("androidx.room:room-compiler:$roomVersion")
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation ("io.mockk:mockk:1.13.5")

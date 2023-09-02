@@ -26,6 +26,7 @@ interface ApiService {
     suspend fun getMovieDetails(
         @Path("movieId") movieId: Int,
         @Query("api_key") apiKey: String = BuildConfig.API_KEY,
+        @Query("append_to_response") append: String = "videos",
         @Query("language") language: String = "pt-br"
 
     ): MovieDetailsDTO
@@ -68,6 +69,7 @@ interface ApiService {
     suspend fun getTvShowDetails(
         @Path("id") id: Int,
         @Query("api_key") apiKey: String = BuildConfig.API_KEY,
+        @Query("append_to_response") append: String = "videos",
         @Query("language") language: String = "pt-br"
 
     ): TvShowDetailsDTO

@@ -4,12 +4,15 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import com.gmribas.globoplaydesafiomobile.core.constants.Constants.VIDEO_ORIGIN_YOUTUBE
+import com.gmribas.globoplaydesafiomobile.core.constants.Constants.VIDEO_TYPE_TRAILER
 import com.gmribas.globoplaydesafiomobile.core.domain.model.DetailsInterface
 import com.gmribas.globoplaydesafiomobile.core.domain.model.MediaDetails
 import com.gmribas.globoplaydesafiomobile.core.domain.model.Movie
 import com.gmribas.globoplaydesafiomobile.core.domain.model.MovieDetails
 import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShow
 import com.gmribas.globoplaydesafiomobile.core.domain.model.TvShowDetails
+import com.gmribas.globoplaydesafiomobile.core.domain.model.Video
 import com.gmribas.globoplaydesafiomobile.core.presentation.BaseViewModel
 import com.gmribas.globoplaydesafiomobile.core.presentation.UiState
 import com.gmribas.globoplaydesafiomobile.feature.details.domain.usecase.FindMediaByIdUseCase
@@ -134,6 +137,7 @@ class DetailsScreenViewModel(
             isTheMediaInMyList(mediaId)
         }
     }
+
     private fun isTheMediaInMyList(id: Int) {
         viewModelScope.launch {
             findMediaByIdUseCase
@@ -239,5 +243,24 @@ class DetailsScreenViewModel(
                     updateFavoriteStatus()
                 }
         }
+    }
+
+    fun findTheBetterTrailerOption(videos: List<Video>?): Video? {
+        var found : Video? = null
+
+        videos?.let { vds ->
+            found =
+                vds.firstOrNull { it.type == VIDEO_TYPE_TRAILER && it.site == VIDEO_ORIGIN_YOUTUBE }
+
+            if (found == null) {
+                found = vds.firstOrNull { it.site == VIDEO_ORIGIN_YOUTUBE }
+            }
+
+            if (found == null) {
+                found = vds.firstOrNull()
+            }
+        }
+
+        return found
     }
 }

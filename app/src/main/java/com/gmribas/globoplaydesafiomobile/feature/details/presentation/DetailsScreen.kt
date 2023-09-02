@@ -1,5 +1,7 @@
 package com.gmribas.globoplaydesafiomobile.feature.details.presentation
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -35,19 +37,19 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.os.bundleOf
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -55,6 +57,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.gmribas.globoplaydesafiomobile.R
 import com.gmribas.globoplaydesafiomobile.core.asyncPainter
+import com.gmribas.globoplaydesafiomobile.core.constants.Constants.VIDEO_KEY
 import com.gmribas.globoplaydesafiomobile.core.domain.ObserveLifecycle
 import com.gmribas.globoplaydesafiomobile.core.domain.model.DetailsInterface
 import com.gmribas.globoplaydesafiomobile.core.domain.model.MediaDetails
@@ -67,12 +70,14 @@ import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.IconAndTextB
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.PosterItem
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.TextTitle
 import com.gmribas.globoplaydesafiomobile.core.presentation.widgets.VerticalGrid
+import com.gmribas.globoplaydesafiomobile.feature.player.AppPlayer
 import com.gmribas.globoplaydesafiomobile.ui.theme.topAppBarBackground
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun DetailsScreen(
     navController: NavHostController,
+    context: Context = LocalContext.current,
     viewModel: DetailsScreenViewModel = koinViewModel()
 ) {
 
@@ -117,6 +122,7 @@ fun DetailsScreen(
 
             UiState.Loading -> CircularLoadingCenter()
             is UiState.Success -> BuildDetailsBody(
+                context = context,
                 navController = navController,
                 viewModel = viewModel,
                 details = (detailsState.value as UiState.Success).data,
@@ -131,6 +137,7 @@ fun DetailsScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun BuildDetailsBody(
+    context: Context,
     navController: NavHostController,
     viewModel: DetailsScreenViewModel,
     details: DetailsInterface,
@@ -209,6 +216,8 @@ private fun BuildDetailsBody(
                     text = stringResource(id = R.string.details_screen_play),
                     textColor = Color.Black
                 ) {
+
+                    playTrailer(context, viewModel, details)
 
                 }
 
@@ -388,8 +397,19 @@ private fun saveOrRemoveMedia(
     }
 }
 
+private fun playTrailer(context: Context, viewModel: DetailsScreenViewModel, details: DetailsInterface) {
+    viewModel.findTheBetterTrailerOption(details.videoList)?.let { video ->
+        val bundle = bundleOf(VIDEO_KEY to video.key)
+        val intent = Intent(context, AppPlayer::class.java).apply {
+            putExtras(bundle)
+        }
+
+        context.startActivity(intent)
+    }
+}
+
 @Preview
 @Composable
 fun DetailsScreenPreview() {
-    DetailsScreen(rememberNavController())
+    DetailsScreen(rememberNavController(), LocalContext.current)
 }
