@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
@@ -13,11 +14,13 @@ import com.mazer.globoplayapp.domain.entities.Movie
 import com.mazer.globoplayapp.presentation.adapter.PagerAdapter
 import com.mazer.globoplayapp.utils.AppConstants
 import jp.wasabeef.glide.transformations.BlurTransformation
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MovieDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieDetailsBinding
+    private val viewModel : MovieDetailsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +33,16 @@ class MovieDetailsActivity : AppCompatActivity() {
             intent.getParcelableExtra<Movie>(AppConstants.MOVIE_EXTRA)
         }
         setupView(movieDetails)
+        registerObservers()
+    }
+
+    private fun registerObservers() {
+
     }
 
     private fun setupView(movie: Movie?){
         setMovieDetails(movie)
-        setupTabLayout()
+        setupTabLayout(movie?.id ?: 0)
 
         binding.ivBackButton.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
@@ -51,10 +59,10 @@ class MovieDetailsActivity : AppCompatActivity() {
         binding.tvMovieDescription.text = movie?.overview
     }
 
-    private fun setupTabLayout(){
+    private fun setupTabLayout(movieId: Int){
         val pagerAdapter = PagerAdapter(this)
+        pagerAdapter.setMovieId(movieId)
         binding.viewPager.adapter = pagerAdapter
-
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (pagerAdapter.getItemId(position)) {
                 0L -> {
@@ -73,4 +81,5 @@ class MovieDetailsActivity : AppCompatActivity() {
             }
         }.attach()
     }
+
 }

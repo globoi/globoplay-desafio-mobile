@@ -47,5 +47,14 @@ class RemoteMovieDataSource(private val apiService: ApiService): MovieDataSource
         }
     }
 
+    override suspend fun getRecommendationList(movieId: Int): List<Movie> {
+        val response = apiService.getRecommendationList(movieId, API_KEY)
+        if (response.isSuccessful) {
+            return response.body()?.results ?: emptyList()
+        } else {
+            throw Exception("Erro ao comunicar com o servidor, tente novamente mais tarde!")
+        }
+    }
+
 
 }

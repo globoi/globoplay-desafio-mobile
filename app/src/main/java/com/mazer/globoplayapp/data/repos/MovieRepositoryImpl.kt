@@ -22,4 +22,8 @@ class MovieRepositoryImpl(private val movieDataSource: MovieDataSource) : MovieR
         return movieDataSource.getGenreList()
     }
 
+    override suspend fun getRecommendationList(movieId: Int): List<Movie> {
+        return movieDataSource.getRecommendationList(movieId)
+    }
+
 }

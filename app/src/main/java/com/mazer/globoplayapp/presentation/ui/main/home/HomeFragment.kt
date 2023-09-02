@@ -16,7 +16,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment: Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel : HomeFragmentViewModel by viewModel()
+    private val viewModel : HomeViewModel by viewModel()
     private lateinit var adapterPopularMovies: CarouselMoviesAdapter
     private lateinit var adapterTopRatedMovies: CarouselMoviesAdapter
     private lateinit var adapterupcomingMovies: CarouselMoviesAdapter

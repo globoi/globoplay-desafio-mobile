@@ -8,5 +8,6 @@ interface MovieDataSource {
    suspend fun getTopRatedMoviesFromRemote(): List<Movie>
    suspend fun getUpcomingFromRemote(): List<Movie>
    suspend fun getGenreList(): List<Genre>
+   suspend fun getRecommendationList(movieId: Int): List<Movie>
 
 }

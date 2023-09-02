@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mazer.globoplayapp.R
 import com.mazer.globoplayapp.databinding.LayoutCarouselBinding
 import com.mazer.globoplayapp.presentation.adapter.CarouselMoviesAdapter
+import com.mazer.globoplayapp.presentation.adapter.decorator.CarouselDecoration
+import com.mazer.globoplayapp.presentation.adapter.decorator.RecommendationListDecoration
 
 /**
  * Custom View que contém um texto para o Título/Genro e uma lista de posteres de filmes
@@ -42,6 +44,10 @@ class CarouselView @JvmOverloads constructor(
     private fun setupLayoutRecyclerView() {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvMoviesList.layoutManager = layoutManager
+
+        val verticalSpaceHeight = resources.getDimensionPixelSize(R.dimen.carousel_space_height)
+        val verticalSpaceItemDecoration = CarouselDecoration(verticalSpaceHeight)
+        binding.rvMoviesList.addItemDecoration(verticalSpaceItemDecoration)
     }
 
     fun setAdapter(adapter: CarouselMoviesAdapter) {

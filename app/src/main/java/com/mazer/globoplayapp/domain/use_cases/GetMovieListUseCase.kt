@@ -44,4 +44,8 @@ class GetMovieListUseCase(private val movieRepository: MovieRepository) {
 
         return upcomingMovies
     }
+
+    suspend fun getRecommendationList(movieId: Int): List<Movie>{
+        return movieRepository.getRecommendationList(movieId)
+    }
 }

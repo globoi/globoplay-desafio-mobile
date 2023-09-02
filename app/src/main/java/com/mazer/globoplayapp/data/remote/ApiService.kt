@@ -4,6 +4,7 @@ import com.mazer.globoplayapp.data.remote.responses.GenreResponse
 import com.mazer.globoplayapp.data.remote.responses.MovieResponse
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -19,4 +20,7 @@ interface ApiService {
 
     @GET("genre/movie/list")
     suspend fun getGenreList(@Query("api_key") apiKey: String): Response<GenreResponse>
+
+    @GET("movie/{movie_id}/recommendations")
+    suspend fun getRecommendationList(@Path("movie_id") movie_id: Int, @Query("api_key") apiKey: String): Response<MovieResponse>
 }
