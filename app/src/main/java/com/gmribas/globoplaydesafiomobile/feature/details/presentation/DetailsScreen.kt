@@ -398,8 +398,9 @@ private fun saveOrRemoveMedia(
 }
 
 private fun playTrailer(context: Context, viewModel: DetailsScreenViewModel, details: DetailsInterface) {
-    viewModel.findTheBetterTrailerOption(details.videoList)?.let { video ->
-        val bundle = bundleOf(VIDEO_KEY to video.key)
+    details.videoList?.let { videos ->
+        val keys = videos.map { it.key }
+        val bundle = bundleOf(VIDEO_KEY to keys)
         val intent = Intent(context, AppPlayer::class.java).apply {
             putExtras(bundle)
         }

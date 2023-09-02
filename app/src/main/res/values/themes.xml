@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Theme.GloboplayDesafioMobile" parent="android:Theme.Material.Light.NoActionBar" />
-    <style name="Theme.GloboplayDesafioMobilePlayer" parent="@style/Theme.AppCompat" />
+    <style name="Theme.GloboplayDesafioMobilePlayer" parent="@style/Theme.AppCompat.NoActionBar" />
     <style name="SplashScreenTheme" parent="Theme.GloboplayDesafioMobile" >
         <item name="android:windowBackground">@drawable/bg_splash</item>
     </style>

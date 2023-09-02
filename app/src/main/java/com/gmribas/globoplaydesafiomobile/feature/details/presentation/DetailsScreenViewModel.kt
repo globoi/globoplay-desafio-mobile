@@ -244,23 +244,4 @@ class DetailsScreenViewModel(
                 }
         }
     }
-
-    fun findTheBetterTrailerOption(videos: List<Video>?): Video? {
-        var found : Video? = null
-
-        videos?.let { vds ->
-            found =
-                vds.firstOrNull { it.type == VIDEO_TYPE_TRAILER && it.site == VIDEO_ORIGIN_YOUTUBE }
-
-            if (found == null) {
-                found = vds.firstOrNull { it.site == VIDEO_ORIGIN_YOUTUBE }
-            }
-
-            if (found == null) {
-                found = vds.firstOrNull()
-            }
-        }
-
-        return found
-    }
 }
