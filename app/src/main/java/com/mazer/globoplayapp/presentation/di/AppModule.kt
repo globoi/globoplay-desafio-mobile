@@ -9,6 +9,7 @@ import com.mazer.globoplayapp.data.repos.MovieRepository
 import com.mazer.globoplayapp.data.repos.MovieRepositoryImpl
 import com.mazer.globoplayapp.domain.use_cases.GetMovieListUseCase
 import com.mazer.globoplayapp.presentation.ui.details.MovieDetailsViewModel
+import com.mazer.globoplayapp.presentation.ui.details.tabs.details.DetailsViewModel
 import com.mazer.globoplayapp.presentation.ui.details.tabs.recommendation.RecommendationViewModel
 import com.mazer.globoplayapp.presentation.ui.main.MainActivityViewModel
 import com.mazer.globoplayapp.presentation.ui.main.home.HomeViewModel
@@ -56,5 +57,6 @@ val appModule = module {
     viewModel { MovieDetailsViewModel(get()) }
     viewModel { MainActivityViewModel() }
     viewModel { RecommendationViewModel(get()) }
+    viewModel { DetailsViewModel() }
 
 }

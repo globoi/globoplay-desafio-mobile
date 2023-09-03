@@ -39,14 +39,6 @@
         app:layout_constraintStart_toStartOf="@+id/tvTitle"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-    <TextView
-        android:id="@+id/tvEpisodes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_episodes"
-        style="@style/ThemeDetailsLabel"
-        app:layout_constraintStart_toStartOf="@+id/tvGenre"
-        app:layout_constraintTop_toBottomOf="@+id/tvGenre" />
 
     <TextView
         android:id="@+id/tvCreatedAt"
@@ -54,8 +46,8 @@
         android:layout_height="wrap_content"
         android:text="@string/label_created_at"
         style="@style/ThemeDetailsLabel"
-        app:layout_constraintStart_toStartOf="@+id/tvEpisodes"
-        app:layout_constraintTop_toBottomOf="@+id/tvEpisodes" />
+        app:layout_constraintStart_toStartOf="@+id/tvGenre"
+        app:layout_constraintTop_toBottomOf="@+id/tvGenre" />
 
     <TextView
         android:id="@+id/tvCountry"
@@ -66,23 +58,6 @@
         app:layout_constraintStart_toStartOf="@+id/tvCreatedAt"
         app:layout_constraintTop_toBottomOf="@+id/tvCreatedAt" />
 
-    <TextView
-        android:id="@+id/tvCrew"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_crew"
-        style="@style/ThemeDetailsLabel"
-        app:layout_constraintStart_toStartOf="@+id/tvCountry"
-        app:layout_constraintTop_toBottomOf="@+id/tvCountry" />
-
-    <TextView
-        android:id="@+id/tvAvailableUntil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_availabe_until"
-        style="@style/ThemeDetailsLabel"
-        app:layout_constraintStart_toStartOf="@+id/tvCrew"
-        app:layout_constraintTop_toBottomOf="@+id/tvCrew" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

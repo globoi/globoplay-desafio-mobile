@@ -10,7 +10,7 @@ import com.mazer.globoplayapp.presentation.ui.details.tabs.recommendation.Recomm
 class PagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
 
-    private var movieId: Int = 0
+    private lateinit var movie: Movie
 
     override fun getItemCount(): Int {
         return 2
@@ -19,16 +19,14 @@ class PagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fr
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> {
-                RecommendationFragment.newInstance(this.movieId)
+                RecommendationFragment.newInstance(this.movie.id)
             }
-            1 -> DetailsFragment()
+            1 -> DetailsFragment.newInstance(this.movie)
             else -> throw IllegalArgumentException("Invalid tab position")
         }
     }
-    // Função para atualizar o objeto no RecommendationFragment
-    fun setMovieId(movieId: Int) {
-        this.movieId = movieId
+
+    fun setMovie(movie: Movie) {
+        this.movie = movie
     }
-
-
 }

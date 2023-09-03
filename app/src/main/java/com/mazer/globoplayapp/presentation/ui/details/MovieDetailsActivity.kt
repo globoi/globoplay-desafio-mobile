@@ -42,7 +42,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun setupView(movie: Movie?){
         setMovieDetails(movie)
-        setupTabLayout(movie?.id ?: 0)
+        setupTabLayout(movie)
 
         binding.ivBackButton.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
@@ -59,9 +59,9 @@ class MovieDetailsActivity : AppCompatActivity() {
         binding.tvMovieDescription.text = movie?.overview
     }
 
-    private fun setupTabLayout(movieId: Int){
+    private fun setupTabLayout(movie: Movie?){
         val pagerAdapter = PagerAdapter(this)
-        pagerAdapter.setMovieId(movieId)
+        pagerAdapter.setMovie(movie ?: return)
         binding.viewPager.adapter = pagerAdapter
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (pagerAdapter.getItemId(position)) {

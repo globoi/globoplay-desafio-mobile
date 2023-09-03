@@ -4,4 +4,5 @@ object AppConstants {
     const val BASE_IMG_URL_SMALL = "https://image.tmdb.org/t/p/w154"
     const val MOVIE_EXTRA = "movie_extra"
     const val RECOMENDATION_EXTRA = "recommendations_extra"
+    const val DETAILS_EXTRA = "details_extra"
 }

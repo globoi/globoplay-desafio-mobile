@@ -16,14 +16,9 @@
     <string name="details_label_title">Ficha técnica</string>
     <string name="label_title"><![CDATA[<b>Título Original:</b> %s]]></string>
     <string name="label_genre"><![CDATA[<b>Gênero:</b> %s]]></string>
-    <string name="label_episodes"><![CDATA[<b>Episódios:</b> %s]]></string>
     <string name="label_created_at"><![CDATA[<b>Ano de produção:</b> %s]]></string>
     <string name="label_country"><![CDATA[<b>País:</b> %s]]></string>
     <string name="label_directed_by"><![CDATA[<b>Direção:</b> %s]]></string>
     <string name="label_crew"><![CDATA[<b>Elenco:</b> %s]]></string>
     <string name="label_availabe_until"><![CDATA[<b>Disponível até:</b> %s]]></string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
 </resources>
