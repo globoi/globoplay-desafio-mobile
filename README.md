@@ -1,17 +1,4 @@
-
-# Globoplay Recrutamento 
-
----
-![JPG](https://lh3.googleusercontent.com/62viiAWxbh_4QQdbdZOeO53yDsq1jZu_KyQstDpbXgTryhTIjrPzW9nr0eFkMuoxs6wx=s180)
-
-
-## Bem vindo
-
-Obrigado por participar do desafio do Globoplay! Estamos muito contentes pelo seu primeiro passo para fazer parte de um time excepcional. Você deverá criar um aplicativo sobre filmes, usando a [API](https://developers.themoviedb.org/3/getting-started/introduction) do [TheMovieDB](https://www.themoviedb.org/?language=en).
-Para termos um layout minimamente definido, anexamos alguns assets que vão te ajudar a desenvolver esse app:
-
-- [ScreenShots](assets/screenshots)
-- [Ícones](assets/icons)
+# Globoplay Recrutamento
 
 Pense no desafio como uma oportunidade de mostrar todo o seu conhecimento. E faça com calma, você tem uma semana para entregar! Sua avaliação será baseada nos seguintes tópicos:
 
@@ -21,15 +8,16 @@ Pense no desafio como uma oportunidade de mostrar todo o seu conhecimento. E fa�
 - Layout's
 - Fluxo de navegação.
 
-Não existe nenhum pré-requisito, portanto sinta-se a vontande para utilizar qualquer linguagem e usar ou não usar bibliotecas.
+#### Como me senti com esse desafio?
 
-Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por isso aceitamos desafios de todos os perfis e diferentes níveis de conhecimento técnico. Mas nos preocupamos com a qualidade, saúde e evolução do produto e por isso acreditamos bastante em testes automatizados.
+Desafio interessante, api TMDB é bem legal de desenvolver e a liberdade de desenvolver trouxe uma 
+complexidade a mais, visto que normalmente tenho dificuldade com a criação de layouts.
 
+## Requisitos
 
-# Features
+O app deve usar a [API](https://developers.themoviedb.org/3/getting-started/introduction) do [TheMovieDB](https://www.themoviedb.org/?language=en).
 
----
-
+* Android: _Kotlin_
 ### Essencial:
 
 - Tela de splash;
@@ -56,33 +44,24 @@ Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por
 ### Iremos ficar encantados:
 - Play do vídeo.
 
+### Libs Usadas e Arquitetura
+- MVVM
+- Retrofit
+- Coil
+- Room
+- Coroutines
+- Paging
+- Binding
 
-# Exemplos e sugestões
+### Pontos de melhorias
 
----
+- Usar o compose (Não usei por ainda não dominar essa parte)
+- Escrever os testes (Não consegui evoluir nessa parte)
 
-Nossos designers elaboraram algumas sugestões de telas e fluxos para guiar você durante o desenvolvimento, portanto fique à vontade para modificar como você quiser.
-Para facilitar o processo, existem assets, app icons, ícones e paleta de cores no repositório. Mas se o seu lado designer falar mais alto, pode nos surpreender!
+Diria que esse projeto está em V1 e vou continuar melhorando
 
-- [Splash](assets/screenshots/splash.png)
-- [Grid de filmes](assets/screenshots/home.jpg)
-- [Detalhes](assets/screenshots/highlights-details.jpg)
-- [Assista Também](assets/screenshots/highlights.jpg)
-- [Adicionar aos favoritos](assets/screenshots/highlights-favorited.jpg)
-- [Lista de Favoritos](assets/screenshots/my-list.jpg)
+### Considerações finais
 
-
-## **Processo de entrega**
-
----
-
-Após finalizar a implementação do desafio, abra um pull request para este repositório seguindo os passos abaixo:
-
-1. Faça um fork deste repositório, não clone este repositório diretamente;
-2. Os commit's e as alterações devem ser feitas no **SEU** fork;
-3. Envie um Pull Request;
-4. Deixe o fork público para facilitar a inspeção do código.
-
-### **ATENÇÃO**
-
-Não faça push diretamente para este repositório!
+Obrigado pela oportunidade de participar desse desafio, sucesso ou não, foi muito gratificante e enriquecedor para mim.
+Irei trabalhar nos pontos de melhorias para um melhor aprendizado
+Boa semana!!
