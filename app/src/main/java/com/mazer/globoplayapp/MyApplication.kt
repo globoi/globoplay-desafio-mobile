@@ -1,7 +1,6 @@
 package com.mazer.globoplayapp
 
 import android.app.Application
-import android.util.Log
 import com.mazer.globoplayapp.presentation.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

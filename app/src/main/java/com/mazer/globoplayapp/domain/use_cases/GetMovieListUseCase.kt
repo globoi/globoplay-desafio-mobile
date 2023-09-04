@@ -1,5 +1,6 @@
 package com.mazer.globoplayapp.domain.use_cases
 
+import androidx.lifecycle.LiveData
 import com.mazer.globoplayapp.data.repos.MovieRepository
 import com.mazer.globoplayapp.domain.entities.Movie
 
@@ -48,4 +49,21 @@ class GetMovieListUseCase(private val movieRepository: MovieRepository) {
     suspend fun getRecommendationList(movieId: Int): List<Movie>{
         return movieRepository.getRecommendationList(movieId)
     }
+
+    suspend fun addToFavorite(movie: Movie?){
+        movieRepository.addToFavorites(movie ?: return)
+    }
+
+    suspend fun deleteFromFavorite(movie: Movie?){
+        movieRepository.deleteFromFavorites(movie ?: return)
+    }
+
+    suspend fun getAllFavorites(): LiveData<List<Movie>> {
+        return movieRepository.getAllFavorites()
+    }
+
+    suspend fun getFavoriteMovie(movieId: Int): Movie? {
+        return movieRepository.getFavoriteMovie(movieId)
+    }
+
 }

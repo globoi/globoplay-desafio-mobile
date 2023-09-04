@@ -1,10 +1,9 @@
 package com.mazer.globoplayapp.presentation.ui.details
 
-import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
@@ -27,26 +26,60 @@ class MovieDetailsActivity : AppCompatActivity() {
         binding = ActivityMovieDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val movieDetails = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra(AppConstants.MOVIE_EXTRA, Movie::class.java)
-        } else {
-            intent.getParcelableExtra<Movie>(AppConstants.MOVIE_EXTRA)
-        }
-        setupView(movieDetails)
         registerObservers()
+        intent.extras?.let {
+            viewModel.setExtras(it)
+        }
     }
 
-    private fun registerObservers() {
-
+    private fun registerObservers(){
+        viewModel.movieDetails.observe(this) {
+            setupView(it)
+        }
+        viewModel.btnAddToFavoriteVisibility.observe(this) {
+            toggleButtonAddToFavoriteVisible(it)
+        }
+        viewModel.btnFavoritedVisibility.observe(this){
+            toggleFavoritedButtonVisible(it)
+        }
+        viewModel.favoriteMovie.observe(this){
+            val aaa = it
+            val b = ""
+            test(it)
+        }
     }
 
-    private fun setupView(movie: Movie?){
+    fun test(movie: Movie?){
+        val aa = movie
+        val b = ""
+    }
+
+    private fun setupView(movie: Movie){
         setMovieDetails(movie)
         setupTabLayout(movie)
+        setupFavoriteButton(movie)
 
         binding.ivBackButton.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
+    }
+
+    private fun setupFavoriteButton(movie: Movie?) {
+        binding.btnAddToFavorite.root.setOnClickListener {
+            viewModel.addMovieToFavorites(movie)
+        }
+
+        binding.btnFavorited.root.setOnClickListener {
+            viewModel.deleteMovieFromFavorites(movie)
+        }
+    }
+
+    private fun toggleButtonAddToFavoriteVisible(isVisible: Boolean){
+        binding.btnAddToFavorite.root.visibility = if (isVisible) View.VISIBLE else View.GONE
+    }
+
+    private fun toggleFavoritedButtonVisible(isVisible: Boolean){
+        binding.btnFavorited.root.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 
     private fun setMovieDetails(movie: Movie?) {

@@ -20,6 +20,7 @@
         android:id="@+id/rvMyList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/backgroundGray"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

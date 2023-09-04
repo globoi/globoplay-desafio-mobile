@@ -3,24 +3,35 @@ package com.mazer.globoplayapp.domain.entities
 import com.google.gson.annotations.SerializedName
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "favorites")
 data class Movie(
-    val id: Int,
+    @PrimaryKey
+    var id: Int,
     @SerializedName("original_title")
-    val originalTitle: String,
-    val overview: String,
+    var originalTitle: String,
+    var overview: String,
     @SerializedName("poster_path")
-    val posterPath: String,
+    var posterPath: String,
     @SerializedName("release_date")
-    val releaseDate: String,
-    val title: String,
+    var releaseDate: String,
+    var title: String,
+    @Ignore
     @SerializedName("genre_ids")
-    val genreIds: List<Int>,
+    var genreIds: List<Int>,
     @SerializedName("original_language")
-    val originalLanguage: String,
+    var originalLanguage: String,
     var genre: String,
     var videoUrl: String
 ) : Parcelable {
+
+    constructor() : this(0, "", "", "", "", "", emptyList(), "", "", "")
+
+
+
 
     constructor(parcel: Parcel) : this(
         parcel.readInt(),

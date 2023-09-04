@@ -19,8 +19,8 @@ class CarouselMoviesAdapter(private val onMovieSelected: (movie: Movie) -> Unit)
         holder.bind(movieList[position])
     }
 
-    fun setList(list: List<Movie>) {
-        this.movieList = list
+    fun setList(list: List<Movie>?) {
+        this.movieList = list ?: return
         notifyDataSetChanged()
     }
     override fun getItemCount(): Int =  movieList.size

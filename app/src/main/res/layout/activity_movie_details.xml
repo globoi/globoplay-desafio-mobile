@@ -136,16 +136,24 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="16dp"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvMovieDescription" />
+                android:layout_weight="1" />
 
             <include
+                android:id="@+id/btnAddToFavorite"
                 layout="@layout/layout_btn_transparent"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1" />
 
+            <include
+                android:id="@+id/btnFavorited"
+                layout="@layout/layout_added_to_favorite"
+                android:layout_width="0dp"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
