@@ -6,4 +6,4 @@ import com.mazer.globoplayapp.domain.entities.Genre
 data class GenreResponse(
     @SerializedName("genres")
     val results: List<Genre>
-    )
+)

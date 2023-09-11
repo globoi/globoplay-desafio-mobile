@@ -3,6 +3,7 @@ package com.mazer.globoplayapp.data.repos
 import androidx.lifecycle.LiveData
 import com.mazer.globoplayapp.domain.entities.Genre
 import com.mazer.globoplayapp.domain.entities.Movie
+import com.mazer.globoplayapp.domain.entities.Video
 
 interface MovieRepository {
     suspend fun getPopularMovies(): List<Movie>
@@ -14,4 +15,5 @@ interface MovieRepository {
     suspend fun deleteFromFavorites(movie: Movie)
     suspend fun getAllFavorites(): LiveData<List<Movie>>
     suspend fun getFavoriteMovie(movieId: Int): Movie?
+    suspend fun getVideoList(movieId: Int): List<Video?>
 }

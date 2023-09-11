@@ -20,9 +20,6 @@ class MovieDetailsViewModel(private val getMovieListUseCase: GetMovieListUseCase
     private val _btnFavoritedVisibility = MutableLiveData<Boolean>()
     val btnFavoritedVisibility: LiveData<Boolean> = _btnFavoritedVisibility
 
-    private val _favoriteMovie = MutableLiveData<Movie>()
-    var favoriteMovie = MutableLiveData<Movie?>()
-
     private val _movieDetails = MutableLiveData<Movie>()
     val movieDetails: LiveData<Movie> = _movieDetails
 
@@ -32,7 +29,6 @@ class MovieDetailsViewModel(private val getMovieListUseCase: GetMovieListUseCase
         } else {
             bundle.getParcelable(AppConstants.MOVIE_EXTRA)
         }
-        val a = movie?.id
         getFavoritedMovie(movie?.id)
         _movieDetails.postValue(movie ?: return)
 
@@ -61,11 +57,6 @@ class MovieDetailsViewModel(private val getMovieListUseCase: GetMovieListUseCase
             movieId?.let {
 
                 val movieFavorite = getMovieListUseCase.getFavoriteMovie(movieId)
-                //favoriteMovie.postValue(a)
-                val b = ""
-
-
-
                 if (movieFavorite != null){
                     _btnAddToFavoriteVisibility.postValue(false)
                     _btnFavoritedVisibility.postValue(true)

@@ -5,6 +5,7 @@ import com.mazer.globoplayapp.data.datasource.MovieDataSource
 import com.mazer.globoplayapp.data.local.dao.MovieDao
 import com.mazer.globoplayapp.domain.entities.Genre
 import com.mazer.globoplayapp.domain.entities.Movie
+import com.mazer.globoplayapp.domain.entities.Video
 
 class MovieRepositoryImpl(private val movieDataSource: MovieDataSource, private val movieDao: MovieDao) : MovieRepository {
 
@@ -42,5 +43,9 @@ class MovieRepositoryImpl(private val movieDataSource: MovieDataSource, private 
 
     override suspend fun getFavoriteMovie(movieId: Int): Movie? {
         return movieDao.getFavoriteMovie(movieId)
+    }
+
+    override suspend fun getVideoList(movieId: Int): List<Video?> {
+        return movieDataSource.getVideoList(movieId)
     }
 }

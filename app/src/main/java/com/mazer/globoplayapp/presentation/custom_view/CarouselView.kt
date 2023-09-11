@@ -10,7 +10,6 @@ import com.mazer.globoplayapp.R
 import com.mazer.globoplayapp.databinding.LayoutCarouselBinding
 import com.mazer.globoplayapp.presentation.adapter.CarouselMoviesAdapter
 import com.mazer.globoplayapp.presentation.adapter.decorator.CarouselDecoration
-import com.mazer.globoplayapp.presentation.adapter.decorator.RecommendationListDecoration
 
 /**
  * Custom View que contém um texto para o Título/Genro e uma lista de posteres de filmes

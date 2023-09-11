@@ -15,6 +15,7 @@ import com.mazer.globoplayapp.presentation.ui.details.tabs.details.DetailsViewMo
 import com.mazer.globoplayapp.presentation.ui.details.tabs.recommendation.RecommendationViewModel
 import com.mazer.globoplayapp.presentation.ui.main.home.HomeViewModel
 import com.mazer.globoplayapp.presentation.ui.main.mylist.MyListViewModel
+import com.mazer.globoplayapp.presentation.ui.player.PlayerViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -71,5 +72,6 @@ val appModule = module {
     viewModel { RecommendationViewModel(get()) }
     viewModel { DetailsViewModel() }
     viewModel { MyListViewModel(get()) }
+    viewModel { PlayerViewModel(get()) }
 
 }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundGray"
+    tools:context=".presentation.ui.player.PlayerActivity">
+
+    <include
+        layout="@layout/toolbar_player"
+        android:id="@+id/toolbarPlayer" />
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtubePlayerVideo"
+        android:layout_width="match_parent"
+        android:layout_height="216dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarPlayer" />
+
+    <TextView
+        android:id="@+id/tvVideoTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/youtubePlayerVideo"
+        tools:text="Nome do Trailer do Filme!" />
+
+    <TextView
+        android:id="@+id/tvVideoType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:text="Trailer"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/tvVideoTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvVideoTitle" />
+
+    <TextView
+        android:id="@+id/tvDivider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="-"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVideoType"
+        app:layout_constraintStart_toEndOf="@+id/tvVideoType"
+        app:layout_constraintTop_toTopOf="@+id/tvVideoType" />
+
+    <TextView
+        android:id="@+id/tvVideoReleaseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        tools:text="2009-12-10"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDivider"
+        app:layout_constraintStart_toEndOf="@+id/tvDivider"
+        app:layout_constraintTop_toTopOf="@+id/tvDivider" />
+
+    <TextView
+        android:id="@+id/tvMoreVideosLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="@string/watch_more_label"
+        app:layout_constraintStart_toStartOf="@+id/tvVideoType"
+        app:layout_constraintTop_toBottomOf="@+id/tvVideoType" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvVideoList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMoreVideosLabel" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

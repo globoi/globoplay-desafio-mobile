@@ -73,17 +73,31 @@ class HomeFragment: Fragment() {
     private fun registerObservers() {
         viewModel.moviePopularList.observe(viewLifecycleOwner) {
             adapterPopularMovies.setList(it)
+            showLoadingShimmer(false)
         }
         viewModel.movieTopRatedList.observe(viewLifecycleOwner) {
             adapterTopRatedMovies.setList(it)
+            showLoadingShimmer(false)
         }
         viewModel.movieUpcomingList.observe(viewLifecycleOwner) {
             adapterupcomingMovies.setList(it)
+            showLoadingShimmer(false)
         }
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = HomeFragment()
+    private fun showLoadingShimmer(showLoading: Boolean){
+        if (showLoading){
+            binding.shimmerViewLayout.startShimmer()
+            binding.shimmerViewLayout.visibility = View.VISIBLE
+        } else{
+            binding.shimmerViewLayout.visibility = View.GONE
+            binding.shimmerViewLayout.stopShimmer()
+        }
+        showData(showLoading)
     }
+
+    private fun showData(isLoading: Boolean){
+        binding.layoutHomeData.visibility = if (isLoading) View.GONE else View.VISIBLE
+    }
+
 }

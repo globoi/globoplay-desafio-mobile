@@ -21,4 +21,9 @@
     <string name="label_directed_by"><![CDATA[<b>Direção:</b> %s]]></string>
     <string name="label_crew"><![CDATA[<b>Elenco:</b> %s]]></string>
     <string name="label_availabe_until"><![CDATA[<b>Disponível até:</b> %s]]></string>
+
+    <!-- Player -->
+    <string name="watch_more_label">Mais Vídeos</string>
+    <string name="video_thumb_url">https://img.youtube.com/vi/$s/0.jpg</string>
+    <string name="playing_now">Playing Now</string>
 </resources>

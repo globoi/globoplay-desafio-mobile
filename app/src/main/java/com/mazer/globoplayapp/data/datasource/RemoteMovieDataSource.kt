@@ -4,6 +4,7 @@ import com.mazer.globoplayapp.BuildConfig
 import com.mazer.globoplayapp.data.remote.ApiService
 import com.mazer.globoplayapp.domain.entities.Genre
 import com.mazer.globoplayapp.domain.entities.Movie
+import com.mazer.globoplayapp.domain.entities.Video
 
 class RemoteMovieDataSource(private val apiService: ApiService): MovieDataSource  {
 
@@ -49,6 +50,15 @@ class RemoteMovieDataSource(private val apiService: ApiService): MovieDataSource
 
     override suspend fun getRecommendationList(movieId: Int): List<Movie> {
         val response = apiService.getRecommendationList(movieId, API_KEY)
+        if (response.isSuccessful) {
+            return response.body()?.results ?: emptyList()
+        } else {
+            throw Exception("Erro ao comunicar com o servidor, tente novamente mais tarde!")
+        }
+    }
+
+    override suspend fun getVideoList(movieId: Int): List<Video?> {
+        val response = apiService.getVideosFromMovie(movieId, API_KEY)
         if (response.isSuccessful) {
             return response.body()?.results ?: emptyList()
         } else {

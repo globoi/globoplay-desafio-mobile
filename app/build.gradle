@@ -68,6 +68,9 @@ dependencies {
     implementation "androidx.room:room-runtime:2.5.2"
     implementation 'androidx.room:room-ktx:2.5.2'
     kapt "androidx.room:room-compiler:2.5.2"
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
 
 
 }

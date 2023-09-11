@@ -1,5 +1,6 @@
 package com.mazer.globoplayapp.presentation.ui.details
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -11,6 +12,7 @@ import com.mazer.globoplayapp.R
 import com.mazer.globoplayapp.databinding.ActivityMovieDetailsBinding
 import com.mazer.globoplayapp.domain.entities.Movie
 import com.mazer.globoplayapp.presentation.adapter.PagerAdapter
+import com.mazer.globoplayapp.presentation.ui.player.PlayerActivity
 import com.mazer.globoplayapp.utils.AppConstants
 import jp.wasabeef.glide.transformations.BlurTransformation
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,16 +44,6 @@ class MovieDetailsActivity : AppCompatActivity() {
         viewModel.btnFavoritedVisibility.observe(this){
             toggleFavoritedButtonVisible(it)
         }
-        viewModel.favoriteMovie.observe(this){
-            val aaa = it
-            val b = ""
-            test(it)
-        }
-    }
-
-    fun test(movie: Movie?){
-        val aa = movie
-        val b = ""
     }
 
     private fun setupView(movie: Movie){
@@ -61,6 +53,10 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         binding.ivBackButton.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
+        }
+
+        binding.btnPlay.root.setOnClickListener {
+            goToPayerScreen(movie)
         }
     }
 
@@ -72,6 +68,12 @@ class MovieDetailsActivity : AppCompatActivity() {
         binding.btnFavorited.root.setOnClickListener {
             viewModel.deleteMovieFromFavorites(movie)
         }
+    }
+
+    private fun goToPayerScreen(movie: Movie){
+        val intent = Intent(this, PlayerActivity::class.java)
+        intent.putExtra(AppConstants.VIDEO_EXTRA, movie)
+        startActivity(intent)
     }
 
     private fun toggleButtonAddToFavoriteVisible(isVisible: Boolean){

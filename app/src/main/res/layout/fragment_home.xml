@@ -16,36 +16,68 @@
             layout="@layout/toolbar"
             android:id="@+id/toolbar" />
 
-        <com.mazer.globoplayapp.presentation.custom_view.CarouselView
-            android:id="@+id/carouselViewPopular"
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerViewLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <include layout="@layout/home_placeholder"/>
+                <include layout="@layout/home_placeholder"/>
+                <include layout="@layout/home_placeholder"/>
+
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutHomeData"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:title="@string/carousel_genre_popular" />
+            android:orientation="vertical">
 
-        <com.mazer.globoplayapp.presentation.custom_view.CarouselView
-            android:id="@+id/carouselViewTopRated"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/carouselViewPopular"
-            app:title="@string/carousel_genre_top_rated" />
+            <com.mazer.globoplayapp.presentation.custom_view.CarouselView
+                android:id="@+id/carouselViewPopular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-        <com.mazer.globoplayapp.presentation.custom_view.CarouselView
-            android:id="@+id/carouselViewUpcoming"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/carouselViewTopRated"
-            app:title="@string/carousel_genre_upcoming" />
+                app:title="@string/carousel_genre_popular" />
+
+            <com.mazer.globoplayapp.presentation.custom_view.CarouselView
+                android:id="@+id/carouselViewTopRated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/carouselViewPopular"
+                app:title="@string/carousel_genre_top_rated" />
+
+            <com.mazer.globoplayapp.presentation.custom_view.CarouselView
+                android:id="@+id/carouselViewUpcoming"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/carouselViewTopRated"
+                app:title="@string/carousel_genre_upcoming" />
+
+        </LinearLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

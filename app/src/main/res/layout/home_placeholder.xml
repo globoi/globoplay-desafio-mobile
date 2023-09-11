@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/backgroundGray"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/viewCarouselTitlePlaceholder"
+        android:layout_width="128dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/placeholderBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="@+id/viewCarouselTitlePlaceholder"
+        app:layout_constraintTop_toBottomOf="@+id/viewCarouselTitlePlaceholder">
+
+        <View
+            android:layout_width="128dp"
+            android:layout_height="164dp"
+            android:background="@color/placeholderBackground"
+            android:orientation="horizontal" />
+
+        <View
+            android:layout_width="128dp"
+            android:layout_height="164dp"
+            android:layout_marginStart="12dp"
+            android:background="@color/placeholderBackground"
+            android:orientation="horizontal" />
+
+        <View
+            android:layout_width="128dp"
+            android:layout_height="164dp"
+            android:layout_marginStart="12dp"
+            android:background="@color/placeholderBackground"
+            android:orientation="horizontal" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
