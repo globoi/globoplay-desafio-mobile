@@ -3,8 +3,7 @@ package com.mazer.globoplayapp.presentation.di
 import android.util.Log
 import androidx.room.Room
 import com.mazer.globoplayapp.BuildConfig
-import com.mazer.globoplayapp.data.datasource.MovieDataSource
-import com.mazer.globoplayapp.data.datasource.RemoteMovieDataSource
+import com.mazer.globoplayapp.data.datasource.*
 import com.mazer.globoplayapp.data.local.AppDatabase
 import com.mazer.globoplayapp.data.remote.ApiService
 import com.mazer.globoplayapp.data.repos.MovieRepository
@@ -64,7 +63,7 @@ val appModule = module {
         get<Retrofit>().create(ApiService::class.java)
     }
 
-    factory<MovieDataSource> { RemoteMovieDataSource(get()) }
+    factory<RemoteMovieDataSource> { RemoteMovieDataSourceImpl(get()) }
     factory<MovieRepository> { MovieRepositoryImpl(get(), get()) }
     factory{ GetMovieListUseCase(get())}
     viewModel { HomeViewModel(get()) }

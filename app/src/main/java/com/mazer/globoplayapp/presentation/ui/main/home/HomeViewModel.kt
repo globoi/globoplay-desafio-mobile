@@ -19,30 +19,31 @@ class HomeViewModel(private val getMovieListUseCase: GetMovieListUseCase): ViewM
     private val _movieUpcomingList = MutableLiveData<List<Movie>>()
     val movieUpcomingList: LiveData<List<Movie>> = _movieUpcomingList
 
-
     init {
-        loadPopularMovies()
-        loadTopRatedMovies()
-        loadUpcomingMovies()
+        loadPopularMovies(1)
+        loadTopRatedMovies(1)
+        loadUpcomingMovies(1)
     }
 
-    private fun loadPopularMovies() {
+
+
+    fun loadPopularMovies(page: Int) {
         viewModelScope.launch {
-            val movies = getMovieListUseCase.getPopularMovies()
+            val movies = getMovieListUseCase.getPopularMovies(page)
             _moviePopularList.postValue(movies)
         }
     }
 
-    private fun loadTopRatedMovies() {
+    fun loadTopRatedMovies(page: Int) {
         viewModelScope.launch {
-            val movies = getMovieListUseCase.getTopRatedMovies()
+            val movies = getMovieListUseCase.getTopRatedMovies(page)
             _movieTopRatedList.postValue(movies)
         }
     }
 
-    private fun loadUpcomingMovies() {
+    fun loadUpcomingMovies(page: Int) {
         viewModelScope.launch {
-            val movies = getMovieListUseCase.getUpcomingMovies()
+            val movies = getMovieListUseCase.getUpcomingMovies(page)
             _movieUpcomingList.postValue(movies)
         }
     }

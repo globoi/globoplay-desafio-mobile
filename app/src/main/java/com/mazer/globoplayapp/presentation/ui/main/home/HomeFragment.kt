@@ -19,7 +19,7 @@ class HomeFragment: Fragment() {
     private val viewModel : HomeViewModel by viewModel()
     private lateinit var adapterPopularMovies: CarouselMoviesAdapter
     private lateinit var adapterTopRatedMovies: CarouselMoviesAdapter
-    private lateinit var adapterupcomingMovies: CarouselMoviesAdapter
+    private lateinit var adapterUpcomingMovies: CarouselMoviesAdapter
 
 
     override fun onCreateView(
@@ -43,7 +43,7 @@ class HomeFragment: Fragment() {
         adapterTopRatedMovies = CarouselMoviesAdapter {
             goToMovieDetailsScreen(it)
         }
-        adapterupcomingMovies = CarouselMoviesAdapter {
+        adapterUpcomingMovies = CarouselMoviesAdapter {
             goToMovieDetailsScreen(it)
         }
 
@@ -58,29 +58,44 @@ class HomeFragment: Fragment() {
         startActivity(intent)
     }
 
-    private fun setupUpcomingMoviesCarousel() {
+    private fun setupPopularMoviesCarousel() {
         binding.carouselViewPopular.setAdapter(adapterPopularMovies)
+        binding.carouselViewPopular.setOnLoadMoreListener {
+            viewModel.loadPopularMovies(it)
+
+        }
     }
 
     private fun setupTopRatedMoviesCarousel() {
         binding.carouselViewTopRated.setAdapter(adapterTopRatedMovies)
+        binding.carouselViewTopRated.setOnLoadMoreListener {
+            viewModel.loadTopRatedMovies(it)
+
+        }
     }
 
-    private fun setupPopularMoviesCarousel() {
-        binding.carouselViewUpcoming.setAdapter(adapterupcomingMovies)
+    private fun setupUpcomingMoviesCarousel() {
+        binding.carouselViewUpcoming.setAdapter(adapterUpcomingMovies)
+        binding.carouselViewUpcoming.setOnLoadMoreListener {
+            viewModel.loadUpcomingMovies(it)
+
+        }
     }
 
     private fun registerObservers() {
         viewModel.moviePopularList.observe(viewLifecycleOwner) {
-            adapterPopularMovies.setList(it)
+            adapterPopularMovies.addList(it)
+            binding.carouselViewPopular.setDataLoaded()
             showLoadingShimmer(false)
         }
         viewModel.movieTopRatedList.observe(viewLifecycleOwner) {
-            adapterTopRatedMovies.setList(it)
+            adapterTopRatedMovies.addList( it)
+            binding.carouselViewTopRated.setDataLoaded()
             showLoadingShimmer(false)
         }
         viewModel.movieUpcomingList.observe(viewLifecycleOwner) {
-            adapterupcomingMovies.setList(it)
+            adapterUpcomingMovies.addList(it)
+            binding.carouselViewUpcoming.setDataLoaded()
             showLoadingShimmer(false)
         }
     }

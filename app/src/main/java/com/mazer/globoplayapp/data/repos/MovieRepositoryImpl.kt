@@ -1,32 +1,34 @@
 package com.mazer.globoplayapp.data.repos
 
 import androidx.lifecycle.LiveData
-import com.mazer.globoplayapp.data.datasource.MovieDataSource
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import com.mazer.globoplayapp.data.datasource.RemoteMovieDataSource
 import com.mazer.globoplayapp.data.local.dao.MovieDao
 import com.mazer.globoplayapp.domain.entities.Genre
 import com.mazer.globoplayapp.domain.entities.Movie
 import com.mazer.globoplayapp.domain.entities.Video
 
-class MovieRepositoryImpl(private val movieDataSource: MovieDataSource, private val movieDao: MovieDao) : MovieRepository {
+class MovieRepositoryImpl(private val remoteMovieDataSource: RemoteMovieDataSource, private val movieDao: MovieDao) : MovieRepository {
 
-    override suspend fun getPopularMovies(): List<Movie> {
-        return movieDataSource.getPopularMoviesFromRemote()
+    override suspend fun getPopularMovies(page: Int): List<Movie> {
+        return remoteMovieDataSource.getPopularMoviesFromRemote(page)
     }
 
-    override suspend fun getTopRatedMovies(): List<Movie> {
-        return movieDataSource.getTopRatedMoviesFromRemote()
+    override suspend fun getTopRatedMovies(page: Int): List<Movie> {
+        return remoteMovieDataSource.getTopRatedMoviesFromRemote(page)
     }
 
-    override suspend fun getUpcomingMovies(): List<Movie> {
-        return movieDataSource.getUpcomingFromRemote()
+    override suspend fun getUpcomingMovies(page: Int): List<Movie> {
+        return remoteMovieDataSource.getUpcomingFromRemote(page)
     }
 
     override suspend fun getGenreList(): List<Genre> {
-        return movieDataSource.getGenreList()
+        return remoteMovieDataSource.getGenreList()
     }
 
     override suspend fun getRecommendationList(movieId: Int): List<Movie> {
-        return movieDataSource.getRecommendationList(movieId)
+        return remoteMovieDataSource.getRecommendationList(movieId)
     }
 
     override suspend fun addToFavorites(movie: Movie) {
@@ -46,6 +48,6 @@ class MovieRepositoryImpl(private val movieDataSource: MovieDataSource, private 
     }
 
     override suspend fun getVideoList(movieId: Int): List<Video?> {
-        return movieDataSource.getVideoList(movieId)
+        return remoteMovieDataSource.getVideoList(movieId)
     }
 }

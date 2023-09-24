@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 
 class PlayerViewModel(private val getMovieListUseCase: GetMovieListUseCase): ViewModel() {
 
-    private val _videoList = MutableLiveData<List<VideoUI?>>()
-    val videoList: LiveData<List<VideoUI?>> = _videoList
+    private val _videoList = MutableLiveData<ArrayList<VideoUI>>()
+    val videoList: LiveData<ArrayList<VideoUI>> = _videoList
 
     fun setExtras(bundle: Bundle){
         val movie = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -37,7 +37,7 @@ class PlayerViewModel(private val getMovieListUseCase: GetMovieListUseCase): Vie
     }
 
     fun setVideoPlaying(video: Video) {
-        _videoList.value?.filterNotNull()?.forEach {
+        _videoList.value?.toList()?.forEach {
             it.isPlaying = false
             if (it.video == video)
                 it.isPlaying = true

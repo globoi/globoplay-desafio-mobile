@@ -1,10 +1,16 @@
 package com.mazer.globoplayapp.domain.use_cases
 
 import androidx.lifecycle.LiveData
+import androidx.paging.PagingData
+import androidx.paging.map
 import com.mazer.globoplayapp.data.repos.MovieRepository
 import com.mazer.globoplayapp.domain.entities.Movie
 import com.mazer.globoplayapp.domain.entities.Video
 import com.mazer.globoplayapp.presentation.wrapper.VideoUI
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapNotNull
 
 /**
  * Essa classe agrupa os UseCases de carregar os filmes "Popular", "Top Rated" e "Upcoming"
@@ -12,40 +18,16 @@ import com.mazer.globoplayapp.presentation.wrapper.VideoUI
  */
 class GetMovieListUseCase(private val movieRepository: MovieRepository) {
 
-    suspend fun getPopularMovies(): List<Movie> {
-        val popularMovies = movieRepository.getPopularMovies()
-        val genreList = movieRepository.getGenreList()
-
-        popularMovies.forEach { movies ->
-            val genre = genreList.filter { it.id == movies.genreIds[0] }[0]
-            movies.genre = genre.name
-        }
-
-        return popularMovies
+    suspend fun getPopularMovies(page: Int): List<Movie> {
+        return movieRepository.getPopularMovies(page)
     }
 
-    suspend fun getTopRatedMovies(): List<Movie> {
-        val topRatedMovies = movieRepository.getTopRatedMovies()
-        val genreList = movieRepository.getGenreList()
-
-        topRatedMovies.forEach { movies ->
-            val genre = genreList.filter { it.id == movies.genreIds[0] }[0]
-            movies.genre = genre.name
-        }
-
-        return topRatedMovies
+    suspend fun getTopRatedMovies(page: Int): List<Movie> {
+        return movieRepository.getTopRatedMovies(page)
     }
 
-    suspend fun getUpcomingMovies(): List<Movie> {
-        val upcomingMovies = movieRepository.getUpcomingMovies()
-        val genreList = movieRepository.getGenreList()
-
-        upcomingMovies.forEach { movies ->
-            val genre = genreList.filter { it.id == movies.genreIds[0] }[0]
-            movies.genre = genre.name
-        }
-
-        return upcomingMovies
+    suspend fun getUpcomingMovies(page: Int): List<Movie> {
+        return movieRepository.getUpcomingMovies(page)
     }
 
     suspend fun getRecommendationList(movieId: Int): List<Movie>{
@@ -68,7 +50,7 @@ class GetMovieListUseCase(private val movieRepository: MovieRepository) {
         return movieRepository.getFavoriteMovie(movieId)
     }
 
-    suspend fun getVideoList(movieId: Int): List<VideoUI>{
+    suspend fun getVideoList(movieId: Int): ArrayList<VideoUI>{
         val videoList = movieRepository.getVideoList(movieId).filterNotNull()
         val videoUIList = arrayListOf<VideoUI>()
         videoList.forEach {

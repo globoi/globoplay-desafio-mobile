@@ -35,7 +35,7 @@ class PlayerActivity : AppCompatActivity() {
     private fun registerObservers() {
         lifecycle.addObserver(binding.youtubePlayerVideo)
         viewModel.videoList.observe(this) {
-            setupVideoUI(it.filterNotNull())
+            setupVideoUI(it.toList())
         }
     }
 

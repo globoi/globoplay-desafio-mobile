@@ -1,14 +1,17 @@
 package com.mazer.globoplayapp.data.repos
 
 import androidx.lifecycle.LiveData
+import androidx.paging.PagingData
 import com.mazer.globoplayapp.domain.entities.Genre
 import com.mazer.globoplayapp.domain.entities.Movie
 import com.mazer.globoplayapp.domain.entities.Video
+import kotlinx.coroutines.flow.Flow
+
 
 interface MovieRepository {
-    suspend fun getPopularMovies(): List<Movie>
-    suspend fun getTopRatedMovies(): List<Movie>
-    suspend fun getUpcomingMovies(): List<Movie>
+    suspend fun getPopularMovies(page: Int): List<Movie>
+    suspend fun getTopRatedMovies(page: Int): List<Movie>
+    suspend fun getUpcomingMovies(page: Int): List<Movie>
     suspend fun getGenreList(): List<Genre>
     suspend fun getRecommendationList(movieId: Int): List<Movie>
     suspend fun addToFavorites(movie: Movie)

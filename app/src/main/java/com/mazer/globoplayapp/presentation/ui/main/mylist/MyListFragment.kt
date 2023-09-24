@@ -46,7 +46,7 @@ class MyListFragment: Fragment() {
         })
     }
 
-    private fun setupView(movieList: List<Movie>?) {
+    private fun setupView(movieList: List<Movie>) {
         adapter.setList(movieList)
     }
 
