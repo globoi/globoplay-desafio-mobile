@@ -2,13 +2,11 @@ package com.mazer.globoplayapp.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mazer.globoplayapp.databinding.ItemMovieBinding
 import com.mazer.globoplayapp.domain.entities.Movie
 
-class CarouselMoviesAdapter(private val onMovieSelected: (movie: Movie) -> Unit)  : PagingDataAdapter<Movie, CarouselViewHolder>(MovieDiffCallback()) {
+class CarouselMoviesAdapter(private val onMovieSelected: (movie: Movie) -> Unit)  :  RecyclerView.Adapter<CarouselViewHolder>() {
 
     private var movieList: ArrayList<Movie> = arrayListOf()
 
@@ -33,14 +31,4 @@ class CarouselMoviesAdapter(private val onMovieSelected: (movie: Movie) -> Unit)
     }
 
     override fun getItemCount(): Int =  movieList.size
-
-    private class MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {
-        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-            return oldItem == newItem
-        }
-    }
 }

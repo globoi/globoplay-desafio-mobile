@@ -1,11 +1,9 @@
 package com.mazer.globoplayapp.data.repos
 
 import androidx.lifecycle.LiveData
-import androidx.paging.PagingData
 import com.mazer.globoplayapp.domain.entities.Genre
 import com.mazer.globoplayapp.domain.entities.Movie
 import com.mazer.globoplayapp.domain.entities.Video
-import kotlinx.coroutines.flow.Flow
 
 
 interface MovieRepository {

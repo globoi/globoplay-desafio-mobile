@@ -1,8 +1,6 @@
 package com.mazer.globoplayapp.data.repos
 
 import androidx.lifecycle.LiveData
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
 import com.mazer.globoplayapp.data.datasource.RemoteMovieDataSource
 import com.mazer.globoplayapp.data.local.dao.MovieDao
 import com.mazer.globoplayapp.domain.entities.Genre

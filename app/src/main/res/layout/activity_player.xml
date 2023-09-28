@@ -11,13 +11,22 @@
         layout="@layout/toolbar_player"
         android:id="@+id/toolbarPlayer" />
 
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-        android:id="@+id/youtubePlayerVideo"
+    <TextureView
+        android:id="@+id/textureView"
         android:layout_width="match_parent"
         android:layout_height="216dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPlayer" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarPlayer">
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtubePlayerVideo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </TextureView>
+
+
 
     <TextView
         android:id="@+id/tvVideoTitle"
@@ -28,7 +37,7 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/youtubePlayerVideo"
+        app:layout_constraintTop_toBottomOf="@+id/textureView"
         tools:text="Nome do Trailer do Filme!" />
 
     <TextView

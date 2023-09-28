@@ -1,16 +1,9 @@
 package com.mazer.globoplayapp.domain.use_cases
 
 import androidx.lifecycle.LiveData
-import androidx.paging.PagingData
-import androidx.paging.map
 import com.mazer.globoplayapp.data.repos.MovieRepository
 import com.mazer.globoplayapp.domain.entities.Movie
-import com.mazer.globoplayapp.domain.entities.Video
 import com.mazer.globoplayapp.presentation.wrapper.VideoUI
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flatMapConcat
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.mapNotNull
 
 /**
  * Essa classe agrupa os UseCases de carregar os filmes "Popular", "Top Rated" e "Upcoming"
