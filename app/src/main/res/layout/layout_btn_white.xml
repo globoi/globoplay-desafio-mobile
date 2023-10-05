@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:background="@drawable/btn_background_white"
+    android:gravity="center"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:src="@drawable/ic_baseline_play_arrow_24"
+        android:layout_width="24dp"
+        android:layout_height="24dp"/>
+
+    <TextView
+        android:text="@string/btn_play"
+        android:layout_width="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginStart="8dp"
+        android:textStyle="bold"
+        android:textColor="@color/btnPlayGray"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

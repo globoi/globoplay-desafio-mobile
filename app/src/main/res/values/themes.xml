@@ -1,0 +1,53 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.GloboplayApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/lightGray</item>
+        <item name="colorSecondaryVariant">@color/strokeGray</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+    </style>
+
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabBackground">@color/tabBackground</item>
+        <item name="tabTextColor">@color/tabText</item>
+        <item name="tabIndicatorColor">@color/tabIndicator</item>
+    </style>
+
+    <style name="TabLayoutTextInactive">
+        <item name="android:textColor">@color/strokeGray</item>
+    </style>
+
+    <style name="TabLayoutTextActive">
+        <item name="android:textColor">@color/tabText</item>
+    </style>
+
+    <style name="ThemeDetailsLabel">
+        <item name="android:textColor">@color/lightGray</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="BottomNavigationViewInactiveText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:drawablePadding">8dp</item>
+    </style>
+
+    <style name="BottomNavigationViewActiveText" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:drawablePadding">8dp</item>
+    </style>
+
+    <style name="Theme.GloboplayApp.NoToolbar" parent="Theme.GloboplayApp">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+
+</resources>
