@@ -23,7 +23,7 @@ Pense no desafio como uma oportunidade de mostrar todo o seu conhecimento. E fa�
 
 # Pré-requisitos
 
-- A UI deve ser feita em SwiftUI
+- A UI deve ser feita preferencialmente em SwiftUI. Alternativamente, você pode optar por UIKit + ViewCode.
 - Chamadas assíncronas devem usar Modern Swift Concurrency
 
 Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por isso aceitamos desafios de todos os perfis e diferentes níveis de conhecimento técnico. Mas nos preocupamos com a qualidade, saúde e evolução do produto e por isso acreditamos bastante em testes automatizados.
