@@ -21,7 +21,10 @@ Pense no desafio como uma oportunidade de mostrar todo o seu conhecimento. E fa�
 - Layout's
 - Fluxo de navegação.
 
-Não existe nenhum pré-requisito, portanto sinta-se a vontande para utilizar qualquer linguagem e usar ou não usar bibliotecas.
+# Pré-requisitos
+
+- A UI deve ser feita em SwiftUI
+- Chamadas assíncronas devem usar Modern Swift Concurrency
 
 Sabemos que testes não é um tópico que todos dominam ou tem conhecimento, por isso aceitamos desafios de todos os perfis e diferentes níveis de conhecimento técnico. Mas nos preocupamos com a qualidade, saúde e evolução do produto e por isso acreditamos bastante em testes automatizados.
 
